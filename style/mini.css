@@ -1,0 +1,52 @@
+* {
+    padding: 0em;
+    margin: 0em;
+}
+
+:root{
+    --bgcolor: #1E1E1E;
+    --txtcolor: #f7f3eb; 
+    --visitedcolor: #c5a551;
+    --newscolor: #F3C42B;
+    --newstextcolor: #000;
+    --contentbgcolor: #fff;
+    --contenttxtcolor: #000;
+}
+
+html{ font-size: 100%; } /*rispetta le dimensioni della pagina dell'utente*/
+
+html, body{
+    font-family: Arial, Helvetica, Tahoma, Verdana, sans-serif; /*font accessibili; bisognerà stare attenti ai contrasti*/
+    line-height: 1.5;
+}
+
+
+
+.main-nav-bar {
+    color: var(--txtcolor);
+    background-color: var(--bgcolor);
+    flex-direction: column; /* Logo sopra, Menu sotto */
+    align-items: flex-start; 
+    gap: 1em; 
+}
+
+.primary-navigation {
+    margin-left: 0; 
+    width: 100%; 
+}
+
+.primary-navigation ul {
+    flex-direction: column; /* Da riga a colonna */
+    gap: 0.5em; 
+    padding: 1em;
+}
+
+/* Pulisce i bordi orizzontali */
+.primary-navigation li:not(:first-child) {
+    border-left: none; 
+}
+
+.primary-navigation a {
+    display: block;
+    padding: 0.5em 0.75em;
+}
