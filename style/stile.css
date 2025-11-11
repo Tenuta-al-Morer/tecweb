@@ -4,7 +4,7 @@
 }
 
 :root{
-    --bgcolor: #0365AE;
+    --bgcolor: #4B0082;
     --txtcolor: #fff; /*bastano solo 3 f per il white*/
     --breadcolor: #024273;
     --linkcolor: #fff;
@@ -31,32 +31,79 @@ html, body{
 }*/
 
 body{
-    /*background-color: var(--bgcolor);
+    /*background-color: var(--bgcolor);*/
     color: var(--txtcolor);
-    max-width: 1200px; 
-    margin: auto;*/
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    grid-template-areas:
-    "h h"
-    "b b"
-    "c c"
-    "f f";
+    margin: auto;
+    
+    
 }
 
 
 /*
 Se vogliamo la sidebar se la vogliamo dobbiamo metterla nel main (se usiamo grid layout)
 =============================
-SEZIONE HEADER
+SEZIONE navbar
 =============================
 */
-header{
-    /*padding: 0em 1em;
-    text-align: center;
-    margin: 1em;*/
-    grid-area: h;
+
+.main-nav-bar {
+    color: var(--txtcolor);
+    padding: 0.5em 1em;
+    background-color: var(--bgcolor); 
+    display: flex;
+    align-items: center;
 }
+
+.primary-navigation{
+    margin-left: auto;
+}
+
+.primary-navigation ul {
+    display: flex; 
+    gap: 2em; 
+    font-size: 1.2em;
+    list-style: none;
+}
+
+.main-nav-bar img{
+    margin-left: 3em;
+    display: inline; 
+    align-items: center;
+    height: 5.5em; 
+    width: auto;
+    border-radius: 14px;
+}
+
+.primary-navigation a {
+    color: var(--linkcolor); 
+    font-weight: bold;
+    padding: 0.5em;
+    text-transform: capitalize; 
+    border-radius: 3px; 
+}
+
+.primary-navigation li:not(:first-child) {
+
+    border-left: 2px solid rgba(255, 255, 255, 0.5);
+    line-height: 1.2em; 
+}
+
+
+.primary-navigation a:hover, .primary-navigation a:focus {
+    color: var(--visitedcolor); 
+    outline: 2px solid var(--visitedcolor);
+    outline-offset: 2px;
+}
+
+.primary-navigation a[aria-current="page"] {
+    color: var(--visitedcolor); 
+    border-bottom: 2px solid var(--visitedcolor);
+}
+
+/*
+==============================================================================
+*/
+
 
 /*
 header h1{
@@ -103,7 +150,6 @@ main{
     padding-right: 2em;
     padding-bottom: 2em;
     border-left: 1px solid black;*/
-    grid-area: c;
 }
 
 /*
@@ -133,7 +179,6 @@ SEZIONE BREADCRUMB
     font-size: 1.1em;
     border: 1px solid #000;
     padding: 0.5em 0em 0.5em 1.0em;*/
-    grid-area: b;
 }
 
 /*
@@ -149,13 +194,12 @@ SEZIONE FOOTER
 */
 footer{
     
-    background-color: var(--breadcolor);
+    background-color: var(--bgcolor);
     color: var(--txtcolor);
     text-align: center;
     font-size: 0.8em;
     border: 1px solid #000;
     padding: 0.5em;
-    grid-area: f;
 }
 
 
