@@ -1,6 +1,7 @@
 * {
     padding: 0em;
     margin: 0em;
+    box-sizing: border-box; /* quando applichi larghezza ed altezza si applica all'intero blocco*/
 }
 
 :root{
@@ -87,7 +88,6 @@ html, body{
 }
 
 .menu-toggle:focus {
-    color: var(--visitedcolor); 
     outline: 3px solid var(--visitedcolor);
 }
 
@@ -110,12 +110,15 @@ html, body{
 
 /* Stile per i link nel menu mobile (verticali) */
 
+
+
 .primary-navigation li {
     width: 100%;
     border-bottom: 1px solid #f0f0f0;
 }
 .primary-navigation li a {
-    padding: 15px;
+    padding: 1em;
     display: block;
-    width: 100%;
+    /* Lascia che 'display: block' gestisca la larghezza.
+       Il browser calcolerà: width = 100% (del genitore) - 2em (padding) */
 }
