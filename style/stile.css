@@ -86,13 +86,9 @@ SEZIONE navbar
     outline: 2px solid var(--visitedcolor);
 }
 
-.primary-navigation a[aria-current="home"] {
+.primary-navigation a[aria-current="page"] {
     color: var(--visitedcolor); 
     border-bottom: 2px solid var(--visitedcolor);
-}
-
-#breadcrumb{
-    text-indent: -9999em; 
 }
 
 .menu-toggle {
