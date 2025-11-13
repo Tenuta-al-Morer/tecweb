@@ -36,7 +36,7 @@ html, body{
 .primary-navigation ul {
     flex-direction: column; /* Da riga a colonna */
     gap: 0.5em; 
-    padding: 1em;
+    padding: 1em 0;
 }
 
 
