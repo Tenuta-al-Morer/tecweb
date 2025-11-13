@@ -26,7 +26,7 @@
         <header>
             <div class="main-nav-bar">    
                 <a href="index.html"><img src="images/logo.webp" alt="Logo del sito - albero di more"></a>
-                <nav class="primary-navigation" aria-label="Navigazione principale">
+                <nav id="main-navigation" class="primary-navigation" aria-label="Navigazione principale">
                     <ul>
                         <li><a href="index.html" aria-current="home" aria-label="Visualizza la home page della Tenuta al Morer"><span lang="en">Home</span></a></li>
                         <li><a href="tenuta.html" aria-label="Visualizza maggiori informazioni sulla nostra tenuta">Tenuta</a></li>
@@ -36,6 +36,9 @@
                         <li><a href="contatti.html" aria-label="Visualizza la nostra sezione contatti">Contatti</a></li>
                     </ul>
                 </nav>
+                <button class="menu-toggle" aria-controls="main-navigation" aria-expanded="false" aria-label="Menu di navigazione">
+                    <span class="hamburger-icon"></span>
+                </button>
             </div>
             <div id="breadcrumb">Ti trovi in: <span lang="en">Home</span></div>
         </header>
@@ -47,6 +50,7 @@
         <footer>
         </footer>
 
+        <script src="scripts/script.js"></script>
 
     </body>
 

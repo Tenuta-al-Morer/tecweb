@@ -81,7 +81,7 @@ SEZIONE navbar
 }
 
 
-.primary-navigation a:hover, .primary-navigation a:focus {
+.main-nav-bar a:hover, .main-nav-bar a:focus {
     color: var(--visitedcolor); 
     outline: 2px solid var(--visitedcolor);
 }
@@ -93,6 +93,10 @@ SEZIONE navbar
 
 #breadcrumb{
     text-indent: -9999em; 
+}
+
+.menu-toggle {
+    display: none; /* Nascondi il bottone hamburger su desktop */
 }
 
 /*

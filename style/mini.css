@@ -20,14 +20,12 @@ html, body{
     line-height: 1.5;
 }
 
-
-
 .main-nav-bar {
     color: var(--txtcolor);
     background-color: var(--bgcolor);
-    flex-direction: column; /* Logo sopra, Menu sotto */
     align-items: flex-start; 
     gap: 1em; 
+    position: relative; 
 }
 
 .primary-navigation {
@@ -41,6 +39,7 @@ html, body{
     padding: 1em;
 }
 
+
 /* Pulisce i bordi orizzontali */
 .primary-navigation li:not(:first-child) {
     border-left: none; 
@@ -49,4 +48,74 @@ html, body{
 .primary-navigation a {
     display: block;
     padding: 0.5em 0.75em;
+}
+
+/* In mini.css */
+
+.menu-toggle {
+    display: block; /* Mostra il bottone hamburger su mobile */
+    background: none;
+    padding: 8px;
+    cursor: pointer;
+    z-index: 1000;
+    margin-left: auto;
+    margin-top: 2.5em;
+}
+
+/* Stile per l'icona hamburger (3 linee) */
+.hamburger-icon {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: #fff;
+    position: relative;
+}
+.hamburger-icon::before,
+.hamburger-icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    left: 0;
+}
+.hamburger-icon::before {
+    top: -6px;
+}
+.hamburger-icon::after {
+    bottom: -6px;
+}
+
+.menu-toggle:focus {
+    color: var(--visitedcolor); 
+    outline: 3px solid var(--visitedcolor);
+}
+
+/* Nascondi il menu di navigazione principale su mobile */
+.primary-navigation {
+    display: none;
+    /* Stile per quando è aperto (a tendina) */
+    position: absolute;
+    top: 100%; /* Posizionalo sotto l'header */
+    left: 0;
+    right: 0;
+    background-color: var(--bgcolor);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Classe che verrà aggiunta via JS al click */
+.primary-navigation.is-open {
+    display: block;
+}
+
+/* Stile per i link nel menu mobile (verticali) */
+
+.primary-navigation li {
+    width: 100%;
+    border-bottom: 1px solid #f0f0f0;
+}
+.primary-navigation li a {
+    padding: 15px;
+    display: block;
+    width: 100%;
 }
