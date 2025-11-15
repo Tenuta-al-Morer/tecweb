@@ -17,7 +17,7 @@ html{ font-size: 100%; } /*rispetta le dimensioni della pagina dell'utente*/
 
 html, body{
     font-family: Arial, Helvetica, Tahoma, Verdana, sans-serif; /*font accessibili; bisognerà stare attenti ai contrasti*/
-    line-height: 1.5;
+    line-height: 1.5em;
 }
 
 
@@ -93,6 +93,10 @@ SEZIONE navbar
 
 .menu-toggle {
     display: none; /* Nascondi il bottone hamburger su desktop */
+}
+
+.visually-hidden{
+    text-indent: -9999em;
 }
 
 /*
