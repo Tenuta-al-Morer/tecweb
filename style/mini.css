@@ -4,21 +4,20 @@
 }
 
 :root{
-    --bgcolor: #1E1E1E;
-    --txtcolor: #f7f3eb; 
+    --bgcolor: #2b0303;
+    --txtcolor: #000; 
     --visitedcolor: #c5a551;
     --newscolor: #F3C42B;
     --newstextcolor: #000;
-    --contentbgcolor: #fff;
-    --contenttxtcolor: #000;
+    --navcolor: #fff;
 }
-
-html{ font-size: 100%; } /*rispetta le dimensioni della pagina dell'utente*/
 
 html, body{
-    font-family: Arial, Helvetica, Tahoma, Verdana, sans-serif; /*font accessibili; bisognerà stare attenti ai contrasti*/
-    line-height: 1.5;
+    font-size: 100%; 
+    font-family: 'Atkinson Hyperlegible', "Lexend", Roboto, sans-serif; 
+    line-height: 1.5em; 
 }
+
 
 .main-nav-bar {
     color: var(--txtcolor);
