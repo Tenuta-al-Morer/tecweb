@@ -4,21 +4,20 @@
 }
 
 :root{
-    --bgcolor: #1E1E1E;
-    --txtcolor: #f7f3eb; 
+    --bgcolor: #2b0303;
+    --txtcolor: #000; 
     --visitedcolor: #c5a551;
     --newscolor: #F3C42B;
     --newstextcolor: #000;
-    --contentbgcolor: #fff;
-    --contenttxtcolor: #000;
+    --navcolor: #fff;
 }
-
-html{ font-size: 100%; } /*rispetta le dimensioni della pagina dell'utente*/
 
 html, body{
-    font-family: Arial, Helvetica, Tahoma, Verdana, sans-serif; /*font accessibili; bisognerà stare attenti ai contrasti*/
-    line-height: 1.5em;
+    font-size: 100%; 
+    font-family: 'Atkinson Hyperlegible', "Lexend", Roboto, sans-serif; 
+    line-height: 1.5em; 
 }
+
 
 
 /*html{
@@ -36,14 +35,13 @@ body{
 
 
 /*
-Se vogliamo la sidebar se la vogliamo dobbiamo metterla nel main (se usiamo grid layout)
 =============================
 SEZIONE navbar
 =============================
 */
 
 .main-nav-bar {
-    color: var(--txtcolor);
+    color: var(--navcolor);
     padding: 0.5em;
     background-color: var(--bgcolor); 
     display: flex; /* trasforma in contenitore flexbox: Permette ai figli diretti di disporsi orizzontalmente */
@@ -70,7 +68,7 @@ SEZIONE navbar
 }
 
 .primary-navigation a {
-    color: var(--linkcolor); 
+    color: var(--navcolor); 
     font-weight: bold;
     padding: 0.5em;
     border-radius: 3px; 
@@ -96,8 +94,26 @@ SEZIONE navbar
 }
 
 .visually-hidden{
-    text-indent: -9999em;
+    text-indent: -999em;
 }
+
+
+/*
+=============================
+SEZIONE MAIN
+=============================
+*/
+main{
+    background-color: var(--navcolor);
+    color: var(--txtcolor);
+    padding-top: 2.0em;
+    padding-left: 3.5em;
+    padding-right: 2em;
+    padding-bottom: 2em;
+}
+
+
+
 
 /*
 ==============================================================================
@@ -135,21 +151,7 @@ header h2{
 }*/
 
 
-/*
-=============================
-SEZIONE MAIN
-=============================
-*/
-main{
-    /*
-    background-color: var(--contentbgcolor);
-    color: var(--contenttxtcolor);
-    padding-top: 2.0em;
-    padding-left: 3.5em;
-    padding-right: 2em;
-    padding-bottom: 2em;
-    border-left: 1px solid black;*/
-}
+
 
 /*
 main h1{
