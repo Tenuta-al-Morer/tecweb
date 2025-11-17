@@ -25,7 +25,6 @@ SEZIONE navbar
 */
 
 .main-nav-bar {
-    color: var(--txtcolor);
     background-color: var(--bgcolor);
     align-items: flex-start; 
     gap: 1em; 
