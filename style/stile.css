@@ -34,7 +34,7 @@ SEZIONE navbar
 .main-nav-bar {
     color: var(--navtxtcolor);
     padding: 0.5em;
-    background-color: var(--txtcolor); 
+    background-color: var(--navbgcolor); 
     display: flex; 
     align-items: center; 
     gap: 1em;    
