@@ -47,6 +47,7 @@ SEZIONE navbar
     display: flex; /* trasforma in contenitore flexbox: Permette ai figli diretti di disporsi orizzontalmente */
     align-items: center; /* allinea verticalmente al centro gli elementi figli*/
     gap: 1em;    
+    flex-wrap: wrap;/* !!!*/
 }
 
 .primary-navigation{

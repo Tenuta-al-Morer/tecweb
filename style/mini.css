@@ -27,9 +27,12 @@ html, body{
     position: relative; 
 }
 
+
 .primary-navigation {
-    margin-left: 0; 
-    width: 100%; 
+    display: none;
+    background-color: var(--bgcolor);
+    width: 100%;
+    order: 999;
 }
 
 .primary-navigation ul {
@@ -89,17 +92,7 @@ html, body{
     outline: 3px solid var(--visitedcolor);
 }
 
-/* Nascondi il menu di navigazione principale su mobile */
-.primary-navigation {
-    display: none;
-    /* Stile per quando è aperto (a tendina) */
-    position: absolute;
-    top: 100%; /* Posizionalo sotto l'header */
-    left: 0;
-    right: 0;
-    background-color: var(--bgcolor);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
+
 
 /* Classe che verrà aggiunta via JS al click */
 .primary-navigation.is-open {
