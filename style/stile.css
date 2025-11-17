@@ -4,31 +4,22 @@
 }
 
 :root{
-    --bgcolor: #2b0303;
+    --navbgcolor: #2b0303;
     --txtcolor: #000; 
     --visitedcolor: #c5a551;
     --newscolor: #F3C42B;
     --newstextcolor: #000;
-    --navcolor: #fff;
+    --navtxtcolor: #fff;
 }
 
 html, body{
     font-size: 100%; 
-    font-family: 'Atkinson Hyperlegible', "Lexend", Roboto, sans-serif; 
+    font-family: 'Atkinson Hyperlegible', 'Lexend', 'Roboto', sans-serif;    
     line-height: 1.5em; 
 }
 
 
-
-/*html{
-    background-image: 
-    background-repeat: no-repeat;
-    background-position: top left, center right, bottom left, top left;
-    background-size: 5%, 5%, 5%, 100%;
-}*/
-
 body{
-    /*background-color: var(--bgcolor);*/
     color: var(--txtcolor);
     margin: auto;  
 }
@@ -41,17 +32,17 @@ SEZIONE navbar
 */
 
 .main-nav-bar {
-    color: var(--navcolor);
+    color: var(--navtxtcolor);
     padding: 0.5em;
-    background-color: var(--bgcolor); 
-    display: flex; /* trasforma in contenitore flexbox: Permette ai figli diretti di disporsi orizzontalmente */
-    align-items: center; /* allinea verticalmente al centro gli elementi figli*/
+    background-color: var(--navbgcolor); 
+    display: flex; 
+    align-items: center; 
     gap: 1em;    
-    flex-wrap: wrap;/* !!!*/
+    flex-wrap: wrap;
 }
 
 .primary-navigation{
-    margin-left: auto; /* margine max in questo caso (natura flexbox)*/
+    margin-left: auto; 
 }
 
 .primary-navigation ul {
@@ -69,7 +60,7 @@ SEZIONE navbar
 }
 
 .primary-navigation a {
-    color: var(--navcolor); 
+    color: var(--navtxtcolor); 
     font-weight: bold;
     padding: 0.5em;
     border-radius: 3px; 
@@ -91,7 +82,7 @@ SEZIONE navbar
 }
 
 .menu-toggle {
-    display: none; /* Nascondi il bottone hamburger su desktop */
+    display: none; 
 }
 
 .visually-hidden{
@@ -105,108 +96,13 @@ SEZIONE MAIN
 =============================
 */
 main{
-    background-color: var(--navcolor);
+    background-color: var(--navtxtcolor);
     color: var(--txtcolor);
     padding-top: 2.0em;
     padding-left: 3.5em;
     padding-right: 2em;
     padding-bottom: 2em;
 }
-
-
-
-
-/*
-==============================================================================
-*/
-
-
-/*
-header h1{
-    background-image: url("images/logo_fipav.svg");
-    background-repeat: no-repeat;
-    background-size: contain; 
-    background-position: center;
-    text-indent: -9999em; 
-    font-size: 6em;
-    line-height: 1.5em;
-    margin-top: 0.3em;
-}*/
-
-/*
-header h2{
-    font-size: 1.8em;
-    margin-top: 1.5em;
-    padding: 0.5em;
-}*/
-
-
-
-/*
-#currentLink{
-    background-image: url("images/palla.png");
-    background-position: left center;
-    background-size: 1.2em;
-    background-repeat: no-repeat;
-    padding-left:1.5em; 
-}*/
-
-
-
-
-/*
-main h1{
-    text-align: center;
-    line-height: 1.5em;
-}
-
-main h2{
-    text-align: center;
-    line-height: 1.5em;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-}*/
-
-
-
-/*
-========================
-SEZIONE BREADCRUMB
-========================
-*/
-/*
-#breadcrumb{
-    
-    background-color: var(--breadcolor);
-    color: var(--txtcolor);
-    font-size: 1.1em;
-    border: 1px solid #000;
-    padding: 0.5em 0em 0.5em 1.0em;
-}
-*/
-/*
-#breadcrumb a:visited{
-    color:var(--visitedcolor)
-}*/
-
-
-/*
-========================
-SEZIONE FOOTER
-========================
-*/
-/*
-footer{
-    
-    background-color: var(--bgcolor);
-    color: var(--txtcolor);
-    text-align: center;
-    font-size: 0.8em;
-    border: 1px solid #000;
-    padding: 0.5em;
-}
-*/
-
 
 
 
