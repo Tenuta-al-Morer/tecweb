@@ -49,9 +49,14 @@ SEZIONE navbar
 
 .primary-navigation ul {
     display: flex; 
-    gap: 2em; 
+    /*gap: 2em; */
     font-size: 1.2em;
     list-style: none;
+    align-items: center; 
+}
+
+.primary-navigation li {
+    padding: 0 0.8em; /* Questo crea lo spazio uguale tra le barrette e il testo */
 }
 
 .main-nav-bar img{
@@ -125,7 +130,16 @@ main{
 }
 
 
-
+/*
+=============================
+SEZIONE MAIN
+=============================
+*/
+footer{
+    margin-top: 2em;
+    background-color:var(--navbgcolor);
+    color:var(--navtxtcolor);
+}
 
 
 
