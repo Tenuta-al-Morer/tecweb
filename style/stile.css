@@ -10,7 +10,8 @@
     --newscolor: #F3C42B;
     --newstextcolor: #000;
     --navtxtcolor: #fff;
-    --visitedcolor: #e16c12;
+    --visitedcolor: #f47a1c;
+    --footercolor: #390909;
 }
 
 html, body{
@@ -136,9 +137,19 @@ SEZIONE MAIN
 =============================
 */
 footer{
+    text-align: center;
     margin-top: 2em;
-    background-color:var(--navbgcolor);
+    background-color:var(--footercolor);
     color:var(--navtxtcolor);
+    padding: 1em 0em;
+}
+
+footer a{
+    color:var(--navtxtcolor);
+}
+
+footer a:visited{
+    color:var(--visitedcolor);
 }
 
 
