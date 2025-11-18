@@ -61,7 +61,7 @@ SEZIONE navbar
 }
 
 .primary-navigation li {
-    padding: 0 0.8em; 
+    padding: 0 0.6em; 
 }
 
 .main-nav-bar img{
@@ -70,6 +70,7 @@ SEZIONE navbar
     width: auto; 
     border-radius: 14px;
     display: block;
+    flex-shrink: 0;
 }
 
 .primary-navigation a {
