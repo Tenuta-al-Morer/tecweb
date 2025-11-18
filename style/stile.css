@@ -32,6 +32,21 @@ body{
     flex-direction: column; 
 }
 
+/*
+=============================
+SEZIONE navigationHelp
+=============================
+*/
+.navigationHelp{
+    position: absolute; 
+    text-indent: -999em;
+}
+
+.navigationHelp:focus{
+    position: static;
+    text-indent: 0em;
+}
+
 
 /*
 =============================
