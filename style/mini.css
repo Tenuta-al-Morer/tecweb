@@ -4,12 +4,13 @@
 }
 
 :root{
-    --bgcolor: #2b0303;
+    --navbgcolor: #2b0303;
     --txtcolor: #000; 
-    --visitedcolor: #c5a551;
+    --currentcolor: #c5a551;
     --newscolor: #F3C42B;
     --newstextcolor: #000;
-    --navcolor: #fff;
+    --navtxtcolor: #fff;
+    --visitedcolor: #f47a1c;
 }
 
 html, body{
@@ -25,7 +26,7 @@ SEZIONE navbar
 */
 
 .main-nav-bar {
-    background-color: var(--bgcolor);
+    background-color: var(--navbgcolor);
     align-items: flex-start; 
     gap: 1em; 
     position: relative; 
@@ -34,7 +35,7 @@ SEZIONE navbar
 
 .primary-navigation {
     display: none;
-    background-color: var(--bgcolor);
+    background-color: var(--navbgcolor);
     flex-basis: 100%;
     order: 999;
 }
@@ -91,7 +92,7 @@ SEZIONE navbar
 }
 
 .menu-toggle:focus {
-    outline: 3px solid var(--visitedcolor);
+    outline: 3px solid var(--currentcolor);
 }
 
 .primary-navigation.is-open {
