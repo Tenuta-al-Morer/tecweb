@@ -35,7 +35,6 @@ SEZIONE navbar
 .primary-navigation {
     display: none;
     background-color: var(--bgcolor);
-    /*width: 100%;*/
     flex-basis: 100%;
     order: 999;
 }
@@ -44,6 +43,8 @@ SEZIONE navbar
     flex-direction: column; 
     gap: 0.5em; 
     padding: 1em 0;
+    align-items: stretch;
+    text-align: center;
 }
 
 
@@ -98,7 +99,7 @@ SEZIONE navbar
 }
 
 .primary-navigation li {
-    width: auto; /*100%*/
+    width: auto; 
     border-bottom: 1px solid #f0f0f0;
 }
 .primary-navigation li a {
