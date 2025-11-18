@@ -19,12 +19,16 @@ html, body{
     font-family: 'Atkinson Hyperlegible', 'Lexend', 'Roboto', sans-serif;    
     line-height: 1.5em;
     background-color: #f3dcd1; 
+    height: 100%; /* Assicura che html prenda tutta l'altezza */
 }
 
 
 body{
     color: var(--txtcolor);
     margin: auto;  
+    min-height: 100vh;      /* Altezza minima = 100% della viewport */
+    display: flex;          /* Attiva Flexbox */
+    flex-direction: column; /* Dispone gli elementi (header, nav, main, footer) in colonna */
 }
 
 
@@ -114,7 +118,7 @@ SEZIONE BREADCRUMB
 }
 
 .br_icon{
-    height: 2.5em;
+    height: 3em;
 }
 
 /*
@@ -128,6 +132,7 @@ main{
     padding-left: 3.5em;
     padding-right: 2em;
     padding-bottom: 2em;
+    flex-grow: 1; /* Spinge il footer in basso occupando tutto lo spazio libero */
 }
 
 
