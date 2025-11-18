@@ -1,0 +1,69 @@
+Home.html
+_________________________________________________________________________________________________
+
+HEADER
+
+Logo                  -                  Home - Tenuta - I vini - Esperienze - Shop - Contatti
+_________________________________________________________________________________________________
+
+Sezione Hero (con immagini a tutto schermo in background)
+
+                                    TITOLO:[Tenuta al Morer]
+                L’essenza del nostro territorio, custodita in ogni calice.
+                                            o
+                Tradizione, territorio e passione nel cuore delle nostre vigne
+
+    Nel cuore delle colline coltivate a vite, Tenuta al Morer nasce dall’unione tra tradizione, 
+    passione e una profonda cura per la terra. Ogni nostra bottiglia racconta una storia: 
+        quella di una famiglia, di una cantina e di un territorio ricco di carattere.
+
+_________________________________________________________________________________________________
+
+SEZIONE "La Tenuta" 
+                            Un luogo dove la natura guida ogni gesto
+    Tra vigneti che abbracciano il paesaggio e una cantina che fonde innovazione e cultura enologica, 
+                            Tenuta al Morer è un mondo da scoprire. 
+                                La nostra filosofia è semplice: 
+                rispettare la terra per esprimere al meglio la sua identità.
+
+                                PULSANTE: [Scopri la nostra storia]
+_________________________________________________________________________________________________
+
+SEZIONE vini
+
+                                TITOLO:[Vini che parlano di noi]
+            Le nostre etichette nascono da uve selezionate e da un lavoro costante in vigna. 
+    Ogni vino è pensato per raccontare il carattere del territorio: elegante, armonioso e autentico.
+
+                        PULSANTE:[Esplora la collezione dei nostri vini]
+_________________________________________________________________________________________________
+
+SEZIONE "Esperienze"
+
+                                    TITOLO:[Vivi la Tenuta]
+    Passeggiate tra i filari, visite guidate in cantina e degustazioni dei nostri migliori vini: 
+        a Tenuta al Morer trasformiamo ogni visita in un’esperienza sensoriale unica.
+
+                                PULSANTE:[Prenota una degustazione]
+_________________________________________________________________________________________________
+
+SEZIONE "Shop"
+
+                            TITOLO:[Scopri la nostra selezione di vini]
+    Dai bianchi aromatici ai rossi più strutturati, ogni bottiglia di Tenuta al Morer racchiude 
+    l’identità del nostro territorio. Scegli il tuo vino preferito e portalo direttamente a casa.
+
+                                PULSANTE:[Visita lo shop]
+_________________________________________________________________________________________________
+
+SEZIONE "Contatti"
+
+    TITOLO:[Contattaci direttamente]
+    Per informazioni, prenotazioni, visite o ordini, siamo sempre felici di risponderti.
+
+    Telefono: [numero]                          |               Tenuta al Morer
+    Email: [email]                              |               [Indirizzo della tenuta]
+    Orari: [giorni e orari di apertura]         |               LINK MAPS
+_________________________________________________________________________________________________
+
+SEZIONE FOOTER
