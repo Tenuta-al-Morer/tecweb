@@ -12,23 +12,24 @@
     --navtxtcolor: #fff;
     --visitedcolor: #f47a1c;
     --footercolor: #390909;
+    --bodybgcolor: #f3dcd1;
 }
 
 html, body{
     font-size: 100%; 
     font-family: 'Atkinson Hyperlegible', 'Lexend', 'Roboto', sans-serif;    
     line-height: 1.5em;
-    background-color: #f3dcd1; 
-    height: 100%; /* Assicura che html prenda tutta l'altezza */
+    background-color: var(--bodybgcolor); 
+    height: 100%; 
 }
 
 
 body{
     color: var(--txtcolor);
     margin: auto;  
-    min-height: 100vh;      /* Altezza minima = 100% della viewport */
-    display: flex;          /* Attiva Flexbox */
-    flex-direction: column; /* Dispone gli elementi (header, nav, main, footer) in colonna */
+    min-height: 100vh;      
+    display: flex;          
+    flex-direction: column; 
 }
 
 
@@ -54,14 +55,13 @@ SEZIONE navbar
 
 .primary-navigation ul {
     display: flex; 
-    /*gap: 2em; */
     font-size: 1.2em;
     list-style: none;
     align-items: center; 
 }
 
 .primary-navigation li {
-    padding: 0 0.8em; /* Questo crea lo spazio uguale tra le barrette e il testo */
+    padding: 0 0.8em; 
 }
 
 .main-nav-bar img{
@@ -78,8 +78,6 @@ SEZIONE navbar
     padding: 0.5em;
     border-radius: 3px; 
 }
-
-
 
 .primary-navigation li:not(:first-child) {
     border-left: 2px solid rgba(255, 255, 255, 0.5);
@@ -132,9 +130,8 @@ main{
     padding-left: 3.5em;
     padding-right: 2em;
     padding-bottom: 2em;
-    flex-grow: 1; /* Spinge il footer in basso occupando tutto lo spazio libero */
+    flex-grow: 1; 
 }
-
 
 /*
 =============================
