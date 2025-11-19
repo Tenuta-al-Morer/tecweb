@@ -148,10 +148,13 @@ main{
     padding-bottom: 2em;
     flex-grow: 1; 
 }
+main h1{
+    margin-bottom: 1em;
+}
 
 /*
 =============================
-SEZIONE MAIN
+SEZIONE foote
 =============================
 */
 footer{
