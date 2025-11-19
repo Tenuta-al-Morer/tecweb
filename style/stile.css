@@ -149,16 +149,18 @@ main{
     flex-grow: 1; 
 }
 main h1{
-    margin-bottom: 0.2em;
+    margin-bottom: 0.3em;
 }
 
 main h2{
-    margin-top: 0.4em;
+    margin-top: 0.7em;
+    padding: 1em 0em;
+    border-top: 2px solid var(--txtcolor);
 }
 
 /*
 =============================
-SEZIONE foote
+SEZIONE footer
 =============================
 */
 footer{
