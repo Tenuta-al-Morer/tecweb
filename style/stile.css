@@ -149,7 +149,11 @@ main{
     flex-grow: 1; 
 }
 main h1{
-    margin-bottom: 1em;
+    margin-bottom: 0.2em;
+}
+
+main h2{
+    margin-top: 0.4em;
 }
 
 /*
