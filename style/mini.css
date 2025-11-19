@@ -25,11 +25,35 @@ SEZIONE navbar
 =============================
 */
 
+.main-nav-bar img{
+    margin: 0 auto; 
+}
+
+
+.menu-toggle {
+    display: block;
+    background: none;
+    padding: 8px;
+    cursor: pointer;
+    z-index: 1000;
+
+    margin: 0;
+    position: absolute; 
+    right: 1.5em; 
+
+    top: 3.25em; 
+    transform: none; 
+
+    padding-top: 10px; 
+}
+
 .main-nav-bar {
     background-color: var(--navbgcolor);
     align-items: flex-start; 
     gap: 1em; 
     position: relative; 
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -42,8 +66,7 @@ SEZIONE navbar
 
 .primary-navigation ul {
     flex-direction: column; 
-    gap: 0.5em; 
-    padding: 1em 0;
+    gap: 0em; 
     align-items: stretch;
     text-align: center;
 }
@@ -55,17 +78,11 @@ SEZIONE navbar
 
 .primary-navigation a {
     display: block;
-    padding: 0.5em 0.75em;
+    padding: 0.50em 0.75em;
 }
 
-.menu-toggle {
-    display: block; 
-    background: none;
-    padding: 8px;
-    cursor: pointer;
-    z-index: 1000;
-    margin-left: auto;
-    margin-top: 2.5em;
+.primary-navigation li:first-child {
+    border-top: 1px solid #f0f0f0;
 }
 
 .hamburger-icon {
@@ -107,6 +124,7 @@ SEZIONE navbar
     padding: 1em;
     display: block;
 }
+
 
 /*
 =============================
