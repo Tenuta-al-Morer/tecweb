@@ -34,27 +34,23 @@ SEZIONE navbar (Mobile)
     justify-content: center; 
     align-items: flex-start;
     position: relative;      
-    padding: 0.5em 0;
+    padding: 0em 0;
     flex-wrap: wrap; 
     min-height: 4.5em; 
 }
 
-
 .main-nav-bar img {
     height: 3.8em; 
-    width: auto;
-    z-index: 10;
-    
-    
-    
+    width: auto;  
+    z-index: 10; 
+    max-width: calc(100% - 10em); 
+    object-fit: contain; 
+
     margin-left: auto;
     margin-right: auto;
-    
-    
     order: unset; 
     flex-grow: 0;
 }
-
 
 .menu-toggle {
     display: block;
@@ -65,7 +61,7 @@ SEZIONE navbar (Mobile)
     z-index: 1000;
     
     position: absolute; 
-    left: 1em;   
+    left: 0.5em;   
     top: 1.5em;    
     transform: translateY(-50%); 
     margin: 0; 
@@ -96,6 +92,7 @@ SEZIONE navbar (Mobile)
     display: flex;
     gap: 1.2em; 
     z-index: 1000;
+    border-left: none;
 }
 
 .mobile-icons a {
