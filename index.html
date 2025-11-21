@@ -3,7 +3,7 @@
 
     <head>
         <title>Tenuta al Morer</title>
-        <link rel="icon" href="images/logo.ico" type="image/x-icon"> 
+        <link rel="icon" href="images/logoTM.ico" type="image/x-icon"> 
 
         <meta charset="utf-8"> 
 
@@ -27,14 +27,21 @@
     <body> 
         <header>
             <nav aria-label="aiuti alla navigazione" id="help">
-                <a class="navigationHelp" href="#content">Vai al contenuto</a></li>
+                <a class="navigationHelp" href="#content">Vai al contenuto</a>
             </nav>
 
             <div class="main-nav-bar">    
-                <img src="images/logo.webp" alt="Tenuta al Morer">
                 <button class="menu-toggle" aria-controls="main-navigation" aria-expanded="false" aria-label="Menu di navigazione">
-                    <span class="hamburger-icon"></span>
+                    <i class="fas fa-bars"></i>
                 </button>
+
+                <img src="images/logo.webp" alt="Tenuta al Morer">
+
+                <div class="mobile-icons">
+                    <a href="shop.html" aria-label="Shop"><i class="fas fa-shopping-bag"></i></a>
+                    <a href="login.html" aria-label="Accedi"><i class="fas fa-user"></i></a>
+                </div>
+
                 <nav id="main-navigation" class="primary-navigation" aria-label="Navigazione principale">
                     <ul>
                         <li><a aria-current="page"><span lang="en">Home</span></a></li> 
@@ -42,15 +49,17 @@
                         <li><a href="vini.html">Vini</a></li>
                         <li><a href="esperienze.html">Esperienze</a></li>
                         <li><a href="contatti.html">Contatti</a></li>
-                        <li><a href="shop.html" class="cart-icon" aria-label="Shop"><i class="fas fa-shopping-bag"></i></a>
-                        <a href="login.html" class="user-icon"><i class="fas fa-user"></i></a></li>
-                    </ul>
-                </nav>
-                <nav id="breadcrumb">
-                    <p>Ti trovi in: <span lang="en"><strong>Home</strong></span></p><img src="images/icon/home.webp" alt="">
+                        </ul>
                 </nav>
             </div>
-            
+
+            <nav id="breadcrumb" aria-label="Posizione nella pagina">
+                <div class="breadcrumb-container">
+                    <span>Ti trovi in: </span>
+                    <span class="current-page">Home</span>
+                    <i class="fas fa-home home-icon"></i> 
+                </div>
+            </nav>
         </header>
 
         
@@ -60,8 +69,8 @@
                     <h1>Eccellenza Veneta,<br>Anima del Piave.</h1>
                     <p>Tra le colline di Conegliano e le rive del Piave, coltiviamo una storia d'amore con la terra patrimonio UNESCO.</p>
                     <div class="hero-buttons">
-                        <a href="#shop" class="btn btn-gold">ACQUISTA I VINI</a>
-                        <a href="#tenuta" class="btn btn-outline">SCOPRI LA TENUTA</a>
+                        <a href="shop.html" class="btn btn-gold">ACQUISTA I VINI</a>
+                        <a href="tenuta.html" class="btn btn-outline">SCOPRI LA TENUTA</a>
                     </div>
                 </div>
             </div>
@@ -69,7 +78,7 @@
 
         <main id="content">  
             <h1>Tradizione, territorio e passione nel cuore delle nostre vigne</h1>
-            <p>Nel cuore delle colline coltivate a vite, Tenuta al Morer nasce dall’unione tra tradizione, passione e una profonda cura per la terra. </p>
+            <p>Nel cuore delle colline coltivate a vite, Tenuta al Morer nasce dall'unione tra tradizione, passione e una profonda cura per la terra. </p>
             <p>Ogni nostra bottiglia racconta una storia: quella di una famiglia, di una cantina e di un territorio ricco di carattere.</p>
             
             <h2>La tenuta</h2>
@@ -87,12 +96,12 @@
             <h2>Esperienze</h2>
             <h3>Vivi la Tenuta</h3>
             <p>Passeggiate tra i filari, visite guidate in cantina e degustazioni dei nostri migliori vini:</p>
-            <p>a Tenuta al Morer trasformiamo ogni visita in un’esperienza sensoriale unica.</p>
+            <p>a Tenuta al Morer trasformiamo ogni visita in un'esperienza sensoriale unica.</p>
             <p>PULSANTE:[Prenota una degustazione]</p>
             <h2>Shop</h2>
             <h3>Scopri la nostra selezione di vini</h3>
             <p>Dai bianchi aromatici ai rossi più strutturati, ogni bottiglia di Tenuta al Morer racchiude</p>
-            <p>l’identità del nostro territorio. Scegli il tuo vino preferito e portalo direttamente a casa.</p>
+            <p>l'identità del nostro territorio. Scegli il tuo vino preferito e portalo direttamente a casa.</p>
             <p>PULSANTE:[Visita lo shop]</p>
             <h2>Contatti</h2>
             <h3>Contattaci direttamente</h3>

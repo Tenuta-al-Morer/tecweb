@@ -46,26 +46,39 @@ SEZIONE navigationHelp
     position: static;
     text-indent: 0em;
 }
-
-
 /*
 =============================
-SEZIONE navbar
+SEZIONE navbar 
 =============================
 */
 
 .main-nav-bar {
     color: var(--navtxtcolor);
-    padding: 0.4em 0em 0.5em 0.5em;
+    padding: 0.5em 1em; 
     background-color: var(--navbgcolor); 
     display: flex; 
     align-items: center; 
-    gap: 1em;    
-    flex-wrap: wrap;
+    
+    gap: 0;    
+    flex-wrap: nowrap; 
 }
 
-.primary-navigation{
-    margin-left: auto; 
+/* 1. IL LOGO */
+.main-nav-bar img {
+    height: 5.2em; 
+    width: auto;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    
+    order: 1; 
+    margin-right: auto; 
+    padding-right: 1em; 
+}
+
+/* 2. IL MENU DI NAVIGAZIONE */
+.primary-navigation {
+    order: 2;
+    margin-left: 0; 
 }
 
 .primary-navigation ul {
@@ -76,35 +89,52 @@ SEZIONE navbar
 }
 
 .primary-navigation li {
-    padding: 0 0.6em; 
-}
-
-.main-nav-bar img{
-    margin-left: 1em;
-    height: 3em;
-    width: auto; 
-    flex-shrink: 0;
+    padding: 0 0.4em; 
 }
 
 .primary-navigation a {
     color: var(--navtxtcolor); 
-    padding: 0.5em;
+    padding: 0.5em 0.3em; 
     border-radius: 3px; 
+    text-decoration: none;
+    transition: color 0.3s;
 }
 
 .primary-navigation li:not(:first-child) {
-    border-left: 2px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-
-.main-nav-bar a:hover, .main-nav-bar a:focus {
+.primary-navigation a:hover, .primary-navigation a:focus {
     color: var(--currentcolor); 
-    outline: 2px solid var(--currentcolor);
 }
 
 .primary-navigation a[aria-current="page"] {
     color: var(--currentcolor); 
     border-bottom: 2px solid var(--currentcolor);
+}
+
+/* 3. LE ICONE (SHOP / LOGIN) */
+.mobile-icons {
+    order: 3;
+    display: flex;
+    align-items: center;
+    gap: 0.8em; 
+    
+    margin-left: 0; 
+    padding-left: 1em; 
+    
+    border-left: 1px solid rgba(255, 255, 255, 0.3); 
+}
+
+.mobile-icons a {
+    color: var(--navtxtcolor);
+    font-size: 1.3em; 
+    transition: color 0.3s, transform 0.3s;
+}
+
+.mobile-icons a:hover {
+    color: var(--currentcolor);
+    transform: scale(1.1); 
 }
 
 .menu-toggle {
@@ -120,15 +150,43 @@ SEZIONE navbar
 SEZIONE BREADCRUMB
 =============================
 */
-#breadcrumb{
+#breadcrumb {
     flex-basis: 100%;
+    background-color: var(--navbgcolor);
+    
+    border-top: 1px solid rgba(255, 255, 255, 0.1); 
+    padding: 0.4em 1em; 
+    font-family: 'Lexend', sans-serif; 
+    font-size: 0.95rem;
     display: flex;
-    align-items: center; 
-    padding:0;
+    align-items: center;
+}
+
+
+.breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5em; 
+    color: var(--navtxtcolor);
+    opacity: 0.8; 
 }
 
 #breadcrumb img{
     height: 3em;
+}
+
+
+.separator {
+    color: rgba(255,255,255, 0.3);
+    font-size: 0.9em;
+}
+
+
+.current-page {
+    font-weight: 600;
+    color: var(--navtxtcolor);
+    text-transform: uppercase;
+    letter-spacing: 0.05em; 
 }
 /*
 =============================
@@ -136,7 +194,7 @@ SEZIONE MAIN
 =============================
 */
 
-/* Hero Section */
+
 .hero {
     background: url('../images/bg.webp') no-repeat center center/cover;
     display: flex;
@@ -211,33 +269,37 @@ footer a:visited{
 
 /*
 =============================
-SEZIONE PULSANTE TORNA SU (sistemare misure in relative!)
+SEZIONE PULSANTE TORNA SU
 =============================
 */
 #backToTopBtn {
     position: fixed;
-    bottom: 100px; 
-    right: 30px; 
-    
+    bottom: 4em;  
+    right: 2em;   
     
     display: flex; 
     justify-content: center; 
     align-items: center;
-    width: 50px; 
-    height: 35px;
     
-    background-color: var(--currentcolor);
-    color: var(--navbgcolor); 
-    border: none;
+    
+    width: 2em;   
+    height: 2em;
+    
+    
+    background-color: var(--navbgcolor); 
+    color: var(--currentcolor); 
+    
+    
+    border: 1px solid var(--currentcolor); 
     border-radius: 50%; 
     
-    font-size: 1.5em;
+    font-size: 1.2em; 
     padding: 0; 
     
     cursor: pointer;
     opacity: 0; 
     visibility: hidden; 
-    transition: opacity 0.3s, visibility 0.3s;
+    transition: all 0.3s ease; 
     z-index: 100;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
 }
@@ -248,8 +310,12 @@ SEZIONE PULSANTE TORNA SU (sistemare misure in relative!)
 }
 
 #backToTopBtn:hover, #backToTopBtn:focus {
-    background-color: #a38642; 
-    outline: 2px solid var(--navbgcolor);
+    
+    background-color: var(--currentcolor); 
+    color: var(--navbgcolor);
+    
+    
+    transform: translateY(-3px); 
+    box-shadow: 0 6px 12px rgba(197, 165, 81, 0.4); 
+    outline: none;
 }
-
-

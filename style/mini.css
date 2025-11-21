@@ -4,13 +4,16 @@
 }
 
 :root{
-    --navbgcolor: #2b0303;
+    
+    --navbgcolor: #111111; 
     --txtcolor: #000; 
     --currentcolor: #c5a551;
     --newscolor: #F3C42B;
     --newstextcolor: #000;
     --navtxtcolor: #fff;
     --visitedcolor: #f47a1c;
+    --footercolor: #111111;
+    --bodybgcolor: #fff;
 }
 
 html, body{
@@ -21,113 +24,183 @@ html, body{
 
 /*
 =============================
-SEZIONE navbar
+SEZIONE navbar (Mobile)
 =============================
 */
 
-.main-nav-bar img{
-    margin: 0 auto; 
+.main-nav-bar {
+    background-color: var(--navbgcolor);
+    display: flex;
+    justify-content: center; 
+    align-items: flex-start;
+    position: relative;      
+    padding: 0.5em 0;
+    flex-wrap: wrap; 
+    min-height: 4.5em; 
+}
+
+
+.main-nav-bar img {
+    height: 3.8em; 
+    width: auto;
+    z-index: 10;
+    
+    
+    
+    margin-left: auto;
+    margin-right: auto;
+    
+    
+    order: unset; 
+    flex-grow: 0;
 }
 
 
 .menu-toggle {
     display: block;
     background: none;
-    padding: 8px;
+    border: none;
     cursor: pointer;
+    padding: 10px;
     z-index: 1000;
-
-    margin: 0;
+    
     position: absolute; 
-    right: 1.5em; 
-
-    top: 3.25em; 
-    transform: none; 
-
-    padding-top: 10px; 
-}
-
-.main-nav-bar {
-    background-color: var(--navbgcolor);
-    align-items: flex-start; 
-    gap: 1em; 
-    position: relative; 
-    display: flex;
-    justify-content: center;
-}
-
-
-.primary-navigation {
-    display: none;
-    background-color: var(--navbgcolor);
-    flex-basis: 100%;
-    order: 999;
-}
-
-.primary-navigation ul {
-    flex-direction: column; 
-    gap: 0em; 
-    align-items: stretch;
-    text-align: center;
-}
-
-
-.primary-navigation li:not(:first-child) {
-    border-left: none; 
-}
-
-.primary-navigation a {
-    display: block;
-    padding: 0.50em 0.75em;
-}
-
-.primary-navigation li:first-child {
-    border-top: 1px solid #f0f0f0;
-}
-
-.hamburger-icon {
-    display: block;
-    width: 20px;
-    height: 2px;
-    background-color: #fff;
-    position: relative;
-}
-.hamburger-icon::before,
-.hamburger-icon::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: #fff;
-    left: 0;
-}
-.hamburger-icon::before {
-    top: -6px;
-}
-.hamburger-icon::after {
-    bottom: -6px;
+    left: 1em;   
+    top: 1.5em;    
+    transform: translateY(-50%); 
+    margin: 0; 
+    
+    
+    font-size: 1.5rem; 
+    color: var(--navtxtcolor); 
+    transition: color 0.3s ease;
 }
 
 .menu-toggle:focus {
-    outline: 3px solid var(--currentcolor);
+    outline: none; 
+}
+
+
+.menu-toggle:hover,
+.menu-toggle[aria-expanded="true"] {
+    color: var(--currentcolor); 
+}
+
+/* 2. NUOVE ICONE (DESTRA)
+*/
+.mobile-icons {
+    position: absolute;
+    right: 1em;  
+    top: 2.25em;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 1.2em; 
+    z-index: 1000;
+}
+
+.mobile-icons a {
+    color: var(--navtxtcolor);
+    font-size: 1.3em;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.mobile-icons a:hover, .mobile-icons a:focus {
+    color: var(--currentcolor);
+}
+
+/*
+   MENU DI NAVIGAZIONE (Dropdown)
+*/
+.primary-navigation {
+    display: none;
+    background-color: var(--navbgcolor); 
+    width: 100%;    
+    position: relative; 
+    order: 999; 
+    z-index: 999;
+    border-top: 1px solid var(--currentcolor);
+    box-shadow: none; 
 }
 
 .primary-navigation.is-open {
     display: block;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.primary-navigation ul {
+    flex-direction: column; 
+    gap: 0; 
+    align-items: stretch;
+    text-align: center;
+    padding: 0;
+    list-style: none;
 }
 
 .primary-navigation li {
-    width: auto; 
-    border-bottom: 1px solid #f0f0f0;
+    width: 100%; 
+    padding: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+    border-left: none;
 }
-.primary-navigation li a {
-    padding: 1em;
+
+.primary-navigation a {
     display: block;
+    padding: 1.2em; 
+    color: var(--navtxtcolor);
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+.primary-navigation a:hover,
+.primary-navigation a:focus {
+    background-color: rgba(197, 165, 81, 0.1); 
+    color: var(--currentcolor);
 }
 
 
 /*
 =============================
-SEZIONE
+ADATTAMENTI MAIN CONTENT
 =============================
 */
+main {
+    padding: 1em 1.5em;
+}
+
+.hero-content h1 {
+    font-size: 2.2rem; 
+}
+
+.hero-buttons {
+    flex-direction: column;
+    gap: 1em;
+}
+
+/*
+=============================
+ADATTAMENTI BREADCRUMB
+=============================
+*/
+#breadcrumb {
+    padding: 0.5em 1.5em; 
+    font-size: 0.8rem;
+    justify-content: center; 
+}
+
+/*
+=============================
+PULSANTE TORNA SU (MOBILE)
+=============================
+*/
+#backToTopBtn {
+    bottom: 2em; 
+    right: 1em; 
+    width: 2.5em; 
+    height: 2.5em;
+}
