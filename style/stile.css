@@ -226,8 +226,6 @@ SEZIONE MAIN
 }
 .hero-buttons { display: flex; gap: 20px; justify-content: center; }
 
-
-
 main{
     color: var(--txtcolor);
     padding-top: 1em;
@@ -318,4 +316,149 @@ SEZIONE PULSANTE TORNA SU
     transform: translateY(-3px); 
     box-shadow: 0 6px 12px rgba(197, 165, 81, 0.4); 
     outline: none;
+}
+
+/*
+=============================
+SEZIONE PAGINA POLITICHE (NUOVA)
+=============================
+*/
+
+/* Header semplificato della pagina policy */
+.policy-nav-header {
+    padding: 1.5em 3.5em;
+    border-bottom: 1px solid var(--bordercolor);
+    background-color: #fafafa;
+}
+
+/* Pulsante "Indietro" Stile Oro */
+.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.6em 1.2em;
+    border: 2px solid var(--currentcolor);
+    color: var(--txtcolor);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    background-color: transparent;
+}
+
+.btn-outline:hover, .btn-outline:focus {
+    background-color: var(--currentcolor);
+    color: #fff;
+}
+
+/* Contenuto pagina policy limitato in larghezza per leggibilità */
+.policy-content {
+    max-width: 1000px;
+    margin: 0 auto; /* Centra il contenuto */
+    padding: 2em 20px; /* Padding laterale mobile-friendly */
+}
+
+/* Header del titolo policy */
+.page-header h1 {
+    font-size: 2.5rem;
+    color: var(--currentcolor);
+    font-family: 'Lexend', sans-serif;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-top: 0.5em;
+}
+
+/* Tabella Sinottica */
+.table-container {
+    overflow-x: auto; /* Scroll orizzontale su mobile */
+    margin-bottom: 2rem;
+    border: 1px solid var(--bordercolor);
+    border-radius: 5px;
+}
+
+.policy-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Forza larghezza minima su mobile */
+}
+
+.policy-table th, .policy-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--bordercolor);
+}
+
+.policy-table th {
+    background-color: #f8f8f8;
+    color: var(--txtcolor);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+}
+
+.policy-table tbody tr:hover {
+    background-color: #fff9e6; /* Leggero giallo al passaggio mouse */
+}
+
+/* Divisori */
+.policy-divider {
+    margin: 3rem 0;
+    border: 0;
+    border-top: 1px solid var(--bordercolor);
+}
+
+/* Tipografia articoli */
+.policy-content article h2 {
+    color: var(--currentcolor);
+    border-top: none; /* Rimuove bordo default main h2 */
+    margin-top: 0;
+    font-size: 2rem;
+}
+
+.policy-content article h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    color: #333;
+}
+
+.policy-content article p {
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+.policy-content article ul, 
+.policy-content article ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.policy-content article li {
+    margin-bottom: 0.5rem;
+}
+
+/* Stile per il codice inline */
+code {
+    background-color: #f4f4f4;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 0.9em;
+}
+
+/* Stile dei link dentro la tabella delle politiche */
+.policy-table td a {
+    color: var(--txtcolor);       /* Nero di base */
+    font-weight: 700;             /* Grassetto per far capire che è importante */
+    border-bottom: 2px solid transparent; /* Bordo invisibile per l'animazione */
+    transition: all 0.3s ease;
+}
+
+.policy-table td a:hover,
+.policy-table td a:focus {
+    color: var(--currentcolor);   /* Diventa Oro al passaggio */
 }
