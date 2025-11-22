@@ -327,7 +327,7 @@ SEZIONE PAGINA POLITICHE (NUOVA)
 
 /* Header semplificato della pagina policy */
 .policy-nav-header {
-    padding: 1.5em 3.5em;
+    padding: 1.5em 1.25em;
     border-bottom: 1px solid var(--bordercolor);
     background-color: #fafafa;
 }
