@@ -203,7 +203,7 @@ PULSANTE TORNA SU (MOBILE)
 =============================
 */
 #backToTopBtn {
-    bottom: 2em; 
+    bottom: 6.5em; 
     right: 1em; 
     width: 2.5em; 
     height: 2.5em;
@@ -299,4 +299,29 @@ body.dark-mode .policy-table td:nth-of-type(2)::before,
 body.dark-mode .policy-table td:nth-of-type(3)::before,
 body.dark-mode .policy-table td:nth-of-type(4)::before {
     color: var(--diversity-color); 
+}
+
+/* ADATTAMENTO FOOTER E PULSANTE NOTTE PER MOBILE 
+*/
+
+footer {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1.5em; 
+}
+
+#theme-toggle {
+    position: static; 
+    left: auto;
+    top: auto;
+    transform: none; 
+    margin-top: 0.25em; 
+    font-size: 1.6em; 
+    opacity: 1; 
+}
+
+#theme-toggle:hover {
+    transform: scale(1.2); 
 }
