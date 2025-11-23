@@ -5,32 +5,32 @@
 }
 
 :root{
-    --navbgcolor: #111111F2;
+    --navbgcolor: #1D1D1D;
     --txtcolor: #000; 
     --currentcolor: #c5a551;
     --newscolor: #F3C42B;
     --newstextcolor: #000;
     --navtxtcolor: #fff;
     --visitedcolor: #f47a1c;
-    --footercolor: #111111F2;
+    --footercolor: #1D1D1D;
     --bodybgcolor: #fff;
+    --diversity-color: #333333;
 }
 
-html, body{
+html {
     font-size: 100%; 
     font-family: 'Atkinson Hyperlegible', 'Lexend', 'Roboto', sans-serif;    
     line-height: 1.5em;
-    background-color: var(--bodybgcolor); 
-    height: 100%; 
 }
 
-
-body{
+body {
+    background-color: var(--bodybgcolor); 
     color: var(--txtcolor);
     margin: auto;  
     min-height: 100vh;      
     display: flex;          
-    flex-direction: column; 
+    flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /*
@@ -213,7 +213,12 @@ SEZIONE MAIN
     justify-content: center;
 }
 
-.hero-content { color:var(--bodybgcolor); max-width: 800px; padding: 20px; }
+.hero-content { 
+    color: #ffffff; 
+    max-width: 800px; 
+    padding: 20px; 
+}
+
 .hero-content h1 {
     font-family: var(--font-title);
     font-size: 4.5rem;
@@ -250,20 +255,58 @@ main h2{
 SEZIONE footer
 =============================
 */
-footer{
+footer {
+    position: relative; /* Fondamentale: fa da "ancora" per il pulsante assoluto */
     text-align: center;
     margin-top: 2em;
-    background-color:var(--footercolor);
-    color:var(--navtxtcolor);
-    padding: 1em 0em;
+    background-color: var(--footercolor);
+    color: var(--navtxtcolor);
+    padding: 1.5em 0em;
+    
+    /* Centratura del contenuto principale */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-footer a{
-    color:var(--navtxtcolor);
+footer a {
+    color: var(--navtxtcolor);
 }
 
-footer a:visited{
-    color:var(--currentcolor);
+footer a:visited {
+    color: var(--currentcolor);
+}
+
+/*
+=============================
+DARK MODE TOGGLE BUTTON 
+=============================
+*/
+#theme-toggle {
+    position: absolute; 
+    left: 2em;        
+    top: 50%;         
+    transform: translateY(-50%); 
+
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    
+    font-size: 1.4em; 
+    color: var(--navtxtcolor);
+    opacity: 0.6; 
+    transition: all 0.3s ease;
+}
+
+#theme-toggle:hover {
+    opacity: 1;
+    color: var(--currentcolor);
+    transform: translateY(-50%) scale(1.3); 
+}
+
+#theme-toggle i {
+    pointer-events: none;
 }
 
 /*
@@ -321,18 +364,16 @@ SEZIONE PULSANTE TORNA SU
 
 /*
 =============================
-SEZIONE PAGINA POLITICHE (NUOVA)
+SEZIONE PAGINA POLITICHE
 =============================
 */
 
-/* Header semplificato della pagina policy */
 .policy-nav-header {
     padding: 1.5em 1.25em;
     border-bottom: 1px solid var(--bordercolor);
     background-color: #fafafa;
 }
 
-/* Pulsante "Indietro" Stile Oro */
 .btn-outline {
     display: inline-flex;
     align-items: center;
@@ -352,14 +393,12 @@ SEZIONE PAGINA POLITICHE (NUOVA)
     color: #fff;
 }
 
-/* Contenuto pagina policy limitato in larghezza per leggibilità */
 .policy-content {
     max-width: 1000px;
-    margin: 0 auto; /* Centra il contenuto */
-    padding: 2em 20px; /* Padding laterale mobile-friendly */
+    margin: 0 auto; 
+    padding: 2em 20px; 
 }
 
-/* Header del titolo policy */
 .page-header h1 {
     font-size: 2.5rem;
     color: var(--currentcolor);
@@ -369,13 +408,12 @@ SEZIONE PAGINA POLITICHE (NUOVA)
 
 .page-header p {
     font-size: 1.2rem;
-    color: #555;
+    color: var(--diversity-color);
     margin-top: 0.5em;
 }
 
-/* Tabella Sinottica */
 .table-container {
-    overflow-x: auto; /* Scroll orizzontale su mobile */
+    overflow-x: auto; 
     margin-bottom: 2rem;
     border: 1px solid var(--bordercolor);
     border-radius: 5px;
@@ -384,7 +422,7 @@ SEZIONE PAGINA POLITICHE (NUOVA)
 .policy-table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 600px; /* Forza larghezza minima su mobile */
+    min-width: 600px; 
 }
 
 .policy-table th, .policy-table td {
@@ -403,7 +441,7 @@ SEZIONE PAGINA POLITICHE (NUOVA)
 }
 
 .policy-table tbody tr:hover {
-    background-color: #fff9e6; /* Leggero giallo al passaggio mouse */
+    background-color: #fff9e6; 
 }
 
 .policy-content article h2 {
@@ -422,7 +460,7 @@ SEZIONE PAGINA POLITICHE (NUOVA)
     margin-top: 0rem;
     margin-bottom: 0.5rem;
     font-size: 1.3rem;
-    color: #333;
+    color: var(--diversity-color);
 }
 
 .policy-content article p {
@@ -440,7 +478,6 @@ SEZIONE PAGINA POLITICHE (NUOVA)
     margin-bottom: 0.5rem;
 }
 
-/* Stile per il codice inline */
 code {
     background-color: #f4f4f4;
     padding: 0.2em 0.4em;
@@ -449,16 +486,51 @@ code {
     font-size: 0.9em;
 }
 
-/* Stile dei link dentro la tabella delle politiche */
 .policy-table td a {
-    color: var(--txtcolor);       /* Nero di base */
-    font-weight: 700;             /* Grassetto per far capire che è importante */
-    border-bottom: 2px solid transparent; /* Bordo invisibile per l'animazione */
+    color: var(--txtcolor);    
+    font-weight: 700;          
+    border-bottom: 2px solid transparent; 
     transition: all 0.3s ease;
 }
 
 .policy-table td a:hover,
 .policy-table td a:focus {
-    color: var(--currentcolor);   /* Diventa Oro al passaggio */
+    color: var(--currentcolor);   
 }
 
+
+/* =============================
+   DARK MODE CONFIGURATION
+   ============================= */
+body.dark-mode {
+    --bodybgcolor: #121212; 
+    --txtcolor: #e0e0e0; 
+    --bordercolor: #333333;
+
+    --diversity-color: #b0b0b0;
+}
+
+
+body.dark-mode .policy-nav-header {
+    background-color: #1e1e1e; 
+    border-bottom: 1px solid #333;
+}
+
+body.dark-mode .policy-table th {
+    background-color: #1e1e1e; 
+    color: var(--currentcolor); 
+    border-bottom: 1px solid #333;
+}
+
+body.dark-mode .policy-table td {
+    border-bottom: 1px solid #333;
+}
+
+body.dark-mode .policy-table tbody tr:hover {
+    background-color: #252525; 
+}
+
+body.dark-mode code {
+    background-color: #333;
+    color: #fff;
+}

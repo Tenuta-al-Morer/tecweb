@@ -5,14 +5,14 @@
 
 :root{
     
-    --navbgcolor: #111111F2;
+    --navbgcolor: #1D1D1D;
     --txtcolor: #000; 
     --currentcolor: #c5a551;
     --newscolor: #F3C42B;
     --newstextcolor: #000;
     --navtxtcolor: #fff;
     --visitedcolor: #f47a1c;
-    --footercolor: #111111;
+    --footercolor: #1D1D1D;
     --bodybgcolor: #fff;
 }
 
@@ -275,3 +275,28 @@ TRASFORMAZIONE TABELLA IN SCHEDE (CARD VIEW)
 .policy-table td:nth-of-type(2)::before { content: "Tipologia: "; font-weight: 700; color: #000; }
 .policy-table td:nth-of-type(3)::before { content: "Destinatari: "; font-weight: 700; color: #000; }
 .policy-table td:nth-of-type(4)::before { content: "Consenso: "; font-weight: 700; color: #000; }
+
+/* =========================================
+   DARK MODE SPECIFIC PER MOBILE
+   ========================================= 
+*/
+
+body.dark-mode .policy-table tr {
+    background-color: #1e1e1e; 
+    border-color: #333;      
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+body.dark-mode .policy-table td {
+    border-bottom-color: #333;
+}
+
+body.dark-mode .policy-table td:nth-of-type(1) {
+    border-bottom-color: #333;
+}
+
+body.dark-mode .policy-table td:nth-of-type(2)::before,
+body.dark-mode .policy-table td:nth-of-type(3)::before,
+body.dark-mode .policy-table td:nth-of-type(4)::before {
+    color: var(--diversity-color); 
+}
