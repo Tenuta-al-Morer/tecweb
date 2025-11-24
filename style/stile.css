@@ -202,12 +202,21 @@ SEZIONE MAIN
 
 
 .hero {
-    background: url('../images/bg.webp') no-repeat center center/cover;
+    /*background: url('../images/bg.webp') no-repeat center center/cover;*/
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/bg.webp');
+    background-size: cover;
+    background-position: center;
 }
+
+.hero a{
+    color:#fff;
+}
+
 
 .hero-overlay {
     width: 100%;
@@ -219,7 +228,7 @@ SEZIONE MAIN
 }
 
 .hero-content { 
-    color: #ffffff; 
+    color: #fff; 
     max-width: 800px; 
     padding: 20px; 
 }
