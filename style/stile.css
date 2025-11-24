@@ -110,13 +110,25 @@ SEZIONE navbar
     border-left: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.primary-navigation a:hover, .primary-navigation a:focus {
+.primary-navigation a:hover {
     color: var(--currentcolor); 
 }
 
 .primary-navigation a[aria-current="page"] {
-    color: var(--currentcolor); 
-    border-bottom: 2px solid var(--currentcolor);
+    background-color: var(--currentcolor); 
+    color: #000; 
+    padding: 0.4em 0.8em;
+    border-radius: 50%; 
+}
+
+.primary-navigation a:visited::before {
+    content: "✔";         /* la spunta */
+    position: absolute;
+    left: -1.2em;         /* distanza dal testo */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9em;
+    color: var(--currentcolor); /* oro */
 }
 
 /* 3. LE ICONE (SHOP / LOGIN) */
