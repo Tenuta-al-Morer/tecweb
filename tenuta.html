@@ -19,53 +19,70 @@
         <link rel="stylesheet" href="style/stile.css" media="screen"> 
         <link rel="stylesheet" href="style/mini.css" media="screen and (max-width:950px)">
         <link rel="stylesheet" href="style/stampa.css" media="print">  
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     </head>
 
     <body> 
         <header>
             <nav aria-label="aiuti alla navigazione" id="help">
-                <a class="navigationHelp" href="#content">Vai al contenuto</a></li>
+                <a class="navigationHelp" href="#content">Vai al contenuto</a>
             </nav>
 
             <div class="main-nav-bar">    
-                <a href="index.html"><img src="images/logo.webp" alt="Tenuta al Morer - Home"></a>
+                <button class="menu-toggle" aria-controls="main-navigation" aria-expanded="false" aria-label="Menu di navigazione">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <img src="images/logo.webp" alt="Tenuta al Morer">
+
                 <nav id="main-navigation" class="primary-navigation" aria-label="Navigazione principale">
                     <ul>
-                        <li><a href="index.html"><span lang="en">Home</span></a></li> 
-                        <li><a aria-current="page">Tenuta</a></li>
+                        <li><a href="index.html">Home</span></a></li> 
+                        <li><a aria-current="page"><span lang="en">Tenuta</a></li>
                         <li><a href="vini.html">Vini</a></li>
                         <li><a href="esperienze.html">Esperienze</a></li>
-                        <li><a href="shop.html"><span lang="en">Shop</span></a></li>
                         <li><a href="contatti.html">Contatti</a></li>
-                    </ul>
+                        </ul>
                 </nav>
-                <button class="menu-toggle" aria-controls="main-navigation" aria-expanded="false" aria-label="Menu di navigazione">
-                    <span class="hamburger-icon"></span>
-                </button>
-            </div>
-        </header>
 
-        <nav id="breadcrumb">
-                <p>Ti trovi in: <strong>Tenuta</strong></p> <img src="images/icon/tenuta.webp" class="br_icon" alt="">
-        </nav>
+                <div class="mobile-icons">
+                    <a href="shop.html" aria-label="Shop"><i class="fas fa-shopping-bag"></i></a>
+                    <a href="login.html" aria-label="Accedi"><i class="fas fa-user"></i></a>
+                </div>
+            </div>
+
+            <nav id="breadcrumb" aria-label="Posizione nella pagina">
+                <div class="breadcrumb-container">
+                    <span>Ti trovi in: </span>
+                    <span class="current-page">Home</span>
+                    <i class="fas fa-home home-icon"></i> 
+                </div>
+            </nav>
+        </header>
 
         <main id="content">  
             <h1>La tenuta</h1>
         </main>
-
+        
         <footer>
-            <small>
-                &copy; 2025 Tenuta al Morer - P.IVA 00000000000 <br>
-                <a href="privacy.html"><span lang="en">Privacy Policy</span></a> | 
-                <a href="cookie.html"><span lang="en">Cookie Policy</span></a> | 
-                <a href="accessibilita.html">Accessibilità</a>
-            </small>
+            <div class="footer-content">
+                <small>
+                    &copy; 2025 Tenuta al Morer - P.IVA 00000000000 <br>
+                    <a href="policy.html"><span lang="en">Privacy Policy</span></a> | 
+                    <a href="policy.html#privacy-policy"><span lang="en">Cookie Policy</span></a> | 
+                    <a href="policy.html#accessibility">Accessibilità</a>
+                </small>
+            </div>
+
+            <button id="theme-toggle" aria-label="Cambia modalità scura e chiara">
+                <i class="fas fa-moon"></i>
+            </button>
         </footer>
 
         <button id="backToTopBtn" aria-label="Torna all'inizio della pagina">
             &#9650; 
         </button>
-
+        
         <script src="scripts/script.js"></script>
 
     </body>
