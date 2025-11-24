@@ -41,11 +41,16 @@ SEZIONE navigationHelp
 .navigationHelp{
     position: absolute; 
     text-indent: -999em;
+    background-color: #121212;
 }
 
 .navigationHelp:focus{
     position: static;
     text-indent: 0em;
+    color:var(--txtcolor);
+}
+a.navigationHelp:visited{
+    color:var(--currentcolor);
 }
 /*
 =============================
@@ -506,7 +511,6 @@ body.dark-mode {
     --bodybgcolor: #121212; 
     --txtcolor: #e0e0e0; 
     --bordercolor: #333333;
-
     --diversity-color: #b0b0b0;
 }
 
