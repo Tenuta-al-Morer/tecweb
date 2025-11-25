@@ -149,13 +149,13 @@ SEZIONE navbar
     transition: color 0.3s, transform 0.3s;
 }
 
-.mobile-icons a:visited::before {
+.mobile-icons a.is-visited::before { /* a:visited::before { ... }  ← BLOCCATO su tutti i browser moderni */
     content: "";
     display: inline-block;
     width: 0.6em;
     height: 0.3em;
     margin-left: 0.2em;
-    margin-right: 0.1em;
+    margin-right: 0.2em;
 
     border-left: 2px solid var(--currentcolor);
     border-bottom: 2px solid var(--currentcolor);
@@ -164,7 +164,7 @@ SEZIONE navbar
 
 
 
-.primary-navigation a:visited::before {
+.primary-navigation a.is-visited::before {
     content: "";
     display: inline-block;
     width: 0.6em;
