@@ -122,12 +122,14 @@ SEZIONE navbar
     border-bottom: 2px solid var(--currentcolor);
 }
 
+/*
 .primary-navigation a.is-visited::before {
     content: "✔";
     font-size: 0.8em;
     color: var(--currentcolor);
     margin-left: 0.2em;
 }
+*/
 
 
 /* 3. LE ICONE (SHOP / LOGIN) */
