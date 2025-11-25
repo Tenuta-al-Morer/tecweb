@@ -90,13 +90,18 @@ a.navigationHelp:visited {
 }
 
 .main-nav-bar img {
-    height: 5.2em;
-    width: auto;
-    flex-shrink: 0;
+    height: auto;           
+    max-height: 5.2em;      
+    width: auto;          
+    flex: 0 1 auto;        
+    flex-shrink: 100;       
+    min-width: 0;          
+    object-fit: contain;   
+    
+    order: 1; 
+    margin-right: auto;     
+    padding-right: 0.5em;   
     transition: all 0.3s ease;
-    order: 1;
-    margin-right: auto;
-    padding-right: 1em;
 }
 
 .primary-navigation {
