@@ -220,7 +220,6 @@ SEZIONE MAIN
 
 
 .hero {
-    /*background: url('../images/bg.webp') no-repeat center center/cover;*/
     display: flex;
     align-items: center;
     justify-content: center;
