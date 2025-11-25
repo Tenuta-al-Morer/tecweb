@@ -147,6 +147,7 @@ SEZIONE navbar
     color: var(--navtxtcolor);
     font-size: 1.3em; 
     transition: color 0.3s, transform 0.3s;
+    text-decoration: none;
 }
 
 .mobile-icons a.is-visited::before {
