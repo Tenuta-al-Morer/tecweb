@@ -147,14 +147,35 @@ SEZIONE navbar
     color: var(--navtxtcolor);
     font-size: 1.3em; 
     transition: color 0.3s, transform 0.3s;
-    text-decoration: none;
 }
 
-.mobile-icons a.is-visited::before {
-    content: "✔";
-    font-size: 0.8em;
-    color: var(--currentcolor);
+.mobile-icons a:visited::before {
+    content: "";
+    display: inline-block;
+    width: 0.6em;
+    height: 0.3em;
+    margin-left: 0.2em;
+    margin-right: 0.1em;
+
+    border-left: 2px solid var(--currentcolor);
+    border-bottom: 2px solid var(--currentcolor);
+    transform: rotate(-45deg);  /* forma di spunta */
 }
+
+
+
+.primary-navigation a:visited::before {
+    content: "";
+    display: inline-block;
+    width: 0.6em;
+    height: 0.3em;
+    margin-left: 0.2em;
+
+    border-left: 2px solid var(--currentcolor);
+    border-bottom: 2px solid var(--currentcolor);
+    transform: rotate(-45deg);  /* forma di spunta */
+}
+
 
 .mobile-icons a:hover {
     color: var(--currentcolor);
