@@ -105,7 +105,7 @@ SEZIONE navbar
     transition: color 0.3s;
     display: inline-flex;         
     align-items: center;          
-    gap: 0.35em;                  
+    gap: 0.35em;                
 }
 
 
@@ -143,7 +143,7 @@ SEZIONE navbar
     transition: color 0.3s, transform 0.3s;
 }
 
-.mobile-icons a.is-visited::before { /* a:visited::before { ... }  ← BLOCCATO su tutti i browser moderni */
+.mobile-icons a.is-visited::before { /* a:visited::before { ... }  ← BLOCCATO su tutti i browser moderni. permette solo di cambiare color visited */
     content: "";
     display: inline-block;
     width: 0.6em;
@@ -163,7 +163,7 @@ SEZIONE navbar
     display: inline-block;
     width: 0.6em;
     height: 0.3em;
-    margin-left: 0.2em;
+    margin-right: 0.5em;
 
     border-left: 3px solid var(--currentcolor);
     border-bottom: 3px solid var(--currentcolor);
