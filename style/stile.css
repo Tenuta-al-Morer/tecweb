@@ -17,7 +17,7 @@
     --visitedcolor: #f47a1c;
     --footercolor: #1D1D1D;
     --bodybgcolor: #121212;      /* Sfondo scuro */
-    --diversity-color: #b0b0b0;  /* Colore secondario chiaro */
+    --diversity-color: #cacaca;  /* Colore secondario chiaro */
     --bordercolor: #333333;      /* Bordi scuri */
     
     /* Variabili specifiche per componenti scuri */
@@ -646,6 +646,30 @@ body.light-mode code {
     outline: none;
     border-color: var(--currentcolor);
     box-shadow: 0 0 5px rgba(197, 165, 81, 0.3);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px var(--header-bg) inset !important;
+    
+    /* Forza il colore del testo a quello del tuo tema */
+    -webkit-text-fill-color: var(--txtcolor) !important;
+    
+    /* Mantiene il bordo corretto */
+    border: 1px solid var(--bordercolor) !important;
+    
+    /* Mantiene il raggio del bordo */
+    border-radius: 4px;
+    
+    /* Mantiene la transizione fluida */
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill:focus {
+    border-color: var(--currentcolor) !important;
+    -webkit-box-shadow: 0 0 0 30px var(--header-bg) inset, 0 0 5px rgba(197, 165, 81, 0.3) !important;
 }
 
 /* Bottone Occhio */

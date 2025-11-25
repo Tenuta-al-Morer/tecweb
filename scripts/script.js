@@ -60,20 +60,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
 
-    // Se l'utente ha salvato "light", attiviamo light mode.
-    // Altrimenti (se è "dark" o nullo), lasciamo il default CSS (che ora è Dark).
     if (savedTheme === 'light') {
         setLightMode(true);
     } else if (savedTheme === 'dark') {
         setLightMode(false);
     } 
-    // Opzionale: Se vuoi rispettare la preferenza di sistema SOLO se l'utente preferisce chiaro
-    // altrimenti ignora e usa Dark.
     else if (systemPrefersLight) {
-         // setLightMode(true); // De-commenta se vuoi che chi ha il sistema chiaro veda chiaro
-         setLightMode(false); // Commenta questa e usa quella sopra se vuoi il comportamento di sistema
+         setLightMode(false); 
     } else {
-        setLightMode(false); // Default assoluto
+        setLightMode(false); 
     }
 
 
@@ -171,7 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (togglePasswordButtons.length > 0) {
         togglePasswordButtons.forEach(button => {
             button.addEventListener('click', function() {
-                // Trova l'input associato (è il fratello precedente nel DOM)
                 const input = this.previousElementSibling;
                 const icon = this.querySelector('i');
                 
