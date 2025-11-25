@@ -119,17 +119,10 @@ SEZIONE navbar
 }
 
 .primary-navigation a[aria-current="page"] {
-    border-bottom: 2px solid var(--currentcolor);
+    border: 3px solid var(--currentcolor);
+    border-radius: 15px;
 }
 
-/*
-.primary-navigation a.is-visited::before {
-    content: "✔";
-    font-size: 0.8em;
-    color: var(--currentcolor);
-    margin-left: 0.2em;
-}
-*/
 
 
 /* 3. LE ICONE (SHOP / LOGIN) */
@@ -159,8 +152,8 @@ SEZIONE navbar
     margin-left: 0.2em;
     margin-right: 0.2em;
 
-    border-left: 2px solid var(--currentcolor);
-    border-bottom: 2px solid var(--currentcolor);
+    border-left: 3px solid var(--currentcolor);
+    border-bottom: 3px solid var(--currentcolor);
     transform: rotate(-45deg);  /* forma di spunta */
 }
 
@@ -173,8 +166,8 @@ SEZIONE navbar
     height: 0.3em;
     margin-left: 0.2em;
 
-    border-left: 2px solid var(--currentcolor);
-    border-bottom: 2px solid var(--currentcolor);
+    border-left: 3px solid var(--currentcolor);
+    border-bottom: 3px solid var(--currentcolor);
     transform: rotate(-45deg);  /* forma di spunta */
 }
 
