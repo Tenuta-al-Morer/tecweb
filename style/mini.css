@@ -104,7 +104,7 @@ SEZIONE navbar (Mobile)
 
 .mobile-icons a {
     color: var(--navtxtcolor);
-    font-size: 1.3em;
+    font-size: 1.0em;
     text-decoration: none;
     transition: color 0.3s;
 }
