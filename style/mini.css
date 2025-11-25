@@ -272,3 +272,37 @@ footer {
 #theme-toggle:hover {
     transform: scale(1.2);
 }
+
+/* =============================
+   RESPONSIVE LOGIN & REGISTRAZIONE
+   ============================= */
+
+/* Riduco la dimensione del logo su schermi piccoli */
+.login-header-logo img {
+    height: 4.5em; 
+    padding-top: 0.5em;
+}
+
+.auth-container {
+    margin: 1rem auto;
+    padding: 1.5rem;
+    width: 90%; /* Occupa quasi tutto lo schermo */
+    max-width: none;
+}
+
+.auth-container h1 {
+    font-size: 1.6rem;
+}
+
+/* Le righe (es. Nome e Cognome) diventano colonna singola */
+.form-row {
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Opzioni su più righe se lo schermo è molto stretto */
+.form-options {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+}

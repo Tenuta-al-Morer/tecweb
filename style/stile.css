@@ -11,7 +11,7 @@
     /* DEFAULT: Colori Scuri (Dark Mode) */
     --navbgcolor: #1D1D1D;
     --txtcolor: #e0e0e0;         /* Testo chiaro */
-    --currentcolor: #c5a551;
+    --currentcolor: #c5a551;     /* ORO */
     --newstextcolor: #fff;
     --navtxtcolor: #fff;
     --visitedcolor: #f47a1c;
@@ -525,4 +525,225 @@ code {
 body.light-mode code {
     background-color: #f4f4f4;
     color: #000;
+}
+
+
+/* =============================
+   HEADER SPECIFICO (LOGIN/REGISTRAZIONE)
+   ============================= */
+.login-header-logo {
+    background-color: var(--navbgcolor);
+    text-align: center;
+    padding: 0.5em 0 0 0;
+    display: block;
+}
+
+.login-header-logo img {
+    height: 5em;
+    width: auto;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.login-header-logo a:hover img {
+    transform: scale(1.05);
+}
+
+/* Fix Breadcrumb */
+.breadcrumb-container ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb-container li {
+    display: inline-block;
+}
+
+/* =============================
+   SEZIONE LOGIN & REGISTRAZIONE
+   ============================= */
+
+/* Contenitore centrale "Card" */
+.auth-container {
+    max-width: 450px;
+    margin: 2rem auto 0rem auto; 
+    padding: 2.5rem;
+    background-color: var(--header-bg);
+    border: 1px solid var(--bordercolor);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.auth-container h1 {
+    font-size: 2rem;
+    color: var(--currentcolor);
+    margin-bottom: 0.5rem;
+}
+
+.auth-container p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: var(--diversity-color);
+}
+
+/* Accorpamento Flexbox Comuni */
+.auth-form, 
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-form {
+    gap: 1.2rem;
+    text-align: left;
+}
+
+.form-group label {
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--txtcolor);
+}
+
+/* --- GESTIONE PASSWORD & INPUT --- */
+
+/* Wrapper relativo per posizionare l'occhio */
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Stile Input Unificato */
+.auth-form input:not([type="checkbox"]):not([type="radio"]) {
+    width: 100%; 
+    padding: 0.8rem;
+    background-color: transparent;
+    border: 1px solid var(--bordercolor);
+    border-radius: 4px;
+    color: var(--txtcolor);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Colore Placeholder */
+.auth-form input::placeholder {
+    color: var(--diversity-color);
+    opacity: 1;
+}
+
+/* Padding extra a destra per le password per non coprire il testo con l'occhio */
+.password-wrapper input {
+    padding-right: 2.5rem; 
+}
+
+.auth-form input:focus {
+    outline: none;
+    border-color: var(--currentcolor);
+    box-shadow: 0 0 5px rgba(197, 165, 81, 0.3);
+}
+
+/* Bottone Occhio */
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: var(--txtcolor);
+    cursor: pointer;
+    opacity: 0.7;
+    padding: 0.2rem;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s;
+}
+
+.toggle-password:hover {
+    opacity: 1;
+    color: var(--currentcolor);
+}
+
+/* --- FINE GESTIONE PASSWORD --- */
+
+/* Layout Righe (Nome/Cognome) */
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+/* Opzioni (Ricordami / Password dimenticata) */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    margin-top: -0.5rem;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+/* Link Condivisi (Password dimenticata & Footer Auth) */
+/* AGGIUNTO: .checkbox-container a per il link Privacy dorato */
+.forgot-password,
+.auth-footer a,
+.checkbox-container a {
+    color: var(--diversity-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+/* Sovrascrive colore per renderlo DORATO */
+.auth-footer a,
+.checkbox-container a {
+    color: var(--currentcolor); 
+}
+
+.forgot-password:hover,
+.auth-footer a:hover,
+.checkbox-container a:hover {
+    color: var(--currentcolor);
+    text-decoration: underline;
+}
+
+/* Bottone Login */
+.btn-auth {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: var(--currentcolor);
+    color: #000;
+    font-weight: 700;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-auth:hover {
+    background-color: #e0be63;
+    transform: translateY(-2px);
+}
+
+/* Footer del Form */
+.auth-footer {
+    margin-top: 2rem;
+    font-size: 0.95rem;
+    border-top: 1px solid var(--bordercolor);
+    padding-top: 1.5rem;
 }
