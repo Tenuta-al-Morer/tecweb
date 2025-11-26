@@ -24,7 +24,6 @@ jobs:
 
       - name: Esegui Validazione URL Pubblici (API Diretta)
         id: css-check
-        continue-on-error: true 
         uses: actions/github-script@v6
         with:
           script: |
