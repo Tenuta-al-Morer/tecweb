@@ -22,24 +22,23 @@ jobs:
 
       - name: Esegui Validazione CSS (Jigsaw W3C)
         id: css-check
-        # continue-on-error: true assicura che il workflow continui anche se questo step fallisce
         continue-on-error: true 
         uses: actions/github-script@v6
         with:
           script: |
-            const glob = require('glob');
+            // --- CORREZIONE QUI SOTTO ---
+            // Rinominiamo la variabile in 'globLib' per non andare in conflitto con GitHub
+            const globLib = require('glob');
             const validator = require('w3c-css-validator');
             const fs = require('fs');
 
-            // Trova tutti i file HTML e CSS (root e sottocartelle)
-            // Se vuoi solo html usa: '**/*.html'
-            const files = glob.sync('**/*.{html,css}', { ignore: 'node_modules/**' });
+            // Usiamo globLib.sync invece di glob.sync
+            const files = globLib.sync('**/*.{html,css}', { ignore: 'node_modules/**' });
             
             console.log(`🔍 Trovati ${files.length} file da analizzare...`);
             
             let hasErrors = false;
 
-            // Funzione per validare un singolo file
             const validateFile = async (file) => {
               const content = fs.readFileSync(file, 'utf8');
               try {
@@ -51,7 +50,6 @@ jobs:
                   console.log(`❌ ${file}: ERRORI TROVATI`);
                   hasErrors = true;
                   result.errors.forEach(err => {
-                    // Stampa dettaglio errore: Linea e Messaggio
                     console.log(`   -> Riga ${err.line}: ${err.message}`);
                   });
                 }
@@ -60,7 +58,6 @@ jobs:
               }
             };
 
-            // Eseguiamo la validazione in serie per non sovraccaricare l'API W3C
             for (const file of files) {
               await validateFile(file);
             }
