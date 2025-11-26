@@ -1,301 +1,317 @@
+/* =============================
+   RESET & VARIABILI (DEFAULT DARK)
+   ============================= */
 * {
-    padding: 0em;
-    margin: 0em;
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
-:root{
+:root {
+    /* DEFAULT: Colori Scuri (Dark Mode) */
     --navbgcolor: #1D1D1D;
-    --txtcolor: #000; 
-    --currentcolor: #c5a551;
-    --newscolor: #F3C42B;
-    --newstextcolor: #000;
+    --txtcolor: #e0e0e0;         /* Testo chiaro */
+    --currentcolor: #c5a551;     /* ORO */
+    --newstextcolor: #fff;
     --navtxtcolor: #fff;
     --visitedcolor: #f47a1c;
     --footercolor: #1D1D1D;
-    --bodybgcolor: #fff;
-    --diversity-color: #333333;
+    --bodybgcolor: #121212;      /* Sfondo scuro */
+    --diversity-color: #cacaca;  /* Colore secondario chiaro */
+    --bordercolor: #333333;      /* Bordi scuri */
+    
+    /* Variabili specifiche per componenti scuri */
+    --header-bg: #1e1e1e;
+    --table-stripe: #252525;
 }
 
 html {
-    font-size: 100%; 
-    font-family: 'Atkinson Hyperlegible', 'Lexend', 'Roboto', sans-serif;    
+    font-size: 100%;
+    font-family: 'Atkinson Hyperlegible', 'Lexend', 'Roboto', sans-serif;
     line-height: 1.5em;
 }
 
 body {
-    background-color: var(--bodybgcolor); 
+    background-color: var(--bodybgcolor);
     color: var(--txtcolor);
-    margin: auto;  
-    min-height: 100vh;      
-    display: flex;          
+    margin: auto;
+    min-height: 100vh;
+    display: flex;
     flex-direction: column;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/*
-=============================
-SEZIONE navigationHelp
-=============================
-*/
-.navigationHelp{
-    position: absolute; 
+/* =============================
+   CONFIGURAZIONE LIGHT MODE (Giorno)
+   ============================= */
+body.light-mode {
+    --bodybgcolor: #fff;
+    --txtcolor: #000;
+    --newstextcolor: #000;
+    --diversity-color: #333333;
+    --bordercolor: #ddd;
+    
+    /* Variabili specifiche per componenti chiari */
+    --header-bg: #fafafa;
+    --table-stripe: #fff9e6;
+}
+
+/* =============================
+   UTILITIES & ACCESSIBILITÀ
+   ============================= */
+.visually-hidden,
+.navigationHelp {
+    position: absolute;
     text-indent: -999em;
     background-color: #121212;
 }
 
-.navigationHelp:focus{
+.navigationHelp:focus {
     position: static;
-    text-indent: 0em;
-    color:var(--txtcolor);
+    text-indent: 0;
+    color: var(--txtcolor);
 }
-a.navigationHelp:visited{
-    color:var(--currentcolor);
-}
-/*
-=============================
-SEZIONE navbar 
-=============================
-*/
 
+a.navigationHelp:visited {
+    color: var(--currentcolor);
+}
+
+/* =============================
+   NAVBAR
+   ============================= */
 .main-nav-bar {
     color: var(--navtxtcolor);
-    padding: 0.5em 1em; 
-    background-color: var(--navbgcolor); 
-    display: flex; 
-    align-items: center; 
-    
-    gap: 0;    
-    flex-wrap: nowrap; 
+    padding: 0.5em 1em;
+    background-color: var(--navbgcolor);
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: nowrap;
 }
 
-/* 1. IL LOGO */
 .main-nav-bar img {
-    height: 5.2em; 
-    width: auto;
-    flex-shrink: 0;
-    transition: all 0.3s ease;
+    height: auto;           
+    max-height: 5.2em;      
+    width: auto;          
+    flex: 0 1 auto;        
+    flex-shrink: 100;       
+    min-width: 0;          
+    object-fit: contain;   
     
     order: 1; 
-    margin-right: auto; 
-    padding-right: 1em; 
+    margin-right: auto;     
+    padding-right: 0.5em;   
+    transition: all 0.3s ease;
 }
 
-/* 2. IL MENU DI NAVIGAZIONE */
 .primary-navigation {
     order: 2;
-    margin-left: 0; 
+    margin-left: 0;
 }
 
 .primary-navigation ul {
-    display: flex; 
+    display: flex;
     font-size: 1.2em;
     list-style: none;
-    align-items: center; 
+    align-items: center;
 }
 
 .primary-navigation li {
-    padding: 0 0.4em; 
+    padding: 0 0.4em;
 }
-
-.primary-navigation a {
-    color: var(--navtxtcolor); 
-    padding: 0.5em 0.3em; 
-    border-radius: 3px; 
-    text-decoration: none;
-    transition: color 0.3s;
-    display: inline-flex;         
-    align-items: center;          
-    gap: 0.35em;                  
-}
-
 
 .primary-navigation li:not(:first-child) {
     border-left: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+.primary-navigation a {
+    color: var(--navtxtcolor);
+    padding: 0.5em 0.3em;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+}
+
 .primary-navigation a:hover {
-    color: var(--currentcolor); 
+    color: var(--currentcolor);
 }
 
 .primary-navigation a[aria-current="page"] {
-    border-bottom: 2px solid var(--currentcolor);
+    border: 3px solid var(--currentcolor);
+    border-radius: 15px;
+}
+
+/* Checkmark condivisa */
+.primary-navigation a.is-visited::before,
+.mobile-icons a.is-visited::before {
+    content: "";
+    display: inline-block;
+    width: 0.6em;
+    height: 0.3em;
+    border-left: 3px solid var(--currentcolor);
+    border-bottom: 3px solid var(--currentcolor);
+    transform: rotate(-45deg);
 }
 
 .primary-navigation a.is-visited::before {
-    content: "✔";
-    font-size: 0.8em;
-    color: var(--currentcolor);
-    margin-left: 0.2em;
+    margin-right: 0.5em;
 }
 
-
-/* 3. LE ICONE (SHOP / LOGIN) */
+/* Mobile Icons */
 .mobile-icons {
     order: 3;
     display: flex;
     align-items: center;
-    gap: 0.8em; 
-    
-    margin-left: 0; 
-    padding-left: 1em; 
-    
-    border-left: 1px solid rgba(255, 255, 255, 0.3); 
+    gap: 0.8em;
+    margin-left: 0;
+    padding-left: 1em;
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .mobile-icons a {
     color: var(--navtxtcolor);
-    font-size: 1.3em; 
+    font-size: 1.3em;
     transition: color 0.3s, transform 0.3s;
-    text-decoration: none;
 }
 
 .mobile-icons a.is-visited::before {
-    content: "✔";
-    font-size: 0.8em;
-    color: var(--currentcolor);
+    margin-left: 0.2em;
+    margin-right: 0.2em;
 }
 
 .mobile-icons a:hover {
     color: var(--currentcolor);
-    transform: scale(1.1); 
+    transform: scale(1.1);
 }
 
 .menu-toggle {
-    display: none; 
+    display: none;
 }
 
-.visually-hidden{
-    text-indent: -999em;
-}
-
-/*
-=============================
-SEZIONE BREADCRUMB
-=============================
-*/
+/* =============================
+   BREADCRUMB
+   ============================= */
 #breadcrumb {
     flex-basis: 100%;
     background-color: var(--navbgcolor);
-    
-    border-top: 1px solid rgba(255, 255, 255, 0.1); 
-    padding: 0.4em 1em; 
-    font-family: 'Lexend', sans-serif; 
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.4em 1em;
+    font-family: 'Lexend', sans-serif;
     font-size: 0.95rem;
     display: flex;
     align-items: center;
 }
 
-
 .breadcrumb-container {
     display: flex;
     align-items: center;
-    gap: 0.5em; 
+    gap: 0.5em;
     color: var(--navtxtcolor);
-    opacity: 0.8; 
+    opacity: 0.8;
 }
 
-#breadcrumb img{
+#breadcrumb img {
     height: 3em;
 }
 
-
 .separator {
-    color: rgba(255,255,255, 0.3);
+    color: rgba(255, 255, 255, 0.3);
     font-size: 0.9em;
 }
-
 
 .current-page {
     font-weight: 600;
     color: var(--navtxtcolor);
     text-transform: uppercase;
-    letter-spacing: 0.05em; 
+    letter-spacing: 0.05em;
 }
-/*
-=============================
-SEZIONE MAIN
-=============================
-*/
 
-
+/* =============================
+   MAIN & HERO
+   ============================= */
 .hero {
-    /*background: url('../images/bg.webp') no-repeat center center/cover;*/
+    background-image: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.75) 0%,
+            rgba(0, 0, 0, 0.45) 35%,
+            rgba(0, 0, 0, 0.25) 65%,
+            rgba(0, 0, 0, 0) 100%
+        ), url('../images/bg.webp');
+    min-height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/bg.webp');
     background-size: cover;
     background-position: center;
 }
 
-.hero a{
-    color:#fff;
+.hero a {
+    color: #fff;
 }
-
 
 .hero-overlay {
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.hero-content { 
-    color: #fff; 
-    max-width: 800px; 
-    padding: 20px; 
+.hero-content {
+    color: #fff;
+    max-width: 800px;
+    padding: 20px;
 }
 
 .hero-content h1 {
-    font-family: var(--font-title);
+    font-family: var(--font-title, sans-serif);
     font-size: 4.5rem;
     line-height: 1.1;
     margin-bottom: 20px;
 }
+
 .hero-content p {
     font-size: 1.1rem;
     margin-bottom: 40px;
     font-weight: 300;
 }
-.hero-buttons { display: flex; gap: 20px; justify-content: center; }
 
-main{
-    color: var(--txtcolor);
-    padding-top: 1em;
-    padding-left: 3.5em;
-    padding-right: 2em;
-    padding-bottom: 2em;
-    flex-grow: 1; 
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
 }
-main h1{
+
+main {
+    color: var(--txtcolor);
+    padding: 1em 2em 2em 3.5em;
+    flex-grow: 1;
+}
+
+main h1 {
     margin-bottom: 0.3em;
 }
 
-main h2{
+main h2 {
     margin-top: 0.7em;
-    padding: 1em 0em;
+    padding: 1em 0;
     border-top: 2px solid var(--txtcolor);
 }
 
-/*
-=============================
-SEZIONE footer
-=============================
-*/
+/* =============================
+   FOOTER & THEME TOGGLE
+   ============================= */
 footer {
-    position: relative; /* Fondamentale: fa da "ancora" per il pulsante assoluto */
+    position: relative;
     text-align: center;
     margin-top: 2em;
     background-color: var(--footercolor);
     color: var(--navtxtcolor);
-    padding: 1.5em 0em;
-    
-    /* Centratura del contenuto principale */
+    padding: 1.5em 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -309,73 +325,52 @@ footer a:visited {
     color: var(--currentcolor);
 }
 
-/*
-=============================
-DARK MODE TOGGLE BUTTON 
-=============================
-*/
 #theme-toggle {
-    position: absolute; 
-    left: 2em;        
-    top: 50%;         
-    transform: translateY(-50%); 
-
+    position: absolute;
+    left: 2em;
+    top: 50%;
+    transform: translateY(-50%);
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
-    
-    font-size: 1.4em; 
+    font-size: 1.4em;
     color: var(--navtxtcolor);
-    opacity: 0.6; 
+    opacity: 0.6;
     transition: all 0.3s ease;
 }
 
 #theme-toggle:hover {
     opacity: 1;
     color: var(--currentcolor);
-    transform: translateY(-50%) scale(1.3); 
+    transform: translateY(-50%) scale(1.3);
 }
 
 #theme-toggle i {
     pointer-events: none;
 }
 
-/*
-=============================
-SEZIONE PULSANTE TORNA SU
-=============================
-*/
 #backToTopBtn {
     position: fixed;
-    bottom: 4em;  
-    right: 2em;   
-    
-    display: flex; 
-    justify-content: center; 
+    bottom: 4em;
+    right: 2em;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    
-    
-    width: 2em;   
+    width: 2em;
     height: 2em;
-    
-    
-    background-color: var(--navbgcolor); 
-    color: var(--currentcolor); 
-    
-    
-    border: 1px solid var(--currentcolor); 
-    border-radius: 50%; 
-    
-    font-size: 1.2em; 
-    padding: 0; 
-    
+    background-color: var(--navbgcolor);
+    color: var(--currentcolor);
+    border: 1px solid var(--currentcolor);
+    border-radius: 50%;
+    font-size: 1.2em;
+    padding: 0;
     cursor: pointer;
-    opacity: 0; 
-    visibility: hidden; 
-    transition: all 0.3s ease; 
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
     z-index: 100;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 #backToTopBtn.show {
@@ -383,27 +378,22 @@ SEZIONE PULSANTE TORNA SU
     visibility: visible;
 }
 
-#backToTopBtn:hover, #backToTopBtn:focus {
-    
-    background-color: var(--currentcolor); 
+#backToTopBtn:hover,
+#backToTopBtn:focus {
+    background-color: var(--currentcolor);
     color: var(--navbgcolor);
-    
-    
-    transform: translateY(-3px); 
-    box-shadow: 0 6px 12px rgba(197, 165, 81, 0.4); 
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(197, 165, 81, 0.4);
     outline: none;
 }
 
-/*
-=============================
-SEZIONE PAGINA POLITICHE
-=============================
-*/
-
+/* =============================
+   POLITICHE (Tables & Content)
+   ============================= */
 .policy-nav-header {
     padding: 1.5em 1.25em;
     border-bottom: 1px solid var(--bordercolor);
-    background-color: #fafafa;
+    background-color: var(--header-bg); /* Usa variabile per switch */
 }
 
 .btn-outline {
@@ -420,15 +410,16 @@ SEZIONE PAGINA POLITICHE
     background-color: transparent;
 }
 
-.btn-outline:hover, .btn-outline:focus {
+.btn-outline:hover,
+.btn-outline:focus {
     background-color: var(--currentcolor);
     color: #fff;
 }
 
 .policy-content {
     max-width: 1000px;
-    margin: 0 auto; 
-    padding: 2em 20px; 
+    margin: 0 auto;
+    padding: 2em 20px;
 }
 
 .page-header h1 {
@@ -445,7 +436,7 @@ SEZIONE PAGINA POLITICHE
 }
 
 .table-container {
-    overflow-x: auto; 
+    overflow-x: auto;
     margin-bottom: 2rem;
     border: 1px solid var(--bordercolor);
     border-radius: 5px;
@@ -454,17 +445,18 @@ SEZIONE PAGINA POLITICHE
 .policy-table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 600px; 
+    min-width: 600px;
 }
 
-.policy-table th, .policy-table td {
+.policy-table th,
+.policy-table td {
     padding: 1rem;
     text-align: left;
     border-bottom: 1px solid var(--bordercolor);
 }
 
 .policy-table th {
-    background-color: #f8f8f8;
+    background-color: var(--header-bg); /* Switch automatico */
     color: var(--txtcolor);
     font-weight: 700;
     text-transform: uppercase;
@@ -473,23 +465,33 @@ SEZIONE PAGINA POLITICHE
 }
 
 .policy-table tbody tr:hover {
-    background-color: #fff9e6; 
+    background-color: var(--table-stripe); /* Switch automatico */
+}
+
+.policy-table td a {
+    color: var(--txtcolor);
+    font-weight: 700;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.policy-table td a:hover,
+.policy-table td a:focus {
+    color: var(--currentcolor);
 }
 
 .policy-content article h2 {
     color: var(--currentcolor);
-    border-top: none; 
+    border-top: none;
     margin-top: 1.5rem;
     font-size: 2rem;
-    line-height: 1.3; 
-    
+    line-height: 1.3;
     margin-bottom: 0.2rem;
-    padding-bottom: 0;     
-    padding-top: 0; 
+    padding: 0;
 }
 
 .policy-content article h3 {
-    margin-top: 0rem;
+    margin-top: 0;
     margin-bottom: 0.5rem;
     font-size: 1.3rem;
     color: var(--diversity-color);
@@ -500,7 +502,7 @@ SEZIONE PAGINA POLITICHE
     text-align: justify;
 }
 
-.policy-content article ul, 
+.policy-content article ul,
 .policy-content article ol {
     margin-left: 1.5rem;
     margin-bottom: 1.5rem;
@@ -511,57 +513,261 @@ SEZIONE PAGINA POLITICHE
 }
 
 code {
-    background-color: #f4f4f4;
+    background-color: #333; /* Default dark background per code */
+    color: #fff;
     padding: 0.2em 0.4em;
     border-radius: 3px;
     font-family: monospace;
     font-size: 0.9em;
 }
 
-.policy-table td a {
-    color: var(--txtcolor);    
-    font-weight: 700;          
-    border-bottom: 2px solid transparent; 
-    transition: all 0.3s ease;
-}
-
-.policy-table td a:hover,
-.policy-table td a:focus {
-    color: var(--currentcolor);   
+/* Override code per light mode */
+body.light-mode code {
+    background-color: #f4f4f4;
+    color: #000;
 }
 
 
 /* =============================
-   DARK MODE CONFIGURATION
+   HEADER SPECIFICO (LOGIN/REGISTRAZIONE)
    ============================= */
-body.dark-mode {
-    --bodybgcolor: #121212; 
-    --txtcolor: #e0e0e0; 
-    --bordercolor: #333333;
-    --diversity-color: #b0b0b0;
+.login-header-logo {
+    background-color: var(--navbgcolor);
+    text-align: center;
+    padding: 0.5em 0 0 0;
+    display: block;
 }
 
-
-body.dark-mode .policy-nav-header {
-    background-color: #1e1e1e; 
-    border-bottom: 1px solid #333;
+.login-header-logo img {
+    height: 5em;
+    width: auto;
+    display: inline-block;
+    transition: transform 0.3s ease;
 }
 
-body.dark-mode .policy-table th {
-    background-color: #1e1e1e; 
+.login-header-logo a:hover img {
+    transform: scale(1.05);
+}
+
+/* Fix Breadcrumb */
+.breadcrumb-container ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb-container li {
+    display: inline-block;
+}
+
+/* =============================
+   SEZIONE LOGIN & REGISTRAZIONE
+   ============================= */
+
+/* Contenitore centrale "Card" */
+.auth-container {
+    max-width: 450px;
+    margin: 2rem auto 0rem auto; 
+    padding: 2.5rem;
+    background-color: var(--header-bg);
+    border: 1px solid var(--bordercolor);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.auth-container h1 {
+    font-size: 2rem;
+    color: var(--currentcolor);
+    margin-bottom: 0.5rem;
+}
+
+.auth-container p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: var(--diversity-color);
+}
+
+/* Accorpamento Flexbox Comuni */
+.auth-form, 
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-form {
+    gap: 1.2rem;
+    text-align: left;
+}
+
+.form-group label {
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--txtcolor);
+}
+
+/* --- GESTIONE PASSWORD & INPUT --- */
+
+/* Wrapper relativo per posizionare l'occhio */
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Stile Input Unificato */
+.auth-form input:not([type="checkbox"]):not([type="radio"]) {
+    width: 100%; 
+    padding: 0.8rem;
+    background-color: transparent;
+    border: 1px solid var(--bordercolor);
+    border-radius: 4px;
+    color: var(--txtcolor);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Colore Placeholder */
+.auth-form input::placeholder {
+    color: var(--diversity-color);
+    opacity: 1;
+}
+
+/* Padding extra a destra per le password per non coprire il testo con l'occhio */
+.password-wrapper input {
+    padding-right: 2.5rem; 
+}
+
+.auth-form input:focus {
+    outline: none;
+    border-color: var(--currentcolor);
+    box-shadow: 0 0 5px rgba(197, 165, 81, 0.3);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px var(--header-bg) inset !important;
+    
+    /* Forza il colore del testo a quello del tuo tema */
+    -webkit-text-fill-color: var(--txtcolor) !important;
+    
+    /* Mantiene il bordo corretto */
+    border: 1px solid var(--bordercolor) !important;
+    
+    /* Mantiene il raggio del bordo */
+    border-radius: 4px;
+    
+    /* Mantiene la transizione fluida */
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill:focus {
+    border-color: var(--currentcolor) !important;
+    -webkit-box-shadow: 0 0 0 30px var(--header-bg) inset, 0 0 5px rgba(197, 165, 81, 0.3) !important;
+}
+
+/* Bottone Occhio */
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: var(--txtcolor);
+    cursor: pointer;
+    opacity: 0.7;
+    padding: 0.2rem;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s;
+}
+
+.toggle-password:hover {
+    opacity: 1;
+    color: var(--currentcolor);
+}
+
+/* --- FINE GESTIONE PASSWORD --- */
+
+/* Layout Righe (Nome/Cognome) */
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+/* Opzioni (Ricordami / Password dimenticata) */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    margin-top: -0.5rem;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+/* Link Condivisi (Password dimenticata & Footer Auth) */
+/* AGGIUNTO: .checkbox-container a per il link Privacy dorato */
+.forgot-password,
+.auth-footer a,
+.checkbox-container a {
+    color: var(--diversity-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+/* Sovrascrive colore per renderlo DORATO */
+.auth-footer a,
+.checkbox-container a {
     color: var(--currentcolor); 
-    border-bottom: 1px solid #333;
 }
 
-body.dark-mode .policy-table td {
-    border-bottom: 1px solid #333;
+.forgot-password:hover,
+.auth-footer a:hover,
+.checkbox-container a:hover {
+    color: var(--currentcolor);
+    text-decoration: underline;
 }
 
-body.dark-mode .policy-table tbody tr:hover {
-    background-color: #252525; 
+/* Bottone Login */
+.btn-auth {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: var(--currentcolor);
+    color: #000;
+    font-weight: 700;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-body.dark-mode code {
-    background-color: #333;
-    color: #fff;
+.btn-auth:hover {
+    background-color: #e0be63;
+    transform: translateY(-2px);
+}
+
+/* Footer del Form */
+.auth-footer {
+    margin-top: 2rem;
+    font-size: 0.95rem;
+    border-top: 1px solid var(--bordercolor);
+    padding-top: 1.5rem;
 }
