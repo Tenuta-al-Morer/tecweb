@@ -167,12 +167,17 @@ a.navigationHelp:visited {
     margin-left: 0;
     padding-left: 1em;
     border-left: 1px solid rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
 }
 
 .mobile-icons a {
     color: var(--navtxtcolor);
     font-size: 1.3em;
     transition: color 0.3s, transform 0.3s;
+    display: inline-flex;  
+    align-items: center;  
+    white-space: nowrap;
+    text-decoration: none;
 }
 
 .mobile-icons a.is-visited::before {
