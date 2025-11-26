@@ -1,13 +1,17 @@
-name: W3C CSS Validator
+name: W3C CSS Validator (Post-Deploy)
 
+# Questo trigger fa partire l'azione SOLO quando il deploy di GitHub Pages ha finito
 on:
-  push:
-    branches: [ main, master ]
-  pull_request:
+  workflow_run:
+    workflows: ["pages-build-deployment"] # Questo è il nome esatto preso dai tuoi log
+    types:
+      - completed
 
 jobs:
   css-validation:
     runs-on: ubuntu-latest
+    # Esegui solo se il deploy è andato a buon fine
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout del codice
         uses: actions/checkout@v3
@@ -20,50 +24,65 @@ jobs:
       - name: Installa dipendenze validatore
         run: npm install glob w3c-css-validator
 
-      - name: Esegui Validazione CSS (Jigsaw W3C)
+      - name: Esegui Validazione URL Pubblici
         id: css-check
         continue-on-error: true 
         uses: actions/github-script@v6
         with:
           script: |
-            // --- CORREZIONE QUI SOTTO ---
-            // Rinominiamo la variabile in 'globLib' per non andare in conflitto con GitHub
+            // Importiamo le librerie (globLib per evitare conflitti di nome)
             const globLib = require('glob');
             const validator = require('w3c-css-validator');
-            const fs = require('fs');
 
-            // Usiamo globLib.sync invece di glob.sync
-            const files = globLib.sync('**/*.{html,css}', { ignore: 'node_modules/**' });
+            // 1. Definisci la base del tuo sito
+            const BASE_URL = 'https://tenuta-al-morer.github.io/tecweb/';
+
+            // 2. Troviamo i file HTML nel repository per sapere QUALI pagine testare
+            //    Ignoriamo la cartella node_modules
+            const files = globLib.sync('**/*.html', { ignore: 'node_modules/**' });
             
-            console.log(`🔍 Trovati ${files.length} file da analizzare...`);
+            console.log(`Trovate ${files.length} pagine nel progetto. Inizio verifica URL pubblici...`);
             
             let hasErrors = false;
 
-            const validateFile = async (file) => {
-              const content = fs.readFileSync(file, 'utf8');
+            const validatePage = async (filePath) => {
+              // Puliamo il percorso file per usarlo nell'URL
+              // Esempio: "html\policy.html" (windows) diventa "html/policy.html"
+              let cleanPath = filePath.replace(/\\/g, '/');
+              
+              // Se il file è index.html nella root, l'URL è pulito, altrimenti aggiungiamo il path
+              // Nota: GitHub pages serve /index.html correttamente, quindi lo lasciamo.
+              
+              const fullUrl = BASE_URL + cleanPath;
+
+              console.log(`ANALISI IN CORSO su: ${fullUrl}`);
+
               try {
-                const result = await validator.validateText(content, { medium: 'all' });
+                // validateUrl scarica la pagina VERA online e controlla CSS e HTML
+                const result = await validator.validateUrl(fullUrl, { medium: 'all' });
                 
                 if (result.valid) {
-                  console.log(`✅ ${file}: OK`);
+                  console.log(`✅ OK: ${cleanPath}`);
                 } else {
-                  console.log(`❌ ${file}: ERRORI TROVATI`);
+                  console.log(`❌ ERRORI su: ${cleanPath}`);
                   hasErrors = true;
                   result.errors.forEach(err => {
+                    // Stampa l'errore in modo leggibile
                     console.log(`   -> Riga ${err.line}: ${err.message}`);
                   });
                 }
               } catch (e) {
-                console.log(`⚠️ Errore di connessione o parsing su ${file}: ${e.message}`);
+                console.log(`Impossibile analizzare ${fullUrl}. Errore: ${e.message}`);
               }
             };
 
+            // Eseguiamo il ciclo su tutti i file trovati
             for (const file of files) {
-              await validateFile(file);
+              await validatePage(file);
             }
 
             if (hasErrors) {
-              core.setFailed('Trovati errori di validazione CSS (vedi log sopra).');
+              core.setFailed('Trovati errori di validazione CSS sulle pagine online.');
             } else {
-              console.log("🎉 Tutto perfetto! Nessun errore CSS trovato.");
+              console.log("Tutte le pagine online sono valide!");
             }
