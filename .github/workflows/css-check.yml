@@ -1,16 +1,14 @@
 name: W3C CSS Validator (Post-Deploy)
 
-# Questo trigger fa partire l'azione SOLO quando il deploy di GitHub Pages ha finito
 on:
   workflow_run:
-    workflows: ["pages-build-deployment"] # Questo è il nome esatto preso dai tuoi log
+    workflows: ["pages-build-deployment"]
     types:
       - completed
 
 jobs:
   css-validation:
     runs-on: ubuntu-latest
-    # Esegui solo se il deploy è andato a buon fine
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout del codice
@@ -21,68 +19,86 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Installa dipendenze validatore
-        run: npm install glob w3c-css-validator
+      # Installiamo solo 'glob' perché per il W3C usiamo 'fetch' nativo
+      - name: Installa dipendenze
+        run: npm install glob
 
-      - name: Esegui Validazione URL Pubblici
+      - name: Esegui Validazione URL Pubblici (API Diretta)
         id: css-check
         continue-on-error: true 
         uses: actions/github-script@v6
         with:
           script: |
-            // Importiamo le librerie (globLib per evitare conflitti di nome)
             const globLib = require('glob');
-            const validator = require('w3c-css-validator');
-
-            // 1. Definisci la base del tuo sito
+            
+            // CONFIGURAZIONE
             const BASE_URL = 'https://tenuta-al-morer.github.io/tecweb/';
+            const W3C_API = 'https://jigsaw.w3.org/css-validator/validator';
 
-            // 2. Troviamo i file HTML nel repository per sapere QUALI pagine testare
-            //    Ignoriamo la cartella node_modules
+            // Troviamo i file HTML locali
             const files = globLib.sync('**/*.html', { ignore: 'node_modules/**' });
             
-            console.log(`Trovate ${files.length} pagine nel progetto. Inizio verifica URL pubblici...`);
+            console.log(`Trovate ${files.length} pagine. Inizio verifica diretta API W3C...`);
             
             let hasErrors = false;
 
-            const validatePage = async (filePath) => {
-              // Puliamo il percorso file per usarlo nell'URL
-              // Esempio: "html\policy.html" (windows) diventa "html/policy.html"
-              let cleanPath = filePath.replace(/\\/g, '/');
+            // Funzione helper per chiamare l'API
+            const checkUrl = async (pageUrl, filePath) => {
+              // Costruiamo la chiamata API: output=json, profile=css3
+              const apiUrl = `${W3C_API}?uri=${encodeURIComponent(pageUrl)}&output=json&profile=css3svg&usermedium=all&warning=1&lang=it`;
               
-              // Se il file è index.html nella root, l'URL è pulito, altrimenti aggiungiamo il path
-              // Nota: GitHub pages serve /index.html correttamente, quindi lo lasciamo.
-              
-              const fullUrl = BASE_URL + cleanPath;
-
-              console.log(`ANALISI IN CORSO su: ${fullUrl}`);
+              console.log(`Analizzo: ${pageUrl}`);
 
               try {
-                // validateUrl scarica la pagina VERA online e controlla CSS e HTML
-                const result = await validator.validateUrl(fullUrl, { medium: 'all' });
-                
-                if (result.valid) {
-                  console.log(`✅ OK: ${cleanPath}`);
+                const response = await fetch(apiUrl, {
+                  headers: { 'User-Agent': 'Mozilla/5.0 (GitHub Action)' }
+                });
+
+                if (!response.ok) {
+                  throw new Error(`W3C Server Error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                const result = data.cssvalidation;
+
+                if (result.validity) {
+                  console.log(`✅ OK: ${filePath}`);
                 } else {
-                  console.log(`❌ ERRORI su: ${cleanPath}`);
+                  console.log(`❌ ERRORI su: ${filePath}`);
                   hasErrors = true;
-                  result.errors.forEach(err => {
-                    // Stampa l'errore in modo leggibile
-                    console.log(`   -> Riga ${err.line}: ${err.message}`);
-                  });
+                  
+                  // Gestione array errori (a volte l'API cambia formato se c'è un solo errore)
+                  const errors = Array.isArray(result.errors) ? result.errors : [result.errors];
+                  
+                  if (errors && errors.length > 0) {
+                    errors.forEach(err => {
+                      // Pulizia del messaggio
+                      const cleanMsg = err.message ? err.message.replace(/\s+/g, ' ').trim() : 'Errore generico';
+                      console.log(`   -> Riga ${err.line}: ${cleanMsg}`);
+                    });
+                  } else {
+                     console.log(`   -> Errore generico rilevato (controlla output W3C manuale)`);
+                  }
                 }
               } catch (e) {
-                console.log(`Impossibile analizzare ${fullUrl}. Errore: ${e.message}`);
+                console.log(`Errore durante la chiamata API per ${filePath}: ${e.message}`);
               }
             };
 
-            // Eseguiamo il ciclo su tutti i file trovati
+            // Eseguiamo il ciclo
+            // Nota: Mettiamo un piccolo delay tra una chiamata e l'altra per educazione verso il server W3C
+            const delay = ms => new Promise(res => setTimeout(res, ms));
+
             for (const file of files) {
-              await validatePage(file);
+              let cleanPath = file.replace(/\\/g, '/');
+              const fullUrl = BASE_URL + cleanPath;
+              
+              await checkUrl(fullUrl, cleanPath);
+              await delay(500); // Mezzo secondo di pausa tra le richieste
             }
 
             if (hasErrors) {
-              core.setFailed('Trovati errori di validazione CSS sulle pagine online.');
+              core.setFailed('Trovati errori CSS sulle pagine online.');
             } else {
               console.log("Tutte le pagine online sono valide!");
             }
