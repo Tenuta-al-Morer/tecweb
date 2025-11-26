@@ -1,0 +1,1 @@
+Sito accessibile: ![W3C CSS Validator](https://github.com/Tenuta-al-Morer/tecweb/actions/workflows/css-check.yml/badge.svg)
