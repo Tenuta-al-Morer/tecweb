@@ -12,7 +12,6 @@
     --navbgcolor: #1D1D1D;
     --txtcolor: #e0e0e0;         /* Testo chiaro */
     --currentcolor: #c5a551;     /* ORO */
-    --newstextcolor: #fff;
     --navtxtcolor: #fff;
     --visitedcolor: #f47a1c;
     --footercolor: #1D1D1D;
@@ -47,7 +46,6 @@ body {
 body.light-mode {
     --bodybgcolor: #fff;
     --txtcolor: #000;
-    --newstextcolor: #000;
     --diversity-color: #333333;
     --bordercolor: #ddd;
     
