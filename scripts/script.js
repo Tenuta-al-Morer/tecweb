@@ -115,11 +115,63 @@ document.addEventListener('DOMContentLoaded', () => {
      * 3. UTILITIES (Back button, Scroll top, Links)
      * ========================================== */
     const backBtn = document.getElementById('back-link');
+    
     if (backBtn) {
         const params = new URLSearchParams(window.location.search);
-        const returnUrl = params.get('return_to');
-        if (returnUrl) backBtn.href = decodeURIComponent(returnUrl);
-        else backBtn.href = 'index.html';
+        
+        // 1. GESTIONE CHIUSURA SCHEDA (es. da Registrazione con target="_blank")
+        // Se nell'URL c'è ?action=close
+        const action = params.get('action');
+
+        if (action === 'close') {
+            // Cambiamo testo e icona
+            backBtn.innerHTML = '<i class="fas fa-times"></i> Chiudi e torna alla registrazione';
+            
+            backBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.close(); // Chiude la scheda corrente
+            });
+
+        } else {
+            // 2. GESTIONE NAVIGAZIONE NORMALE
+            // Se c'è un ritorno forzato (dal footer ?return_to=tenuta.html)
+            const returnUrl = params.get('return_to');
+
+            if (returnUrl) {
+                // Se c'è un'istruzione di ritorno, la usiamo direttamente
+                backBtn.href = returnUrl;
+            } else {
+                // 3.  (Fallback)
+                
+                // A. Prepariamo (Link fisico alla Home)
+                // Questo serve se l'utente apre il link in una nuova scheda vuota.
+                // Usiamo percorsi relativi (../) così funziona sia su localhost che su GitHub Pages (/tecweb/)
+                const isInSubfolder = window.location.pathname.includes('/html/') || window.location.pathname.split('/').length > 2;
+                backBtn.href = isInSubfolder ? '../index.html' : 'index.html';
+
+                // B. Aggiungiamo il cervello che controlla la cronologia
+                backBtn.addEventListener('click', (e) => {
+                    // Recuperiamo chi ci ha mandato qui (Referrer)
+                    const referrer = document.referrer;
+                    
+                    // Recuperiamo il dominio attuale AUTOMATICAMENTE
+                    // Su PC sarà: "localhost" o "127.0.0.1"
+                    // Online sarà: "tenuta-al-morer.github.io"
+                    const currentDomain = window.location.hostname; 
+
+                    // CONTROLLO DI SICUREZZA:
+                    // Se esiste un referrer E quel referrer contiene il nostro dominio attuale...
+                    if (referrer && referrer.includes(currentDomain)) {
+                        // ...allora è una navigazione interna sicura. Torniamo indietro.
+                        e.preventDefault();
+                        window.history.back();
+                    }
+                    
+                    // L'IF qui sopra fallisce, il codice prosegue ed esegue 
+                    // il normale link href (verso la Home) impostato al punto A.
+                });
+            }
+        }
     }
 
     const backToTopBtn = document.getElementById('backToTopBtn');

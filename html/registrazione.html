@@ -4,7 +4,7 @@
 <head>
     <title>Registrati - Tenuta al Morer</title>
     <meta name="description" content="Crea un nuovo account su Tenuta al Morer per accedere a offerte esclusive e gestire i tuoi ordini.">
-    <link rel="icon" href="images/logoTM.ico" type="image/x-icon">
+    <link rel="icon" href="../images/logo.ico" type="image/x-icon">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -14,8 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style/stile.css" media="screen"> 
-    <link rel="stylesheet" href="style/mini.css" media="screen and (max-width:930px)">
+    <link rel="stylesheet" href="../style/stile.css" media="screen"> 
+    <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:930px)">
+    <link rel="stylesheet" href="../style/stampa.css" media="print"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
@@ -26,8 +27,8 @@
         </nav>
 
         <div class="login-header-logo">
-            <a href="index.html" aria-label="Torna alla pagina principale">
-                <img src="images/logo.webp" alt="Logo Tenuta al Morer">
+            <a href="../index.html" aria-label="Torna alla pagina principale">
+                <img src="../images/logo.webp" alt="Logo Tenuta al Morer">
             </a>
         </div>
 
@@ -87,9 +88,8 @@
                         <input type="checkbox" name="privacy" required> 
                         <span>
                             Ho letto e accetto la 
-                            <a href="policy.html" target="_blank" rel="noopener noreferrer">
+                            <a href="policy.html?action=close" target="_blank" rel="noopener noreferrer">
                                 Privacy Policy
-                                <span class="visually-hidden">(si apre in una nuova finestra)</span>
                             </a>
                         </span>
                     </label>
@@ -108,9 +108,9 @@
         <div class="footer-content">
             <small>
                 &copy; 2025 Tenuta al Morer - P.IVA 00000000000 <br>
-                <a href="policy.html"><span lang="en">Privacy Policy</span></a> | 
-                <a href="policy.html#privacy-policy"><span lang="en">Cookie Policy</span></a> | 
-                <a href="policy.html#accessibility">Accessibilità</a>
+                <a href="policy.html?return_to=registrazione.html"><span lang="en">Privacy Policy</span></a> | 
+                <a href="policy.html?return_to=registrazione.html#privacy-policy"><span lang="en">Cookie Policy</span></a> | 
+                <a href="policy.html?return_to=registrazione.html#accessibility">Accessibilità</a>
             </small>
         </div>
 
@@ -119,6 +119,6 @@
         </button>
     </footer>
 
-    <script src="scripts/script.js"></script>
+    <script src="../scripts/script.js"></script>
 </body>
 </html>
