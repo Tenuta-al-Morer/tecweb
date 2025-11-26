@@ -19,11 +19,10 @@ jobs:
         with:
           node-version: '18'
 
-      # Installiamo solo 'glob' perché per il W3C usiamo 'fetch' nativo
       - name: Installa dipendenze
         run: npm install glob
 
-      - name: Esegui Validazione URL Pubblici (API Diretta)
+      - name: Esegui Validazione URL Pubblici
         id: css-check
         continue-on-error: true 
         uses: actions/github-script@v6
@@ -35,28 +34,21 @@ jobs:
             const BASE_URL = 'https://tenuta-al-morer.github.io/tecweb/';
             const W3C_API = 'https://jigsaw.w3.org/css-validator/validator';
 
-            // Troviamo i file HTML locali
             const files = globLib.sync('**/*.html', { ignore: 'node_modules/**' });
             
-            console.log(`Trovate ${files.length} pagine. Inizio verifica diretta API W3C...`);
+            console.log(`Trovate ${files.length} pagine. Inizio verifica W3C...`);
             
             let hasErrors = false;
 
-            // Funzione helper per chiamare l'API
             const checkUrl = async (pageUrl, filePath) => {
-              // Costruiamo la chiamata API: output=json, profile=css3
               const apiUrl = `${W3C_API}?uri=${encodeURIComponent(pageUrl)}&output=json&profile=css3svg&usermedium=all&warning=1&lang=it`;
               
-              console.log(`Analizzo: ${pageUrl}`);
-
               try {
                 const response = await fetch(apiUrl, {
                   headers: { 'User-Agent': 'Mozilla/5.0 (GitHub Action)' }
                 });
 
-                if (!response.ok) {
-                  throw new Error(`W3C Server Error: ${response.status}`);
-                }
+                if (!response.ok) throw new Error(`W3C Server Error: ${response.status}`);
 
                 const data = await response.json();
                 const result = data.cssvalidation;
@@ -67,26 +59,26 @@ jobs:
                   console.log(`❌ ERRORI su: ${filePath}`);
                   hasErrors = true;
                   
-                  // Gestione array errori (a volte l'API cambia formato se c'è un solo errore)
                   const errors = Array.isArray(result.errors) ? result.errors : [result.errors];
                   
                   if (errors && errors.length > 0) {
                     errors.forEach(err => {
-                      // Pulizia del messaggio
                       const cleanMsg = err.message ? err.message.replace(/\s+/g, ' ').trim() : 'Errore generico';
-                      console.log(`   -> Riga ${err.line}: ${cleanMsg}`);
+                      // Se 'source' esiste usa quello, altrimenti è la pagina stessa
+                      const sourceUri = err.source ? err.source : pageUrl;
+                      
+                      // FORMATO RICHIESTO
+                      console.log(`URI : ${sourceUri}`);
+                      console.log(`   |-> : ${cleanMsg}`);
                     });
-                  } else {
-                     console.log(`   -> Errore generico rilevato (controlla output W3C manuale)`);
                   }
+                  console.log('--------------------------');
                 }
               } catch (e) {
-                console.log(`Errore durante la chiamata API per ${filePath}: ${e.message}`);
+                console.log(`Errore API per ${filePath}: ${e.message}`);
               }
             };
 
-            // Eseguiamo il ciclo
-            // Nota: Mettiamo un piccolo delay tra una chiamata e l'altra per educazione verso il server W3C
             const delay = ms => new Promise(res => setTimeout(res, ms));
 
             for (const file of files) {
@@ -94,7 +86,7 @@ jobs:
               const fullUrl = BASE_URL + cleanPath;
               
               await checkUrl(fullUrl, cleanPath);
-              await delay(500); // Mezzo secondo di pausa tra le richieste
+              await delay(500); 
             }
 
             if (hasErrors) {
