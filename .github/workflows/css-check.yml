@@ -37,7 +37,7 @@ jobs:
             // Troviamo i file HTML locali
             const files = globLib.sync('**/*.html', { ignore: 'node_modules/**' });
             
-            console.log(`🔍 Trovate ${files.length} pagine. Inizio verifica diretta API W3C...`);
+            console.log(`Trovate ${files.length} pagine. Inizio verifica diretta API W3C...`);
             
             let hasErrors = false;
 
@@ -78,7 +78,7 @@ jobs:
                       // Se l'errore è nel file HTML stesso, 'err.source' potrebbe essere vuoto, quindi usiamo pageUrl
                       const sourceUri = err.source ? err.source : pageUrl;
 
-                      // --- FORMATO RICHIESTO ---
+                      // --- FORMATO ---
                       console.log(`URI : ${sourceUri}`);
                       console.log(`   |-> : ${cleanMsg}`);
                       console.log(''); // Riga vuota per separare visivamente gli errori
@@ -107,5 +107,5 @@ jobs:
             if (hasErrors) {
               core.setFailed('Trovati errori CSS sulle pagine online.');
             } else {
-              console.log("🎉 Tutte le pagine online sono valide!");
+              console.log("Tutte le pagine online sono valide!");
             }
