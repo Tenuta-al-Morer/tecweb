@@ -156,15 +156,28 @@ a.logo-link:hover img {
 .mobile-icons a.is-visited::before {
     content: "";
     display: inline-block;
-    width: 0.6em;
-    height: 0.3em;
-    border-left: 3px solid var(--currentcolor);
-    border-bottom: 3px solid var(--currentcolor);
-    transform: rotate(-45deg);
+    width: 0.9em;    
+    height: 0.9em;
+    
+    vertical-align: middle;
+    margin-bottom: 0.2em; 
+    
+    background-image: url('../images/tic.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    border: none;
+    transform: none;
 }
 
 .primary-navigation a.is-visited::before {
-    margin-right: 0.5em;
+    margin-right: 0em;
+}
+
+.mobile-icons a.is-visited::before {
+    margin-left: 0.2em;
+    margin-right: 0.2em;
 }
 
 /* Mobile Icons */
