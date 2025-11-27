@@ -136,7 +136,7 @@ body.light-mode code {
     color: #000;
 }
 
-@media screen and (max-width: 930px) {
+@media screen and (max-width: 1040px) {
 
     .policy-table,
     .policy-table thead,

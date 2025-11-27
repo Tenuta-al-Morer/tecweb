@@ -57,7 +57,7 @@
 }
 
 /* MEDIA QUERY MOBILE PER HERO */
-@media screen and (max-width: 930px) {
+@media screen and (max-width: 1040px) {
     .hero-content h1 {
         font-size: 2.8rem;
     }
