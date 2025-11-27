@@ -1,10 +1,4 @@
-/* mini.css - Mobile Overrides */
-
-/*:root {} Non usiamo altri colori per ora o in generale variabili globali al mini.css */
-
-/* =============================
-   NAVBAR (Mobile)
-   ============================= */
+/* --- NAVBAR HEADER --- */
 .main-nav-bar {
     justify-content: center;
     align-items: flex-start;
@@ -14,9 +8,7 @@
     min-height: 4.5em;
 }
 
-/* --- MODIFICA LOGO PER MOBILE --- */
-
-/* 1. Il Link (Contenitore) gestisce la posizione al centro */
+/* Gestione Logo Centrale */
 .logo-link {
     z-index: 10;
     margin-left: auto;
@@ -28,15 +20,13 @@
     max-width: calc(100% - 7em); /* Lascia spazio ai bottoni laterali */
 }
 
-/* 2. L'immagine gestisce l'altezza */
 .logo-link img {
     height: 3.8em;
     width: auto;
     object-fit: contain;
 }
 
-/* -------------------------------- */
-
+/* --- HAMBURGER MENU BUTTON --- */
 .menu-toggle {
     display: block; 
     background: none;
@@ -69,6 +59,7 @@
     color: var(--currentcolor);
 }
 
+/* --- USER / CART ICONS (Mobile Position) --- */
 .mobile-icons {
     position: absolute;
     right: 1em;
@@ -91,9 +82,7 @@
     color: var(--currentcolor);
 }
 
-/* =============================
-   MENU DROPDOWN
-   ============================= */
+/* --- MENU DROPDOWN (Logica di apertura) --- */
 .primary-navigation {
     display: none; 
     background-color: var(--navbgcolor);
@@ -105,6 +94,7 @@
     box-shadow: none;
 }
 
+/* Classe aggiunta via JS per aprire il menu */
 .primary-navigation.is-open {
     display: block;
     animation: slideDown 0.3s ease-out;
@@ -130,6 +120,10 @@
     border-left: none;
 }
 
+.primary-navigation li:last-child {
+    border-bottom: none;
+}
+
 .primary-navigation a {
     display: block;
     padding: 1.2em;
@@ -141,20 +135,9 @@
     background-color: rgba(197, 165, 81, 0.1);
 }
 
-/* =============================
-   LAYOUT & CONTENUTO
-   ============================= */
+/* --- LAYOUT GENERALE & BREADCRUMB --- */
 main {
     padding: 1em 1.5em;
-}
-
-.hero-content h1 {
-    font-size: 2.2rem;
-}
-
-.hero-buttons {
-    flex-direction: column;
-    gap: 1em;
 }
 
 #breadcrumb {
@@ -170,98 +153,7 @@ main {
     height: 2.5em;
 }
 
-/* =============================
-   TABELLA -> CARDS (Responsive)
-   ============================= */
-.policy-table,
-.policy-table thead,
-.policy-table tbody,
-.policy-table th,
-.policy-table td,
-.policy-table tr {
-    display: block;
-}
-
-.policy-table {
-    min-width: 0 !important;
-    width: 100% !important;
-    box-shadow: none;
-    border: none;
-}
-
-.table-container {
-    width: 100%;
-    overflow: visible;
-    border: none;
-}
-
-.policy-table thead tr {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-}
-
-/* Default DARK MODE Styles per Cards */
-.policy-table tr {
-    border: 1px solid #333;
-    border-radius: 8px;
-    margin-bottom: 1.5em;
-    background-color: #1e1e1e;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-    padding: 0.5em;
-}
-
-.policy-table td {
-    border: none;
-    border-bottom: 1px solid #333;
-    position: relative;
-    padding: 0.5em 0;
-    text-align: left;
-}
-
-.policy-table td:last-child {
-    border-bottom: 0;
-}
-
-.policy-table td:nth-of-type(1) {
-    font-weight: 700;
-    color: var(--currentcolor);
-    font-size: 1.1em;
-    border-bottom: 2px solid #333;
-}
-
-/* Pseudo-elementi etichette */
-.policy-table td:nth-of-type(2)::before { content: "Tipologia: "; font-weight: 700; color: var(--diversity-color); }
-.policy-table td:nth-of-type(3)::before { content: "Destinatari: "; font-weight: 700; color: var(--diversity-color); }
-.policy-table td:nth-of-type(4)::before { content: "Consenso: "; font-weight: 700; color: var(--diversity-color); }
-
-
-/* =============================
-   LIGHT MODE OVERRIDES (Mobile)
-   ============================= */
-body.light-mode .policy-table tr {
-    background-color: #fff;
-    border-color: #ccc;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-body.light-mode .policy-table td {
-    border-bottom-color: #eee;
-}
-
-body.light-mode .policy-table td:nth-of-type(1) {
-    border-bottom-color: #eee;
-}
-
-body.light-mode .policy-table td:nth-of-type(2)::before,
-body.light-mode .policy-table td:nth-of-type(3)::before,
-body.light-mode .policy-table td:nth-of-type(4)::before {
-    color: #000;
-}
-
-/* =============================
-   FOOTER MOBILE
-   ============================= */
+/* --- FOOTER MOBILE --- */
 footer {
     display: flex;
     flex-direction: column;
@@ -282,38 +174,4 @@ footer {
 
 #theme-toggle:hover {
     transform: scale(1.2);
-}
-
-/* =============================
-   RESPONSIVE LOGIN & REGISTRAZIONE
-   ============================= */
-
-/* Riduco la dimensione del logo su schermi piccoli */
-.login-header-logo img {
-    height: 4.5em; 
-    padding-top: 0.5em;
-}
-
-.auth-container {
-    margin: 1rem auto;
-    padding: 1.5rem;
-    width: 90%; /* Occupa quasi tutto lo schermo */
-    max-width: none;
-}
-
-.auth-container h1 {
-    font-size: 1.6rem;
-}
-
-/* Le righe (es. Nome e Cognome) diventano colonna singola */
-.form-row {
-    flex-direction: column;
-    gap: 1rem;
-}
-
-/* Opzioni su più righe se lo schermo è molto stretto */
-.form-options {
-    flex-direction: column;
-    gap: 1rem;
-    align-items: flex-start;
 }

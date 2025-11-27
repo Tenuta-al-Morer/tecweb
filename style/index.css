@@ -1,0 +1,68 @@
+.hero {
+    background-image: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.80) 0%,
+            rgba(0, 0, 0, 0.50) 35%,
+            rgba(0, 0, 0, 0.30) 65%,
+            rgba(0, 0, 0, 0) 100%
+        ), url('../images/bg.webp');
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero a {
+    color: #fff;
+}
+
+.hero-content a:visited{
+    color: var(--currentcolor);
+}
+
+.hero-overlay {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    color: #fff;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    font-family: var(--font-title, sans-serif);
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* MEDIA QUERY MOBILE PER HERO */
+@media screen and (max-width: 930px) {
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

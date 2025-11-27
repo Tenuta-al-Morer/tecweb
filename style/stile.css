@@ -1,6 +1,3 @@
-/* =============================
-   RESET & VARIABILI (DEFAULT DARK)
-   ============================= */
 * {
     padding: 0;
     margin: 0;
@@ -40,9 +37,7 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* =============================
-   CONFIGURAZIONE LIGHT MODE (Giorno)
-   ============================= */
+/* --- LIGHT MODE --- */
 body.light-mode {
     --bodybgcolor: #fff;
     --txtcolor: #000;
@@ -54,9 +49,7 @@ body.light-mode {
     --table-stripe: #fff9e6;
 }
 
-/* =============================
-   UTILITIES & ACCESSIBILITÀ
-   ============================= */
+/* --- UTILITIES & ACCESSIBILITÀ --- */
 .visually-hidden,
 .navigationHelp {
     position: absolute;
@@ -74,9 +67,7 @@ a.navigationHelp:visited {
     color: var(--currentcolor);
 }
 
-/* =============================
-   NAVBAR
-   ============================= */
+/* --- NAVBAR PRINCIPALE --- */
 .main-nav-bar {
     color: var(--navtxtcolor);
     padding: 0.5em 1em;
@@ -158,15 +149,12 @@ a.logo-link:hover img {
     display: inline-block;
     width: 0.9em;    
     height: 0.9em;
-    
     vertical-align: middle;
     margin-bottom: 0.2em; 
-    
     background-image: url('../images/tic.webp');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-
     border: none;
     transform: none;
 }
@@ -202,11 +190,6 @@ a.logo-link:hover img {
     text-decoration: none;
 }
 
-.mobile-icons a.is-visited::before {
-    margin-left: 0.2em;
-    margin-right: 0.2em;
-}
-
 .mobile-icons a:hover {
     color: var(--currentcolor);
     transform: scale(1.1);
@@ -216,10 +199,7 @@ a.logo-link:hover img {
     display: none;
 }
 
-
-/* =============================
-   BREADCRUMB
-   ============================= */
+/* --- BREADCRUMB --- */
 #breadcrumb {
     flex-basis: 100%;
     background-color: var(--navbgcolor);
@@ -255,7 +235,6 @@ a.logo-link:hover img {
     letter-spacing: 0.05em;
 }
 
-/* Stile generico per tutte le icone dentro breadcrumb che seguono un link */
 .breadcrumb-container a i {
     color: var(--currentcolor);
     transition: all 0.3s ease;
@@ -265,68 +244,20 @@ a.logo-link:hover img {
     transform: scale(1.3);
 }
 
-/* =============================
-   MAIN & HERO
-   ============================= */
-.hero {
-    background-image: linear-gradient(
-            to top,
-            rgba(0, 0, 0, 0.80) 0%,
-            rgba(0, 0, 0, 0.50) 35%,
-            rgba(0, 0, 0, 0.30) 65%,
-            rgba(0, 0, 0, 0) 100%
-        ), url('../images/bg.webp');
-    min-height: 60vh;
+/* Fix per liste breadcrumb generiche */
+.breadcrumb-container ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-size: cover;
-    background-position: center;
 }
 
-.hero a {
-    color: #fff;
+.breadcrumb-container li {
+    display: inline-block;
 }
 
-.hero-content a:visited{
-    color: var(--currentcolor); /*DA CONTROLLARE: contrasto visited*/
-}
-
-.hero-overlay {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.hero-content {
-    color: #fff;
-    max-width: 800px;
-    padding: 20px;
-}
-
-.hero-content h1 {
-    font-family: var(--font-title, sans-serif);
-    font-size: 4.5rem;
-    line-height: 1.1;
-    margin-bottom: 20px;
-}
-
-.hero-content p {
-    font-size: 1.1rem;
-    margin-bottom: 40px;
-    font-weight: 300;
-}
-
-
-.hero-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-}
-
+/* --- LAYOUT GENERALE MAIN --- */
 main {
     color: var(--txtcolor);
     padding: 1em 2em 2em 3.5em;
@@ -343,9 +274,7 @@ main h2 {
     border-top: 2px solid var(--txtcolor);
 }
 
-/* =============================
-   FOOTER & THEME TOGGLE
-   ============================= */
+/* --- FOOTER & TOGGLES --- */
 footer {
     position: relative;
     text-align: center;
@@ -431,389 +360,4 @@ footer a:visited {
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(197, 165, 81, 0.4);
     outline: none;
-}
-
-/* =============================
-   POLITICHE (Tables & Content)
-   ============================= */
-.policy-nav-header {
-    padding: 1.5em 1.25em;
-    border-bottom: 1px solid var(--bordercolor);
-    background-color: var(--header-bg); /* Usa variabile per switch */
-}
-
-.btn-outline {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5em;
-    padding: 0.6em 1.2em;
-    border: 2px solid var(--currentcolor);
-    color: var(--txtcolor);
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    background-color: transparent;
-}
-
-.btn-outline:hover,
-.btn-outline:focus {
-    background-color: var(--currentcolor);
-    color: #fff;
-}
-
-.policy-content {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2em 20px;
-}
-
-.page-header h1 {
-    font-size: 2.5rem;
-    color: var(--currentcolor);
-    font-family: 'Lexend', sans-serif;
-    line-height: 1.25;
-}
-
-.page-header p {
-    font-size: 1.2rem;
-    color: var(--diversity-color);
-    margin-top: 0.5em;
-}
-
-.table-container {
-    overflow-x: auto;
-    margin-bottom: 2rem;
-    border: 1px solid var(--bordercolor);
-    border-radius: 5px;
-}
-
-.policy-table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 600px;
-}
-
-.policy-table th,
-.policy-table td {
-    padding: 1rem;
-    text-align: left;
-    border-bottom: 1px solid var(--bordercolor);
-}
-
-.policy-table th {
-    background-color: var(--header-bg); /* Switch automatico */
-    color: var(--txtcolor);
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 0.05em;
-}
-
-.policy-table tbody tr:hover {
-    background-color: var(--table-stripe); /* Switch automatico */
-}
-
-.policy-table td a {
-    color: var(--txtcolor);
-    font-weight: 700;
-    border-bottom: 2px solid transparent;
-    transition: all 0.3s ease;
-}
-
-.policy-table td a:hover,
-.policy-table td a:focus {
-    color: var(--currentcolor);
-}
-
-.policy-content article h2 {
-    color: var(--currentcolor);
-    border-top: none;
-    margin-top: 1.5rem;
-    font-size: 2rem;
-    line-height: 1.3;
-    margin-bottom: 0.2rem;
-    padding: 0;
-}
-
-.policy-content article h3 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    font-size: 1.3rem;
-    color: var(--diversity-color);
-}
-
-.policy-content article p {
-    margin-bottom: 1rem;
-    text-align: justify;
-}
-
-.policy-content article ul,
-.policy-content article ol {
-    margin-left: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.policy-content article li {
-    margin-bottom: 0.5rem;
-}
-
-code {
-    background-color: #333; /* Default dark background per code */
-    color: #fff;
-    padding: 0.2em 0.4em;
-    border-radius: 3px;
-    font-family: monospace;
-    font-size: 0.9em;
-}
-
-/* Override code per light mode */
-body.light-mode code {
-    background-color: #f4f4f4;
-    color: #000;
-}
-
-
-/* =============================
-   HEADER SPECIFICO (LOGIN/REGISTRAZIONE)
-   ============================= */
-.login-header-logo {
-    background-color: var(--navbgcolor);
-    text-align: center;
-    padding: 0.5em 0 0 0;
-    display: block;
-}
-
-.login-header-logo img {
-    height: 5em;
-    width: auto;
-    display: inline-block;
-    transition: transform 0.3s ease;
-}
-
-.login-header-logo a:hover img {
-    transform: scale(1.05);
-}
-
-/* Fix Breadcrumb */
-.breadcrumb-container ol {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center;
-}
-
-.breadcrumb-container li {
-    display: inline-block;
-}
-
-/* =============================
-   SEZIONE LOGIN & REGISTRAZIONE
-   ============================= */
-
-/* Contenitore centrale "Card" */
-.auth-container {
-    max-width: 450px;
-    margin: 2rem auto 0rem auto; 
-    padding: 2.5rem;
-    background-color: var(--header-bg);
-    border: 1px solid var(--bordercolor);
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    text-align: center;
-}
-
-.auth-container h1 {
-    font-size: 2rem;
-    color: var(--currentcolor);
-    margin-bottom: 0.5rem;
-}
-
-.auth-container p {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-    color: var(--diversity-color);
-}
-
-/* Accorpamento Flexbox Comuni */
-.auth-form, 
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.auth-form {
-    gap: 1.2rem;
-    text-align: left;
-}
-
-.form-group label {
-    margin-bottom: 0.4rem;
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--txtcolor);
-}
-
-/* --- GESTIONE PASSWORD & INPUT --- */
-
-/* Wrapper relativo per posizionare l'occhio */
-.password-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-/* Stile Input Unificato */
-.auth-form input:not([type="checkbox"]):not([type="radio"]) {
-    width: 100%; 
-    padding: 0.8rem;
-    background-color: transparent;
-    border: 1px solid var(--bordercolor);
-    border-radius: 4px;
-    color: var(--txtcolor);
-    font-family: inherit;
-    font-size: 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Colore Placeholder */
-.auth-form input::placeholder {
-    color: var(--diversity-color);
-    opacity: 1;
-}
-
-/* Padding extra a destra per le password per non coprire il testo con l'occhio */
-.password-wrapper input {
-    padding-right: 2.5rem; 
-}
-
-.auth-form input:focus {
-    outline: none;
-    border-color: var(--currentcolor);
-    box-shadow: 0 0 5px rgba(197, 165, 81, 0.3);
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px var(--header-bg) inset !important;
-    
-    /* Forza il colore del testo a quello del tuo tema */
-    -webkit-text-fill-color: var(--txtcolor) !important;
-    
-    /* Mantiene il bordo corretto */
-    border: 1px solid var(--bordercolor) !important;
-    
-    /* Mantiene il raggio del bordo */
-    border-radius: 4px;
-    
-    /* Mantiene la transizione fluida */
-    transition: background-color 5000s ease-in-out 0s;
-}
-
-input:-webkit-autofill:focus {
-    border-color: var(--currentcolor) !important;
-    -webkit-box-shadow: 0 0 0 30px var(--header-bg) inset, 0 0 5px rgba(197, 165, 81, 0.3) !important;
-}
-
-/* Bottone Occhio */
-.toggle-password {
-    position: absolute;
-    right: 10px;
-    background: none;
-    border: none;
-    color: var(--txtcolor);
-    cursor: pointer;
-    opacity: 0.7;
-    padding: 0.2rem;
-    display: flex;
-    align-items: center;
-    transition: opacity 0.3s;
-}
-
-.toggle-password:hover {
-    opacity: 1;
-    color: var(--currentcolor);
-}
-
-/* --- FINE GESTIONE PASSWORD --- */
-
-/* Layout Righe (Nome/Cognome) */
-.form-row {
-    display: flex;
-    gap: 1rem;
-}
-
-.form-row .form-group {
-    flex: 1;
-}
-
-/* Opzioni (Ricordami / Password dimenticata) */
-.form-options {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.9rem;
-    margin-top: -0.5rem;
-}
-
-.checkbox-container {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
-}
-
-/* Link Condivisi (Password dimenticata & Footer Auth) */
-/* AGGIUNTO: .checkbox-container a per il link Privacy dorato */
-.forgot-password,
-.auth-footer a,
-.checkbox-container a {
-    color: var(--diversity-color);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s;
-}
-
-/* Sovrascrive colore per renderlo DORATO */
-.auth-footer a,
-.checkbox-container a {
-    color: var(--currentcolor); 
-}
-
-.forgot-password:hover,
-.auth-footer a:hover,
-.checkbox-container a:hover {
-    color: var(--currentcolor);
-    text-decoration: underline;
-}
-
-/* Bottone Login */
-.btn-auth {
-    margin-top: 1rem;
-    padding: 1rem;
-    background-color: var(--currentcolor);
-    color: #000;
-    font-weight: 700;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.btn-auth:hover {
-    background-color: #e0be63;
-    transform: translateY(-2px);
-}
-
-/* Footer del Form */
-.auth-footer {
-    margin-top: 2rem;
-    font-size: 0.95rem;
-    border-top: 1px solid var(--bordercolor);
-    padding-top: 1.5rem;
 }

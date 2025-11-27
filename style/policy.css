@@ -1,0 +1,225 @@
+.policy-nav-header {
+    padding: 1.5em 1.25em;
+    border-bottom: 1px solid var(--bordercolor);
+    background-color: var(--header-bg);
+}
+
+.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.6em 1.2em;
+    border: 2px solid var(--currentcolor);
+    color: var(--txtcolor);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    background-color: transparent;
+}
+
+.btn-outline:hover,
+.btn-outline:focus {
+    background-color: var(--currentcolor);
+    color: #fff;
+}
+
+.policy-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2em 20px;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    color: var(--currentcolor);
+    font-family: 'Lexend', sans-serif;
+    line-height: 1.25;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    color: var(--diversity-color);
+    margin-top: 0.5em;
+}
+
+/* --- TABELLE --- */
+.table-container {
+    overflow-x: auto;
+    margin-bottom: 2rem;
+    border: 1px solid var(--bordercolor);
+    border-radius: 5px;
+}
+
+.policy-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.policy-table th,
+.policy-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--bordercolor);
+}
+
+.policy-table th {
+    background-color: var(--header-bg);
+    color: var(--txtcolor);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+}
+
+.policy-table tbody tr:hover {
+    background-color: var(--table-stripe);
+}
+
+.policy-table td a {
+    color: var(--txtcolor);
+    font-weight: 700;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.policy-table td a:hover,
+.policy-table td a:focus {
+    color: var(--currentcolor);
+}
+
+/* --- FORMATTAZIONE ARTICOLI --- */
+.policy-content article h2 {
+    color: var(--currentcolor);
+    border-top: none;
+    margin-top: 1.5rem;
+    font-size: 2rem;
+    line-height: 1.3;
+    margin-bottom: 0.2rem;
+    padding: 0;
+}
+
+.policy-content article h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    color: var(--diversity-color);
+}
+
+.policy-content article p {
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+.policy-content article ul,
+.policy-content article ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.policy-content article li {
+    margin-bottom: 0.5rem;
+}
+
+code {
+    background-color: #333;
+    color: #fff;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 0.9em;
+}
+
+body.light-mode code {
+    background-color: #f4f4f4;
+    color: #000;
+}
+
+@media screen and (max-width: 930px) {
+
+    .policy-table,
+    .policy-table thead,
+    .policy-table tbody,
+    .policy-table th,
+    .policy-table td,
+    .policy-table tr {
+        display: block;
+    }
+
+    .policy-table {
+        min-width: 0 !important;
+        width: 100% !important;
+        box-shadow: none;
+        border: none;
+    }
+
+    .table-container {
+        width: 100%;
+        overflow: visible;
+        border: none;
+    }
+
+    /* Nascondo intestazione classica */
+    .policy-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    /* Card Style (Dark Mode Default) */
+    .policy-table tr {
+        border: 1px solid #333;
+        border-radius: 8px;
+        margin-bottom: 1.5em;
+        background-color: #1e1e1e;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        padding: 0.5em;
+    }
+
+    .policy-table td {
+        border: none;
+        border-bottom: 1px solid #333;
+        position: relative;
+        padding: 0.5em 0;
+        text-align: left;
+    }
+
+    .policy-table td:last-child {
+        border-bottom: 0;
+    }
+
+    /* Prima riga diventa titolo card */
+    .policy-table td:nth-of-type(1) {
+        font-weight: 700;
+        color: var(--currentcolor);
+        font-size: 1.1em;
+        border-bottom: 2px solid #333;
+    }
+
+    /* Etichette generate via CSS */
+    .policy-table td:nth-of-type(2)::before { content: "Tipologia: "; font-weight: 700; color: var(--diversity-color); }
+    .policy-table td:nth-of-type(3)::before { content: "Destinatari: "; font-weight: 700; color: var(--diversity-color); }
+    .policy-table td:nth-of-type(4)::before { content: "Consenso: "; font-weight: 700; color: var(--diversity-color); }
+
+    /* Light Mode Overrides SPECIFICI per Tabella Mobile */
+    body.light-mode .policy-table tr {
+        background-color: #fff;
+        border-color: #ccc;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    body.light-mode .policy-table td {
+        border-bottom-color: #eee;
+    }
+
+    body.light-mode .policy-table td:nth-of-type(1) {
+        border-bottom-color: #eee;
+    }
+
+    body.light-mode .policy-table td:nth-of-type(2)::before,
+    body.light-mode .policy-table td:nth-of-type(3)::before,
+    body.light-mode .policy-table td:nth-of-type(4)::before {
+        color: #000;
+    }
+}
