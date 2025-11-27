@@ -87,19 +87,28 @@ a.navigationHelp:visited {
     flex-wrap: nowrap;
 }
 
-.main-nav-bar img {
-    height: auto;           
-    max-height: 4.2em;      
-    width: auto;          
-    flex: 0 1 auto;        
-    flex-shrink: 100;       
-    min-width: 0;          
-    object-fit: contain;   
-    
-    order: 1; 
+.logo-link {
+    order: 1;              
     margin-right: auto;     
-    padding-right: 0.5em;   
-    transition: all 0.3s ease;
+    flex: 0 1 auto;          
+    flex-shrink: 100;
+    min-width: 0;
+    padding-right: 0.5em;
+    display: flex;          
+    align-items: center;
+    text-decoration: none;  
+}
+
+.logo-link img {
+    height: auto;
+    max-height: 4.2em;       
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+a.logo-link:hover img {
+    transform: scale(1.05);
 }
 
 .primary-navigation {
@@ -193,6 +202,7 @@ a.navigationHelp:visited {
 .menu-toggle {
     display: none;
 }
+
 
 /* =============================
    BREADCRUMB
