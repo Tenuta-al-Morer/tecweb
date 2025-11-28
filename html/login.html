@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../style/stile.css" media="screen"> 
-    <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:1040px)">
+    <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:940px)">
     <link rel="stylesheet" href="../style/stampa.css" media="print"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../style/auth.css" media="screen">
@@ -33,14 +33,20 @@
             </a>
         </div>
 
-        <nav id="breadcrumb" aria-label="Posizione nella pagina">
-            <div class="breadcrumb-container">
-                <span>Ti trovi in: </span>
-                <a href="../index.html"><i class="fas fa-home home-icon" aria-hidden="true"></i></a> &gt;
-                <span class="current-page">Login</span>
-                <i class="fas fa-user contact-icon" aria-hidden="true"></i> 
-            </div>
-        </nav>
+        <div class="sub-header">
+            <nav id="breadcrumb" aria-label="Posizione nella pagina">
+                <div class="breadcrumb-container">
+                    <span>Ti trovi in: </span>
+                    <a href="../index.html"><i class="fas fa-home home-icon" aria-hidden="true"></i></a> &gt;
+                    <span class="current-page">Login</span>
+                    <i class="fas fa-user contact-icon" aria-hidden="true"></i> 
+                </div>
+            </nav>
+
+            <button id="theme-toggle" aria-label="Cambia modalità scura e chiara">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
     </header>
 
     <main id="content">  
@@ -89,10 +95,6 @@
                 <a href="policy.html?return_to=login.html#accessibility">Accessibilità</a>
             </small>
         </div>
-
-        <button id="theme-toggle" aria-label="Attiva modalità scura o chiara">
-            <i class="fas fa-moon" aria-hidden="true"></i>
-        </button>
     </footer>
 
     <script src="../scripts/script.js"></script>

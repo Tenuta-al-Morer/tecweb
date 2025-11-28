@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* ==========================================
+/* ==========================================
      * 2. MENU DI NAVIGAZIONE
      * ========================================== */
     const menuButton = document.querySelector('.menu-toggle');
@@ -90,10 +90,12 @@ document.addEventListener('DOMContentLoaded', () => {
             menuButton.setAttribute('aria-expanded', 'false');
         };
 
+        // --- GESTIONE CLICK (Pulsante e Click Fuori) ---
         document.addEventListener('click', (e) => {
             const clickTarget = e.target;
             const isMenuOpen = navMenu.classList.contains('is-open');
 
+            // Click sul pulsante hamburger
             if (clickTarget.closest('.menu-toggle')) {
                 e.preventDefault(); 
                 if (isMenuOpen) {
@@ -104,12 +106,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 return; 
             }
 
+            // Click fuori dal menu
             if (isMenuOpen && !clickTarget.closest('#main-navigation')) {
                 chiudiMenu();
             }
         });
-    }
 
+        // --- NUOVO: CHIUSURA ALLO SCROLL ---
+        window.addEventListener('scroll', () => {
+            // Controlla se il menu è aperto. Se sì, chiudilo.
+            if (navMenu.classList.contains('is-open')) {
+                chiudiMenu();
+            }
+        }, { passive: true }); // "passive: true" migliora le performance dello scroll
+    }
 
     /* ==========================================
      * 3. UTILITIES (Back button, Scroll top, Links)

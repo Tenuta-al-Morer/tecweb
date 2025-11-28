@@ -1,3 +1,8 @@
+/* =============================
+   1. STILE.CSS - GLOBALE (DESKTOP FIRST)
+   ============================= */
+
+/* --- RESET & VARIABILI --- */
 * {
     padding: 0;
     margin: 0;
@@ -79,21 +84,27 @@ a.navigationHelp:visited {
 }
 
 .logo-link {
-    order: 1;              
-    margin-right: auto;     
-    flex: 0 1 auto;          
-    flex-shrink: 100;
-    min-width: 0;
-    padding-right: 0.5em;
-    display: flex;          
+    /* Logica Flex per Desktop */
+    flex: 0 1 auto;         
+    flex-shrink: 100;    
+    min-width: 0;         
+    
+    order: 1; 
+    margin-right: auto;    
+    padding-right: 0.5em;   
+    
+    display: flex;
     align-items: center;
-    text-decoration: none;  
 }
 
 .logo-link img {
     height: auto;
-    max-height: 4.2em;       
     width: auto;
+    
+    /* Dimensioni desktop */
+    max-height: 4.2em;      
+    max-width: 100%;        
+    
     object-fit: contain;
     transition: transform 0.3s ease;
 }
@@ -168,7 +179,7 @@ a.logo-link:hover img {
     margin-right: 0.2em;
 }
 
-/* Mobile Icons */
+/* Mobile Icons (Desktop: Shop e User) */
 .mobile-icons {
     order: 3;
     display: flex;
@@ -199,16 +210,33 @@ a.logo-link:hover img {
     display: none;
 }
 
-/* --- BREADCRUMB --- */
-#breadcrumb {
-    flex-basis: 100%;
+/* =============================
+   SUB-HEADER (Striscia sotto il menu)
+   Contiene Breadcrumb a SX e Toggle a DX
+   ============================= */
+.sub-header {
+    width: 100%;
     background-color: var(--navbgcolor);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 0.4em 1em;
+    
+    /* Questo allinea i due figli ai lati opposti */
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+
+/* --- BREADCRUMB (Sinistra) --- */
+#breadcrumb {
+    /* Rimuoviamo sfondi e bordi perché ora sono nel padre (.sub-header) */
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    
     font-family: 'Lexend', sans-serif;
     font-size: 0.95rem;
-    display: flex;
-    align-items: center;
+    flex-grow: 1; /* Occupa lo spazio disponibile */
 }
 
 .breadcrumb-container {
@@ -257,6 +285,33 @@ a.logo-link:hover img {
     display: inline-block;
 }
 
+/* --- TASTO TEMA (Destra) --- */
+#theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    
+    /* Stile testo/icona coerente con breadcrumb */
+    color: var(--navtxtcolor); 
+    opacity: 0.8;
+    
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+#theme-toggle:hover {
+    color: var(--currentcolor);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+#theme-toggle i {
+    pointer-events: none;
+}
+
 /* --- LAYOUT GENERALE MAIN --- */
 main {
     color: var(--txtcolor);
@@ -274,7 +329,7 @@ main h2 {
     border-top: 2px solid var(--txtcolor);
 }
 
-/* --- FOOTER & TOGGLES --- */
+/* --- FOOTER --- */
 footer {
     position: relative;
     text-align: center;
@@ -295,34 +350,7 @@ footer a:visited {
     color: var(--currentcolor);
 }
 
-/* --- STILE TASTO TEMA (HEADER) --- */
-#theme-toggle {
-    background: none;
-    border: none;
-    border-left: 1px solid rgba(255, 255, 255, 0.3); 
-    padding-left: 0.5em;       
-    border-radius: 0;        
-    
-    cursor: pointer;
-    color: var(--navtxtcolor); 
-    font-size: 1.3em;       
-    
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    
-    transition: color 0.3s ease; 
-}
-
-#theme-toggle:hover {
-    color: var(--currentcolor);
-}
-
-#theme-toggle i {
-    pointer-events: none;
-}
-
-
+/* --- BACK TO TOP BUTTON --- */
 #backToTopBtn {
     position: fixed;
     bottom: 4em;

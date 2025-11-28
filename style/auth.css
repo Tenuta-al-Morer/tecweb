@@ -208,39 +208,8 @@ footer {
     position: relative; 
 }
 
-#theme-toggle {
-    position: absolute;
-    left: 2em;       
-    top: 50%;          
-    transform: translateY(-50%);
-    
-    border: none;      
-    padding: 0;         
-    background: none;
-    
-    font-size: 1.4em;
-    color: var(--navtxtcolor);
-    cursor: pointer;
-    
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
 
-#theme-toggle:hover {
-    color: var(--currentcolor);
-    transform: translateY(-50%); 
-}
-
-#theme-toggle i {
-    transition: transform 0.3s ease;
-}
-
-#theme-toggle:hover i {
-    transform: scale(1.2);
-}
-
-@media screen and (max-width: 1040px) {
+@media screen and (max-width: 940px) {
     
     .login-header-logo img {
         height: 4.5em; 
@@ -271,17 +240,5 @@ footer {
 
     footer {
         padding-bottom: 3.5em; /* Facciamo spazio sotto */
-    }
-    
-    #theme-toggle {
-        /* Lo spostiamo al centro in basso */
-        left: 50%;
-        top: auto;
-        bottom: 10px;
-        transform: translateX(-50%);
-    }
-    
-    #theme-toggle:hover {
-        transform: translateX(-50%);
     }
 }

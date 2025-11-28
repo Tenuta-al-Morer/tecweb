@@ -18,7 +18,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
         <link rel="stylesheet" href="../style/stile.css" media="screen"> 
-        <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:1040px)"> 
+        <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:940px)"> 
         <link rel="stylesheet" href="../style/stampa.css" media="print">  
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="../style/vini.css" media="screen"> 
@@ -52,21 +52,25 @@
                 <div class="mobile-icons">
                     <a href="shop.html" aria-label="Shop"><i class="fas fa-shopping-bag"></i></a>
                     <a href="login.html" aria-label="Accedi"><i class="fas fa-user"></i></a>
-
-                    <button id="theme-toggle" aria-label="Cambia modalità scura e chiara">
-                        <i class="fas fa-moon"></i>
-                    </button>
                 </div>
             </div>
 
-            <nav id="breadcrumb" aria-label="Posizione nella pagina">
-                <div class="breadcrumb-container">
-                    <span>Ti trovi in: </span>
-                    <a href="../index.html"><i class="fas fa-home home-icon" aria-hidden="true"></i></a> &gt;
-                    <span class="current-page">I vini</span>
-                    <i class="fas fa-wine-glass wine-icon"></i> 
-                </div>
-            </nav>
+            
+
+            <div class="sub-header">
+                <nav id="breadcrumb" aria-label="Posizione nella pagina">
+                    <div class="breadcrumb-container">
+                        <span>Ti trovi in: </span>
+                        <a href="../index.html"><i class="fas fa-home home-icon" aria-hidden="true"></i></a> &gt;
+                        <span class="current-page">I vini</span>
+                        <i class="fas fa-wine-glass wine-icon"></i> 
+                    </div>
+                </nav>
+
+                <button id="theme-toggle" aria-label="Cambia modalità scura e chiara">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
         </header>
 
         <main id="content">  
@@ -82,10 +86,6 @@
                     <a href="policy.html?return_to=vini.html#accessibility">Accessibilità</a>
                 </small>
             </div>
-
-            <button id="theme-toggle" aria-label="Cambia modalità scura e chiara">
-                <i class="fas fa-moon" aria-hidden="true"></i>
-            </button>
         </footer>
 
         <button id="backToTopBtn" aria-label="Torna all'inizio della pagina">

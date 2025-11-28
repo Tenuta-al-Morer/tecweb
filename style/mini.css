@@ -1,100 +1,143 @@
-/* --- NAVBAR HEADER --- */
+/* =============================
+   MINI.CSS - HEADER MOBILE OTTIMIZZATO
+   Logica: [Hamburger] - [Logo Elastico] - [Icone]
+   ============================= */
+
+/* --- CONTENITORE PRINCIPALE --- */
 .main-nav-bar {
-    justify-content: center;
-    align-items: flex-start;
-    position: relative;
-    padding: 0;
-    flex-wrap: wrap;
-    min-height: 4.5em;
-}
-
-/* Gestione Logo Centrale */
-.logo-link {
-    z-index: 10;
-    margin-left: auto;
-    margin-right: auto;
-    order: unset;
-    flex-grow: 0;
+    /* Usiamo Flexbox per gestire lo spazio orizzontale */
     display: flex;
-    align-items: center;
-    max-width: calc(100% - 7em); /* Lascia spazio ai bottoni laterali */
+    align-items: center; /* Centra verticalmente tutto */
+    justify-content: space-between; /* Spinge gli elementi ai lati */
+    
+    position: relative;
+    padding: 0 0.5em; /* Un po' di aria ai lati estremi */
+    min-height: 4.5em;
+    background-color: var(--navbgcolor);
+    flex-wrap: nowrap; /* IMPORTANTE: Non andare a capo */
 }
 
-.logo-link img {
-    height: 3.8em;
-    width: auto;
-    object-fit: contain;
-}
-
-/* --- HAMBURGER MENU BUTTON --- */
+/* --- 1. MENU HAMBURGER (Sinistra) --- */
 .menu-toggle {
+    /* Non deve schiacciarsi mai */
+    flex: 0 0 auto; 
+    
     display: block; 
     background: none;
     border: none;
     cursor: pointer;
     padding: 10px;
-    z-index: 1000;
-    position: absolute;
-    left: 0.5em;
-    top: 1.5em;
-    transform: translateY(-50%);
     margin: 0;
+    
+    /* Reset vecchi posizionamenti */
+    position: static; 
+    transform: none;
+    z-index: 1000;
+    
     font-size: 1.5rem;
     color: var(--navtxtcolor);
     transition: color 0.3s ease;
 }
 
-.menu-toggle:focus {
-    outline: none;
+.menu-toggle:focus { outline: none; }
+.menu-toggle:hover, .menu-toggle[aria-expanded="true"] { color: var(--currentcolor); }
+
+
+/* --- 2. LOGO CENTRALE (Elastico) --- */
+.logo-link {
+    /* Questo elemento occupa tutto lo spazio rimasto al centro */
+    flex: 1 1 auto; 
+    
+    /* Centra l'immagine al suo interno */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Margini di sicurezza per non toccare le icone laterali */
+    margin: 0 0.5em; 
+    
+    /* Permette di rimpicciolirsi sotto la dimensione minima se necessario */
+    min-width: 0; 
+    z-index: 10;
 }
 
-.menu-toggle:focus-visible {
-    outline: 3px solid;
-    outline-offset: 3px;
-    border-radius: 4px;
+.logo-link img {
+    /* Altezza massima desiderata */
+    max-height: 3.8em; 
+    
+    /* FLUIDITÀ VERA: L'immagine non supera mai la larghezza disponibile */
+    max-width: 100%; 
+    height: auto;
+    width: auto;
+    
+    object-fit: contain;
 }
 
-.menu-toggle:hover,
-.menu-toggle[aria-expanded="true"] {
-    color: var(--currentcolor);
-}
 
-/* --- USER / CART ICONS (Mobile Position) --- */
+/* --- 3. ICONE SHOP/LOGIN (Destra) --- */
 .mobile-icons {
-    position: absolute;
-    right: 1em;
-    top: 2.25em;
-    transform: translateY(-50%);
-    gap: 1.2em;
+    /* Non deve schiacciarsi mai */
+    flex: 0 0 auto; 
+    
+    display: flex;
+    align-items: center;
+    gap: 1em; /* Spazio tra le icone */
+    
+    /* Reset vecchi posizionamenti */
+    position: static; 
+    transform: none;
     z-index: 1000;
-    border-left: none;
-    margin-left: 0;
-    padding-left: 0;
+    
+    border: none;
+    padding: 0;
+    margin: 0;
 }
 
 .mobile-icons a {
-    font-size: 1.0em;
+    font-size: 1.1em;
     text-decoration: none;
+    color: var(--navtxtcolor);
+    display: flex; /* Centra l'icona nel link */
 }
 
-.mobile-icons a:hover, 
-.mobile-icons a:focus {
-    color: var(--currentcolor);
+.mobile-icons a:hover, .mobile-icons a:focus { color: var(--currentcolor); }
+
+
+/* --- LOGICA DI CAMBIO LOGO (Responsive) --- */
+@media screen and (max-width: 400px) {
+    .logo-link img {
+        /* Cambio immagine per schermi stretti */
+        content: url('../images/logoCorto.png');
+        max-height: 4em; /* Un po' più alto perché è quadrato */
+    }
 }
 
-/* --- MENU DROPDOWN (Logica di apertura) --- */
+@media screen and (max-width: 330px) {
+    .logo-link img {
+        content: url('../images/logoAlbero.svg');
+        max-height: 4em; 
+    }
+}
+
+
+/* =============================
+   MENU A TENDINA (Dropdown)
+   ============================= */
 .primary-navigation {
     display: none; 
-    background-color: var(--navbgcolor);
     width: 100%;
-    position: relative;
-    order: 999;
-    z-index: 999;
+    
+    /* Si sgancia dal flusso flex e si posiziona sotto */
+    position: absolute; 
+    top: 100%; /* Esattamente sotto la navbar */
+    left: 0;
+    
+    background-color: var(--navbgcolor);
     border-top: 1px solid var(--currentcolor);
-    box-shadow: none;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+    z-index: 999;
 }
 
-/* Classe aggiunta via JS per aprire il menu */
 .primary-navigation.is-open {
     display: block;
     animation: slideDown 0.3s ease-out;
@@ -111,6 +154,7 @@
     align-items: stretch;
     text-align: center;
     padding: 0;
+    margin: 0;
 }
 
 .primary-navigation li {
@@ -120,28 +164,25 @@
     border-left: none;
 }
 
-.primary-navigation li:last-child {
-    border-bottom: none;
-}
-
 .primary-navigation a {
     display: block;
     padding: 1.2em;
     font-size: 1.1em;
 }
 
-.primary-navigation a:hover,
+.primary-navigation a:hover, 
 .primary-navigation a:focus {
     background-color: rgba(197, 165, 81, 0.1);
 }
 
-/* --- LAYOUT GENERALE & BREADCRUMB --- */
-main {
-    padding: 1em 1.5em;
-}
+
+/* =============================
+   LAYOUT & FOOTER
+   ============================= */
+main { padding: 1em 1.5em; }
 
 #breadcrumb {
-    padding: 0.5em 1.5em;
+    padding: 0.2em 0.4em;
     font-size: 0.8rem;
     justify-content: center;
 }
@@ -153,7 +194,6 @@ main {
     height: 2.5em;
 }
 
-/* --- FOOTER MOBILE --- */
 footer {
     display: flex;
     flex-direction: column;
@@ -164,11 +204,8 @@ footer {
 
 #theme-toggle {
     position: static;
-    left: auto;
-    top: auto;
     transform: none;
     margin-top: 0.25em;
-    font-size: 1.6em;
     opacity: 1;
 }
 

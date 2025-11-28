@@ -1,46 +1,131 @@
+/* =============================
+   POLICY.CSS - STILI SPECIFICI
+   ============================= */
+
+/* --- HEADER E SPAZIATURA --- */
 .policy-nav-header {
-    padding: 1.5em 1.25em;
-    border-bottom: 1px solid var(--bordercolor);
-    background-color: var(--header-bg);
+    background-color: var(--header-bg); 
+    padding-top: 1.5em; 
+    padding-bottom: 0; /* Togliamo padding sotto per la breadcrumb */
 }
 
+/* Bottone "Pagina precedente" */
+.policy-nav-header > nav:first-of-type {
+    padding-left: 1.25em; 
+    padding-right: 1.25em;
+    margin-bottom: 1.5em; /* Spazio sotto il bottone */
+}
+
+/* Stile bottone */
 .btn-outline {
     display: inline-flex;
     align-items: center;
     gap: 0.5em;
-    padding: 0.6em 1.2em;
-    border: 2px solid var(--currentcolor);
+    padding: 0.5em 0.8em;
+    border: 1px solid var(--bordercolor);
     color: var(--txtcolor);
     text-decoration: none;
-    border-radius: 5px;
-    font-weight: 600;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 1.3rem;
     transition: all 0.3s ease;
     background-color: transparent;
 }
 
 .btn-outline:hover,
 .btn-outline:focus {
-    background-color: var(--currentcolor);
-    color: #fff;
+    border-color: var(--currentcolor);
+    color: var(--currentcolor);
+    background-color: rgba(197, 165, 81, 0.1);
 }
 
+/* --- BREADCRUMB SNELLA (SUB-HEADER) --- */
+.policy-nav-header .sub-header {
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    padding-left: 1.25em;
+    padding-right: 1.25em;
+    background-color: var(--navbgcolor); 
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.policy-nav-header #breadcrumb {
+    font-size: 0.85rem; 
+    opacity: 0.9;
+}
+
+.policy-nav-header #theme-toggle {
+    font-size: 1rem; 
+}
+
+/* --- CONTENUTO PAGINA --- */
 .policy-content {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 2em 20px;
+    padding: 3em 20px;
 }
 
 .page-header h1 {
     font-size: 2.5rem;
     color: var(--currentcolor);
     font-family: 'Lexend', sans-serif;
-    line-height: 1.25;
+    line-height: 1.2;
+    margin-bottom: 0.5em;
 }
 
 .page-header p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--diversity-color);
     margin-top: 0.5em;
+    line-height: 1.6;
+    max-width: 800px;
+}
+
+/* --- FORMATTAZIONE TESTI --- */
+.policy-content article h2 {
+    color: var(--currentcolor);
+    border-top: none;
+    margin-top: 1.5rem;
+    font-size: 2rem;
+    line-height: 1.3;
+    margin-bottom: 0.2rem;
+    padding: 0;
+}
+
+.policy-content article h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    color: var(--diversity-color);
+}
+
+.policy-content article p {
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+.policy-content article ul,
+.policy-content article ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.policy-content article li {
+    margin-bottom: 0.5rem;
+}
+
+code {
+    background-color: #333;
+    color: #fff;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 0.9em;
+}
+
+body.light-mode code {
+    background-color: #f4f4f4;
+    color: #000;
 }
 
 /* --- TABELLE --- */
@@ -89,55 +174,25 @@
     color: var(--currentcolor);
 }
 
-/* --- FORMATTAZIONE ARTICOLI --- */
-.policy-content article h2 {
-    color: var(--currentcolor);
-    border-top: none;
-    margin-top: 1.5rem;
-    font-size: 2rem;
-    line-height: 1.3;
-    margin-bottom: 0.2rem;
-    padding: 0;
-}
+/* =============================
+   MEDIA QUERY MOBILE
+   ============================= */
+@media screen and (max-width: 940px) {
+    
+    /* Padding Header Mobile */
+    .policy-nav-header .sub-header {
+        padding: 0.5em 1em; 
+    }
+    
+    .policy-content {
+        padding-top: 2em;
+    }
+    
+    .page-header h1 {
+        font-size: 2rem;
+    }
 
-.policy-content article h3 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    font-size: 1.3rem;
-    color: var(--diversity-color);
-}
-
-.policy-content article p {
-    margin-bottom: 1rem;
-    text-align: justify;
-}
-
-.policy-content article ul,
-.policy-content article ol {
-    margin-left: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.policy-content article li {
-    margin-bottom: 0.5rem;
-}
-
-code {
-    background-color: #333;
-    color: #fff;
-    padding: 0.2em 0.4em;
-    border-radius: 3px;
-    font-family: monospace;
-    font-size: 0.9em;
-}
-
-body.light-mode code {
-    background-color: #f4f4f4;
-    color: #000;
-}
-
-@media screen and (max-width: 1040px) {
-
+    /* --- TRASFORMAZIONE TABELLA IN CARDS --- */
     .policy-table,
     .policy-table thead,
     .policy-table tbody,
@@ -160,14 +215,12 @@ body.light-mode code {
         border: none;
     }
 
-    /* Nascondo intestazione classica */
     .policy-table thead tr {
         position: absolute;
         top: -9999px;
         left: -9999px;
     }
 
-    /* Card Style (Dark Mode Default) */
     .policy-table tr {
         border: 1px solid #333;
         border-radius: 8px;
@@ -189,7 +242,6 @@ body.light-mode code {
         border-bottom: 0;
     }
 
-    /* Prima riga diventa titolo card */
     .policy-table td:nth-of-type(1) {
         font-weight: 700;
         color: var(--currentcolor);
@@ -202,7 +254,7 @@ body.light-mode code {
     .policy-table td:nth-of-type(3)::before { content: "Destinatari: "; font-weight: 700; color: var(--diversity-color); }
     .policy-table td:nth-of-type(4)::before { content: "Consenso: "; font-weight: 700; color: var(--diversity-color); }
 
-    /* Light Mode Overrides SPECIFICI per Tabella Mobile */
+    /* Light Mode Overrides per Cards */
     body.light-mode .policy-table tr {
         background-color: #fff;
         border-color: #ccc;
