@@ -1,25 +1,20 @@
-/* =============================
-   MINI.CSS - HEADER MOBILE OTTIMIZZATO
-   Logica: [Hamburger] - [Logo Elastico] - [Icone]
-   ============================= */
-
 /* --- CONTENITORE PRINCIPALE --- */
 .main-nav-bar {
-    /* Usiamo Flexbox per gestire lo spazio orizzontale */
+    
     display: flex;
-    align-items: center; /* Centra verticalmente tutto */
-    justify-content: space-between; /* Spinge gli elementi ai lati */
+    align-items: center; 
+    justify-content: space-between; 
     
     position: relative;
-    padding: 0 0.5em; /* Un po' di aria ai lati estremi */
+    padding: 0 0.5em; 
     min-height: 4.5em;
     background-color: var(--navbgcolor);
-    flex-wrap: nowrap; /* IMPORTANTE: Non andare a capo */
+    flex-wrap: nowrap; 
 }
 
 /* --- 1. MENU HAMBURGER (Sinistra) --- */
 .menu-toggle {
-    /* Non deve schiacciarsi mai */
+    
     flex: 0 0 auto; 
     
     display: block; 
@@ -29,7 +24,7 @@
     padding: 10px;
     margin: 0;
     
-    /* Reset vecchi posizionamenti */
+    
     position: static; 
     transform: none;
     z-index: 1000;
@@ -45,27 +40,27 @@
 
 /* --- 2. LOGO CENTRALE (Elastico) --- */
 .logo-link {
-    /* Questo elemento occupa tutto lo spazio rimasto al centro */
+    
     flex: 1 1 auto; 
     
-    /* Centra l'immagine al suo interno */
+    
     display: flex;
     justify-content: center;
     align-items: center;
     
-    /* Margini di sicurezza per non toccare le icone laterali */
+    
     margin: 0 0.5em; 
     
-    /* Permette di rimpicciolirsi sotto la dimensione minima se necessario */
+    
     min-width: 0; 
     z-index: 10;
 }
 
 .logo-link img {
-    /* Altezza massima desiderata */
+    
     max-height: 3.8em; 
     
-    /* FLUIDITÀ VERA: L'immagine non supera mai la larghezza disponibile */
+    
     max-width: 100%; 
     height: auto;
     width: auto;
@@ -76,14 +71,14 @@
 
 /* --- 3. ICONE SHOP/LOGIN (Destra) --- */
 .mobile-icons {
-    /* Non deve schiacciarsi mai */
+    
     flex: 0 0 auto; 
     
     display: flex;
     align-items: center;
-    gap: 1em; /* Spazio tra le icone */
+    gap: 1em; 
     
-    /* Reset vecchi posizionamenti */
+    
     position: static; 
     transform: none;
     z-index: 1000;
@@ -97,7 +92,7 @@
     font-size: 1.1em;
     text-decoration: none;
     color: var(--navtxtcolor);
-    display: flex; /* Centra l'icona nel link */
+    display: flex; 
 }
 
 .mobile-icons a:hover, .mobile-icons a:focus { color: var(--currentcolor); }
@@ -106,9 +101,9 @@
 /* --- LOGICA DI CAMBIO LOGO (Responsive) --- */
 @media screen and (max-width: 400px) {
     .logo-link img {
-        /* Cambio immagine per schermi stretti */
+        
         content: url('../images/logoCorto.png');
-        max-height: 4em; /* Un po' più alto perché è quadrato */
+        max-height: 4em; 
     }
 }
 
@@ -127,9 +122,9 @@
     display: none; 
     width: 100%;
     
-    /* Si sgancia dal flusso flex e si posiziona sotto */
+    
     position: absolute; 
-    top: 100%; /* Esattamente sotto la navbar */
+    top: 100%; 
     left: 0;
     
     background-color: var(--navbgcolor);

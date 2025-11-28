@@ -1,8 +1,3 @@
-/* =============================
-   1. STILE.CSS - GLOBALE (DESKTOP FIRST)
-   ============================= */
-
-/* --- RESET & VARIABILI --- */
 * {
     padding: 0;
     margin: 0;
@@ -10,18 +5,18 @@
 }
 
 :root {
-    /* DEFAULT: Colori Scuri (Dark Mode) */
+    
     --navbgcolor: #1D1D1D;
-    --txtcolor: #e0e0e0;         /* Testo chiaro */
-    --currentcolor: #c5a551;     /* ORO */
+    --txtcolor: #e0e0e0;         
+    --currentcolor: #c5a551;     
     --navtxtcolor: #fff;
     --visitedcolor: #f47a1c;
     --footercolor: #1D1D1D;
-    --bodybgcolor: #121212;      /* Sfondo scuro */
-    --diversity-color: #cacaca;  /* Colore secondario chiaro */
-    --bordercolor: #333333;      /* Bordi scuri */
+    --bodybgcolor: #121212;      
+    --diversity-color: #cacaca;  
+    --bordercolor: #333333;      
     
-    /* Variabili specifiche per componenti scuri */
+    
     --header-bg: #1e1e1e;
     --table-stripe: #252525;
 }
@@ -42,19 +37,19 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* --- LIGHT MODE --- */
+
 body.light-mode {
     --bodybgcolor: #fff;
     --txtcolor: #000;
     --diversity-color: #333333;
     --bordercolor: #ddd;
     
-    /* Variabili specifiche per componenti chiari */
+    
     --header-bg: #fafafa;
     --table-stripe: #fff9e6;
 }
 
-/* --- UTILITIES & ACCESSIBILITÀ --- */
+
 .visually-hidden,
 .navigationHelp {
     position: absolute;
@@ -72,7 +67,7 @@ a.navigationHelp:visited {
     color: var(--currentcolor);
 }
 
-/* --- NAVBAR PRINCIPALE --- */
+
 .main-nav-bar {
     color: var(--navtxtcolor);
     padding: 0.5em 1em;
@@ -84,7 +79,7 @@ a.navigationHelp:visited {
 }
 
 .logo-link {
-    /* Logica Flex per Desktop */
+    
     flex: 0 1 auto;         
     flex-shrink: 100;    
     min-width: 0;         
@@ -101,7 +96,7 @@ a.navigationHelp:visited {
     height: auto;
     width: auto;
     
-    /* Dimensioni desktop */
+    
     max-height: 4.2em;      
     max-width: 100%;        
     
@@ -153,7 +148,7 @@ a.logo-link:hover img {
     border-radius: 15px;
 }
 
-/* Checkmark condivisa */
+
 .primary-navigation a.is-visited::before,
 .mobile-icons a.is-visited::before {
     content: "";
@@ -179,7 +174,7 @@ a.logo-link:hover img {
     margin-right: 0.2em;
 }
 
-/* Mobile Icons (Desktop: Shop e User) */
+
 .mobile-icons {
     order: 3;
     display: flex;
@@ -211,8 +206,7 @@ a.logo-link:hover img {
 }
 
 /* =============================
-   SUB-HEADER (Striscia sotto il menu)
-   Contiene Breadcrumb a SX e Toggle a DX
+   SUB-HEADER 
    ============================= */
 .sub-header {
     width: 100%;
@@ -220,15 +214,15 @@ a.logo-link:hover img {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 0.4em 1em;
     
-    /* Questo allinea i due figli ai lati opposti */
+    
     display: flex;
     justify-content: space-between; 
     align-items: center;
 }
 
-/* --- BREADCRUMB (Sinistra) --- */
+
 #breadcrumb {
-    /* Rimuoviamo sfondi e bordi perché ora sono nel padre (.sub-header) */
+    
     background: none;
     border: none;
     padding: 0;
@@ -236,7 +230,7 @@ a.logo-link:hover img {
     
     font-family: 'Lexend', sans-serif;
     font-size: 0.95rem;
-    flex-grow: 1; /* Occupa lo spazio disponibile */
+    flex-grow: 1; 
 }
 
 .breadcrumb-container {
@@ -272,7 +266,7 @@ a.logo-link:hover img {
     transform: scale(1.3);
 }
 
-/* Fix per liste breadcrumb generiche */
+
 .breadcrumb-container ol {
     list-style: none;
     padding: 0;
@@ -285,14 +279,14 @@ a.logo-link:hover img {
     display: inline-block;
 }
 
-/* --- TASTO TEMA (Destra) --- */
+
 #theme-toggle {
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
     
-    /* Stile testo/icona coerente con breadcrumb */
+    
     color: var(--navtxtcolor); 
     opacity: 0.8;
     
@@ -312,7 +306,7 @@ a.logo-link:hover img {
     pointer-events: none;
 }
 
-/* --- LAYOUT GENERALE MAIN --- */
+
 main {
     color: var(--txtcolor);
     padding: 1em 2em 2em 3.5em;
@@ -329,7 +323,7 @@ main h2 {
     border-top: 2px solid var(--txtcolor);
 }
 
-/* --- FOOTER --- */
+
 footer {
     position: relative;
     text-align: center;
@@ -350,7 +344,7 @@ footer a:visited {
     color: var(--currentcolor);
 }
 
-/* --- BACK TO TOP BUTTON --- */
+
 #backToTopBtn {
     position: fixed;
     bottom: 4em;

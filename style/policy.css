@@ -1,19 +1,15 @@
-/* =============================
-   POLICY.CSS - STILI SPECIFICI
-   ============================= */
-
 /* --- HEADER E SPAZIATURA --- */
 .policy-nav-header {
     background-color: var(--header-bg); 
     padding-top: 1.5em; 
-    padding-bottom: 0; /* Togliamo padding sotto per la breadcrumb */
+    padding-bottom: 0; 
 }
 
 /* Bottone "Pagina precedente" */
 .policy-nav-header > nav:first-of-type {
     padding-left: 1.25em; 
     padding-right: 1.25em;
-    margin-bottom: 1.5em; /* Spazio sotto il bottone */
+    margin-bottom: 1.5em; 
 }
 
 /* Stile bottone */
