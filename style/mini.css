@@ -102,14 +102,14 @@
 @media screen and (max-width: 400px) {
     .logo-link img {
         
-        content: url('../images/logoCorto.png');
+        content: url('../images/logoCorto.webp');
         max-height: 4em; 
     }
 }
 
 @media screen and (max-width: 330px) {
     .logo-link img {
-        content: url('../images/logoAlbero.svg');
+        content: url('../images/logoAlbero.webp');
         max-height: 4em; 
     }
 }
