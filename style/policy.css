@@ -175,7 +175,6 @@ body.light-mode code {
    ============================= */
 @media screen and (max-width: 940px) {
     
-    /* Padding Header Mobile */
     .policy-nav-header .sub-header {
         padding: 0.5em 1em; 
     }
@@ -245,12 +244,10 @@ body.light-mode code {
         border-bottom: 2px solid #333;
     }
 
-    /* Etichette generate via CSS */
     .policy-table td:nth-of-type(2)::before { content: "Tipologia: "; font-weight: 700; color: var(--diversity-color); }
     .policy-table td:nth-of-type(3)::before { content: "Destinatari: "; font-weight: 700; color: var(--diversity-color); }
     .policy-table td:nth-of-type(4)::before { content: "Consenso: "; font-weight: 700; color: var(--diversity-color); }
 
-    /* Light Mode Overrides per Cards */
     body.light-mode .policy-table tr {
         background-color: #fff;
         border-color: #ccc;
@@ -270,4 +267,34 @@ body.light-mode code {
     body.light-mode .policy-table td:nth-of-type(4)::before {
         color: #000;
     }
+}
+
+/* ========================================================
+   MANTENERE HEADER SCURO IN LIGHT MODE
+   ======================================================== */
+body.light-mode .policy-nav-header {
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+body.light-mode .policy-nav-header .sub-header {
+    background-color: #1D1D1D; 
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.light-mode .policy-nav-header #breadcrumb,
+body.light-mode .policy-nav-header .breadcrumb-container span,
+body.light-mode .policy-nav-header #theme-toggle {
+    color: #fff;
+}
+
+body.light-mode .policy-nav-header .btn-outline {
+    color: #fff;
+    border-color: #fff;
+}
+
+body.light-mode .policy-nav-header .btn-outline:hover {
+    color: var(--currentcolor);
+    border-color: var(--currentcolor);
+    background-color: rgba(197, 165, 81, 0.1);
 }

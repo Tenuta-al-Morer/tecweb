@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-/* ==========================================
+    /* ==========================================
      * 2. MENU DI NAVIGAZIONE
      * ========================================== */
     const menuButton = document.querySelector('.menu-toggle');
@@ -129,56 +129,35 @@ document.addEventListener('DOMContentLoaded', () => {
     if (backBtn) {
         const params = new URLSearchParams(window.location.search);
         
-        // 1. GESTIONE CHIUSURA SCHEDA (es. da Registrazione con target="_blank")
-        // Se nell'URL c'è ?action=close
+        // 1. GESTIONE CHIUSURA SCHEDA
         const action = params.get('action');
 
         if (action === 'close') {
-            // Cambiamo testo e icona
             backBtn.innerHTML = '<i class="fas fa-times"></i> Chiudi e torna alla registrazione';
-            
             backBtn.addEventListener('click', (e) => {
                 e.preventDefault();
-                window.close(); // Chiude la scheda corrente
+                window.close();
             });
 
         } else {
             // 2. GESTIONE NAVIGAZIONE NORMALE
-            // Se c'è un ritorno forzato (dal footer ?return_to=tenuta.html)
             const returnUrl = params.get('return_to');
 
             if (returnUrl) {
-                // Se c'è un'istruzione di ritorno, la usiamo direttamente
                 backBtn.href = returnUrl;
             } else {
-                // 3.  (Fallback)
-                
-                // A. Prepariamo (Link fisico alla Home)
-                // Questo serve se l'utente apre il link in una nuova scheda vuota.
-                // Usiamo percorsi relativi (../) così funziona sia su localhost che su GitHub Pages (/tecweb/)
+                // 3. Fallback intelligente
                 const isInSubfolder = window.location.pathname.includes('/html/') || window.location.pathname.split('/').length > 2;
                 backBtn.href = isInSubfolder ? '../index.html' : 'index.html';
 
-                // B. Aggiungiamo il cervello che controlla la cronologia
                 backBtn.addEventListener('click', (e) => {
-                    // Recuperiamo chi ci ha mandato qui (Referrer)
                     const referrer = document.referrer;
-                    
-                    // Recuperiamo il dominio attuale AUTOMATICAMENTE
-                    // Su PC sarà: "localhost" o "127.0.0.1"
-                    // Online sarà: "tenuta-al-morer.github.io"
                     const currentDomain = window.location.hostname; 
 
-                    // CONTROLLO DI SICUREZZA:
-                    // Se esiste un referrer E quel referrer contiene il nostro dominio attuale...
                     if (referrer && referrer.includes(currentDomain)) {
-                        // ...allora è una navigazione interna sicura. Torniamo indietro.
                         e.preventDefault();
                         window.history.back();
                     }
-                    
-                    // L'IF qui sopra fallisce, il codice prosegue ed esegue 
-                    // il normale link href (verso la Home) impostato al punto A.
                 });
             }
         }
@@ -245,4 +224,104 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    /* ==========================================
+     * 5. GESTIONE SLIDER / CAROSELLO INFINITO
+     * ========================================== */
+    // Cerchiamo l'elemento slider
+    const slider = document.getElementById('imageSlider');
+
+    // Eseguiamo questo codice SOLO se lo slider esiste nella pagina
+    if (slider) {
+        const nextBtn = document.querySelector('.next-btn');
+        const prevBtn = document.querySelector('.prev-btn');
+        
+        let currentIndex = 0;
+        const totalSlides = 5; // Numero di foto REALI (escluso il clone)
+        let isTransitioning = false;
+        let autoScroll; // Variabile per l'intervallo
+
+        // Funzione per scorrere avanti
+        const nextSlide = () => {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            currentIndex++;
+            updateSlider('smooth');
+
+            // Se siamo arrivati al clone (dopo l'ultima foto)
+            if (currentIndex === totalSlides) {
+                setTimeout(() => {
+                    // Disattiviamo l'animazione e saltiamo istantaneamente alla prima foto vera
+                    isTransitioning = false;
+                    currentIndex = 0;
+                    updateSlider('auto'); // 'auto' = salto istantaneo
+                }, 600); // Aspettiamo fine animazione CSS
+            } else {
+                setTimeout(() => { isTransitioning = false; }, 600);
+            }
+        };
+
+        // Funzione per scorrere indietro
+        const prevSlide = () => {
+            if (isTransitioning) return;
+            isTransitioning = true;
+
+            if (currentIndex === 0) {
+                // Se siamo alla prima, saltiamo al clone in fondo
+                currentIndex = totalSlides;
+                updateSlider('auto');
+                // E poi scorriamo indietro alla penultima
+                setTimeout(() => {
+                    currentIndex--;
+                    updateSlider('smooth');
+                    setTimeout(() => { isTransitioning = false; }, 600);
+                }, 50); 
+            } else {
+                currentIndex--;
+                updateSlider('smooth');
+                setTimeout(() => { isTransitioning = false; }, 600);
+            }
+        };
+
+        // Funzione helper per lo scroll
+        const updateSlider = (behavior) => {
+            const width = slider.clientWidth;
+            slider.scrollTo({
+                left: width * currentIndex,
+                behavior: behavior
+            });
+        };
+
+        // --- FUNZIONI START / STOP AUTOSCROLL ---
+        const startAutoScroll = () => {
+            // Pulisce eventuali intervalli esistenti per sicurezza
+            clearInterval(autoScroll);
+            autoScroll = setInterval(nextSlide, 3500);
+        };
+
+        const stopAutoScroll = () => {
+            clearInterval(autoScroll);
+        };
+
+        // Event Listeners Frecce
+        if(nextBtn) nextBtn.addEventListener('click', nextSlide);
+        if(prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+        // --- PAUSA SU HOVER ---
+        
+        // 1. Avvio iniziale
+        startAutoScroll();
+
+        // 2. Quando il mouse entra o tocchi -> STOP
+        slider.addEventListener('mouseenter', stopAutoScroll); 
+        slider.addEventListener('touchstart', stopAutoScroll, { passive: true });
+
+        // 3. Quando il mouse esce o alzi il dito -> RIPARTE
+        slider.addEventListener('mouseleave', startAutoScroll);
+        slider.addEventListener('touchend', startAutoScroll);
+
+        // Gestione ridimensionamento finestra
+        window.addEventListener('resize', () => updateSlider('auto'));
+    }
+
 });
