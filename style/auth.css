@@ -242,3 +242,11 @@ footer {
         padding-bottom: 3.5em; 
     }
 }
+
+@media screen and (max-width: 330px) {
+    .login-header-logo img {
+        
+        content: url('../images/logoCorto.png');
+        max-height: 4em; 
+    }
+}
