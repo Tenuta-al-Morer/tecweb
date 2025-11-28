@@ -285,7 +285,7 @@ a.logo-link:hover img {
     border: none;
     cursor: pointer;
     padding: 0;
-    
+    font-size: 1.3em;
     
     color: var(--navtxtcolor); 
     opacity: 0.8;
