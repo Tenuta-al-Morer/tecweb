@@ -71,8 +71,120 @@
             </div>
         </header>
 
-        <main id="content">  
-            <h1>Contatti</h1>
+        <main id="content">
+            <div class="container"> <h1>Contatti</h1>
+                
+                <p class="intro-text">
+                    Siamo a tua disposizione per qualsiasi informazione sui nostri vini o sulla tenuta.
+                </p>
+
+                <div class="booking-alert">
+                    <p>
+                        <i class="fas fa-wine-glass-alt" aria-hidden="true"></i> 
+                        <strong>Vuoi prenotare una visita o una degustazione?</strong><br>
+                        Per gestire al meglio la tua accoglienza, ti preghiamo di usare l'apposita sezione.
+                        <br>
+                        <a href="esperienze.html" class="btn-link">Vai alla pagina Esperienze <span aria-hidden="true">&rarr;</span></a>
+                    </p>
+                </div>
+
+                <div class="contact-grid">
+                    
+                    <div class="contact-info">
+                        
+                        <section aria-labelledby="recapiti-title">
+                            <h2 id="recapiti-title">I nostri recapiti</h2>
+                            <address class="info-list">
+                                <p>
+                                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                    <span class="sr-only">Indirizzo:</span> 
+                                    Via del Vino 42, 31000 Treviso (TV)
+                                </p>
+                                <p>
+                                    <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                                    <span class="sr-only">Telefono:</span>
+                                    <a href="tel:+390422000000">+39 0422 000000</a>
+                                </p>
+                                <p>
+                                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                                    <span class="sr-only">Email:</span>
+                                    <a href="mailto:info@tenutaalmorer.it">info@tenutaalmorer.it</a>
+                                </p>
+                            </address>
+                        </section>
+
+                        <section aria-labelledby="orari-title" class="hours-section">
+                            <h2 id="orari-title">Orari di apertura</h2>
+                            <p>La cantina e gli uffici sono aperti al pubblico:</p>
+                            <ul class="hours-list">
+                                <li><strong>Lunedì - Venerdì:</strong> 09:00 - 18:00</li>
+                                <li><strong>Sabato:</strong> 09:00 - 13:00</li>
+                                <li><strong>Domenica:</strong> Chiuso</li>
+                            </ul>
+                        </section>
+
+                        <section aria-labelledby="map-title" class="map-section">
+                            <h2 id="map-title">Dove siamo</h2>
+                            <div class="map-container">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10740.15422160674!2d11.656366963045594!3d45.316680775998464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477f203aa2f118cd%3A0x4771aae0a079c0a!2sColli%20Euganei!5e1!3m2!1sit!2sit!4v1764338845928!5m2!1sit!2sit" 
+                                    width="100%" 
+                                    height="300" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    title="Mappa di Google Maps che mostra la posizione della Tenuta al Morer">
+                                </iframe>
+                            </div>
+                        </section>
+
+                    </div>
+
+                    <div class="contact-form-wrapper">
+                        <section aria-labelledby="form-title">
+                            <h2 id="form-title">Scrivici</h2>
+                            <p>Per domande generali, utilizza il modulo sottostante. I campi con l'asterisco (<span aria-hidden="true">*</span>) sono obbligatori.</p>
+                            
+                            <form action="#" method="POST" class="standard-form">
+                                <fieldset>
+                                    <legend class="sr-only">Dati di contatto e messaggio</legend>
+                                    
+                                    <div class="form-group">
+                                        <label for="nome">Nome e Cognome <span aria-hidden="true">*</span></label>
+                                        <input type="text" id="nome" name="nome" required autocomplete="name" placeholder="Mario Rossi">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="email">Email <span aria-hidden="true">*</span></label>
+                                        <input type="email" id="email" name="email" required autocomplete="email" placeholder="esempio@email.com">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="telefono">Telefono (opzionale)</label>
+                                        <input type="tel" id="telefono" name="telefono" autocomplete="tel">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="messaggio">Messaggio <span aria-hidden="true">*</span></label>
+                                        <textarea id="messaggio" name="messaggio" rows="5" required placeholder="Scrivi qui la tua richiesta..."></textarea>
+                                    </div>
+
+                                    <div class="form-group checkbox-group">
+                                        <input type="checkbox" id="privacy" name="privacy" required>
+                                        <label for="privacy">
+                                            Ho letto e accetto la <a href="policy.html?action=close" target="_blank">Privacy Policy</a> <span aria-hidden="true">*</span>
+                                        </label>
+                                    </div>
+
+                                    <button type="submit" class="btn-primary">Invia Messaggio</button>
+                                </fieldset>
+                            </form>
+                        </section>
+                    </div>
+
+                </div> 
+            </div> 
         </main>
 
         <footer>
