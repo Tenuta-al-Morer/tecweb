@@ -226,102 +226,148 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================
-     * 5. GESTIONE SLIDER / CAROSELLO INFINITO
+     * 5. GESTIONE SLIDER / CAROSELLO INFINITO (CORRETTO PER MULTI-SLIDE)
      * ========================================== */
-    // Cerchiamo l'elemento slider
-    const slider = document.getElementById('imageSlider');
+    const sliderContainer = document.getElementById('imageSlider');
+    const slides = document.querySelectorAll('.slide');
+    const nextBtn = document.querySelector('.next-btn');
+    const prevBtn = document.querySelector('.prev-btn');
 
-    // Eseguiamo questo codice SOLO se lo slider esiste nella pagina
-    if (slider) {
-        const nextBtn = document.querySelector('.next-btn');
-        const prevBtn = document.querySelector('.prev-btn');
+    if (sliderContainer && slides.length > 0) {
         
-        let currentIndex = 0;
-        const totalSlides = 5; // Numero di foto REALI (escluso il clone)
+        // Numero di cloni di sicurezza (uguale al massimo numero di foto visibili nel CSS)
+        const clonesCount = 4; 
+        
+        // Start index deve compensare i cloni iniziali
+        let currentIndex = clonesCount; 
         let isTransitioning = false;
-        let autoScroll; // Variabile per l'intervallo
+        let slideInterval;
+        const intervalTime = 5000; 
 
-        // Funzione per scorrere avanti
+        // 1. CLONAZIONE AVANZATA (4 copie a destra e 4 a sinistra)
+        
+        // Clona gli ultimi 4 per metterli all'inizio (Prepend)
+        for (let i = 0; i < clonesCount; i++) {
+            // Prendiamo le slide partendo dalla fine
+            const slideToClone = slides[slides.length - 1 - i]; 
+            const clone = slideToClone.cloneNode(true);
+            clone.classList.add('clone-slide'); // Classe utile per debug
+            sliderContainer.prepend(clone);
+        }
+
+        // Clona i primi 4 per metterli alla fine (Append)
+        for (let i = 0; i < clonesCount; i++) {
+            const slideToClone = slides[i];
+            const clone = slideToClone.cloneNode(true);
+            clone.classList.add('clone-slide');
+            sliderContainer.append(clone);
+        }
+
+        // Riselezioniamo tutte le slide (Originali + Cloni)
+        const allSlides = document.querySelectorAll('.slide');
+
+        // 2. POSIZIONAMENTO INIZIALE
+        // Spostiamo il contenitore per mostrare la prima immagine REALE
+        const updateInitialPosition = () => {
+             const slideWidth = allSlides[0].offsetWidth; // Usa offsetWidth per precisione
+             sliderContainer.style.transition = 'none'; // Nessuna animazione all'avvio
+             sliderContainer.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
+        };
+        
+        // Chiamiamo subito la funzione
+        updateInitialPosition();
+
+        // 3. FUNZIONE DI SCORRIMENTO
+        const moveSlide = () => {
+            const slideWidth = allSlides[0].offsetWidth; 
+            sliderContainer.style.transition = 'transform 0.5s ease-in-out';
+            sliderContainer.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
+        };
+
         const nextSlide = () => {
             if (isTransitioning) return;
+            // Se siamo oltre i cloni finali, fermati (il transitionend gestirà il reset)
+            if (currentIndex >= allSlides.length - 1) return;
+
             isTransitioning = true;
             currentIndex++;
-            updateSlider('smooth');
-
-            // Se siamo arrivati al clone (dopo l'ultima foto)
-            if (currentIndex === totalSlides) {
-                setTimeout(() => {
-                    // Disattiviamo l'animazione e saltiamo istantaneamente alla prima foto vera
-                    isTransitioning = false;
-                    currentIndex = 0;
-                    updateSlider('auto'); // 'auto' = salto istantaneo
-                }, 600); // Aspettiamo fine animazione CSS
-            } else {
-                setTimeout(() => { isTransitioning = false; }, 600);
-            }
+            moveSlide();
         };
 
-        // Funzione per scorrere indietro
         const prevSlide = () => {
             if (isTransitioning) return;
+            if (currentIndex <= 0) return;
+
             isTransitioning = true;
+            currentIndex--;
+            moveSlide();
+        };
 
-            if (currentIndex === 0) {
-                // Se siamo alla prima, saltiamo al clone in fondo
-                currentIndex = totalSlides;
-                updateSlider('auto');
-                // E poi scorriamo indietro alla penultima
-                setTimeout(() => {
-                    currentIndex--;
-                    updateSlider('smooth');
-                    setTimeout(() => { isTransitioning = false; }, 600);
-                }, 50); 
-            } else {
-                currentIndex--;
-                updateSlider('smooth');
-                setTimeout(() => { isTransitioning = false; }, 600);
+        // 4. GESTIONE DEL "SALTO" INFINITO (Transition End)
+        sliderContainer.addEventListener('transitionend', () => {
+            isTransitioning = false;
+            const slideWidth = allSlides[0].offsetWidth;
+
+            // CASO A: Siamo andati troppo AVANTI (siamo sui cloni finali)
+            // Logica: Se l'indice è arrivato alla fine delle slide originali + cloni
+            if (currentIndex >= slides.length + clonesCount) {
+                sliderContainer.style.transition = 'none'; // Togli animazione
+                // Calcoliamo la nuova posizione: togliamo la lunghezza delle slide originali
+                currentIndex = currentIndex - slides.length; 
+                sliderContainer.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
             }
-        };
 
-        // Funzione helper per lo scroll
-        const updateSlider = (behavior) => {
-            const width = slider.clientWidth;
-            slider.scrollTo({
-                left: width * currentIndex,
-                behavior: behavior
+            // CASO B: Siamo andati troppo INDIETRO (siamo sui cloni iniziali)
+            if (currentIndex < clonesCount) {
+                sliderContainer.style.transition = 'none'; // Togli animazione
+                // Calcoliamo la nuova posizione: aggiungiamo la lunghezza delle slide originali
+                currentIndex = currentIndex + slides.length;
+                sliderContainer.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
+            }
+        });
+
+        // 5. EVENTI BOTTONI
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetTimer();
             });
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetTimer();
+            });
+        }
+
+        // 6. GESTIONE AUTOPLAY
+        const startTimer = () => {
+            slideInterval = setInterval(nextSlide, intervalTime);
         };
 
-        // --- FUNZIONI START / STOP AUTOSCROLL ---
-        const startAutoScroll = () => {
-            // Pulisce eventuali intervalli esistenti per sicurezza
-            clearInterval(autoScroll);
-            autoScroll = setInterval(nextSlide, 3500);
+        const stopTimer = () => {
+            clearInterval(slideInterval);
         };
 
-        const stopAutoScroll = () => {
-            clearInterval(autoScroll);
+        const resetTimer = () => {
+            stopTimer();
+            startTimer();
         };
 
-        // Event Listeners Frecce
-        if(nextBtn) nextBtn.addEventListener('click', nextSlide);
-        if(prevBtn) prevBtn.addEventListener('click', prevSlide);
+        // Pausa hover
+        sliderContainer.addEventListener('mouseenter', stopTimer);
+        sliderContainer.addEventListener('mouseleave', startTimer);
 
-        // --- PAUSA SU HOVER ---
-        
-        // 1. Avvio iniziale
-        startAutoScroll();
+        // 7. GESTIONE RESIZE
+        // Se si ridimensiona la finestra, bisogna ricalcolare la posizione precisa
+        window.addEventListener('resize', () => {
+            const slideWidth = allSlides[0].offsetWidth;
+            sliderContainer.style.transition = 'none';
+            sliderContainer.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
+        });
 
-        // 2. Quando il mouse entra o tocchi -> STOP
-        slider.addEventListener('mouseenter', stopAutoScroll); 
-        slider.addEventListener('touchstart', stopAutoScroll, { passive: true });
-
-        // 3. Quando il mouse esce o alzi il dito -> RIPARTE
-        slider.addEventListener('mouseleave', startAutoScroll);
-        slider.addEventListener('touchend', startAutoScroll);
-
-        // Gestione ridimensionamento finestra
-        window.addEventListener('resize', () => updateSlider('auto'));
+        startTimer();
     }
 
 });

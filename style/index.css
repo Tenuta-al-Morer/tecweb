@@ -1,24 +1,23 @@
+/* =========================================
+   1. GLOBAL LAYOUT
+   ========================================= */
 main#content {
     padding: 0;
     width: 100%;
     overflow-x: hidden;
 }
 
-/* =============================
-   1. HERO SECTION
-   ============================= */
+/* =========================================
+   2. HERO SECTION
+   ========================================= */
 .hero {
     background-image: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.4)), url('../images/bg.webp');
-    
-    /* Altezza 1/3 dello schermo */
     height: 35vh; 
     min-height: 400px; 
-    
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    
     background-size: cover; 
     background-position: center 85%; 
     background-attachment: fixed;
@@ -46,7 +45,6 @@ main#content {
     justify-content: center;
 }
 
-/* STILE PULSANTI */
 .btn {
     padding: 1em 2em;
     text-decoration: none;
@@ -71,29 +69,31 @@ main#content {
     border-color: var(--currentcolor);
 }
 
-/* =============================
-   2. INTRO TEXT
-   ============================= */
+/* =========================================
+   3. INTRO TEXT
+   ========================================= */
 .intro-text {
     padding: 4em 2em;
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
 }
+
 .intro-text h2 {
     color: var(--currentcolor);
     font-size: 2.5rem;
     margin-bottom: 0.5em;
     line-height: 1.3;
 }
+
 .intro-text .lead {
     font-size: 1.25rem;
     font-weight: 300;
 }
 
-/* =============================
-   3. INFO CARDS
-   ============================= */
+/* =========================================
+   4. INFO CARDS
+   ========================================= */
 .info-cards-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -150,10 +150,12 @@ main#content {
     font-size: 0.9rem;
     text-transform: uppercase;
 }
-.info-card:hover .card-cta { text-decoration: underline; }
 
+.info-card:hover .card-cta {
+    text-decoration: underline;
+}
 
-/* --- LIGHT MODE (MODALITÀ GIORNO) --- */
+/* Light Mode Overrides for Cards */
 body.light-mode .info-card {
     background-color: #fcfcfc;
     border: 1px solid #ddd;   
@@ -168,74 +170,107 @@ body.light-mode .info-card p {
     color: #555; 
 }
 
-
-/* =============================
-   4. SLIDER SECTION (GALLERY)
-   ============================= */
+/* =========================================
+   5. SLIDER SECTION (GALLERY)
+   ========================================= */
 .slider-section {
     position: relative;    
     background-color: var(--bodybgcolor);
     width: 100%;
+    padding: 2rem 0;
 }
 
-/* Stile del titolo Gallery */
 .gallery-title {
     text-align: center;
     color: var(--currentcolor);
     font-family: 'Lexend', sans-serif;
     font-size: 2.5rem;
-    margin-bottom: 0.2em;
+    margin-bottom: 1em;
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
 
-/* Wrapper per isolare il posizionamento relativo delle frecce rispetto alle immagini */
 .slider-wrapper {
     position: relative;
     width: 100%;
+    overflow: hidden;
 }
 
 .slider-container {
     display: flex;
-    overflow-x: hidden; 
+    width: 100%;
     height: 35vh; 
     min-height: 300px;
+    will-change: transform; 
 }
 
 .slide {
     flex: 0 0 100%; 
+    width: 100%;
     position: relative;
-    overflow: hidden;
+    height: 100%;
+    padding: 0 5px;
+    box-sizing: border-box;
 }
 
 .slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 5s ease;
+    display: block;
 }
-.slide:hover img { transform: scale(1.05); }
+
+.slide img:hover {
+    transition: transform 0.5s ease;
+    transform: scale(1.05);
+}
 
 .slider-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0,0,0,0.5);
     color: #fff;
     border: none;
     font-size: 2rem;
     padding: 0.5em 0.8em;
     cursor: pointer;
-    z-index: 10;
+    z-index: 100;
     transition: background 0.3s;
 }
-.slider-btn:hover { background-color: var(--currentcolor); }
-.prev-btn { left: 0; border-radius: 0 5px 5px 0; }
-.next-btn { right: 0; border-radius: 5px 0 0 5px; }
 
-/* =============================
-   MEDIA QUERIES
-   ============================= */
+.slider-btn:hover {
+    background-color: var(--currentcolor);
+}
+
+.prev-btn {
+    left: 10px;
+    border-radius: 4px;
+}
+
+.next-btn {
+    right: 10px;
+    border-radius: 4px;
+}
+
+/* =========================================
+   6. MEDIA QUERIES
+   ========================================= */
+
+/* --- Slider Columns (Desktop First Logic) --- */
+@media screen and (min-width: 700px) {
+    .slide { flex: 0 0 50%; }
+}
+
+@media screen and (min-width: 1200px) {
+    .slide { flex: 0 0 33.333%; }
+}
+
+@media screen and (min-width: 1600px) {
+    .slide { flex: 0 0 25%; }
+}
+
+/* --- Layout Adjustments (Mobile/Tablet) --- */
 @media screen and (max-width: 1100px) {
     .info-cards-container {
         grid-template-columns: repeat(2, 1fr);
@@ -244,12 +279,29 @@ body.light-mode .info-card p {
 }
 
 @media screen and (max-width: 768px) {
-    .hero { min-height: 500px; }
-    .hero h1 { font-size: 2.5rem; }
-    .hero-buttons { flex-direction: column; align-items: center; }
-    .btn { width: 100%; max-width: 300px; }
+    .hero {
+        min-height: 500px;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn {
+        width: 100%;
+        max-width: 300px;
+    }
     
-    .info-cards-container { grid-template-columns: 1fr; }
-    .slider-container { height: 45vh; }
-    .slider-btn { font-size: 1.5rem; padding: 0.3em; }
+    .info-cards-container {
+        grid-template-columns: 1fr;
+    }
+    .slider-container {
+        height: 45vh;
+    }
+    .slider-btn {
+        font-size: 1.5rem;
+        padding: 0.3em;
+    }
 }
