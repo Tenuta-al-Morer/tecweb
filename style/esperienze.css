@@ -1,0 +1,67 @@
+:root {
+    --bgcard: #111428;      
+    --currentcolor: #c5a551;    
+    --descriptioncardcolor: #d3d3d3;
+}
+
+main{
+    margin: 0.5em;
+    display:flex;
+    align-items: flex-start;
+}
+
+main h1{
+    color: var(--currentcolor);
+}
+
+#content{
+    flex: 1.4;
+}
+
+main p{
+    font-size: 1.25em;
+    font-weight: 300;
+}
+
+form {
+    flex: 0.6;
+    display: flex;
+    flex-direction: column;
+    margin: 8em;
+    padding: 0.1em;
+    border: 2px solid 
+}
+
+input, button {
+    padding: 1em;
+}
+
+.deg-card {
+    background-color: #111428;      
+    border-left: 4px solid var(--currentcolor); 
+    padding: 1.5em;
+    margin-top: 2em;
+}
+
+.deg-card h3 {
+    color: var(--descriptioncardcolor);
+    margin-bottom: 0.8em;
+    font-size: 1.25em;
+}
+
+.deg-card .deg-desc {
+    margin-bottom: 0.5em;
+    font-size: 1em;
+    color: var(--descriptioncardcolor);
+}
+
+.deg-card .deg-price {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--currentcolor);  
+}
+
+
+@media screen and (max-width: 940px){
+
+}
