@@ -15,7 +15,7 @@
     --bodybgcolor: #121212;      
     --diversity-color: #cacaca;  
     --bordercolor: #b6b6b6;      
-    
+    --buttonhovercolor: #fff;
     
     --header-bg: #1e1e1e;
     --table-stripe: #252525;
@@ -44,7 +44,7 @@ body.light-mode {
     --diversity-color: #333333;
     --bordercolor: #4b4b4b;
     --currentcolor: #785E10;    
-    
+    --buttonhovercolor: #919191;
     --header-bg: #fafafa;
     --table-stripe: #fff9e6;
 }
