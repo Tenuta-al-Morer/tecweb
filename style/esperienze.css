@@ -1,13 +1,14 @@
-:root {
-    --bgcard: #111428;      
-    --currentcolor: #c5a551;    
-    --descriptioncardcolor: #d3d3d3;
-}
+/*
+=====================================
+SEZIONE main (setup)
+=====================================
+*/
 
 main{
     margin: 0.5em;
     display:flex;
     align-items: flex-start;
+    gap: 2em;
 }
 
 main h1{
@@ -23,28 +24,34 @@ main p{
     font-weight: 300;
 }
 
-form {
-    flex: 0.6;
-    display: flex;
-    flex-direction: column;
-    margin: 8em;
-    padding: 0.1em;
-    border: 2px solid 
-}
+/*
+==================================
+SEZIONE form
+==================================
+*/
+
+
+
 
 input, button {
     padding: 1em;
 }
 
+/*
+==================================
+SEZIONE card
+==================================
+*/
+
 .deg-card {
-    background-color: #111428;      
+    background-color: var(--table-stripe);      
     border-left: 4px solid var(--currentcolor); 
     padding: 1.5em;
     margin-top: 2em;
 }
 
 .deg-card h3 {
-    color: var(--descriptioncardcolor);
+    color: #FFF;
     margin-bottom: 0.8em;
     font-size: 1.25em;
 }
@@ -52,7 +59,7 @@ input, button {
 .deg-card .deg-desc {
     margin-bottom: 0.5em;
     font-size: 1em;
-    color: var(--descriptioncardcolor);
+    color: #fff;
 }
 
 .deg-card .deg-price {
@@ -62,6 +69,15 @@ input, button {
 }
 
 
+
+/*
+===========================================
+SEZIONE mini
+===========================================
+*/
+
 @media screen and (max-width: 940px){
+
+    main{ flex-direction: column; align-items: center;}
 
 }
