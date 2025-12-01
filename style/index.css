@@ -19,8 +19,7 @@ main#content {
     justify-content: center;
     text-align: center;
     background-size: cover; 
-    background-position: center 85%; 
-    background-attachment: fixed;
+    background-position: center 50%; 
 }
 
 .hero-content {
