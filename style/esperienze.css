@@ -11,13 +11,9 @@ main{
     gap: 2em;
 }
 
-main h1{
-    color: var(--currentcolor);
-}
+main h1{ color: var(--currentcolor); }
 
-#content{
-    flex: 1.4;
-}
+#content{ flex: 1; margin-top: 1.5em; }
 
 main p{
     font-size: 1.25em;
@@ -30,11 +26,148 @@ SEZIONE form
 ==================================
 */
 
+section h2, #content h2 {
+    border-top: none;
+    padding-top: 0.5em;
+}
+
+fieldset{
+    border: none;
+    padding: 0;
+    margin: 0;
+}
 
 
+.row-two {
+    display: flex;
+    gap: 1rem;
+}
 
-input, button {
-    padding: 1em;
+.row-two > div {
+    flex: 1;
+}
+
+
+.contact-form-wrapper{padding-right: 2em; flex: 1;}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: var(--txtcolor);
+    font-family: 'Lexend', sans-serif;
+}
+
+/* Stile Input e Textarea */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    
+    /* Default (Modalità Scura): Usa il colore della nav per staccare leggermente dal fondo */
+    background-color: var(--navbgcolor); 
+    color: var(--txtcolor);
+    border: 1px solid var(--bordercolor);
+    
+    border-radius: 2px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+/* Quando il sito è in modalità giorno, forziamo lo sfondo bianco per gli input */
+body.light-mode .form-group input,
+body.light-mode .form-group textarea {
+    background-color: #ffffff; 
+    border-color: #ccc; 
+}
+
+/* Focus degli input */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--currentcolor);
+    box-shadow: 0 0 0 2px rgba(197, 165, 81, 0.2); 
+    
+    /* In light mode, assicuriamoci che lo sfondo resti bianco anche al focus */
+    background-color: var(--navbgcolor); 
+}
+
+body.light-mode .form-group input:focus,
+body.light-mode .form-group textarea:focus {
+    background-color: #ffffff;
+}
+
+/* Focus degli input */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--currentcolor);
+    box-shadow: 0 0 0 2px rgba(197, 165, 81, 0.2); 
+}
+
+/* Checkbox Privacy */
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    margin-top: 2rem;
+    font-size: 0.95rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-top: 0.2rem;
+    width: 20px;
+    height: 20px;
+    accent-color: var(--currentcolor); 
+    cursor: pointer;
+}
+
+.checkbox-group label a {
+    color: var(--currentcolor);
+    text-decoration: underline;
+}
+
+.checkbox-group label a:hover {
+    color: var(--txtcolor);
+}
+
+/* Bottone Submit */
+.btn-primary {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1rem 2.5rem;
+    
+    background-color: var(--currentcolor);
+    color: #000; 
+    
+    border: none;
+    font-family: 'Lexend', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .btn-primary {
+        width: auto;
+    }
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--navtxtcolor); 
+    color: #000;
+    box-shadow: 0 0 15px rgba(197, 165, 81, 0.4);
+    transform: translateY(-2px);
 }
 
 /*
@@ -51,7 +184,6 @@ SEZIONE card
 }
 
 .deg-card h3 {
-    color: #FFF;
     margin-bottom: 0.8em;
     font-size: 1.25em;
 }
@@ -59,7 +191,6 @@ SEZIONE card
 .deg-card .deg-desc {
     margin-bottom: 0.5em;
     font-size: 1em;
-    color: #fff;
 }
 
 .deg-card .deg-price {
