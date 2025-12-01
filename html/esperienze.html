@@ -1,167 +1,173 @@
 <!DOCTYPE html>
 <html lang="it">
 
-    <head>
-        <title>Esperienze - Tenuta al Morer</title>
-        <link rel="icon" href="../images/logo.ico" type="image/x-icon"> 
+<head>
+    <title>Esperienze - Tenuta al Morer</title>
+    <link rel="icon" href="../images/logo.ico" type="image/x-icon">
 
-        <meta charset="utf-8"> 
+    <meta charset="utf-8">
 
-        <meta name="description" content="Vivi le esperienze e le degustazioni presso la Tenuta al Morer. Scopri i nostri vini in un'atmosfera autentica tra le colline venete.">
-        <meta name="keywords" content="esperienze, degustazioni, Tenuta al Morer, vini veneti, visita tenuta">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet"> 
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <meta name="description" content="Vivi le esperienze e le degustazioni presso la Tenuta al Morer. Scopri i nostri vini in un'atmosfera autentica tra le colline venete.">
+    <meta name="keywords" content="esperienze, degustazioni, Tenuta al Morer, vini veneti, visita tenuta">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" href="../style/stile.css" media="screen"> 
-        <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:940px)">
-        <link rel="stylesheet" href="../style/stampa.css" media="print">  
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="../style/esperienze.css" media="screen">
-    </head>
+    <link rel="stylesheet" href="../style/stile.css" media="screen"> 
+    <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:940px)">
+    <link rel="stylesheet" href="../style/stampa.css" media="print">  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
 
-    <body> 
-        <header>
-            <nav aria-label="aiuti alla navigazione" id="help">
-                <a class="navigationHelp" href="#content">Vai al contenuto</a>
+<body> 
+    <header>
+        <nav aria-label="aiuti alla navigazione" id="help">
+            <a class="navigationHelp" href="#content">Vai al contenuto</a>
+        </nav>
+
+        <div class="main-nav-bar">    
+            <button class="menu-toggle" aria-controls="main-navigation" aria-expanded="false" aria-label="Menu di navigazione">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <a href="../index.html" class="logo-link" aria-label="Torna alla pagina principale">
+                <img src="../images/logo.webp" alt="Tenuta al Morer">
+            </a>
+
+            <nav id="main-navigation" class="primary-navigation" aria-label="Navigazione principale">
+                <ul>
+                    <li><a href="../index.html">Home</a></li> 
+                    <li><a href="tenuta.html">Tenuta</a></li>
+                    <li><a href="vini.html">Vini</a></li>
+                    <li><a aria-current="page"><span lang="it">Esperienze</span></a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                </ul>
             </nav>
 
-            <div class="main-nav-bar">    
-                <button class="menu-toggle" aria-controls="main-navigation" aria-expanded="false" aria-label="Menu di navigazione">
-                    <i class="fas fa-bars"></i>
-                </button>
+            <div class="mobile-icons">
+                <a href="shop.html" aria-label="Shop"><i class="fas fa-shopping-bag"></i></a>
+                <a href="login.html" aria-label="Accedi"><i class="fas fa-user"></i></a>
+            </div>
+        </div>
 
-                <a href="../index.html" class="logo-link" aria-label="Torna alla pagina principale">
-                    <img src="../images/logo.webp" alt="Tenuta al Morer">
-                </a>
-
-                <nav id="main-navigation" class="primary-navigation" aria-label="Navigazione principale">
-                    <ul>
-                        <li><a href="../index.html">Home</span></a></li> 
-                        <li><a href="tenuta.html">Tenuta</a></li>
-                        <li><a href="vini.html">Vini</a></li>
-                        <li><a aria-current="page"><span lang="it">Esperienze</a></li>
-                        <li><a href="contatti.html">Contatti</a></li>
-                        </ul>
-                </nav>
-
-                <div class="mobile-icons">
-                    <a href="shop.html" aria-label="Shop"><i class="fas fa-shopping-bag"></i></a>
-                    <a href="login.html" aria-label="Accedi"><i class="fas fa-user"></i></a>
+        <div class="sub-header">
+            <nav id="breadcrumb" aria-label="Posizione nella pagina">
+                <div class="breadcrumb-container">
+                    <span>Ti trovi in: </span>
+                    <a href="../index.html"><i class="fas fa-home home-icon" aria-hidden="true"></i></a> >
+                    <span class="current-page">Esperienze</span>
+                    <i class="fas fa-utensils"></i> 
                 </div>
-            </div>
+            </nav>
 
-            <div class="sub-header">
-                <nav id="breadcrumb" aria-label="Posizione nella pagina">
-                    <div class="breadcrumb-container">
-                        <span>Ti trovi in: </span>
-                        <a href="../index.html"><i class="fas fa-home home-icon" aria-hidden="true"></i></a> &gt;
-                        <span class="current-page">Esperienze</span>
-                        <i class="fas fa-utensils"></i> 
-                    </div>
-                </nav>
+            <button id="theme-toggle" aria-label="Cambia modalità scura e chiara">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
 
-                <button id="theme-toggle" aria-label="Cambia modalità scura e chiara">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </div>
-        </header>
+    <main id="content"> 
+        <div class="container">
+            
+            <h1>Esperienze e degustazioni</h1>
+            <p class="intro-text">
+                Apriamo le porte della nostra tenuta per farvi toccare con mano la passione che mettiamo in ogni bottiglia.
+            </p>
 
-        <main> 
-            <div class="contact-form-wrapper">
-                <section aria-labelledby="form-title">
-                    <h1>Esperienze e degustazioni</h1>
+            <div class="grid-layout">
+                
+                <section class="form-container" aria-labelledby="form-title">
                     <h2 id="form-title">Richiedi Disponibilità</h2>
-                    <p>Per domande generali, utilizza il modulo sottostante. I campi con l'asterisco (<span aria-hidden="true">*</span>) sono obbligatori.</p>
+                    <p>Compila il modulo per richiedere una visita. I campi con l'asterisco (<span aria-hidden="true">*</span>) sono obbligatori.</p>
                     
                     <form action="#" method="POST" class="standard-form">
                         <fieldset>
-                            <legend class="sr-only">Dati di contatto e messaggio</legend>
+                            <legend class="sr-only">Dati per la prenotazione</legend>
                             
-                            <div class="form-group">
+                            <p class="form-group">
                                 <label for="nome">Nome e Cognome<span aria-hidden="true">*</span></label>
                                 <input type="text" id="nome" name="nome" required autocomplete="name" placeholder="Mario Rossi">
-                            </div>
+                            </p>
 
-                            <div class="form-group">
+                            <p class="form-group">
                                 <label for="email">Email<span aria-hidden="true">*</span></label>
                                 <input type="email" id="email" name="email" required autocomplete="email" placeholder="esempio@email.com">
-                            </div>
+                            </p>
 
-                            <div class="form-group">
+                            <p class="form-group">
                                 <label for="telefono">Telefono (opzionale)</label>
                                 <input type="tel" id="telefono" name="telefono" autocomplete="tel">
-                            </div>
+                            </p>
 
                             <div class="form-group row-two">
                                 <div>
-                                    <label for="data">Data della visita<span aria-hidden="true">*</span></label>
+                                    <label for="data">Data<span aria-hidden="true">*</span></label>
                                     <input type="date" id="data" name="data" required>
                                 </div>
                                 <div>
-                                    <label for="persone">N° persone - fino a 50<span aria-hidden="true">*</span></label>
-                                    <input type="number" min="1" max="50" id="persone" name="persone" min="1" max="50" required>
+                                    <label for="persone">Persone<span aria-hidden="true">*</span></label>
+                                    <input type="number" id="persone" name="persone" min="1" max="50" required placeholder="1-50">
                                 </div>
                             </div>
 
-                            <div class="form-group checkbox-group">
+                            <p class="form-group checkbox-group">
                                 <input type="checkbox" id="privacy" name="privacy" required>
                                 <label for="privacy">
                                     Ho letto e accetto la <a href="policy.html?action=close" target="_blank">Privacy Policy</a><span aria-hidden="true">*</span>
                                 </label>
-                            </div>
+                            </p>
 
-                            <button type="submit" class="btn-primary">Invia Messaggio</button>
+                            <button type="submit" class="btn-primary">Invia Richiesta</button>
                         </fieldset>
                     </form>
                 </section>
+
+                <div class="sidebar-info">
+                    <h2>Le nostre proposte</h2>
+                    <p>Ogni visita include una passeggiata tra i filari, la visita alla zona di produzione e una degustazione guidata.</p>
+                    
+                    <div class="deg-card">
+                        <h3>Degustazione "Piave"</h3>
+                        <p class="deg-desc">
+                            3 calici (Prosecco, Manzoni Bianco, Raboso) + cicchetti tipici.
+                        </p>
+                        <p class="deg-price">€ 25 a persona</p>
+                    </div>
+
+                    <div class="deg-card">
+                        <h3>Degustazione "Linea Oro"</h3>
+                        <p class="deg-desc">
+                            Assaggio completo della nostra riserva + tagliere di affettati e formaggi di malga.
+                        </p>
+                        <p class="deg-price">€ 45 a persona</p>
+                    </div>
+                </div> 
+
             </div>
+        </div>
+    </main>
 
-            <div id="content">
-                <h2>Maggiori info</h2>
-                <p>Apriamo le porte della nostra tenuta per farvi toccare con mano la passione che mettiamo in ogni bottiglia.
-                    Ogni visita include una passeggiata tra i fliari, la visita alla zona di produzione e una degustazione guidata
-                </p>
-                <div class="deg-card">
-                    <h3>Degustazione "Piave"</h3>
-                    <p class="deg-desc">
-                        3 calici (Prosecco, Manzoni Bianco, Raboso) + cicchetti tipici.
-                    </p>
-                    <p class="deg-price">€ 25 a persona</p>
-                </div>
+    <footer>
+        <div class="footer-content">
+            <small>
+                &copy; 2025 Tenuta al Morer - P.IVA 00000000000 <br>
+                <a href="policy.html?return_to=esperienze.html"><span lang="en">Privacy Policy</span></a> | 
+                <a href="policy.html?return_to=esperienze.html#privacy-policy"><span lang="en">Cookie Policy</span></a> | 
+                <a href="policy.html?return_to=esperienze.html#accessibility">Accessibilità</a>
+            </small>
+        </div>
+    </footer>
 
-                <div class="deg-card">
-                    <h3>Degustazione "Linea Oro"</h3>
-                    <p class="deg-desc">
-                        Assaggio completo della nostra riserva + tagliere di affettati e formaggi di malga.
-                    </p>
-                    <p class="deg-price">€ 45 a persona</p>
-                </div>
-            </div> 
+    <button id="backToTopBtn" aria-label="Torna all'inizio della pagina">
+        &#9650; 
+    </button>
+    
+    <script src="../scripts/script.js"></script>
 
-        </main>
-
-        <footer>
-            <div class="footer-content">
-                <small>
-                    &copy; 2025 Tenuta al Morer - P.IVA 00000000000 <br>
-                    <a href="policy.html?return_to=esperienze.html"><span lang="en">Privacy Policy</span></a> | 
-                    <a href="policy.html?return_to=esperienze.html#privacy-policy"><span lang="en">Cookie Policy</span></a> | 
-                    <a href="policy.html?return_to=esperienze.html#accessibility">Accessibilità</a>
-                </small>
-            </div>
-        </footer>
-
-        <button id="backToTopBtn" aria-label="Torna all'inizio della pagina">
-            &#9650; 
-        </button>
-        
-        <script src="../scripts/script.js"></script>
-
-    </body>
-
+</body>
 </html>

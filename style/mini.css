@@ -1,10 +1,10 @@
-/* --- CONTENITORE PRINCIPALE --- */
+/* =========================================
+   NAVIGAZIONE MOBILE
+   ========================================= */
 .main-nav-bar {
-    
     display: flex;
     align-items: center; 
     justify-content: space-between; 
-    
     position: relative;
     padding: 0 0.5em; 
     min-height: 4.5em;
@@ -12,77 +12,55 @@
     flex-wrap: nowrap; 
 }
 
-/* --- 1. MENU HAMBURGER (Sinistra) --- */
 .menu-toggle {
-    
     flex: 0 0 auto; 
-    
     display: block; 
     background: none;
     border: none;
     cursor: pointer;
     padding: 10px;
     margin: 0;
-    
-    
     position: static; 
     transform: none;
     z-index: 1000;
-    
     font-size: 1.5rem;
     color: var(--navtxtcolor);
     transition: color 0.3s ease;
 }
 
 .menu-toggle:focus { outline: none; }
-.menu-toggle:hover, .menu-toggle[aria-expanded="true"] { color: var(--currentcolor); }
 
+.menu-toggle:hover, 
+.menu-toggle[aria-expanded="true"] { 
+    color: var(--currentcolor); 
+}
 
-/* --- 2. LOGO CENTRALE (Elastico) --- */
 .logo-link {
-    
     flex: 1 1 auto; 
-    
-    
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    
     margin: 0 0.5em; 
-    
-    
     min-width: 0; 
     z-index: 10;
 }
 
 .logo-link img {
-    
     max-height: 3.8em; 
-    
-    
     max-width: 100%; 
     height: auto;
     width: auto;
-    
     object-fit: contain;
 }
 
-
-/* --- 3. ICONE SHOP/LOGIN (Destra) --- */
 .mobile-icons {
-    
     flex: 0 0 auto; 
-    
     display: flex;
     align-items: center;
     gap: 1em; 
-    
-    
     position: static; 
     transform: none;
     z-index: 1000;
-    
     border: none;
     padding: 0;
     margin: 0;
@@ -95,13 +73,14 @@
     display: flex; 
 }
 
-.mobile-icons a:hover, .mobile-icons a:focus { color: var(--currentcolor); }
+.mobile-icons a:hover, 
+.mobile-icons a:focus { 
+    color: var(--currentcolor); 
+}
 
-
-/* --- LOGICA DI CAMBIO LOGO (Responsive) --- */
+/* Modifiche Logo schermi piccoli */
 @media screen and (max-width: 400px) {
     .logo-link img {
-        
         content: url('../images/logoCorto.webp');
         max-height: 4em; 
     }
@@ -114,22 +93,16 @@
     }
 }
 
-
-/* =============================
-   MENU A TENDINA (Dropdown)
-   ============================= */
+/* Menu Dropdown */
 .primary-navigation {
     display: none; 
     width: 100%;
-    
-    
     position: absolute; 
     top: 100%; 
     left: 0;
-    
     background-color: var(--navbgcolor);
     border-top: 1px solid var(--currentcolor);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+    box-shadow: 0 5px 10px var(--shadow-color);
     z-index: 999;
 }
 
@@ -155,7 +128,7 @@
 .primary-navigation li {
     width: 100%;
     padding: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--subheader-border-color);
     border-left: none;
 }
 
@@ -167,14 +140,15 @@
 
 .primary-navigation a:hover, 
 .primary-navigation a:focus {
-    background-color: rgba(197, 165, 81, 0.1);
+    background-color: var(--hover-faded);
 }
 
-
-/* =============================
-   LAYOUT & FOOTER
-   ============================= */
-main { padding: 1em 1.5em; }
+/* =========================================
+   OVERRIDE LAYOUT MOBILE
+   ========================================= */
+main { 
+    padding: 1em 1.5em; 
+}
 
 #breadcrumb {
     padding: 0.2em 0.4em;
@@ -206,4 +180,86 @@ footer {
 
 #theme-toggle:hover {
     transform: scale(1.2);
+}
+
+/* =========================================
+   OVERRIDE SPECIFICHE POLICY (Mobile)
+   ========================================= */
+.header-policy .sub-header { padding: 0.5em 1em; }
+.page-intro h1 { font-size: 2rem; }
+
+#content.container-policy {
+    padding: 2em 1.5em; 
+}
+
+/* Trasformazione Tabella in Cards */
+.table-data, .table-data thead, .table-data tbody,
+.table-data th, .table-data td, .table-data tr {
+    display: block;
+}
+
+.table-data {
+    min-width: 0 !important; width: 100% !important; box-shadow: none; border: none;
+}
+
+.table-container {
+    width: 100%; overflow: visible; border: none;
+}
+
+.table-data thead tr {
+    position: absolute; top: -9999px; left: -9999px;
+}
+
+.table-data tr {
+    border: 1px solid var(--code-bg); border-radius: 8px; margin-bottom: 1.5em;
+    background-color: var(--navbgcolor); box-shadow: 0 2px 5px var(--shadow-color); padding: 0.5em;
+}
+
+.table-data td {
+    border: none; border-bottom: 1px solid var(--code-bg); position: relative;
+    padding: 0.5em 0; text-align: left;
+}
+
+.table-data td:last-child { border-bottom: 0; }
+
+.table-data td:nth-of-type(1) {
+    font-weight: 700; color: var(--currentcolor); font-size: 1.1em; border-bottom: 2px solid var(--code-bg);
+}
+
+.table-data td:nth-of-type(2)::before { content: "Tipologia: "; font-weight: 700; color: var(--diversity-color); }
+.table-data td:nth-of-type(3)::before { content: "Destinatari: "; font-weight: 700; color: var(--diversity-color); }
+.table-data td:nth-of-type(4)::before { content: "Consenso: "; font-weight: 700; color: var(--diversity-color); }
+
+/* Override Cards Light Mode */
+body.light-mode .table-data tr {
+    background-color: var(--pure-white); border-color: var(--bordercolor); box-shadow: 0 2px 5px var(--shadow-subtle);
+}
+
+body.light-mode .table-data td { border-bottom-color: var(--table-stripe); }
+body.light-mode .table-data td:nth-of-type(1) { border-bottom-color: var(--table-stripe); }
+
+body.light-mode .table-data td:nth-of-type(2)::before,
+body.light-mode .table-data td:nth-of-type(3)::before,
+body.light-mode .table-data td:nth-of-type(4)::before {
+    color: var(--pure-black);
+}
+
+/* =========================================
+   OVERRIDE SEZIONI HOME (Mobile)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    .hero-section { min-height: 500px; }
+    .hero-content h1 { font-size: 2.5rem; }
+    .hero-actions { flex-direction: column; align-items: center; }
+    .btn { width: 100%; max-width: 300px; }
+    .grid-features { grid-template-columns: 1fr; }
+    .slider-container { height: 45vh; }
+    .slider-btn { font-size: 1.5rem; padding: 0.3em; }
+}
+
+/* =========================================
+   MOBILE FIXES FOR FORMS
+   ========================================= */
+@media screen and (max-width: 600px) {
+    .row-two { flex-direction: column; gap: 0; }
 }

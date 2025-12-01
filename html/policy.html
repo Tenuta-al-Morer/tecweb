@@ -21,8 +21,8 @@
     <link rel="stylesheet" href="../style/stile.css" media="screen">
     <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:940px)">
     <link rel="stylesheet" href="../style/stampa.css" media="print">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../style/policy.css" media="screen">
 </head>
 
 <body>
@@ -31,14 +31,12 @@
         <a class="navigationHelp" href="#content">Vai al contenuto</a>
     </nav>
 
-    <header class="policy-nav-header">
+    <header class="header-policy">
         <nav>
-            <a href="#" id="back-link" class="btn-outline">
+            <a href="../index.html" id="back-link" class="btn btn-outline-white">
                 <i class="fas fa-arrow-left"></i> Pagina precedente
             </a>
         </nav>
-
-        
 
         <div class="sub-header">
             <nav id="breadcrumb" aria-label="Posizione nella pagina">
@@ -56,9 +54,9 @@
         </div>
     </header>
 
-    <main id="content" class="policy-content">
+    <main id="content" class="container-policy">
         
-        <header class="page-header">
+        <header class="page-intro">
             <h1>Politiche Generali e Note Legali</h1>
             <p>Disposizioni estese relative all'utilizzo, alla gestione dei dati e agli standard tecnici di accessibilità per il Progetto Didattico "Tenuta al Morer".</p>
         </header>
@@ -66,7 +64,7 @@
         <section id="summary-table">
             <h2>Quadro Sinottico delle Politiche</h2>
             <div class="table-container">
-                <table class="policy-table">
+                <table class="table-data">
                     <thead>
                         <tr>
                             <th scope="col">Nome Politica</th>
@@ -99,8 +97,7 @@
             </div>
         </section>
         
-
-        <article id="terms-of-use">
+        <article id="terms-of-use" class="article-block">
             <h2>1. Condizioni Generali di Utilizzo</h2>
             
             <h3>1.1 Finalità Esclusivamente Didattica</h3>
@@ -121,8 +118,7 @@
             <p>Il servizio è fornito "as is" (così com'è). L'Università e gli studenti sviluppatori declinano ogni responsabilità per danni diretti o indiretti derivanti dall'uso improprio della piattaforma o da inesattezze nei contenuti informativi.</p>
         </article>
 
-
-        <article id="privacy-policy">
+        <article id="privacy-policy" class="article-block">
             <h2>2. Informativa Estesa sulla Privacy</h2>
             <p>In ottemperanza al Regolamento UE 2016/679 (GDPR), si forniscono i dettagli sul trattamento dei dati, ridotto al minimo essenziale per il funzionamento della demo.</p>
 
@@ -147,8 +143,7 @@
             <p>I dati inseriti dagli utenti verranno conservati esclusivamente per la durata del progetto accademico e della relativa sessione d'esame. Al termine delle valutazioni, <strong>tutti i record presenti nel database verranno cancellati irreversibilmente</strong>.</p>
         </article>
 
-
-        <article id="accessibility">
+        <article id="accessibility" class="article-block">
             <h2>3. Dichiarazione di Accessibilità e Scelte Tecniche</h2>
             <p>Il team di sviluppo ha posto massima attenzione all'inclusività, adottando pratiche di design e sviluppo volte a garantire la fruibilità del sito al maggior numero di utenti possibile, indipendentemente dalle loro abilità fisiche o sensoriali.</p>
 
@@ -157,31 +152,18 @@
             
             <ul>
                 <li><strong>Navigazione da tastiera:</strong> È garantita una navigazione completa e accessibile tramite l’aggiunta oculata degli attributi <code>tabindex</code>, rispettando rigorosamente l’ordine visivo degli elementi nel DOM.</li>
-                
                 <li><strong>Tabelle accessibili:</strong> Le tabelle (es. listini prezzi o specifiche vini) sono strutturate semanticamente, anche tramite l’utilizzo dei tag <code>&lt;time&gt;</code> ove necessario per le date.</li>
-                
                 <li><strong>Form accessibili:</strong> Tutti i moduli di contatto e login associano correttamente le etichette (<code>label</code>) ai rispettivi campi di input.</li>
-                
                 <li><strong>Stato dei Link:</strong> Sono stati distinti visivamente i link visitati da quelli non visitati per migliorare l'orientamento dell'utente.</li>
-                
                 <li><strong>Destinazione dei Link:</strong> È stato opportunamente segnalato (tramite testo o icone) quando un link non porta ad una pagina web interna del sito (esempio: link esterni a consorzi o mail di contatto nella pagina "Chi siamo").</li>
-                
                 <li><strong>Design "Above the Fold":</strong> Per ogni pagina è stata studiata ad hoc la sezione "above the fold" (la parte visibile senza scorrere), inserendoci le informazioni chiave per rispondere alle domande cognitive dell'utente: <em>"Dove sono? - Dove posso andare? - Di che cosa si tratta?"</em>.</li>
-                
                 <li><strong>Contrasto Cromatico:</strong> Sono accessibili i contrasti tra i colori di testo e il relativo sfondo, verificati tramite strumenti di analisi del contrasto.</li>
-                
                 <li><strong>Gerarchia di Navigazione:</strong> È stata adottata una gerarchia del sito ampia e poco profonda, per permettere di raggiungere i contenuti con pochi click.</li>
-                
                 <li><strong>Abbreviazioni:</strong> Sono stati utilizzati i tag <code>&lt;abbr&gt;</code> per le abbreviazioni e gli acronimi, fornendo la spiegazione estesa.</li>
-                
                 <li><strong>Headings:</strong> I tag di intestazione (<code>h1</code>, <code>h2</code>, ecc.) sono stati utilizzati in maniera semanticamente corretta, rispettando la gerarchia logica del documento senza salti di livello.</li>
-                
                 <li><strong>Testo Alternativo (Alt Text):</strong> Tutte le immagini di contenuto possiedono un attributo <code>alt</code> adeguato. Anche l’utente amministratore, in fase di aggiunta di un nuovo vino nel catalogo, è guidato nell'inserimento di un’alternativa testuale alle immagini caricate (assumendo che l’amministratore sia adeguatamente formato per inserire una alternativa testuale valida).</li>
-                
                 <li><strong>Immagini Decorative:</strong> Le immagini che non rappresentano contenuto informativo (es. texture di sfondo) sono state inserite tramite CSS o con attributo <code>alt=""</code> vuoto, affinché vengano ignorate dagli screen reader.</li>
-                
                 <li><strong>Image Replacing:</strong> Sono state usate opportune tecniche di <em>image replacing</em> per le situazioni in cui le immagini contengono testo, garantendo che il testo sia comunque presente nel codice per le tecnologie assistive.</li>
-                
                 <li><strong>Gestione Errori Form:</strong> Nel caso di una compilazione errata di un form, i valori precedentemente inseriti non vengono eliminati, evitando all'utente la frustrazione di dover riscrivere tutto.</li>
             </ul>
 
