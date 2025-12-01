@@ -191,8 +191,8 @@
 /* Quando il sito è in modalità giorno, forziamo lo sfondo bianco per gli input */
 body.light-mode .form-group input,
 body.light-mode .form-group textarea {
-    background-color: #ffffff; 
-    border-color: #ccc; 
+    background-color: var(--bodybgcolor); 
+    border-color: var(--txtcolor); 
 }
 
 /* Focus degli input */
@@ -252,7 +252,7 @@ body.light-mode .form-group textarea:focus {
     padding: 1rem 2.5rem;
     
     background-color: var(--currentcolor);
-    color: #000; 
+    color: var(--bodybgcolor); 
     
     border: none;
     font-family: 'Lexend', sans-serif;

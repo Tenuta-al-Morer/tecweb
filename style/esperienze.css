@@ -143,7 +143,7 @@ body.light-mode .form-group textarea:focus {
     padding: 1rem 2.5rem;
     
     background-color: var(--currentcolor);
-    color: #000; 
+    color: var(--bodybgcolor);  
     
     border: none;
     font-family: 'Lexend', sans-serif;

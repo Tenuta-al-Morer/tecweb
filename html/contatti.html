@@ -59,7 +59,7 @@
                 <nav id="breadcrumb" aria-label="Posizione nella pagina">
                     <div class="breadcrumb-container">
                         <span>Ti trovi in: </span>
-                        <a href="../index.html"><i class="fas fa-home home-icon" aria-hidden="true"></i></a> &gt;
+                        <a href="../index.html"><i class="fas fa-home home-icon" aria-hidden="true"></i></a> >
                         <span class="current-page">Contatti</span>
                         <i class="fas fa-address-book"></i> 
                     </div>
@@ -72,21 +72,22 @@
         </header>
 
         <main id="content">
-            <div class="container"> <h1>Contatti</h1>
+            <div class="container"> 
+                <h1>Contatti</h1>
                 
                 <p class="intro-text">
                     Siamo a tua disposizione per qualsiasi informazione sui nostri vini o sulla tenuta.
                 </p>
 
-                <div class="booking-alert">
+                <aside class="booking-alert">
                     <p>
                         <i class="fas fa-wine-glass-alt" aria-hidden="true"></i> 
                         <strong>Vuoi prenotare una visita o una degustazione?</strong><br>
                         Per gestire al meglio la tua accoglienza, ti preghiamo di usare l'apposita sezione.
                         <br>
-                        <a href="esperienze.html" class="btn-link">Vai alla pagina Esperienze <span aria-hidden="true">&rarr;</span></a>
+                        <a href="esperienze.html" class="btn-link">Vai alla pagina Esperienze <span aria-hidden="true">→</span></a>
                     </p>
-                </div>
+                </aside>
 
                 <div class="contact-grid">
                     
@@ -124,7 +125,7 @@
 
                         <section aria-labelledby="map-title" class="map-section">
                             <h2 id="map-title">Dove siamo</h2>
-                            <div class="map-container">
+                            <figure class="map-container">
                                 <iframe 
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10740.15422160674!2d11.656366963045594!3d45.316680775998464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477f203aa2f118cd%3A0x4771aae0a079c0a!2sColli%20Euganei!5e1!3m2!1sit!2sit!4v1764338845928!5m2!1sit!2sit" 
                                     width="100%" 
@@ -135,53 +136,50 @@
                                     referrerpolicy="no-referrer-when-downgrade"
                                     title="Mappa di Google Maps che mostra la posizione della Tenuta al Morer">
                                 </iframe>
-                            </div>
+                            </figure>
                         </section>
 
                     </div>
 
-                    <div class="contact-form-wrapper">
-                        <section aria-labelledby="form-title">
-                            <h2 id="form-title">Scrivici</h2>
-                            <p>Per domande generali, utilizza il modulo sottostante. I campi con l'asterisco (<span aria-hidden="true">*</span>) sono obbligatori.</p>
-                            
-                            <form action="#" method="POST" class="standard-form">
-                                <fieldset>
-                                    <legend class="sr-only">Dati di contatto e messaggio</legend>
-                                    
-                                    <div class="form-group">
-                                        <label for="nome">Nome e Cognome<span aria-hidden="true">*</span></label>
-                                        <input type="text" id="nome" name="nome" required autocomplete="name" placeholder="Mario Rossi">
-                                    </div>
+                    <section class="contact-form-wrapper" aria-labelledby="form-title">
+                        <h2 id="form-title">Scrivici</h2>
+                        <p>Per domande generali, utilizza il modulo sottostante. I campi con l'asterisco (<span aria-hidden="true">*</span>) sono obbligatori.</p>
+                        
+                        <form action="#" method="POST" class="standard-form">
+                            <fieldset>
+                                <legend class="sr-only">Dati di contatto e messaggio</legend>
+                                
+                                <p class="form-group">
+                                    <label for="nome">Nome e Cognome<span aria-hidden="true">*</span></label>
+                                    <input type="text" id="nome" name="nome" required autocomplete="name" placeholder="Mario Rossi">
+                                </p>
 
-                                    <div class="form-group">
-                                        <label for="email">Email<span aria-hidden="true">*</span></label>
-                                        <input type="email" id="email" name="email" required autocomplete="email" placeholder="esempio@email.com">
-                                    </div>
+                                <p class="form-group">
+                                    <label for="email">Email<span aria-hidden="true">*</span></label>
+                                    <input type="email" id="email" name="email" required autocomplete="email" placeholder="esempio@email.com">
+                                </p>
 
-                                    <div class="form-group">
-                                        <label for="telefono">Telefono (opzionale)</label>
-                                        <input type="tel" id="telefono" name="telefono" autocomplete="tel">
-                                    </div>
+                                <p class="form-group">
+                                    <label for="telefono">Telefono (opzionale)</label>
+                                    <input type="tel" id="telefono" name="telefono" autocomplete="tel">
+                                </p>
 
-                                    <div class="form-group">
-                                        <label for="messaggio">Messaggio<span aria-hidden="true">*</span></label>
-                                        <textarea id="messaggio" name="messaggio" rows="5" required placeholder="Scrivi qui la tua richiesta..."></textarea>
-                                    </div>
+                                <p class="form-group">
+                                    <label for="messaggio">Messaggio<span aria-hidden="true">*</span></label>
+                                    <textarea id="messaggio" name="messaggio" rows="5" required placeholder="Scrivi qui la tua richiesta..."></textarea>
+                                </p>
 
-                                    <div class="form-group checkbox-group">
-                                        <input type="checkbox" id="privacy" name="privacy" required>
-                                        <label for="privacy">
-                                            Ho letto e accetto la <a href="policy.html?action=close" target="_blank">Privacy Policy</a><span aria-hidden="true">*</span>
-                                        </label>
-                                    </div>
+                                <p class="form-group checkbox-group">
+                                    <input type="checkbox" id="privacy" name="privacy" required>
+                                    <label for="privacy">
+                                        Ho letto e accetto la <a href="policy.html?action=close" target="_blank">Privacy Policy</a><span aria-hidden="true">*</span>
+                                    </label>
+                                </p>
 
-                                    <button type="submit" class="btn-primary">Invia Messaggio</button>
-                                </fieldset>
-                            </form>
-                        </section>
-                    </div>
-
+                                <button type="submit" class="btn-primary">Invia Messaggio</button>
+                            </fieldset>
+                        </form>
+                    </section>
                 </div> 
             </div> 
         </main>
@@ -189,7 +187,7 @@
         <footer>
             <div class="footer-content">
                 <small>
-                    &copy; 2025 Tenuta al Morer - P.IVA 00000000000 <br>
+                    © 2025 Tenuta al Morer - P.IVA 00000000000 <br>
                     <a href="policy.html?return_to=contatti.html"><span lang="en">Privacy Policy</span></a> | 
                     <a href="policy.html?return_to=contatti.html#privacy-policy"><span lang="en">Cookie Policy</span></a> | 
                     <a href="policy.html?return_to=contatti.html#accessibility">Accessibilità</a>
@@ -198,11 +196,10 @@
         </footer>
 
         <button id="backToTopBtn" aria-label="Torna all'inizio della pagina">
-            &#9650; 
+            ▲ 
         </button>
         
         <script src="../scripts/script.js"></script>
 
     </body>
-
 </html>
