@@ -279,7 +279,7 @@ body.light-mode .form-group textarea:focus {
     transform: translateY(-2px);
 }
 
-/* Utility Accessibilità (solo se non esiste già in stile.css) */
+/* Utility Accessibilità */
 .sr-only {
     position: absolute;
     width: 1px;
