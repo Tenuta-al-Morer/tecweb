@@ -16,7 +16,6 @@
     --code-bg: #333333;
     
     /* --- Palette Principale --- */
-    
     --navbgcolor: #1D1D1D; 
     --navtxtcolor: #ffffff;
     
@@ -28,8 +27,7 @@
     --bordercolor: #b6b6b6;
     --table-stripe: #252525;
 
-    
-    /* Convertiti da rgba a hex */
+    /* --- Trasparenze e Utility (Hex Alpha) --- */
     --nav-separator-color: #ffffff4d;      
     --subheader-border-color: #ffffff1a;   
     --shadow-color: #00000080;             
@@ -53,7 +51,7 @@
 
     /* --- Elementi UI --- */
     --slider-btn-bg: #00000080;
-    --header-bg: var(--navbgcolor); /* Default dark mode */
+    --header-bg: var(--navbgcolor); 
 }
 
 html {
@@ -81,8 +79,6 @@ body.light-mode {
     --diversity-color: #333333;
     --bordercolor: #4b4b4b;
     
-    
-
     --card-bg: #fcfcfc;
     --card-border: #dddddd;
     --card-shadow: 0 5px 15px #0000000d;
@@ -683,4 +679,226 @@ footer a:visited { color: var(--currentcolor); }
 #backToTopBtn:hover, #backToTopBtn:focus {
     background-color: var(--currentcolor); color: var(--navbgcolor); 
     transform: translateY(-3px); box-shadow: 0 6px 12px var(--focus-gold); outline: none;
+}
+
+/* =========================================
+   SEZIONE AUTH (LOGIN/REGISTER)
+   ========================================= */
+
+/* Header Specifico Login */
+.login-header-logo {
+    background-color: var(--navbgcolor);
+    text-align: center;
+    padding: 0.5em 0 0 0;
+    display: block;
+}
+
+.login-header-logo img {
+    height: 5em;
+    width: auto;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.login-header-logo a:hover img {
+    transform: scale(1.05);
+}
+
+/* Card Login / Register */
+.auth-container {
+    max-width: 450px;
+    margin: 2rem auto 0rem auto; 
+    padding: 2.5rem;
+    background-color: var(--header-bg);
+    border: 1px solid var(--bordercolor);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px var(--shadow-color);
+    text-align: center;
+}
+
+.auth-container h1 {
+    font-size: 2rem;
+    color: var(--currentcolor);
+    margin-bottom: 0.5rem;
+}
+
+.auth-container p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: var(--diversity-color);
+}
+
+.auth-form, 
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-form {
+    gap: 0.8rem;
+    text-align: left;
+}
+
+.form-group label {
+    margin-bottom: 0.2rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--txtcolor);
+}
+
+/* Inputs & Passwords */
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.auth-form input:not([type="checkbox"]):not([type="radio"]) {
+    width: 100%; 
+    padding: 0.8rem;
+    background-color: transparent;
+    border: 1px solid var(--bordercolor);
+    border-radius: 4px;
+    color: var(--txtcolor);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-form input::placeholder {
+    color: var(--diversity-color);
+    opacity: 1;
+}
+
+.password-wrapper input {
+    padding-right: 2.5rem; 
+}
+
+.auth-form input:focus {
+    outline: none;
+    border-color: var(--currentcolor);
+    box-shadow: 0 0 5px var(--focus-gold);
+}
+
+/* Autocomplete Browser */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px var(--header-bg) inset !important;
+    -webkit-text-fill-color: var(--txtcolor) !important;
+    border: 1px solid var(--bordercolor) !important;
+    border-radius: 4px;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill:focus {
+    border-color: var(--currentcolor) !important;
+    -webkit-box-shadow: 0 0 0 30px var(--header-bg) inset, 0 0 5px var(--focus-gold) !important;
+}
+
+/* Bottone Occhio */
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: var(--txtcolor);
+    cursor: pointer;
+    opacity: 0.7;
+    padding: 0.2rem;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s;
+}
+
+.toggle-password:hover {
+    opacity: 1;
+    color: var(--currentcolor);
+}
+
+/* Layout Form & Footer */
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    margin-top: 0;
+}
+
+/* Override margine ereditato per checkbox group */
+.auth-form .checkbox-group {
+    margin-top: 0;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+/* Override checkbox specifica per auth */
+.checkbox-container input[type="checkbox"] {
+    margin: 0;          
+    width: 1.1em;       
+    height: 1.1em;
+    cursor: pointer;
+    accent-color: var(--currentcolor); 
+}
+
+.forgot-password,
+.auth-footer a,
+.checkbox-container a {
+    color: var(--diversity-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.auth-footer a,
+.checkbox-container a {
+    color: var(--currentcolor); 
+}
+
+.forgot-password:hover,
+.auth-footer a:hover,
+.checkbox-container a:hover {
+    color: var(--currentcolor);
+    text-decoration: underline;
+}
+
+.btn-auth {
+    margin-top: 0.5rem;
+    padding: 1rem;
+    background-color: var(--currentcolor);
+    color: var(--pure-black);
+    font-weight: 700;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-auth:hover {
+    background-color: var(--buttonhovercolor);
+    transform: translateY(-2px);
+}
+
+.auth-footer {
+    margin-top: 2rem;
+    font-size: 0.95rem;
+    border-top: 1px solid var(--bordercolor);
+    padding-top: 1.5rem;
 }

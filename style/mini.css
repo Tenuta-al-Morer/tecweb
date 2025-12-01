@@ -78,7 +78,7 @@
     color: var(--currentcolor); 
 }
 
-/* Modifiche Logo schermi piccoli */
+
 @media screen and (max-width: 400px) {
     .logo-link img {
         content: url('../images/logoCorto.webp');
@@ -262,4 +262,48 @@ body.light-mode .table-data td:nth-of-type(4)::before {
    ========================================= */
 @media screen and (max-width: 600px) {
     .row-two { flex-direction: column; gap: 0; }
+}
+
+/* =========================================
+   AUTH MOBILE FIXES
+   ========================================= */
+
+
+.login-header-logo img {
+    height: 4.5em; 
+    padding-top: 0.5em;
+}
+
+.auth-container {
+    margin: 1rem auto;
+    padding: 1.5rem;
+    width: 90%; 
+    max-width: none;
+}
+
+.auth-container h1 {
+    font-size: 1.6rem;
+}
+
+.form-row {
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-options {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+footer {
+    padding-bottom: 3.5em; 
+}
+
+
+@media screen and (max-width: 330px) {
+    .login-header-logo img {
+        content: url('../images/logoCorto.webp');
+        max-height: 4em; 
+    }
 }
