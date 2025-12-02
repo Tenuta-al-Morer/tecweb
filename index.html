@@ -24,22 +24,25 @@
 
     <body> 
         <header>
-            <nav aria-label="aiuti alla navigazione" id="help">
+            <nav id="help">
+                <h2 class="visually-hidden">Aiuti alla navigazione</h2>
                 <a class="navigationHelp" href="#content">Vai al contenuto</a>
             </nav>
 
             <div class="main-nav-bar">    
-                <button class="menu-toggle" aria-controls="main-navigation" aria-expanded="false" aria-label="Menu di navigazione">
-                    <i class="fas fa-bars"></i>
+                <button class="menu-toggle" aria-controls="main-navigation" aria-expanded="false">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                    <span class="visually-hidden">Apri il menu di navigazione</span>
                 </button>
+
 
                 <div class="logo-link">
                     <img src="images/logo.webp" alt="Tenuta al Morer">
                 </div>
 
-                <nav id="main-navigation" class="primary-navigation" aria-label="Navigazione principale">
+                <nav id="main-navigation" class="primary-navigation">
                     <ul>
-                        <li><a aria-current="page"><span lang="en">Home</span></a></li> 
+                        <li><span aria-current="page" lang="en">Home</span></li> <!-- prima sembrava un link, invece non lo era!-->
                         <li><a href="html/tenuta.html">Tenuta</a></li>
                         <li><a href="html/vini.html">Vini</a></li>
                         <li><a href="html/esperienze.html">Esperienze</a></li>
@@ -48,13 +51,20 @@
                 </nav>
 
                 <div class="mobile-icons">
-                    <a href="html/shop.html" aria-label="Shop"><i class="fas fa-shopping-bag"></i></a>
-                    <a href="html/login.html" aria-label="Accedi"><i class="fas fa-user"></i></a>
+                    <a href="html/shop.html">
+                        <i class="fas fa-shopping-bag" aria-hidden="true"></i>
+                        <span class="visually-hidden">Shop</span>
+                    </a>
+                    <a href="html/login.html">
+                        <i class="fas fa-user" aria-hidden="true"></i>
+                        <span class="visually-hidden">Accedi</span>
+                    </a>
                 </div>
+
             </div>
 
             <div class="sub-header">
-                <nav id="breadcrumb" aria-label="Posizione nella pagina">
+                <nav id="breadcrumb">
                     <div class="breadcrumb-container">
                         <span>Ti trovi in: </span>
                         <span class="current-page">Home</span>
@@ -62,8 +72,9 @@
                     </div>
                 </nav>
 
-                <button id="theme-toggle" aria-label="Cambia modalità scura e chiara">
-                    <i class="fas fa-moon"></i>
+                <button id="theme-toggle">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                    <span class="visually-hidden">Cambia modalità scura e chiara</span>
                 </button>
             </div>
         </header>
@@ -89,28 +100,28 @@
 
             <section class="grid-features">
                 <a href="html/tenuta.html" class="feature-card">
-                    <i class="fas fa-wine-glass-alt card-icon"></i>
+                    <i class="fas fa-wine-glass-alt card-icon" aria-hidden="true"></i>
                     <h3>La Tenuta</h3>
                     <p>Scopri la storia e la tradizione che da generazioni caratterizza la nostra cantina.</p>
                     <span class="link-arrow">Scopri di più &rarr;</span>
                 </a>
 
                 <a href="html/vini.html" class="feature-card">
-                    <i class="fas fa-shopping-cart card-icon"></i>
+                    <i class="fas fa-shopping-cart card-icon" aria-hidden="true"></i>
                     <h3>I Nostri Vini</h3>
                     <p>Bianchi, rossi e selezioni premium. Ogni bottiglia racconta una storia unica.</p>
                     <span class="link-arrow">Vai allo Shop &rarr;</span>
                 </a>
 
                 <a href="html/esperienze.html" class="feature-card">
-                    <i class="fas fa-calendar-alt card-icon"></i>
+                    <i class="fas fa-calendar-alt card-icon" aria-hidden="true"></i>
                     <h3>Visite & Degustazioni</h3>
                     <p>Vieni a trovarci per un'esperienza enogastronomica indimenticabile.</p>
                     <span class="link-arrow">Prenota visita &rarr;</span>
                 </a>
 
                 <a href="html/contatti.html" class="feature-card">
-                    <i class="fas fa-map-marker-alt card-icon"></i>
+                    <i class="fas fa-map-marker-alt card-icon" aria-hidden="true"></i>
                     <h3>Contatti</h3>
                     <p>Siamo qui per te. Contattaci per qualsiasi informazione o richiesta.</p>
                     <span class="link-arrow">Scrivici &rarr;</span>
@@ -121,8 +132,16 @@
                 <h2 class="section-title">Gallery</h2>
                 
                 <div class="slider-wrapper">
-                    <button class="slider-btn prev-btn" aria-label="Immagine precedente">&#10094;</button>
-                    <button class="slider-btn next-btn" aria-label="Immagine successiva">&#10095;</button>
+
+                    <button class="slider-btn prev-btn"> 
+                        <span aria-hidden="true">&#10094;</span>
+                        <span class="visually-hidden">Immagine precedente</span>
+                    </button>
+
+                    <button class="slider-btn next-btn">
+                        <span aria-hidden="true">&#10095;</span>
+                        <span class="visually-hidden">Immagine successiva</span>
+                    </button>
 
                     <div class="slider-container" id="imageSlider">
                         <div class="slide"><img src="images/bg.webp" alt="Panorama della Tenuta al Morer immersa nel verde delle colline"></div> 
@@ -147,9 +166,10 @@
             </div>
         </footer>
 
-        <button id="backToTopBtn" aria-label="Torna all'inizio della pagina">
-            &#9650; 
-        </button>        
+        <button id="backToTopBtn">
+            <span aria-hidden="true">&#9650;</span>
+            <span class="visually-hidden">Torna all'inizio della pagina</span>
+        </button>       
         <script src="scripts/script.js"></script>
     </body>
 </html>
