@@ -26,15 +26,15 @@
 </head>
 
 <body>
-
-    <nav aria-label="aiuti alla navigazione" id="help">
-        <a class="navigationHelp" href="#content">Vai al contenuto</a>
+    <nav id="help">
+            <h2 class="visually-hidden">Aiuti alla navigazione</h2>
+            <a class="navigationHelp" href="#content">Vai al contenuto</a>
     </nav>
 
     <header class="header-policy">
         <nav>
             <a href="../index.html" id="back-link" class="btn btn-outline-white">
-                <i class="fas fa-arrow-left"></i> Pagina precedente
+                <i class="fas fa-arrow-left" aria-hidden="true"></i> Pagina precedente
             </a>
         </nav>
 
@@ -42,14 +42,14 @@
             <nav id="breadcrumb" aria-label="Posizione nella pagina">
                 <div class="breadcrumb-container">
                     <span>Ti trovi in: </span>
-                    <a href="../index.html"><i class="fas fa-home home-icon" aria-hidden="true"></i></a> &gt;
-                    <span class="current-page" aria-current="page">Policy</span>
+                    <a href="../index.html"><span class="visually-hidden" lang="en">Home</span><i class="fas fa-home home-icon" aria-hidden="true"></i></a><span aria-hidden="true"> &gt; </span> 
+                    <span class="current-page" aria-current="page" lang="en">Policy</span>
                     <i class="fas fa-info-circle contact-icon" aria-hidden="true"></i> 
                 </div>
             </nav>   
 
-            <button id="theme-toggle" aria-label="Cambia modalità scura e chiara">
-                <i class="fas fa-moon"></i>
+            <button id="theme-toggle" aria-label="Cambia tema">
+                <i class="fas fa-moon" aria-hidden="true"></i>
             </button>
         </div>
     </header>
@@ -67,30 +67,30 @@
                 <table class="table-data">
                     <thead>
                         <tr>
-                            <th scope="col">Nome Politica</th>
-                            <th scope="col">Tipologia</th>
+                            <th scope="col" abbr="Politica">Nome Politica</th>
+                            <th scope="col" abbr="Tipo">Tipologia</th>
                             <th scope="col">Destinatari</th>
                             <th scope="col">Consenso</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><a href="#terms-of-use">Condizioni Generali di Utilizzo</a></td>
-                            <td>Termini del Servizio</td>
-                            <td>Tutti i visitatori</td>
-                            <td>Implicito nella navigazione</td>
+                        <tr> <!--DA SISTEMARE IL MINI!!!!!!!!!-->
+                            <th scope="row"><a href="#terms-of-use">Condizioni Generali di Utilizzo</a></th>
+                            <td data-title="Tipologia">Termini del Servizio</td>
+                            <td data-title="Destinatari">Tutti i visitatori</td>
+                            <td data-title="Consenso">Implicito nella navigazione</td>
+                        </tr>
+                        <tr> <!--DA ESPLICITARE ABBR e dichiarare lang="en" manca spesso nel vario testo!-->
+                            <th scope="row"><a href="#privacy-policy">Informativa Privacy e Trattamento Dati</a></th>
+                            <td data-title="Tipologia">Protezione Dati (GDPR)</td>
+                            <td data-title="Destinatari">Utenti registrati</td>
+                            <td data-title="Consenso">Esplicito alla registrazione</td>
                         </tr>
                         <tr>
-                            <td><a href="#privacy-policy">Informativa Privacy e Trattamento Dati</a></td>
-                            <td>Protezione Dati (GDPR)</td>
-                            <td>Utenti registrati</td>
-                            <td>Esplicito alla registrazione</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#accessibility">Dichiarazione di Accessibilità</a></td>
-                            <td>Inclusività e Tecnica</td>
-                            <td>Tutti i visitatori</td>
-                            <td>N/A</td>
+                            <th scope="row"><a href="#accessibility">Dichiarazione di Accessibilità</a></th>
+                            <td data-title="Tipologia">Inclusività e Tecnica</td>
+                            <td data-title="Destinatari">Tutti i visitatori</td>
+                            <td data-title="Consenso">N/A</td>
                         </tr>
                     </tbody>
                 </table>
@@ -185,8 +185,9 @@
 
     </main>
 
-    <button id="backToTopBtn" aria-label="Torna all'inizio della pagina">
-        &#9650;
+    <button id="backToTopBtn">
+        <span aria-hidden="true">&#9650;</span>
+        <span class="visually-hidden">Torna all'inizio della pagina</span>
     </button>
 
     <script src="../scripts/script.js"></script>

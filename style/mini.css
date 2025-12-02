@@ -193,6 +193,8 @@ footer {
 }
 
 /* Trasformazione Tabella in Cards */
+
+/*
 .table-data, .table-data thead, .table-data tbody,
 .table-data th, .table-data td, .table-data tr {
     display: block;
@@ -229,6 +231,19 @@ footer {
 .table-data td:nth-of-type(2)::before { content: "Tipologia: "; font-weight: 700; color: var(--diversity-color); }
 .table-data td:nth-of-type(3)::before { content: "Destinatari: "; font-weight: 700; color: var(--diversity-color); }
 .table-data td:nth-of-type(4)::before { content: "Consenso: "; font-weight: 700; color: var(--diversity-color); }
+
+*/
+/*QUESTO È IL CODICE BASE DA USARE PER LE TABELLE. Da guardare sul Notion*/
+
+thead, tfoot{ display: none; }
+
+tr, th, td{ display: block; }
+
+td[data-title]:before{
+    content: attr(data-title) ":\00A0";
+}
+
+
 
 /* Override Cards Light Mode */
 body.light-mode .table-data tr {
