@@ -527,7 +527,7 @@ main h1 { margin-bottom: 0.3em; }
 main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolor); }
 
 .hero-section {
-    background-image: linear-gradient(to top, var(--pure-black), var(--hero-overlay-light)), url('../images/bg.webp');
+    background-image: url('../images/bg.webp'), linear-gradient(to top, var(--pure-black), var(--hero-overlay-light));
     height: 35vh; min-height: 400px;
     display: flex; align-items: center; justify-content: center; text-align: center;
     background-size: cover; background-position: center 50%; 
