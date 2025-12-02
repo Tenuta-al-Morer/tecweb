@@ -195,70 +195,84 @@ footer {
     padding: 2em 1.5em; 
 }
 
-/* Trasformazione Tabella in Cards */
+/* =========================================
+   TRASFORMAZIONE TABELLA IN CARDS
+   ========================================= */
 
-/*
+.table-container {
+    width: 100%; 
+    overflow: visible; 
+    border: none;
+}
+
 .table-data, .table-data thead, .table-data tbody,
 .table-data th, .table-data td, .table-data tr {
     display: block;
 }
 
-.table-data {
-    min-width: 0 !important; width: 100% !important; box-shadow: none; border: none;
-}
-
-.table-container {
-    width: 100%; overflow: visible; border: none;
-}
-
 .table-data thead tr {
-    position: absolute; top: -9999px; left: -9999px;
+    position: absolute; 
+    top: -9999px; 
+    left: -9999px;
 }
 
 .table-data tr {
-    border: 1px solid var(--code-bg); border-radius: 8px; margin-bottom: 1.5em;
-    background-color: var(--navbgcolor); box-shadow: 0 2px 5px var(--shadow-color); padding: 0.5em;
+    border: 1px solid var(--bordercolor); 
+    border-radius: 8px; 
+    margin-bottom: 2em;
+    background-color: var(--navbgcolor); 
+    box-shadow: 0 4px 8px var(--shadow-color); 
+    overflow: hidden;
+}
+
+.table-data tbody th {
+    background-color: var(--table-stripe);
+    color: var(--currentcolor);
+    font-weight: 700;
+    text-align: center; 
+    padding: 1em;
+    border-bottom: 1px solid var(--bordercolor);
+    font-size: 1.1em;
 }
 
 .table-data td {
-    border: none; border-bottom: 1px solid var(--code-bg); position: relative;
-    padding: 0.5em 0; text-align: left;
+    border: none; 
+    border-bottom: 1px solid var(--subheader-border-color); 
+    position: relative;
+    padding: 0.8em 1em;
+    text-align: left; 
 }
 
-.table-data td:last-child { border-bottom: 0; }
-
-.table-data td:nth-of-type(1) {
-    font-weight: 700; color: var(--currentcolor); font-size: 1.1em; border-bottom: 2px solid var(--code-bg);
+.table-data td:last-child { 
+    border-bottom: 0; 
 }
 
-.table-data td:nth-of-type(2)::before { content: "Tipologia: "; font-weight: 700; color: var(--diversity-color); }
-.table-data td:nth-of-type(3)::before { content: "Destinatari: "; font-weight: 700; color: var(--diversity-color); }
-.table-data td:nth-of-type(4)::before { content: "Consenso: "; font-weight: 700; color: var(--diversity-color); }
-
-*/
-/*QUESTO È IL CODICE BASE DA USARE PER LE TABELLE. Da guardare sul Notion*/
-
-thead, tfoot{ display: none; }
-
-tr, th, td{ display: block; }
-
-td[data-title]:before{
-    content: attr(data-title) ":\00A0";
+.table-data td::before {
+    content: attr(data-title) ": "; 
+    font-weight: 700;
+    color: var(--diversity-color);
+    display: inline;
+    margin-right: 0.3em;
 }
 
 
-
-/* Override Cards Light Mode */
 body.light-mode .table-data tr {
-    background-color: var(--pure-white); border-color: var(--bordercolor); box-shadow: 0 2px 5px var(--shadow-subtle);
+    background-color: var(--pure-white); 
+    border-color: var(--bordercolor); 
+    box-shadow: 0 2px 5px var(--shadow-subtle);
 }
 
-body.light-mode .table-data td { border-bottom-color: var(--table-stripe); }
-body.light-mode .table-data td:nth-of-type(1) { border-bottom-color: var(--table-stripe); }
+body.light-mode .table-data tbody th {
+    background-color: var(--table-stripe);
+    color: var(--currentcolor);
+    border-bottom-color: var(--bordercolor);
+}
 
-body.light-mode .table-data td:nth-of-type(2)::before,
-body.light-mode .table-data td:nth-of-type(3)::before,
-body.light-mode .table-data td:nth-of-type(4)::before {
+body.light-mode .table-data td { 
+    border-bottom-color: var(--bordercolor); 
+}
+
+body.light-mode .table-data td::before {
     color: var(--pure-black);
 }
 
@@ -285,7 +299,6 @@ body.light-mode .table-data td:nth-of-type(4)::before {
 /* =========================================
    AUTH MOBILE FIXES
    ========================================= */
-
 
 .login-header-logo img {
     height: 4.5em; 
