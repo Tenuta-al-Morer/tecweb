@@ -32,7 +32,7 @@
 
 .menu-toggle:hover, 
 .menu-toggle[aria-expanded="true"] { 
-    color: var(--currentcolor); 
+    color: var(--gold-color); 
 }
 
 .logo-link {
@@ -75,7 +75,7 @@
 
 .mobile-icons a:hover, 
 .mobile-icons a:focus { 
-    color: var(--currentcolor); 
+    color: var(--gold-color); 
 }
 
 
@@ -101,7 +101,7 @@
     top: 100%; 
     left: 0;
     background-color: var(--navbgcolor);
-    border-top: 1px solid var(--currentcolor);
+    border-top: 1px solid var(--gold-color);
     box-shadow: 0 5px 10px var(--pure-black);
     z-index: 999;
 }
@@ -227,7 +227,7 @@ footer {
 
 .table-data tbody th {
     background-color: var(--table-stripe);
-    color: var(--currentcolor);
+    color: var(--gold-color);
     font-weight: 700;
     text-align: center; 
     padding: 1em;
@@ -264,7 +264,7 @@ body.light-mode .table-data tr {
 
 body.light-mode .table-data tbody th {
     background-color: var(--table-stripe);
-    color: var(--currentcolor);
+    color: var(--gold-color);
     border-bottom-color: var(--bordercolor);
 }
 
