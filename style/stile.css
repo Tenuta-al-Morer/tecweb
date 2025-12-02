@@ -267,11 +267,13 @@ body.light-mode ::-webkit-calendar-picker-indicator {
 .checkbox-group label a { color: var(--currentcolor); text-decoration: underline; }
 .checkbox-group label a:hover { color: var(--txtcolor); }
 
-.row-two {
-    display: flex; gap: 1rem;
+.form-group.row-two {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
 }
 
-.row-two > div {
+.form-group.row-two > div {
     flex: 1;
 }
 

@@ -337,4 +337,9 @@ footer {
         content: url('../images/logoCorto.webp');
         max-height: 4em; 
     }
+
+    .form-group.row-two {
+        flex-direction: column
+    }
 }
+
