@@ -2,10 +2,10 @@
 <html lang="it">
 
 <head>
+    <meta charset="utf-8">
     <title>Registrati - Tenuta al Morer</title>
     <meta name="description" content="Crea un nuovo account su Tenuta al Morer per accedere a offerte esclusive e gestire i tuoi ordini.">
     <link rel="icon" href="../images/logo.ico" type="image/x-icon">
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,36 +22,37 @@
 
 <body> 
     <header>
-        <nav aria-label="aiuti alla navigazione" id="help">
-            <a class="navigationHelp" href="#content">Vai al contenuto principale</a>
+        <nav id="help">
+            <h2 class="visually-hidden">Aiuti alla navigazione</h2>
+            <a class="navigationHelp" href="#content">Vai al contenuto</a>
         </nav>
 
         <div class="login-header-logo">
-            <a href="../index.html" aria-label="Torna alla pagina principale">
-                <img src="../images/logo.webp" alt="Logo Tenuta al Morer">
+            <a href="../index.html">
+                <img src="../images/logo.webp" alt="Home - Tenuta al Morer">
             </a>
         </div>
 
         <div class="sub-header">
-            <nav id="breadcrumb" aria-label="Posizione nella pagina">
+            <nav id="breadcrumb">
                 <div class="breadcrumb-container">
                     <span>Ti trovi in: </span>
-                        <a href="../index.html"><i class="fas fa-home home-icon" aria-hidden="true"></i></a> &gt;
-                        <a href="login.html"><i class="fas fa-sign-in-alt contact-icon" aria-hidden="true"></i></a> &gt;
+                    <a href="../index.html"><span class="visually-hidden" lang="en">Home</span><i class="fas fa-home home-icon" aria-hidden="true"></i></a><span aria-hidden="true"> &gt; </span> 
+                    <a href="login.html"><span class="visually-hidden">Accedi</span><i class="fas fa-sign-in-alt contact-icon" aria-hidden="true"></i></a><span aria-hidden="true"> &gt; </span>
                     <span class="current-page" aria-current="page">Registrazione</span>
                     <i class="fas fa-user-plus contact-icon" aria-hidden="true"></i> 
                 </div>
             </nav>
 
-            <button id="theme-toggle" aria-label="Cambia modalità scura e chiara">
-                <i class="fas fa-moon"></i>
+            <button id="theme-toggle" aria-label="Cambia tema">
+                <i class="fas fa-moon" aria-hidden="true"></i>
             </button>
         </div>
     </header>
 
     <main id="content">  
         <div class="auth-container">
-            <h1>Crea un Account</h1>
+            <h1>Crea un <span lang="en">Account</span></h1>
             <p>Entra a far parte della famiglia Tenuta al Morer.</p>
             
             <form action="#" method="POST" class="auth-form">
@@ -97,7 +98,7 @@
                         <span>
                             Ho letto e accetto la 
                             <a href="policy.html?action=close" target="_blank" rel="noopener noreferrer">
-                                Privacy Policy
+                                <span lang="en">Privacy Policy</span>
                             </a>
                         </span>
                     </label>
@@ -107,7 +108,7 @@
             </form>
 
             <div class="auth-footer">
-                <p>Hai già un account? <a href="login.html">Accedi qui</a></p>
+                <p>Hai già un <span lang="en">account</span>? <a href="login.html">Accedi qui</a></p>
             </div>
         </div>
     </main>
@@ -115,7 +116,7 @@
     <footer>
         <div class="footer-content">
             <small>
-                &copy; 2025 Tenuta al Morer - P.IVA 00000000000 <br>
+                &copy; 2025 Tenuta al Morer - <abbr title="Partita">P.</abbr> <abbr title="Imposta sul Valore Aggiunto">IVA</abbr> 00000000000 <br>
                 <a href="policy.html?return_to=registrazione.html"><span lang="en">Privacy Policy</span></a> | 
                 <a href="policy.html?return_to=registrazione.html#privacy-policy"><span lang="en">Cookie Policy</span></a> | 
                 <a href="policy.html?return_to=registrazione.html#accessibility">Accessibilità</a>

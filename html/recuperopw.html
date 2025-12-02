@@ -2,10 +2,10 @@
 <html lang="it">
 
 <head>
+    <meta charset="utf-8">
     <title>Recupero Password - Tenuta al Morer</title>
     <meta name="description" content="Hai dimenticato la password? Inserisci la tua email per recuperare l'accesso al tuo account Tenuta al Morer.">
     <link rel="icon" href="../images/logo.ico" type="image/x-icon">
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,37 +22,38 @@
 
 <body> 
     <header>
-        <nav aria-label="aiuti alla navigazione" id="help">
-            <a class="navigationHelp" href="#content">Vai al contenuto principale</a>
+        <nav id="help">
+            <h2 class="visually-hidden">Aiuti alla navigazione</h2>
+            <a class="navigationHelp" href="#content">Vai al contenuto</a>
         </nav>
 
         <div class="login-header-logo">
-            <a href="../index.html" aria-label="Torna alla pagina principale">
-                <img src="../images/logo.webp" alt="Logo Tenuta al Morer">
+            <a href="../index.html">
+                <img src="../images/logo.webp" alt="Home - Tenuta al Morer">
             </a>
         </div>
 
         <div class="sub-header">
-            <nav id="breadcrumb" aria-label="Posizione nella pagina">
+            <nav id="breadcrumb">
                 <div class="breadcrumb-container">
                     <span>Ti trovi in: </span>
-                    <a href="../index.html"><i class="fas fa-home home-icon" aria-hidden="true"></i></a> &gt;
-                    <a href="login.html"><i class="fas fa-sign-in-alt contact-icon" aria-hidden="true"></i></a> &gt;
-                    <span class="current-page" aria-current="page">Recupero Password</span>
+                    <a href="../index.html"><span class="visually-hidden" lang="en">Home</span><i class="fas fa-home home-icon" aria-hidden="true"></i></a><span aria-hidden="true"> &gt; </span> 
+                    <a href="login.html"><span class="visually-hidden">Accedi</span><i class="fas fa-sign-in-alt contact-icon" aria-hidden="true"></i></a><span aria-hidden="true"> &gt; </span>
+                    <span class="current-page" aria-current="page">Recupero <span lang="en">Password</span></span>
                     <i class="fas fa-key contact-icon" aria-hidden="true"></i> 
                 </div>
             </nav>
 
-            <button id="theme-toggle" aria-label="Cambia modalità scura e chiara">
-                <i class="fas fa-moon"></i>
+            <button id="theme-toggle" aria-label="Cambia tema">
+                <i class="fas fa-moon" aria-hidden="true"></i>
             </button>
         </div>
     </header>
 
     <main id="content">  
         <div class="auth-container">
-            <h1>Password Dimenticata?</h1>
-            <p>Inserisci la tua email. Ti invieremo le istruzioni per reimpostare la password.</p>
+            <h1><span lang="en">Password</span> Dimenticata?</h1>
+            <p>Inserisci la tua <span lang="en">email</span>. Ti invieremo le istruzioni per reimpostare la <span lang="en">password</span>.</p>
             
             <form action="#" method="POST" class="auth-form">
                 <div class="form-group">
@@ -64,7 +65,7 @@
             </form>
 
             <div class="auth-footer">
-                <p>Ti sei ricordato la password? <a href="login.html">Torna al Login</a></p>
+                <p>Ti sei ricordato la <span lang="en">password</span>? <a href="login.html">Torna al <span lang="en">Login</span></a></p>
             </div>
         </div>
     </main>
@@ -72,7 +73,7 @@
     <footer>
         <div class="footer-content">
             <small>
-                &copy; 2025 Tenuta al Morer - P.IVA 00000000000 <br>
+                &copy; 2025 Tenuta al Morer - <abbr title="Partita">P.</abbr> <abbr title="Imposta sul Valore Aggiunto">IVA</abbr> 00000000000 <br>
                 <a href="policy.html?return_to=recuperopw.html"><span lang="en">Privacy Policy</span></a> | 
                 <a href="policy.html?return_to=recuperopw.html#privacy-policy"><span lang="en">Cookie Policy</span></a> | 
                 <a href="policy.html?return_to=recuperopw.html#accessibility">Accessibilità</a>
