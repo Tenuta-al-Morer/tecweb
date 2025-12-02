@@ -132,10 +132,13 @@
     border-left: none;
 }
 
-.primary-navigation a {
+.primary-navigation a,
+.primary-navigation span[aria-current="page"] {
     display: block;
     padding: 1.2em;
     font-size: 1.1em;
+    color: var(--navtxtcolor);
+    cursor: default; 
 }
 
 .primary-navigation a:hover, 
