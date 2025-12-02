@@ -26,47 +26,57 @@
 
 <body> 
     <header>
-        <nav aria-label="aiuti alla navigazione" id="help">
+        <nav id="help">
+            <h2 class="visually-hidden">Aiuti alla navigazione</h2>
             <a class="navigationHelp" href="#content">Vai al contenuto</a>
         </nav>
 
         <div class="main-nav-bar">    
-            <button class="menu-toggle" aria-controls="main-navigation" aria-expanded="false" aria-label="Menu di navigazione">
-                <i class="fas fa-bars"></i>
+            <button class="menu-toggle" aria-controls="main-navigation" aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+                <span class="visually-hidden">Apri il menu di navigazione</span>
             </button>
 
-            <a href="../index.html" class="logo-link" aria-label="Torna alla pagina principale">
-                <img src="../images/logo.webp" alt="Tenuta al Morer">
+
+            <a href="../index.html" class="logo-link">
+                <img src="../images/logo.webp" alt="Home - Tenuta al Morer" >
             </a>
 
-            <nav id="main-navigation" class="primary-navigation" aria-label="Navigazione principale">
+            <nav id="main-navigation" class="primary-navigation">
                 <ul>
                     <li><a href="../index.html">Home</a></li> 
                     <li><a href="tenuta.html">Tenuta</a></li>
                     <li><a href="vini.html">Vini</a></li>
                     <li><a href="esperienze.html">Esperienze</a></li>
-                    <li><a aria-current="page"><span lang="it">Contatti</span></a></li>
+                    <li><span aria-current="page" lang="it">Contatti</span></li>
                 </ul>
             </nav>
 
             <div class="mobile-icons">
-                <a href="shop.html" aria-label="Shop"><i class="fas fa-shopping-bag"></i></a>
-                <a href="login.html" aria-label="Accedi"><i class="fas fa-user"></i></a>
+                <a href="shop.html">
+                    <i class="fas fa-shopping-bag" aria-hidden="true"></i>
+                    <span class="visually-hidden">Shop</span>
+                </a>
+                <a href="login.html">
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                    <span class="visually-hidden">Accedi</span>
+                </a>
             </div>
         </div>
 
         <div class="sub-header">
-            <nav id="breadcrumb" aria-label="Posizione nella pagina">
+            <nav id="breadcrumb">
                 <div class="breadcrumb-container">
                     <span>Ti trovi in: </span>
-                    <a href="../index.html"><i class="fas fa-home home-icon" aria-hidden="true"></i></a> >
+                    <a href="../index.html"><span class="visually-hidden">Home</span><i class="fas fa-home home-icon" aria-hidden="true"></i></a><span aria-hidden="true"> &gt; </span> 
                     <span class="current-page">Contatti</span>
-                    <i class="fas fa-address-book"></i> 
+                    <i class="fas fa-address-book" aria-hidden="true"></i> 
                 </div>
             </nav>
 
-            <button id="theme-toggle" aria-label="Cambia modalità scura e chiara">
-                <i class="fas fa-moon"></i>
+            <button id="theme-toggle">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                    <span class="visually-hidden">Cambia modalità scura e chiara</span>
             </button>
         </div>
     </header>
@@ -79,14 +89,11 @@
                 Siamo a tua disposizione per qualsiasi informazione sui nostri vini o sulla tenuta.
             </p>
 
-            <aside class="alert-box">
-                <p>
-                    <i class="fas fa-wine-glass-alt" aria-hidden="true"></i> 
-                    <strong>Vuoi prenotare una visita o una degustazione?</strong><br>
-                    Per gestire al meglio la tua accoglienza, ti preghiamo di usare l'apposita sezione.
-                    <br>
-                    <a href="esperienze.html" class="btn-text-link">Vai alla pagina Esperienze <span aria-hidden="true">→</span></a>
-                </p>
+            <aside class="alert-box"> 
+                <p><i class="fas fa-wine-glass-alt" aria-hidden="true"></i> 
+                <strong>Vuoi prenotare una visita o una degustazione?</strong></p>
+                <p>Per gestire al meglio la tua accoglienza, ti preghiamo di usare l'apposita sezione.</p> <!--br da evitare!-->
+                <a href="esperienze.html" class="btn-text-link">Vai alla pagina Esperienze <span aria-hidden="true">→</span></a>
             </aside>
 
             <div class="grid-layout">
@@ -195,9 +202,10 @@
         </div>
     </footer>
 
-    <button id="backToTopBtn" aria-label="Torna all'inizio della pagina">
-        ▲ 
-    </button>
+    <button id="backToTopBtn">
+        <span aria-hidden="true">&#9650;</span>
+        <span class="visually-hidden">Torna all'inizio della pagina</span>
+    </button> 
     
     <script src="../scripts/script.js"></script>
 
