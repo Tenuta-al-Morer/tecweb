@@ -22,28 +22,29 @@
 
 <body> 
     <header>
-        <nav aria-label="aiuti alla navigazione" id="help">
-            <a class="navigationHelp" href="#content">Vai al contenuto principale</a>
+        <nav id="help">
+            <h2 class="visually-hidden">Aiuti alla navigazione</h2>
+            <a class="navigationHelp" href="#content">Vai al contenuto</a>
         </nav>
 
         <div class="login-header-logo">
-            <a href="../index.html" aria-label="Torna alla pagina principale">
-                <img src="../images/logo.webp" alt="Logo Tenuta al Morer">
+            <a href="../index.html">
+                <img src="../images/logo.webp" alt="Home - Tenuta al Morer">
             </a>
         </div>
 
         <div class="sub-header">
-            <nav id="breadcrumb" aria-label="Posizione nella pagina">
+            <nav id="breadcrumb" >
                 <div class="breadcrumb-container">
                     <span>Ti trovi in: </span>
-                    <a href="../index.html"><i class="fas fa-home home-icon" aria-hidden="true"></i></a> &gt;
-                    <span class="current-page" aria-current="page">Login</span>
+                    <a href="../index.html"><span class="visually-hidden" lang="en">Home</span><i class="fas fa-home home-icon" aria-hidden="true"></i></a><span aria-hidden="true"> &gt; </span> 
+                    <span class="current-page" aria-current="page" lang="en">Login</span>
                     <i class="fas fa-sign-in-alt contact-icon" aria-hidden="true"></i> 
                 </div>
             </nav>
 
-            <button id="theme-toggle" aria-label="Cambia modalità scura e chiara">
-                <i class="fas fa-moon"></i>
+            <button id="theme-toggle">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
             </button>
         </div>
     </header>
@@ -63,8 +64,9 @@
                     <label for="password">Password</label>
                     <div class="password-wrapper">
                         <input type="password" id="password" name="password" placeholder="Password" required autocomplete="current-password">
-                        <button type="button" class="toggle-password" aria-label="Mostra password">
+                        <button type="button" class="toggle-password" aria-pressed="false">
                             <i class="fas fa-eye" aria-hidden="true"></i>
+                            <span class="visually-hidden">Mostra password</span>
                         </button>
                     </div>
                 </div>

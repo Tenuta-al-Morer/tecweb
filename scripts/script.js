@@ -7,7 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Icona SOLE (per passare alla Light Mode)
     const sunIcon = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <span class="visually-hidden">Passa alla modalità chiara</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            aria-hidden="true">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -20,8 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
         </svg>
     `;
 
-    // Icona LUNA (per passare alla Dark Mode)
-    const moonIcon = '<i class="fas fa-moon"></i>';
+    const moonIcon = `
+        <span class="visually-hidden">Passa alla modalità scura</span>
+        <i class="fas fa-moon" aria-hidden="true"></i>
+    `;
+
 
     // Funzione che applica il tema LIGHT (se false, rimane Dark che è default)
     const setLightMode = (enableLight) => {
@@ -200,8 +207,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================
-     * 4. GESTIONE PASSWORD (Mostra/Nascondi)
-     * ========================================== */
+    * 4. GESTIONE PASSWORD (Mostra/Nascondi)
+    * ========================================== */
     const togglePasswordButtons = document.querySelectorAll('.toggle-password');
 
     if (togglePasswordButtons.length > 0) {
@@ -209,21 +216,28 @@ document.addEventListener('DOMContentLoaded', () => {
             button.addEventListener('click', function() {
                 const input = this.previousElementSibling;
                 const icon = this.querySelector('i');
-                
-                if (input.type === "password") {
-                    input.type = "text";
-                    icon.classList.remove('fa-eye');
-                    icon.classList.add('fa-eye-slash');
-                    this.setAttribute('aria-label', 'Nascondi password');
-                } else {
-                    input.type = "password";
-                    icon.classList.remove('fa-eye-slash');
-                    icon.classList.add('fa-eye');
-                    this.setAttribute('aria-label', 'Mostra password');
+                const srText = this.querySelector('.visually-hidden'); // testo per screen reader
+
+                const isHidden = input.type === "password";
+
+                // toggle tipo input
+                input.type = isHidden ? "text" : "password";
+
+                // toggle icona
+                icon.classList.toggle('fa-eye', !isHidden);
+                icon.classList.toggle('fa-eye-slash', isHidden);
+
+                // aggiorna stato ARIA
+                this.setAttribute('aria-pressed', isHidden ? 'true' : 'false');
+
+                // aggiorna testo per screen reader
+                if (srText) {
+                    srText.textContent = isHidden ? 'Nascondi password' : 'Mostra password';
                 }
             });
         });
     }
+
 
     /* ==========================================
      * 5. GESTIONE SLIDER / CAROSELLO INFINITO (CORRETTO PER MULTI-SLIDE)
