@@ -260,6 +260,10 @@ body.light-mode ::-webkit-calendar-picker-indicator {
     accent-color: var(--currentcolor); cursor: pointer;
 }
 
+.checkbox-group label {
+    display: inline-block; margin-bottom: 0;
+}
+
 .checkbox-group label a { color: var(--currentcolor); text-decoration: underline; }
 .checkbox-group label a:hover { color: var(--txtcolor); }
 
