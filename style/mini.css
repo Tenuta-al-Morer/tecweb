@@ -249,8 +249,9 @@ footer {
 
 .table-data td::before {
     content: attr(data-title) ": "; 
+    color: var(--gold-color);
     font-weight: 700;
-    color: var(--diversity-color);
+    /*color: var(--diversity-color);*/
     display: inline;
     margin-right: 0.3em;
 }
