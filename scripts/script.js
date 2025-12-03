@@ -191,17 +191,22 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const trackVisits = (selector) => {
         document.querySelectorAll(selector).forEach(link => {
-            const href = link.getAttribute('href');
+            // se per caso il link non ha href, esci
+            if (!link.href) return;
+
+            const href = new URL(link.href).pathname;
+
             if (localStorage.getItem('visited_' + href)) {
                 link.classList.add('is-visited');
             }
+
             link.addEventListener('click', () => {
                 localStorage.setItem('visited_' + href, 'true');
-                link.classList.add('is-visited');
             });
         });
-    }
+    };
 
+    // attivazione: tutti i link del menu desktop + icone menu mobile
     trackVisits('.primary-navigation a[href]');
     trackVisits('.mobile-icons a[href]');
 
