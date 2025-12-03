@@ -286,7 +286,7 @@ body.light-mode .table-data td::before {
     .btn { width: 100%; max-width: 300px; }
     .grid-features { grid-template-columns: 1fr; }
     .slider-container { height: 45vh; }
-    .slider-btn { font-size: 1.5rem; padding: 0.3em; }
+    .slider-btn { font-size: 2.5rem; padding: 0.3em; }
 }
 
 /* =========================================
