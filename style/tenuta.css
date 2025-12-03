@@ -1,0 +1,43 @@
+/* Immagine grande della Tenuta */
+#tenuta-image {
+    display: block;
+    width: 100%;              /* occupa tutta la larghezza disponibile */
+    max-width: 1200px;        /* ma non supera questa misura sui monitor larghi */
+    margin: 2rem auto;        /* la centra */
+    border-radius: 15px;      /* angoli arrotondati */
+    height: auto;             /* mantiene le proporzioni corrette */
+    object-fit: cover;        /* taglia bene se necessario */
+}
+
+/* Contenuto principale della pagina Tenuta */
+#content {
+    max-width: 900px;      /* larghezza massima del blocco testo */
+    margin: 0 auto 4rem;   /* centra il blocco nella pagina */
+    padding: 1.5rem;
+}
+
+/* Titolo principale e sottotitoli centrati */
+#content h1,
+#content h2 {
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Sottotitoli h3 leggermente separati */
+#content h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Paragrafi leggibili (allineati a sinistra) */
+#content p {
+    text-align: left;
+    line-height: 1.6;
+}
+/* Rimuove eventuali bordi/separatori dai paragrafi di questa pagina */
+#content h2,
+#content h3 {
+    border: none;
+    border-bottom: none;
+}
