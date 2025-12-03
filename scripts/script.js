@@ -191,6 +191,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const trackVisits = (selector) => {
         document.querySelectorAll(selector).forEach(link => {
+            // se per caso il link non ha href, esci
+            if (!link.href) return;
+
             const href = new URL(link.href).pathname;
 
             if (localStorage.getItem('visited_' + href)) {
@@ -203,10 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-// attivazione
-trackVisits(".navbar a");
-
-
+    // attivazione: tutti i link del menu desktop + icone menu mobile
     trackVisits('.primary-navigation a[href]');
     trackVisits('.mobile-icons a[href]');
 
