@@ -32,7 +32,7 @@
     --card-desc-color: #e0e0e0;
     --slider-btn-bg: #2b2b2b;
     --header-bg: var(--navbgcolor);
-    --btn-hover-bg: var(--pure-white);
+    --btn-hover-bg: #ddae48;
 }
 
 body.light-mode {
@@ -50,7 +50,7 @@ body.light-mode {
     --card-title-color: #222222;
     --card-desc-color: #555555;
     --code-bg: #f4f4f4;
-    --btn-hover-bg: #dddddd;
+    --btn-hover-bg: #ddae48;
 }
 
 html {
@@ -843,25 +843,6 @@ input:-webkit-autofill:focus {
 .checkbox-container a:hover {
     color: var(--gold-color);
     text-decoration: underline;
-}
-
-.btn-auth {
-    margin-top: 0.5rem;
-    padding: 1rem;
-    background-color: var(--gold-color);
-    color: var(--pure-black);
-    font-weight: 700;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.btn-auth:hover {
-    background-color: var(--pure-white);
-    transform: translateY(-2px);
 }
 
 .auth-footer {
