@@ -123,7 +123,7 @@
                         <div class="wine-item">
                             <img src="../immagini utili/vini/trasparenti/Merlot.webp" alt="Merlot" class="wine-image">
                             <div class="content-wine-article">
-                                <h2>Merlot</h2>
+                                <h2><span lang="fr">Merlot</span></h2>
                                 <p>Morbido e vellutato.</p>
                             </div>
                         </div>
@@ -438,12 +438,52 @@
         
         <script src="../scripts/script.js"></script>
 
+        <script>
+            // Funzione per aprire l'overlay
+            function apriDettagli(bottone) {
+                const articolo = bottone.closest('.wine-article');
+
+                // Recupera i dati
+                const nome = articolo.dataset.nome;
+                const desc = articolo.dataset.descrizione;
+                const img = articolo.dataset.img;
+                const prezzo = articolo.dataset.prezzo;
+
+                // Debug: se qualcosa non va, controlla la console del browser (F12)
+                console.log("Apro dettagli per:", nome);
+
+                document.getElementById('pop-titolo').innerText = nome;
+                document.getElementById('pop-descrizione').innerText = desc;
+                document.getElementById('pop-img').src = img;
+                document.getElementById('pop-prezzo').innerText = prezzo;
+
+                document.getElementById('overlay-dettagli').style.display = 'flex';
+            }
+
+            function chiudiDettagli() {
+                document.getElementById('overlay-dettagli').style.display = 'none';
+            }
+
+            function aggiornaQuantita(bottone, variazione) {
+                const input = bottone.parentElement.querySelector('.input-qty');
+                let valore = parseInt(input.value);
+                let nuovoValore = valore + variazione;
+                
+                if (nuovoValore >= 1) {
+                    input.value = nuovoValore;
+                }
+            }
+            </script>
+
     </body>
+
+
 
 </html>
 
-
-
+<!--Da mettere in JS! Come fatto negli altri file. O per lo meno da mettere dentro <html> se no
+    dà errore di validazione!-->
+<!--
 <script>
 // Funzione per aprire l'overlay
 function apriDettagli(bottone) {
@@ -480,3 +520,4 @@ function aggiornaQuantita(bottone, variazione) {
     }
 }
 </script>
+-->
