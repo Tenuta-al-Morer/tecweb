@@ -1,9 +1,6 @@
-SEZIONE Home -> cambiare i vari contenuti, cambiare le immagini nella gallery, provare a cambiare immagine hero
-TITOLO ->   Tra le vigne del Piave, nasce la nostra arte del vino.
-            o
-            Passione enologica dalle terre del Piave.
-            o
-            Il gusto del territorio, l’anima della nostra tenuta.
+SEZIONE Home -> cambiare i vari contenuti, cambiare le immagini nella gallery, provare a cambiare immagine hero, 
+                diminuire spessore bordi pulsanti "scopri la tenuta-i nostriu vini"
+TITOLO ->  Il gusto del territorio, l’anima della nostra tenuta.
 
 DESCRIZIONE ->  Tra le colline del Prosecco e le terre lungo il Piave, coltiviamo una storia fatta di passione e dedizione.
 
@@ -39,4 +36,12 @@ SEZIONE ESPERIENZE -> ok
 
 -----------------------------------------------------------------------------------------------------------------------
 
-SEZIONE CONTATTI -> cambiare indirizzo e maps (metterlo più sulle terre del piave)
+SEZIONE CONTATTI -> ok
+
+-----------------------------------------------------------------------------------------------------------------------
+
+GENERALE
+
+testare NVDA
+sistemare barrette verticali della navbar
+
