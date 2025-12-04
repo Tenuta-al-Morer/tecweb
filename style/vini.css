@@ -1,0 +1,263 @@
+
+/*--Nota: UNIRE I CSS*/
+
+/*idea mettere oggetto 3d su overlay info*/
+main h2{
+    border-top: 0px;
+    margin-top: 0;
+    color: #fff2da;
+}
+main{
+    padding: 0 0;
+}
+body.light-mode .wine-article{
+    background-color: #f4f4f4;
+    box-shadow: none;
+}
+.hero-vini{
+    background-image: url(../images/bg.webp);
+    background-size: cover;
+    height: 35vh;
+    min-height: 400px;
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+}
+.hero-text{
+    display: flex;
+    margin: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1512cc;
+    padding: 3em;
+    margin: 1em 10em 1em 10em;
+}
+.hero-text h1{
+    color: #c5a551;
+    font-size: 3em;
+}
+.hero-text p{
+    margin-top: 1em;
+}
+
+/*--Stile sezione vini--*/
+.wine-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 30px;
+    padding: 1em 2em 2em 3.5em;
+}
+.wine-section h2 {
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    font-size: 2em;
+}
+.presentazione{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.presentazione p{
+    font-size: 1.1em;
+    margin-bottom: 2em;
+}
+.sezione{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+.content-wine-article p{
+    display: none;
+    flex-direction: column;
+    gap: 0em;
+}
+.content-wine-article h2{
+    margin: 0 0;
+    border-top: 0px;
+    padding: 1 0;
+    color: #333;
+    font-size: 1.2em;
+}
+.wine-article{
+    display: flex;
+    flex-direction: column;
+    background-color: #EEE8D5;
+    padding: 15px;
+    /*border-radius: 8px;*/
+    box-shadow: 0 2px 10px rgba(255, 230, 185, 0.682);
+    text-align: center;
+}
+.wine-article
+.wine-item:hover,
+.wine-item:focus{
+    /*background-color: #f0e8dcb5;*/
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+.wine-article img{
+    width: 12em;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 1em;
+    /*border: 2px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);*/
+}
+
+/*--Sezione acquisto--*/
+.actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1em;
+}
+.selettore-quantita{
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+.selettore-quantita button{
+    padding: 0.2em 0.6em;
+    font-size: 0.5em;
+    cursor: pointer;
+}
+.selettore-quantita input{
+    width: 2em;
+    text-align: center;
+    font-size: 1em;
+    padding: 0.2em;
+}
+
+/* Per Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Per Firefox */
+input[type=number] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+/*--Bottoni--*/
+.buy-button{
+    background-color: #c5a551;
+    color: #fff;
+    border: none;
+    padding: 0.5em 1em;
+    font-size: 0.8em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.details-button{
+    background-color: #555;
+    color: #fff;
+    border: none;
+    padding: 0.5em 1em;
+    font-size: 0.8em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/*overlay info*/
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.popup-info{
+    color: #000;
+}
+.popup-info h2{
+    font-size: 2em;
+    margin-top: 0em;
+    margin-bottom: 1em;
+}
+.pop-prezzo{
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 1em;
+    color: #c5a551;
+}
+.popup-content {
+    background: #fff;
+    padding: 2em;
+    width: 80%;
+    max-width: 900px;
+    border-radius: 0;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border: 3px solid #c5a551;
+}
+.popup-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2em;
+}
+.popup-img-container img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-height: 400px;
+}
+.shop-ov{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1em;
+    gap: 2em;
+}
+.buy-button-ov{
+    background-color: #c5a551;
+    color: #fff;
+    border: none;
+    padding: 0.8em 1.5em;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.selettore-quantita-ov{
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+.selettore-quantita-ov button{
+    padding: 0.2em 0.6em;
+    font-size: 0.5em;
+    cursor: pointer;
+}
+.selettore-quantita-ov input{
+    width: 2em;
+    text-align: center;
+    font-size: 1em;
+    padding: 0.2em;
+}
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 1.5em;
+    padding: 0.6em 0.7em;
+
+    cursor: pointer;
+    font-weight: bold;
+}
+@media (max-width: 768px) {
+    .popup-grid {
+        grid-template-columns: 1fr; /* Una colonna su mobile */
+    }
+}

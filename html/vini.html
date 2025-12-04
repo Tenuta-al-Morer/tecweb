@@ -77,8 +77,320 @@
             </div>
         </header>
 
-        <main id="content">  
-            <h1>I Vini</h1>
+        <main id="content">
+            <div class="hero-vini">
+                <div class="hero-text">
+                    <h1>I Vini della Tenuta al Morer</h1>
+                    <p>Scopri la nostra selezione di vini pregiati, frutto della passione e della tradizione vitivinicola veneta.</p>
+                </div>
+            </div>
+        <section class="wine-section">
+            <section id="red-wines">
+                <div class="presentazione"> 
+                    <h2>Vini Rossi</h2>
+                    <p>Scopri la nostra selezione di vini pregiati, frutto della passione e della tradizione vitivinicola veneta.</p>
+                </div>
+                <div class="sezione">
+                    
+                    <article class="wine-article" 
+                            data-nome="Rosso del Morer" 
+                            data-descrizione="Un vino rosso corposo e avvolgente, perfetto per carni rosse." 
+                            data-img="../immagini utili/vini/trasparenti/Raboso del Piave.webp"
+                            data-prezzo="18.50">
+                        <div class="wine-item">
+                            <img src="../immagini utili/vini/trasparenti/Raboso del Piave.webp" alt="Rosso del Morer" class="wine-image">
+                            <div class="content-wine-article">
+                                <h2>Rosso del Morer</h2>
+                                <p>Un vino rosso corposo</p>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <div class="selettore-quantita">
+                                <button type="button" onclick="aggiornaQuantita(this, -1)">-</button>
+                                <input type="number" class="input-qty" name="quantita" value="1" min="1" readonly>
+                                <button type="button" onclick="aggiornaQuantita(this, 1)">+</button>
+                            </div>
+                            <button class="buy-button">Acquista</button>
+                            <button class="details-button" onclick="apriDettagli(this)">Info</button>
+                        </div>
+                    </article>
+
+                    <article class="wine-article"
+                            data-nome="Merlot" 
+                            data-descrizione="Il classico Merlot: morbido, vellutato e versatile." 
+                            data-img="../immagini utili/vini/trasparenti/Merlot.webp"
+                            data-prezzo="14.00">
+                        <div class="wine-item">
+                            <img src="../immagini utili/vini/trasparenti/Merlot.webp" alt="Merlot" class="wine-image">
+                            <div class="content-wine-article">
+                                <h2>Merlot</h2>
+                                <p>Morbido e vellutato.</p>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <div class="selettore-quantita">
+                                <button type="button" onclick="aggiornaQuantita(this, -1)">-</button>
+                                <input type="number" class="input-qty" name="quantita" value="1" min="1" readonly>
+                                <button type="button" onclick="aggiornaQuantita(this, 1)">+</button>
+                            </div>
+                            <button class="buy-button">Acquista</button>
+                            <button class="details-button" onclick="apriDettagli(this)">Info</button>
+                        </div>
+                    </article>
+
+                    <article class="wine-article"
+                            data-nome="Cabernet Franc" 
+                            data-descrizione="Note erbacee caratteristiche, gusto deciso e persistente." 
+                            data-img="../immagini utili/vini/trasparenti/Cabernet Franc 1.webp"
+                            data-prezzo="16.00">
+                        <div class="wine-item">
+                            <img src="../immagini utili/vini/trasparenti/Cabernet Franc 1.webp" alt="Cabernet Franc" class="wine-image">
+                            <div class="content-wine-article">
+                                <h2>Cabernet Franc</h2>
+                                <p>Deciso e persistente.</p>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <div class="selettore-quantita">
+                                <button type="button" onclick="aggiornaQuantita(this, -1)">-</button>
+                                <input type="number" class="input-qty" name="quantita" value="1" min="1" readonly>
+                                <button type="button" onclick="aggiornaQuantita(this, 1)">+</button>
+                            </div>
+                            <button class="buy-button">Acquista</button>
+                            <button class="details-button" onclick="apriDettagli(this)">Info</button>
+                        </div>
+                    </article>
+
+                    <article class="wine-article"
+                            data-nome="Refosco" 
+                            data-descrizione="Autoctono dal carattere forte, colore rosso rubino intenso." 
+                            data-img="../immagini utili/vini/trasparenti/Refosco.webp"
+                            data-prezzo="15.50">
+                        <div class="wine-item">
+                            <img src="../immagini utili/vini/trasparenti/Refosco.webp" alt="Refosco" class="wine-image">
+                            <div class="content-wine-article">
+                                <h2>Refosco</h2>
+                                <p>Carattere forte e intenso.</p>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <div class="selettore-quantita">
+                                <button type="button" onclick="aggiornaQuantita(this, -1)">-</button>
+                                <input type="number" class="input-qty" name="quantita" value="1" min="1" readonly>
+                                <button type="button" onclick="aggiornaQuantita(this, 1)">+</button>
+                            </div>
+                            <button class="buy-button">Acquista</button>
+                            <button class="details-button" onclick="apriDettagli(this)">Info</button>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <section id="white-wines">
+                <div class="presentazione"> 
+                    <h2>Vini Bianchi</h2>
+                    <p>Scopri la nostra selezione di vini pregiati, frutto della passione e della tradizione vitivinicola veneta.</p>
+                </div>
+                <div class="sezione">
+                    
+                    <article class="wine-article"
+                            data-nome="Chardonnay" 
+                            data-descrizione="Elegante, fruttato con sentori di mela golden e crosta di pane." 
+                            data-img="../immagini utili/vini/trasparenti/Chardonnay.webp"
+                            data-prezzo="13.50">
+                        <div class="wine-item">
+                            <img src="../immagini utili/vini/trasparenti/Chardonnay.webp" alt="Chardonnay" class="wine-image">
+                            <div class="content-wine-article">
+                                <h2>Chardonnay</h2>
+                                <p>Elegante e fruttato.</p>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <div class="selettore-quantita">
+                                <button type="button" onclick="aggiornaQuantita(this, -1)">-</button>
+                                <input type="number" class="input-qty" name="quantita" value="1" min="1" readonly>
+                                <button type="button" onclick="aggiornaQuantita(this, 1)">+</button>
+                            </div>
+                            <button class="buy-button">Acquista</button>
+                            <button class="details-button" onclick="apriDettagli(this)">Info</button>
+                        </div>
+                    </article>
+
+                    <article class="wine-article"
+                            data-nome="Manzoni Bianco" 
+                            data-descrizione="Incrocio Riesling e Pinot Bianco. Aromatico e strutturato." 
+                            data-img="../immagini utili/vini/trasparenti/Manzoni Bianco.webp"
+                            data-prezzo="15.00">
+                        <div class="wine-item">
+                            <img src="../immagini utili/vini/trasparenti/Manzoni Bianco.webp" alt="Manzoni Bianco" class="wine-image">
+                            <div class="content-wine-article">
+                                <h2>Manzoni Bianco</h2>
+                                <p>Aromatico e strutturato.</p>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <div class="selettore-quantita">
+                                <button type="button" onclick="aggiornaQuantita(this, -1)">-</button>
+                                <input type="number" class="input-qty" name="quantita" value="1" min="1" readonly>
+                                <button type="button" onclick="aggiornaQuantita(this, 1)">+</button>
+                            </div>
+                            <button class="buy-button">Acquista</button>
+                            <button class="details-button" onclick="apriDettagli(this)">Info</button>
+                        </div>
+                    </article>
+
+                    <article class="wine-article"
+                            data-nome="Pinot Grigio" 
+                            data-descrizione="Fresco, sapido e piacevole. Ottimo come aperitivo." 
+                            data-img="../immagini utili/vini/trasparenti/Pinot Grigio.webp"
+                            data-prezzo="13.00">
+                        <div class="wine-item">
+                            <img src="../immagini utili/vini/trasparenti/Pinot Grigio.webp" alt="Pinot Grigio" class="wine-image">
+                            <div class="content-wine-article">
+                                <h2>Pinot Grigio</h2>
+                                <p>Fresco e sapido.</p>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <div class="selettore-quantita">
+                                <button type="button" onclick="aggiornaQuantita(this, -1)">-</button>
+                                <input type="number" class="input-qty" name="quantita" value="1" min="1" readonly>
+                                <button type="button" onclick="aggiornaQuantita(this, 1)">+</button>
+                            </div>
+                            <button class="buy-button">Acquista</button>
+                            <button class="details-button" onclick="apriDettagli(this)">Info</button>
+                        </div>
+                    </article>
+
+                    <article class="wine-article"
+                            data-nome="Prosecco" 
+                            data-descrizione="Le bollicine venete per eccellenza. Fresco e vivace." 
+                            data-img="../immagini utili/vini/trasparenti/Prosecco.webp"
+                            data-prezzo="12.50">
+                        <div class="wine-item">
+                            <img src="../immagini utili/vini/trasparenti/Prosecco.webp" alt="Prosecco" class="wine-image">
+                            <div class="content-wine-article">
+                                <h2>Prosecco</h2>
+                                <p>Le bollicine venete.</p>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <div class="selettore-quantita">
+                                <button type="button" onclick="aggiornaQuantita(this, -1)">-</button>
+                                <input type="number" class="input-qty" name="quantita" value="1" min="1" readonly>
+                                <button type="button" onclick="aggiornaQuantita(this, 1)">+</button>
+                            </div>
+                            <button class="buy-button">Acquista</button>
+                            <button class="details-button" onclick="apriDettagli(this)">Info</button>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <section id="premium-wines">
+                <div class="presentazione"> 
+                    <h2>Vini Premium</h2>
+                    <p>Scopri la nostra selezione di vini pregiati, frutto della passione e della tradizione vitivinicola veneta.</p>
+                </div>
+                <div class="sezione">
+                    
+                    <article class="wine-article"
+                            data-nome="Gran Morer" 
+                            data-descrizione="La nostra riserva speciale. Invecchiato in botte." 
+                            data-img="../immagini utili/vini/trasparenti/Gran Morer.webp"
+                            data-prezzo="25.00">
+                        <div class="wine-item">
+                            <img src="../immagini utili/vini/trasparenti/Gran Morer.webp" alt="Gran Morer" class="wine-image">
+                            <div class="content-wine-article">
+                                <h2>Gran Morer</h2>
+                                <p>Riserva speciale.</p>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <div class="selettore-quantita">
+                                <button type="button" onclick="aggiornaQuantita(this, -1)">-</button>
+                                <input type="number" class="input-qty" name="quantita" value="1" min="1" readonly>
+                                <button type="button" onclick="aggiornaQuantita(this, 1)">+</button>
+                            </div>
+                            <button class="buy-button">Acquista</button>
+                            <button class="details-button" onclick="apriDettagli(this)">Info</button>
+                        </div>
+                    </article>
+
+                    <article class="wine-article"
+                            data-nome="Vigna Dorata" 
+                            data-descrizione="Selezione di uve passite, dolce e avvolgente." 
+                            data-img="../immagini utili/vini/trasparenti/Vigna Dorata.webp"
+                            data-prezzo="22.00">
+                        <div class="wine-item">
+                            <img src="../immagini utili/vini/trasparenti/Vigna Dorata.webp" alt="Vigna Dorata" class="wine-image">
+                            <div class="content-wine-article">
+                                <h2>Vigna Dorata</h2>
+                                <p>Dolce e avvolgente.</p>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <div class="selettore-quantita">
+                                <button type="button" onclick="aggiornaQuantita(this, -1)">-</button>
+                                <input type="number" class="input-qty" name="quantita" value="1" min="1" readonly>
+                                <button type="button" onclick="aggiornaQuantita(this, 1)">+</button>
+                            </div>
+                            <button class="buy-button">Acquista</button>
+                            <button class="details-button" onclick="apriDettagli(this)">Info</button>
+                        </div>
+                    </article>
+
+                    <article class="wine-article"
+                            data-nome="Incanto" 
+                            data-descrizione="Un vino che incanta per i suoi profumi floreali." 
+                            data-img="../immagini utili/vini/trasparenti/Incanto.webp"
+                            data-prezzo="20.00">
+                        <div class="wine-item">
+                            <img src="../immagini utili/vini/trasparenti/Incanto.webp" alt="Incanto" class="wine-image">
+                            <div class="content-wine-article">
+                                <h2>Incanto</h2>
+                                <p>Profumi floreali.</p>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <div class="selettore-quantita">
+                                <button type="button" onclick="aggiornaQuantita(this, -1)">-</button>
+                                <input type="number" class="input-qty" name="quantita" value="1" min="1" readonly>
+                                <button type="button" onclick="aggiornaQuantita(this, 1)">+</button>
+                            </div>
+                            <button class="buy-button">Acquista</button>
+                            <button class="details-button" onclick="apriDettagli(this)">Info</button>
+                        </div>
+                    </article>
+
+                    <article class="wine-article"
+                            data-nome="Rosae Nobile" 
+                            data-descrizione="Rosato di alta classe, note di frutti di bosco." 
+                            data-img="../immagini utili/vini/trasparenti/Rosae Nobile.webp"
+                            data-prezzo="19.00">
+                        <div class="wine-item">
+                            <img src="../immagini utili/vini/trasparenti/Rosae Nobile.webp" alt="Rosae Nobile" class="wine-image">
+                            <div class="content-wine-article">
+                                <h2>Rosae Nobile</h2>
+                                <p>Rosato di alta classe.</p>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <div class="selettore-quantita">
+                                <button type="button" onclick="aggiornaQuantita(this, -1)">-</button>
+                                <input type="number" class="input-qty" name="quantita" value="1" min="1" readonly>
+                                <button type="button" onclick="aggiornaQuantita(this, 1)">+</button>
+                            </div>
+                            <button class="buy-button">Acquista</button>
+                            <button class="details-button" onclick="apriDettagli(this)">Info</button>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+        </section>
         </main>
 
         <footer>
@@ -96,9 +408,75 @@
             <span aria-hidden="true">&#9650;</span>
             <span class="visually-hidden">Torna all'inizio della pagina</span>
         </button>
+
+        <div id="overlay-dettagli" class="overlay" style="display: none;">
+            <div class="popup-content">
+                <span class="close-btn" onclick="chiudiDettagli()">&times;</span>
+                
+                <div class="popup-grid">
+                    <div class="popup-img-container">
+                        <img id="pop-img" src="" alt="Dettaglio Vino">
+                    </div>
+                    
+                    <div class="popup-info">
+                        <h2 id="pop-titolo"></h2>
+                        <p id="pop-descrizione"></p>
+                        <p class="pop-prezzo">Prezzo: <span id="pop-prezzo"></span>€</p>
+                        
+                        <div class="shop-ov">
+                            <button class="buy-button-ov">Aggiungi al Carrello</button>
+                            <div class="selettore-quantita-ov">
+                                    <button type="button" onclick="aggiornaQuantita(this, -1)">-</button>
+                                    <input type="number" class="input-qty" name="quantita" value="1" min="1" readonly>
+                                    <button type="button" onclick="aggiornaQuantita(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         
         <script src="../scripts/script.js"></script>
 
     </body>
 
 </html>
+
+
+
+<script>
+// Funzione per aprire l'overlay
+function apriDettagli(bottone) {
+    const articolo = bottone.closest('.wine-article');
+
+    // Recupera i dati
+    const nome = articolo.dataset.nome;
+    const desc = articolo.dataset.descrizione;
+    const img = articolo.dataset.img;
+    const prezzo = articolo.dataset.prezzo;
+
+    // Debug: se qualcosa non va, controlla la console del browser (F12)
+    console.log("Apro dettagli per:", nome);
+
+    document.getElementById('pop-titolo').innerText = nome;
+    document.getElementById('pop-descrizione').innerText = desc;
+    document.getElementById('pop-img').src = img;
+    document.getElementById('pop-prezzo').innerText = prezzo;
+
+    document.getElementById('overlay-dettagli').style.display = 'flex';
+}
+
+function chiudiDettagli() {
+    document.getElementById('overlay-dettagli').style.display = 'none';
+}
+
+function aggiornaQuantita(bottone, variazione) {
+    const input = bottone.parentElement.querySelector('.input-qty');
+    let valore = parseInt(input.value);
+    let nuovoValore = valore + variazione;
+    
+    if (nuovoValore >= 1) {
+        input.value = nuovoValore;
+    }
+}
+</script>
