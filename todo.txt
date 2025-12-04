@@ -45,4 +45,5 @@ GENERALE
 testare NVDA
 sistemare barrette verticali della navbar
 sistemare colori e palette
+unire css
 
