@@ -295,7 +295,7 @@ body.light-mode ::-webkit-calendar-picker-indicator {
 
 .info-list a {
     color: var(--txtcolor); text-decoration: none;
-    transition: color 0.3s; border-bottom: 1px solid transparent;
+    transition: color 0.3s; border-bottom: 1px solid; border-bottom-color: var(--txtcolor);
 }
 
 .info-list a:hover, .info-list a:focus {
