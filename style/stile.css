@@ -195,6 +195,11 @@ body.light-mode .form-group textarea:focus {
 }
 
 .alert-box p { margin: 0; font-size: 1.1rem; color: var(--txtcolor); }
+
+.alert-box p:first-of-type {
+    margin-bottom: 0.5em;
+}
+
 .alert-box i { color: var(--gold-color); margin-right: 0.5rem; font-size: 1.2rem; }
 
 .map-container {
