@@ -277,6 +277,12 @@ body.light-mode .table-data td::before {
     color: var(--pure-black);
 }
 
+.btn-secondary {
+    width: 50%;
+}
+
+
+
 /* =========================================
    OVERRIDE SEZIONI HOME (Mobile)
    ========================================= */

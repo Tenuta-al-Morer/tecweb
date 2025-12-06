@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Esperienze - Tenuta al Morer</title>
-    <link rel="icon" href="../images/logo.ico" type="image/x-icon">
+    <link rel="icon" href="../../images/logo.ico" type="image/x-icon">
 
     <meta name="description" content="Vivi le esperienze e le degustazioni presso la Tenuta al Morer. Scopri i nostri vini in un'atmosfera autentica tra le colline venete.">
     <meta name="keywords" content="esperienze, degustazioni, Tenuta al Morer, vini veneti, visita tenuta">
@@ -16,9 +16,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../style/stile.css" media="screen"> 
-    <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:940px)">
-    <link rel="stylesheet" href="../style/stampa.css" media="print">  
+    <link rel="stylesheet" href="../../style/stile.css" media="screen"> 
+    <link rel="stylesheet" href="../../style/mini.css" media="screen and (max-width:940px)">
+    <link rel="stylesheet" href="../../style/stampa.css" media="print">  
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -36,29 +36,29 @@
                 <span class="visually-hidden">Apri il menu di navigazione</span>
             </button>
 
-            <a href="../index.html" class="logo-link">
-                <img src="../images/logo.webp" alt="Home - Tenuta al Morer">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../images/logo.webp" alt="Home - Tenuta al Morer">
             </a>
 
             <nav id="main-navigation" class="primary-navigation">
                 <ul>
-                    <li><a href="../index.html"><span lang="en">Home</span></a></li> 
-                    <li><a href="tenuta.html">Tenuta</a></li>
-                    <li><a href="vini.html">Vini</a></li>
-                    <li><span aria-current="page" lang="it">Esperienze</span></li>
-                    <li><a href="contatti.html">Contatti</a></li>
+                    <li><a href="../../index.html"><span lang="en">Home</span></a></li> 
+                    <li><a href="../tenuta.html">Tenuta</a></li>
+                    <li><a href="../vini.html">Vini</a></li>
+                    <li><a href="../esperienze.html">Esperienze</a></li>
+                    <li><a href="../contatti.html">Contatti</a></li>
                 </ul>
             </nav>
 
             <div class="mobile-icons">
-                <a href="shop.html">
+                <a href="../shop.html">
                     <i class="fas fa-shopping-bag" aria-hidden="true"></i>
                     <span class="visually-hidden" lang="en">Shop</span>
                 </a>
-                <a href="login.html">
+                <span aria-current="page">
                     <i class="fas fa-user" aria-hidden="true"></i>
                     <span class="visually-hidden">Accedi</span>
-                </a>
+                </span>
             </div>
         </div>
 
@@ -67,18 +67,96 @@
                 <div class="breadcrumb-container">
                     <span>Ti trovi in: </span>
                     <a href="../index.html"><span class="visually-hidden" lang="en">Home</span><i class="fas fa-home home-icon" aria-hidden="true"></i></a><span aria-hidden="true"> &gt; </span> 
-                    <span class="current-page">Esperienze</span>
-                    <i class="fas fa-utensils" aria-hidden="true"></i> 
+                    <span class="current-page">Area Personale</span>
+                    <i class="fas fa-user" aria-hidden="true"></i>
                 </div>
             </nav>
 
             <button id="theme-toggle" aria-label="Cambia tema">
-                    <i class="fas fa-moon" aria-hidden="true"></i>
+                <i class="fas fa-moon" aria-hidden="true"></i>
             </button>
         </div>
     </header>
 
-    <main id="content"> 
+    <main> 
+        <h1 id="personal">Benvenuto Admin</h1> <!--Qui passeremo il parametro da db-->
+        <p>Gentile Utente "Admin", in questa pagina è possibile gestire le richieste fatte dai suoi clienti.</p>
+
+        <div class="admin-tabs">
+            <a href="#tab-degustazioni"><button class="admin-tab is-active">
+                <i class="fas fa-wine-glass-alt" aria-hidden="true"></i> Richieste esperienze
+            </button></a>
+            <a href="#tab-info"><button class="admin-tab" data-target="#tab-messaggi">
+                <i class="fas fa-envelope" aria-hidden="true"></i> Messaggi utenti
+            </button>
+        </div></a>
+
+
+        <!-- SEZIONE: richieste esperienze -->
+        <section id="summary-table">
+            <h2>Richieste esperienze</h2>
+            <div class="table-container">
+                <table class="table-data" id="tab-degustazioni">
+                    <thead>
+                        <tr>
+                            <th scope="col" abbr="Tipo">Tipo degustazione</th>
+                            <th scope="col" abbr="Data">Data invio</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Cognome</th>
+                            <th scope="col">Email</th>
+                            <th scope="col" abbr="Visita">Data Visita</th>
+                            <th scope="col" abbr="Persone">Numero persone</th>
+                            <th scope="col">Messaggio</th>
+                            <th scope="col" abbr="Gestione">Gestione richiesta</th>
+                        </tr>
+                    </thead>
+                    <tbody> <!--RIEMPIREMO COMN DB-->
+                        <tr>
+                            <th scope="row" abbr="Piave">Degustazione "Piave"</th>
+                            <td data-title="Data invio">05/12/2025</td>
+                            <td data-title="Nome">Alessandro</td>
+                            <td data-title="Cognome">Contarini</td>
+                            <td data-title="Email">alessandro.contarini21@gmail.com</td>
+                            <td data-title="Data Visita">24/12/2025</td>
+                            <td data-title="Numero persone">15</td>
+                            <td data-title="Messaggio"> - </td>
+                            <td class="td_richiesta" data-title="Gestione richiesta"> 
+                                <form action="#" method="POST" class="standard-form">
+                                    <button type="submit" name="accetta" value="accetta" class="btn-secondary">Accetta</button>
+                                </form>
+                                <form action="#" method="POST" class="standard-form">
+                                    <button type="submit" name="rifiuta" value="rifiuta" class="btn-secondary">Rifiuta</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" abbr="Linea Oro">Degustazione "Linea Oro"</th>
+                            <td data-title="Data invio">05/12/2025</td>
+                            <td data-title="Nome">Alessandro</td>
+                            <td data-title="Cognome">Contarini</td>
+                            <td data-title="Email">alessandro.contarini21@gmail.com</td>
+                            <td data-title="Data Visita">24/12/2025</td>
+                            <td data-title="Numero persone">15</td>
+                            <td data-title="Messaggio"> - </td>
+                            <td class="td_richiesta" data-title="Gestione richiesta"> 
+                                <form action="#" method="POST" class="standard-form">
+                                    <button type="submit" name="accetta" value="accetta" class="btn-secondary">Accetta</button>
+                                </form>
+                                <form action="#" method="POST" class="standard-form">
+                                    <button type="submit" name="rifiuta" value="rifiuta" class="btn-secondary">Rifiuta</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+
+
+
+
 
     </main>
 
@@ -86,9 +164,9 @@
         <div class="footer-content">
             <small>
                 &copy; 2025 Tenuta al Morer - <abbr title="Partita">P.</abbr> <abbr title="Imposta sul Valore Aggiunto">IVA</abbr> 00000000000 <br>
-                <a href="policy.html?return_to=../esperienze.html"><span lang="en">Privacy Policy</span></a> | 
-                <a href="policy.html?return_to=../esperienze.html#privacy-policy"><span lang="en">Cookie Policy</span></a> | 
-                <a href="policy.html?return_to=../esperienze.html#accessibility">Accessibilità</a>
+                <a href="../policy.html?return_to=users/admin.html"><span lang="en">Privacy Policy</span></a> | 
+                <a href="../policy.html?return_to=users/admin.html#privacy-policy"><span lang="en">Cookie Policy</span></a> | 
+                <a href="../policy.html?return_to=users/admin.html#accessibility">Accessibilità</a>
             </small>
         </div>
     </footer>
@@ -98,7 +176,7 @@
         <span class="visually-hidden">Torna all'inizio della pagina</span>
     </button>
     
-    <script src="../scripts/javascript/script.js"></script>
+    <script src="../../scripts/javascript/script.js"></script>
 
 </body>
 </html>

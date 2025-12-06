@@ -167,6 +167,26 @@ body.light-mode .form-group textarea:focus {
     width: 100%;
 }
 
+.td_richiesta{ display:flex; gap: 0.2em; justify-content: center; align-items: center;}
+
+.btn-secondary {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--gold-color);
+    color: var(--bodybgcolor); 
+    border: none;
+    font-family: 'Lexend', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+
 .btn-primary:hover, .btn-primary:focus {
     background-color: var(--btn-hover-bg); 
     color: var(--pure-black);
@@ -235,7 +255,7 @@ body.light-mode .form-group textarea:focus {
     color: var(--txtcolor); font-family: 'Lexend', sans-serif;
 }
 
-.form-group input, .form-group textarea {
+.form-group input, .form-group textarea, select {
     width: 100%; padding: 0.8rem;
     background-color: var(--navbgcolor); color: var(--txtcolor);
     border: 1px solid var(--bordercolor); border-radius: 2px;
@@ -393,7 +413,8 @@ a.logo-link:hover img { transform: scale(1.05); }
 }
 
 .primary-navigation a:hover { color: var(--gold-color-nav); }
-.primary-navigation span[aria-current="page"] { padding:0.3em; border: 3px solid var(--gold-color-nav); border-radius: 15px; }
+.primary-navigation span[aria-current="page"],
+.mobile-icons span[aria-current="page"] { padding:0.3em; border: 3px solid var(--gold-color-nav); border-radius: 15px; }
 
 .primary-navigation a.is-visited::before,
 .mobile-icons a.is-visited::before {
@@ -490,6 +511,8 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
     font-size: 1.1rem; color: var(--diversity-color); margin-top: 0.5em;
     line-height: 1.6; max-width: 800px;
 }
+
+#personal{ color:var(--gold-color)}
 
 .article-block h2 {
     color: var(--gold-color); border-top: none; margin-top: 1.5rem;
