@@ -143,10 +143,23 @@
                   
                             </div>
 
-                            <p class="form-group">
-                                <label for="telefono">Telefono (opzionale)</label>
-                                <input type="tel" id="telefono" name="telefono" autocomplete="tel">
-                            </p>
+                            <div class="form-group">
+                                <label id="phone-label-group">Telefono (opzionale)</label>
+                                
+                                <div class="phone-group" role="group" aria-labelledby="phone-label-group">
+                                    
+                                    <div class="phone-prefix">
+                                        <label for="prefisso" class="visually-hidden">Prefisso internazionale</label>
+                                        <input type="text" id="prefisso" name="prefisso" value="+39" autocomplete="tel-country-code">
+                                    </div>
+
+                                    <div class="phone-number">
+                                        <label for="telefono" class="visually-hidden">Numero di telefono</label>
+                                        <input type="tel" id="telefono" name="telefono" autocomplete="tel-national" placeholder="333 0000000">
+                                    </div>
+
+                                </div>
+                            </div>
 
                             <div class="form-group row-two">
                                 <div>
