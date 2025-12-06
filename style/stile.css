@@ -572,6 +572,11 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
     color: var(--gold-color);
 }
 
+.table-data caption {
+    caption-side: top; text-align: center; font-weight: 700;
+    padding: 1rem; font-size: 1.5rem; color: var(--gold-color);
+}
+
 main h1 { margin-bottom: 0.3em; }
 main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolor); }
 

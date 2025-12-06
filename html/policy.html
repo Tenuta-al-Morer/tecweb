@@ -61,40 +61,49 @@
         </header>
 
         <section id="summary-table">
-            <h2>Quadro Sinottico delle Politiche</h2>
-            <div class="table-container">
-                <table class="table-data">
-                    <thead>
-                        <tr>
-                            <th scope="col" abbr="Nome">Nome Politica</th>
-                            <th scope="col">Tipologia</th>
-                            <th scope="col">Destinatari</th>
-                            <th scope="col">Consenso</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row" abbr="Condizioni Utilizzo"><a href="#terms-of-use">Condizioni Generali di Utilizzo</a></th>
-                            <td data-title="Tipologia">Termini del Servizio</td>
-                            <td data-title="Destinatari">Tutti i visitatori</td>
-                            <td data-title="Consenso">Implicito nella navigazione</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><a href="#privacy-policy">Informativa <span lang="en">Privacy</span> e Trattamento Dati</a></th>
-                            <td data-title="Tipologia">Protezione Dati (<abbr title="General Data Protection Regulation" lang="en">GDPR</abbr>)</td>
-                            <td data-title="Destinatari">Utenti registrati</td>
-                            <td data-title="Consenso">Esplicito alla registrazione</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><a href="#accessibility">Dichiarazione di Accessibilità</a></th>
-                            <td data-title="Tipologia">Inclusività e Tecnica</td>
-                            <td data-title="Destinatari">Tutti i visitatori</td>
-                            <td data-title="Consenso"><span lang="en">N/A</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+        <h2>Quadro Sinottico delle Politiche</h2>
+        
+        <p id="descrizione-tabella" class="visually-hidden">
+            La tabella riassume le tre principali politiche del sito: Condizioni di utilizzo, Privacy Policy e Accessibilità. 
+            Per ogni politica vengono indicati la tipologia normativa, i destinatari e il tipo di consenso richiesto.
+        </p>
+
+        <div class="table-container">
+            <table class="table-data" aria-describedby="descrizione-tabella">
+                
+                <caption>Riepilogo delle Politiche e Normative</caption>
+
+                <thead>
+                    <tr>
+                        <th scope="col" abbr="Nome">Nome Politica</th>
+                        <th scope="col">Tipologia</th>
+                        <th scope="col">Destinatari</th>
+                        <th scope="col">Consenso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row" abbr="Condizioni Utilizzo"><a href="#terms-of-use">Condizioni Generali di Utilizzo</a></th>
+                        <td data-title="Tipologia">Termini del Servizio</td>
+                        <td data-title="Destinatari">Tutti i visitatori</td>
+                        <td data-title="Consenso">Implicito nella navigazione</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" abbr="Privacy Policy"><a href="#privacy-policy">Informativa <span lang="en">Privacy</span> e Trattamento Dati</a></th>
+                        <td data-title="Tipologia">Protezione Dati (<abbr title="General Data Protection Regulation" lang="en">GDPR</abbr>)</td>
+                        <td data-title="Destinatari">Utenti registrati</td>
+                        <td data-title="Consenso">Esplicito alla registrazione</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" abbr="Accessibilità"><a href="#accessibility">Dichiarazione di Accessibilità</a></th>
+                        <td data-title="Tipologia">Inclusività e Tecnica</td>
+                        <td data-title="Destinatari">Tutti i visitatori</td>
+                        <td data-title="Consenso"><span lang="en">N/A</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
         
         <article id="terms-of-use" class="article-block">
             <h2>1. Condizioni Generali di Utilizzo</h2>

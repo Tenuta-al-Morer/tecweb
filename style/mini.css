@@ -277,6 +277,11 @@ body.light-mode .table-data td::before {
     color: var(--pure-black);
 }
 
+.table-data caption {
+    position: absolute;
+    text-indent: -999em;
+}
+
 .btn-secondary {
     width: 50%;
 }
