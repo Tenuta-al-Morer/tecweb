@@ -775,6 +775,27 @@ footer a:visited { color: var(--gold-color); }
     color: var(--txtcolor);
 }
 
+.phone-group {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start; 
+}
+
+.phone-prefix {
+    width: 70px; 
+    flex-shrink: 0; 
+}
+
+.phone-number {
+    flex-grow: 1;
+}
+
+#prefisso {
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
 .password-wrapper {
     position: relative;
     display: flex;

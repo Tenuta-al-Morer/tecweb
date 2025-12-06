@@ -156,20 +156,56 @@
                         <fieldset>
                             <legend class="sr-only">Dati di contatto e messaggio</legend>
                             
-                            <p class="form-group">
-                                <label for="nome">Nome e Cognome<span aria-hidden="true">*</span></label>
-                                <input type="text" id="nome" name="nome" required autocomplete="name" placeholder="Mario Rossi">
-                            </p>
+                            <div class="form-group row-two">
+                                <div>
+                                    <label for="nome">Nome<span aria-hidden="true">*</span></label>
+                                    <input type="text" id="nome" name="nome" required autocomplete="name" placeholder="Mario">
+                                </div>
+                                <div>
+                                    <label for="nome">Cognome<span aria-hidden="true">*</span></label>
+                                    <input type="text" id="nome" name="nome" required autocomplete="name" placeholder="Rossi">
+                                </div>
+                            </div>
 
-                            <p class="form-group">
-                                <label for="email">Email<span aria-hidden="true">*</span></label>
-                                <input type="email" id="email" name="email" required autocomplete="email" placeholder="esempio@email.com">
-                            </p>
+                            <div class="form-group row-two">
+                                <div>
+                                    <label for="email">Email<span aria-hidden="true">*</span></label>
+                                    <input type="email" id="email" name="email" required autocomplete="email" placeholder="esempio@email.com">
+                                </div>
 
-                            <p class="form-group">
-                                <label for="telefono">Telefono (opzionale)</label>
-                                <input type="tel" id="telefono" name="telefono" autocomplete="tel">
-                            </p>
+                                <div>
+                                    <label for="tipo_supporto">Tipo di richiesta<span aria-hidden="true">*</span></label>
+                                    <select id="tipo_supporto" name="tipo_supporto" required>
+                                        <option value="" disabled selected>Seleziona...</option>
+                                        <option value="informazioni_vini">Informazioni sui vini</option>
+                                        <option value="visita_degustazione">Visita e degustazione</option>
+                                        <option value="ordine_online">Ordine online</option>
+                                        <option value="partnership">Partnership e collaborazioni</option>
+                                        <option value="events">Eventi e catering</option>
+                                        <option value="assistenza">Assistenza tecnica</option>
+                                        <option value="altro">Altro</option>
+                                    </select>
+                                </div>
+                  
+                            </div>
+
+                            <div class="form-group">
+                                <label id="phone-label-group">Telefono (opzionale)</label>
+                                
+                                <div class="phone-group" role="group" aria-labelledby="phone-label-group">
+                                    
+                                    <div class="phone-prefix">
+                                        <label for="prefisso" class="visually-hidden">Prefisso internazionale</label>
+                                        <input type="text" id="prefisso" name="prefisso" value="+39" autocomplete="tel-country-code">
+                                    </div>
+
+                                    <div class="phone-number">
+                                        <label for="telefono" class="visually-hidden">Numero di telefono</label>
+                                        <input type="tel" id="telefono" name="telefono" autocomplete="tel-national" placeholder="333 0000000">
+                                    </div>
+
+                                </div>
+                            </div>
 
                             <p class="form-group">
                                 <label for="messaggio">Messaggio<span aria-hidden="true">*</span></label>
