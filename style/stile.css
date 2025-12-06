@@ -167,7 +167,8 @@ body.light-mode .form-group textarea:focus {
     width: 100%;
 }
 
-.td_richiesta{ display:flex; gap: 0.2em; justify-content: center; align-items: center;}
+.td_richiesta_degustazione{ display:flex; gap: 0.2em; justify-content: center; align-items: center;}
+.td_richiesta_msg{ display:flex; gap: 0.2em;  flex-direction: column;}
 
 .btn-secondary {
     display: inline-block;
@@ -184,6 +185,17 @@ body.light-mode .form-group textarea:focus {
     border-radius: 4px;
     transition: all 0.3s ease;
     width: 100%;
+}
+
+.td_richiesta_msg form:last-child {
+    display: flex;
+    justify-content: flex-end;  
+}
+
+.td_richiesta_msg .btn-secondary {
+    width: auto;
+    font-size: 0.6rem;
+    padding: 0.4rem 1rem;
 }
 
 
