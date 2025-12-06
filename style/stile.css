@@ -112,7 +112,7 @@ body.light-mode .form-group textarea:focus {
 .navigationHelp:focus {
     position: static;
     text-indent: 0;
-    color: var(--pure-white);
+    color: var(--txtcolor);
     background-color: var(--navbgcolor); 
     padding: 0.5em 0.3em;
     border-radius: 3px;
@@ -458,7 +458,7 @@ header {
 }
 
 a.navigationHelp:visited {
-    color: var(--gold-color-nav);
+    color: var(--txtcolor);
 }
 
 .main-nav-bar {
@@ -670,7 +670,14 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
 }
 
 .hero-content {
-    color: var(--pure-white); max-width: 900px; padding: 20px; margin-top: 20px;
+    color: var(--pure-white);
+    max-width: 900px;
+    padding: 1rem; 
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0.6); 
+    border-radius: 8px; 
+    backdrop-filter: blur(5px); 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
 }
 
 .hero-content h1 {
