@@ -315,11 +315,20 @@ body.light-mode ::-webkit-calendar-picker-indicator {
 
 .info-list a {
     color: var(--txtcolor); text-decoration: none;
-    transition: color 0.3s; border-bottom: 1px solid; border-bottom-color: var(--txtcolor);
+    transition: color 0.3s;
+}
+
+.info-list .link-text {
+    border-bottom: 1px solid; border-bottom-color: var(--txtcolor);
+    transition: border-bottom-color 0.3s;
+}
+
+.info-list a:hover .link-text, .info-list a:focus .link-text {
+    border-bottom-color: var(--gold-color);
 }
 
 .info-list a:hover, .info-list a:focus {
-    color: var(--gold-color); border-bottom-color: var(--gold-color);
+    color: var(--gold-color);
 }
 
 .hours-list li {
