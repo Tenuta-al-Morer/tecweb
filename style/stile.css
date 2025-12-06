@@ -167,7 +167,68 @@ body.light-mode .form-group textarea:focus {
     width: 100%;
 }
 
-.td_richiesta_degustazione{ display:flex; gap: 0.2em; justify-content: center; align-items: center;}
+/*
+============================
+Sezione go-to sezione (area admin)
+============================
+*/
+
+.admin-tabs {
+    margin-top: 0.8em;
+    display: flex;
+    gap: .5rem;
+    margin-bottom: 1rem;
+}
+
+.admin-tab {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    color: var(--gold-color);
+    text-decoration: none;
+    font-family: 'Lexend', sans-serif;
+    border: 1px solid var(--gold-color);
+    border-radius: 6px;
+    text-transform: uppercase;
+    font-size: .8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    transition: .3s ease;
+}
+
+.admin-tab:hover {
+    background: var(--gold-color);
+    color: var(--bodybgcolor);
+}
+
+
+/*
+================================
+Sezione Gestione tabelle area admin
+================================
+*/
+
+.td_richiesta_degustazione {
+    text-align: right;          
+    padding-right: 1rem;
+    white-space: nowrap;        
+}
+
+.td_richiesta_degustazione .form-gestione {
+    display: inline-flex;      
+    gap: 0.5rem;               
+    margin: 0;                 
+}
+
+
+.td_richiesta_degustazione .btn-secondary {
+    width: auto;               
+    padding: 0.4rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
 .td_richiesta_msg{ display:flex; gap: 0.2em;  flex-direction: column;}
 
 .btn-secondary {
