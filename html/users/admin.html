@@ -6,8 +6,8 @@
     <title>Esperienze - Tenuta al Morer</title>
     <link rel="icon" href="../../images/logo.ico" type="image/x-icon">
 
-    <meta name="description" content="Vivi le esperienze e le degustazioni presso la Tenuta al Morer. Scopri i nostri vini in un'atmosfera autentica tra le colline venete.">
-    <meta name="keywords" content="esperienze, degustazioni, Tenuta al Morer, vini veneti, visita tenuta">
+    <meta name="description" content="Gestisci la tua area personale, le ordinazioni, le prenotazioni ed eventuali richieste da parte dei clienti.">
+    <meta name="keywords" content="esperienze, degustazioni, Tenuta al Morer, vini, messaggi, gestione, richieste">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -83,33 +83,88 @@
         <p>Gentile Utente "Admin", in questa pagina è possibile gestire le richieste fatte dai suoi clienti.</p>
 
         <div class="admin-tabs">
+            <!-- TAB VINI -->
+            <a href="#tab-vini" class="admin-tab">
+                <i class="fas fa-wine-bottle" aria-hidden="true"></i>
+                Gestione vini
+            </a>
 
-        <!-- TAB ESPERIENZE -->
-        <a href="#tab-degustazioni" class="admin-tab is-active">
-            <i class="fas fa-wine-glass-alt" aria-hidden="true"></i>
-            Richieste esperienze
-        </a>
+            <!-- TAB ESPERIENZE -->
+            <a href="#tab-degustazioni" class="admin-tab is-active">
+                <i class="fas fa-wine-glass-alt" aria-hidden="true"></i>
+                Richieste esperienze
+            </a>
 
-        <!-- TAB MESSAGGI -->
-        <a href="#tab-info" class="admin-tab">
-            <i class="fas fa-envelope" aria-hidden="true"></i>
-            Messaggi utenti
-        </a>
-
-        <!-- TAB VINI -->
-        <a href="#tab-vini" class="admin-tab">
-            <i class="fas fa-wine-bottle" aria-hidden="true"></i>
-            Gestione vini
-        </a>
-
-    </div>
-
+            <!-- TAB MESSAGGI -->
+            <a href="#tab-info" class="admin-tab">
+                <i class="fas fa-envelope" aria-hidden="true"></i>
+                Messaggi utenti
+            </a>
+        </div>
+        <!-- SEZIONE: richieste VINI -->
+        <p id="descrizione-tab-vini" class="visually-hidden">
+            La tabella riassume gli ordini di vini e permette di gestire le richieste: DA COMPLETARE
+        </p>
+        <section>
+            <h2>Richieste vini</h2>
+            <div class="table-container">
+                <table class="table-data" id="tab-vini" aria-describedby="descrizione-tab-vini">
+                    <thead>
+                        <tr>
+                            <th scope="col" abbr="Codice">Codice prodotto</th>
+                            <th scope="col" abbr="Nome">Nome Prodotto</th>
+                            <th scope="col" abbr="Data">Data ordine</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Cognome</th>
+                            <th scope="col">Email</th>
+                            <th scope="col" abbr="Quantità">Quantità richiesta</th>
+                            <th scope="col" abbr="Gestione">Gestione richiesta</th>
+                        </tr>
+                    </thead>
+                    <tbody> <!--RIEMPIREMO COMN DB-->
+                        <tr>
+                            <th scope="row">PR-1212</th>
+                            <td data-title="Nome Prodotto">Prosecco</td>
+                            <td data-title="Data Ordine">07/12/2024</td>
+                            <td data-title="Nome">Alessandro</td>
+                            <td data-title="Cognome">Contarini</td>
+                            <td data-title="Email">alessandro.contarini21@gmail.com</td>
+                            <td data-title="Quantità richiesta">5</td>
+                            <td class="td_richiesta_degustazione" data-title="Gestione richiesta"> 
+                                <form action="#" method="POST" class="standard-form">
+                                    <button type="submit" name="accetta" value="accetta" class="btn-secondary">Accetta</button>
+                                    <button type="submit" name="rifiuta" value="rifiuta" class="btn-secondary">Rifiuta</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">PR-1212</th>
+                            <td data-title="Nome Prodotto">Prosecco</td>
+                            <td data-title="Data Ordine">07/12/2024</td>
+                            <td data-title="Nome">Alessandro</td>
+                            <td data-title="Cognome">Contarini</td>
+                            <td data-title="Email">alessandro.contarini21@gmail.com</td>
+                            <td data-title="Quantità richiesta">5</td>
+                            <td class="td_richiesta_degustazione" data-title="Gestione richiesta"> 
+                                <form action="#" method="POST" class="standard-form">
+                                    <button type="submit" name="accetta" value="accetta" class="btn-secondary">Accetta</button>
+                                    <button type="submit" name="rifiuta" value="rifiuta" class="btn-secondary">Rifiuta</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
         <!-- SEZIONE: richieste esperienze -->
+        <p id="descrizione-tab-esperienze" class="visually-hidden">
+            La tabella riassume la prenotazione delle esperienze e permette di gestire le richieste: DA COMPLETARE
+        </p>
         <section>
             <h2>Richieste esperienze</h2>
             <div class="table-container">
-                <table class="table-data" id="tab-degustazioni">
+                <table class="table-data" id="tab-degustazioni" aria-describedby="descrizione-tab-esperienze">
                     <thead>
                         <tr>
                             <th scope="col" abbr="Tipo">Tipo degustazione</th>
@@ -162,10 +217,13 @@
         </section>
 
         <!-- SEZIONE: messaggi clienti -->
+        <p id="descrizione-tab-messaggi" class="visually-hidden">
+            La tabella riassume le richieste dei clienti da gestire: DA COMPLETARE
+        </p>
         <section>
             <h2>Richieste da parte dei clienti</h2>
             <div class="table-container">
-                <table class="table-data" id="tab-info">
+                <table class="table-data" id="tab-info" aria-describedby="descrizione-tab-messaggi">
                     <thead>
                         <tr>
                             <th scope="col" abbr="Tipo">Tipologia richiesta</th>

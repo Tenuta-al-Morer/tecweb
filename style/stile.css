@@ -626,7 +626,80 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
     padding: 1rem;
     text-align: left;
     border-bottom: 1px solid var(--bordercolor);
+
+
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    word-break: break-word; /*QUAAAAAAAA*/
+
 }
+
+/*
+==================================
+Tabelle area admin (troppo grandi)
+==================================
+*/
+
+@media screen and (max-width: 1300px) {
+    .table-container {
+        width: 100%; 
+        overflow: visible; 
+        border: none;
+    }
+
+    .table-data, .table-data thead, .table-data tbody,
+    .table-data th, .table-data td, .table-data tr {
+        display: block;
+    }
+
+    .table-data thead tr {
+        position: absolute; 
+        top: -9999px; 
+        left: -9999px;
+    }
+
+    .table-data tr {
+        border: 1px solid var(--bordercolor); 
+        border-radius: 8px; 
+        margin-bottom: 2em;
+        background-color: var(--navbgcolor); 
+        box-shadow: 0 4px 8px var(--pure-black); 
+        overflow: hidden;
+    }
+
+    .table-data tbody th {
+        background-color: var(--table-stripe);
+        color: var(--gold-color);
+        font-weight: 700;
+        text-align: center; 
+        padding: 1em;
+        border-bottom: 1px solid var(--bordercolor);
+        font-size: 1.1em;
+    }
+
+    .table-data td {
+        border: none; 
+        border-bottom: 1px solid var(--subheader-border-color); 
+        position: relative;
+        padding: 0.8em 1em;
+        text-align: left; 
+    }
+
+    .table-data td:last-child { 
+        border-bottom: 0; 
+    }
+
+    .table-data td::before {
+        content: attr(data-title) ": "; 
+        color: var(--gold-color);
+        font-weight: 700;
+        /*color: var(--diversity-color);*/
+        display: inline;
+        margin-right: 0.3em;
+    }
+}
+
+
 
 .table-data thead th {
     background-color: var(--header-bg);
