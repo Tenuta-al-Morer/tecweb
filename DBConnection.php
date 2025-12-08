@@ -6,7 +6,7 @@ use mysqli;
 
 // Importiamo il file di configurazione.
 // __DIR__ assicura che cerchi il file nella stessa cartella di questo script.
-require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/config/config.php';
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
@@ -35,7 +35,7 @@ class DBConnection {
 
     // FUNZIONE DI REGISTRAZIONE
     public function registerUser($nome, $cognome, $email, $password) {
-        $queryControllo = "SELECT id FROM utenti WHERE email = ?"; 
+        $queryControllo = "SELECT id FROM utente WHERE email = ?"; 
         
         $stmt = $this->connection->prepare($queryControllo);
         if (!$stmt) { die("Errore prepare controllo: " . $this->connection->error); }
@@ -49,7 +49,7 @@ class DBConnection {
         }
         $stmt->close();
 
-        $query = "INSERT INTO utenti (nome, cognome, email, password) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO utente (nome, cognome, email, password) VALUES (?, ?, ?, ?)";
 
         $stmt = $this->connection->prepare($query);
         if (!$stmt) { die("Errore prepare insert: " . $this->connection->error); }
@@ -67,7 +67,7 @@ class DBConnection {
 
     // FUNZIONE DI LOGIN
     public function loginUser($email, $password) {
-        $query = "SELECT * FROM utenti WHERE email = ?"; 
+        $query = "SELECT * FROM utente WHERE email = ?"; 
         
         $stmt = $this->connection->prepare($query);
         if (!$stmt) { die("Errore prepare login: " . $this->connection->error); }
@@ -91,7 +91,7 @@ class DBConnection {
 
     // FUNZIONE PER SALVARE UN MESSAGGIO
     public function salvaMessaggio($nome, $cognome, $email, $tipo_supporto, $prefisso, $telefono, $messaggio) {
-        $query = "INSERT INTO contatti (nome, cognome, email, tipo_supporto, prefisso, telefono, messaggio, data_invio, stato) 
+        $query = "INSERT INTO contatto (nome, cognome, email, tipo_supporto, prefisso, telefono, messaggio, data_invio, stato) 
                   VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), 'aperto')";
         
         $stmt = $this->connection->prepare($query);
@@ -107,9 +107,9 @@ class DBConnection {
 
     // FUNZIONE ARCHIVIA MESSAGGIO
     public function archiviaMessaggio($id) {
-        $queryCopia = "INSERT INTO contatti_archivio (id, nome, cognome, email, tipo_supporto, prefisso, telefono, messaggio, data_invio, stato)
+        $queryCopia = "INSERT INTO contatto_archivio (id, nome, cognome, email, tipo_supporto, prefisso, telefono, messaggio, data_invio, stato)
                        SELECT id, nome, cognome, email, tipo_supporto, prefisso, telefono, messaggio, data_invio, 'chiuso'
-                       FROM contatti WHERE id = ?";
+                       FROM contatto WHERE id = ?";
         
         $stmt = $this->connection->prepare($queryCopia);
         if (!$stmt) return false;
@@ -118,7 +118,7 @@ class DBConnection {
         $stmt->close();
 
         if ($esitoCopia) {
-            $queryCancella = "DELETE FROM contatti WHERE id = ?";
+            $queryCancella = "DELETE FROM contatto WHERE id = ?";
             $stmtDel = $this->connection->prepare($queryCancella);
             $stmtDel->bind_param("i", $id);
             $stmtDel->execute();
@@ -130,7 +130,7 @@ class DBConnection {
 
     // FUNZIONE PER SALVARE UNA PRENOTAZIONE
     public function salvaPrenotazione($nome, $cognome, $email, $tipo_degustazione, $prefisso, $telefono, $data_visita, $n_persone) {
-        $query = "INSERT INTO prenotazioni (nome, cognome, email, tipo_degustazione, prefisso, telefono, data_visita, n_persone, data_invio, stato) 
+        $query = "INSERT INTO prenotazione (nome, cognome, email, tipo_degustazione, prefisso, telefono, data_visita, n_persone, data_invio, stato) 
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), 'In attesa')";
         
         $stmt = $this->connection->prepare($query);
@@ -146,9 +146,9 @@ class DBConnection {
 
     // FUNZIONE ARCHIVIA PRENOTAZIONE
     public function archiviaPrenotazione($id) {
-        $queryCopia = "INSERT INTO prenotazioni_archivio (id, nome, cognome, email, tipo_degustazione, prefisso, telefono, data_visita, n_persone, data_invio, stato)
+        $queryCopia = "INSERT INTO prenotazione_archivio (id, nome, cognome, email, tipo_degustazione, prefisso, telefono, data_visita, n_persone, data_invio, stato)
                        SELECT id, nome, cognome, email, tipo_degustazione, prefisso, telefono, data_visita, n_persone, data_invio, 'Completato'
-                       FROM prenotazioni WHERE id = ?";
+                       FROM prenotazione WHERE id = ?";
         
         $stmt = $this->connection->prepare($queryCopia);
         if (!$stmt) return false;
@@ -157,7 +157,7 @@ class DBConnection {
         $stmt->close();
 
         if ($esitoCopia) {
-            $queryCancella = "DELETE FROM prenotazioni WHERE id = ?";
+            $queryCancella = "DELETE FROM prenotazione WHERE id = ?";
             $stmtDel = $this->connection->prepare($queryCancella);
             $stmtDel->bind_param("i", $id);
             $stmtDel->execute();
