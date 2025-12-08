@@ -1,0 +1,29 @@
+# ----------------------------------------------------------------------
+# 1. Attivazione Rewrite Engine (con controllo di sicurezza)
+# ----------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /mstevani/
+</IfModule>
+
+# ----------------------------------------------------------------------
+# 3. Pagine di Errore Personalizzate
+# ----------------------------------------------------------------------
+ErrorDocument 404 /mstevani/404.php
+ErrorDocument 403 /mstevani/403.php
+ErrorDocument 500 /mstevani/500.php
+
+# ----------------------------------------------------------------------
+# 4. Protezione file sensibili (CORRETTO PER APACHE 2.4)
+# ----------------------------------------------------------------------
+<FilesMatch "^(config\.php|common\.php|\.htaccess|todo\.txt)$">
+    Require all denied
+</FilesMatch>
+
+# ----------------------------------------------------------------------
+# 5. Reindirizzamenti
+# ----------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)\.html$ $1.php [L,R=301]
+</IfModule>

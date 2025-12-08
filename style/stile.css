@@ -1080,3 +1080,18 @@ input:-webkit-autofill:focus {
     border-top: 1px solid var(--bordercolor);
     padding-top: 1.5rem;
 }
+
+
+#php-errors, #php-errors p {
+    color: #d9534f;
+    font-weight: bold;
+}
+
+.input-help {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--diversity-color); 
+    margin-top: 4px;
+    font-style: italic;
+}
+

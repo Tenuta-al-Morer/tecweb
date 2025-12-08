@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Registrati - Tenuta al Morer</title>
     <meta name="description" content="Crea un nuovo account su Tenuta al Morer per accedere a offerte esclusive e gestire i tuoi ordini.">
-    <link rel="icon" href="../images/logo.ico" type="image/x-icon">
+    <link rel="icon" href="images/logo.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,9 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../style/stile.css" media="screen"> 
-    <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:940px)">
-    <link rel="stylesheet" href="../style/stampa.css" media="print"> 
+    <link rel="stylesheet" href="style/stile.css" media="screen"> 
+    <link rel="stylesheet" href="style/mini.css" media="screen and (max-width:940px)">
+    <link rel="stylesheet" href="style/stampa.css" media="print"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
@@ -28,8 +28,8 @@
         </nav>
 
         <div class="login-header-logo">
-            <a href="../index.html">
-                <img src="../images/logo.webp" alt="Home - Tenuta al Morer">
+            <a href="index.php">
+                <img src="images/logo.webp" alt="Home - Tenuta al Morer">
             </a>
         </div>
 
@@ -37,8 +37,8 @@
             <nav id="breadcrumb">
                 <div class="breadcrumb-container">
                     <span>Ti trovi in: </span>
-                    <a href="../index.html"><span class="visually-hidden" lang="en">Home</span><i class="fas fa-home home-icon" aria-hidden="true"></i></a><span aria-hidden="true"> &gt; </span> 
-                    <a href="login.html"><span class="visually-hidden">Accedi</span><i class="fas fa-sign-in-alt contact-icon" aria-hidden="true"></i></a><span aria-hidden="true"> &gt; </span>
+                    <a href="index.php"><span class="visually-hidden" lang="en">Home</span><i class="fas fa-home home-icon" aria-hidden="true"></i></a><span aria-hidden="true"> &gt; </span> 
+                    <a href="login.php"><span class="visually-hidden">Accedi</span><i class="fas fa-sign-in-alt contact-icon" aria-hidden="true"></i></a><span aria-hidden="true"> &gt; </span>
                     <span class="current-page" aria-current="page">Registrazione</span>
                     <i class="fas fa-user-plus contact-icon" aria-hidden="true"></i> 
                 </div>
@@ -55,37 +55,42 @@
             <h1>Crea un <span lang="en">Account</span></h1>
             <p>Entra a far parte della famiglia Tenuta al Morer.</p>
             
-            <form action="#" method="POST" class="auth-form">
+            <div id="php-errors">
+                [err]
+            </div>
+
+            <form action="registrazione.php" method="POST" class="auth-form">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="nome">Nome</label>
-                        <input type="text" id="nome" name="nome" placeholder="Mario" required autocomplete="given-name">
+                        <input type="text" id="nome" name="nome" placeholder="Mario" required autocomplete="given-name" value="[nome]" pattern="[a-zA-Z\s']+" title="Solo lettere, spazi e apostrofi">
                     </div>
                     <div class="form-group">
                         <label for="cognome">Cognome</label>
-                        <input type="text" id="cognome" name="cognome" placeholder="Rossi" required autocomplete="family-name">
+                         <input type="text" id="cognome" name="cognome" placeholder="Rossi" required autocomplete="family-name" value="[cognome]" pattern="[a-zA-Z\s']+" title="Solo lettere, spazi e apostrofi">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="nome@esempio.it" required autocomplete="email">
+                     <input type="email" id="email" name="email" placeholder="nome@esempio.it" required autocomplete="email" value="[email]">
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
                     <div class="password-wrapper">
-                        <input type="password" id="password" name="password" placeholder="Password" required autocomplete="new-password">
+                        <input type="password" id="password" name="password" placeholder="Password" required autocomplete="new-password" minlength="8" aria-describedby="password-hint">
                         <button type="button" class="toggle-password" aria-label="Mostra password">
                             <i class="fas fa-eye" aria-hidden="true"></i>
                         </button>
                     </div>
+                    <small id="password-hint" class="input-help">Minimo 8 caratteri.</small>
                 </div>
 
                 <div class="form-group">
                     <label for="confirm-password">Conferma Password</label>
                     <div class="password-wrapper">
-                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Password" required autocomplete="new-password">
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Password" required autocomplete="new-password" minlength="8">
                         <button type="button" class="toggle-password" aria-label="Mostra password">
                             <i class="fas fa-eye" aria-hidden="true"></i>
                         </button>
@@ -97,7 +102,7 @@
                         <input type="checkbox" name="privacy" required> 
                         <span>
                             Ho letto e accetto la 
-                            <a href="policy.html?action=close" target="_blank" rel="noopener noreferrer">
+                            <a href="policy.php?action=close" target="_blank" rel="noopener noreferrer">
                                 <span lang="en">Privacy Policy</span>
                             </a>
                         </span>
@@ -108,7 +113,7 @@
             </form>
 
             <div class="auth-footer">
-                <p>Hai già un <span lang="en">account</span>? <a href="login.html">Accedi qui</a></p>
+                <p>Hai già un <span lang="en">account</span>? <a href="login.php">Accedi qui</a></p>
             </div>
         </div>
     </main>
@@ -117,13 +122,13 @@
         <div class="footer-content">
             <small>
                 &copy; 2025 Tenuta al Morer - <abbr title="Partita">P.</abbr> <abbr title="Imposta sul Valore Aggiunto">IVA</abbr> 00000000000 <br>
-                <a href="policy.html?return_to=registrazione.html"><span lang="en">Privacy Policy</span></a> | 
-                <a href="policy.html?return_to=registrazione.html#privacy-policy"><span lang="en">Cookie Policy</span></a> | 
-                <a href="policy.html?return_to=registrazione.html#accessibility">Accessibilità</a>
+                <a href="policy.php?return_to=registrazione.php"><span lang="en">Privacy Policy</span></a> | 
+                <a href="policy.php?return_to=registrazione.php#privacy-policy"><span lang="en">Cookie Policy</span></a> | 
+                <a href="policy.php?return_to=registrazione.php#accessibility">Accessibilità</a>
             </small>
         </div>
     </footer>
 
-    <script src="../scripts/javascript/script.js"></script>
+    <script src="scripts/javascript/script.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <title>I Vini - Tenuta al Morer</title>
-        <link rel="icon" href="../images/logo.ico" type="image/x-icon"> 
+        <link rel="icon" href="images/logo.ico" type="image/x-icon"> 
 
         <meta name="description" content="Scopri i vini pregiati della Tenuta al Morer, selezione di etichette tradizionali venete prodotte con passione nelle nostre colline.">
         <meta name="keywords" content="vini, Tenuta al Morer, vini veneti, viticoltura, degustazione">
@@ -16,11 +16,11 @@
         <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet"> 
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" href="../style/stile.css" media="screen"> 
-        <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:940px)"> 
-        <link rel="stylesheet" href="../style/stampa.css" media="print">  
+        <link rel="stylesheet" href="style/stile.css" media="screen"> 
+        <link rel="stylesheet" href="style/mini.css" media="screen and (max-width:940px)"> 
+        <link rel="stylesheet" href="style/stampa.css" media="print">  
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="../style/vini.css" media="screen"> 
+        <link rel="stylesheet" href="style/vini.css" media="screen"> 
     </head>
 
     <!-- Da controllare: alt delle img, naming img, la lang delle parole (ne ho trovate alcune da sistemare)-->
@@ -38,29 +38,26 @@
                     <span class="visually-hidden">Apri il menù di navigazione</span>
                 </button>
 
-                <a href="../index.html" class="logo-link">
-                    <img src="../images/logo.webp" alt="Home - Tenuta al Morer">
+                <a href="index.php" class="logo-link">
+                    <img src="images/logo.webp" alt="Home - Tenuta al Morer">
                 </a>
 
                 <nav id="main-navigation" class="primary-navigation">
                     <ul>
-                        <li><a href="../index.html"><span lang="en">Home</span></a></li> 
-                        <li><a href="tenuta.html">Tenuta</a></li>
+                        <li><a href="index.php"><span lang="en">Home</span></a></li> 
+                        <li><a href="tenuta.php">Tenuta</a></li>
                         <li><span aria-current="page">Vini</span></li>
-                        <li><a href="esperienze.html">Esperienze</a></li>
-                        <li><a href="contatti.html">Contatti</a></li>
+                        <li><a href="esperienze.php">Esperienze</a></li>
+                        <li><a href="contatti.php">Contatti</a></li>
                     </ul>
                 </nav>
 
                 <div class="mobile-icons">
-                    <a href="shop.html">
+                    <a href="shop.php">
                         <i class="fas fa-shopping-bag" aria-hidden="true"></i>
                         <span class="visually-hidden" lang="en">Shop</span>
                     </a>
-                    <a href="login.html">
-                        <i class="fas fa-user" aria-hidden="true"></i>
-                        <span class="visually-hidden">Accedi</span>
-                    </a>
+                    [user_area_link]
                 </div>
             </div>
 
@@ -68,7 +65,7 @@
                 <nav id="breadcrumb">
                     <div class="breadcrumb-container">
                         <span>Ti trovi in: </span>
-                        <a href="../index.html"><span class="visually-hidden" lang="en">Home</span><i class="fas fa-home home-icon" aria-hidden="true"></i></a><span class="visually-hidden">&gt;</span>
+                        <a href="index.php"><span class="visually-hidden" lang="en">Home</span><i class="fas fa-home home-icon" aria-hidden="true"></i></a><span class="visually-hidden">&gt;</span>
                         <span class="current-page">I vini</span><i class="fas fa-wine-glass wine-icon" aria-hidden="true"></i> 
                     </div>
                 </nav>
@@ -97,10 +94,10 @@
                     <article class="wine-article" 
                             data-nome="Rosso del Morer" 
                             data-descrizione="Un vino rosso corposo e avvolgente, perfetto per carni rosse." 
-                            data-img="../immagini utili/vini/trasparenti/Raboso del Piave.webp"
+                            data-img="immagini utili/vini/trasparenti/Raboso del Piave.webp"
                             data-prezzo="18.50">
                         <div class="wine-item">
-                            <img src="../immagini utili/vini/trasparenti/Raboso del Piave.webp" alt="Rosso del Morer" class="wine-image">
+                            <img src="immagini utili/vini/trasparenti/Raboso del Piave.webp" alt="Rosso del Morer" class="wine-image">
                             <div class="content-wine-article">
                                 <h2>Rosso del Morer</h2>
                                 <p>Un vino rosso corposo</p>
@@ -120,10 +117,10 @@
                     <article class="wine-article"
                             data-nome="Merlot" 
                             data-descrizione="Il classico Merlot: morbido, vellutato e versatile." 
-                            data-img="../immagini utili/vini/trasparenti/Merlot.webp"
+                            data-img="immagini utili/vini/trasparenti/Merlot.webp"
                             data-prezzo="14.00">
                         <div class="wine-item">
-                            <img src="../immagini utili/vini/trasparenti/Merlot.webp" alt="Merlot" class="wine-image">
+                            <img src="immagini utili/vini/trasparenti/Merlot.webp" alt="Merlot" class="wine-image">
                             <div class="content-wine-article">
                                 <h2><span lang="fr">Merlot</span></h2>
                                 <p>Morbido e vellutato.</p>
@@ -143,10 +140,10 @@
                     <article class="wine-article"
                             data-nome="Cabernet Franc" 
                             data-descrizione="Note erbacee caratteristiche, gusto deciso e persistente." 
-                            data-img="../immagini utili/vini/trasparenti/Cabernet Franc 1.webp"
+                            data-img="immagini utili/vini/trasparenti/Cabernet Franc 1.webp"
                             data-prezzo="16.00">
                         <div class="wine-item">
-                            <img src="../immagini utili/vini/trasparenti/Cabernet Franc 1.webp" alt="Cabernet Franc" class="wine-image">
+                            <img src="immagini utili/vini/trasparenti/Cabernet Franc 1.webp" alt="Cabernet Franc" class="wine-image">
                             <div class="content-wine-article">
                                 <h2>Cabernet Franc</h2>
                                 <p>Deciso e persistente.</p>
@@ -166,10 +163,10 @@
                     <article class="wine-article"
                             data-nome="Refosco" 
                             data-descrizione="Autoctono dal carattere forte, colore rosso rubino intenso." 
-                            data-img="../immagini utili/vini/trasparenti/Refosco.webp"
+                            data-img="immagini utili/vini/trasparenti/Refosco.webp"
                             data-prezzo="15.50">
                         <div class="wine-item">
-                            <img src="../immagini utili/vini/trasparenti/Refosco.webp" alt="Refosco" class="wine-image">
+                            <img src="immagini utili/vini/trasparenti/Refosco.webp" alt="Refosco" class="wine-image">
                             <div class="content-wine-article">
                                 <h2>Refosco</h2>
                                 <p>Carattere forte e intenso.</p>
@@ -199,10 +196,10 @@
                     <article class="wine-article"
                             data-nome="Chardonnay" 
                             data-descrizione="Elegante, fruttato con sentori di mela golden e crosta di pane." 
-                            data-img="../immagini utili/vini/trasparenti/Chardonnay.webp"
+                            data-img="immagini utili/vini/trasparenti/Chardonnay.webp"
                             data-prezzo="13.50">
                         <div class="wine-item">
-                            <img src="../immagini utili/vini/trasparenti/Chardonnay.webp" alt="Chardonnay" class="wine-image">
+                            <img src="immagini utili/vini/trasparenti/Chardonnay.webp" alt="Chardonnay" class="wine-image">
                             <div class="content-wine-article">
                                 <h2>Chardonnay</h2>
                                 <p>Elegante e fruttato.</p>
@@ -222,10 +219,10 @@
                     <article class="wine-article"
                             data-nome="Manzoni Bianco" 
                             data-descrizione="Incrocio Riesling e Pinot Bianco. Aromatico e strutturato." 
-                            data-img="../immagini utili/vini/trasparenti/Manzoni Bianco.webp"
+                            data-img="immagini utili/vini/trasparenti/Manzoni Bianco.webp"
                             data-prezzo="15.00">
                         <div class="wine-item">
-                            <img src="../immagini utili/vini/trasparenti/Manzoni Bianco.webp" alt="Manzoni Bianco" class="wine-image">
+                            <img src="immagini utili/vini/trasparenti/Manzoni Bianco.webp" alt="Manzoni Bianco" class="wine-image">
                             <div class="content-wine-article">
                                 <h2>Manzoni Bianco</h2>
                                 <p>Aromatico e strutturato.</p>
@@ -245,10 +242,10 @@
                     <article class="wine-article"
                             data-nome="Pinot Grigio" 
                             data-descrizione="Fresco, sapido e piacevole. Ottimo come aperitivo." 
-                            data-img="../immagini utili/vini/trasparenti/Pinot Grigio.webp"
+                            data-img="immagini utili/vini/trasparenti/Pinot Grigio.webp"
                             data-prezzo="13.00">
                         <div class="wine-item">
-                            <img src="../immagini utili/vini/trasparenti/Pinot Grigio.webp" alt="Pinot Grigio" class="wine-image">
+                            <img src="immagini utili/vini/trasparenti/Pinot Grigio.webp" alt="Pinot Grigio" class="wine-image">
                             <div class="content-wine-article">
                                 <h2>Pinot Grigio</h2>
                                 <p>Fresco e sapido.</p>
@@ -268,10 +265,10 @@
                     <article class="wine-article"
                             data-nome="Prosecco" 
                             data-descrizione="Le bollicine venete per eccellenza. Fresco e vivace." 
-                            data-img="../immagini utili/vini/trasparenti/Prosecco.webp"
+                            data-img="immagini utili/vini/trasparenti/Prosecco.webp"
                             data-prezzo="12.50">
                         <div class="wine-item">
-                            <img src="../immagini utili/vini/trasparenti/Prosecco.webp" alt="Prosecco" class="wine-image">
+                            <img src="immagini utili/vini/trasparenti/Prosecco.webp" alt="Prosecco" class="wine-image">
                             <div class="content-wine-article">
                                 <h2>Prosecco</h2>
                                 <p>Le bollicine venete.</p>
@@ -301,10 +298,10 @@
                     <article class="wine-article"
                             data-nome="Gran Morer" 
                             data-descrizione="La nostra riserva speciale. Invecchiato in botte." 
-                            data-img="../immagini utili/vini/trasparenti/Gran Morer.webp"
+                            data-img="immagini utili/vini/trasparenti/Gran Morer.webp"
                             data-prezzo="25.00">
                         <div class="wine-item">
-                            <img src="../immagini utili/vini/trasparenti/Gran Morer.webp" alt="Gran Morer" class="wine-image">
+                            <img src="immagini utili/vini/trasparenti/Gran Morer.webp" alt="Gran Morer" class="wine-image">
                             <div class="content-wine-article">
                                 <h2>Gran Morer</h2>
                                 <p>Riserva speciale.</p>
@@ -324,10 +321,10 @@
                     <article class="wine-article"
                             data-nome="Vigna Dorata" 
                             data-descrizione="Selezione di uve passite, dolce e avvolgente." 
-                            data-img="../immagini utili/vini/trasparenti/Vigna Dorata.webp"
+                            data-img="immagini utili/vini/trasparenti/Vigna Dorata.webp"
                             data-prezzo="22.00">
                         <div class="wine-item">
-                            <img src="../immagini utili/vini/trasparenti/Vigna Dorata.webp" alt="Vigna Dorata" class="wine-image">
+                            <img src="immagini utili/vini/trasparenti/Vigna Dorata.webp" alt="Vigna Dorata" class="wine-image">
                             <div class="content-wine-article">
                                 <h2>Vigna Dorata</h2>
                                 <p>Dolce e avvolgente.</p>
@@ -347,10 +344,10 @@
                     <article class="wine-article"
                             data-nome="Incanto" 
                             data-descrizione="Un vino che incanta per i suoi profumi floreali." 
-                            data-img="../immagini utili/vini/trasparenti/Incanto.webp"
+                            data-img="immagini utili/vini/trasparenti/Incanto.webp"
                             data-prezzo="20.00">
                         <div class="wine-item">
-                            <img src="../immagini utili/vini/trasparenti/Incanto.webp" alt="Incanto" class="wine-image">
+                            <img src="immagini utili/vini/trasparenti/Incanto.webp" alt="Incanto" class="wine-image">
                             <div class="content-wine-article">
                                 <h2>Incanto</h2>
                                 <p>Profumi floreali.</p>
@@ -370,10 +367,10 @@
                     <article class="wine-article"
                             data-nome="Rosae Nobile" 
                             data-descrizione="Rosato di alta classe, note di frutti di bosco." 
-                            data-img="../immagini utili/vini/trasparenti/Rosae Nobile.webp"
+                            data-img="immagini utili/vini/trasparenti/Rosae Nobile.webp"
                             data-prezzo="19.00">
                         <div class="wine-item">
-                            <img src="../immagini utili/vini/trasparenti/Rosae Nobile.webp" alt="Rosae Nobile" class="wine-image">
+                            <img src="immagini utili/vini/trasparenti/Rosae Nobile.webp" alt="Rosae Nobile" class="wine-image">
                             <div class="content-wine-article">
                                 <h2>Rosae Nobile</h2>
                                 <p>Rosato di alta classe.</p>
@@ -399,9 +396,9 @@
             <div class="footer-content">
                 <small>
                     &copy; 2025 Tenuta al Morer - <abbr title="Partita">P.</abbr> <abbr title="Imposta sul Valore Aggiunto">IVA</abbr> 00000000000 <br>
-                    <a href="policy.html?return_to=vini.html"><span lang="en">Privacy Policy</span></a> | 
-                    <a href="policy.html?return_to=vini.html#privacy-policy"><span lang="en">Cookie Policy</span></a> | 
-                    <a href="policy.html?return_to=vini.html#accessibility">Accessibilità</a>
+                    <a href="policy.php?return_to=vini.php"><span lang="en">Privacy Policy</span></a> | 
+                    <a href="policy.php?return_to=vini.php#privacy-policy"><span lang="en">Cookie Policy</span></a> | 
+                    <a href="policy.php?return_to=vini.php#accessibility">Accessibilità</a>
                 </small>
             </div>
         </footer>
@@ -438,7 +435,7 @@
             </div>
         </div>
         
-        <script src="../scripts/javascript/script.js"></script>
+        <script src="scripts/javascript/script.js"></script>
 
         <script>
             // Funzione per aprire l'overlay
