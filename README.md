@@ -1,1 +1,0 @@
-[![W3C CSS Validator](https://img.shields.io/github/actions/workflow/status/Tenuta-al-Morer/tecweb/css-check.yml?label=W3C%20CSS%20Validator&logo=w3c)](https://github.com/Tenuta-al-Morer/tecweb/actions/workflows/css-check.yml)

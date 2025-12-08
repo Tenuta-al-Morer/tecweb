@@ -1,6 +1,6 @@
 <?php
 require_once 'common.php';
-require_once 'config.php';
+require_once 'DBConnection.php';
 use DB\DBConnection;
 
 // 1. Carico il template HTML
