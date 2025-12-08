@@ -556,6 +556,18 @@ a.logo-link:hover img { transform: scale(1.05); }
 #theme-toggle:hover { color: var(--gold-color-nav); opacity: 1; transform: scale(1.1); }
 #theme-toggle i { pointer-events: none; }
 
+#theme-toggle svg {
+    width: 1.3em;     
+    height: 1.3em;    
+    display: block;   
+}
+
+.sub-header button {
+    width: 1.3em;     
+    height: 1.3em;    
+    display: block;   
+}
+
 main {
     color: var(--txtcolor); padding: 1em 2em 2em 3.5em; flex-grow: 1;
 }
@@ -1082,6 +1094,11 @@ input:-webkit-autofill:focus {
 }
 
 
+
+
+
+
+
 #php-errors, #php-errors p {
     color: #d9534f;
     font-weight: bold;
@@ -1095,5 +1112,22 @@ input:-webkit-autofill:focus {
     color: var(--diversity-color); 
     margin-top: 4px;
     font-style: italic;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.alert.success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+.alert.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
 }
 

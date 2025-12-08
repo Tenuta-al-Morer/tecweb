@@ -149,38 +149,42 @@
                     <h2 id="form-title">Scrivici</h2>
                     <p>Per domande generali, utilizza il modulo sottostante. I campi con l'asterisco (<span aria-hidden="true">*</span>) sono obbligatori.</p>
                     
-                    <form action="#" method="POST" class="standard-form">
+                    <div id="feedback-container">
+                        [feedback_message]
+                    </div>
+
+                    <form action="contatti.php" method="POST" class="standard-form">
                         <fieldset>
                             <legend class="sr-only">Dati di contatto e messaggio</legend>
                             
                             <div class="form-group row-two">
                                 <div>
                                     <label for="nome">Nome<span aria-hidden="true">*</span></label>
-                                    <input type="text" id="nome" name="nome" required autocomplete="name" placeholder="Mario">
+                                    <input type="text" id="nome" name="nome" required autocomplete="name" placeholder="Mario" value="[val_nome]">
                                 </div>
                                 <div>
                                     <label for="cognome">Cognome<span aria-hidden="true">*</span></label>
-                                    <input type="text" id="cognome" name="cognome" required autocomplete="surname" placeholder="Rossi">
+                                    <input type="text" id="cognome" name="cognome" required autocomplete="surname" placeholder="Rossi" value="[val_cognome]">
                                 </div>
                             </div>
 
                             <div class="form-group row-two">
                                 <div>
                                     <label for="email">Email<span aria-hidden="true">*</span></label>
-                                    <input type="email" id="email" name="email" required autocomplete="email" placeholder="esempio@email.com">
+                                    <input type="email" id="email" name="email" required autocomplete="email" placeholder="esempio@email.com" value="[val_email]">
                                 </div>
 
                                 <div>
                                     <label for="tipo_supporto">Tipo di richiesta<span aria-hidden="true">*</span></label>
                                     <select id="tipo_supporto" name="tipo_supporto" required>
-                                        <option value="" disabled selected>Seleziona...</option>
-                                        <option value="informazioni_vini">Informazioni sui vini</option>
-                                        <option value="visita_degustazione">Visita e degustazione</option>
-                                        <option value="ordine_online">Ordine online</option>
-                                        <option value="partnership">Partnership e collaborazioni</option>
-                                        <option value="events">Eventi e catering</option>
-                                        <option value="assistenza">Assistenza tecnica</option>
-                                        <option value="altro">Altro</option>
+                                        <option value="" disabled [sel_default]>Seleziona...</option>
+                                        <option value="informazioni_vini" [sel_informazioni_vini]>Informazioni sui vini</option>
+                                        <option value="visita_degustazione" [sel_visita_degustazione]>Visita e degustazione</option>
+                                        <option value="ordine_online" [sel_ordine_online]>Ordine online</option>
+                                        <option value="partnership" [sel_partnership]>Partnership e collaborazioni</option>
+                                        <option value="events" [sel_events]>Eventi e catering</option>
+                                        <option value="assistenza" [sel_assistenza]>Assistenza tecnica</option>
+                                        <option value="altro" [sel_altro]>Altro</option>
                                     </select>
                                 </div>
                   
@@ -193,12 +197,12 @@
                                     
                                     <div class="phone-prefix">
                                         <label for="prefisso" class="visually-hidden">Prefisso internazionale</label>
-                                        <input type="text" id="prefisso" name="prefisso" value="+39" autocomplete="tel-country-code">
+                                        <input type="text" id="prefisso" name="prefisso" value="[val_prefisso]" autocomplete="tel-country-code">
                                     </div>
 
                                     <div class="phone-number">
                                         <label for="telefono" class="visually-hidden">Numero di telefono</label>
-                                        <input type="tel" id="telefono" name="telefono" autocomplete="tel-national" placeholder="333 0000000">
+                                        <input type="tel" id="telefono" name="telefono" autocomplete="tel-national" placeholder="333 0000000" value="[val_telefono]">
                                     </div>
 
                                 </div>
@@ -206,7 +210,7 @@
 
                             <p class="form-group">
                                 <label for="messaggio">Messaggio<span aria-hidden="true">*</span></label>
-                                <textarea id="messaggio" name="messaggio" rows="5" required placeholder="Scrivi qui la tua richiesta..."></textarea>
+                                <textarea id="messaggio" name="messaggio" rows="5" required placeholder="Scrivi qui la tua richiesta...">[val_messaggio]</textarea>
                             </p>
 
                             <p class="checkbox-container">
