@@ -35,7 +35,7 @@
     text-align: left;
     line-height: 1.6;
 }
-/* Rimuove eventuali bordi/separatori dai paragrafi di questa pagina */
+
 #content h2,
 #content h3 {
     border: none;

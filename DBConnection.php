@@ -31,7 +31,7 @@ class DBConnection {
         }
     }
 
-    // --- DA QUI IN GIÙ LE TUE FUNZIONI RIMANGONO IDENTICHE ---
+    
 
     // FUNZIONE DI REGISTRAZIONE
     public function registerUser($nome, $cognome, $email, $password) {

@@ -43,8 +43,8 @@ function caricaPagina($nomeFileHTML) {
 
     } else {
         // OSPITE (Non loggato): Link al Login
-        // Nota: se sei già su login.php potresti voler fare lo stesso controllo, 
-        // ma per ora lo lasciamo standard come da tua richiesta.
+        
+        
         $userIconHTML = '
         <a href="login.php" title="Accedi">
             <i class="fas fa-sign-in-alt contact-icon" aria-hidden="true"></i>

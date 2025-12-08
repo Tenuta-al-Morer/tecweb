@@ -109,7 +109,7 @@ $options = ['Linea Oro', 'Piave'];
 $htmlContent = str_replace("[sel_default]", ($valori['tipo_degustazione'] == '' ? 'selected' : ''), $htmlContent);
 
 foreach ($options as $opt) {
-    // Nota: qui uso str_replace diretto perché i valori contengono spazi (Linea Oro)
+    
     $placeholder = "[sel_" . $opt . "]";
     $selected = ($valori['tipo_degustazione'] == $opt) ? 'selected' : '';
     $htmlContent = str_replace($placeholder, $selected, $htmlContent);
