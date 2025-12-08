@@ -6,7 +6,7 @@ use mysqli;
 
 // Importiamo il file di configurazione.
 // __DIR__ assicura che cerchi il file nella stessa cartella di questo script.
-require_once __DIR__ . '/config/config.php';
+require_once __DIR__ . '/config.php';
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
