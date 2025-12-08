@@ -48,10 +48,10 @@
             </nav>
 
             <div class="mobile-icons">
-                <a href="shop.php">
-                    <i class="fas fa-shopping-bag" aria-hidden="true"></i>
-                    <span class="visually-hidden" lang="en">Shop</span>
-                </a>
+                <span class="current-page-icon" aria-current="page" title="Sei nello Shop">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="visually-hidden">Shop (Pagina corrente)</span>
+                </span>
                 [user_area_link]
             </div>
         </div>
@@ -61,8 +61,8 @@
                 <div class="breadcrumb-container">
                     <span>Ti trovi in: </span>
                     <a href="index.php"><span class="visually-hidden" lang="en">Home</span><i class="fas fa-home home-icon" aria-hidden="true"></i></a><span aria-hidden="true"> &gt; </span> 
-                    <span class="current-page" aria-current="page">Area Riservata</span>
-                    <i class="fas fa-user contact-icon" aria-hidden="true"></i> 
+                    <span class="current-page" aria-current="page">Shop</span>
+                    <i class="fas fa-shopping-bag" aria-hidden="true"></i> 
                 </div>
             </nav>
 
@@ -74,7 +74,7 @@
 
     <main id="content">  
         <div class="auth-container">
-            <h1>Benvenuto nella tua Area Riservata</h1>
+            <h1>Benvenuto nel tuo carrello</h1>
             
             <p style="text-align: center; margin-bottom: 2em;">
                 Sei loggato come: <strong>[email_utente]</strong>
@@ -94,11 +94,16 @@
             <small>
                 &copy; 2025 Tenuta al Morer - <abbr title="Partita">P.</abbr> <abbr title="Imposta sul Valore Aggiunto">IVA</abbr> 00000000000 <br>
                 <a href="policy.php"><span lang="en">Privacy Policy</span></a> | 
-                <a href="policy.php"><span lang="en">Cookie Policy</span></a>
+                <a href="policy.php#privacy-policy"><span lang="en">Cookie Policy</span></a> | 
+                <a href="policy.php#accessibility">Accessibilità</a>
             </small>
         </div>
     </footer>
 
+    <button id="backToTopBtn">
+        <span aria-hidden="true">&#9650;</span>
+        <span class="visually-hidden">Torna all'inizio della pagina</span>
+    </button>  
     <script src="scripts/javascript/script.js"></script>
 </body>
 </html>

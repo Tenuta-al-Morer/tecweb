@@ -630,7 +630,7 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
 
     word-wrap: break-word;
     overflow-wrap: anywhere;
-    word-break: break-word; /*QUAAAAAAAA*/
+    word-break: break-word; 
 
 }
 
@@ -693,7 +693,7 @@ Tabelle area admin (troppo grandi)
         content: attr(data-title) ": "; 
         color: var(--gold-color);
         font-weight: 700;
-        /*color: var(--diversity-color);*/
+        
         display: inline;
         margin-right: 0.3em;
     }
@@ -1085,7 +1085,9 @@ input:-webkit-autofill:focus {
 #php-errors, #php-errors p {
     color: #d9534f;
     font-weight: bold;
+    margin-bottom: 0.5em;
 }
+
 
 .input-help {
     display: block;

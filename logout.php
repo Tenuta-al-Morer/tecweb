@@ -3,7 +3,7 @@ session_start();
 session_unset();
 session_destroy();
 
-// Cancella anche eventuali cookie di sessione se necessario
+
 if (ini_get("session.use_cookies")) {
     $params = session_get_cookie_params();
     setcookie(session_name(), '', time() - 42000,
@@ -12,6 +12,6 @@ if (ini_get("session.use_cookies")) {
     );
 }
 
-header("location: index.php"); // O index.php
+header("location: index.php"); 
 exit();
 ?>
