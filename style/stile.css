@@ -798,14 +798,18 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
 }
 
 .hero-content {
-    color: var(--pure-white);
     max-width: 900px;
     padding: 1rem; 
     margin-top: 20px;
+}
+
+.sfondo-opaco {
     background-color: rgba(0, 0, 0, 0.6); 
     border-radius: 8px; 
     backdrop-filter: blur(5px); 
     border: 1px solid rgba(255, 255, 255, 0.1); 
+    color: var(--pure-white); 
+    padding: 1em;
 }
 
 .hero-content h1 {

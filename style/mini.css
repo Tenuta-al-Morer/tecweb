@@ -291,7 +291,7 @@ body.light-mode .table-data td::before {
 /* =========================================
    OVERRIDE SEZIONI HOME (Mobile)
    ========================================= */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
     .hero-section { min-height: 500px; }
     .hero-content h1 { font-size: 2.5rem; }
     .hero-actions { flex-direction: column; align-items: center; }
