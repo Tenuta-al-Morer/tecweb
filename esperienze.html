@@ -109,32 +109,36 @@
                     <h2 id="form-title">Richiedi Disponibilità</h2>
                     <p>Compila il modulo per richiedere una visita. I campi con l'asterisco (<span aria-hidden="true">*</span>) sono obbligatori.</p>
                     
-                    <form action="#" method="POST" class="standard-form">
+                    <div id="feedback-container">
+                        [feedback_message]
+                    </div>
+
+                    <form action="esperienze.php" method="POST" class="standard-form">
                         <fieldset>
                             <legend class="sr-only">Dati per la prenotazione</legend>
                             <div class="form-group row-two">
                                 <div>
                                     <label for="nome">Nome<span aria-hidden="true">*</span></label>
-                                    <input type="text" id="nome" name="nome" required autocomplete="name" placeholder="Mario">
+                                    <input type="text" id="nome" name="nome" required autocomplete="name" placeholder="Mario" value="[val_nome]">
                                 </div>
                                 <div>
                                     <label for="cognome">Cognome<span aria-hidden="true">*</span></label>
-                                    <input type="text" id="cognome" name="cognome" required autocomplete="family-name" placeholder="Rossi">
+                                    <input type="text" id="cognome" name="cognome" required autocomplete="family-name" placeholder="Rossi" value="[val_cognome]">
                                 </div>
                             </div>
 
                             <div class="form-group row-two">
                                 <div>
                                     <label for="email">Email<span aria-hidden="true">*</span></label>
-                                    <input type="email" id="email" name="email" required autocomplete="email" placeholder="esempio@email.com">
+                                    <input type="email" id="email" name="email" required autocomplete="email" placeholder="esempio@email.com" value="[val_email]">
                                 </div>
 
                                 <div>
                                     <label for="tipo_degustazione">Tipo degustazione<span aria-hidden="true">*</span></label>
                                     <select id="tipo_degustazione" name="tipo_degustazione" required>
-                                        <option value="" disabled selected>Seleziona...</option>
-                                        <option value="Linea Oro">Linea Oro</option>
-                                        <option value="Piave">Piave</option>
+                                        <option value="" disabled [sel_default]>Seleziona...</option>
+                                        <option value="Linea Oro" [sel_Linea Oro]>Linea Oro</option>
+                                        <option value="Piave" [sel_Piave]>Piave</option>
                                     </select>
                                 </div>
                   
@@ -147,12 +151,12 @@
                                     
                                     <div class="phone-prefix">
                                         <label for="prefisso" class="visually-hidden">Prefisso internazionale</label>
-                                        <input type="text" id="prefisso" name="prefisso" value="+39" autocomplete="tel-country-code">
+                                        <input type="text" id="prefisso" name="prefisso" value="[val_prefisso]" autocomplete="tel-country-code">
                                     </div>
 
                                     <div class="phone-number">
                                         <label for="telefono" class="visually-hidden">Numero di telefono</label>
-                                        <input type="tel" id="telefono" name="telefono" autocomplete="tel-national" placeholder="333 0000000">
+                                        <input type="tel" id="telefono" name="telefono" autocomplete="tel-national" placeholder="333 0000000" value="[val_telefono]">
                                     </div>
 
                                 </div>
@@ -161,11 +165,11 @@
                             <div class="form-group row-two">
                                 <div>
                                     <label for="data">Data<span aria-hidden="true">*</span></label>
-                                    <input type="date" id="data" name="data" required>
+                                    <input type="date" id="data" name="data" required value="[val_data]">
                                 </div>
                                 <div>
                                     <label for="persone">Persone<span aria-hidden="true">*</span></label>
-                                    <input type="number" id="persone" name="persone" min="1" max="50" required placeholder="1-50">
+                                    <input type="number" id="persone" name="persone" min="1" max="50" required placeholder="1-50" value="[val_persone]">
                                 </div>
                             </div>
 
