@@ -33,6 +33,7 @@
     --slider-btn-bg: #2b2b2b;
     --header-bg: var(--navbgcolor);
     --btn-hover-bg: #ddae48;
+    --red-errors: #d9534f;
 }
 
 body.light-mode {
@@ -957,10 +958,22 @@ footer a:visited { color: var(--gold-color); }
     text-align: center;
 }
 
+.red{
+    font-size: 4rem; color: var(--red-errors); margin-bottom: 20px;
+}
+
 .auth-container h1 {
     font-size: 2rem;
     color: var(--gold-color);
     margin-bottom: 0.5rem;
+}
+
+.button-errors {
+    margin-top: 2em;
+}
+
+.btn-red {
+    background-color: #d9534f; border-color: #d9534f;
 }
 
 .auth-container p {
@@ -1147,7 +1160,7 @@ input:-webkit-autofill:focus {
 
 
 #php-errors, #php-errors p {
-    color: #d9534f;
+    color: var(--red-errors);
     font-weight: bold;
     margin-bottom: 0.5em;
 }
