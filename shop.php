@@ -11,5 +11,8 @@ if (!isset($_SESSION['utente'])) {
 
 $htmlContent = caricaPagina('shop.html');
 
+$emailUtente = htmlspecialchars($_SESSION['utente']);
+$htmlContent = str_replace("[email_utente]", $emailUtente, $htmlContent);
+
 echo $htmlContent;
 ?>
