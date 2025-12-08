@@ -73,7 +73,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
                     
                     if ($ris['ruolo'] === 'admin') {
                          
-                        header("location: users/admin.html");
+                        header("location: admin.html");
                     } else {
                         header("location: utente.php");
                     }
