@@ -10,7 +10,7 @@
 :root {
     --pure-white: #ffffff;
     --pure-black: #000000;
-    --bodybgcolor: #121212;
+    --bodybgcolor: #1d1d1d;
     --txtcolor: #e0e0e0;
     --code-bg: #333333;
     --navbgcolor: #1D1D1D;
@@ -1004,6 +1004,7 @@ footer {
     background-color: var(--navbgcolor); color: var(--pure-white); padding: 1.5em 0;
     display: flex; justify-content: center; align-items: center;
     transition: background-color 0.3s ease, color 0.3s ease;
+    border-top: 1px solid #c5a45154;
 }
 
 footer a { color: var(--pure-white); }
@@ -1362,8 +1363,8 @@ input:-webkit-autofill:focus {
    ========================================= */
 
 .sub-header {
-    border-top: 1px solid var(--gold-color);
-    border-bottom: 1px solid var(--gold-color);
+    border-bottom: 1px solid #c5a45154 ;
+    border-top: 1px solid #c5a45154 ;
 }
 
 .tenuta-body {
@@ -1475,8 +1476,6 @@ input:-webkit-autofill:focus {
 
 .tenuta-philosophy {
     background-color: #60000c; 
-    border: 1px solid var(--gold-color);
-    box-sizing: border-box;
     padding: 5rem 0;
     display: flex;
     flex-direction: column;
@@ -1524,5 +1523,5 @@ input:-webkit-autofill:focus {
 }
 
 footer {
-    margin-top: 0 !important;
+    margin-top: 0 !important
 }
