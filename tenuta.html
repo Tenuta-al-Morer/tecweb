@@ -6,7 +6,7 @@
         <title>La Tenuta - Tenuta al Morer</title>
         <link rel="icon" href="images/logo.ico" type="image/x-icon"> 
 
-        <meta name="description" content="Scopri la storia e il territorio della Tenuta al Morer, dove la tradizione veneta incontra la passione per la viticoltura nelle colline."> <!-- max 150 caratteri -->
+        <meta name="description" content="Scopri la storia e il territorio della Tenuta al Morer, dove la tradizione veneta incontra la passione per la viticoltura nelle colline."> 
         <meta name="keywords" content="Tenuta al Morer, tradizione veneta, viticoltura, colline"> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
@@ -20,7 +20,6 @@
         <link rel="stylesheet" href="style/mini.css" media="screen and (max-width:940px)">
         <link rel="stylesheet" href="style/stampa.css" media="print">  
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="style/tenuta.css" media="screen"> 
     </head>
 
     <body> 
@@ -47,7 +46,7 @@
                         <li><a href="vini.php">Vini</a></li>
                         <li><a href="esperienze.php">Esperienze</a></li>
                         <li><a href="contatti.php">Contatti</a></li>
-                        </ul>
+                    </ul>
                 </nav>
 
                 <div class="mobile-icons">
@@ -55,7 +54,9 @@
                         <i class="fas fa-shopping-bag" aria-hidden="true"></i>
                         <span class="visually-hidden" lang="en">Shop</span>
                     </a>
+                    
                     [user_area_link]
+                    
                 </div>
             </div>
 
@@ -73,57 +74,103 @@
                 </button>
             </div>
         </header>
-        
-        <main id="content">  
-            <h1>La nostra tenuta: una tradizione di famiglia</h1>
-            <p>
-                La Tenuta al Morer nasce nel cuore del Veneto, una terra ricca di storia e tradizione vinicola.
-                Dal 1920, la nostra famiglia si dedica con passione alla coltivazione della vite e alla produzione
-                di vini di qualità che esprimono il carattere unico del nostro <span lang="fr">terroir</span>.
-            </p>
-            <img src="immagini utili/tenuta.png" alt="Vista della nostra cantina " id="tenuta-image">
 
-            <h2>Vigneti</h2>
-            <h3>Le nostre origini</h3>
-            <p>
-                Tutto iniziò quando il bisnonno Giovanni acquistò i primi ettari di terra collinare,
-                riconoscendo immediatamente il potenziale di questo territorio benedetto dal clima favorevole
-                e dalla composizione unica del suolo. Con dedizione e amore per la terra, iniziò a piantare
-                le prime viti, ponendo le fondamenta di quella che sarebbe diventata la Tenuta al Morer.
-            </p>
-            <h3>Tradizione e innovazione</h3>
-            <p>
-                Oggi, dopo quattro generazioni, continuiamo a seguire i principi tramandati dai nostri antenati,
-                combinandoli con tecniche moderne di vinificazione. I nostri 45 ettari di vigneto sono coltivati
-                con metodi sostenibili, rispettando l'ambiente e la biodiversità del territorio.
-            </p>
+        <main class="tenuta-main" aria-labelledby="tenuta-title">
+            
+            <section class="tenuta-hero">
+                <div class="tenuta-hero-inner">
+                    <h1 id="tenuta-title" class="tenuta-hero-title">
+                        La nostra tenuta: una tradizione di famiglia
+                    </h1>
+                    <p class="tenuta-hero-text">
+                        La Tenuta al Morer nasce nel cuore del Veneto, una terra ricca di storia e tradizione vinicola.
+                        Dal 1920, la nostra famiglia si dedica con passione alla coltivazione della vite e alla
+                        produzione di vini di qualità che esprimono il carattere unico del nostro terroir.
+                    </p>
+                </div>
+            </section>
 
-            <h2>La cantina</h2>
-            <p>
-                La nostra cantina moderna è stata progettata per ottimizzare ogni fase del processo produttivo,
-                dalla vendemmia manuale alla vinificazione controllata, fino all'affinamento in barriques di rovere
-                francese. Ogni bottiglia che produciamo è il risultato di un lavoro meticoloso e di una passione
-                incondizionata per il vino di qualità.
-            </p>
+            <section class="tenuta-card">
+                <div class="tenuta-card-image">
+                    <img src="immagini utili/tenuta_3.png" alt="Tenuta al Morer vista di fronte">
+                </div>
+                <div class="tenuta-card-text">
+                    <h2 class="tenuta-section-title">Le nostre origini</h2>
+                    <p>
+                        Tutto iniziò quando il bisnonno Giovanni acquistò i primi ettari di terra collinare,
+                        riconoscendo immediatamente il potenziale di questo territorio benedetto dal clima
+                        favorevole e dalla composizione unica del suolo. Con dedizione e amore per la terra,
+                        iniziò a piantare le prime viti, ponendo le fondamenta di quella che sarebbe diventata
+                        la Tenuta al Morer.
+                    </p>
+                </div>
+            </section>
 
-            <h2>Il territorio</h2>
-            <p>
-                Le nostre vigne si estendono su dolci colline a un'altitudine ideale, beneficiando di un microclima
-                perfetto per la maturazione delle uve. Il terreno, ricco di minerali e con un'ottima esposizione
-                solare, conferisce ai nostri vini quella complessità e profondità che li rendono unici.
-            </p>
+            <div class="tenuta-separator"></div>
 
-            <h2>La nostra filosofia</h2>
-            <p>
-                Crediamo che un grande vino nasca dalla combinazione di tre elementi: un territorio d'eccellenza,
-                il rispetto per la natura e la passione dell'uomo. Ogni giorno lavoriamo con questo spirito,
-                consapevoli che ogni bottiglia porta con sé la storia, la tradizione e l'anima della nostra famiglia.
-            </p>
-            <p>
-                Vi invitiamo a venire a trovarci per scoprire di persona la bellezza della nostra tenuta e degustare
-                i vini che produciamo con tanto amore e dedizione.
-            </p>
-        </main>
+            <section class="tenuta-card tenuta-card--reverse">
+                <div class="tenuta-card-image">
+                    <img src="immagini utili/vigneto_chat.png" alt="Vigneto della Tenuta al Morer in primavera">
+                </div>
+                <div class="tenuta-card-text">
+                    <h2 class="tenuta-section-title">Tradizione e innovazione</h2>
+                    <p>
+                        Oggi, dopo quattro generazioni, continuiamo a seguire i principi tramandati dai nostri antenati,
+                        combinandoli con tecniche moderne di vinificazione. I nostri 45 ettari di vigneto sono coltivati
+                        con metodi sostenibili, rispettando l’ambiente e la biodiversità del territorio.
+                    </p>
+                </div>
+            </section>
+
+            <div class="tenuta-separator"></div>
+
+            <section class="tenuta-card">
+                <div class="tenuta-card-image">
+                    <img src="immagini utili/cantina_interno_gemini.png" alt="Cantina moderna con vasche in acciaio inox">
+                </div>
+                <div class="tenuta-card-text">
+                    <h2 class="tenuta-section-title">La cantina</h2>
+                    <p>
+                        La nostra cantina moderna è stata progettata per ottimizzare ogni fase del processo produttivo,
+                        dalla vendemmia manuale alla vinificazione controllata, fino all’affinamento in barriques di
+                        rovere francese. Ogni bottiglia che produciamo è il risultato di un lavoro meticoloso e
+                        di una passione incondizionata per il vino di qualità.
+                    </p>
+                </div>
+            </section>
+
+            <div class="tenuta-separator"></div>
+
+            <section class="tenuta-card tenuta-card--reverse">
+                <div class="tenuta-card-image">
+                    <img src="immagini utili/vigneto.png" alt="Colline e paesaggio del territorio veneto attorno alla tenuta">
+                </div>
+                <div class="tenuta-card-text">
+                    <h2 class="tenuta-section-title">Il territorio</h2>
+                    <p>
+                        Le nostre vigne si estendono su dolci colline a un’altitudine ideale, beneficiando di un
+                        microclima perfetto per la maturazione delle uve. Il terreno, ricco di minerali e con
+                        un’ottima esposizione solare, conferisce ai nostri vini quella complessità e profondità che
+                        li rendono unici.
+                    </p>
+                </div>
+            </section>
+
+            <section class="tenuta-philosophy">
+                <div class="tenuta-philosophy-inner">
+                    <h2 class="tenuta-philosophy-title">La nostra filosofia</h2>
+                    <p class="tenuta-philosophy-text">
+                        Crediamo che un grande vino nasca dalla combinazione di tre elementi: un territorio d’eccellenza,
+                        il rispetto per la natura e la passione dell’uomo. Ogni giorno lavoriamo con questo spirito,
+                        consapevoli che ogni bottiglia porta con sé la storia, la tradizione e l’anima della nostra famiglia.
+                    </p>
+                    <p class="tenuta-philosophy-text">
+                        Vi invitiamo a venire a trovarci per scoprire di persona la bellezza della nostra tenuta e
+                        degustare i vini che produciamo con tanto amore e dedizione.
+                    </p>
+                </div>
+            </section>
+        </main>    
 
         <footer>
             <div class="footer-content">
@@ -136,13 +183,13 @@
             </div>
         </footer>
 
-        <button id="backToTopBtn">
-            <span aria-hidden="true">&#9650;</span>
-            <span class="visually-hidden">Torna all'inizio della pagina</span>
+        <button id="backToTopBtn" aria-label="Torna all'inizio della pagina">
+            <svg viewBox="0 0 24 24" class="arrow-icon" aria-hidden="true">
+                <path d="M12 5 L12 19 M5 12 L12 5 L19 12" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
         </button>
         
         <script src="scripts/javascript/script.js"></script>
 
     </body>
-
 </html>

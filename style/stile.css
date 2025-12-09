@@ -1,3 +1,6 @@
+/* =========================================
+   RESET E VARIABILI (Base: mio.css)
+   ========================================= */
 * {
     padding: 0;
     margin: 0;
@@ -70,6 +73,10 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* =========================================
+   STILI GLOBALI E UTILITY (Base: mio.css)
+   ========================================= */
+
 body.light-mode .header-policy {
     background-color: var(--navbgcolor); 
     color: var(--pure-white);
@@ -125,6 +132,9 @@ body.light-mode .form-group textarea:focus {
     overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
 
+/* =========================================
+   BOTTONI (Base: mio.css)
+   ========================================= */
 .btn {
     padding: 1em 2em;
     text-decoration: none;
@@ -168,11 +178,16 @@ body.light-mode .form-group textarea:focus {
     width: 100%;
 }
 
-/*
-============================
-Sezione go-to sezione (area admin)
-============================
-*/
+.btn-primary:hover, .btn-primary:focus {
+    background-color: var(--btn-hover-bg); 
+    color: var(--pure-black);
+    box-shadow: 0 0 15px var(--shadow-gold);
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   AREA ADMIN (Base: mio.css)
+   ========================================= */
 
 .admin-tabs {
     margin-top: 0.8em;
@@ -203,13 +218,7 @@ Sezione go-to sezione (area admin)
     color: var(--bodybgcolor);
 }
 
-
-/*
-================================
-Sezione Gestione tabelle area admin
-================================
-*/
-
+/* Gestione tabelle admin */
 .td_richiesta_degustazione {
     text-align: right;          
     padding-right: 1rem;
@@ -221,7 +230,6 @@ Sezione Gestione tabelle area admin
     gap: 0.5rem;               
     margin: 0;                 
 }
-
 
 .td_richiesta_degustazione .btn-secondary {
     width: auto;               
@@ -260,13 +268,9 @@ Sezione Gestione tabelle area admin
     padding: 0.4rem 1rem;
 }
 
-
-.btn-primary:hover, .btn-primary:focus {
-    background-color: var(--btn-hover-bg); 
-    color: var(--pure-black);
-    box-shadow: 0 0 15px var(--shadow-gold);
-    transform: translateY(-2px);
-}
+/* =========================================
+   TITOLI E COMPONENTI (Base: mio.css)
+   ========================================= */
 
 .section-title {
     text-align: center;
@@ -296,6 +300,9 @@ Sezione Gestione tabelle area admin
 
 .alert-box i { color: var(--gold-color); margin-right: 0.5rem; font-size: 1.2rem; }
 
+/* =========================================
+   FORMS (Base: mio.css)
+   ========================================= */
 .map-container {
     margin: 0;
     padding: 0;
@@ -379,6 +386,10 @@ body.light-mode ::-webkit-calendar-picker-indicator {
     flex: 1;
 }
 
+/* =========================================
+   LISTE, INFO E CARD (Base: mio.css)
+   ========================================= */
+
 .info-list, .hours-list { list-style: none; padding: 0; margin-top: 1rem; }
 .info-list p { margin-bottom: 1rem; display: flex; align-items: center; font-size: 1.1rem; }
 
@@ -437,6 +448,10 @@ code {
     background-color: var(--code-bg); color: var(--pure-white); padding: 0.2em 0.4em;
     border-radius: 3px; font-family: monospace; font-size: 0.9em;
 }
+
+/* =========================================
+   HEADER E NAVBAR (Base: mio.css - INTACTA)
+   ========================================= */
 
 header {
     background-color: var(--navbgcolor);
@@ -612,6 +627,10 @@ a.logo-link:hover img { transform: scale(1.05); }
     display: block;   
 }
 
+/* =========================================
+   CONTENUTO PRINCIPALE (Base: mio.css)
+   ========================================= */
+
 main {
     color: var(--txtcolor); padding: 1em 2em 2em 3.5em; flex-grow: 1;
 }
@@ -665,6 +684,10 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
 .article-block ul, .article-block ol { margin-left: 1.5rem; margin-bottom: 1.5rem; }
 .article-block li { margin-bottom: 0.5rem; }
 
+/* =========================================
+   TABELLE (Base: mio.css + Fix da suo.css)
+   ========================================= */
+
 .table-container {
     width: 100%;
     margin-bottom: 2rem;
@@ -682,25 +705,22 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
     padding: 1rem;
     text-align: left;
     border-bottom: 1px solid var(--bordercolor);
-
-
     word-wrap: break-word;
     overflow-wrap: anywhere;
-    word-break: break-word; 
-
+    word-break: break-word; /* Integrata correzione da suo.css */
 }
 
-/*
-==================================
-Tabelle area admin (troppo grandi)
-==================================
-*/
-
+/* Tabelle responsive area admin */
 @media screen and (max-width: 1300px) {
     .table-container {
         width: 100%; 
         overflow: visible; 
         border: none;
+    }
+
+    .table-data caption {
+        position: absolute;
+        text-indent: -999em;
     }
 
     .table-data, .table-data thead, .table-data tbody,
@@ -755,8 +775,6 @@ Tabelle area admin (troppo grandi)
     }
 }
 
-
-
 .table-data thead th {
     background-color: var(--header-bg);
     color: var(--gold-color);
@@ -791,17 +809,49 @@ Tabelle area admin (troppo grandi)
 main h1 { margin-bottom: 0.3em; }
 main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolor); }
 
+/* =========================================
+   HERO SECTION (Nuovo stile: preso da suo.css)
+   ========================================= */
+
 .hero-section {
-    background-image: url('../images/bg.webp'), linear-gradient(to top, var(--pure-black), var(--hero-overlay-light));
-    height: 35vh; min-height: 400px;
-    display: flex; align-items: center; justify-content: center; text-align: center;
-    background-size: cover; background-position: center 50%; 
+    position: relative;
+    /* gradiente caldo sopra l'immagine */
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(90, 26, 26, 0.6),
+            rgba(10, 5, 0, 0.6)
+        ),
+        url('../immagini utili/uva_vigna_hero_2.png'); /* Nota: nuova immagine */
+
+    background-size: cover;
+    background-position: center 55%;
+    background-repeat: no-repeat;
+
+    /* più alta, quasi full screen */
+    height: 80vh;
+    min-height: 520px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    padding: 3rem 1.5rem;
 }
 
 .hero-content {
+    color: var(--pure-white);
     max-width: 900px;
-    padding: 1rem; 
-    margin-top: 20px;
+    margin: 0 auto;
+    padding: 0;
+
+    /* niente card scura / blur - stile pulito */
+    background-color: transparent;
+    border-radius: 0;
+    border: none;
+    backdrop-filter: none;
+    box-shadow: none;
 }
 
 .sfondo-opaco {
@@ -810,13 +860,23 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
     backdrop-filter: blur(5px); 
     border: 1px solid rgba(255, 255, 255, 0.1); 
     color: var(--pure-white); 
-    padding: 1em;
+    padding: 2em;
 }
 
 .hero-content h1 {
-    font-size: 3.5rem; line-height: 1.2; margin-bottom: 0.5em;
-    font-family: 'Lexend', sans-serif; 
-    text-shadow: 2px 2px 4px var(--pure-black);
+    font-family: "Playfair Display", serif; /* Nota: assicurati di importare questo font */
+    font-weight: 700;
+    font-size: clamp(2.8rem, 4vw, 4.2rem);
+    line-height: 1.15;
+    margin-bottom: 1.2rem;
+    text-shadow: none;
+}
+
+.hero-content p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0.5rem auto 0;
 }
 
 .container h1 {
@@ -824,8 +884,44 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
 }
 
 .hero-actions {
-    margin-top: 2em; display: flex; gap: 1.5em; justify-content: center;
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    flex-wrap: wrap;
 }
+
+/* Stile base dei bottoni dentro l'hero (stile pillola) */
+.hero-actions .btn {
+    margin-top: 0;
+    padding: 1rem 2.8rem;
+    border-radius: 10px;          /* pill */
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: none;         /* niente uppercase */
+    letter-spacing: 0;
+}
+
+/* Primo bottone (SCOPRI LA TENUTA) – pieno bordeaux */
+.hero-actions .btn-outline-white {
+    background-color: #7b1016;
+    color: #ffffff;
+    border-color: #7b1016;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.hero-actions .btn-outline-white:hover,
+.hero-actions .btn-outline-white:focus {
+    background-color: #9b1a21;
+    border-color: #9b1a21;
+    transform: translateY(-1px);
+}
+
+
+
+/* =========================================
+   SEZIONI CONTENUTO (Features, Slider, Footer) (Base: mio.css)
+   ========================================= */
 
 .section-intro {
     padding: 4em 2em; max-width: 800px; margin: 0 auto; text-align: center;
@@ -914,20 +1010,71 @@ footer {
 footer a { color: var(--pure-white); }
 footer a:visited { color: var(--gold-color); }
 
+/* =========================================
+   BACK TO TOP (Nuovo stile: preso da suo.css)
+   ========================================= */
+
 #backToTopBtn {
-    position: fixed; bottom: 4em; right: 2em; display: flex; justify-content: center; align-items: center;
-    width: 2em; height: 2em; background-color: var(--navbgcolor); color: var(--gold-color);
-    border: 1px solid var(--gold-color); border-radius: 50%; font-size: 1.2em; padding: 0;
-    cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s ease;
-    z-index: 100; box-shadow: 0 4px 8px var(--pure-black);
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+
+    width: 60px;
+    height: 60px;
+
+    background-color: #5b0f14; /* bordeaux */
+    border: none;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+
+    cursor: pointer;
+    z-index: 200;
+    color: var(--gold-color); /* Assicura che l'icona interna sia del colore giusto */
 }
 
-#backToTopBtn.show { opacity: 1; visibility: visible; }
-
-#backToTopBtn:hover, #backToTopBtn:focus {
-    background-color: var(--gold-color); color: var(--navbgcolor); 
-    transform: translateY(-3px); box-shadow: 0 6px 12px var(--focus-gold); outline: none;
+#backToTopBtn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-4px);
 }
+
+#backToTopBtn:hover {
+    transform: translateY(-8px);
+    background-color: #6d1319;
+}
+
+.arrow-icon {
+    width: 26px;
+    height: 26px;
+}
+
+@media (max-width: 600px) {
+    #backToTopBtn {
+        width: 55px;
+        height: 55px;
+        font-size: 1.6rem;
+        bottom: 3.5rem !important;  
+        right: 1.2rem !important;
+    }
+
+    .arrow-icon {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+/* =========================================
+   LOGIN E ERRORI (Base: mio.css)
+   ========================================= */
 
 .login-header-logo {
     background-color: var(--navbgcolor);
@@ -1153,18 +1300,11 @@ input:-webkit-autofill:focus {
     padding-top: 1.5rem;
 }
 
-
-
-
-
-
-
 #php-errors, #php-errors p {
     color: var(--red-errors);
     font-weight: bold;
     margin-bottom: 0.5em;
 }
-
 
 .input-help {
     display: block;
@@ -1186,17 +1326,208 @@ input:-webkit-autofill:focus {
     border-color: #c3e6cb;
 }
 .alert.error {
-    color: #721c24;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
-}
-
-.alert.error {
-    color: #721c24;
+    color: var(--red-errors);
     background-color: #f8d7da;
     border-color: #f5c6cb;
 }
 
 .alert.error ul {
     margin-left: 1.5em;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 70vh;
+        min-height: 460px;
+        padding: 2.5rem 1.5rem;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(2.2rem, 7vw, 3rem);
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+        max-width: 320px;
+    }
+}
+
+/* =========================================
+   PAGINA TENUTA (Specifico)
+   ========================================= */
+
+.sub-header {
+    border-top: 1px solid var(--gold-color);
+    border-bottom: 1px solid var(--gold-color);
+}
+
+/* BODY E MAIN */
+.tenuta-body {
+    background-color: var(--navbgcolor); /* #1D1D1D */
+    color: #f5f2eb;
+    font-family: "Lexend", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Variante chiara */
+.tenuta-body.light-mode {
+    background-color: #f7f2e9;
+    color: #2b1e1d;
+}
+
+.tenuta-body.light-mode .tenuta-main {
+    background-color: #f7f2e9;
+}
+
+.tenuta-main {
+    background-color: var(--navbgcolor);
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 4rem 6vw 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* HERO */
+.tenuta-hero {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.tenuta-hero-inner {
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.tenuta-hero-title {
+    font-family: "Playfair Display", serif;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 4vw, 3.8rem);
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+}
+
+.tenuta-hero-text {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: #d3cdc0; /* Maintain warm grey specific to page */
+}
+
+/* CARD */
+.tenuta-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4vw;
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.tenuta-card--reverse {
+    flex-direction: row-reverse;
+}
+
+.tenuta-card-image {
+    flex: 1 1 50%;
+}
+
+.tenuta-card-image img {
+    width: 100%;
+    display: block;
+    border-radius: 32px;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+    box-shadow: 0 24px 55px rgba(0, 0, 0, 0.65);
+}
+
+.tenuta-card-text {
+    flex: 1 1 50%;
+}
+
+.tenuta-card-text h2,
+.tenuta-philosophy-title,
+.tenuta-main h2 {
+    border-top: none !important;
+    padding-top: 0 !important;
+}
+
+.tenuta-section-title {
+    font-family: "Playfair Display", serif;
+    font-size: 2.6rem;
+    margin-bottom: 18px;
+}
+
+.tenuta-card-text p {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: #d7d2c7;
+}
+
+/* FILOSOFIA */
+.tenuta-philosophy {
+    background-color: #60000c; /* Bordeaux - specific page brand color */
+    border: 1px solid var(--gold-color);
+    box-sizing: border-box;
+    padding: 5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: calc(100% + 12vw);
+    margin-left: -6vw;
+    margin-right: -6vw;
+}
+
+.tenuta-philosophy-inner {
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+
+.tenuta-philosophy-title {
+    font-family: "Playfair Display", serif;
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.tenuta-philosophy-text {
+    font-size: 1.15rem;
+    line-height: 2;
+}
+
+/* SEPARATORI */
+.tenuta-separator {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.tenuta-separator::before {
+    content: "";
+    width: 60%;
+    max-width: 900px;
+    height: 1px;
+    background-color: var(--gold-color);
+    opacity: 0.35;
+}
+
+/* Utility specifiche */
+footer {
+    margin-top: 0 !important;
 }

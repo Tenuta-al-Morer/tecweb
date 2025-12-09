@@ -1,5 +1,5 @@
 /* =========================================
-   NAVIGAZIONE MOBILE
+   NAVIGAZIONE MOBILE (Base: mio.css)
    ========================================= */
 .main-nav-bar {
     display: flex;
@@ -147,7 +147,7 @@
 }
 
 /* =========================================
-   OVERRIDE LAYOUT MOBILE
+   OVERRIDE LAYOUT MOBILE (Base: mio.css)
    ========================================= */
 main { 
     padding: 1em 1.5em; 
@@ -277,6 +277,7 @@ body.light-mode .table-data td::before {
     color: var(--pure-black);
 }
 
+/* Regola da suo.css: Nasconde caption su mobile per pulizia */
 .table-data caption {
     position: absolute;
     text-indent: -999em;
@@ -291,7 +292,8 @@ body.light-mode .table-data td::before {
 /* =========================================
    OVERRIDE SEZIONI HOME (Mobile)
    ========================================= */
-@media screen and (max-width: 900px) {
+/* Aggiornato a 768px come da suo.css per supportare la nuova Hero */
+@media screen and (max-width: 768px) {
     .hero-section { min-height: 500px; }
     .hero-content h1 { font-size: 2.5rem; }
     .hero-actions { flex-direction: column; align-items: center; }
@@ -355,3 +357,50 @@ footer {
     }
 }
 
+/* =========================================
+   RESPONSIVE PAGINA TENUTA
+   ========================================= */
+@media (max-width: 992px) {
+    .tenuta-main {
+        padding-top: 56px;
+        gap: 60px;
+    }
+
+    .tenuta-card,
+    .tenuta-card--reverse {
+        flex-direction: column;
+        padding: 32px 24px;
+    }
+
+    .tenuta-card-text {
+        text-align: left;
+    }
+}
+
+@media (max-width: 640px) {
+     .tenuta-hero-title {
+        font-size: 2rem;
+    }
+
+    .tenuta-hero-text {
+        font-size: 0.95rem;
+    }
+
+    .tenuta-section-title {
+        font-size: 1.9rem;
+    }
+
+    .tenuta-philosophy {
+        padding: 60px 8vw;
+    }
+
+    .tenuta-philosophy-title {
+        font-size: 2.2rem;
+    }
+
+    .tenuta-scroll-top {
+        width: 44px;
+        height: 44px;
+        font-size: 1.3rem;
+    }
+}

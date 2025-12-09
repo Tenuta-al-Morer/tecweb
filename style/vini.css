@@ -14,29 +14,37 @@ body.light-mode .wine-article{
     background-color: #f4f4f4;
     box-shadow: none;
 }
-.hero-vini{
+body.light-mode .hero-text p{
+    color: #f4f4f4
+} 
+.hero-vini {
+    min-height: 400px;
+    height: auto;
+    padding: 60px 20px;
     background-image: url(../images/bg.webp);
     background-size: cover;
-    height: 35vh;
-    min-height: 400px;
+    background-position: center;
     display: flex;
-    box-sizing: border-box;
     align-items: center;
     justify-content: center;
 }
-.hero-text{
-    display: flex;
-    margin: 0;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #1a1512cc;
-    padding: 3em;
-    margin: 1em 10em 1em 10em;
+.hero-text {
+    background-color: rgba(26, 21, 18, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 3em; /* Spazioso su PC */
+    max-width: 800px;
+    border-radius: 4px;
+    border: 1px solid rgba(197, 165, 81, 0.3);
+    text-align: center;
 }
-.hero-text h1{
+.hero-text h1 {
     color: #c5a551;
-    font-size: 3em;
+    font-size: 3.5rem; /* Grande su PC */
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 .hero-text p{
     margin-top: 1em;
@@ -45,19 +53,36 @@ body.light-mode .wine-article{
 /*--Stile sezione vini--*/
 .wine-section {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
     flex-direction: column;
-    margin-top: 30px;
-    padding: 1em 2em 2em 3.5em;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2em; /* Padding normale desktop */
+    box-sizing: border-box;
 }
 .wine-section h2 {
-    justify-content: center;
-    width: 100%;
+    font-family: 'Lexend', serif;
+    font-size: 2.5em;
+    color: #EEE8D5;
     text-align: center;
-    border-top: 1px solid #ccc;
-    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 0.5em;
+    border-top: none; /* Togliamo la linea grigia brutta */
+    position: relative;
+    padding-bottom: 15px;
+}
+body.light-mode .wine-section h2{
+    color: #1a1a1a;
+}
+.wine-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: #c5a551;
 }
 .presentazione{
     display: flex;
@@ -68,10 +93,14 @@ body.light-mode .wine-article{
     font-size: 1.1em;
     margin-bottom: 2em;
 }
-.sezione{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2em;
+.sezione {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    width: 100%;
+    max-width: 1400px;
+    margin-bottom: 4em;
+    padding: 0 10px;    
 }
 .content-wine-article p{
     display: none;
@@ -85,54 +114,113 @@ body.light-mode .wine-article{
     color: #333;
     font-size: 1.2em;
 }
-.wine-article{
+
+.wine-article {
     display: flex;
     flex-direction: column;
-    background-color: #EEE8D5;
-    padding: 15px;
-    /*border-radius: 8px;*/
-    box-shadow: 0 2px 10px rgba(255, 230, 185, 0.682);
+    justify-content: space-between; /* Spinge i bottoni in fondo */
+    background: linear-gradient(180deg, #ffffff 0%, 
+        #fbf9f4 35%, 
+        #e9dfbd 65%, 
+        #ecd38a 100%);    
+    padding: 20px;
+    /* transizione fluida su tutto */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
     text-align: center;
-}
-.wine-article,
-.wine-item:hover,
-.wine-item:focus{
-    /*background-color: #f0e8dcb5;*/
-    cursor: pointer;
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-}
-.wine-article img{
-    width: 12em;
-    height: auto;
-    margin-bottom: 10px;
+    /* Bordo sottile elegante invece dell'ombra pesante di default */
+    border: 1px solid rgba(0,0,0,0.05);
     border-radius: 1em;
-    /*border: 2px solid #ccc;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);*/
+}
+body.light-mode .wine-article{
+    background: none;
+    border: 1px solid rgba(0,0,0,0.4);
+}
+.wine-article:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(197, 165, 81, 0.2); 
+    border-color: rgba(197, 165, 81, 0.3);
+}
+
+/* Correggiamo l'immagine per non sbordare */
+.wine-article img {
+    width: 100%;       /* Fluida */
+    max-width: 160px;  /* Dimensione massima controllata */
+    height: auto;
+    margin: 0 auto 15px auto; /* Centrata */
+    object-fit: contain;
 }
 
 /*--Sezione acquisto--*/
-.actions{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 1em;
+/* --- CONTENITORE AZIONI (GRIGLIA) --- */
+.actions {
+    display: grid;
+    /* Creiamo due colonne uguali per i bottoni sotto */
+    grid-template-columns: 1fr 1fr; 
+    /* Spazio verticale e orizzontale tra gli elementi */
+    gap: 10px; 
+    
+    width: 100%;
+    /* Limitiamo la larghezza per non farli diventare giganti su PC */
+    max-width: 220px; 
+    margin: 15px auto 0 auto; /* Centra il blocco nella card */
 }
-.selettore-quantita{
+
+/* --- RIGA 1: IL SELETTORE QUANTITÀ --- */
+.selettore-quantita {
+    /* MAGIA: Dice a questo elemento di occupare tutte e due le colonne (tutta la riga sopra) */
+    grid-column: 1 / -1; 
+    
+    display: flex;
+    justify-content: center; /* Centra il - 1 + */
+    align-items: center;
+    gap: 5px; /* Spazio piccolino tra i tasti */
+}
+
+/* TASTI + e - (Quadrati e compatti) */
+.selettore-quantita button {
+    width: 32px;  /* Larghezza fissa */
+    height: 32px; /* Altezza uguale alla larghezza = QUADRATO */
+    padding: 0;   /* Togliamo padding inutile */
+    
     display: flex;
     align-items: center;
-    gap: 0.5em;
+    justify-content: center;
+    
+    font-size: 1.2em;
+    line-height: 1;
+    border-radius: 4px; /* Leggermente smussati, eleganti */
+    background-color: #f0f0f0; /* Grigio chiaro neutro */
+    border: 1px solid #ccc;
+    transition: background 0.2s;
 }
-.selettore-quantita button{
-    padding: 0.2em 0.6em;
-    font-size: 0.5em;
-    cursor: pointer;
+
+.selettore-quantita button:hover {
+    background-color: #e0e0e0;
 }
-.selettore-quantita input{
-    width: 2em;
+
+/* INPUT NUMERO (Stretto e pulito) */
+.selettore-quantita input {
+    width: 45px; /* Molto più stretto di prima */
+    height: 32px; /* Alta quanto i bottoni */
     text-align: center;
-    font-size: 1em;
-    padding: 0.2em;
+    padding: 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-weight: bold;
+    color: #333;
+    /* Togliamo lo sfondo bianco standard se vuoi uniformarlo */
+    background-color: #fff; 
+}
+
+.buy-button, 
+.details-button {
+    width: 100%; /* Si allargano per riempire la loro metà */
+    height: 40px; /* Un po' più alti per essere cliccabili facilmente col dito */
+    margin: 0; /* Reset */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600; /* Testo un po' più cicciotto */
 }
 
 /* Per Chrome, Safari, Edge, Opera */
@@ -155,7 +243,6 @@ input[type=number] {
     padding: 0.5em 1em;
     font-size: 0.8em;
     cursor: pointer;
-    border-radius: 5px;
 }
 .details-button{
     background-color: #555;
@@ -164,10 +251,13 @@ input[type=number] {
     padding: 0.5em 1em;
     font-size: 0.8em;
     cursor: pointer;
-    border-radius: 5px;
 }
 
 /*overlay info*/
+body.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
 .overlay {
     position: fixed;
     top: 0;
@@ -203,18 +293,155 @@ input[type=number] {
     position: relative;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     border: 3px solid #c5a551;
+
+    max-height: 90vh; /* Altezza massima: 90% dell'altezza schermo */
+    overflow-y: auto; /* Se il contenuto sfora, metti la scrollbar QUI */
+    
+    /* Miglioriamo lo scrollbar (opzionale, ma elegante su Chrome/Safari) */
+    scrollbar-width: thin; 
+    scrollbar-color: #c5a551 #f0f0f0;
+}
+.popup-content::-webkit-scrollbar {
+    width: 8px;
+}
+.popup-content::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+.popup-content::-webkit-scrollbar-thumb {
+    background-color: #c5a551;
+    border-radius: 4px;
+    border: 2px solid #f0f0f0;
 }
 .popup-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2em;
+    align-items: start;
 }
-.popup-img-container img {
+.popup-gallery{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.gallery-container {
+    position: relative; /* Serve per posizionare le frecce sopra l'immagine */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid #ddd;
+    color: #333;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-arrow:hover {
+    background-color: #c5a551;
+    color: #fff;
+    border-color: #c5a551;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.active-thumb {
+    border-color: #c5a551;
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.main-img-box{
+    width: 100%;
+    background-color: #fafafa; 
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+.main-img-box img {
     width: 100%;
     height: auto;
     object-fit: contain;
     max-height: 400px;
 }
+
+.thumbnails-row {
+    display: flex;
+    justify-content: center; /* Centrate sotto la foto grande */
+    gap: 10px;
+}
+.thumbnails-row img {
+    width: 70px;  /* Dimensione fissa quadratina */
+    height: 70px;
+    object-fit: contain; /* L'immagine sta dentro il quadrato */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    cursor: pointer; /* Manina al passaggio del mouse */
+    padding: 5px;
+    transition: all 0.2s ease;
+}
+.thumbnails-row img:hover {
+    border-color: #c5a551; /* Bordo dorato */
+    transform: translateY(-2px); /* Si alza un pochino */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* --- TABELLA ACCESSIBILE PREMIUM --- */
+.tech-wrapper {
+    margin: 1.5em 0;
+    width: 100%;
+    overflow-x: auto; /* IMPORTANTE PER MOBILE: Scroll orizzontale se serve */
+}
+
+.wine-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95em;
+    color: #333;
+    background-color: rgba(255,255,255,0.5); /* Leggera trasparenza */
+    border-radius: 4px;
+}
+
+/* Caption nascosta visivamente ma letta dagli screen reader? 
+   Oppure visibile ed elegante? Facciamola elegante. */
+.wine-table caption {
+    caption-side: top;
+    text-align: left;
+    font-family: 'Lexend', serif;
+    font-weight: bold;
+    color: #c5a551;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.wine-table th, .wine-table td {
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.wine-table th {
+    font-weight: 600;
+    color: #555;
+    white-space: nowrap;
+    width: 35%;
+}
+
 .shop-ov{
     display: flex;
     flex-direction: row;
@@ -248,16 +475,89 @@ input[type=number] {
 }
 .close-btn {
     position: absolute;
-    top: 10px;
+    top: 15px;
     right: 20px;
-    font-size: 1.5em;
-    padding: 0.6em 0.7em;
-
+    font-size: 2em;
     cursor: pointer;
     font-weight: bold;
+    color: #333;
+    z-index: 100;
+    
+    /* Reset stile bottone */
+    background: none;
+    border: none;
+    padding: 0;
+    line-height: 1;
 }
+.close-btn:hover,
+.close-btn:focus {
+    color: #c5a551;
+    outline: 2px solid #c5a551;
+    outline-offset: 4px;
+}
+
+/*media*/
+
+@media (max-width: 1200px) {
+    .sezione {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 20px;
+    }
+}
+
 @media (max-width: 768px) {
     .popup-grid {
-        grid-template-columns: 1fr; /* Una colonna su mobile */
+        grid-template-columns: 1fr; /* Una colonna sola su mobile */
+        gap: 20px;
+    }
+    
+    .main-img-box img {
+        max-height: 300px; /* Foto più piccola su mobile */
+    }
+    
+    /* 1. SISTEMIAMO LA HERO CHE SI ROMPEVA */
+    .hero-text {
+        padding: 2em 1em; /* Meno padding interno */
+        margin: 0 10px;   /* Margine laterale minimo */
+        width: auto;      /* Si adatta */
+    }
+
+    .hero-text h1 {
+        font-size: 1.8rem; /* Font più piccolo per non uscire fuori */
+        letter-spacing: 1px;
+    }
+
+    /* 2. SISTEMIAMO I VINI CHE SCAPPAVANO A DESTRA */
+    .wine-section {
+        /* Togliamo quel padding: 3.5em che rompeva tutto */
+        padding: 1em 10px; 
+    }
+
+    /* 3. METTIAMO I VINI IN COLONNA PERFETTA */
+    .sezione {
+        grid-template-columns: 1fr; 
+        gap: 40px; /* Più spazio verticale tra un vino e l'altro */
+        padding: 0; /* Pulizia */
+    }
+
+    /* 4. CARD VINI */
+    .wine-article {
+        margin: 0 auto; /* Assicura che la card sia centrata */
+        width: 100%;    /* Occupa tutta la larghezza disponibile */
+        max-width: 350px; /* Ma non diventa gigantesca sui tablet piccoli */
+    }
+
+    /* 5. TITOLI H2 PIÙ PICCOLI */
+    .wine-section h2 {
+        font-size: 1.8em;
+    }
+    .presentazione p {
+        font-size: 1em;
+        padding: 0 10px;
+    }    
+    .nav-arrow {
+        width: 35px;
+        height: 35px;
+        background-color: rgba(255, 255, 255, 0.9);
     }
 }

@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 
                 const isInSubfolder = window.location.pathname.includes('/html/') || window.location.pathname.split('/').length > 2;
-                backBtn.href = isInSubfolder ? '../index.php' : 'index.php';
+                backBtn.href = isInSubfolder ? 'index.php' : 'index.php';
 
                 backBtn.addEventListener('click', (e) => {
                     const referrer = document.referrer;
