@@ -38,13 +38,6 @@ CREATE TABLE `utente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dump dei dati per la tabella `utente`
---
-
-INSERT INTO `utente` (`id`, `nome`, `cognome`, `email`, `password`, `data_registrazione`, `ruolo`) VALUES
-(4, 'Michele', 'Stevanin', 'michele.stevanin@gmail.com', '$2y$12$AUKWqbIW7VPzufNsQjq7c.glvZMbs4h32/NPuDjuRJtZSLf5vN8fu', '2025-12-08 17:34:01', 'user');
-
---
 -- Indici per le tabelle scaricate
 --
 
