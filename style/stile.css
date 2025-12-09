@@ -821,29 +821,26 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
 
 .hero-section {
     position: relative;
-    /* gradiente caldo sopra l'immagine */
-    background-image:
-        linear-gradient(
-            to bottom,
-            rgba(90, 26, 26, 0.6),
-            rgba(10, 5, 0, 0.6)
-        ),
-        url('../immagini utili/uva_vigna_hero_2.png'); /* Nota: nuova immagine */
-
-    background-size: cover;
-    background-position: center 55%;
-    background-repeat: no-repeat;
-
-    /* più alta, quasi full screen */
     height: 80vh;
     min-height: 520px;
-
+    
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-
     padding: 3rem 1.5rem;
+    overflow: hidden; 
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: center 55%; 
+    z-index: 1; 
 }
 
 .hero-content {
@@ -856,15 +853,23 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
     border: none;
     backdrop-filter: none;
     box-shadow: none;
+    position: relative;
+    z-index: 3; 
 }
 
-.sfondo-opaco {
-    background-color: rgba(0, 0, 0, 0.6); 
-    border-radius: 8px; 
-    backdrop-filter: blur(5px); 
-    border: 1px solid rgba(255, 255, 255, 0.1); 
-    color: var(--pure-white); 
-    padding: 2em;
+.hero-section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(90, 26, 26, 0.6),
+        rgba(10, 5, 0, 0.6)
+    );
+    z-index: 2; 
 }
 
 .hero-content h1 {
