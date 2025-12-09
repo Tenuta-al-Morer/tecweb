@@ -1,0 +1,26 @@
+# Rinomina questo file in config.php e inserisci i tuoi dati reali
+
+# Attivazione Rewrite Engine
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /nome_utente/
+</IfModule>
+
+DirectoryIndex index.php index.html
+
+# Pagine di Errore Personalizzate
+ErrorDocument 404 /nome_utente/404.php
+ErrorDocument 403 /nome_utente/403.php
+ErrorDocument 500 /nome_utente/500.php
+
+# Protezione file sensibili
+<FilesMatch "^(config\.php|common\.php|\.htaccess|DBConnection\.php)$">
+    Require all denied
+</FilesMatch>
+
+# Reindirizzamenti - Rewrite Rules
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)\.html$ $1.php [L,R=301]
+</IfModule>
