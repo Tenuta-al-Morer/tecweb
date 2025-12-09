@@ -486,7 +486,7 @@ a.navigationHelp:visited {
 .main-nav-bar {
     align-items: stretch; 
     color: var(--pure-white);
-    padding: 0 1em; 
+    padding: 0 3em; 
     background-color: var(--navbgcolor);
     display: flex;
     gap: 0;
@@ -590,7 +590,7 @@ a.logo-link:hover img { transform: scale(1.05); }
 .sub-header {
     width: 100%; background-color: var(--navbgcolor);
     border-top: 1px solid var(--subheader-border-color);
-    padding: 0.4em 1em; display: flex; justify-content: space-between; 
+    padding: 0.4em 1.5em; display: flex; justify-content: space-between; 
     align-items: center; transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
