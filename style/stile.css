@@ -165,6 +165,7 @@ body.light-mode select:focus {
     border-color: var(--gold-color);
 }
 
+
 .btn-primary {
     display: inline-block;
     margin-top: 2rem;
@@ -916,6 +917,20 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
     background-color: #9b1a21;
     border-color: #9b1a21;
     transform: translateY(-1px);
+}
+
+/* Secondo bottone (ACQUISTA I VINI) – solo bordo chiaro */
+.hero-actions .btn-outline-second {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: #f3d7a3;
+    box-shadow: none;
+}
+
+.hero-actions .btn-outline-second:hover,
+.hero-actions .btn-outline-second:focus {
+    background-color: rgba(0, 0, 0, 0.18);
+    border-color: #f7e3b8;
 }
 
 /* =========================================
