@@ -7,6 +7,7 @@
     box-sizing: border-box;
 }
 
+/*
 :root {
     --pure-white: #ffffff;
     --pure-black: #000000;
@@ -38,7 +39,72 @@
     --btn-hover-bg: #ddae48;
     --red-errors: #d9534f;
 }
+*/
+:root {
+    --pure-white: #ffffff;
+    --pure-black: #000000;
 
+    /* Palette di base */
+    --color-gold: #C5A551;   /* oro */
+    --color-bg-dark: #1D1D1D;/* sfondo scuro */
+    --color-red: #6A0E18;    /* rosso brand */
+    --color-bg-light: #F7F4EB; /* sfondo chiaro light mode */
+
+    /* Colori "di ruolo" usati nel sito */
+    --bodybgcolor: var(--color-bg-dark);
+    --navbgcolor: var(--color-bg-dark);
+    --txtcolor: #e0e0e0;
+
+    --code-bg: #333333;
+
+    --gold-color: var(--color-gold);
+    --gold-color-nav: var(--color-gold);
+
+    /* Link visitato: scelgo il rosso brand */
+    --visitedcolor: var(--color-red);
+
+    --diversity-color: #cacaca;
+    --bordercolor: #b6b6b6;
+    --table-stripe: #252525;
+    --nav-separator-color: #616161;
+    --subheader-border-color: #333333;
+
+    --shadow-subtle: #0a0a0a;
+    --shadow-gold: #5c4d26;
+    --focus-gold: #3e3827;
+    --hover-faded: #292621;
+    --hero-overlay-light: #444444;
+
+    --card-bg: var(--navbgcolor);
+    --card-border: #333333;
+    --card-shadow: var(--pure-black);
+    --card-hover-shadow: var(--shadow-subtle);
+    --card-title-color: var(--pure-white);
+    --card-desc-color: #e0e0e0;
+
+    --slider-btn-bg: #2b2b2b;
+    --header-bg: var(--navbgcolor);
+
+    /* Hover dei bottoni = sempre oro */
+    --btn-hover-bg: var(--color-gold);
+
+    /* Rosso errori allineato al brand */
+    --red-errors: var(--color-red);
+
+    /* Bottoni ROSSI */
+    --btn-red-bg:        #6A0E18;  /* colore base */
+    --btn-red-hover:     #80111D;  /* leggermente più chiaro */
+    --btn-red-active:    #4C0810;  /* leggermente più scuro */
+    --btn-red-text:      #ffffff;
+
+    /* Bottoni ORO (se ti servono) */
+    --btn-gold-bg:       #C5A551;
+    --btn-gold-hover:    #D2B360;
+    --btn-gold-active:   #A9883A;
+    --btn-gold-text:     #1D1D1D;
+}
+
+/*
 body.light-mode {
     --gold-color: #8a6b1e;
     --bodybgcolor: #f4f4f4;
@@ -55,7 +121,44 @@ body.light-mode {
     --card-desc-color: #555555;
     --code-bg: #f4f4f4;
     --btn-hover-bg: #ddae48;
+}*/
+
+body.light-mode {
+    /* stessa palette, ma versione chiara */
+    --bodybgcolor: var(--color-bg-light);
+    --navbgcolor: var(--color-bg-light);
+    --header-bg: var(--color-bg-light);
+
+    --txtcolor: #121212;
+
+    /* righe alternate tabelle su beige leggermente più scuro */
+    --table-stripe: #EDE3D3;
+
+    /* bordi e ombre neutri ma caldi */
+    --bordercolor: #D2C7AF;
+    --card-bg: var(--color-bg-light);
+    --card-border: #D2C7AF;
+    --card-shadow: #E5DBC3;
+    --card-hover-shadow: var(--card-shadow);
+
+    --card-title-color: #222222;
+    --card-desc-color: #555555;
+
+    /* codice su sfondo chiaro uniforme */
+    --code-bg: var(--color-bg-light);
+
+    /* in light-mode l'oro resta uguale */
+    --gold-color: var(--color-gold);
+    --gold-color-nav: var(--color-gold);
+
+    /* overlay e separator in tinte chiare */
+    --shadow-subtle: #E0D6BF;
+    --nav-separator-color: #D2C7AF;
+
+    /* hover bottoni sempre oro brand */
+    --btn-hover-bg: var(--color-gold);
 }
+
 
 html {
     font-size: 100%;
@@ -910,10 +1013,11 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
     letter-spacing: 0;
 }
 
+/*
 .hero-actions .btn-outline-white {
-    background-color: #7b1016;
+    background-color: var(--color-red);
     color: #ffffff;
-    border-color: #7b1016;
+    border-color: var(--color-red);
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
 }
 
@@ -923,20 +1027,72 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
     border-color: #9b1a21;
     transform: translateY(-1px);
 }
+*/
+.hero-actions .btn-outline-white {
+    background-color: var(--btn-red-bg);
+    color: var(--btn-red-text);
+    border-color: var(--btn-red-bg);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+    transition: 
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.1s ease,
+        box-shadow 0.2s ease;
+}
+
+.hero-actions .btn-outline-white:hover,
+.hero-actions .btn-outline-white:focus {
+    background-color: var(--btn-red-hover);
+    border-color: var(--btn-red-hover);
+    transform: translateY(-1px);
+}
+
+.hero-actions .btn-outline-white:active {
+    background-color: var(--btn-red-active);
+    border-color: var(--btn-red-active);
+    transform: translateY(0);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
 
 /* Secondo bottone (ACQUISTA I VINI) – solo bordo chiaro */
+/*
 .hero-actions .btn-outline-second {
     background-color: transparent;
     color: #ffffff;
-    border-color: #f3d7a3;
+    border-color: var(--gold-color);
     box-shadow: none;
 }
 
 .hero-actions .btn-outline-second:hover,
 .hero-actions .btn-outline-second:focus {
     background-color: rgba(0, 0, 0, 0.18);
-    border-color: #f7e3b8;
+    border-color: var(--gold-color);
 }
+*/
+.hero-actions .btn-outline-second {
+    background-color: transparent;
+    color: var(--btn-red-text);
+    border-color: var(--btn-gold-bg);
+    box-shadow: none;
+    transition: 
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.1s ease;
+}
+
+.hero-actions .btn-outline-second:hover,
+.hero-actions .btn-outline-second:focus {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: var(--btn-gold-hover);
+    transform: translateY(-1px);
+}
+
+.hero-actions .btn-outline-second:active {
+    background-color: rgba(255, 255, 255, 0.04);
+    border-color: var(--btn-gold-active);
+    transform: translateY(0);
+}
+
 
 /* =========================================
    SEZIONI CONTENUTO (Features, Slider, Footer) (Base: mio.css)
@@ -1042,7 +1198,7 @@ footer a:visited { color: var(--gold-color); }
     width: 60px;
     height: 60px;
 
-    background-color: #5b0f14; 
+    background-color: var(--btn-red-bg); 
     border: none;
     border-radius: 50%;
 
@@ -1069,7 +1225,7 @@ footer a:visited { color: var(--gold-color); }
 
 #backToTopBtn:hover {
     transform: translateY(-8px);
-    background-color: #6d1319;
+    background-color: var(--btn-red-hover);
 }
 
 .arrow-icon {
@@ -1495,7 +1651,7 @@ input:-webkit-autofill:focus {
 }
 
 .tenuta-philosophy {
-    background-color: #60000c; 
+    background-color: var(--color-red); 
     padding: 5rem 0;
     display: flex;
     flex-direction: column;
