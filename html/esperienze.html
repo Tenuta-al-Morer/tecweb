@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Esperienze - Tenuta al Morer</title>
-    <link rel="icon" href="images/logo.ico" type="image/x-icon">
+    <link rel="icon" href="../../images/logo.ico" type="image/x-icon">
 
     <meta name="description" content="Vivi le esperienze e le degustazioni presso la Tenuta al Morer. Scopri i nostri vini in un'atmosfera autentica tra le colline venete.">
     <meta name="keywords" content="esperienze, degustazioni, Tenuta al Morer, vini veneti, visita tenuta">
@@ -16,9 +16,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../style/stile.css" media="screen"> 
-    <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:940px)">
-    <link rel="stylesheet" href="../style/stampa.css" media="print">  
+    <link rel="stylesheet" href="../../style/stile.css" media="screen"> 
+    <link rel="stylesheet" href="../../style/mini.css" media="screen and (max-width:940px)">
+    <link rel="stylesheet" href="../../style/stampa.css" media="print">  
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -36,22 +36,22 @@
                 <span class="visually-hidden">Apri il menu di navigazione</span>
             </button>
 
-            <a href="../index.php" class="logo-link">
-                <img src="images/logo.webp" alt="Home - Tenuta al Morer">
+            <a href="home.php" class="logo-link">
+                <img src="../../images/logo.webp" alt="Home - Tenuta al Morer">
             </a>
 
             <nav id="main-navigation" class="primary-navigation">
                 <ul>
-                    <li><a href="../index.php"><span lang="en">Home</span></a></li> 
-                    <li><a href="../scripts/php/tenuta.php">Tenuta</a></li>
-                    <li><a href="../scripts/php/vini.php">Vini</a></li>
+                    <li><a href="home.php"><span lang="en">Home</span></a></li> 
+                    <li><a href="tenuta.php">Tenuta</a></li>
+                    <li><a href="vini.php">Vini</a></li>
                     <li><span aria-current="page">Esperienze</span></li>
-                    <li><a href="../scripts/php/contatti.php">Contatti</a></li>
+                    <li><a href="contatti.php">Contatti</a></li>
                 </ul>
             </nav>
 
             <div class="mobile-icons">
-                <a href="../scripts/php/shop.php">
+                <a href="shop.php">
                     <i class="fas fa-shopping-bag" aria-hidden="true"></i>
                     <span class="visually-hidden" lang="en">Shop</span>
                 </a>
@@ -63,7 +63,7 @@
             <nav id="breadcrumb">
                 <div class="breadcrumb-container">
                     <span>Ti trovi in: </span>
-                    <a href="../index.php"><span class="visually-hidden" lang="en">Home</span><i class="fas fa-home home-icon" aria-hidden="true"></i></a><span aria-hidden="true"> &gt; </span> 
+                    <a href="home.php"><span class="visually-hidden" lang="en">Home</span><i class="fas fa-home home-icon" aria-hidden="true"></i></a><span aria-hidden="true"> &gt; </span> 
                     <span class="current-page">Esperienze</span>
                     <i class="fas fa-utensils" aria-hidden="true"></i> 
                 </div>
@@ -113,7 +113,7 @@
                         [feedback_message]
                     </div>
 
-                    <form action="../scripts/php/esperienze.php" method="POST" class="standard-form">
+                    <form action=esperienze.php" method="POST" class="standard-form">
                         <fieldset>
                             <legend class="sr-only">Dati per la prenotazione</legend>
                             <div class="form-group row-two">
@@ -193,9 +193,9 @@
         <div class="footer-content">
             <small>
                 &copy; 2025 Tenuta al Morer - <abbr title="Partita">P.</abbr> <abbr title="Imposta sul Valore Aggiunto">IVA</abbr> 00000000000 <br>
-                <a href="../scripts/php/policy.php?return_to=esperienze.php"><span lang="en">Privacy Policy</span></a> | 
-                <a href="../scripts/php/policy.php?return_to=esperienze.php#privacy-policy"><span lang="en">Cookie Policy</span></a> | 
-                <a href="../scripts/php/policy.php?return_to=esperienze.php#accessibility">Accessibilità</a>
+                <a href="policy.php?return_to=esperienze.php"><span lang="en">Privacy Policy</span></a> | 
+                <a href="policy.php?return_to=esperienze.php#privacy-policy"><span lang="en">Cookie Policy</span></a> | 
+                <a href="policy.php?return_to=esperienze.php#accessibility">Accessibilità</a>
             </small>
         </div>
     </footer>
@@ -206,7 +206,7 @@
         </svg>
     </button>
     
-    <script src="../scripts/javascript/script.js"></script>
+    <script src="../javascript/script.js"></script>
 
 </body>
 </html>

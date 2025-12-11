@@ -21,6 +21,4 @@ if ($paginaCorrente === 'index.php') {
     header("location: ../../index.php"); 
     exit();
 }
-
-
 ?>

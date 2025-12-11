@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Accedi - Tenuta al Morer</title>
     <meta name="description" content="Accedi alla tua area riservata su Tenuta al Morer per gestire ordini e prenotazioni.">
-    <link rel="icon" href="images/logo.ico" type="image/x-icon">
+    <link rel="icon" href="../../images/logo.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,9 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../style/stile.css" media="screen"> 
-    <link rel="stylesheet" href="../style/mini.css" media="screen and (max-width:940px)">
-    <link rel="stylesheet" href="../style/stampa.css" media="print"> 
+    <link rel="stylesheet" href="../../style/stile.css" media="screen"> 
+    <link rel="stylesheet" href="../../style/mini.css" media="screen and (max-width:940px)">
+    <link rel="stylesheet" href="../../style/stampa.css" media="print"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
@@ -28,8 +28,8 @@
         </nav>
 
         <div class="login-header-logo">
-            <a href="../index.php">
-                <img src="images/logo.webp" alt="Home - Tenuta al Morer">
+            <a href="home.php">
+                <img src="../../images/logo.webp" alt="Home - Tenuta al Morer">
             </a>
         </div>
 
@@ -37,7 +37,7 @@
             <nav id="breadcrumb" >
                 <div class="breadcrumb-container">
                     <span>Ti trovi in: </span>
-                    <a href="../index.php"><span class="visually-hidden" lang="en">Home</span><i class="fas fa-home home-icon" aria-hidden="true"></i></a><span aria-hidden="true"> &gt; </span> 
+                    <a href="home.php"><span class="visually-hidden" lang="en">Home</span><i class="fas fa-home home-icon" aria-hidden="true"></i></a><span aria-hidden="true"> &gt; </span> 
                     <span class="current-page" aria-current="page" lang="en">Login</span>
                     <i class="fas fa-sign-in-alt contact-icon" aria-hidden="true"></i> 
                 </div>
@@ -58,7 +58,7 @@
                 [err]
             </div>
 
-            <form action="../scripts/php/login.php" method="POST" class="auth-form">
+            <form action=login.php" method="POST" class="auth-form">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="nome@esempio.it" required autocomplete="username" value="[email]">
@@ -81,7 +81,7 @@
             </form>
 
             <div class="auth-footer">
-                <p>Non hai ancora un account? <a href="../scripts/php/registrazione.php">Registrati ora</a></p>
+                <p>Non hai ancora un account? <a href="registrazione.php">Registrati ora</a></p>
             </div>
         </div>
     </main>
@@ -90,9 +90,9 @@
         <div class="footer-content">
             <small>
                 &copy; 2025 Tenuta al Morer - <abbr title="Partita">P.</abbr> <abbr title="Imposta sul Valore Aggiunto">IVA</abbr> 00000000000 <br>
-                <a href="../scripts/php/policy.php?return_to=../scripts/php/tenuta.php"><span lang="en">Privacy Policy</span></a> | 
-                <a href="../scripts/php/policy.php?return_to=../scripts/php/tenuta.php#privacy-policy"><span lang="en">Cookie Policy</span></a> | 
-                <a href="../scripts/php/policy.php?return_to=../scripts/php/tenuta.php#accessibility">Accessibilità</a>
+                <a href="policy.php?return_to=../scripts/php/tenuta.php"><span lang="en">Privacy Policy</span></a> | 
+                <a href="policy.php?return_to=../scripts/php/tenuta.php#privacy-policy"><span lang="en">Cookie Policy</span></a> | 
+                <a href="policy.php?return_to=../scripts/php/tenuta.php#accessibility">Accessibilità</a>
             </small>
         </div>
     </footer>
@@ -103,6 +103,6 @@
         </svg>
     </button>
 
-    <script src="../scripts/javascript/script.js"></script>
+    <script src="../javascript/script.js"></script>
 </body>
 </html>
