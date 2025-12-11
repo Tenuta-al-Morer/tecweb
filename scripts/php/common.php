@@ -18,7 +18,7 @@ function caricaPagina($nomeFileHTML) {
     // 3. Logica ICONA UTENTE
     $userIconHTML = "";
     
-    // Recupero il nome del file corrente (es. 'utente.php' o 'index.php')
+    // Recupero il nome del file corrente (es. 'utente.php')
     $paginaCorrente = basename($_SERVER['PHP_SELF']);
 
     if(isset($_SESSION['utente'])) {
