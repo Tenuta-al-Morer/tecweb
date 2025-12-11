@@ -1,4 +1,4 @@
 <?php
-require_once 'html/common.php';
+require_once 'scripts/php/common.php';
 echo caricaPagina('html/index.html');
 ?>
