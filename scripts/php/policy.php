@@ -1,4 +1,4 @@
 <?php
 require_once 'common.php';
-echo caricaPagina('policy.html');
+echo caricaPagina('../../html/policy.html');
 ?>

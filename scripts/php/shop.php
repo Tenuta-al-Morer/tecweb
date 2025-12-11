@@ -9,7 +9,7 @@ if (!isset($_SESSION['utente'])) {
     exit();
 }
 
-$htmlContent = caricaPagina('shop.html');
+$htmlContent = caricaPagina('../../html/shop.html');
 
 $emailUtente = htmlspecialchars($_SESSION['utente']);
 $htmlContent = str_replace("[email_utente]", $emailUtente, $htmlContent);

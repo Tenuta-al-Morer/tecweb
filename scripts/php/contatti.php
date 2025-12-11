@@ -4,7 +4,7 @@ require_once 'DBConnection.php';
 use DB\DBConnection;
 
 // 1. Carico il template HTML
-$htmlContent = caricaPagina('contatti.html');
+$htmlContent = caricaPagina('../../html/contatti.html');
 
 // Variabili per gestire errori e valori
 $feedbackMessage = "";

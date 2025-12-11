@@ -12,6 +12,15 @@ if (ini_get("session.use_cookies")) {
     );
 }
 
-header("location: index.php"); 
-exit();
+$paginaCorrente = basename($_SERVER['PHP_SELF']);
+
+if ($paginaCorrente === 'index.php') {
+    header("location: index.php"); 
+    exit();
+} else {
+    header("location: ../../index.php"); 
+    exit();
+}
+
+
 ?>

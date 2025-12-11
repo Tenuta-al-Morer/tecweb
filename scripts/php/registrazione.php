@@ -16,7 +16,7 @@ function ripristinoInput($htmlContent){
 }
 
 
-$registrazioneHTML = file_get_contents('registrazione.html');
+$registrazioneHTML = file_get_contents('../../html/registrazione.html');
 $err = "";
 
 session_start();

@@ -1,4 +1,4 @@
 <?php
 require_once 'common.php';
-echo caricaPagina('tenuta.html');
+echo caricaPagina('../../html/tenuta.html');
 ?>

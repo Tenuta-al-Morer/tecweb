@@ -1,4 +1,4 @@
 <?php
 require_once 'common.php';
-echo caricaPagina('vini.html');
+echo caricaPagina('../../html/vini.html');
 ?>

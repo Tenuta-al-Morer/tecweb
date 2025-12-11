@@ -4,7 +4,7 @@ require_once 'DBConnection.php';
 use DB\DBConnection;
 
 // 1. Carico il template HTML
-$htmlContent = caricaPagina('esperienze.html');
+$htmlContent = caricaPagina('../../html/esperienze.html');
 
 // Variabili per gestire errori e valori
 $feedbackMessage = "";

@@ -11,7 +11,7 @@ if (!isset($_SESSION['utente'])) {
 }
 
 
-$htmlContent = caricaPagina('utente.html');
+$htmlContent = caricaPagina('../../html/utente.html');
 
 
 $emailUtente = htmlspecialchars($_SESSION['utente']);
