@@ -11,7 +11,6 @@ require_once __DIR__ . '/config.php';
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 class DBConnection {
-    // Rimosse le costanti private con le credenziali esplicite
     
     private $connection;
 
@@ -165,6 +164,167 @@ class DBConnection {
             return true;
         }
         return false;
+    }
+
+    // ============================================================
+    // SEZIONE E-COMMERCE (VINI, CARRELLO, ORDINI)
+    // ============================================================
+
+    // RECUPERO LISTA VINI (Solo quelli attivi)
+    public function getVini() {
+        // Selezioniamo solo i vini attivi per la vendita
+        $query = "SELECT * FROM vino WHERE stato = 'attivo'";
+        $result = $this->connection->query($query);
+        
+        $vini = [];
+        while ($row = $result->fetch_assoc()) {
+            $vini[] = $row;
+        }
+        return $vini;
+    }
+
+    // RECUPERO UN SINGOLO VINO (Per pagina dettaglio)
+    public function getVino($id) {
+        $stmt = $this->connection->prepare("SELECT * FROM vino WHERE id = ? AND stato = 'attivo'");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc(); // Ritorna null se non esiste
+    }
+
+    // GESTIONE CARRELLO: OTTIENI O CREA ID CARRELLO
+    private function getCarrelloId($id_utente) {
+        $stmt = $this->connection->prepare("SELECT id FROM carrello WHERE id_utente = ?");
+        $stmt->bind_param("i", $id_utente);
+        $stmt->execute();
+        $res = $stmt->get_result();
+
+        if ($row = $res->fetch_assoc()) {
+            return $row['id'];
+        } else {
+            $stmtInsert = $this->connection->prepare("INSERT INTO carrello (id_utente) VALUES (?)");
+            $stmtInsert->bind_param("i", $id_utente);
+            $stmtInsert->execute();
+            return $stmtInsert->insert_id;
+        }
+    }
+
+    // AGGIUNGI AL CARRELLO
+    public function aggiungiAlCarrello($id_utente, $id_vino, $quantita) {
+        $id_carrello = $this->getCarrelloId($id_utente);
+
+        $stmtCheck = $this->connection->prepare("SELECT id, quantita FROM carrello_elemento WHERE id_carrello = ? AND id_vino = ?");
+        $stmtCheck->bind_param("ii", $id_carrello, $id_vino);
+        $stmtCheck->execute();
+        $res = $stmtCheck->get_result();
+
+        if ($row = $res->fetch_assoc()) {
+            // UPDATE
+            $nuovaQuantita = $row['quantita'] + $quantita;
+            $stmtUpdate = $this->connection->prepare("UPDATE carrello_elemento SET quantita = ? WHERE id = ?");
+            $stmtUpdate->bind_param("ii", $nuovaQuantita, $row['id']);
+            return $stmtUpdate->execute();
+        } else {
+            // INSERT
+            $stmtInsert = $this->connection->prepare("INSERT INTO carrello_elemento (id_carrello, id_vino, quantita) VALUES (?, ?, ?)");
+            $stmtInsert->bind_param("iii", $id_carrello, $id_vino, $quantita);
+            return $stmtInsert->execute();
+        }
+    }
+
+    // VISUALIZZA CARRELLO
+    public function getCarrelloUtente($id_utente) {
+        $id_carrello = $this->getCarrelloId($id_utente);
+        
+        $query = "SELECT ec.id as id_riga, v.id as id_vino, v.nome, v.prezzo, ec.quantita, (v.prezzo * ec.quantita) as totale_riga 
+                  FROM carrello_elemento ec
+                  JOIN vino v ON ec.id_vino = v.id
+                  WHERE ec.id_carrello = ?";
+                  
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("i", $id_carrello);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        $items = [];
+        while ($row = $result->fetch_assoc()) {
+            $items[] = $row;
+        }
+        return $items;
+    }
+
+    // RIMUOVI ELEMENTO DAL CARRELLO
+    public function rimuoviDaCarrello($id_elemento_carrello) {
+        $stmt = $this->connection->prepare("DELETE FROM carrello_elemento WHERE id = ?");
+        $stmt->bind_param("i", $id_elemento_carrello);
+        return $stmt->execute();
+    }
+
+    // CHECKOUT: CREAZIONE ORDINE
+    public function creaOrdine($id_utente, $indirizzo_spedizione, $metodo_pagamento, $costo_spedizione = 10.00) {
+        $items = $this->getCarrelloUtente($id_utente);
+        
+        if (empty($items)) {
+            return ["success" => false, "error" => "Il carrello è vuoto"];
+        }
+
+        $totale_prodotti = 0;
+        foreach ($items as $item) {
+            $totale_prodotti += $item['totale_riga'];
+        }
+        $totale_finale = $totale_prodotti + $costo_spedizione;
+
+        $this->connection->begin_transaction();
+
+        try {
+            // A. Creo ordine
+            $stmtOrd = $this->connection->prepare("INSERT INTO ordine (id_utente, totale_prodotti, costo_spedizione, totale_finale, indirizzo_spedizione, metodo_pagamento, stato_ordine) VALUES (?, ?, ?, ?, ?, ?, 'pagato')");
+            $stmtOrd->bind_param("idddss", $id_utente, $totale_prodotti, $costo_spedizione, $totale_finale, $indirizzo_spedizione, $metodo_pagamento);
+            $stmtOrd->execute();
+            $id_ordine = $stmtOrd->insert_id;
+
+            // B. Sposto le righe
+            $stmtDett = $this->connection->prepare("INSERT INTO ordine_elemento (id_ordine, id_vino, nome_vino_storico, quantita, prezzo_acquisto) VALUES (?, ?, ?, ?, ?)");
+
+            foreach ($items as $item) {
+                $stmtDett->bind_param("iisid", 
+                    $id_ordine, 
+                    $item['id_vino'], 
+                    $item['nome'], 
+                    $item['quantita'], 
+                    $item['prezzo']
+                );
+                $stmtDett->execute();
+            }
+
+            // C. Svuoto il carrello
+            $id_carrello = $this->getCarrelloId($id_utente);
+            $stmtDelCart = $this->connection->prepare("DELETE FROM carrello_elemento WHERE id_carrello = ?");
+            $stmtDelCart->bind_param("i", $id_carrello);
+            $stmtDelCart->execute();
+
+            $this->connection->commit();
+            return ["success" => true, "id_ordine" => $id_ordine];
+
+        } catch (Exception $e) {
+            $this->connection->rollback();
+            return ["success" => false, "error" => $e->getMessage()];
+        }
+    }
+
+    public function eliminaAccount($id_utente) {
+        // quando cancelliamo l'utente, gli ordini non vengono cancellati.
+        // Il loro campo 'id_utente' diventerà NULL automaticamente.
+        // I dati storici di vendita rimangono salvi.
+
+        $stmt = $this->connection->prepare("DELETE FROM utente WHERE id = ?");
+        $stmt->bind_param("i", $id_utente);
+        
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 ?>
