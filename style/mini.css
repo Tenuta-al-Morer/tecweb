@@ -1,12 +1,13 @@
 /* =========================================
-   NAVIGAZIONE MOBILE (Base: mio.css)
+   NAVIGAZIONE MOBILE 
    ========================================= */
 .main-nav-bar {
     display: flex;
     align-items: center; 
     justify-content: space-between; 
     position: relative;
-    padding: 0 0.5em; 
+    /* RIDOTTO: Era 1.5em, ora 0.8em per avvicinare l'hamburger al bordo */
+    padding: 0 0.8em; 
     min-height: 4.5em;
     background-color: var(--navbgcolor);
     flex-wrap: nowrap; 
@@ -23,7 +24,8 @@
     position: static; 
     transform: none;
     z-index: 1000;
-    font-size: 1.5rem;
+    /* AUMENTATO: Per renderlo grande come richiesto */
+    font-size: 1.6rem;
     color: var(--pure-white);
     transition: color 0.3s ease;
 }
@@ -40,7 +42,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 0.5em; 
+    /* MODIFICATO: Aggiunto margine destro per staccare il logo dallo shop */
+    margin: 0 1em 0 0.5em; 
     min-width: 0; 
     z-index: 10;
 }
@@ -64,10 +67,12 @@
     border: none;
     padding: 0;
     margin: 0;
+    /* RIMOSSO SCALE: Scale non calcola lo spazio. Usiamo font-size sotto */
 }
 
 .mobile-icons a {
-    font-size: 1.1em;
+    /* AGGIUNTO: Font-size grande per simulare la scala 1.5 ma mantenendo il layout corretto */
+    font-size: 1.5rem;
     text-decoration: none;
     color: var(--pure-white);
     display: flex; 
@@ -93,7 +98,9 @@
     }
 }
 
-/* Menu Dropdown */
+/* =========================================
+   MENU DROPDOWN 
+   ========================================= */
 .primary-navigation {
     display: none; 
     width: 100%;
@@ -130,6 +137,12 @@
     padding: 0;
     border-bottom: 1px solid var(--subheader-border-color);
     border-left: none;
+    justify-content: center;
+}
+
+.primary-navigation li:not(:first-child)::before {
+    display: none;
+    content: none;
 }
 
 .primary-navigation a,
@@ -139,6 +152,8 @@
     font-size: 1.1em;
     color: var(--pure-white);
     cursor: default; 
+    text-align: center;
+    width: 100%;
 }
 
 .primary-navigation a:hover, 
@@ -146,15 +161,21 @@
     background-color: var(--hover-faded);
 }
 
+.mobile-icons::before {
+    content: none;
+    display: none;
+}
+
 /* =========================================
-   OVERRIDE LAYOUT MOBILE (Base: mio.css)
+   OVERRIDE LAYOUT MOBILE
    ========================================= */
 main { 
     padding: 1em 1.5em; 
 }
 
 #breadcrumb {
-    padding: 0.2em 0.4em;
+    /* AGGIORNATO: Un po' più di spazio verticale */
+    padding: 0.5em 0;
     font-size: 0.8rem;
     justify-content: center;
 }
@@ -251,7 +272,6 @@ footer {
     content: attr(data-title) ": "; 
     color: var(--gold-color);
     font-weight: 700;
-    /*color: var(--diversity-color);*/
     display: inline;
     margin-right: 0.3em;
 }
@@ -277,7 +297,6 @@ body.light-mode .table-data td::before {
     color: var(--pure-black);
 }
 
-/* Regola da suo.css: Nasconde caption su mobile per pulizia */
 .table-data caption {
     position: absolute;
     text-indent: -999em;
@@ -287,12 +306,9 @@ body.light-mode .table-data td::before {
     width: 50%;
 }
 
-
-
 /* =========================================
    OVERRIDE SEZIONI HOME (Mobile)
    ========================================= */
-/* Aggiornato a 768px come da suo.css per supportare la nuova Hero */
 @media screen and (max-width: 768px) {
     .hero-section { min-height: 500px; }
     .hero-content h1 { font-size: 2.5rem; }
