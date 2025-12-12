@@ -180,8 +180,7 @@ CREATE TABLE `utente` (
 --
 
 INSERT INTO `utente` (`id`, `nome`, `cognome`, `email`, `password`, `data_registrazione`, `ruolo`) VALUES
-(4, 'Michele', 'Stevanin', 'michele.stevanin@gmail.com', '$2y$12$AUKWqbIW7VPzufNsQjq7c.glvZMbs4h32/NPuDjuRJtZSLf5vN8fu', '2025-12-08 17:34:01', 'user')
-(5, 'Alessandro', 'Contarini', 'alessandro.contarini21@gmail,com', '$2y$12$AUKWqbsdfcPzufNsQjq7c.glvZMbs4h32/NasdasDjuRJtZSLf5vN8fu', '2025-12-12 09:22:01', 'user');
+(4, 'Michele', 'Stevanin', 'michele.stevanin@gmail.com', '$2y$12$AUKWqbIW7VPzufNsQjq7c.glvZMbs4h32/NPuDjuRJtZSLf5vN8fu', '2025-12-08 17:34:01', 'user');
 
 -- --------------------------------------------------------
 
