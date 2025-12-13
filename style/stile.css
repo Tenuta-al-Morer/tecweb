@@ -1,5 +1,5 @@
 /* =========================================
-   RESET E VARIABILI (Base: mio.css)
+   RESET E VARIABILI 
    ========================================= */
 * {
     padding: 0;
@@ -7,158 +7,107 @@
     box-sizing: border-box;
 }
 
-/*
 :root {
-    --pure-white: #ffffff;
-    --pure-black: #000000;
-    --bodybgcolor: #1d1d1d;
-    --txtcolor: #e0e0e0;
-    --code-bg: #333333;
-    --navbgcolor: #1D1D1D;
-    --gold-color: #c5a551;
-    --gold-color-nav: #c5a551;
-    --visitedcolor: #f47a1c;
-    --diversity-color: #cacaca;
-    --bordercolor: #b6b6b6;
-    --table-stripe: #252525;
-    --nav-separator-color: #616161;
-    --subheader-border-color: #333333;
-    --shadow-subtle: #0a0a0a;
-    --shadow-gold: #5c4d26;
-    --focus-gold: #3e3827;
-    --hover-faded: #292621;
-    --hero-overlay-light: #444444;
-    --card-bg: var(--navbgcolor);
-    --card-border: #333333;
-    --card-shadow: var(--pure-black);
-    --card-hover-shadow: var(--shadow-subtle);
-    --card-title-color: var(--pure-white);
-    --card-desc-color: #e0e0e0;
-    --slider-btn-bg: #2b2b2b;
-    --header-bg: var(--navbgcolor);
-    --btn-hover-bg: #ddae48;
-    --red-errors: #d9534f;
-}
-*/
-:root {
-    --pure-white: #ffffff;
-    --pure-black: #000000;
+    /* PALETTE PRIMITIVA */
+    --pure-white:  #ffffff;
+    --pure-black:  #000000;
+    
+    /* Brand Colors */
+    --color-gold:     #C5A551; 
+    --color-red:      #6A0E18; 
+    --color-bg-dark:  #1D1D1D; 
+    --color-bg-light: #F7F4EB;
 
-    /* Palette di base */
-    --color-gold: #C5A551;   /* oro */
-    --color-bg-dark: #1D1D1D;/* sfondo scuro */
-    --color-red: #6A0E18;    /* rosso brand */
-    --color-bg-light: #F7F4EB; /* sfondo chiaro light mode */
+    /* Scala dei Grigi (Ridotta a 4 step) */
+    --gray-dark:      #252525; 
+    --gray-medium:    #333333; 
+    --gray-light:     #616161;
+    --gray-text:      #e0e0e0; 
+    --gray-border:    #b6b6b6; 
 
-    /* Colori "di ruolo" usati nel sito */
-    --bodybgcolor: var(--color-bg-dark);
-    --navbgcolor: var(--color-bg-dark);
-    --txtcolor: #e0e0e0;
+    /* Sfumature Warm/Gold */
+    --warm-black:     #292621; 
+    --gold-shadow:    #5c4d26;
+    --gold-focus:     #3e3827;
+    
+    /* Layout */
+    --bodybgcolor:            var(--color-bg-dark);
+    --navbgcolor:             var(--color-bg-dark);
+    --bodybgcolor:              var(--color-bg-dark);
+    --hero-overlay-light:     var(--gray-medium); 
 
-    --code-bg: #333333;
+    /* Testi e Bordi */
+    --txtcolor:               var(--gray-text);
+    --diversity-color:        var(--gray-text); 
+    --bordercolor:            var(--gray-border);
+    --nav-separator-color:    var(--gray-light);
+    --subheader-border-color: var(--gray-medium);
 
-    --gold-color: var(--color-gold);
-    --gold-color-nav: var(--color-gold);
+    /* Elementi UI */
+    --code-bg:                var(--gray-medium);
+    --table-stripe:           var(--gray-dark);
+    --slider-btn-bg:          var(--gray-dark);
+    
+    /* Cards */
+    --card-bg:                var(--color-bg-dark);
+    --card-border:            var(--gray-medium);
+    --card-title-color:       var(--pure-white);
+    --card-desc-color:        var(--gray-text);
+    --card-shadow:            var(--pure-black);
+    --card-hover-shadow:      var(--pure-black); 
 
-    /* Link visitato: scelgo il rosso brand */
-    --visitedcolor: var(--color-red);
-
-    --diversity-color: #cacaca;
-    --bordercolor: #b6b6b6;
-    --table-stripe: #252525;
-    --nav-separator-color: #616161;
-    --subheader-border-color: #333333;
-
-    --shadow-subtle: #0a0a0a;
-    --shadow-gold: #5c4d26;
-    --focus-gold: #3e3827;
-    --hover-faded: #292621;
-    --hero-overlay-light: #444444;
-
-    --card-bg: var(--navbgcolor);
-    --card-border: #333333;
-    --card-shadow: var(--pure-black);
-    --card-hover-shadow: var(--shadow-subtle);
-    --card-title-color: var(--pure-white);
-    --card-desc-color: #e0e0e0;
-
-    --slider-btn-bg: #2b2b2b;
-    --header-bg: var(--navbgcolor);
-
-    /* Hover dei bottoni = sempre oro */
-    --btn-hover-bg: var(--color-gold);
-
-    /* Rosso errori allineato al brand */
-    --red-errors: var(--color-red);
+    /* Logica Gold */
+    --gold-color:             var(--color-gold);
+    --gold-color-nav:         var(--color-gold);
+    --shadow-gold:            var(--gold-shadow);
+    --focus-gold:             var(--gold-focus);
+    --hover-faded:            var(--warm-black);
+    
+    /* Errori e Link */
+    --visitedcolor:           var(--color-red);
+    --red-errors:             var(--color-red);
 
     /* Bottoni ROSSI */
-    --btn-red-bg:        #6A0E18;  /* colore base */
-    --btn-red-hover:     #80111D;  /* leggermente più chiaro */
-    --btn-red-active:    #4C0810;  /* leggermente più scuro */
-    --btn-red-text:      #ffffff;
+    --btn-red-bg:     var(--color-red);
+    --btn-red-hover:  #80111D;
+    --btn-red-active: #4C0810; 
+    --btn-red-text:   var(--pure-white);
 
-    /* Bottoni ORO (se ti servono) */
-    --btn-gold-bg:       #C5A551;
-    --btn-gold-hover:    #D2B360;
-    --btn-gold-active:   #A9883A;
-    --btn-gold-text:     #1D1D1D;
+    /* Bottoni ORO (Intatti ma ottimizzati) */
+    --btn-gold-bg:     var(--color-gold);
+    --btn-gold-hover:  #D2B360;
+    --btn-hover-bg:    var(--color-gold); 
+    --btn-gold-active: #A9883A;
+    --btn-gold-text:   var(--color-bg-dark);
 }
 
-/*
-body.light-mode {
-    --gold-color: #8a6b1e;
-    --bodybgcolor: #f4f4f4;
-    --txtcolor: #121212;
-    --table-stripe: #F9F9F9;
-    --diversity-color: #333333;
-    --bordercolor: #4b4b4b;
-    --header-bg: #fafafa;
-    --card-bg: #fcfcfc;
-    --card-border: #dddddd;
-    --card-shadow: #e0e0e0;
-    --card-hover-shadow: var(--card-shadow);
-    --card-title-color: #222222;
-    --card-desc-color: #555555;
-    --code-bg: #f4f4f4;
-    --btn-hover-bg: #ddae48;
-}*/
 
 body.light-mode {
-    /* stessa palette, ma versione chiara */
-    --bodybgcolor: var(--color-bg-light);
-    --navbgcolor: var(--color-bg-light);
-    --header-bg: var(--color-bg-light);
+    /* --- Primitive Locali  --- */
+    --light-bg:    #f4f4f4; 
+    
+    /* Brand & Testi */
+    --gold-color:       #8a6b1e;
+    --txtcolor:         #121212;
+    --card-title-color: #222222; 
+    --card-desc-color:  #555555;
+    
+    /* Sfondi */
+    --bodybgcolor:      var(--light-bg); 
+    --code-bg:          var(--light-bg); 
+    --card-bg:          var(--light-bg);
+    --table-stripe:     var(--light-bg);
+    
+    /* Bordi e Elementi UI */
+    --bordercolor:      #4b4b4b;
+    --card-border:      #dddddd;
+    --diversity-color:  #333333;
+    --btn-hover-bg:     #ddae48;
 
-    --txtcolor: #121212;
-
-    /* righe alternate tabelle su beige leggermente più scuro */
-    --table-stripe: #EDE3D3;
-
-    /* bordi e ombre neutri ma caldi */
-    --bordercolor: #D2C7AF;
-    --card-bg: var(--color-bg-light);
-    --card-border: #D2C7AF;
-    --card-shadow: #E5DBC3;
-    --card-hover-shadow: var(--card-shadow);
-
-    --card-title-color: #222222;
-    --card-desc-color: #555555;
-
-    /* codice su sfondo chiaro uniforme */
-    --code-bg: var(--color-bg-light);
-
-    /* in light-mode l'oro resta uguale */
-    --gold-color: var(--color-gold);
-    --gold-color-nav: var(--color-gold);
-
-    /* overlay e separator in tinte chiare */
-    --shadow-subtle: #E0D6BF;
-    --nav-separator-color: #D2C7AF;
-
-    /* hover bottoni sempre oro brand */
-    --btn-hover-bg: var(--color-gold);
+    /* Ombre */
+    --card-shadow:       #e0e0e0;
+    --card-hover-shadow: var(--card-shadow); 
 }
-
 
 html {
     font-size: 100%;
@@ -177,7 +126,7 @@ body {
 }
 
 /* =========================================
-   STILI GLOBALI E UTILITY (Base: mio.css)
+   STILI GLOBALI E UTILITY 
    ========================================= */
 
 body.light-mode .header-policy {
@@ -240,7 +189,7 @@ body.light-mode select:focus {
 }
 
 /* =========================================
-   BOTTONI (Base: mio.css)
+   BOTTONI 
    ========================================= */
 .btn {
     padding: 1em 2em;
@@ -294,7 +243,7 @@ body.light-mode select:focus {
 }
 
 /* =========================================
-   AREA ADMIN (Base: mio.css)
+   AREA ADMIN 
    ========================================= */
 
 .admin-tabs {
@@ -377,7 +326,7 @@ body.light-mode select:focus {
 }
 
 /* =========================================
-   TITOLI E COMPONENTI (Base: mio.css)
+   TITOLI E COMPONENTI 
    ========================================= */
 
 .section-title {
@@ -409,7 +358,7 @@ body.light-mode select:focus {
 .alert-box i { color: var(--gold-color); margin-right: 0.5rem; font-size: 1.2rem; }
 
 /* =========================================
-   FORMS (Base: mio.css)
+   FORMS 
    ========================================= */
 .map-container {
     margin: 0;
@@ -496,7 +445,7 @@ body.light-mode ::-webkit-calendar-picker-indicator {
 }
 
 /* =========================================
-   LISTE, INFO E CARD (Base: mio.css)
+   LISTE, INFO E CARD 
    ========================================= */
 
 .info-list, .hours-list { list-style: none; padding: 0; margin-top: 1rem; }
@@ -569,7 +518,7 @@ header {
 }
 
 .header-policy {
-    background-color: var(--header-bg); 
+    background-color: var(--bodybgcolor); 
     padding-top: 1.5em; 
     padding-bottom: 0; 
 }
@@ -737,7 +686,7 @@ a.logo-link:hover img { transform: scale(1.05); }
 }
 
 /* =========================================
-   CONTENUTO PRINCIPALE (Base: mio.css)
+   CONTENUTO PRINCIPALE 
    ========================================= */
 
 main {
@@ -847,7 +796,7 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
         border: 1px solid var(--bordercolor); 
         border-radius: 8px; 
         margin-bottom: 2em;
-        background-color: var(--navbgcolor); 
+        background-color: var(--card-bg); 
         box-shadow: 0 4px 8px var(--pure-black); 
         overflow: hidden;
     }
@@ -885,7 +834,7 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
 }
 
 .table-data thead th {
-    background-color: var(--header-bg);
+    background-color: var(--bodybgcolor);
     color: var(--gold-color);
     font-weight: 700;
     text-transform: uppercase;
@@ -1013,23 +962,6 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
     letter-spacing: 0;
 }
 
-
-
-/*
-.hero-actions .btn-outline-white {
-    background-color: var(--color-red);
-    color: #ffffff;
-    border-color: var(--color-red);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
-}
-
-.hero-actions .btn-outline-white:hover,
-.hero-actions .btn-outline-white:focus {
-    background-color: #9b1a21;
-    border-color: #9b1a21;
-    transform: translateY(-1px);
-}
-*/
 .hero-actions .btn-outline-white {
     background-color: var(--btn-red-bg);
     color: var(--btn-red-text);
@@ -1056,21 +988,6 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
 }
 
-/* Secondo bottone (ACQUISTA I VINI) – solo bordo chiaro */
-/*
-.hero-actions .btn-outline-second {
-    background-color: transparent;
-    color: #ffffff;
-    border-color: var(--gold-color);
-    box-shadow: none;
-}
-
-.hero-actions .btn-outline-second:hover,
-.hero-actions .btn-outline-second:focus {
-    background-color: rgba(0, 0, 0, 0.18);
-    border-color: var(--gold-color);
-}
-*/
 .hero-actions .btn-outline-second {
     background-color: transparent;
     color: var(--btn-red-text);
@@ -1097,7 +1014,7 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
 
 
 /* =========================================
-   SEZIONI CONTENUTO (Features, Slider, Footer) (Base: mio.css)
+   SEZIONI CONTENUTO (Features, Slider, Footer) 
    ========================================= */
 
 .section-intro {
@@ -1251,7 +1168,7 @@ footer a:visited { color: var(--gold-color); }
 }
 
 /* =========================================
-   LOGIN E ERRORI (Base: mio.css)
+   LOGIN E ERRORI 
    ========================================= */
 
 .login-header-logo {
@@ -1276,7 +1193,7 @@ footer a:visited { color: var(--gold-color); }
     max-width: 450px;
     margin: 2rem auto 2rem auto; 
     padding: 2.5rem;
-    background-color: var(--header-bg);
+    background-color: var(--bodybgcolor);
     border: 1px solid var(--bordercolor);
     border-radius: 8px;
     box-shadow: 0 4px 20px var(--pure-black);
@@ -1299,6 +1216,10 @@ footer a:visited { color: var(--gold-color); }
 
 .btn-red {
     background-color: #d9534f; border-color: #d9534f;
+}
+
+.btn-red:hover {
+    background-color: #c9302c; border-color: #c9302c;
 }
 
 .auth-container p {
@@ -1385,7 +1306,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px var(--header-bg) inset !important;
+    -webkit-box-shadow: 0 0 0 30px var(--bodybgcolor) inset !important;
     -webkit-text-fill-color: var(--txtcolor) !important;
     border: 1px solid var(--bordercolor) !important;
     border-radius: 4px;
@@ -1394,7 +1315,7 @@ input:-webkit-autofill:active {
 
 input:-webkit-autofill:focus {
     border-color: var(--gold-color) !important;
-    -webkit-box-shadow: 0 0 0 30px var(--header-bg) inset, 0 0 5px var(--focus-gold) !important;
+    -webkit-box-shadow: 0 0 0 30px var(--bodybgcolor) inset, 0 0 5px var(--focus-gold) !important;
 }
 
 .toggle-password {
