@@ -1,5 +1,8 @@
 <?php
 
+session_start();
+require_once 'common.php';
+
 if (!isset($_SESSION['utente'])) {
     header("location: login.php");
     exit();
@@ -7,14 +10,9 @@ if (!isset($_SESSION['utente'])) {
 
 $ruoloUtente = $_SESSION['ruolo'];
 
-if ($ruoloUtente === 'admin') {
-    header("location: admin.php");
-    exit();
-} else if ($ruoloUtente === 'moderatore') {
-    header("location: moderatore.php");
-    exit();
-} else if ($ruoloUtente !== 'user') {
-    header("location: 404.php");
+
+if ($ruoloUtente !== 'user') {
+    header("location: 403.php");
     exit();
 }
 

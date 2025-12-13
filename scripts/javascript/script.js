@@ -389,4 +389,69 @@ document.addEventListener('DOMContentLoaded', () => {
         startTimer();
     }
 
+    /* ==========================================
+     * 6. ADMIN TABS (mostra una tabella alla volta)
+     * ========================================== */
+    const map = {
+        "#tab-vini": "#section-vini",
+        "#tab-degustazioni": "#section-esperienze",
+        "#tab-info": "#section-messaggi",
+    };
+
+    const tabs = document.querySelectorAll(".admin-tabs .admin-tab");
+
+    // Se non siamo in admin, non fare nulla (così non rompe le altre pagine)
+    if (tabs.length > 0) {
+        const sections = Object.values(map).map(sel => document.querySelector(sel));
+
+        // stato: null = vista collettiva, altrimenti una delle chiavi "#tab-..."
+        let active = null;
+
+        function showAll() {
+            sections.forEach(s => s && s.classList.remove("is-hidden"));
+            tabs.forEach(t => t.classList.remove("is-active"));
+            active = null;
+            history.replaceState(null, "", window.location.pathname + window.location.search);
+        }
+
+        function showOnly(hash) {
+            const sectionSel = map[hash];
+            sections.forEach(s => s && s.classList.add("is-hidden"));
+
+            const target = document.querySelector(sectionSel);
+            if (target) target.classList.remove("is-hidden");
+
+            tabs.forEach(t => {
+                const isThis = t.getAttribute("href") === hash;
+                t.classList.toggle("is-active", isThis);
+            });
+
+            active = hash;
+            history.replaceState(null, "", hash);
+
+            if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        tabs.forEach(tab => {
+            tab.addEventListener("click", (e) => {
+                e.preventDefault();
+                const hash = tab.getAttribute("href");
+
+                // se riclicco la tab già attiva -> torna alla vista collettiva
+                if (active === hash) {
+                    showAll();
+                } else {
+                    showOnly(hash);
+                }
+            });
+        });
+
+        // Se apro la pagina con un hash valido, parto filtrato
+        if (map[window.location.hash]) {
+            showOnly(window.location.hash);
+        } else {
+            showAll();
+        }
+    }
+
 });

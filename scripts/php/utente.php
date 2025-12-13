@@ -18,7 +18,7 @@ if ($ruoloUtente === 'admin') {
 } else if ($ruoloUtente === 'moderatore') {
     header("location: moderatore.php");
     exit();
-} else if ($ruoloUtente === 'user') {
+} else if ($ruoloUtente == 'user') {
     header("location: user.php");
     exit();
 }

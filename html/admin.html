@@ -76,11 +76,21 @@
     </header>
 
     <main> 
-        <a href="utente.php"  class="btn btn-outline-white">
-            <i class="fas fa-arrow-left" aria-hidden="true"></i> Pagina precedente
-        </a>
-        <h1 id="personal">Benvenuto Admin</h1> <!--Qui passeremo il parametro da db-->
-        <p>Gentile Utente "Admin", in questa pagina è possibile gestire le richieste fatte dai suoi clienti.</p>
+        <div class="auth-container">
+            <h1>Benvenuto nella tua Area Riservata</h1>
+            
+            <p>
+                Sei loggato come: <strong>[email_utente]</strong>
+            </p>
+            
+            <form action="logout.php" method="POST" class="auth-form">
+                <button type="submit" class="btn-primary btn-red">
+                    LOGOUT (ESCI)
+                </button>
+            </form>
+        </div>
+
+        <h3>Gentile Utente "Admin", in questa pagina è possibile gestire le richieste fatte dai suoi clienti.</h3>
 
         <div class="admin-tabs">
             <!-- TAB VINI -->
@@ -90,7 +100,7 @@
             </a>
 
             <!-- TAB ESPERIENZE -->
-            <a href="#tab-degustazioni" class="admin-tab is-active">
+            <a href="#tab-degustazioni" class="admin-tab">
                 <i class="fas fa-wine-glass-alt" aria-hidden="true"></i>
                 Richieste esperienze
             </a>
@@ -105,7 +115,7 @@
         <p id="descrizione-tab-vini" class="visually-hidden">
             La tabella riassume gli ordini di vini e permette di gestire le richieste: DA COMPLETARE
         </p>
-        <section>
+        <section id="section-vini">
             <h2>Richieste vini</h2>
             <div class="table-container">
                 <table class="table-data" id="tab-vini" aria-describedby="descrizione-tab-vini">
@@ -161,7 +171,7 @@
         <p id="descrizione-tab-esperienze" class="visually-hidden">
             La tabella riassume la prenotazione delle esperienze e permette di gestire le richieste: DA COMPLETARE
         </p>
-        <section>
+        <section id="section-esperienze">
             <h2>Richieste esperienze</h2>
             <div class="table-container">
                 <table class="table-data" id="tab-degustazioni" aria-describedby="descrizione-tab-esperienze">
@@ -220,7 +230,7 @@
         <p id="descrizione-tab-messaggi" class="visually-hidden">
             La tabella riassume le richieste dei clienti da gestire: DA COMPLETARE
         </p>
-        <section>
+        <section id="section-messaggi">
             <h2>Richieste da parte dei clienti</h2>
             <div class="table-container">
                 <table class="table-data" id="tab-info" aria-describedby="descrizione-tab-messaggi">
@@ -245,8 +255,8 @@
                             <td data-title="Messaggio"> Non riesco ad ordinare il Prosecco </td>
                             <td class="td_richiesta_msg" data-title="Gestione richiesta"> 
                                 <form action="#" method="POST" class="standard-form">
-                                    <label for="richiesta">Risposta<span aria-hidden="true">*</span></label>
-                                    <input type="text" id="richiesta" name="richiesta" required placeholder="Rispondi alle necessità del cliente">
+                                    <label for="richiesta1">Risposta<span aria-hidden="true">*</span></label>
+                                    <input type="text" id="richiesta1" name="richiesta1" required placeholder="Rispondi alle necessità del cliente">
                                 </form>
                                 <form action="#" method="POST" class="standard-form">
                                     <button type="submit" name="msg_risposta" value="msg_risposta" class="btn-secondary">Invia</button>
@@ -262,8 +272,8 @@
                             <td data-title="Messaggio"> La light mode non funziona </td>
                             <td class="td_richiesta_msg" data-title="Gestione richiesta"> 
                                 <form action="#" method="POST" class="standard-form">
-                                    <label for="richiesta">Risposta<span aria-hidden="true">*</span></label>
-                                    <input type="text" id="richiesta" name="richiesta" required placeholder="Rispondi alle necessità del cliente">
+                                    <label for="richiesta2">Risposta<span aria-hidden="true">*</span></label>
+                                    <input type="text" id="richiesta2" name="richiesta2" required placeholder="Rispondi alle necessità del cliente">
                                 </form>
                                 <form action="#" method="POST" class="standard-form">
                                     <button type="submit" name="msg_risposta" value="msg_risposta" class="btn-secondary">Invia</button>
