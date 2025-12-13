@@ -1274,7 +1274,6 @@ footer a:visited { color: var(--gold-color); }
 
 .auth-container {
     max-width: 450px;
-    max-height: 300px;
     margin: 2rem auto 2rem auto; 
     padding: 2.5rem;
     background-color: var(--header-bg);
