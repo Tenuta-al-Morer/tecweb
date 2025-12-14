@@ -79,6 +79,12 @@
     --btn-hover-bg:    var(--color-gold); 
     --btn-gold-active: #A9883A;
     --btn-gold-text:   var(--color-bg-dark);
+
+    /* Status Colors  */
+    --color-green:        #28a745;
+    --color-blue:         #007bff;
+    --color-cyan:         #17a2b8;
+    --color-yellow:       #ffc107;
 }
 
 
@@ -508,7 +514,7 @@ code {
 }
 
 /* =========================================
-   HEADER E NAVBAR (Base: mio.css - INTACTA)
+   HEADER E NAVBAR 
    ========================================= */
 
 header {
@@ -717,14 +723,14 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
 
 .page-intro { background-color: var(--bodybgcolor); }
 
-.page-intro h1 {
+.page-intro h1, .page-intro h2 {
     font-size: 2.5rem; color: var(--gold-color); font-family: 'Lexend', sans-serif;
     line-height: 1.2; margin-bottom: 0.5em; margin-top: 1em;
 }
 
 .page-intro p {
-    font-size: 1.1rem; color: var(--diversity-color); margin-top: 0.5em;
-    line-height: 1.6; max-width: 800px;
+    font-size: 1.1rem; color: var(--diversity-color);
+    line-height: 1.6; max-width: 800px; margin-bottom: 0.5em;
 }
 
 #personal{ color:var(--gold-color)}
@@ -743,7 +749,7 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
 .article-block li { margin-bottom: 0.5rem; }
 
 /* =========================================
-   TABELLE (Base: mio.css + Fix da suo.css)
+   TABELLE 
    ========================================= */
 
 .table-container {
@@ -765,72 +771,7 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
     border-bottom: 1px solid var(--bordercolor);
     word-wrap: break-word;
     overflow-wrap: anywhere;
-    word-break: break-word; /* Integrata correzione da suo.css */
-}
-
-/* Tabelle responsive area admin */
-@media screen and (max-width: 1300px) {
-    .table-container {
-        width: 100%; 
-        overflow: visible; 
-        border: none;
-    }
-
-    .table-data caption {
-        position: absolute;
-        text-indent: -999em;
-    }
-
-    .table-data, .table-data thead, .table-data tbody,
-    .table-data th, .table-data td, .table-data tr {
-        display: block;
-    }
-
-    .table-data thead tr {
-        position: absolute; 
-        top: -9999px; 
-        left: -9999px;
-    }
-
-    .table-data tr {
-        border: 1px solid var(--bordercolor); 
-        border-radius: 8px; 
-        margin-bottom: 2em;
-        background-color: var(--card-bg); 
-        box-shadow: 0 4px 8px var(--pure-black); 
-        overflow: hidden;
-    }
-
-    .table-data tbody th {
-        background-color: var(--table-stripe);
-        color: var(--gold-color);
-        font-weight: 700;
-        text-align: center; 
-        padding: 1em;
-        border-bottom: 1px solid var(--bordercolor);
-        font-size: 1.1em;
-    }
-
-    .table-data td {
-        border: none; 
-        border-bottom: 1px solid var(--subheader-border-color); 
-        position: relative;
-        padding: 0.8em 1em;
-        text-align: left; 
-    }
-
-    .table-data td:last-child { 
-        border-bottom: 0; 
-    }
-
-    .table-data td::before {
-        content: attr(data-title) ": "; 
-        color: var(--gold-color);
-        font-weight: 700;
-        
-        display: inline;
-        margin-right: 0.3em;
-    }
+    word-break: break-word; 
 }
 
 .table-data thead th {
@@ -862,13 +803,82 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
 .table-data caption {
     caption-side: top; text-align: center; font-weight: 700;
     padding: 1rem; font-size: 1.5rem; color: var(--gold-color);
+    border-bottom: 1px solid var(--bordercolor); padding-bottom: 0.8rem;  margin-bottom: 0.8rem;  
 }
 
 main h1 { margin-bottom: 0.3em; }
 main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolor); }
 
+/* Tabelle responsive area admin */
+@media screen and (max-width: 1300px) {
+    .table-container:has(.table-early-break) {
+        border: none;
+    }
+
+    .table-data caption {
+        position: absolute;
+        text-indent: -999em;
+        border-bottom: none;
+    }
+    
+    .table-early-break {
+        border: none; 
+    }
+
+    .table-early-break, .table-early-break thead, .table-early-break tbody,
+    .table-early-break th, .table-early-break td, .table-early-break tr {
+        display: block;
+    }
+
+    .table-early-break thead tr {
+        position: absolute; 
+        top: -9999px; 
+        left: -9999px;
+    }
+
+    .table-early-break tr {
+        border: 1px solid var(--bordercolor); 
+        border-radius: 8px; 
+        margin-bottom: 2em;
+        background-color: var(--card-bg); 
+        box-shadow: 0 4px 8px var(--pure-black); 
+        overflow: hidden;
+    }
+
+    .table-early-break tbody th {
+        background-color: var(--table-stripe);
+        color: var(--gold-color);
+        font-weight: 700;
+        text-align: center; 
+        padding: 1em;
+        border-bottom: 1px solid var(--bordercolor);
+        font-size: 1.1em;
+    }
+
+    .table-early-break td {
+        border: none; 
+        border-bottom: 1px solid var(--subheader-border-color); 
+        position: relative;
+        padding: 0.8em 1em;
+        text-align: left; 
+    }
+
+    .table-early-break td:last-child { 
+        border-bottom: 0; 
+    }
+
+    .table-early-break td::before {
+        content: attr(data-title) ": "; 
+        color: var(--gold-color);
+        font-weight: 700;
+        
+        display: inline;
+        margin-right: 0.3em;
+    }
+}
+
 /* =========================================
-   HERO SECTION (Nuovo stile: preso da suo.css)
+   HERO SECTION 
    ========================================= */
 
 .hero-section {
@@ -1106,7 +1116,7 @@ footer a { color: var(--pure-white); }
 footer a:visited { color: var(--gold-color); }
 
 /* =========================================
-   BACK TO TOP (Nuovo stile: preso da suo.css)
+   BACK TO TOP
    ========================================= */
 
 #backToTopBtn {
@@ -1463,7 +1473,7 @@ input:-webkit-autofill:focus {
 
 
 /* =========================================
-   PAGINA TENUTA (Specifico)
+   PAGINA TENUTA 
    ========================================= */
 
 .sub-header {
@@ -1643,19 +1653,19 @@ Sezione Admin
 }
 
 /* =========================================
-   AREA RISERVATA UTENTE (Nuovo Stile)
+   AREA RISERVATA UTENTE 
    ========================================= */
 
 .user-dashboard-container {
     display: flex;
-    max-width: 1400px; /* Larghezza massima per non essere troppo dispersivo */
+    max-width: 1400px;
     margin: 2rem auto;
-    padding: 0 20px; /* Padding laterale */
+    padding: 0 20px;
     gap: 2rem;
 }
 
 .dashboard-sidebar {
-    flex: 0 0 250px; /* Larghezza fissa per il menu desktop */
+    flex: 0 0 250px;
     padding-top: 2rem;
     padding-bottom: 2rem;
     border-right: 1px solid var(--bordercolor);
@@ -1688,7 +1698,7 @@ Sezione Admin
 }
 
 .user-nav-link.is-active {
-    background-color: var(--gold-focus);
+    background-color: var(--card-border);
     color: var(--gold-color);
     font-weight: 700;
     border-left-color: var(--gold-color);
@@ -1703,15 +1713,17 @@ Sezione Admin
     font-size: 2.5rem;
     color: var(--gold-color);
     margin-bottom: 0.5rem;
+    line-height: 1.2; 
 }
 
 .dashboard-content h2 {
     font-size: 1.8rem;
-    color: var(--pure-white);
+    color: var(--txtcolor); 
     margin-top: 2rem;
     margin-bottom: 1rem;
-    border-top: 1px solid var(--gray-medium);
+    border-top: 1px solid var(--bordercolor);
     padding-top: 1rem;
+    line-height: 1.3; 
 }
 
 .content-section {
@@ -1745,7 +1757,7 @@ Sezione Admin
     font-size: 1rem;
     border: none;
     width: 100%;
-    margin-top: 0; /* Sovrascrive .btn-primary */
+    margin-top: 0;
 }
 
 .logout-btn:hover {
@@ -1755,13 +1767,22 @@ Sezione Admin
 
 /* TABLE STYLES SPECIFICI PER GLI ORDINI */
 
+.order-summary-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
 .order-summary-table thead th {
-    background-color: var(--gold-focus);
     color: var(--gold-color);
+    padding: 1rem;
+    text-align: left;
 }
 
 .order-summary-table tbody td {
     vertical-align: middle;
+    padding: 1rem;
+    border-bottom: 1px solid var(--bordercolor);
+    color: var(--txtcolor);
 }
 
 .order-status-badge {
@@ -1774,18 +1795,17 @@ Sezione Admin
     text-align: center;
 }
 
-/* Stili badge per gli stati (come da ENUM nel DB) */
-.status-in_attesa { background-color: #555; color: #fff; }
-.status-pagato { background-color: #28a745; color: #fff; } /* Verde scuro */
-.status-in_preparazione { background-color: #ffc107; color: #333; } /* Giallo */
-.status-spedito { background-color: #007bff; color: #fff; } /* Blu */
-.status-consegnato { background-color: #17a2b8; color: #fff; } /* Azzurro */
-.status-annullato { background-color: var(--btn-red-bg); color: #fff; } /* Rosso */
+/* Stili badge con variabili */
+.status-in_attesa { background-color: var(--gray-light); color: var(--pure-white); }
+.status-pagato { background-color: var(--color-green); color: var(--pure-white); } 
+.status-in_preparazione { background-color: var(--color-yellow); color: var(--pure-black); } 
+.status-spedito { background-color: var(--color-blue); color: var(--pure-white); } 
+.status-consegnato { background-color: var(--color-cyan); color: var(--pure-white); } 
+.status-annullato { background-color: var(--btn-red-bg); color: var(--pure-white); } 
 
 /* DETTAGLIO ORDINE NASCOSTO */
-
 .order-details-row {
-    background-color: var(--gray-dark);
+    background-color: var(--table-stripe); 
 }
 
 .order-details-cell {
@@ -1797,6 +1817,7 @@ Sezione Admin
     display: flex;
     gap: 3rem;
     padding: 1rem 0;
+    color: var(--txtcolor);
 }
 
 .details-section {
@@ -1819,6 +1840,7 @@ Sezione Admin
     border-bottom: 1px dotted var(--gray-medium);
     display: flex;
     justify-content: space-between;
+    color: var(--txtcolor);
 }
 
 .details-products-list li:last-child {
@@ -1829,6 +1851,7 @@ Sezione Admin
     text-align: right;
     margin-top: 1rem;
     font-size: 1rem;
+    color: var(--txtcolor);
 }
 
 .details-summary p {
@@ -1839,58 +1862,88 @@ Sezione Admin
     color: var(--gold-color);
 }
 
+/* DASHBOARD GRID */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
 
-/* =========================================
-   MEDIA QUERIES PER RESPONSIVE (Area Riservata)
-   ========================================= */
+.stat-number {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--gold-color);
+    margin: 0;
+    line-height: 1.2;
+}
 
-@media screen and (max-width: 940px) {
-    .user-dashboard-container {
-        flex-direction: column;
-        margin: 1rem auto;
-        padding: 0 10px;
-    }
+/* DASHBOARD SPECIFIC STYLES (Card Links) */
 
-    .dashboard-sidebar {
-        flex: 1 1 auto;
-        width: 100%;
-        border-right: none;
-        padding: 0 0 1rem 0;
-    }
+a.feature-card.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
 
-    .user-nav-list {
-        display: flex;
-        overflow-x: auto; /* Abilita lo scroll orizzontale */
-        white-space: nowrap;
-        gap: 0.5rem;
-        padding-bottom: 10px; /* Spazio per l'ombra dello scroll */
-    }
-    
-    .user-nav-list li {
-        flex-shrink: 0;
-        margin-bottom: 0;
-    }
+/* Forza il bordo dorato */
+.border-gold {
+    border-color: var(--gold-color) !important;
+}
 
-    .user-nav-link {
-        padding: 0.5rem 0.8rem;
-        font-size: 0.9rem;
-    }
+/* Testo "Nessun ordine recente" */
+.text-muted {
+    color: var(--diversity-color);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
 
-    .dashboard-content {
-        padding: 1rem 0;
-    }
+.last-order-info {
+    margin-top: 1rem;
+    text-align: center;
+}
 
-    .logout-form {
-        display: none; /* Nascondiamo il logout dal menu a schede (rimane nell'header del sito se implementato) */
-    }
+.stat-subtitle {
+    color: var(--diversity-color);
+    margin-top: 5px;
+    font-size: 1rem;
+}
 
-    .dashboard-content h1 {
-        font-size: 2rem;
-    }
+.stat-number.text-md {
+    font-size: 1.5rem;
+    word-break: break-word;
+    line-height: 1.3;
+}
 
-    /* Adattamento per i dettagli dell'ordine su mobile */
-    .details-content {
-        flex-direction: column;
-        gap: 2rem;
-    }
+.profile-email {
+    color: var(--diversity-color);
+    margin-top: 5px;
+    word-break: break-all;
+    font-size: 0.9rem;
+}
+
+.personal-data-list {
+    margin-top: 1.5rem;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+.password-form-container {
+    max-width: 500px;
+    margin-top: 1rem;
+}
+
+.alert-msg {
+    margin-bottom: 1rem;
+}
+
+.btn-submit {
+    margin-top: 1rem;
 }

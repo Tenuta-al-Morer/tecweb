@@ -88,6 +88,15 @@ class DBConnection {
         }
     }
 
+    // RECUPERO DATI ANAGRAFICI UTENTE
+    public function getUserInfo($id) {
+        $stmt = $this->connection->prepare("SELECT nome, cognome, email FROM utente WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
     // FUNZIONE PER SALVARE UN MESSAGGIO
     public function salvaMessaggio($nome, $cognome, $email, $tipo_supporto, $prefisso, $telefono, $messaggio) {
         $query = "INSERT INTO contatto (nome, cognome, email, tipo_supporto, prefisso, telefono, messaggio, data_invio, stato) 
@@ -367,6 +376,53 @@ class DBConnection {
 
         $stmtElem->close();
         return $elementi;
+    }
+
+    // STATISTICHE UTENTE (Per Dashboard)
+    public function getUserStats($id_utente) {
+        // Calcola totale speso e numero ordini
+        $query = "SELECT COUNT(*) as num_ordini, SUM(totale_finale) as totale_speso 
+                  FROM ordine WHERE id_utente = ?";
+        
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("i", $id_utente);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $data = $result->fetch_assoc();
+        
+        // Se non ci sono ordini, SUM restituisce NULL, convertiamo in 0
+        if ($data['totale_speso'] === null) {
+            $data['totale_speso'] = 0.00;
+        }
+        
+        $stmt->close();
+        return $data;
+    }
+
+    // CAMBIA PASSWORD UTENTE
+    public function cambiaPassword($id_utente, $vecchia_password, $nuova_password) {
+        // 1. Prendo la password attuale (hash)
+        $stmt = $this->connection->prepare("SELECT password FROM utente WHERE id = ?");
+        $stmt->bind_param("i", $id_utente);
+        $stmt->execute();
+        $res = $stmt->get_result()->fetch_assoc();
+        $stmt->close();
+
+        if (!$res) { return false; }
+
+        // 2. Verifico se la vecchia password coincide
+        if (!password_verify($vecchia_password, $res['password'])) {
+            return false; // Vecchia password errata
+        }
+
+        // 3. Hash della nuova password e aggiornamento
+        $nuovoHash = password_hash($nuova_password, PASSWORD_DEFAULT);
+        $stmtUpd = $this->connection->prepare("UPDATE utente SET password = ? WHERE id = ?");
+        $stmtUpd->bind_param("si", $nuovoHash, $id_utente);
+        $result = $stmtUpd->execute();
+        $stmtUpd->close();
+
+        return $result;
     }
 }
 ?>

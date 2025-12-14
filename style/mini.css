@@ -1,111 +1,92 @@
-/* =========================================
-   NAVIGAZIONE MOBILE 
-   ========================================= */
 .main-nav-bar {
     display: flex;
-    align-items: center; 
-    justify-content: space-between; 
+    align-items: center;
+    justify-content: space-between;
     position: relative;
-    /* RIDOTTO: Era 1.5em, ora 0.8em per avvicinare l'hamburger al bordo */
-    padding: 0 0.8em; 
+    padding: 0 0.8em;
     min-height: 4.5em;
     background-color: var(--navbgcolor);
-    flex-wrap: nowrap; 
+    flex-wrap: nowrap;
 }
 
 .menu-toggle {
-    flex: 0 0 auto; 
-    display: block; 
+    flex: 0 0 auto;
+    display: block;
     background: none;
     border: none;
     cursor: pointer;
     padding: 10px;
     margin: 0;
-    position: static; 
+    position: static;
     transform: none;
     z-index: 1000;
-    /* AUMENTATO: Per renderlo grande come richiesto */
     font-size: 1.6rem;
     color: var(--pure-white);
     transition: color 0.3s ease;
 }
 
-.menu-toggle:focus { outline: none; }
+.menu-toggle:focus {
+    outline: none;
+}
 
-.menu-toggle:hover, 
-.menu-toggle[aria-expanded="true"] { 
-    color: var(--gold-color); 
+.menu-toggle:hover,
+.menu-toggle[aria-expanded="true"] {
+    color: var(--gold-color);
 }
 
 .logo-link {
-    flex: 1 1 auto; 
+    flex: 1 1 auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* MODIFICATO: Aggiunto margine destro per staccare il logo dallo shop */
-    margin: 0 1em 0 0.5em; 
-    min-width: 0; 
+    margin: 0 1em 0 0.5em;
+    min-width: 0;
     z-index: 10;
 }
 
 .logo-link img {
-    max-height: 3.8em; 
-    max-width: 100%; 
+    max-height: 3.8em;
+    max-width: 100%;
     height: auto;
     width: auto;
     object-fit: contain;
 }
 
 .mobile-icons {
-    flex: 0 0 auto; 
+    flex: 0 0 auto;
     display: flex;
     align-items: center;
-    gap: 1em; 
-    position: static; 
+    gap: 1em;
+    position: static;
     transform: none;
     z-index: 1000;
     border: none;
     padding: 0;
     margin: 0;
-    /* RIMOSSO SCALE: Scale non calcola lo spazio. Usiamo font-size sotto */
+}
+
+.mobile-icons::before {
+    content: none;
+    display: none;
 }
 
 .mobile-icons a {
-    /* AGGIUNTO: Font-size grande per simulare la scala 1.5 ma mantenendo il layout corretto */
     font-size: 1.5rem;
     text-decoration: none;
     color: var(--pure-white);
-    display: flex; 
+    display: flex;
 }
 
-.mobile-icons a:hover, 
-.mobile-icons a:focus { 
-    color: var(--gold-color); 
+.mobile-icons a:hover,
+.mobile-icons a:focus {
+    color: var(--gold-color);
 }
 
-
-@media screen and (max-width: 400px) {
-    .logo-link img {
-        content: url('../images/logoCorto.webp');
-        max-height: 4em; 
-    }
-}
-
-@media screen and (max-width: 330px) {
-    .logo-link img {
-        content: url('../images/logoAlbero.webp');
-        max-height: 4em; 
-    }
-}
-
-/* =========================================
-   MENU DROPDOWN 
-   ========================================= */
 .primary-navigation {
-    display: none; 
+    display: none;
     width: 100%;
-    position: absolute; 
-    top: 100%; 
+    position: absolute;
+    top: 100%;
     left: 0;
     background-color: var(--navbgcolor);
     border-top: 1px solid var(--gold-color);
@@ -151,30 +132,21 @@
     padding: 1.2em;
     font-size: 1.1em;
     color: var(--pure-white);
-    cursor: default; 
+    cursor: default;
     text-align: center;
     width: 100%;
 }
 
-.primary-navigation a:hover, 
+.primary-navigation a:hover,
 .primary-navigation a:focus {
     background-color: var(--hover-faded);
 }
 
-.mobile-icons::before {
-    content: none;
-    display: none;
-}
-
-/* =========================================
-   OVERRIDE LAYOUT MOBILE
-   ========================================= */
-main { 
-    padding: 1em 1.5em; 
+main {
+    padding: 1em 1.5em;
 }
 
 #breadcrumb {
-    /* AGGIORNATO: Un po' più di spazio verticale */
     padding: 0.5em 0;
     font-size: 0.8rem;
     justify-content: center;
@@ -192,7 +164,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-bottom: 1.5em;
+    padding-bottom: 3.5em;
 }
 
 #theme-toggle {
@@ -206,139 +178,31 @@ footer {
     transform: scale(1.2);
 }
 
-/* =========================================
-   OVERRIDE SPECIFICHE POLICY (Mobile)
-   ========================================= */
-.header-policy .sub-header { padding: 0.5em 1em; }
-.page-intro h1 { font-size: 2rem; }
+.header-policy .sub-header {
+    padding: 0.5em 1em;
+}
+
+.page-intro h1 {
+    font-size: 2rem;
+}
 
 #content.container-policy {
-    padding: 2em 1.5em; 
-}
-
-/* =========================================
-   TRASFORMAZIONE TABELLA IN CARDS
-   ========================================= */
-
-.table-container {
-    width: 100%; 
-    overflow: visible; 
-    border: none;
-}
-
-.table-data, .table-data thead, .table-data tbody,
-.table-data th, .table-data td, .table-data tr {
-    display: block;
-}
-
-.table-data thead tr {
-    position: absolute; 
-    top: -9999px; 
-    left: -9999px;
-}
-
-.table-data tr {
-    border: 1px solid var(--bordercolor); 
-    border-radius: 8px; 
-    margin-bottom: 2em;
-    background-color: var(--navbgcolor); 
-    box-shadow: 0 4px 8px var(--pure-black); 
-    overflow: hidden;
-}
-
-.table-data tbody th {
-    background-color: var(--table-stripe);
-    color: var(--gold-color);
-    font-weight: 700;
-    text-align: center; 
-    padding: 1em;
-    border-bottom: 1px solid var(--bordercolor);
-    font-size: 1.1em;
-}
-
-.table-data td {
-    border: none; 
-    border-bottom: 1px solid var(--subheader-border-color); 
-    position: relative;
-    padding: 0.8em 1em;
-    text-align: left; 
-}
-
-.table-data td:last-child { 
-    border-bottom: 0; 
-}
-
-.table-data td::before {
-    content: attr(data-title) ": "; 
-    color: var(--gold-color);
-    font-weight: 700;
-    display: inline;
-    margin-right: 0.3em;
-}
-
-
-body.light-mode .table-data tr {
-    background-color: var(--pure-white); 
-    border-color: var(--bordercolor); 
-    box-shadow: 0 2px 5px var(--shadow-subtle);
-}
-
-body.light-mode .table-data tbody th {
-    background-color: var(--table-stripe);
-    color: var(--gold-color);
-    border-bottom-color: var(--bordercolor);
-}
-
-body.light-mode .table-data td { 
-    border-bottom-color: var(--bordercolor); 
-}
-
-body.light-mode .table-data td::before {
-    color: var(--pure-black);
-}
-
-.table-data caption {
-    position: absolute;
-    text-indent: -999em;
+    padding: 2em 1.5em;
 }
 
 .btn-secondary {
     width: 50%;
 }
 
-/* =========================================
-   OVERRIDE SEZIONI HOME (Mobile)
-   ========================================= */
-@media screen and (max-width: 768px) {
-    .hero-section { min-height: 500px; }
-    .hero-content h1 { font-size: 2.5rem; }
-    .hero-actions { flex-direction: column; align-items: center; }
-    .btn { width: 100%; max-width: 300px; }
-    .grid-features { grid-template-columns: 1fr; }
-    .slider-container { height: 45vh; }
-    .slider-btn { font-size: 2.5rem; padding: 0.3em; }
-}
-
-/* =========================================
-   MOBILE FIXES FOR FORMS
-   ========================================= */
-@media screen and (max-width: 600px) {
-    .row-two { flex-direction: column; gap: 0; }
-}
-
-/* =========================================
-   AUTH MOBILE FIXES
-   ========================================= */
-
 .login-header-logo img {
-    height: 4.5em; 
+    height: 4.5em;
     padding-top: 0.5em;
 }
 
 .auth-container {
     margin: 1rem auto;
     padding: 1.5rem;
-    width: 90%; 
+    width: 90%;
     max-width: none;
 }
 
@@ -357,66 +221,160 @@ body.light-mode .table-data td::before {
     align-items: flex-start;
 }
 
-footer {
-    padding-bottom: 3.5em; 
+.tenuta-main {
+    padding-top: 56px;
+    gap: 60px;
 }
 
-
-@media screen and (max-width: 330px) {
-    .login-header-logo img {
-        content: url('../images/logoCorto.webp');
-        max-height: 4em; 
-    }
-
-    .form-group.row-two {
-        flex-direction: column
-    }
+.tenuta-card,
+.tenuta-card--reverse {
+    flex-direction: column;
+    padding: 32px 24px;
 }
 
-/* =========================================
-   RESPONSIVE PAGINA TENUTA
-   ========================================= */
-@media (max-width: 992px) {
-    .tenuta-main {
-        padding-top: 56px;
-        gap: 60px;
-    }
+.tenuta-card-text {
+    text-align: left;
+}
 
-    .tenuta-card,
-    .tenuta-card--reverse {
-        flex-direction: column;
-        padding: 32px 24px;
-    }
+.table-container {
+    width: 100%;
+    overflow: visible;
+    border: none !important;
+}
 
-    .tenuta-card-text {
-        text-align: left;
-    }
+.table-data, .table-data thead, .table-data tbody,
+.table-data th, .table-data td, .table-data tr {
+    display: block;
+}
+
+.table-data caption {
+    position: absolute;
+    text-indent: -999em;
+    border-bottom: none;
+}
+
+.table-data thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
+.table-data tr {
+    border: 1px solid var(--bordercolor);
+    border-radius: 8px;
+    margin-bottom: 2em;
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 8px var(--pure-black);
+    overflow: hidden;
+}
+
+.table-data tr:first-child {
+    margin-top: 0;
+    border-top: 1px solid var(--bordercolor);
+}
+
+.table-data tbody th {
+    background-color: var(--table-stripe);
+    color: var(--gold-color);
+    font-weight: 700;
+    text-align: center;
+    padding: 1em;
+    border-bottom: 1px solid var(--bordercolor);
+    font-size: 1.1em;
+}
+
+.table-data td {
+    border: none;
+    border-bottom: 1px solid var(--subheader-border-color);
+    position: relative;
+    padding: 0.8em 1em;
+    text-align: left;
+}
+
+.table-data td:last-child {
+    border-bottom: 0;
+}
+
+.table-data td::before {
+    content: attr(data-title) ": ";
+    color: var(--gold-color);
+    font-weight: 700;
+    display: inline;
+    margin-right: 0.3em;
+}
+
+body.light-mode .table-data tr {
+    background-color: var(--pure-white);
+    border-color: var(--bordercolor);
+    box-shadow: 0 2px 5px var(--shadow-subtle);
+}
+
+body.light-mode .table-data tbody th {
+    background-color: var(--table-stripe);
+    color: var(--gold-color);
+    border-bottom-color: var(--bordercolor);
+}
+
+body.light-mode .table-data td {
+    border-bottom-color: var(--bordercolor);
+}
+
+body.light-mode .table-data td::before {
+    color: var(--pure-black);
+}
+
+.table-data tr.order-details-row.is-hidden {
+    display: none !important;
+}
+
+.table-data td.td_richiesta_degustazione::before {
+    content: none;
+}
+
+.table-data td.order-details-cell::before {
+    content: none;
+}
+
+@media screen and (max-width: 768px) {
+    .hero-section { min-height: 500px; }
+    .hero-content h1 { font-size: 2.5rem; }
+    .hero-actions { flex-direction: column; align-items: center; }
+    .btn { width: 100%; max-width: 300px; }
+    .grid-features { grid-template-columns: 1fr; }
+    .slider-container { height: 45vh; }
+    .slider-btn { font-size: 2.5rem; padding: 0.3em; }
 }
 
 @media (max-width: 640px) {
-     .tenuta-hero-title {
-        font-size: 2rem;
-    }
+    .tenuta-hero-title { font-size: 2rem; }
+    .tenuta-hero-text { font-size: 0.95rem; }
+    .tenuta-section-title { font-size: 1.9rem; }
+    .tenuta-philosophy { padding: 60px 8vw; }
+    .tenuta-philosophy-title { font-size: 2.2rem; }
+    .tenuta-scroll-top { width: 44px; height: 44px; font-size: 1.3rem; }
+}
 
-    .tenuta-hero-text {
-        font-size: 0.95rem;
-    }
+@media screen and (max-width: 600px) {
+    .row-two { flex-direction: column; gap: 0; }
+}
 
-    .tenuta-section-title {
-        font-size: 1.9rem;
+@media screen and (max-width: 400px) {
+    .logo-link img {
+        content: url('../images/logoCorto.webp');
+        max-height: 4em;
     }
+}
 
-    .tenuta-philosophy {
-        padding: 60px 8vw;
+@media screen and (max-width: 330px) {
+    .logo-link img {
+        content: url('../images/logoAlbero.webp');
+        max-height: 4em;
     }
-
-    .tenuta-philosophy-title {
-        font-size: 2.2rem;
+    .login-header-logo img {
+        content: url('../images/logoCorto.webp');
+        max-height: 4em;
     }
-
-    .tenuta-scroll-top {
-        width: 44px;
-        height: 44px;
-        font-size: 1.3rem;
+    .form-group.row-two {
+        flex-direction: column;
     }
 }
