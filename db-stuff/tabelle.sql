@@ -12,13 +12,14 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mstevani`
+-- Database: `acontari`
 --
 
 -- --------------------------------------------------------
@@ -175,13 +176,6 @@ CREATE TABLE `utente` (
   `ruolo` varchar(20) NOT NULL DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
---
--- Dump dei dati per la tabella `utente`
---
-
-INSERT INTO `utente` (`id`, `nome`, `cognome`, `email`, `password`, `data_registrazione`, `ruolo`) VALUES
-(4, 'Michele', 'Stevanin', 'michele.stevanin@gmail.com', '$2y$12$AUKWqbIW7VPzufNsQjq7c.glvZMbs4h32/NPuDjuRJtZSLf5vN8fu', '2025-12-08 17:34:01', 'user');
-
 -- --------------------------------------------------------
 
 --
@@ -193,77 +187,48 @@ CREATE TABLE `vino` (
   `nome` varchar(255) NOT NULL,
   `prezzo` decimal(10,2) NOT NULL,
   `quantita_stock` int(11) NOT NULL DEFAULT 0,
-  `stato` enum('attivo','nascosto','fuori_produzione') DEFAULT 'attivo'
+  `stato` enum('attivo','nascosto','fuori_produzione') DEFAULT 'attivo',
+  `img` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
 -- Indici per le tabelle scaricate
 --
 
---
--- Indici per le tabelle `carrello`
---
 ALTER TABLE `carrello`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_carrello_utente` (`id_utente`);
 
---
--- Indici per le tabelle `carrello_elemento`
---
 ALTER TABLE `carrello_elemento`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_elemento_carrello_cart` (`id_carrello`),
   ADD KEY `fk_elemento_carrello_vino` (`id_vino`);
 
---
--- Indici per le tabelle `contatto`
---
 ALTER TABLE `contatto`
   ADD PRIMARY KEY (`id`);
 
---
--- Indici per le tabelle `contatto_archivio`
---
 ALTER TABLE `contatto_archivio`
   ADD PRIMARY KEY (`id`);
 
---
--- Indici per le tabelle `ordine`
---
 ALTER TABLE `ordine`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_ordine_utente_smart` (`id_utente`);
 
---
--- Indici per le tabelle `ordine_elemento`
---
 ALTER TABLE `ordine_elemento`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_dettaglio_ordine_ord` (`id_ordine`),
   ADD KEY `fk_dettaglio_ordine_vino` (`id_vino`);
 
---
--- Indici per le tabelle `prenotazione`
---
 ALTER TABLE `prenotazione`
   ADD PRIMARY KEY (`id`);
 
---
--- Indici per le tabelle `prenotazione_archivio`
---
 ALTER TABLE `prenotazione_archivio`
   ADD PRIMARY KEY (`id`);
 
---
--- Indici per le tabelle `utente`
---
 ALTER TABLE `utente`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
---
--- Indici per le tabelle `vino`
---
 ALTER TABLE `vino`
   ADD PRIMARY KEY (`id`);
 
@@ -271,63 +236,33 @@ ALTER TABLE `vino`
 -- AUTO_INCREMENT per le tabelle scaricate
 --
 
---
--- AUTO_INCREMENT per la tabella `carrello`
---
 ALTER TABLE `carrello`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT per la tabella `carrello_elemento`
---
 ALTER TABLE `carrello_elemento`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT per la tabella `contatto`
---
 ALTER TABLE `contatto`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
---
--- AUTO_INCREMENT per la tabella `contatto_archivio`
---
 ALTER TABLE `contatto_archivio`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT per la tabella `ordine`
---
 ALTER TABLE `ordine`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT per la tabella `ordine_elemento`
---
 ALTER TABLE `ordine_elemento`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT per la tabella `prenotazione`
---
 ALTER TABLE `prenotazione`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
---
--- AUTO_INCREMENT per la tabella `prenotazione_archivio`
---
 ALTER TABLE `prenotazione_archivio`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT per la tabella `utente`
---
 ALTER TABLE `utente`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
---
--- AUTO_INCREMENT per la tabella `vino`
---
 ALTER TABLE `vino`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
@@ -335,33 +270,54 @@ ALTER TABLE `vino`
 -- Limiti per le tabelle scaricate
 --
 
---
--- Limiti per la tabella `carrello`
---
 ALTER TABLE `carrello`
   ADD CONSTRAINT `fk_carrello_utente` FOREIGN KEY (`id_utente`) REFERENCES `utente` (`id`) ON DELETE CASCADE;
 
---
--- Limiti per la tabella `carrello_elemento`
---
 ALTER TABLE `carrello_elemento`
   ADD CONSTRAINT `fk_elemento_carrello_cart` FOREIGN KEY (`id_carrello`) REFERENCES `carrello` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_elemento_carrello_vino` FOREIGN KEY (`id_vino`) REFERENCES `vino` (`id`) ON DELETE CASCADE;
 
---
--- Limiti per la tabella `ordine`
---
 ALTER TABLE `ordine`
   ADD CONSTRAINT `fk_ordine_utente_smart` FOREIGN KEY (`id_utente`) REFERENCES `utente` (`id`) ON DELETE SET NULL;
 
---
--- Limiti per la tabella `ordine_elemento`
---
 ALTER TABLE `ordine_elemento`
   ADD CONSTRAINT `fk_dettaglio_ordine_ord` FOREIGN KEY (`id_ordine`) REFERENCES `ordine` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_dettaglio_ordine_vino` FOREIGN KEY (`id_vino`) REFERENCES `vino` (`id`);
+
+--
+-- Dati
+--
+
+INSERT INTO `utente` (`id`, `nome`, `cognome`, `email`, `password`, `data_registrazione`, `ruolo`) VALUES
+(4, 'Michele', 'Stevanin', 'michele.stevanin@gmail.com', '$2y$12$AUKWqbIW7VPzufNsQjq7c.glvZMbs4h32/NPuDjuRJtZSLf5vN8fu', '2025-12-08 17:34:01', 'user');
+
+INSERT INTO `vino` (`id`, `nome`, `prezzo`, `quantita_stock`, `stato`, `img`) VALUES
+(1, 'Raboso del Piave', 18.50, 2, 'attivo', 'prova'),
+(2, 'Merlot', 14.00, 1, 'attivo', 'prova'),
+(3, 'Cabernet Franc', 16.00, 3, 'attivo', 'prova'),
+(4, 'Refosco', 15.50, 5, 'attivo', 'prova'),
+(5, 'Chardonnay', 13.50, 4, 'attivo', 'prova'),
+(6, 'Manzoni Bianco', 15.00, 2, 'attivo', 'prova'),
+(7, 'Pinot Grigio', 13.00, 1, 'attivo', 'prova'),
+(8, 'Prosecco', 12.50, 6, 'attivo', 'prova'),
+(9, 'Gran Morer', 25.00, 1, 'attivo', 'prova'),
+(10, 'Vigna Dorata', 22.00, 1, 'attivo', 'prova'),
+(11, 'Incanto', 20.00, 2, 'attivo', 'prova'),
+(12, 'Rosae Nobile', 19.00, 2, 'attivo', 'prova');
+
+INSERT INTO `ordine`
+(`id`,`id_utente`, `stato_ordine`, `totale_prodotti`, `costo_spedizione`, `totale_finale`, `indirizzo_spedizione`, `metodo_pagamento`, `id_transazione`, `data_creazione`)
+VALUES
+(1, 4, 'in_attesa', 3.00, 10.50, 40.50, 'indirizzo', 'GooglePay', '1', NOW());
+
+INSERT INTO `ordine_elemento`
+(`id`, `id_ordine`, `id_vino`, `nome_vino_storico`, `quantita`, `prezzo_acquisto`)
+VALUES
+(1, 1, 6, 'Manzoni Bianco', 2, 30.00);
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
