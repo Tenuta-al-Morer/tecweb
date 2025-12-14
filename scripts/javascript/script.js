@@ -416,4 +416,105 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    /* ==========================================
+     * 7. USER DASHBOARD (Area Riservata)
+     * ========================================== */
+    
+    // A. Gestione Navigazione Sidebar (Schede)
+    const userNavLinks = document.querySelectorAll('.user-nav-link');
+    const userSections = document.querySelectorAll('.content-section');
+
+    // Funzione per mostrare la sezione corretta
+    const showUserSection = (sectionId) => {
+        // 1. Nascondi tutte le sezioni
+        userSections.forEach(section => {
+            section.classList.remove('is-visible');
+            section.classList.add('is-hidden');
+        });
+
+        // 2. Mostra la sezione target
+        const targetSection = document.getElementById(sectionId);
+        if (targetSection) {
+            targetSection.classList.remove('is-hidden');
+            targetSection.classList.add('is-visible');
+        }
+    };
+
+    if (userNavLinks.length > 0) {
+        userNavLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                const targetId = link.getAttribute('data-section');
+                
+                // Aggiorna classi menu attivo
+                userNavLinks.forEach(nav => nav.classList.remove('is-active'));
+                link.classList.add('is-active');
+
+                // Cambia URL senza ricaricare (utile se l'utente aggiorna la pagina)
+                history.pushState(null, '', '#' + targetId);
+
+                // Mostra il contenuto
+                showUserSection(targetId);
+            });
+        });
+
+        // Gestione Reload pagina: se c'è un #hash nell'URL (es. user.php#ordini), apri quella tab
+        const currentHash = window.location.hash.replace('#', '');
+        if (currentHash) {
+            const activeLink = document.querySelector(`.user-nav-link[data-section="${currentHash}"]`);
+            if (activeLink) {
+                // Simula il click o attiva manualmente
+                userNavLinks.forEach(nav => nav.classList.remove('is-active'));
+                activeLink.classList.add('is-active');
+                showUserSection(currentHash);
+            }
+        }
+    }
+
+    // B. Gestione Espansione Ordini (Mostra/Nascondi Dettagli)
+    const orderTable = document.querySelector('.order-summary-table');
+    
+    if (orderTable) {
+        orderTable.addEventListener('click', (e) => {
+            // Cerchiamo se il click è avvenuto dentro un bottone toggle
+            const toggleButton = e.target.closest('.toggle-details-btn');
+            
+            if (toggleButton) {
+                e.preventDefault();
+                
+                // Recuperiamo l'ID dell'ordine dal bottone
+                const orderId = toggleButton.getAttribute('data-order-id');
+                // Troviamo la riga dei dettagli corrispondente
+                const detailRow = document.getElementById('details-row-' + orderId);
+                const icon = toggleButton.querySelector('i');
+                
+                if (detailRow) {
+                    // Toggle visibilità
+                    const isHidden = detailRow.classList.contains('is-hidden');
+                    
+                    if (isHidden) {
+                        // APRI
+                        detailRow.classList.remove('is-hidden');
+                        toggleButton.setAttribute('aria-expanded', 'true');
+                        // Cambia icona
+                        if(icon) {
+                            icon.classList.remove('fa-chevron-down');
+                            icon.classList.add('fa-chevron-up');
+                        }
+                    } else {
+                        // CHIUDI
+                        detailRow.classList.add('is-hidden');
+                        toggleButton.setAttribute('aria-expanded', 'false');
+                        // Cambia icona
+                        if(icon) {
+                            icon.classList.remove('fa-chevron-up');
+                            icon.classList.add('fa-chevron-down');
+                        }
+                    }
+                }
+            }
+        });
+    }
+
 });

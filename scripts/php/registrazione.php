@@ -81,11 +81,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 } 
                 else if($ris == 1){
                     
-                    $_SESSION['utente'] = $_POST["email"];
-                    
-                    
                     header("location: login.php?success=1"); 
-                    
                     exit();
                 } 
                 else {

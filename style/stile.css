@@ -1641,3 +1641,256 @@ Sezione Admin
   color: #000;
   border-color: goldenrod;
 }
+
+/* =========================================
+   AREA RISERVATA UTENTE (Nuovo Stile)
+   ========================================= */
+
+.user-dashboard-container {
+    display: flex;
+    max-width: 1400px; /* Larghezza massima per non essere troppo dispersivo */
+    margin: 2rem auto;
+    padding: 0 20px; /* Padding laterale */
+    gap: 2rem;
+}
+
+.dashboard-sidebar {
+    flex: 0 0 250px; /* Larghezza fissa per il menu desktop */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-right: 1px solid var(--bordercolor);
+}
+
+.user-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.user-nav-list li {
+    margin-bottom: 0.5rem;
+}
+
+.user-nav-link {
+    display: block;
+    padding: 0.8rem 1rem;
+    text-decoration: none;
+    color: var(--txtcolor);
+    font-weight: 500;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s, border-left 0.3s;
+    border-left: 3px solid transparent;
+}
+
+.user-nav-link:hover {
+    background-color: var(--warm-black);
+    color: var(--pure-white);
+}
+
+.user-nav-link.is-active {
+    background-color: var(--gold-focus);
+    color: var(--gold-color);
+    font-weight: 700;
+    border-left-color: var(--gold-color);
+}
+
+.dashboard-content {
+    flex-grow: 1;
+    padding: 2rem 0;
+}
+
+.dashboard-content h1 {
+    font-size: 2.5rem;
+    color: var(--gold-color);
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-content h2 {
+    font-size: 1.8rem;
+    color: var(--pure-white);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-top: 1px solid var(--gray-medium);
+    padding-top: 1rem;
+}
+
+.content-section {
+    transition: opacity 0.3s ease;
+}
+
+.is-hidden {
+    display: none;
+    opacity: 0;
+}
+
+.is-visible {
+    display: block;
+    opacity: 1;
+}
+
+.logout-form {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--bordercolor);
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: var(--btn-red-bg);
+    color: var(--btn-red-text);
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border: none;
+    width: 100%;
+    margin-top: 0; /* Sovrascrive .btn-primary */
+}
+
+.logout-btn:hover {
+    background-color: var(--btn-red-hover);
+    color: var(--pure-white);
+}
+
+/* TABLE STYLES SPECIFICI PER GLI ORDINI */
+
+.order-summary-table thead th {
+    background-color: var(--gold-focus);
+    color: var(--gold-color);
+}
+
+.order-summary-table tbody td {
+    vertical-align: middle;
+}
+
+.order-status-badge {
+    display: inline-block;
+    padding: 0.3em 0.8em;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* Stili badge per gli stati (come da ENUM nel DB) */
+.status-in_attesa { background-color: #555; color: #fff; }
+.status-pagato { background-color: #28a745; color: #fff; } /* Verde scuro */
+.status-in_preparazione { background-color: #ffc107; color: #333; } /* Giallo */
+.status-spedito { background-color: #007bff; color: #fff; } /* Blu */
+.status-consegnato { background-color: #17a2b8; color: #fff; } /* Azzurro */
+.status-annullato { background-color: var(--btn-red-bg); color: #fff; } /* Rosso */
+
+/* DETTAGLIO ORDINE NASCOSTO */
+
+.order-details-row {
+    background-color: var(--gray-dark);
+}
+
+.order-details-cell {
+    padding: 1rem;
+    border-top: none !important;
+}
+
+.details-content {
+    display: flex;
+    gap: 3rem;
+    padding: 1rem 0;
+}
+
+.details-section {
+    flex: 1;
+}
+
+.details-section h4 {
+    color: var(--gold-color);
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+}
+
+.details-products-list {
+    list-style: none;
+    padding: 0;
+}
+
+.details-products-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px dotted var(--gray-medium);
+    display: flex;
+    justify-content: space-between;
+}
+
+.details-products-list li:last-child {
+    border-bottom: none;
+}
+
+.details-summary {
+    text-align: right;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+.details-summary p {
+    margin: 0.3rem 0;
+}
+
+.details-summary strong {
+    color: var(--gold-color);
+}
+
+
+/* =========================================
+   MEDIA QUERIES PER RESPONSIVE (Area Riservata)
+   ========================================= */
+
+@media screen and (max-width: 940px) {
+    .user-dashboard-container {
+        flex-direction: column;
+        margin: 1rem auto;
+        padding: 0 10px;
+    }
+
+    .dashboard-sidebar {
+        flex: 1 1 auto;
+        width: 100%;
+        border-right: none;
+        padding: 0 0 1rem 0;
+    }
+
+    .user-nav-list {
+        display: flex;
+        overflow-x: auto; /* Abilita lo scroll orizzontale */
+        white-space: nowrap;
+        gap: 0.5rem;
+        padding-bottom: 10px; /* Spazio per l'ombra dello scroll */
+    }
+    
+    .user-nav-list li {
+        flex-shrink: 0;
+        margin-bottom: 0;
+    }
+
+    .user-nav-link {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .dashboard-content {
+        padding: 1rem 0;
+    }
+
+    .logout-form {
+        display: none; /* Nascondiamo il logout dal menu a schede (rimane nell'header del sito se implementato) */
+    }
+
+    .dashboard-content h1 {
+        font-size: 2rem;
+    }
+
+    /* Adattamento per i dettagli dell'ordine su mobile */
+    .details-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}

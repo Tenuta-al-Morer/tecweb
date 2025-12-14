@@ -72,19 +72,55 @@
         </div>
     </header>
 
-    <main id="content">  
-        <div class="auth-container">
-            <h1>Benvenuto nella tua Area Riservata</h1>
-            
-            <p>
-                Sei loggato come: <strong>[email_utente]</strong>
-            </p>
-            
-            <form action="logout.php" method="POST" class="auth-form">
-                <button type="submit" class="btn-primary btn-red">
-                    LOGOUT (ESCI)
-                </button>
-            </form>
+    <main id="content"> 
+        <div class="user-dashboard-container">
+            <aside class="dashboard-sidebar">
+                <h2 class="visually-hidden">Menu Area Personale</h2>
+                <nav>
+                    <ul class="user-nav-list">
+                        <li><a href="#dashboard" class="user-nav-link is-active" data-section="dashboard">Dashboard/Riepilogo</a></li>
+                        <li><a href="#ordini" class="user-nav-link" data-section="ordini">I Miei Ordini</a></li>
+                        <li><a href="#dati" class="user-nav-link" data-section="dati">Dati Personali</a></li>
+                        <li><a href="#sicurezza" class="user-nav-link" data-section="sicurezza">Sicurezza/Accesso</a></li>
+                        <li>
+                            <form action="logout.php" method="POST" class="logout-form">
+                                <button type="submit" class="btn-secondary logout-btn">
+                                    <i class="fas fa-sign-out-alt" aria-hidden="true"></i> Logout
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <div class="dashboard-content">
+                <h1>Benvenuto nella tua Area Riservata</h1>
+                
+                <p>
+                    Sei loggato come: <strong>[email_utente]</strong>. Usa il menu a sinistra per navigare.
+                </p>
+
+                <section id="dashboard" class="content-section is-visible">
+                    <h2>Riepilogo Attività</h2>
+                    <div class="alert-box">
+                        <p><i class="fas fa-info-circle" aria-hidden="true"></i> Qui troverai una panoramica dei tuoi ultimi ordini, prodotti preferiti e dati principali. (In sviluppo...)</p>
+                    </div>
+                </section>
+
+                <section id="ordini" class="content-section is-hidden">
+                    <h2>I Miei Ordini</h2>
+                    [TABELLA_ORDINI]
+                </section>
+                
+                <section id="dati" class="content-section is-hidden">
+                    <h2>Dati Personali</h2>
+                    </section>
+
+                <section id="sicurezza" class="content-section is-hidden">
+                    <h2>Modifica Password</h2>
+                    </section>
+                
+            </div>
         </div>
     </main>
 

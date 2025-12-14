@@ -61,7 +61,9 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
             else if(is_array($ris)){
                 
                 $_SESSION['utente'] = $ris['email']; 
+                $_SESSION['utente_id'] = $ris['id']; 
                 $_SESSION['ruolo'] = $ris['ruolo'];  
+                $_SESSION['nome'] = $ris['nome']; 
 
                 
                 if(isset($_COOKIE['backToOrigin'])){

@@ -326,5 +326,47 @@ class DBConnection {
             return false;
         }
     }
+
+    // RECUPERO GLI ORDINI DI UN UTENTE
+    public function getOrdiniUtente($id_utente) {
+        $ordini = [];
+        
+        // 1. Query per gli ordini principali (dal più recente)
+        $queryOrdini = "SELECT * FROM ordine WHERE id_utente = ? ORDER BY data_creazione DESC";
+        $stmtOrd = $this->connection->prepare($queryOrdini);
+        if (!$stmtOrd) { return []; }
+
+        $stmtOrd->bind_param("i", $id_utente);
+        $stmtOrd->execute();
+        $resultOrd = $stmtOrd->get_result();
+
+        while ($ordine = $resultOrd->fetch_assoc()) {
+            $ordine['elementi'] = $this->getDettagliOrdine($ordine['id']);
+            $ordini[] = $ordine;
+        }
+        
+        $stmtOrd->close();
+        return $ordini;
+    }
+
+    // RECUPERO I DETTAGLI (ELEMENTI) DI UN SINGOLO ORDINE
+    private function getDettagliOrdine($id_ordine) {
+        $elementi = [];
+        
+        $queryElementi = "SELECT * FROM ordine_elemento WHERE id_ordine = ?";
+        $stmtElem = $this->connection->prepare($queryElementi);
+        if (!$stmtElem) { return []; }
+
+        $stmtElem->bind_param("i", $id_ordine);
+        $stmtElem->execute();
+        $resultElem = $stmtElem->get_result();
+
+        while ($elemento = $resultElem->fetch_assoc()) {
+            $elementi[] = $elemento;
+        }
+
+        $stmtElem->close();
+        return $elementi;
+    }
 }
 ?>
