@@ -129,46 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================
-     * 3. UTILITIES (Back button, Scroll top, Links)
+     * 3. UTILITIES (Scroll top, Links)
      * ========================================== */
-    const backBtn = document.getElementById('back-link');
-    
-    if (backBtn) {
-        const params = new URLSearchParams(window.location.search);
-        
-        
-        const action = params.get('action');
-
-        if (action === 'close') {
-            backBtn.innerHTML = '<i class="fas fa-times"></i> Chiudi e torna alla registrazione';
-            backBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.close();
-            });
-
-        } else {
-            
-            const returnUrl = params.get('return_to');
-
-            if (returnUrl) {
-                backBtn.href = returnUrl;
-            } else {
-                
-                const isInSubfolder = window.location.pathname.includes('/html/') || window.location.pathname.split('/').length > 2;
-                backBtn.href = isInSubfolder ? 'index.php' : 'index.php';
-
-                backBtn.addEventListener('click', (e) => {
-                    const referrer = document.referrer;
-                    const currentDomain = window.location.hostname; 
-
-                    if (referrer && referrer.includes(currentDomain)) {
-                        e.preventDefault();
-                        window.history.back();
-                    }
-                });
-            }
-        }
-    }
 
     const backToTopBtn = document.getElementById('backToTopBtn');
     const mainNavBar = document.querySelector('.main-nav-bar');
