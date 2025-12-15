@@ -179,15 +179,22 @@ body.light-mode select:focus {
 .navigationHelp {
     position: absolute;
     text-indent: -999em;
+    color: var(--pure-white);
 }
 
 .navigationHelp:focus {
     position: static;
     text-indent: 0;
-    color: var(--txtcolor);
+    color: var(--pure-white);
     background-color: var(--navbgcolor); 
     padding: 0.5em 0.3em;
     border-radius: 3px;
+}
+
+
+body.light-mode .navigationHelp,
+body.light-mode .navigationHelp:focus {
+    color: var(--pure-white);
 }
 
 .sr-only {
