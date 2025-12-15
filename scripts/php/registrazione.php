@@ -5,8 +5,16 @@ require_once 'common.php';
 require_once 'DBConnection.php'; 
 use DB\DBConnection;
 
-if (!isset($_SESSION['utente_id'])) { 
-    header("location: login.php");
+if (!isset($_SESSION['utente_id'])) {
+    $htmlContent = file_get_contents('../../html/registrazione.html');
+
+    // pulizia placeholders (o ripristino valori se stai facendo POST)
+    $htmlContent = str_replace("[err]", "", $htmlContent);
+    $htmlContent = str_replace("[nome]", htmlspecialchars($_POST['nome'] ?? ''), $htmlContent);
+    $htmlContent = str_replace("[cognome]", htmlspecialchars($_POST['cognome'] ?? ''), $htmlContent);
+    $htmlContent = str_replace("[email]", htmlspecialchars($_POST['email'] ?? ''), $htmlContent);
+
+    echo $htmlContent;
     exit();
 }
 
@@ -19,6 +27,7 @@ if ($ruoloUtente !== 'user') {
     header("location: 403.php");
     exit();
 }
+
 
 $db = new DBConnection();
 
