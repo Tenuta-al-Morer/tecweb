@@ -363,6 +363,12 @@ body.light-mode select:focus {
 
 .alert-box i { color: var(--gold-color); margin-right: 0.5rem; font-size: 1.2rem; }
 
+.alert-box a {
+    color: var(--gold-color); text-decoration: none; font-weight: 700;
+    border-bottom: 1px solid; border-bottom-color: var(--gold-color);
+    transition: border-bottom-color 0.3s;
+}
+
 /* =========================================
    FORMS 
    ========================================= */

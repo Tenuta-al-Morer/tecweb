@@ -135,7 +135,7 @@ $dashboardHTML = '
 // --- COSTRUZIONE TABELLA ORDINI ---
 $tabellaOrdini = '';
 if (empty($ordini)) {
-    $tabellaOrdini = '<div class="alert-box"><p><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Non hai ancora effettuato ordini. Visita la sezione <a href="vini.php">Vini</a>!</p></div>';
+    $tabellaOrdini = '<div class="alert-box"><p><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Non hai ancora effettuato ordini. Visita la sezione <a href="vini.php">Vini!</a></p></div>';
 } else {
     $tabellaOrdini .= '<div class="table-container"><table class="table-data order-summary-table"><caption>Storico dei tuoi ordini</caption><thead><tr><th>N. Ordine</th><th>Data</th><th>Stato</th><th class="td_richiesta_degustazione">Totale</th><th class="td_richiesta_degustazione">Dettagli</th></tr></thead><tbody>';
 
