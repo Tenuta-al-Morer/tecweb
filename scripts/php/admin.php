@@ -19,6 +19,7 @@ if ($ruoloUtente !== 'admin') {
 
 $htmlContent = caricaPagina('../../html/admin.html');
 $emailUtente = htmlspecialchars($_SESSION['utente']);
+$nomeUtente = htmlspecialchars($_SESSION['nome']);
 
 // 1) Leggo vini dal DB
 $db = new DBConnection();
@@ -46,6 +47,7 @@ foreach ($viniArray as $vino) {
 }
 
 // 3) Replace placeholders
+$htmlContent = str_replace("[nome_utente]", $nomeUtente, $htmlContent);
 $htmlContent = str_replace("[email_utente]", $emailUtente, $htmlContent);
 $htmlContent = str_replace("[riferimento]", $ruoloUtente, $htmlContent);
 $htmlContent = str_replace("[riga_vini]", $vini, $htmlContent);
