@@ -1681,7 +1681,7 @@ Sezione Admin
 }
 
 .dashboard-sidebar {
-    flex: 0 0 250px;
+    flex: 0;
     padding-top: 2rem;
     padding-bottom: 2rem;
     border-right: 1px solid var(--bordercolor);
