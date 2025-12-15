@@ -289,7 +289,9 @@ ALTER TABLE `ordine_elemento`
 --
 
 INSERT INTO `utente` (`id`, `nome`, `cognome`, `email`, `password`, `data_registrazione`, `ruolo`) VALUES
-(4, 'Michele', 'Stevanin', 'michele.stevanin@gmail.com', '$2y$12$AUKWqbIW7VPzufNsQjq7c.glvZMbs4h32/NPuDjuRJtZSLf5vN8fu', '2025-12-08 17:34:01', 'user');
+(4, 'Michele', 'Stevanin', 'michele.stevanin@gmail.com', '$2y$12$AUKWqbIW7VPzufNsQjq7c.glvZMbs4h32/NPuDjuRJtZSLf5vN8fu', '2025-12-08 17:34:01', 'user'),
+(5, 'TestAdmin', 'Admin', 'admin@test.com', '$2y$10$C4nvcMK.3tnfALXz9sUmmeT.bJZxczgp.A3L1okyuOZf6NjWw561m', 'admin'),
+(6, 'TestUser', 'User', 'user@test.com', '$2y$10$CubhFtqfSPXVCYsGn4Y5B.MOwk80YcjYZz3hS8fAtb4xdPygFNy/G', 'user');
 
 INSERT INTO `vino` (`id`, `nome`, `prezzo`, `quantita_stock`, `stato`, `img`) VALUES
 (1, 'Raboso del Piave', 18.50, 2, 'attivo', 'prova'),

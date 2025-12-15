@@ -6,59 +6,94 @@ require_once 'DBConnection.php';
 use DB\DBConnection;
 
 /* =========================
- * 1) REGISTRAZIONE (GET/POST)
+ * FUNZIONE: stampa form registrazione
  * ========================= */
-
-// Se NON sei loggato, questa pagina fa da "registrazione"
-if (!isset($_SESSION['utente_id'])) {
-
-    // GET -> mostra il form
-    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-        $html = file_get_contents('../../html/registrazione.html');
-        $html = str_replace("[err]", "", $html);
-        $html = str_replace("[nome]", "", $html);
-        $html = str_replace("[cognome]", "", $html);
-        $html = str_replace("[email]", "", $html);
-        echo $html;
-        exit();
-    }
-
-    // POST -> prova a registrare nel DB usando la tua funzione già esistente
-    $db = new DBConnection();
-
-    // ✅ usa la tua funzione "registrati"
-    $esito = $db->registrati($_POST);
-
-    if ($esito === true || $esito === 1 || $esito === "OK") {
-    header("location: login.php");
-    exit();
-    }
-
-    // ❌ ERRORE -> ristampa form con errore e campi ripopolati
+function stampaRegistrazione($errHtml = "", $nome = "", $cognome = "", $email = "") {
     $html = file_get_contents('../../html/registrazione.html');
-    $html = str_replace("[err]", is_string($esito) ? $esito : "<p>Errore durante la registrazione.</p>", $html);
-    $html = str_replace("[nome]", htmlspecialchars($_POST['nome'] ?? ''), $html);
-    $html = str_replace("[cognome]", htmlspecialchars($_POST['cognome'] ?? ''), $html);
-    $html = str_replace("[email]", htmlspecialchars($_POST['email'] ?? ''), $html);
+    $html = str_replace("[err]", $errHtml, $html);
+    $html = str_replace("[nome]", htmlspecialchars($nome), $html);
+    $html = str_replace("[cognome]", htmlspecialchars($cognome), $html);
+    $html = str_replace("[email]", htmlspecialchars($email), $html);
     echo $html;
     exit();
 }
 
-    
+/* =========================
+ * 1) REGISTRAZIONE (GET/POST) se NON loggato
+ * ========================= */
+if (!isset($_SESSION['utente_id'])) {
 
+    // GET -> mostra form vuoto
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        stampaRegistrazione("", "", "", "");
+    }
+
+    // POST -> gestisci registrazione
+    $nome     = trim($_POST['nome'] ?? '');
+    $cognome  = trim($_POST['cognome'] ?? '');
+    $email    = trim($_POST['email'] ?? '');
+    $password = $_POST['password'] ?? '';
+    $confirm  = $_POST['confirm-password'] ?? '';   // nome corretto dal tuo HTML
+    $privacy  = isset($_POST['privacy']);           // checkbox
+
+    // Validazioni minime
+    if ($nome === '' || $cognome === '' || $email === '' || $password === '' || $confirm === '') {
+        stampaRegistrazione("<p>Devi compilare tutti i campi.</p>", $nome, $cognome, $email);
+    }
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        stampaRegistrazione("<p>Email non valida.</p>", $nome, $cognome, $email);
+    }
+    if (strlen($password) < 8) {
+        stampaRegistrazione("<p>La password deve essere di almeno 8 caratteri.</p>", $nome, $cognome, $email);
+    }
+    if ($password !== $confirm) {
+        stampaRegistrazione("<p>Le password non coincidono.</p>", $nome, $cognome, $email);
+    }
+    if (!$privacy) {
+        stampaRegistrazione("<p>Devi accettare la Privacy Policy.</p>", $nome, $cognome, $email);
+    }
+
+    // Hash password (fondamentale perché la login usa password_verify)
+    $hash = password_hash($password, PASSWORD_DEFAULT);
+
+    try {
+        $db = new DBConnection();
+
+        $ris = $db->registerUser($nome, $cognome, $email, $hash);
+
+        $db->closeConnection();
+
+        // OK -> vai al login
+        if ($ris === 1) {
+            header("Location: login.php");
+            exit();
+        }
+
+        // Email già presente
+        if ($ris === -1) {
+            stampaRegistrazione("<p>L'email inserita è già registrata.</p>", $nome, $cognome, $email);
+        }
+
+        // Errore generico (0 o altro)
+        stampaRegistrazione("<p>Errore durante la registrazione. Riprova.</p>", $nome, $cognome, $email);
+
+    } catch (Exception $e) {
+        stampaRegistrazione("<p>Errore interno. Riprova più tardi.</p>", $nome, $cognome, $email);
+    }
+}
 
 /* =========================
  * 2) DASHBOARD UTENTE (solo loggato)
  * ========================= */
 
-$nomeUtenteSessione  = $_SESSION['nome']  ?? 'Utente';
+$nomeUtenteSessione  = $_SESSION['nome'] ?? 'Utente';
 $emailUtenteSessione = $_SESSION['utente'] ?? '';
 
-$idUtente   = $_SESSION['utente_id'];
+$idUtente    = $_SESSION['utente_id'];
 $ruoloUtente = $_SESSION['ruolo'] ?? '';
 
 if ($ruoloUtente !== 'user') {
-    header("location: 403.php");
+    header("Location: 403.php");
     exit();
 }
 
@@ -146,7 +181,6 @@ $dashboardHTML = '
 </div>
 
 <div class="dashboard-grid">
-    
     <a href="#ordini" onclick="document.querySelector(\'[data-section=ordini]\').click()" class="feature-card card-link border-gold">
         <div class="card-icon"><i class="fas fa-wallet"></i></div>
         <h3>Il Tuo Valore</h3>
@@ -166,7 +200,6 @@ $dashboardHTML = '
         <p class="stat-number text-md">' . htmlspecialchars($infoUtente['nome'] ?? $nomeUtenteSessione) . '</p>
         <p class="profile-email">' . htmlspecialchars($infoUtente['email'] ?? $emailUtenteSessione) . '</p>
     </a>
-
 </div>
 ';
 
