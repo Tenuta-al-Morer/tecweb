@@ -407,11 +407,14 @@ body.light-mode select:focus {
     transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
 
-/* MODIFICA FOCUS STANDARD: Aggiunto select:focus */
-.form-group input:focus, .form-group textarea:focus, select:focus {
-    outline: none; border-color: var(--gold-color);
-    box-shadow: 0 0 0 2px var(--focus-gold); 
-    background-color: var(--navbgcolor); 
+/* Focus: NON rimuovere outline per checkbox/radio */
+.form-group input:not([type="checkbox"]):not([type="radio"]):focus,
+.form-group textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--gold-color);
+    box-shadow: 0 0 0 2px var(--focus-gold);
+    background-color: var(--navbgcolor);
 }
 
 ::-webkit-calendar-picker-indicator {
@@ -1306,7 +1309,7 @@ footer a:visited { color: var(--gold-color); }
     padding-right: 2.5rem; 
 }
 
-.auth-form input:focus {
+.auth-form input:not([type="checkbox"]):not([type="radio"]):focus {
     outline: none;
     border-color: var(--gold-color);
     box-shadow: 0 0 5px var(--focus-gold);
@@ -1381,6 +1384,13 @@ input:-webkit-autofill:focus {
     height: 1.1em;
     cursor: pointer;
     accent-color: var(--gold-color); 
+}
+
+/* Focus visibile per checkbox (fallback focus + focus-visible) */
+.checkbox-container input[type="checkbox"]:focus,
+.checkbox-container input[type="checkbox"]:focus-visible {
+    outline: 3px solid var(--gold-color);
+    outline-offset: 3px;
 }
 
 .forgot-password,
