@@ -59,7 +59,8 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
                 echo ripristinoInput($loginHTML);
             }
             else if(is_array($ris)){
-                
+
+                session_regenerate_id(true);                
                 $_SESSION['utente'] = $ris['email']; 
                 $_SESSION['utente_id'] = $ris['id']; 
                 $_SESSION['ruolo'] = $ris['ruolo'];  
