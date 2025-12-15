@@ -159,11 +159,13 @@ body.light-mode .table-data tbody tr:hover {
 }
 
 /* MODIFICA LIGHT MODE: Aggiunto select */
-body.light-mode .form-group input,
+/* NUOVO CODICE CORRETTO */
+body.light-mode .form-group input:not([type="checkbox"]):not([type="radio"]), /* Aggiunta specificità qui */
 body.light-mode .form-group textarea,
 body.light-mode select {
     background-color: var(--bodybgcolor); 
     border-color: var(--txtcolor); 
+    color: var(--txtcolor); /* Assicura che anche il testo sia leggibile */
 }
 
 /* MODIFICA LIGHT MODE FOCUS: Aggiunto select:focus */
@@ -405,7 +407,9 @@ body.light-mode select:focus {
     color: var(--txtcolor); font-family: 'Lexend', sans-serif;
 }
 
-.form-group input, .form-group textarea, select {
+.form-group input:not([type="checkbox"]):not([type="radio"]),
+.form-group textarea,
+select {
     width: 100%; padding: 0.8rem;
     background-color: var(--navbgcolor); color: var(--txtcolor);
     border: 1px solid var(--bordercolor); border-radius: 2px;
@@ -1320,6 +1324,13 @@ footer a:visited { color: var(--gold-color); }
     border-color: var(--gold-color);
     box-shadow: 0 0 5px var(--focus-gold);
 }
+
+.checkbox-container input[type="checkbox"]:focus,
+.checkbox-container input[type="checkbox"]:focus-visible {
+    outline: 3px solid var(--gold-color);
+    outline-offset: 3px;
+}
+
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
