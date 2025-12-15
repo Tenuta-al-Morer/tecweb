@@ -828,7 +828,7 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
         border: none;
     }
 
-    .table-data caption {
+    .table-early-break caption {
         position: absolute;
         text-indent: -999em;
         border-bottom: none;
