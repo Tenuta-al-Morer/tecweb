@@ -15,7 +15,7 @@ $ruoloUtente = $_SESSION['ruolo'];
 $nomeUtenteSessione = isset($_SESSION['nome']) ? $_SESSION['nome'] : 'Utente';
 $emailUtenteSessione = isset($_SESSION['utente']) ? $_SESSION['utente'] : '';
 
-if ($ruoloUtente !== 'user') {
+if ($ruoloUtente !== 'user' and $ruoloUtente !== 'admin' and $ruoloUtente !== 'amministratore') {
     header("location: 403.php");
     exit();
 }
