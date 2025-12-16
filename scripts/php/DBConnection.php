@@ -287,7 +287,7 @@ class DBConnection {
 
         try {
             // A. Creo ordine
-            $stmtOrd = $this->connection->prepare("INSERT INTO ordine (id_utente, totale_prodotti, costo_spedizione, totale_finale, indirizzo_spedizione, metodo_pagamento, stato_ordine) VALUES (?, ?, ?, ?, ?, ?, 'pagato')");
+            $stmtOrd = $this->connection->prepare("INSERT INTO ordine (id_utente, totale_prodotti, costo_spedizione, totale_finale, indirizzo_spedizione, metodo_pagamento, stato_ordine) VALUES (?, ?, ?, ?, ?, ?, 'in_attesa')");
             $stmtOrd->bind_param("idddss", $id_utente, $totale_prodotti, $costo_spedizione, $totale_finale, $indirizzo_spedizione, $metodo_pagamento);
             $stmtOrd->execute();
             $id_ordine = $stmtOrd->insert_id;
@@ -334,6 +334,21 @@ class DBConnection {
         } else {
             return false;
         }
+    }
+
+    // FUNZIONE PER AGGIORNARE LO STATO (Per Admin)
+    public function aggiornaStatoOrdine($id_ordine, $nuovo_stato) {
+        // Verifica che lo stato sia uno di quelli permessi dall'ENUM
+        $stati_permessi = ['in_attesa', 'approvato', 'annullato'];
+        if (!in_array($nuovo_stato, $stati_permessi)) {
+            return false;
+        }
+
+        $stmt = $this->connection->prepare("UPDATE ordine SET stato_ordine = ? WHERE id = ?");
+        $stmt->bind_param("si", $nuovo_stato, $id_ordine);
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
     }
 
     // RECUPERO GLI ORDINI DI UN UTENTE

@@ -72,14 +72,15 @@ function formatDate($dateString) {
 
 function getStatusBadge($stato) {
     $mappatura = [
-        'in_attesa' => 'In attesa di pagamento',
-        'pagato' => 'Pagato/In lavorazione',
-        'in_preparazione' => 'In Preparazione',
-        'spedito' => 'Spedito',
-        'consegnato' => 'Consegnato',
-        'annullato' => 'Annullato'
+        'in_attesa' => 'In attesa', 
+        'approvato' => 'Ordine Approvato',
+        'annullato' => 'Ordine Annullato'
     ];
-    $testo = $mappatura[$stato] ?? 'Sconosciuto';
+    
+    // Testo di fallback
+    $testo = $mappatura[$stato] ?? $stato;
+    
+    // Classe CSS: usa lo stato stesso (es. status-approvato) per i colori
     return '<span class="order-status-badge status-' . $stato . '">' . htmlspecialchars($testo) . '</span>';
 }
 

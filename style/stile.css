@@ -1831,10 +1831,7 @@ Sezione Admin
 
 /* Stili badge con variabili */
 .status-in_attesa { background-color: var(--gray-light); color: var(--pure-white); }
-.status-pagato { background-color: var(--color-green); color: var(--pure-white); } 
-.status-in_preparazione { background-color: var(--color-yellow); color: var(--pure-black); } 
-.status-spedito { background-color: var(--color-blue); color: var(--pure-white); } 
-.status-consegnato { background-color: var(--color-cyan); color: var(--pure-white); } 
+.status-approvato { background-color: var(--color-green); color: var(--pure-white); } 
 .status-annullato { background-color: var(--btn-red-bg); color: var(--pure-white); } 
 
 /* DETTAGLIO ORDINE NASCOSTO */
