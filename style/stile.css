@@ -1978,3 +1978,167 @@ a.feature-card.card-link {
 .btn-submit {
     margin-top: 1rem;
 }
+
+/* =========================================
+   PROFILO UTENTE E DANGER ZONE
+   ========================================= */
+   
+.profile-layout {
+    display: grid;
+    gap: 2rem;
+    max-width: 800px;
+}
+
+.profile-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px var(--card-shadow);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--bordercolor);
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    background-color: var(--gold-color);
+    color: var(--pure-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    box-shadow: none;
+}
+
+.profile-title h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--card-title-color);
+}
+
+.role-badge {
+    display: inline-block;
+    margin-top: 0.5rem;
+    background-color: var(--code-bg);
+    color: var(--txtcolor);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+}
+
+.profile-body {
+    display: grid;
+    gap: 1rem;
+}
+
+.profile-info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px dashed var(--bordercolor);
+}
+
+.profile-info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    color: var(--diversity-color);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-label i {
+    color: var(--gold-color);
+}
+
+.info-value {
+    font-weight: 700;
+    color: var(--txtcolor);
+}
+
+.danger-zone {
+    border: 1px solid var(--color-red);
+    background-color: color-mix(in srgb, var(--color-red), transparent 90%);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.danger-zone h3 {
+    color: var(--txtcolor);
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.danger-zone p {
+    color: var(--txtcolor);
+    margin-bottom: 0.5rem;
+}
+
+.danger-zone .small-text {
+    font-size: 0.85rem;
+    color: var(--txtcolor);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.checkbox-wrapper-delete {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.checkbox-wrapper-delete input[type="checkbox"] {
+    margin-top: 0.3rem;
+    accent-color: var(--color-red);
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.checkbox-wrapper-delete label {
+    font-weight: 500;
+    color: var(--txtcolor);
+    cursor: pointer;
+}
+
+.btn-danger-delete {
+    background-color: var(--btn-red-bg);
+    color: var(--btn-red-text);
+    border: none;
+    padding: 1rem 1.5rem;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.btn-danger-delete:hover {
+    background-color: var(--btn-red-hover);
+}
+
+.btn-danger-delete:active {
+    background-color: var(--btn-red-active);
+}

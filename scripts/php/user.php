@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 require_once 'common.php';
 require_once 'DBConnection.php'; 
@@ -22,8 +21,24 @@ if ($ruoloUtente !== 'user' and $ruoloUtente !== 'admin' and $ruoloUtente !== 'a
 
 $db = new DBConnection();
 
+// --- LOGICA ELIMINAZIONE ACCOUNT ---
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['azione_delete']) && $_POST['azione_delete'] == 'elimina_definitivamente') {
+    // Verifica ulteriore se la checkbox è stata spuntata (anche se c'è required in HTML)
+    if (isset($_POST['conferma_irreversibile'])) {
+        if ($db->eliminaAccount($idUtente)) {
+            // Logout forzato e redirect
+            session_unset();
+            session_destroy();
+            header("location: home.php?msg=account_deleted");
+            exit();
+        } else {
+            $msgDelete = '<div class="alert error alert-msg">Errore durante l\'eliminazione. Riprova più tardi.</div>';
+        }
+    }
+}
+
 // --- LOGICA CAMBIO PASSWORD ---
-$msgPassword = ''; // Variabile per messaggi successo/errore
+$msgPassword = ''; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['azione_pw']) && $_POST['azione_pw'] == 'cambia') {
     $vecchia = $_POST['vecchia_password'] ?? '';
@@ -76,11 +91,7 @@ function getStatusBadge($stato) {
         'approvato' => 'Ordine Approvato',
         'annullato' => 'Ordine Annullato'
     ];
-    
-    // Testo di fallback
     $testo = $mappatura[$stato] ?? $stato;
-    
-    // Classe CSS: usa lo stato stesso (es. status-approvato) per i colori
     return '<span class="order-status-badge status-' . $stato . '">' . htmlspecialchars($testo) . '</span>';
 }
 
@@ -88,7 +99,6 @@ function getStatusBadge($stato) {
 
 // A. Ultimo Ordine
 $ultimoOrdineHTML = '<p class="text-muted">Nessun ordine recente.</p>';
-
 if (!empty($ordini)) {
     $last = $ordini[0];
     $ultimoOrdineHTML = '
@@ -109,27 +119,23 @@ $dashboardHTML = '
 </div>
 
 <div class="dashboard-grid">
-    
     <a href="#ordini" onclick="document.querySelector(\'[data-section=ordini]\').click()" class="feature-card card-link border-gold">
         <div class="card-icon"><i class="fas fa-wallet"></i></div>
         <h3>Il Tuo Valore</h3>
         <p class="stat-number">€ ' . number_format($stats['totale_speso'], 2, ',', '.') . '</p>
         <p class="stat-subtitle">su <strong>' . $stats['num_ordini'] . '</strong> ordini totali</p>
     </a>
-
     <a href="#ordini" onclick="document.querySelector(\'[data-section=ordini]\').click()" class="feature-card card-link border-gold">
         <div class="card-icon"><i class="fas fa-shipping-fast"></i></div>
         <h3>Ultimo Ordine</h3>
         ' . $ultimoOrdineHTML . '
     </a>
-
     <a href="#dati" onclick="document.querySelector(\'[data-section=dati]\').click()" class="feature-card card-link border-gold">
         <div class="card-icon"><i class="fas fa-user-circle"></i></div>
         <h3>Il Tuo Profilo</h3>
         <p class="stat-number text-md">' . htmlspecialchars($infoUtente['nome'] ?? $nomeUtenteSessione) . '</p>
         <p class="profile-email">' . htmlspecialchars($infoUtente['email'] ?? $emailUtenteSessione) . '</p>
     </a>
-
 </div>
 ';
 
@@ -160,21 +166,50 @@ if (empty($ordini)) {
     $tabellaOrdini .= '</tbody></table></div>';
 }
 
-// --- COSTRUZIONE DATI PERSONALI ---
+// --- COSTRUZIONE DATI PERSONALI (Nuovo Layout + Danger Zone) ---
+$inizialeNome = strtoupper(substr($infoUtente['nome'], 0, 1));
+$inizialeCognome = strtoupper(substr($infoUtente['cognome'], 0, 1));
+
 $datiPersonaliHTML = '
-<div class="info-list personal-data-list">
-    <p>
-        <strong>Nome:</strong> &nbsp; ' . htmlspecialchars($infoUtente['nome']) . '
-    </p>
-    <p>
-        <strong>Cognome:</strong> &nbsp; ' . htmlspecialchars($infoUtente['cognome']) . '
-    </p>
-    <p>
-        <strong>Email:</strong> &nbsp; ' . htmlspecialchars($infoUtente['email']) . '
-    </p>
-    <p>
-        <strong>Ruolo:</strong> &nbsp; <span class="text-capitalize">' . htmlspecialchars($ruoloUtente) . '</span>
-    </p>
+<div class="profile-layout">
+    <div class="profile-card">
+        <div class="profile-header">
+            <div class="profile-avatar">' . $inizialeNome . $inizialeCognome . '</div>
+            <div class="profile-title">
+                <h3>' . htmlspecialchars($infoUtente['nome'] . ' ' . $infoUtente['cognome']) . '</h3>
+                <span class="role-badge">' . htmlspecialchars($ruoloUtente) . '</span>
+            </div>
+        </div>
+        <div class="profile-body">
+            <div class="profile-info-item">
+                <span class="info-label"><i class="fas fa-envelope"></i> Email</span>
+                <span class="info-value">' . htmlspecialchars($infoUtente['email']) . '</span>
+            </div>
+            <div class="profile-info-item">
+                <span class="info-label"><i class="fas fa-id-badge"></i> ID Utente</span>
+                <span class="info-value">#' . $idUtente . '</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="danger-zone">
+        <h3><i class="fas fa-exclamation-triangle"></i> Zona Pericolosa</h3>
+        <p>L\'eliminazione dell\'account è <strong>irreversibile</strong>. Perderai l\'accesso all\'area riservata.</p>
+        <p class="small-text">Nota: I tuoi ordini già effettuati rimarranno nei nostri registri per fini fiscali e legali, ma non saranno più associati a questo account.</p>
+        
+        <form action="user.php" method="POST" class="delete-account-form">
+            <input type="hidden" name="azione_delete" value="elimina_definitivamente">
+            
+            <div class="checkbox-wrapper-delete">
+                <input type="checkbox" id="conferma_irreversibile" name="conferma_irreversibile" required>
+                <label for="conferma_irreversibile">Confermo di voler eliminare definitivamente il mio account.</label>
+            </div>
+
+            <button type="submit" class="btn-danger-delete">
+                Elimina il mio account
+            </button>
+        </form>
+    </div>
 </div>';
 
 // --- COSTRUZIONE FORM PASSWORD ---
