@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Esperienze - Tenuta al Morer</title>
+    <title>Area Admin - Tenuta al Morer</title>
     <link rel="icon" href="../../images/logo.ico" type="image/x-icon">
 
     <meta name="description" content="Gestisci la tua area personale, le ordinazioni, le prenotazioni ed eventuali richieste da parte dei clienti.">
@@ -118,21 +118,26 @@
         <section id="section-vini">
             <h2>Richieste vini</h2>
             <div class="table-container">
-                <table class="table-data table-early-break" id="tab-vini" aria-describedby="descrizione-tab-vini">
+                <table class="table-data table-early-break" id="tab-ordini" aria-describedby="descrizione-tab-ordini">
                     <thead>
                         <tr>
-                            <th scope="col" abbr="ID">Codice prodotto</th>
-                            <th scope="col" abbr="Nome">Nome Prodotto</th>
-                            <th scope="col" abbr="Data">Prezzo</th>
-                            <th scope="col" abbr="Quantità">Quantità richiesta</th>
-                            <th scope="col">Stato</th>
+                            <th scope="col" abbr="ID">ID Ordine</th>
+                            <th scope="col" abbr="Utente">ID Utente</th>
+                            <th scope="col" abbr="Stato">Stato Ordine</th>
+                            <th scope="col" abbr="Prodotti">Totale Prodotti</th>
+                            <th scope="col" abbr="Spedizione">Costo Spedizione</th>
+                            <th scope="col" abbr="Totale">Totale Finale</th>
+                            <th scope="col" abbr="Indirizzo">Indirizzo Spedizione</th>
+                            <th scope="col" abbr="Pagamento">Metodo Pagamento</th>
+                            <th scope="col" abbr="Data">Data Creazione</th>
                             <th scope="col" abbr="Gestione">Gestione richiesta</th>
                         </tr>
                     </thead>
-                    <tbody> <!--RIEMPIREMO COMN DB-->
-                        [riga_vini]
+                    <tbody>
+                        [riga_ordini]
                     </tbody>
                 </table>
+
             </div>
         </section>
 

@@ -358,6 +358,28 @@ class DBConnection {
         return $ordini;
     }
 
+
+        // RECUPERO GLI ORDINI DI TUTTI GLI UTENTI (Per Admin)
+    public function getOrdini() {
+        $ordini = [];
+        
+        // 1. Query per gli ordini (dal più recente)
+        $queryOrdini = "SELECT * FROM ordine ORDER BY data_creazione DESC";
+        $stmtOrd = $this->connection->prepare($queryOrdini);
+        if (!$stmtOrd) { return []; }
+
+        $stmtOrd->execute();
+        $resultOrd = $stmtOrd->get_result();
+
+        while ($ordine = $resultOrd->fetch_assoc()) {
+            $ordine['elementi'] = $this->getDettagliOrdine($ordine['id']);
+            $ordini[] = $ordine;
+        }
+        
+        $stmtOrd->close();
+        return $ordini;
+    }
+
     // RECUPERO I DETTAGLI (ELEMENTI) DI UN SINGOLO ORDINE
     private function getDettagliOrdine($id_ordine) {
         $elementi = [];
