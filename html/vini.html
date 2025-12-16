@@ -12,6 +12,7 @@
         
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        
         <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet"> 
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -20,6 +21,7 @@
         <link rel="stylesheet" href="../../style/mini.css" media="screen and (max-width:940px)"> 
         <link rel="stylesheet" href="../../style/stampa.css" media="print">  
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
         <link rel="stylesheet" href="../../style/vini.css" media="screen"> 
     </head>
 
@@ -51,7 +53,7 @@
                 </nav>
 
                 <div class="mobile-icons">
-                    <a href=shop.php">
+                    <a href="shop.php">
                         <i class="fas fa-shopping-bag" aria-hidden="true"></i>
                         <span class="visually-hidden" lang="en">Shop</span>
                     </a>
@@ -76,30 +78,33 @@
             </div>
         </header>
 
-        <main id="content">
-            <div class="hero-vini">
-                <div class="hero-text">
-                    <h1>Scopri la nostra collezione di vini</h1>
-                    <p>Dalle nostre vigne alle vostre tavole, proponiamo vini che uniscono tradizione, qualità e rispetto per la terra.<br>Un percorso fatto di dedizione, pensato per valorizzare ogni carattere del territorio.</p>
+        <main class="vini-main" aria-labelledby="vini-title">
+            <section class="tenuta-hero">
+                <div class="tenuta-hero-inner vini-hero-inner"> 
+                    <h1 class="tenuta-hero-title">Scopri la nostra collezione di vini</h1>
+                    <p class="tenuta-hero-text">
+                        Dalle nostre vigne alle vostre tavole, proponiamo vini che uniscono tradizione, qualità e rispetto per la terra.<br>Un percorso fatto di dedizione, pensato per valorizzare ogni carattere del territorio.
+                    </p>
                 </div>
-            </div>
+            </section>
 
             <section class="wine-section">
                 
                 <section id="red-wines">
-                    <div class="presentazione"> 
-                        <h2>Vini Rossi</h2>
-                        <p>Vini dal carattere deciso, espressione della nostra terra e della sua autenticità.</p>
+                    <div class="section-intro"> 
+                        <h2 class="tenuta-section-title">Vini Rossi</h2>
+                        <p class="lead">Vini dal carattere deciso, espressione della nostra terra e della sua autenticità.</p>
                     </div>
+                    
                     <div class="sezione">
                         
                         <article class="wine-article" 
                                 data-nome="Raboso del Piave" 
                                 data-descrizione="Un vino rosso corposo e avvolgente, perfetto per carni rosse." 
-                                data-img="../../immagini_utili/vini/trasparenti/raboso_del_piave.webp"
+                                data-img="../images/tr/Raboso del Piave.webp"
                                 data-prezzo="18.50">
                             <div class="wine-item">
-                                <img src="../../immagini_utili/vini/trasparenti/raboso_del_piave.webp" alt="Bottiglia di Raboso del Piave" class="wine-image">
+                                <img src="../images/tr/Raboso del Piave.webp" alt="Bottiglia di Raboso del Piave" class="wine-image">
                                 <div class="content-wine-article">
                                     <h2>Raboso del Piave</h2>
                                     <p>Un vino rosso corposo</p>
@@ -119,10 +124,10 @@
                         <article class="wine-article"
                                 data-nome="Merlot" 
                                 data-descrizione="Il classico Merlot: morbido, vellutato e versatile." 
-                                data-img="../../immagini_utili/vini/trasparenti/merlot.webp"
+                                data-img="../images/tr/Merlot.webp"
                                 data-prezzo="14.00">
                             <div class="wine-item">
-                                <img src="../../immagini_utili/vini/trasparenti/merlot.webp" alt="Bottiglia di Merlot" class="wine-image">
+                                <img src="../images/tr/Merlot.webp" alt="Bottiglia di Merlot" class="wine-image">
                                 <div class="content-wine-article">
                                     <h2><span lang="fr">Merlot</span></h2>
                                     <p>Morbido e vellutato.</p>
@@ -142,10 +147,10 @@
                         <article class="wine-article"
                                 data-nome="Cabernet Franc" 
                                 data-descrizione="Note erbacee caratteristiche, gusto deciso e persistente." 
-                                data-img="../../immagini_utili/vini/trasparenti/cabernet_franc.webp"
+                                data-img="../images/tr/Cabernet Franc 1.webp"
                                 data-prezzo="16.00">
                             <div class="wine-item">
-                                <img src="../../immagini_utili/vini/trasparenti/cabernet_franc.webp" alt="Bottiglia di Cabernet Franc" class="wine-image">
+                                <img src="../images/tr/Cabernet Franc 1.webp" alt="Bottiglia di Cabernet Franc" class="wine-image">
                                 <div class="content-wine-article">
                                     <h2><span lang="fr">Cabernet Franc</span></h2>
                                     <p>Deciso e persistente.</p>
@@ -165,10 +170,10 @@
                         <article class="wine-article"
                                 data-nome="Refosco" 
                                 data-descrizione="Autoctono dal carattere forte, colore rosso rubino intenso." 
-                                data-img="../../immagini_utili/vini/trasparenti/refosco.webp"
+                                data-img="../images/tr/Refosco.webp"
                                 data-prezzo="15.50">
                             <div class="wine-item">
-                                <img src="../../immagini_utili/vini/trasparenti/refosco.webp" alt="Bottiglia di Refosco" class="wine-image">
+                                <img src="../images/tr/Refosco.webp" alt="Bottiglia di Refosco" class="wine-image">
                                 <div class="content-wine-article">
                                     <h2>Refosco</h2>
                                     <p>Carattere forte e intenso.</p>
@@ -188,20 +193,23 @@
                     </div>
                 </section>
 
+                <div class="tenuta-separator"></div>
+
                 <section id="white-wines">
-                    <div class="presentazione"> 
-                        <h2>Vini Bianchi</h2>
-                        <p>Freschezza, armonia e profumi che raccontano le terre del Piave.</p>
+                    <div class="section-intro"> 
+                        <h2 class="tenuta-section-title">Vini Bianchi</h2>
+                        <p class="lead">Freschezza, armonia e profumi che raccontano le terre del Piave.</p>
                     </div>
+                    
                     <div class="sezione">
                         
                         <article class="wine-article"
                                 data-nome="Chardonnay" 
                                 data-descrizione="Elegante, fruttato con sentori di mela golden e crosta di pane." 
-                                data-img="../../immagini_utili/vini/trasparenti/chardonnay.webp"
+                                data-img="../images/tr/Chardonnay.webp"
                                 data-prezzo="13.50">
                             <div class="wine-item">
-                                <img src="../../immagini_utili/vini/trasparenti/chardonnay.webp" alt="Bottiglia di Chardonnay" class="wine-image">
+                                <img src="../images/tr/Chardonnay.webp" alt="Bottiglia di Chardonnay" class="wine-image">
                                 <div class="content-wine-article">
                                     <h2><span lang="fr">Chardonnay</span></h2>
                                     <p>Elegante e fruttato.</p>
@@ -221,10 +229,10 @@
                         <article class="wine-article"
                                 data-nome="Manzoni Bianco" 
                                 data-descrizione="Incrocio Riesling e Pinot Bianco. Aromatico e strutturato." 
-                                data-img="../../immagini_utili/vini/trasparenti/manzoni_bianco.webp"
+                                data-img="../images/tr/Manzoni Bianco.webp"
                                 data-prezzo="15.00">
                             <div class="wine-item">
-                                <img src="../../immagini_utili/vini/trasparenti/manzoni_bianco.webp" alt="Bottiglia di Manzoni Bianco" class="wine-image">
+                                <img src="../images/tr/Manzoni Bianco.webp" alt="Bottiglia di Manzoni Bianco" class="wine-image">
                                 <div class="content-wine-article">
                                     <h2>Manzoni Bianco</h2>
                                     <p>Aromatico e strutturato.</p>
@@ -244,10 +252,10 @@
                         <article class="wine-article"
                                 data-nome="Pinot Grigio" 
                                 data-descrizione="Fresco, sapido e piacevole. Ottimo come aperitivo." 
-                                data-img="../../immagini_utili/vini/trasparenti/pinot_grigio.webp"
+                                data-img="../images/tr/Pinot Grigio.webp"
                                 data-prezzo="13.00">
                             <div class="wine-item">
-                                <img src="../../immagini_utili/vini/trasparenti/pinot_grigio.webp" alt="Bottiglia di Pinot Grigio" class="wine-image">
+                                <img src="../images/tr/Pinot Grigio.webp" alt="Bottiglia di Pinot Grigio" class="wine-image">
                                 <div class="content-wine-article">
                                     <h2><span lang="fr">Pinot</span> Grigio</h2>
                                     <p>Fresco e sapido.</p>
@@ -267,10 +275,10 @@
                         <article class="wine-article"
                                 data-nome="Prosecco" 
                                 data-descrizione="Le bollicine venete per eccellenza. Fresco e vivace." 
-                                data-img="../../immagini_utili/vini/trasparenti/prosecco.webp"
+                                data-img="../images/tr/Prosecco.webp"
                                 data-prezzo="12.50">
                             <div class="wine-item">
-                                <img src="../../immagini_utili/vini/trasparenti/prosecco.webp" alt="Bottiglia di Prosecco" class="wine-image">
+                                <img src="../images/tr/Prosecco.webp" alt="Bottiglia di Prosecco" class="wine-image">
                                 <div class="content-wine-article">
                                     <h2>Prosecco</h2>
                                     <p>Le bollicine venete.</p>
@@ -290,20 +298,23 @@
                     </div>
                 </section>
 
+                <div class="tenuta-separator"></div>
+
                 <section id="premium-wines">
-                    <div class="presentazione"> 
-                        <h2>"La Selezione"</h2>
-                        <p>Le nostre etichette più pregiate, frutto di cura, esperienza e passione.</p>
+                    <div class="section-intro"> 
+                        <h2 class="tenuta-section-title">"La Selezione"</h2>
+                        <p class="lead">Le nostre etichette più pregiate, frutto di cura, esperienza e passione.</p>
                     </div>
+                    
                     <div class="sezione">
                         
                         <article class="wine-article"
                                 data-nome="Gran Morer" 
                                 data-descrizione="La nostra riserva speciale. Invecchiato in botte." 
-                                data-img="../../immagini_utili/vini/trasparenti/gran_morer.webp"
+                                data-img="../images/tr/Gran Morer.webp"
                                 data-prezzo="25.00">
                             <div class="wine-item">
-                                <img src="../../immagini_utili/vini/trasparenti/gran_morer.webp" alt="Bottiglia di Gran Morer" class="wine-image">
+                                <img src="../images/tr/Gran Morer.webp" alt="Bottiglia di Gran Morer" class="wine-image">
                                 <div class="content-wine-article">
                                     <h2>Gran Morer</h2>
                                     <p>Riserva speciale.</p>
@@ -323,10 +334,10 @@
                         <article class="wine-article"
                                 data-nome="Vigna Dorata" 
                                 data-descrizione="Selezione di uve passite, dolce e avvolgente." 
-                                data-img="../../immagini_utili/vini/trasparenti/vigna_dorata.webp"
+                                data-img="../images/tr/Vigna Dorata.webp"
                                 data-prezzo="22.00">
                             <div class="wine-item">
-                                <img src="../../immagini_utili/vini/trasparenti/vigna_dorata.webp" alt="Bottiglia di Vigna Dorata" class="wine-image">
+                                <img src="../images/tr/Vigna Dorata.webp" alt="Bottiglia di Vigna Dorata" class="wine-image">
                                 <div class="content-wine-article">
                                     <h2>Vigna Dorata</h2>
                                     <p>Dolce e avvolgente.</p>
@@ -346,10 +357,10 @@
                         <article class="wine-article"
                                 data-nome="Incanto" 
                                 data-descrizione="Un vino che incanta per i suoi profumi floreali." 
-                                data-img="../../immagini_utili/vini/trasparenti/incanto.webp"
+                                data-img="../images/tr/Incanto.webp"
                                 data-prezzo="20.00">
                             <div class="wine-item">
-                                <img src="../../immagini_utili/vini/trasparenti/incanto.webp" alt="Bottiglia di Incanto" class="wine-image">
+                                <img src="../images/tr/Incanto.webp" alt="Bottiglia di Incanto" class="wine-image">
                                 <div class="content-wine-article">
                                     <h2>Incanto</h2>
                                     <p>Profumi floreali.</p>
@@ -369,10 +380,10 @@
                         <article class="wine-article"
                                 data-nome="Rosae Nobile" 
                                 data-descrizione="Rosato di alta classe, note di frutti di bosco." 
-                                data-img="../../immagini_utili/vini/trasparenti/rosae_nobile.webp"
+                                data-img="../images/tr/Rosae Nobile.webp"
                                 data-prezzo="19.00">
                             <div class="wine-item">
-                                <img src="../../immagini_utili/vini/trasparenti/rosae_nobile.webp" alt="Bottiglia di Rosae Nobile" class="wine-image">
+                                <img src="../images/tr/Rosae Nobile.webp" alt="Bottiglia di Rosae Nobile" class="wine-image">
                                 <div class="content-wine-article">
                                     <h2>Rosae Nobile</h2>
                                     <p>Rosato di alta classe.</p>
@@ -489,13 +500,8 @@
             </div>
         </div>
 
-        <button id="backToTopBtn" aria-label="Torna all'inizio della pagina">
-            <svg viewBox="0 0 24 24" class="arrow-icon" aria-hidden="true">
-                <path d="M12 5 L12 19 M5 12 L12 5 L19 12" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
         
-        <script src="../javascript/script.js"></script>
+        <script src="../scripts/javascript/script.js"></script>
 
         <script>
 
@@ -535,6 +541,7 @@
                 const overlay = document.getElementById('overlay-dettagli');
                 overlay.style.display = 'flex';
                 document.body.classList.add('no-scroll');
+
 
                 // 3. SPOSTIAMO IL FOCUS SUL TASTO CHIUDI (Magia per Screen Reader)
                 setTimeout(() => {
