@@ -198,7 +198,7 @@ CREATE TABLE `vino` (
   `annata` varchar(20) DEFAULT 'N/D',
   `gradazione` varchar(20) DEFAULT 'N/D',
   `temperatura` varchar(20) DEFAULT 'N/D',
-  `abbinamenti` varchar(255) DEFAULT 'N/D',
+  `abbinamenti` varchar(255) DEFAULT 'N/D'
 );
 
 --
@@ -304,7 +304,7 @@ INSERT INTO `utente` (`id`, `nome`, `cognome`, `email`, `password`, `data_regist
 (6, 'TestUser', 'User', 'user@test.com', '$2y$10$CubhFtqfSPXVCYsGn4Y5B.MOwk80YcjYZz3hS8fAtb4xdPygFNy/G', '2025-12-08 17:34:01', 'user');
 
 INSERT INTO `vino` 
-(`id` `nome`, `prezzo`, `img`, `categoria`, `descrizione_breve`, `descrizione_estesa`, `vitigno`, `annata`, `gradazione`, `temperatura`, `abbinamenti`) 
+(`id`, `nome`, `prezzo`, `img`, `categoria`, `descrizione_breve`, `descrizione_estesa`, `vitigno`, `annata`, `gradazione`, `temperatura`, `abbinamenti`) 
 VALUES 
 -- ROSSI
 (1, 'Raboso del Piave', 18.50, '../images/tr/Raboso del Piave', 'rossi', 
