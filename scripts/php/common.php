@@ -18,36 +18,35 @@ function caricaPagina($nomeFileHTML) {
     // 3. Logica ICONA UTENTE
     $userIconHTML = "";
     
-    // Recupero il nome del file corrente (es. 'utente.php')
+    // Recupero il nome del file corrente 
     $paginaCorrente = basename($_SERVER['PHP_SELF']);
 
     if(isset($_SESSION['utente'])) {
-        // UTENTE LOGGATO
+        // --- UTENTE LOGGATO (Uso fa-user-circle) ---
         
         // Controllo se sono GIA' nella pagina utente o admin
         if ($paginaCorrente === 'utente.php' || $paginaCorrente === 'admin.php') {
             // Sono già qui: NIENTE LINK, solo icona visiva + aria-current
             $userIconHTML = '
             <span class="current-page-icon" aria-current="page" title="Sei nella tua Area Riservata">
-                <i class="fas fa-user" style="color: var(--primary-color);" aria-hidden="true"></i>
+                <i class="fas fa-user-circle" style="color: var(--primary-color);" aria-hidden="true"></i>
                 <span class="visually-hidden">Area Riservata (Pagina corrente)</span>
             </span>';
         } else {
-            // Sono altrove: Mostro il LINK
+            // Sono altrove: Mostro il LINK per tornare al profilo
             $userIconHTML = '
             <a href="utente.php" title="Vai alla tua Area Riservata">
-                <i class="fas fa-user" aria-hidden="true"></i>
+                <i class="fas fa-user-circle" aria-hidden="true"></i>
                 <span class="visually-hidden">Area Riservata</span>
             </a>';
         }
 
     } else {
-        // OSPITE (Non loggato): Link al Login
         
-        
+        // Link al Login con icona di "ingresso" moderna
         $userIconHTML = '
         <a href="login.php" title="Accedi">
-            <i class="fas fa-sign-in-alt contact-icon" aria-hidden="true"></i>
+            <i class="fas fa-key" aria-hidden="true"></i>
             <span class="visually-hidden">Accedi</span>
         </a>';
     }

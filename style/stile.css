@@ -14,7 +14,7 @@
     
     /* Brand Colors */
     --color-gold:     #C5A551; 
-    --color-red:      #6A0E18; 
+    --color-red:      #b41124; 
     --color-bg-dark:  #1D1D1D; 
     --color-bg-light: #F7F4EB;
 
@@ -97,6 +97,7 @@ body.light-mode {
     --txtcolor:         #121212;
     --card-title-color: #222222; 
     --card-desc-color:  #555555;
+    --color-red:      #680f19; 
     
     /* Sfondi */
     --bodybgcolor:      var(--light-bg); 
@@ -1182,20 +1183,6 @@ footer a:visited { color: var(--gold-color); }
     height: 26px;
 }
 
-@media (max-width: 600px) {
-    #backToTopBtn {
-        width: 55px;
-        height: 55px;
-        font-size: 1.6rem;
-        bottom: 3.5rem !important;  
-        right: 1.2rem !important;
-    }
-
-    .arrow-icon {
-        width: 22px;
-        height: 22px;
-    }
-}
 
 /* =========================================
    LOGIN E ERRORI 
