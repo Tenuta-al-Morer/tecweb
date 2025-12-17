@@ -155,8 +155,8 @@ main {
 #backToTopBtn {
     bottom: 6.5em;
     right: 1em;
-    width: 2.5em;
-    height: 2.5em;
+    width: 60px;
+    height: 60px;
 }
 
 footer {

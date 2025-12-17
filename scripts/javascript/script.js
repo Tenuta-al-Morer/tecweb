@@ -517,4 +517,175 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /* ==========================================
+     * 8. VALIDAZIONE FORM GENERICA (Client-Side)
+     * ========================================== */
+    const forms = document.querySelectorAll('form');
+
+    // Funzione per trovare dove mettere l'errore
+    const getErrorContainer = (input) => {
+        const parent = input.parentElement;
+
+        // CASO 1: Password (c'è il wrapper con l'occhio) -> L'errore va fuori dal wrapper, nel form-group
+        if (parent.classList.contains('password-wrapper')) {
+            return parent.closest('.form-group');
+        }
+
+        // CASO 2: Telefono (prefisso o numero) -> L'errore va sotto tutto il gruppo telefono
+        if (parent.classList.contains('phone-prefix') || parent.classList.contains('phone-number')) {
+            return parent.closest('.form-group');
+        }
+
+        // CASO 3: Standard e Colonne Affiancate (row-two)
+        return parent; 
+    };
+
+    // Funzione per mostrare errore
+    const showError = (input, message) => {
+        const container = getErrorContainer(input);
+        
+        // Rimuovi eventuali errori precedenti nello stesso container
+        const existingError = container.querySelector('.error-message');
+        if (existingError) existingError.remove();
+
+        // Aggiungi classe errore all'input
+        input.classList.add('input-error');
+
+        // Crea il messaggio
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+        errorDiv.style.color = 'var(--accent-color)'; 
+        errorDiv.style.fontSize = '0.85rem';
+        errorDiv.style.marginTop = '0.25rem';
+        errorDiv.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+        
+        container.appendChild(errorDiv);
+    };
+
+    // Funzione per rimuovere errore
+    const clearError = (input) => {
+        const container = getErrorContainer(input);
+        const existingError = container.querySelector('.error-message');
+        if (existingError) existingError.remove();
+        input.classList.remove('input-error');
+    };
+
+    // Logica di controllo singolo campo
+    const validateField = (input) => {
+        const value = input.value.trim();
+
+        // 0. Controllo Checkbox
+        if (input.type === 'checkbox' && input.hasAttribute('required') && !input.checked) {
+            showError(input, 'Devi accettare per proseguire');
+            return false;
+        }
+
+        // 1. Controllo Required (Testo/Select)
+        if (input.type !== 'checkbox' && input.hasAttribute('required') && value === '') {
+            showError(input, 'Campo obbligatorio');
+            return false;
+        }
+
+        // 2. Controllo Email
+        if (input.type === 'email' && value !== '') {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(value)) {
+                showError(input, 'Formato email non valido');
+                return false;
+            }
+        }
+
+        // 3. Controllo Pattern
+        if (input.hasAttribute('pattern') && value !== '') {
+            const regex = new RegExp('^' + input.getAttribute('pattern') + '$');
+            const msg = input.getAttribute('title') || 'Formato errato';
+            
+            if (!regex.test(input.value)) { 
+                showError(input, msg);
+                return false;
+            }
+        }
+
+        // 4. Controllo MinLength
+        if (input.hasAttribute('minlength') && value !== '') {
+            const min = input.getAttribute('minlength');
+            if (value.length < min) {
+                showError(input, `Minimo ${min} caratteri`);
+                return false;
+            }
+        }
+
+        // 5. Controllo Uguaglianza Password
+        const passwordMap = {
+            'confirm-password': 'password',
+            'ripeti_password': 'nuova_password'
+        };
+
+        if (passwordMap[input.name]) {
+            const form = input.closest('form');
+            const primaryFieldName = passwordMap[input.name];
+            const primaryInput = form.querySelector(`input[name="${primaryFieldName}"]`);
+            
+            if (primaryInput && value !== primaryInput.value) {
+                showError(input, 'Le password non coincidono');
+                return false;
+            }
+        }
+
+        // Se tutto ok
+        clearError(input);
+        return true;
+    };
+
+    // Attivazione su tutti i form
+    forms.forEach(form => {
+        form.setAttribute('novalidate', true);
+
+        const inputs = form.querySelectorAll('input, select, textarea');
+
+        // A. Controllo al Submit
+        form.addEventListener('submit', (e) => {
+            let isValid = true;
+            inputs.forEach(input => {
+                if (input.type === 'hidden' || input.type === 'submit') return;
+                if (!validateField(input)) isValid = false;
+            });
+
+            if (!isValid) {
+                e.preventDefault();
+                const firstError = form.querySelector('.input-error');
+                if(firstError) firstError.scrollIntoView({behavior: 'smooth', block: 'center'});
+            }
+        });
+
+        // B. Controllo "Live"
+        inputs.forEach(input => {
+            // Quando esci dal campo
+            input.addEventListener('blur', () => validateField(input));
+            
+            // Mentre scrivi (per testo)
+            input.addEventListener('input', () => {
+                if(input.classList.contains('input-error')) {
+                    validateField(input);
+                }
+                // Logica Password Live
+                if (input.name === 'password' || input.name === 'nuova_password') {
+                    const form = input.closest('form');
+                    const confirmName = input.name === 'password' ? 'confirm-password' : 'ripeti_password';
+                    const confirmInput = form.querySelector(`input[name="${confirmName}"]`);
+                    if (confirmInput && confirmInput.value !== '') {
+                        validateField(confirmInput);
+                    }
+                }
+            });
+
+            // Mentre clicchi (per checkbox e radio)
+            if (input.type === 'checkbox' || input.type === 'radio') {
+                input.addEventListener('change', () => {
+                    validateField(input);
+                });
+            }
+        });
+    });
+
 });
