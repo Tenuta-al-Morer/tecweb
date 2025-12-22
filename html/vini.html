@@ -233,7 +233,7 @@
             let lastFocusedElement;
             let scrollPosition = 0;
 
-            // 1. APERTURA POPUP
+            // APERTURA POPUP
             function apriDettagli(bottone) {
                 // Salva posizione scroll
                 scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
@@ -241,13 +241,12 @@
 
                 const articolo = bottone.closest('.wine-article');
                 
-                // Recupera dati base dal dataset dell'articolo
                 const nome = articolo.dataset.nome;
                 const desc = articolo.dataset.descrizione;
                 const img = articolo.dataset.img;
                 const prezzo = articolo.dataset.prezzo;
 
-                // Recupera dati tecnici dal div nascosto dal php
+                // Recupera dati dal div
                 const hiddenData = articolo.querySelector('.hidden-data');
                 const vitigno = hiddenData.querySelector('[data-key="vitigno"]').innerText;
                 const annata = hiddenData.querySelector('[data-key="annata"]').innerText;
@@ -255,7 +254,7 @@
                 const temperatura = hiddenData.querySelector('[data-key="temperatura"]').innerText;
                 const abbinamenti = hiddenData.querySelector('[data-key="abbinamenti"]').innerText;
 
-                // Popola i campi del Popup
+                // Popola campi
                 document.getElementById('pop-titolo').innerText = nome;
                 document.getElementById('pop-descrizione').innerText = desc;
                 document.getElementById('pop-prezzo').innerText = prezzo;
@@ -266,31 +265,28 @@
                 document.getElementById('tab-temp').innerText = temperatura;
                 document.getElementById('tab-abbinamenti').innerText = abbinamenti;
 
-                // Gestione Immagini (Simulazione 3 uguali)
+                // Gestione Immagini (simulazione)
                 slideImages = [img, img, img]; 
                 currentSlideIndex = 0;
                 updateGalleryView();
 
-                // Mostra Overlay e Blocca Sfondo
                 const overlay = document.getElementById('overlay-dettagli');
                 overlay.style.display = 'flex';
                 
                 document.body.classList.add('no-scroll');
                 document.body.style.top = `-${scrollPosition}px`;
 
-                // Sposta focus sul tasto chiudi (Accessibilità)
                 setTimeout(() => {
                     const closeBtn = overlay.querySelector('.close-btn');
                     if (closeBtn) closeBtn.focus();
                 }, 100);
             }
 
-            // 2. CHIUSURA POPUP
+            // CHIUSURA POPUP
             function chiudiDettagli() {
                 const overlay = document.getElementById('overlay-dettagli');
                 overlay.style.display = 'none';
                 
-                // Sblocca Sfondo e Ripristina Posizione
                 document.body.classList.remove('no-scroll');
                 document.body.style.top = '';
                 window.scrollTo(0, scrollPosition);
@@ -298,7 +294,7 @@
                 if (lastFocusedElement) lastFocusedElement.focus();
             }
 
-            // 3. GESTIONE QUANTITÀ (+ / -)
+            // GESTIONE QUANTITÀ + -
             function aggiornaQuantita(bottone, variazione) {
                 const parent = bottone.parentElement;
                 const input = parent.querySelector('.input-qty');
@@ -310,21 +306,20 @@
                 }
             }
 
-            // 4. AGGIUNTA AL CARRELLO (Simulazione/PHP futuro)
+            // AGGIUNTA AL CARRELLO (futuro)
             function gestisciCarrelloPopup() {
                 const nome = document.getElementById('pop-titolo').innerText;
                 const qtyInput = document.querySelector('.shop-ov .input-qty');
                 const qty = qtyInput.value;
                 
-                // Qui in futuro metterai una chiamata AJAX al server
+                // futuro: chiamata AJAX (?)
                 alert("Aggiunto al carrello: " + qty + " bottiglie di " + nome);
                 
-                // Reset e chiusura
                 qtyInput.value = 1;
                 chiudiDettagli();
             }
 
-            // 5. GALLERIA IMMAGINI
+            // GALLERIA IMMAGINI
             function cambiaSlide(direzione) {
                 currentSlideIndex += direzione;
                 if (currentSlideIndex >= slideImages.length) currentSlideIndex = 0;
