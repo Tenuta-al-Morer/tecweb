@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `acontari`
+-- Database: `enoteca_morer`
 --
 
 -- --------------------------------------------------------
@@ -303,68 +303,70 @@ INSERT INTO `utente` (`id`, `nome`, `cognome`, `email`, `password`, `data_regist
 (5, 'TestAdmin', 'Admin', 'admin@test.com', '$2y$10$C4nvcMK.3tnfALXz9sUmmeT.bJZxczgp.A3L1okyuOZf6NjWw561m', '2025-12-08 17:34:01', 'admin'),
 (6, 'TestUser', 'User', 'user@test.com', '$2y$10$CubhFtqfSPXVCYsGn4Y5B.MOwk80YcjYZz3hS8fAtb4xdPygFNy/G', '2025-12-08 17:34:01', 'user');
 
+
+
 INSERT INTO `vino` 
 (`id`, `nome`, `prezzo`, `img`, `categoria`, `descrizione_breve`, `descrizione_estesa`, `vitigno`, `annata`, `gradazione`, `temperatura`, `abbinamenti`) 
 VALUES 
 -- ROSSI
-(1, 'Raboso del Piave', 18.50, '../images/tr/Raboso del Piave', 'rossi', 
+(1, 'Raboso del Piave', 18.50, '../../images/tr/Raboso del Piave.webp', 'rossi', 
  'Un vino rosso corposo e avvolgente.', 
  'Un vino rosso corposo e avvolgente, perfetto per carni rosse e formaggi stagionati. Note di marasca e prugna.', 
  'Raboso 100%', '2019', '13.5% Vol', '18-20°C', 'Carni rosse, Selvaggina'),
 
-(2, 'Merlot', 14.00, '../images/tr/Merlot.webp', 'rossi', 
+(2, 'Merlot', 14.00, '../../images/tr/Merlot.webp', 'rossi', 
  'Morbido e vellutato.', 
  'Il classico Merlot: morbido, vellutato e versatile. Ideale per ogni occasione.', 
  'Merlot 100%', '2022', '12.5% Vol', '16-18°C', 'Arrosti, Formaggi media stagionatura'),
 
-(3, 'Cabernet Franc', 16.00, '../images/tr/Cabernet Franc 1', 'rossi', 
+(3, 'Cabernet Franc', 16.00, '../../images/tr/Cabernet Franc 1.webp', 'rossi', 
  'Deciso e persistente.', 
  'Note erbacee caratteristiche, gusto deciso e persistente. Un vino di carattere.', 
  'Cabernet Franc', '2021', '13.0% Vol', '16-18°C', 'Salumi, Grigliate'),
 
-(4, 'Refosco', 15.50, '../images/tr/Refosco.webp', 'rossi', 
+(4, 'Refosco', 15.50, '../../images/tr/Refosco.webp', 'rossi', 
  'Carattere forte e intenso.', 
  'Autoctono dal carattere forte, colore rosso rubino intenso con riflessi violacei.', 
  'Refosco p.r.', '2021', '13.0% Vol', '16-18°C', 'Piatti tipici veneti, Carni grasse'),
 
 -- BIANCHI
-(5, 'Chardonnay', 13.50, '../images/tr/Chardonnay.webp', 'bianchi', 
+(5, 'Chardonnay', 13.50, '../../images/tr/Chardonnay.webp', 'bianchi', 
  'Elegante e fruttato.', 
  'Elegante, fruttato con sentori di mela golden e crosta di pane.', 
  'Chardonnay', '2023', '12.0% Vol', '8-10°C', 'Antipasti magri, Pesce'),
 
-(6, 'Manzoni Bianco', 15.00, '../images/tr/Manzoni Bianco.webp', 'bianchi', 
+(6, 'Manzoni Bianco', 15.00, '../../images/tr/Manzoni Bianco.webp', 'bianchi', 
  'Aromatico e strutturato.', 
  'Incrocio Riesling e Pinot Bianco. Aromatico, strutturato e di grande eleganza.', 
  'Incrocio Manzoni', '2023', '13.0% Vol', '10-12°C', 'Risotti, Crostacei'),
 
-(7, 'Pinot Grigio', 13.00, '../images/tr/Pinot Grigio.webp', 'bianchi', 
+(7, 'Pinot Grigio', 13.00, '../../images/tr/Pinot Grigio.webp', 'bianchi', 
  'Fresco e sapido.', 
  'Fresco, sapido e piacevole. Ottimo come aperitivo o tutto pasto leggero.', 
  'Pinot Grigio', '2023', '12.0% Vol', '8-10°C', 'Aperitivi, Carni bianche'),
 
-(8, 'Prosecco', 12.50, '../images/tr/Prosecco.webp', 'bianchi', 
+(8, 'Prosecco', 12.50, '../../images/tr/Prosecco.webp', 'bianchi', 
  'Le bollicine venete.', 
  'Le bollicine venete per eccellenza. Fresco, vivace e floreale.', 
  'Glera 100%', '2024', '11.0% Vol', '6-8°C', 'Brindisi, Aperitivi, Dolci secchi'),
 
 -- SELEZIONE
-(9, 'Gran Morer', 25.00, '../images/tr/Gran Morer.webp', 'selezione', 
+(9, 'Gran Morer', 25.00, '../../images/tr/Gran Morer.webp', 'selezione', 
  'Riserva speciale.', 
  'La nostra riserva speciale. Invecchiato in botte, complesso e speziato.', 
  'Uvaggio Segreto', '2018', '14.5% Vol', '18-20°C', 'Meditazione, Carni importanti'),
 
-(10, 'Vigna Dorata', 22.00, '../images/tr/Vigna Dorata.webp', 'selezione', 
+(10, 'Vigna Dorata', 22.00, '../../images/tr/Vigna Dorata.webp', 'selezione', 
  'Dolce e avvolgente.', 
  'Selezione di uve passite, dolce, avvolgente e dai riflessi dorati.', 
  'Verduzzo', '2020', '14.0% Vol', '10-12°C', 'Pasticceria secca, Formaggi erborinati'),
 
-(11, 'Incanto', 20.00, '../images/tr/Incanto.webp', 'selezione', 
+(11, 'Incanto', 20.00, '../../images/tr/Incanto.webp', 'selezione', 
  'Profumi floreali.', 
  'Un vino che incanta per i suoi profumi floreali intensi e la persistenza.', 
  'Vitigni aromatici', '2022', '12.5% Vol', '8-10°C', 'Piatti speziati, Formaggi freschi'),
 
-(12, 'Rosae Nobile', 19.00, '../images/tr/Rosae Nobile.webp', 'selezione', 
+(12, 'Rosae Nobile', 19.00, '../../images/tr/Rosae Nobile.webp', 'selezione', 
  'Rosato di alta classe.', 
  'Rosato di alta classe, note di frutti di bosco e rosa canina.', 
  'Raboso vinif. in bianco', '2023', '12.0% Vol', '8-10°C', 'Antipasti di pesce, Sushi');
