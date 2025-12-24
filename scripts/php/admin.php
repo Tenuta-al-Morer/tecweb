@@ -60,7 +60,7 @@ foreach ($prenotazioniArray as $prenotazione) {
     $prenotazioni .= '<td data-title="Email">' . htmlspecialchars($prenotazione['email']) . '</td>';
     $prenotazioni .= '<td data-title="Telefono">' . htmlspecialchars($prenotazione['prefisso']) . ' '. htmlspecialchars($prenotazione['telefono']) . '</td>';
     $prenotazioni .= '<td data-title="Data visita">' . htmlspecialchars($prenotazione['data_visita']) . '</td>';
-    $prenotazioni .= '<td data-title="Numero persone">' . (int)$prenotazione['numero_persone'] . '</td>';
+    $prenotazioni .= '<td data-title="Numero persone">' . (int)$prenotazione['n_persone'] . '</td>';
     $prenotazioni .= '<td data-title="Data Invio">' . htmlspecialchars($prenotazione['data_invio']) . '</td>';
     $prenotazioni .= '<td class="td_richiesta_degustazione" data-title="Gestione richiesta"> 
                     <form action="#" method="POST" class="standard-form">
