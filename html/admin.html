@@ -123,8 +123,7 @@
                         <tr>
                             <th scope="col" abbr="ID">ID Ordine</th>
                             <th scope="col" abbr="Utente">ID Utente</th>
-                            <th scope="col" abbr="Stato">Stato Ordine</th>
-                            <th scope="col" abbr="Prodotti">Totale Prodotti</th>
+                            <th scope="col" abbr="Prodotti">Costo Prodotti</th>
                             <th scope="col" abbr="Spedizione">Costo Spedizione</th>
                             <th scope="col" abbr="Totale">Totale Finale</th>
                             <th scope="col" abbr="Indirizzo">Indirizzo Spedizione</th>
@@ -151,50 +150,19 @@
                 <table class="table-data table-early-break" id="tab-degustazioni" aria-describedby="descrizione-tab-esperienze">
                     <thead>
                         <tr>
-                            <th scope="col" abbr="Tipo">Tipo degustazione</th>
-                            <th scope="col" abbr="Data">Data invio</th>
+                            <th scope="col" abbr="ID">ID prenotazione</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Cognome</th>
                             <th scope="col">Email</th>
-                            <th scope="col" abbr="Visita">Data Visita</th>
+                            <th scope="col">Telefono</th>
+                            <th scope="col" abbr="Data">Data visita</th>                            
                             <th scope="col" abbr="Persone">Numero persone</th>
-                            <th scope="col">Messaggio</th>
+                            <th scope="col">Data Invio</th>
                             <th scope="col" abbr="Gestione">Gestione richiesta</th>
                         </tr>
                     </thead>
                     <tbody> <!--RIEMPIREMO COMN DB-->
-                        <tr>
-                            <th scope="row" abbr="Piave">Degustazione "Piave"</th>
-                            <td data-title="Data invio">05/12/2025</td>
-                            <td data-title="Nome">Alessandro</td>
-                            <td data-title="Cognome">Contarini</td>
-                            <td data-title="Email">alessandro.contarini21@gmail.com</td>
-                            <td data-title="Data Visita">24/12/2025</td>
-                            <td data-title="Numero persone">15</td>
-                            <td data-title="Messaggio"> - </td>
-                            <td class="td_richiesta_degustazione" data-title="Gestione richiesta"> 
-                                <form action="#" method="POST" class="standard-form">
-                                    <button type="submit" name="accetta" value="accetta" class="btn-secondary">Accetta</button>
-                                    <button type="submit" name="rifiuta" value="rifiuta" class="btn-secondary">Rifiuta</button>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row" abbr="Linea Oro">Degustazione "Linea Oro"</th>
-                            <td data-title="Data invio">05/12/2025</td>
-                            <td data-title="Nome">Alessandro</td>
-                            <td data-title="Cognome">Contarini</td>
-                            <td data-title="Email">alessandro.contarini21@gmail.com</td>
-                            <td data-title="Data Visita">24/12/2025</td>
-                            <td data-title="Numero persone">15</td>
-                            <td data-title="Messaggio"> - </td>
-                            <td class="td_richiesta_degustazione" data-title="Gestione richiesta"> 
-                                <form action="#" method="POST" class="standard-form">
-                                    <button type="submit" name="accetta" value="accetta" class="btn-secondary">Accetta</button>
-                                    <button type="submit" name="rifiuta" value="rifiuta" class="btn-secondary">Rifiuta</button>
-                                </form>
-                            </td>
-                        </tr>
+                        [riga_prenotazioni]
                     </tbody>
                 </table>
             </div>

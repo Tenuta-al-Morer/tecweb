@@ -356,7 +356,7 @@ class DBConnection {
         $ordini = [];
         
         // 1. Query per gli ordini principali (dal più recente)
-        $queryOrdini = "SELECT * FROM ordine WHERE id_utente = ? ORDER BY data_creazione DESC";
+        $queryOrdini = "SELECT * FROM ordine WHERE (id_utente = ?) ORDER BY data_creazione DESC";
         $stmtOrd = $this->connection->prepare($queryOrdini);
         if (!$stmtOrd) { return []; }
 
@@ -379,7 +379,7 @@ class DBConnection {
         $ordini = [];
         
         // 1. Query per gli ordini (dal più recente)
-        $queryOrdini = "SELECT * FROM ordine ORDER BY data_creazione DESC";
+        $queryOrdini = "SELECT * FROM ordine WHERE stato_ordine='in_attesa' ORDER BY data_creazione DESC";
         $stmtOrd = $this->connection->prepare($queryOrdini);
         if (!$stmtOrd) { return []; }
 
@@ -394,6 +394,28 @@ class DBConnection {
         $stmtOrd->close();
         return $ordini;
     }
+
+
+    // RECUPERO LE PRENOTAZIONI DI TUTTI GLI UTENTI (Per Admin)
+    public function getPrenotazioni() {
+        $prenotazioni = [];
+        
+        // 1. Query per le prenotazioni (dal più recente)
+        $queryPrenotazioni = "SELECT * FROM prenotazione WHERE stato='in_attesa' ORDER BY data_invio DESC";
+        $stmtPren = $this->connection->prepare($queryPrenotazioni);
+        if (!$stmtPren) { return []; }
+
+        $stmtPren->execute();
+        $resultPren = $stmtPren->get_result();
+
+        while ($prenotazione = $resultPren->fetch_assoc()) {
+            $prenotazioni[] = $prenotazione;
+        }
+        
+        $stmtPren->close();
+        return $prenotazioni;
+    }
+    
 
     // RECUPERO I DETTAGLI (ELEMENTI) DI UN SINGOLO ORDINE
     private function getDettagliOrdine($id_ordine) {
