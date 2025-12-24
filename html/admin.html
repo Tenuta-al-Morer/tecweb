@@ -178,50 +178,19 @@
                 <table class="table-data table-early-break" id="tab-info" aria-describedby="descrizione-tab-messaggi">
                     <thead>
                         <tr>
-                            <th scope="col" abbr="Tipo">Tipologia richiesta</th>
-                            <th scope="col" abbr="Data">Data invio</th>
+                            <th scope="col" abbr="ID">ID richiesta</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Cognome</th>
                             <th scope="col">Email</th>
+                            <th scope="col" abbr="Tipo">Tipo supporto</th>
+                            <th scope="col">Telefono</th>
                             <th scope="col">Messaggio</th>
+                            <th scope="col" abbr="Data">Data invio</th>
                             <th scope="col" abbr="Gestione">Gestione richiesta</th>
                         </tr>
                     </thead>
                     <tbody> <!--RIEMPIREMO COMN DB-->
-                        <tr>
-                            <th scope="row">Assistenza</th>
-                            <td data-title="Data invio">05/12/2025</td>
-                            <td data-title="Nome">Alessandro</td>
-                            <td data-title="Cognome">Contarini</td>
-                            <td data-title="Email">alessandro.contarini21@gmail.com</td>
-                            <td data-title="Messaggio"> Non riesco ad ordinare il Prosecco </td>
-                            <td class="td_richiesta_msg" data-title="Gestione richiesta"> 
-                                <form action="#" method="POST" class="standard-form">
-                                    <label for="richiesta1">Risposta<span aria-hidden="true">*</span></label>
-                                    <input type="text" id="richiesta1" name="richiesta1" required placeholder="Rispondi alle necessità del cliente">
-                                </form>
-                                <form action="#" method="POST" class="standard-form">
-                                    <button type="submit" name="msg_risposta" value="msg_risposta" class="btn-secondary">Invia</button>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Bug sito</th>
-                            <td data-title="Data invio">05/12/2025</td>
-                            <td data-title="Nome">Alessandro</td>
-                            <td data-title="Cognome">Contarini</td>
-                            <td data-title="Email">alessandro.contarini21@gmail.com</td>
-                            <td data-title="Messaggio"> La light mode non funziona </td>
-                            <td class="td_richiesta_msg" data-title="Gestione richiesta"> 
-                                <form action="#" method="POST" class="standard-form">
-                                    <label for="richiesta2">Risposta<span aria-hidden="true">*</span></label>
-                                    <input type="text" id="richiesta2" name="richiesta2" required placeholder="Rispondi alle necessità del cliente">
-                                </form>
-                                <form action="#" method="POST" class="standard-form">
-                                    <button type="submit" name="msg_risposta" value="msg_risposta" class="btn-secondary">Invia</button>
-                                </form>
-                            </td>
-                        </tr>
+                        [riga_messaggi]
                     </tbody>
                 </table>
             </div>

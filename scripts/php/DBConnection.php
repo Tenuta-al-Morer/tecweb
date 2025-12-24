@@ -415,6 +415,23 @@ class DBConnection {
         $stmtPren->close();
         return $prenotazioni;
     }
+
+    // RECUPERO I MESSAGGI DI TUTTI GLI UTENTI (Per Admin)
+    public function getMessaggi() {
+        $messaggi = [];
+        $queryMessaggi = "SELECT * FROM contatto WHERE stato='aperto' ORDER BY data_invio DESC";
+        $stmtMess = $this->connection->prepare($queryMessaggi);
+        if (!$stmtMess) { return []; } 
+        
+        $stmtMess->execute();
+        $resultMess = $stmtMess->get_result();
+
+        while ($messaggio = $resultMess->fetch_assoc()) {
+            $messaggi[] = $messaggio;
+        }
+        $stmtMess->close();
+        return $messaggi;
+    }
     
 
     // RECUPERO I DETTAGLI (ELEMENTI) DI UN SINGOLO ORDINE

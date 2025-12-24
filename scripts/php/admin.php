@@ -25,6 +25,7 @@ $nomeUtente = htmlspecialchars($_SESSION['nome']);
 $db = new DBConnection();
 $ordiniArray = $db->getOrdini();
 $prenotazioniArray = $db->getPrenotazioni();
+$messaggiArray = $db->getMessaggi();
 $db->closeConnection();
 
 // 2) Costruisco le righe HTML
@@ -57,7 +58,7 @@ foreach ($prenotazioniArray as $prenotazione) {
     $prenotazioni .= '<td data-title="Nome">' . htmlspecialchars($prenotazione['nome']) . '</td>';
     $prenotazioni .= '<td data-title="Cognome">' . htmlspecialchars($prenotazione['cognome']) . '</td>';
     $prenotazioni .= '<td data-title="Email">' . htmlspecialchars($prenotazione['email']) . '</td>';
-    $prenotazioni .= '<td data-title="Telefono">' . htmlspecialchars($prenotazione['prefisso']) . htmlspecialchars($prenotazione['telefono']) . '</td>';
+    $prenotazioni .= '<td data-title="Telefono">' . htmlspecialchars($prenotazione['prefisso']) . ' '. htmlspecialchars($prenotazione['telefono']) . '</td>';
     $prenotazioni .= '<td data-title="Data visita">' . htmlspecialchars($prenotazione['data_visita']) . '</td>';
     $prenotazioni .= '<td data-title="Numero persone">' . (int)$prenotazione['numero_persone'] . '</td>';
     $prenotazioni .= '<td data-title="Data Invio">' . htmlspecialchars($prenotazione['data_invio']) . '</td>';
@@ -70,6 +71,28 @@ foreach ($prenotazioniArray as $prenotazione) {
     $prenotazioni .= "</tr>";
 }
 
+$messaggi = "";
+foreach ($messaggiArray as $messaggio) {
+    $messaggi .= "<tr>";
+    $messaggi .= '<th scope="row">' . (int)$messaggio['id'] . '</th>';
+    $messaggi .= '<td data-title="Nome">' . htmlspecialchars($messaggio['nome']) . '</td>';
+    $messaggi .= '<td data-title="Cognome">' . htmlspecialchars($messaggio['cognome']) . '</td>';
+    $messaggi .= '<td data-title="Email">' . htmlspecialchars($messaggio['email']) . '</td>';
+    $messaggi .= '<td data-title="Tipo supporto">' . htmlspecialchars($messaggio['tipo_supporto']) . '</td>';
+    $messaggi .= '<td data-title="Telefono">' . htmlspecialchars($messaggio['prefisso']) .' '. htmlspecialchars($messaggio['telefono']) . '</td>';
+    $messaggi .= '<td data-title="Messaggio">' . htmlspecialchars($messaggio['messaggio']) . '</td>';
+    $messaggi .= '<td data-title="Data invio">' . htmlspecialchars($messaggio['data_invio']) . '</td>';
+    $messaggi .= '<td class="td_richiesta_msg" data-title="Gestione richiesta"> 
+                                <form action="#" method="POST" class="standard-form">
+                                    <label for="richiesta1">Risposta<span aria-hidden="true">*</span></label>
+                                    <input type="text" id="richiesta1" name="richiesta1" required placeholder="Rispondi alle necessità del cliente">
+                                </form>
+                                <form action="#" method="POST" class="standard-form">
+                                    <button type="submit" name="msg_risposta" value="msg_risposta" class="btn-secondary">Invia</button>
+                                </form>
+                            </td>';
+    $messaggi .= "</tr>";
+}
 
 // 3) Replace placeholders
 $htmlContent = str_replace("[nome_utente]", $nomeUtente, $htmlContent);
@@ -77,6 +100,7 @@ $htmlContent = str_replace("[email_utente]", $emailUtente, $htmlContent);
 $htmlContent = str_replace("[riferimento]", $ruoloUtente, $htmlContent);
 $htmlContent = str_replace("[riga_ordini]", $ordini, $htmlContent);
 $htmlContent = str_replace("[riga_prenotazioni]", $prenotazioni, $htmlContent);
+$htmlContent = str_replace("[riga_messaggi]", $messaggi, $htmlContent);
 
 echo $htmlContent;
 ?>
