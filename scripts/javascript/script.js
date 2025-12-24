@@ -487,6 +487,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const orderId = toggleButton.getAttribute('data-order-id');
                 // Troviamo la riga dei dettagli corrispondente
                 const detailRow = document.getElementById('details-row-' + orderId);
+                // Troviamo la riga "padre" (la card superiore)
+                const summaryRow = toggleButton.closest('tr');
+
                 const icon = toggleButton.querySelector('i');
                 
                 if (detailRow) {
@@ -496,6 +499,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (isHidden) {
                         // APRI
                         detailRow.classList.remove('is-hidden');
+                        // AGGIUNTA: Aggiungiamo classe per lo stile unito
+                        if (summaryRow) summaryRow.classList.add('card-is-open'); 
+
                         toggleButton.setAttribute('aria-expanded', 'true');
                         // Cambia icona
                         if(icon) {
@@ -505,6 +511,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else {
                         // CHIUDI
                         detailRow.classList.add('is-hidden');
+                        if (summaryRow) summaryRow.classList.remove('card-is-open');
+
                         toggleButton.setAttribute('aria-expanded', 'false');
                         // Cambia icona
                         if(icon) {
