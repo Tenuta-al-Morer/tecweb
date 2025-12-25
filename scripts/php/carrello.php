@@ -194,28 +194,40 @@ $totaleProdotti = 0;
 $numArticoli = 0;
 $isLogged = isset($_SESSION['utente']);
 $alertMsgHTML = ""; 
+$quantitaRidottaMsg = []; // Array per raccogliere i nomi dei vini ridotti
 
 if ($isLogged) {
     $allItems = $db->getCarrelloUtente($_SESSION['utente_id']);
-    foreach ($allItems as $item) {
-        $stock = $item['quantita_stock'];
-        $qty = $item['quantita'];
+    
+    foreach ($allItems as &$item) {
+        $stock = (int)$item['quantita_stock'];
+        $qty = (int)$item['quantita'];
         $idR = $item['id_riga'];
+        $idV = $item['id_vino'];
         $statoCarrello = $item['stato']; 
         $statoVino = isset($item['stato_vino']) ? $item['stato_vino'] : 'attivo';
 
-        // LOGICA: Se è attivo nel carrello MA (stock finito O vino non attivo/nascosto) -> Sposta in salvati
+        // Se il vino è attivo e c'è stock, MA la quantità nel carrello supera lo stock
+        if (($statoCarrello === 'active' || $statoCarrello === 'attivo') && $stock > 0 && $qty > $stock) {
+            
+            // A. Aggiorno il DB con la quantità massima disponibile (stock)
+            $db->aggiornaQuantitaCarrello($_SESSION['utente_id'], $idV, $stock);
+            
+            // B. Aggiorno le variabili locali per visualizzare i dati corretti SUBITO
+            $item['quantita'] = $stock;
+            $qty = $stock; // Aggiorno anche la variabile d'appoggio
+            $item['totale_riga'] = $item['prezzo'] * $stock; // Ricalcolo il totale riga
+
+            // C. Segno il nome del vino per l'avviso
+            $quantitaRidottaMsg[] = htmlspecialchars($item['nome']);
+        }
+
+        // LOGICA ESISTENTE: Se stock è 0 o vino non attivo -> Sposta in salvati
         if ($statoCarrello === 'active' || $statoCarrello === 'attivo') {
             if ($stock <= 0 || $statoVino !== 'attivo') {
                 $db->cambiaStatoElemento($idR, 'salvato');
-                $item['stato'] = 'salvato'; // Aggiorno per la visualizzazione attuale
+                $item['stato'] = 'salvato'; 
                 $statoCarrello = 'salvato';
-                
-                $alertMsgHTML = '
-                <div class="alert-bar">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <span>Alcuni articoli non sono più disponibili e sono stati spostati in fondo alla lista.</span>
-                </div>';
             }
         }
 
@@ -227,16 +239,22 @@ if ($isLogged) {
             $numArticoli += $item['quantita'];
         }
     }
+    unset($item); 
 } else {
-    // CARRELLO OSPITI
+    // CARRELLO OSPITI (SESSIONE)
     if (isset($_SESSION['guest_cart']) && !empty($_SESSION['guest_cart'])) {
         foreach ($_SESSION['guest_cart'] as $idVino => $qty) {
-            // Uso la funzione che recupera anche i vini nascosti/fuori produzione
             $vino = $db->getVinoPerCarrello($idVino);
             
             if ($vino) {
                 $statoVino = $vino['stato'];
-                $stock = $vino['quantita_stock'];
+                $stock = (int)$vino['quantita_stock'];
+
+                if ($stock > 0 && $qty > $stock) {
+                    $_SESSION['guest_cart'][$idVino] = $stock;
+                    $qty = $stock;
+                    $quantitaRidottaMsg[] = htmlspecialchars($vino['nome']);
+                }
 
                 // Se stock 0 O stato diverso da attivo -> Salvato
                 if ($stock <= 0 || $statoVino !== 'attivo') {
@@ -266,6 +284,16 @@ if ($isLogged) {
     }
 }
 $db->closeConnection();
+
+// Se ci sono prodotti ridotti, costruiamo il messaggio
+if (!empty($quantitaRidottaMsg)) {
+    $listaVini = implode(", ", $quantitaRidottaMsg);
+    $alertMsgHTML .= '
+    <div class="alert-bar" style="background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba;">
+        <i class="fas fa-info-circle"></i>
+        <span>La quantità di alcuni articoli (<b>' . $listaVini . '</b>) è stata aggiornata in base alla disponibilità attuale.</span>
+    </div>';
+}
 
 // Calcolo Spedizione
 $sogliaGratuita = 49.00;
@@ -311,7 +339,7 @@ function renderCartItem($item, $isLogged, $type = 'active') {
     $availText = "";
     $availClass = "availability"; 
     
-    // --- LOGICA DISPONIBILITÀ ---
+    // --- LOGICA DISPONIBILITÀ MODIFICATA ---
     if ($statoVino === 'fuori_produzione') {
         $availText = "Fuori Produzione";
         $availClass .= " text-red";
@@ -321,9 +349,9 @@ function renderCartItem($item, $isLogged, $type = 'active') {
     } elseif ($stock <= 0) {
         $availText = "Esaurito";
         $availClass .= " text-red";
-    } elseif ($stock < 6) {
-        $availText = "Solo $stock rimaste - Ordina subito!";
-        $availClass .= " text-orange";
+    } elseif ($stock < 50) { 
+        $availText = "Rimanenti solo $stock bottiglie";
+        $availClass .= " text-orange"; 
     } else {
         $availText = "Spedizione in 24/48h";
         $availClass .= " text-green";
@@ -357,7 +385,6 @@ function renderCartItem($item, $isLogged, $type = 'active') {
     } else {
         // Sezione Salvati
         $btnSposta = "";
-        // Posso spostare nel carrello SOLO SE lo stock è > 0 E il vino è ATTIVO
         if ($stock > 0 && $statoVino === 'attivo') {
             $btnSposta = "<button type='button' class='action-btn-text btn-move ajax-cmd' data-action='sposta_in_carrello' data-id-riga='$idR' data-id-vino='$idV'>Sposta nel carrello</button>";
         } else {
@@ -430,7 +457,7 @@ else {
         if ($isLogged) {
             $checkoutHTML = '<a href="checkout.php" class="btn-primary btn-full text-center">Procedi all\'ordine</a>';
         } else {
-            $checkoutHTML = '<a href="login.php" class="btn-primary btn-full text-center">Accedi per acquistare</a>';
+            $checkoutHTML = '<a href="login.php?return=carrello.php" class="btn-primary btn-full text-center">Accedi per acquistare</a>';
         }
     } else {
         $checkoutHTML = '<button disabled class="btn-primary btn-full btn-disabled text-center">Carrello Vuoto</button>';

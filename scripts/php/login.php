@@ -3,15 +3,21 @@
 require_once 'DBConnection.php';
 use DB\DBConnection;
 
-
 function ripristinoInput($htmlContent){
     
     $htmlContent = str_replace("[email]", htmlspecialchars(isset($_POST['email']) ? $_POST['email'] : ''), $htmlContent);
     
-    
     if(strpos($htmlContent, "[err]") !== false) {
         $htmlContent = str_replace("[err]", "", $htmlContent);
     }
+    $hiddenInput = "";
+    if (isset($_GET['return'])) {
+        $returnUrl = htmlspecialchars($_GET['return']);
+        $hiddenInput = '<input type="hidden" name="redirect_to" value="' . $returnUrl . '">';
+        
+        $htmlContent = str_replace('</form>', $hiddenInput . '</form>', $htmlContent);
+    }
+
     return $htmlContent;
 }
 
@@ -47,13 +53,11 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
             $db->closeConnection();
             
             if($ris === -1){
-                
                 $err = "<p>L'email inserita non è registrata.</p>";
                 $loginHTML = str_replace("[err]", $err, $loginHTML);
                 echo ripristinoInput($loginHTML);
             }
             else if($ris === 0){
-                
                 $err = "<p>Password errata.</p>";
                 $loginHTML = str_replace("[err]", $err, $loginHTML);
                 echo ripristinoInput($loginHTML);
@@ -67,29 +71,41 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
                 $_SESSION['nome'] = $ris['nome']; 
 
                 // --- MERGE CARRELLO ---
-                // Se c'era un carrello "ospite", lo spostiamo nel DB dell'utente
                 if (isset($_SESSION['guest_cart']) && !empty($_SESSION['guest_cart'])) {
-                    // Per sicurezza istanzio nuova connessione veloce
                     $dbMerge = new DB\DBConnection();
+                    $carrelloUtenteDB = $dbMerge->getCarrelloUtente($_SESSION['utente_id']);
+                    $mappaCarrelloUtente = [];
                     
-                    foreach ($_SESSION['guest_cart'] as $idVino => $qty) {
-                        $dbMerge->aggiungiAlCarrello($_SESSION['utente_id'], $idVino, $qty);
+                    foreach($carrelloUtenteDB as $riga) {
+                        if($riga['stato'] === 'attivo' || $riga['stato'] === 'active') {
+                            $mappaCarrelloUtente[$riga['id_vino']] = $riga['quantita'];
+                        }
+                    }
+
+                    foreach ($_SESSION['guest_cart'] as $idVino => $qtyGuest) {
+                        $qtyPresente = isset($mappaCarrelloUtente[$idVino]) ? $mappaCarrelloUtente[$idVino] : 0;
+                        $totaleTeorico = $qtyPresente + $qtyGuest;
+                        $qtyDaAggiungere = 0;
+
+                        if ($totaleTeorico > 100) {
+                            $qtyDaAggiungere = 100 - $qtyPresente;
+                        } else {
+                            $qtyDaAggiungere = $qtyGuest;
+                        }
+
+                        if ($qtyDaAggiungere > 0) {
+                            $dbMerge->aggiungiAlCarrello($_SESSION['utente_id'], $idVino, $qtyDaAggiungere);
+                        }
                     }
                     
                     $dbMerge->closeConnection();
-                    unset($_SESSION['guest_cart']); // Cancelliamo il carrello ospite
+                    unset($_SESSION['guest_cart']); 
                 }
                 
-                
-                if(isset($_COOKIE['backToOrigin'])){
-                    $url = $_COOKIE['backToOrigin'];
-                    setcookie("backToOrigin", "", time() - 3600, "/"); 
-                    header("location: " . $url);
-                } 
-                else {
-                    
+                if (isset($_POST['redirect_to']) && !empty($_POST['redirect_to'])) {
+                    header("location: " . $_POST['redirect_to']);
+                } else {
                     if ($ris['ruolo'] === 'admin') {
-                         
                         header("location: admin.php");
                     } else {
                         header("location: utente.php");
@@ -98,20 +114,17 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
                 exit();
             }
             else {
-                
                 header("location: 500.html");
                 exit();
             }
         }
         catch(Exception $e){
-            
             header("location: 500.html");
             exit();
         }
     }
 }
 else {
-    
     echo ripristinoInput($loginHTML);
 }
 ?>
