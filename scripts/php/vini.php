@@ -36,7 +36,7 @@ $htmlSelezione = "";
 // Funzione helper locale per generare la singola card
 function costruisciCardVino($vino) {
     // Sanificazione
-    $id = (int)$vino['id'];
+    $id = (int)$vino['id']; // Assicuriamoci che l'ID sia un intero
     $nome = htmlspecialchars($vino['nome']);
     $prezzo = number_format($vino['prezzo'], 2, ',', '.');
     $img = htmlspecialchars($vino['img']);
@@ -53,6 +53,7 @@ function costruisciCardVino($vino) {
     // Costruzione Blocco HTML
     return '
     <article class="wine-article" 
+            data-id="' . $id . '"
             data-nome="' . $nome . '" 
             data-descrizione="' . $descEstesa . '" 
             data-img="' . $img . '"
@@ -68,16 +69,16 @@ function costruisciCardVino($vino) {
         
         <div class="actions">
             <div class="selettore-quantita">
-                <button type="button" onclick="aggiornaQuantita(this, -1)" aria-label="Diminuisci quantità di ' . $nome . '">-</button>
+                <button type="button" onclick="aggiornaQuantita(this, -1)" aria-label="Diminuisci quantità">-</button>
                 
-                <label for="qty-' . $id . '" class="visually-hidden">Quantità per ' . $nome . '</label>
+                <label for="qty-' . $id . '" class="visually-hidden">Quantità</label>
                 <input type="number" id="qty-' . $id . '" class="input-qty" name="quantita" value="1" min="1" readonly>
                 
-                <button type="button" onclick="aggiornaQuantita(this, 1)" aria-label="Aumenta quantità di ' . $nome . '">+</button>
+                <button type="button" onclick="aggiornaQuantita(this, 1)" aria-label="Aumenta quantità">+</button>
             </div>
             
-            <button class="buy-button" aria-label="Aggiungi ' . $nome . ' al carrello">Acquista</button>
-            <button class="details-button" onclick="apriDettagli(this)" aria-label="Vedi dettagli e scheda tecnica di ' . $nome . '">Info</button>
+            <button class="buy-button" onclick="aggiungiDaCard(' . $id . ')" aria-label="Aggiungi al carrello">Acquista</button>
+            <button class="details-button" onclick="apriDettagli(this)" aria-label="Vedi dettagli">Info</button>
         </div>
         
         <div style="display:none;" class="hidden-data">

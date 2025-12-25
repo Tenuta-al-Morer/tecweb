@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Creato il: Dic 22, 2025 alle 21:44
+-- Creato il: Dic 25, 2025 alle 16:44
 -- Versione del server: 11.8.3-MariaDB-0+deb13u1 from Debian
 -- Versione PHP: 8.4.11
 
@@ -31,7 +31,7 @@ CREATE TABLE `carrello` (
   `id` int(11) NOT NULL,
   `id_utente` int(11) NOT NULL,
   `data_aggiornamento` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
 -- Dump dei dati per la tabella `carrello`
@@ -51,17 +51,17 @@ CREATE TABLE `carrello_elemento` (
   `id_carrello` int(11) NOT NULL,
   `id_vino` int(11) NOT NULL,
   `quantita` int(11) NOT NULL DEFAULT 1,
-  `data_inserimento` datetime DEFAULT current_timestamp()
-) ;
+  `data_inserimento` datetime DEFAULT current_timestamp(),
+  `stato` enum('attivo','salvato') NOT NULL DEFAULT 'attivo'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
 -- Dump dei dati per la tabella `carrello_elemento`
 --
 
-INSERT INTO `carrello_elemento` (`id`, `id_carrello`, `id_vino`, `quantita`, `data_inserimento`) VALUES
-(1, 1, 2, 2, '2025-12-22 22:39:38'),
-(2, 1, 5, 1, '2025-12-22 22:39:38'),
-(3, 1, 9, 1, '2025-12-22 22:39:38');
+INSERT INTO `carrello_elemento` (`id`, `id_carrello`, `id_vino`, `quantita`, `data_inserimento`, `stato`) VALUES
+(5, 1, 1, 1, '2025-12-25 17:12:58', 'salvato'),
+(6, 1, 7, 1, '2025-12-25 17:14:02', 'salvato');
 
 -- --------------------------------------------------------
 
@@ -80,7 +80,7 @@ CREATE TABLE `contatto` (
   `messaggio` text NOT NULL,
   `data_invio` datetime NOT NULL DEFAULT current_timestamp(),
   `stato` varchar(20) NOT NULL DEFAULT 'aperto'
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
 -- Dump dei dati per la tabella `contatto`
@@ -106,7 +106,7 @@ CREATE TABLE `contatto_archivio` (
   `messaggio` text NOT NULL,
   `data_invio` datetime NOT NULL DEFAULT current_timestamp(),
   `stato` varchar(20) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
 -- Dump dei dati per la tabella `contatto_archivio`
@@ -132,7 +132,7 @@ CREATE TABLE `ordine` (
   `metodo_pagamento` varchar(50) NOT NULL,
   `id_transazione` varchar(255) DEFAULT NULL,
   `data_creazione` datetime DEFAULT current_timestamp()
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
 -- Dump dei dati per la tabella `ordine`
@@ -156,7 +156,7 @@ CREATE TABLE `ordine_elemento` (
   `nome_vino_storico` varchar(255) NOT NULL,
   `quantita` int(11) NOT NULL,
   `prezzo_acquisto` decimal(10,2) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
 -- Dump dei dati per la tabella `ordine_elemento`
@@ -183,7 +183,7 @@ CREATE TABLE `prenotazione` (
   `n_persone` int(11) NOT NULL,
   `data_invio` datetime NOT NULL DEFAULT current_timestamp(),
   `stato` varchar(20) NOT NULL DEFAULT 'In attesa'
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
 -- Dump dei dati per la tabella `prenotazione`
@@ -210,7 +210,7 @@ CREATE TABLE `prenotazione_archivio` (
   `n_persone` int(11) NOT NULL,
   `data_invio` datetime NOT NULL DEFAULT current_timestamp(),
   `stato` varchar(20) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
 -- Dump dei dati per la tabella `prenotazione_archivio`
@@ -233,7 +233,7 @@ CREATE TABLE `utente` (
   `password` varchar(255) NOT NULL,
   `data_registrazione` datetime NOT NULL DEFAULT current_timestamp(),
   `ruolo` varchar(20) NOT NULL DEFAULT 'user'
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
 -- Dump dei dati per la tabella `utente`
@@ -265,7 +265,7 @@ CREATE TABLE `vino` (
   `gradazione` varchar(20) DEFAULT 'N/D',
   `temperatura` varchar(20) DEFAULT 'N/D',
   `abbinamenti` varchar(255) DEFAULT 'N/D'
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
 -- Dump dei dati per la tabella `vino`
@@ -370,7 +370,7 @@ ALTER TABLE `carrello`
 -- AUTO_INCREMENT per la tabella `carrello_elemento`
 --
 ALTER TABLE `carrello_elemento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT per la tabella `contatto`

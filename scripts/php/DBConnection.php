@@ -4,8 +4,6 @@ namespace DB;
 use Exception;
 use mysqli; 
 
-// Importiamo il file di configurazione.
-// __DIR__ assicura che cerchi il file nella stessa cartella di questo script.
 require_once __DIR__ . '/config.php';
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
@@ -16,7 +14,6 @@ class DBConnection {
 
     public function __construct() {
         try {
-            // Utilizziamo le costanti globali definite in config.php
             $this->connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
             $this->connection->set_charset("utf8mb4");
         } catch (Exception $e) {
@@ -29,8 +26,6 @@ class DBConnection {
             $this->connection->close();
         }
     }
-
-    
 
     // FUNZIONE DI REGISTRAZIONE
     public function registerUser($nome, $cognome, $email, $password) {
@@ -176,12 +171,11 @@ class DBConnection {
     }
 
     // ============================================================
-    // SEZIONE E-COMMERCE (VINI, CARRELLO, ORDINI)
+    // SEZIONE E-COMMERCE
     // ============================================================
 
-    // RECUPERO LISTA VINI (Solo quelli attivi)
+    // RECUPERO LISTA VINI
     public function getVini() {
-        // Selezioniamo solo i vini attivi per la vendita
         $query = "SELECT * FROM vino WHERE stato = 'attivo'";
         $result = $this->connection->query($query);
         
@@ -192,13 +186,13 @@ class DBConnection {
         return $vini;
     }
 
-    // RECUPERO UN SINGOLO VINO (Per pagina dettaglio)
+    // RECUPERO UN SINGOLO VINO
     public function getVino($id) {
         $stmt = $this->connection->prepare("SELECT * FROM vino WHERE id = ? AND stato = 'attivo'");
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_assoc(); // Ritorna null se non esiste
+        return $result->fetch_assoc(); 
     }
 
     // GESTIONE CARRELLO: OTTIENI O CREA ID CARRELLO
@@ -228,24 +222,22 @@ class DBConnection {
         $res = $stmtCheck->get_result();
 
         if ($row = $res->fetch_assoc()) {
-            // UPDATE
             $nuovaQuantita = $row['quantita'] + $quantita;
-            $stmtUpdate = $this->connection->prepare("UPDATE carrello_elemento SET quantita = ? WHERE id = ?");
+            $stmtUpdate = $this->connection->prepare("UPDATE carrello_elemento SET quantita = ?, stato = 'attivo' WHERE id = ?");
             $stmtUpdate->bind_param("ii", $nuovaQuantita, $row['id']);
             return $stmtUpdate->execute();
         } else {
-            // INSERT
-            $stmtInsert = $this->connection->prepare("INSERT INTO carrello_elemento (id_carrello, id_vino, quantita) VALUES (?, ?, ?)");
+            $stmtInsert = $this->connection->prepare("INSERT INTO carrello_elemento (id_carrello, id_vino, quantita, stato) VALUES (?, ?, ?, 'attivo')");
             $stmtInsert->bind_param("iii", $id_carrello, $id_vino, $quantita);
             return $stmtInsert->execute();
         }
     }
 
-    // VISUALIZZA CARRELLO
+    // VISUALIZZA CARRELLO COMPLETO
     public function getCarrelloUtente($id_utente) {
         $id_carrello = $this->getCarrelloId($id_utente);
         
-        $query = "SELECT ec.id as id_riga, v.id as id_vino, v.nome, v.prezzo, ec.quantita, (v.prezzo * ec.quantita) as totale_riga 
+        $query = "SELECT ec.id as id_riga, ec.stato, v.id as id_vino, v.nome, v.descrizione_breve, v.img, v.prezzo, v.quantita_stock, ec.quantita, (v.prezzo * ec.quantita) as totale_riga 
                   FROM carrello_elemento ec
                   JOIN vino v ON ec.id_vino = v.id
                   WHERE ec.id_carrello = ?";
@@ -262,6 +254,28 @@ class DBConnection {
         return $items;
     }
 
+    // CAMBIA STATO ELEMENTO CARRELLO
+    public function cambiaStatoElemento($id_riga, $nuovo_stato) {
+        $stmt = $this->connection->prepare("UPDATE carrello_elemento SET stato = ? WHERE id = ?");
+        $stmt->bind_param("si", $nuovo_stato, $id_riga);
+        return $stmt->execute();
+    }
+
+    // AGGIORNA QUANTITÀ ESATTA
+    public function aggiornaQuantitaCarrello($id_utente, $id_vino, $nuova_quantita) {
+        $id_carrello = $this->getCarrelloId($id_utente);
+        
+        if ($nuova_quantita <= 0) {
+            $stmt = $this->connection->prepare("DELETE FROM carrello_elemento WHERE id_carrello = ? AND id_vino = ?");
+            $stmt->bind_param("ii", $id_carrello, $id_vino);
+            return $stmt->execute();
+        }
+
+        $stmt = $this->connection->prepare("UPDATE carrello_elemento SET quantita = ? WHERE id_carrello = ? AND id_vino = ?");
+        $stmt->bind_param("iii", $nuova_quantita, $id_carrello, $id_vino);
+        return $stmt->execute();
+    }
+
     // RIMUOVI ELEMENTO DAL CARRELLO
     public function rimuoviDaCarrello($id_elemento_carrello) {
         $stmt = $this->connection->prepare("DELETE FROM carrello_elemento WHERE id = ?");
@@ -271,14 +285,18 @@ class DBConnection {
 
     // CHECKOUT: CREAZIONE ORDINE
     public function creaOrdine($id_utente, $indirizzo_spedizione, $metodo_pagamento, $costo_spedizione = 10.00) {
-        $items = $this->getCarrelloUtente($id_utente);
+        $allItems = $this->getCarrelloUtente($id_utente);
+        $items = array_filter($allItems, function($i) { return $i['stato'] === 'attivo'; });
         
         if (empty($items)) {
-            return ["success" => false, "error" => "Il carrello è vuoto"];
+            return ["success" => false, "error" => "Il carrello attivo è vuoto"];
         }
 
         $totale_prodotti = 0;
         foreach ($items as $item) {
+            if($item['quantita'] > $item['quantita_stock']){
+                 return ["success" => false, "error" => "Attenzione: " . $item['nome'] . " è terminato."];
+            }
             $totale_prodotti += $item['totale_riga'];
         }
         $totale_finale = $totale_prodotti + $costo_spedizione;
@@ -286,14 +304,13 @@ class DBConnection {
         $this->connection->begin_transaction();
 
         try {
-            // A. Creo ordine
             $stmtOrd = $this->connection->prepare("INSERT INTO ordine (id_utente, totale_prodotti, costo_spedizione, totale_finale, indirizzo_spedizione, metodo_pagamento, stato_ordine) VALUES (?, ?, ?, ?, ?, ?, 'in_attesa')");
             $stmtOrd->bind_param("idddss", $id_utente, $totale_prodotti, $costo_spedizione, $totale_finale, $indirizzo_spedizione, $metodo_pagamento);
             $stmtOrd->execute();
             $id_ordine = $stmtOrd->insert_id;
 
-            // B. Sposto le righe
             $stmtDett = $this->connection->prepare("INSERT INTO ordine_elemento (id_ordine, id_vino, nome_vino_storico, quantita, prezzo_acquisto) VALUES (?, ?, ?, ?, ?)");
+            $stmtUpdateStock = $this->connection->prepare("UPDATE vino SET quantita_stock = quantita_stock - ? WHERE id = ?");
 
             foreach ($items as $item) {
                 $stmtDett->bind_param("iisid", 
@@ -304,11 +321,13 @@ class DBConnection {
                     $item['prezzo']
                 );
                 $stmtDett->execute();
+                
+                $stmtUpdateStock->bind_param("ii", $item['quantita'], $item['id_vino']);
+                $stmtUpdateStock->execute();
             }
 
-            // C. Svuoto il carrello
             $id_carrello = $this->getCarrelloId($id_utente);
-            $stmtDelCart = $this->connection->prepare("DELETE FROM carrello_elemento WHERE id_carrello = ?");
+            $stmtDelCart = $this->connection->prepare("DELETE FROM carrello_elemento WHERE id_carrello = ? AND stato = 'attivo'");
             $stmtDelCart->bind_param("i", $id_carrello);
             $stmtDelCart->execute();
 
@@ -321,11 +340,8 @@ class DBConnection {
         }
     }
 
+    // ELIMINAZIONE ACCOUNT
     public function eliminaAccount($id_utente) {
-        // quando cancelliamo l'utente, gli ordini non vengono cancellati.
-        // Il loro campo 'id_utente' diventerà NULL automaticamente.
-        // I dati storici di vendita rimangono salvi.
-
         $stmt = $this->connection->prepare("DELETE FROM utente WHERE id = ?");
         $stmt->bind_param("i", $id_utente);
         
@@ -336,9 +352,8 @@ class DBConnection {
         }
     }
 
-    // FUNZIONE PER AGGIORNARE LO STATO (Per Admin)
+    // AGGIORNA STATO ORDINE (ADMIN)
     public function aggiornaStatoOrdine($id_ordine, $nuovo_stato) {
-        // Verifica che lo stato sia uno di quelli permessi dall'ENUM
         $stati_permessi = ['in_attesa', 'approvato', 'annullato'];
         if (!in_array($nuovo_stato, $stati_permessi)) {
             return false;
@@ -351,11 +366,10 @@ class DBConnection {
         return $result;
     }
 
-    // RECUPERO GLI ORDINI DI UN UTENTE
+    // RECUPERO ORDINI UTENTE
     public function getOrdiniUtente($id_utente) {
         $ordini = [];
         
-        // 1. Query per gli ordini principali (dal più recente)
         $queryOrdini = "SELECT * FROM ordine WHERE (id_utente = ?) ORDER BY data_creazione DESC";
         $stmtOrd = $this->connection->prepare($queryOrdini);
         if (!$stmtOrd) { return []; }
@@ -373,12 +387,10 @@ class DBConnection {
         return $ordini;
     }
 
-
-        // RECUPERO GLI ORDINI DI TUTTI GLI UTENTI (Per Admin)
+    // RECUPERO TUTTI GLI ORDINI (ADMIN)
     public function getOrdini() {
         $ordini = [];
         
-        // 1. Query per gli ordini (dal più recente)
         $queryOrdini = "SELECT * FROM ordine WHERE stato_ordine='in_attesa' ORDER BY data_creazione DESC";
         $stmtOrd = $this->connection->prepare($queryOrdini);
         if (!$stmtOrd) { return []; }
@@ -395,12 +407,10 @@ class DBConnection {
         return $ordini;
     }
 
-
-    // RECUPERO LE PRENOTAZIONI DI TUTTI GLI UTENTI (Per Admin)
+    // RECUPERO PRENOTAZIONI (ADMIN)
     public function getPrenotazioni() {
         $prenotazioni = [];
         
-        // 1. Query per le prenotazioni (dal più recente)
         $queryPrenotazioni = "SELECT * FROM prenotazione WHERE stato='in_attesa' ORDER BY data_invio DESC";
         $stmtPren = $this->connection->prepare($queryPrenotazioni);
         if (!$stmtPren) { return []; }
@@ -416,7 +426,7 @@ class DBConnection {
         return $prenotazioni;
     }
 
-    // RECUPERO I MESSAGGI DI TUTTI GLI UTENTI (Per Admin)
+    // RECUPERO MESSAGGI (ADMIN)
     public function getMessaggi() {
         $messaggi = [];
         $queryMessaggi = "SELECT * FROM contatto WHERE stato='aperto' ORDER BY data_invio DESC";
@@ -433,8 +443,7 @@ class DBConnection {
         return $messaggi;
     }
     
-
-    // RECUPERO I DETTAGLI (ELEMENTI) DI UN SINGOLO ORDINE
+    // RECUPERO DETTAGLI ORDINE
     private function getDettagliOrdine($id_ordine) {
         $elementi = [];
         
@@ -454,9 +463,8 @@ class DBConnection {
         return $elementi;
     }
 
-    // STATISTICHE UTENTE (Per Dashboard)
+    // STATISTICHE UTENTE
     public function getUserStats($id_utente) {
-        // Calcola totale speso e numero ordini
         $query = "SELECT COUNT(*) as num_ordini, SUM(totale_finale) as totale_speso 
                   FROM ordine WHERE id_utente = ?";
         
@@ -466,7 +474,6 @@ class DBConnection {
         $result = $stmt->get_result();
         $data = $result->fetch_assoc();
         
-        // Se non ci sono ordini, SUM restituisce NULL, convertiamo in 0
         if ($data['totale_speso'] === null) {
             $data['totale_speso'] = 0.00;
         }
@@ -475,9 +482,8 @@ class DBConnection {
         return $data;
     }
 
-    // CAMBIA PASSWORD UTENTE
+    // CAMBIA PASSWORD
     public function cambiaPassword($id_utente, $vecchia_password, $nuova_password) {
-        // 1. Prendo la password attuale (hash)
         $stmt = $this->connection->prepare("SELECT password FROM utente WHERE id = ?");
         $stmt->bind_param("i", $id_utente);
         $stmt->execute();
@@ -486,12 +492,10 @@ class DBConnection {
 
         if (!$res) { return false; }
 
-        // 2. Verifico se la vecchia password coincide
         if (!password_verify($vecchia_password, $res['password'])) {
-            return false; // Vecchia password errata
+            return false;
         }
 
-        // 3. Hash della nuova password e aggiornamento
         $nuovoHash = password_hash($nuova_password, PASSWORD_DEFAULT);
         $stmtUpd = $this->connection->prepare("UPDATE utente SET password = ? WHERE id = ?");
         $stmtUpd->bind_param("si", $nuovoHash, $id_utente);

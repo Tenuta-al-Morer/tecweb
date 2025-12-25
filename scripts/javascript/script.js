@@ -696,4 +696,129 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+
+    /* ==========================================
+    * 9. GESTIONE CARRELLO (AJAX + LIMITI)
+    * ========================================== */
+    
+    // A. GESTIONE DEI PULSANTI (+, -, ELIMINA, ETC.)
+    document.body.addEventListener('click', function(e) {
+        
+        const btn = e.target.closest('.ajax-cmd');
+        
+        if (btn) {
+            e.preventDefault(); 
+
+            let action = btn.getAttribute('data-action');
+            const idRiga = btn.getAttribute('data-id-riga');
+            const idVino = btn.getAttribute('data-id-vino');
+            
+            let inputQty = document.getElementById('qty_v_' + idVino);
+            if (!inputQty) inputQty = document.getElementById('qty_' + idRiga);
+
+            let currentQty = 1;
+            if (inputQty) currentQty = parseInt(inputQty.value);
+
+            // --- CONTROLLO LIMITE MASSIMO (Button +) ---
+            // Se premo PIU e sono già a 100 (o più), mi fermo.
+            if (action === 'piu' && currentQty >= 100) {
+                return; // Non fa nulla
+            }
+
+            // --- CONTROLLO LIMITE MINIMO (Button -) ---
+            if (action === 'meno' && currentQty === 1) {
+                action = 'rimuovi'; 
+            }
+
+            btn.style.opacity = '0.5';
+            
+            const formData = new FormData();
+            formData.append('action', action);
+            formData.append('id_riga', idRiga);
+            formData.append('id_vino', idVino);
+            formData.append('current_qty', currentQty);
+            formData.append('ajax_mode', '1');
+
+            inviaRichiestaCarrello(formData, btn, inputQty, action);
+        }
+    });
+
+    // B. GESTIONE INPUT MANUALE
+    document.body.addEventListener('change', function(e) {
+        if (e.target.classList.contains('qty-input')) {
+            const input = e.target;
+            let newVal = parseInt(input.value); // Uso let per poterlo modificare
+            const idRiga = input.getAttribute('data-id-riga');
+            const idVino = input.getAttribute('data-id-vino');
+
+            let action = 'aggiorna_quantita';
+            
+            // --- CONTROLLO LIMITE MASSIMO (Input manuale) ---
+            if (newVal > 100) {
+                input.value = 100;
+                newVal = 100;
+                // Procedo con l'aggiornamento a 100
+            }
+
+            // --- CONTROLLO LIMITE MINIMO (Input manuale) ---
+            if (newVal <= 0) {
+                if(confirm("Vuoi rimuovere questo vino dal carrello?")) {
+                    action = 'rimuovi';
+                } else {
+                    input.value = 1;
+                    return;
+                }
+            }
+
+            input.style.opacity = '0.5';
+
+            const formData = new FormData();
+            formData.append('action', action);
+            formData.append('id_riga', idRiga);
+            formData.append('id_vino', idVino);
+            formData.append('quantita', newVal);
+            formData.append('ajax_mode', '1');
+
+            inviaRichiestaCarrello(formData, input, input, action);
+        }
+    });
+
+    // C. FUNZIONE UNICA 
+    function inviaRichiestaCarrello(formData, triggerElement, inputQty, actionUsed) {
+        fetch('carrello.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json()) 
+        .then(data => {
+            triggerElement.style.opacity = '1';
+            
+            if (data.success) {
+                if (actionUsed === 'rimuovi' || actionUsed === 'salva_per_dopo' || actionUsed === 'sposta_in_carrello') {
+                    window.location.reload();
+                } else {
+                    if (inputQty) inputQty.value = data.qty;
+                    updateText('summary-subtotal', data.total_products);
+                    updateText('summary-shipping', data.shipping, true);
+                    updateText('summary-total', data.total_final);
+                    updateText('cart-list-total', data.total_products);
+                    updateText('cart-count-display', data.cart_count);
+                }
+            } else {
+                window.location.reload();
+            }
+        })
+        .catch(err => {
+            console.error('Errore:', err);
+            window.location.reload();
+        });
+    }
+
+    function updateText(id, value, isHtml = false) {
+        const el = document.getElementById(id);
+        if (el) {
+            if (isHtml) el.innerHTML = value;
+            else el.innerText = value;
+        }
+    }
 });

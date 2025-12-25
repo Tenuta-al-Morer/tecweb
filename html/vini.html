@@ -54,7 +54,7 @@
 
                 <div class="mobile-icons">
                     <a href="carrello.php">
-                        <i class="fas fa-shopping-bag" aria-hidden="true"></i>
+                        <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                         <span class="visually-hidden" lang="en">Shop</span>
                     </a>
                     
@@ -232,21 +232,60 @@
             let slideImages = [];
             let lastFocusedElement;
             let scrollPosition = 0;
+            
+            // NUOVA VARIABILE: Serve per ricordare quale vino è aperto nel popup
+            let currentOpenWineId = 0; 
 
-            // APERTURA POPUP
+            // --- NUOVA FUNZIONE: Aggiunge dal bottone "Acquista" nella lista ---
+            function aggiungiDaCard(idVino) {
+                // Recupera la quantità dall'input specifico di quella card
+                const inputQty = document.getElementById('qty-' + idVino);
+                const quantita = inputQty ? inputQty.value : 1;
+                
+                // Reindirizza alla pagina che fa il lavoro sporco
+                inviaAlCarrello(idVino, quantita);
+            }
+
+            // --- NUOVA FUNZIONE: Aggiunge dal bottone nel Popup Dettagli ---
+            function gestisciCarrelloPopup() {
+                // Recupera la quantità dall'input dentro il popup
+                const qtyInput = document.querySelector('.shop-ov .input-qty');
+                const quantita = qtyInput ? qtyInput.value : 1;
+                
+                if(currentOpenWineId > 0) {
+                    inviaAlCarrello(currentOpenWineId, quantita);
+                    
+                    // Resetta a 1 dopo l'aggiunta (estetica)
+                    if(qtyInput) qtyInput.value = 1;
+                    chiudiDettagli();
+                } else {
+                    console.error("ID Vino non trovato nel popup");
+                }
+            }
+
+            // --- FUNZIONE COMUNE PER IL REDIRECT ---
+            function inviaAlCarrello(id, qty) {
+                // Costruisce l'URL: carrello.php?action=aggiungi&id_vino=1&quantita=2
+                const url = `carrello.php?action=aggiungi&id_vino=${id}&quantita=${qty}`;
+                window.location.href = url;
+            }
+
+            // APERTURA POPUP (Aggiornata per leggere l'ID)
             function apriDettagli(bottone) {
-                // Salva posizione scroll
                 scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
                 lastFocusedElement = bottone;
 
                 const articolo = bottone.closest('.wine-article');
                 
+                // RECUPERO DATI HTML
+                // Nota: ora leggiamo anche dataset.id che abbiamo aggiunto nel PHP
+                currentOpenWineId = articolo.dataset.id; 
                 const nome = articolo.dataset.nome;
                 const desc = articolo.dataset.descrizione;
                 const img = articolo.dataset.img;
                 const prezzo = articolo.dataset.prezzo;
 
-                // Recupera dati dal div
+                // Recupera dati dal div nascosto
                 const hiddenData = articolo.querySelector('.hidden-data');
                 const vitigno = hiddenData.querySelector('[data-key="vitigno"]').innerText;
                 const annata = hiddenData.querySelector('[data-key="annata"]').innerText;
@@ -254,7 +293,7 @@
                 const temperatura = hiddenData.querySelector('[data-key="temperatura"]').innerText;
                 const abbinamenti = hiddenData.querySelector('[data-key="abbinamenti"]').innerText;
 
-                // Popola campi
+                // Popola campi interfaccia
                 document.getElementById('pop-titolo').innerText = nome;
                 document.getElementById('pop-descrizione').innerText = desc;
                 document.getElementById('pop-prezzo').innerText = prezzo;
@@ -264,8 +303,12 @@
                 document.getElementById('tab-grado').innerText = gradazione;
                 document.getElementById('tab-temp').innerText = temperatura;
                 document.getElementById('tab-abbinamenti').innerText = abbinamenti;
+                
+                // Reset quantità popup a 1 ogni volta che apri
+                const popupQty = document.querySelector('.shop-ov .input-qty');
+                if(popupQty) popupQty.value = 1;
 
-                // Gestione Immagini (simulazione)
+                // Gestione Immagini
                 slideImages = [img, img, img]; 
                 currentSlideIndex = 0;
                 updateGalleryView();
@@ -306,19 +349,6 @@
                 }
             }
 
-            // AGGIUNTA AL CARRELLO (futuro)
-            function gestisciCarrelloPopup() {
-                const nome = document.getElementById('pop-titolo').innerText;
-                const qtyInput = document.querySelector('.shop-ov .input-qty');
-                const qty = qtyInput.value;
-                
-                // futuro: chiamata AJAX (?)
-                alert("Aggiunto al carrello: " + qty + " bottiglie di " + nome);
-                
-                qtyInput.value = 1;
-                chiudiDettagli();
-            }
-
             // GALLERIA IMMAGINI
             function cambiaSlide(direzione) {
                 currentSlideIndex += direzione;
@@ -334,14 +364,19 @@
 
             function updateGalleryView() {
                 const mainImg = document.getElementById('pop-img');
-                mainImg.src = slideImages[currentSlideIndex];
+                if(mainImg) mainImg.src = slideImages[currentSlideIndex];
                 
-                document.getElementById('thumb-0').src = slideImages[0];
-                document.getElementById('thumb-1').src = slideImages[1];
-                document.getElementById('thumb-2').src = slideImages[2];
+                const t0 = document.getElementById('thumb-0');
+                const t1 = document.getElementById('thumb-1');
+                const t2 = document.getElementById('thumb-2');
+                
+                if(t0) t0.src = slideImages[0];
+                if(t1) t1.src = slideImages[1];
+                if(t2) t2.src = slideImages[2];
 
                 document.querySelectorAll('.thumbnails-row img').forEach(img => img.classList.remove('active-thumb'));
-                document.getElementById('thumb-' + currentSlideIndex).classList.add('active-thumb');
+                const activeThumb = document.getElementById('thumb-' + currentSlideIndex);
+                if(activeThumb) activeThumb.classList.add('active-thumb');
             }
         </script>
 

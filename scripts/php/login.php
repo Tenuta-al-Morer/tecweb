@@ -66,6 +66,20 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
                 $_SESSION['ruolo'] = $ris['ruolo'];  
                 $_SESSION['nome'] = $ris['nome']; 
 
+                // --- MERGE CARRELLO ---
+                // Se c'era un carrello "ospite", lo spostiamo nel DB dell'utente
+                if (isset($_SESSION['guest_cart']) && !empty($_SESSION['guest_cart'])) {
+                    // Per sicurezza istanzio nuova connessione veloce
+                    $dbMerge = new DB\DBConnection();
+                    
+                    foreach ($_SESSION['guest_cart'] as $idVino => $qty) {
+                        $dbMerge->aggiungiAlCarrello($_SESSION['utente_id'], $idVino, $qty);
+                    }
+                    
+                    $dbMerge->closeConnection();
+                    unset($_SESSION['guest_cart']); // Cancelliamo il carrello ospite
+                }
+                
                 
                 if(isset($_COOKIE['backToOrigin'])){
                     $url = $_COOKIE['backToOrigin'];
