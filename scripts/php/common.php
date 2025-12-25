@@ -25,7 +25,7 @@ function caricaPagina($nomeFileHTML) {
         // --- UTENTE LOGGATO (Uso fa-user-circle) ---
         
         // Controllo se sono GIA' nella pagina utente o admin
-        if ($paginaCorrente === 'utente.php' || $paginaCorrente === 'admin.php') {
+        if ($paginaCorrente === 'user.php' || $paginaCorrente === 'admin.php') {
             // Sono già qui: NIENTE LINK, solo icona visiva + aria-current
             $userIconHTML = '
             <span class="current-page-icon" aria-current="page" title="Sei nella tua Area Riservata">
