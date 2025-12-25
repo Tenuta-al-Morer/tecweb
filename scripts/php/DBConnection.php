@@ -237,7 +237,7 @@ class DBConnection {
     public function getCarrelloUtente($id_utente) {
         $id_carrello = $this->getCarrelloId($id_utente);
         
-        $query = "SELECT ec.id as id_riga, ec.stato, v.id as id_vino, v.nome, v.descrizione_breve, v.img, v.prezzo, v.quantita_stock, ec.quantita, (v.prezzo * ec.quantita) as totale_riga 
+        $query = "SELECT ec.id as id_riga, ec.stato, v.id as id_vino, v.stato as stato_vino, v.nome, v.descrizione_breve, v.img, v.prezzo, v.quantita_stock, ec.quantita, (v.prezzo * ec.quantita) as totale_riga 
                   FROM carrello_elemento ec
                   JOIN vino v ON ec.id_vino = v.id
                   WHERE ec.id_carrello = ?";
@@ -252,6 +252,16 @@ class DBConnection {
             $items[] = $row;
         }
         return $items;
+    }
+
+    // RECUPERA VINO ANCHE SE NON ATTIVO (Per il carrello ospiti)
+    public function getVinoPerCarrello($id) {
+        // A differenza di getVino(), qui NON filtriamo per stato='attivo'
+        $stmt = $this->connection->prepare("SELECT * FROM vino WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc(); 
     }
 
     // CAMBIA STATO ELEMENTO CARRELLO
