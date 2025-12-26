@@ -467,7 +467,14 @@ class DBConnection {
         return $messaggi;
     }
 
-
+    public function aggiornaStatoMessaggio(int $id, string $stato): bool {
+        $sql = "UPDATE contatto SET stato = ? WHERE id = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bind_param("si", $stato, $id);
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
+    }
 
     
     // RECUPERO DETTAGLI ORDINE
