@@ -2169,11 +2169,17 @@ a.feature-card.card-link {
     border-radius: 8px;
 }
 
+/* --- CARD PRODOTTO  --- */
 .cart-item {
-    display: flex; 
-    gap: 1.5rem; 
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    grid-template-areas: 
+        "image details price"
+        "image actions price";
+    gap: 0 1.5rem;
     padding: 1.5rem 0;
     border-bottom: 1px solid var(--bordercolor);
+    align-items: start; 
     transition: background-color 0.3s ease;
 }
 
@@ -2181,10 +2187,10 @@ a.feature-card.card-link {
     border-bottom: none; 
 }
 
-/* Immagine Prodotto */
+/* Immagine Prodotto: Area Sinistra */
 .cart-item-img { 
-    width: 120px; 
-    flex-shrink: 0; 
+    grid-area: image;
+    width: 100%; 
     display: flex; 
     justify-content: center; 
     align-items: flex-start;
@@ -2197,9 +2203,9 @@ a.feature-card.card-link {
     object-fit: contain; 
 }
 
-/* Dettagli Prodotto */
+/* Dettagli Prodotto: Area Centrale Alta */
 .cart-item-details { 
-    flex-grow: 1; 
+    grid-area: details;
     display: flex; 
     flex-direction: column; 
     gap: 0.3rem; 
@@ -2208,6 +2214,7 @@ a.feature-card.card-link {
 .cart-item-details h3 { 
     font-size: 1.2rem; 
     margin: 0; 
+    color: var(--card-title-color);
 }
 
 .cart-item-details h3 a { 
@@ -2226,7 +2233,9 @@ a.feature-card.card-link {
     color: var(--diversity-color); 
 }
 
+/* Prezzo Desktop: Area Destra */
 .cart-item-price-col { 
+    grid-area: price;
     text-align: right; 
     min-width: 90px; 
 }
@@ -2243,7 +2252,7 @@ a.feature-card.card-link {
 
 .availability { 
     font-size: 0.85rem; 
-    margin-bottom: 1rem; 
+    margin-bottom: 0rem; 
     font-weight: 500; 
 }
 
@@ -2262,12 +2271,13 @@ a.feature-card.card-link {
     color: var(--red-errors); 
 }
 
-/* --- Azioni (Quantità e Link) --- */
+/* --- Azioni (Quantità e Link): Area Centrale Bassa --- */
 .item-actions-row { 
+    grid-area: actions;
     display: flex; 
     align-items: center; 
     gap: 1rem; 
-    margin-top: auto; 
+    margin-top: 1rem; 
     flex-wrap: wrap; 
 }
 
@@ -2346,12 +2356,8 @@ a.feature-card.card-link {
 }
 
 .btn-delete { 
-    color: var(--gold-color);
+    color: var(--red-errors);
     text-decoration: underline;
-}
-
-.btn-delete:hover { 
-    color: var(--btn-gold-hover); 
 }
 
 .btn-move { 
@@ -2360,7 +2366,7 @@ a.feature-card.card-link {
 }
 
 .btn-save { 
-    color: var(--txtcolor); 
+    color: var(--gold-color); 
     text-decoration: underline;
 }
 
@@ -2450,10 +2456,11 @@ a.feature-card.card-link {
 
 .saved-items-section h3 { 
     margin-bottom: 1rem; 
-    color: var(--diversity-color); 
+    color: var(--gold-color); 
+    font-size: 1.8rem;
 }
 
-/* Alert Bar adattata al tema Dark/Gold */
+/* Alert Bar */
 .alert-bar {
     grid-column: 1 / -1; 
     background-color: var(--table-stripe); 
@@ -2504,7 +2511,7 @@ a.feature-card.card-link {
     padding: 1rem 2rem;
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 1070px) {
     .cart-layout { 
         grid-template-columns: 1fr; 
         gap: 1.5rem;

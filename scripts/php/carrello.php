@@ -411,8 +411,8 @@ function renderCartItem($item, $isLogged, $type = 'active') {
             </div>
             <p class='item-desc'>$desc</p>
             <p class='$availClass'>$availText</p>
-            <div class='item-actions-row'>$actionsHTML</div>
         </div>
+        <div class='item-actions-row'>$actionsHTML</div>
         <div class='cart-item-price-col'>
             <p class='price-large'>€ $prezzoSingolo</p>
         </div>
