@@ -91,6 +91,9 @@
 body.light-mode {
     /* --- Primitive Locali  --- */
     --light-bg:    #f4f4f4; 
+    --color-yellow:   #92480c;
+    --color-green:        #0b501b;
+    --red-errors: #752222;
     
     /* Brand & Testi */
     --gold-color:       #8a6b1e;
