@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mstevani`
+-- Database: `acontari`
 --
 
 -- --------------------------------------------------------
@@ -31,7 +31,7 @@ CREATE TABLE `carrello` (
   `id` int(11) NOT NULL,
   `id_utente` int(11) NOT NULL,
   `data_aggiornamento` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+);
 
 --
 -- Dump dei dati per la tabella `carrello`
@@ -53,7 +53,7 @@ CREATE TABLE `carrello_elemento` (
   `quantita` int(11) NOT NULL DEFAULT 1,
   `data_inserimento` datetime DEFAULT current_timestamp(),
   `stato` enum('attivo','salvato') NOT NULL DEFAULT 'attivo'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+);
 
 --
 -- Dump dei dati per la tabella `carrello_elemento`
@@ -80,7 +80,7 @@ CREATE TABLE `contatto` (
   `messaggio` text NOT NULL,
   `data_invio` datetime NOT NULL DEFAULT current_timestamp(),
   `stato` varchar(20) NOT NULL DEFAULT 'aperto'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+);
 
 --
 -- Dump dei dati per la tabella `contatto`
@@ -106,7 +106,7 @@ CREATE TABLE `contatto_archivio` (
   `messaggio` text NOT NULL,
   `data_invio` datetime NOT NULL DEFAULT current_timestamp(),
   `stato` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+);
 
 --
 -- Dump dei dati per la tabella `contatto_archivio`
@@ -132,7 +132,7 @@ CREATE TABLE `ordine` (
   `metodo_pagamento` varchar(50) NOT NULL,
   `id_transazione` varchar(255) DEFAULT NULL,
   `data_creazione` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+);
 
 --
 -- Dump dei dati per la tabella `ordine`
@@ -156,7 +156,7 @@ CREATE TABLE `ordine_elemento` (
   `nome_vino_storico` varchar(255) NOT NULL,
   `quantita` int(11) NOT NULL,
   `prezzo_acquisto` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+);
 
 --
 -- Dump dei dati per la tabella `ordine_elemento`
@@ -183,14 +183,14 @@ CREATE TABLE `prenotazione` (
   `n_persone` int(11) NOT NULL,
   `data_invio` datetime NOT NULL DEFAULT current_timestamp(),
   `stato` varchar(20) NOT NULL DEFAULT 'In attesa'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+);
 
 --
 -- Dump dei dati per la tabella `prenotazione`
 --
 
 INSERT INTO `prenotazione` (`id`, `nome`, `cognome`, `email`, `tipo_degustazione`, `prefisso`, `telefono`, `data_visita`, `n_persone`, `data_invio`, `stato`) VALUES
-(3, 'Test', 'User', 'user@test.com', 'Degustazione Classica', '+39', '3331234567', '2026-01-15', 2, '2025-12-22 22:39:38', 'In attesa');
+(3, 'Test', 'User', 'user@test.com', 'Degustazione Classica', '+39', '3331234567', '2026-01-15', 2, '2025-12-22 22:39:38', 'in_attesa');
 
 -- --------------------------------------------------------
 
@@ -210,7 +210,7 @@ CREATE TABLE `prenotazione_archivio` (
   `n_persone` int(11) NOT NULL,
   `data_invio` datetime NOT NULL DEFAULT current_timestamp(),
   `stato` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+);
 
 --
 -- Dump dei dati per la tabella `prenotazione_archivio`
@@ -233,7 +233,7 @@ CREATE TABLE `utente` (
   `password` varchar(255) NOT NULL,
   `data_registrazione` datetime NOT NULL DEFAULT current_timestamp(),
   `ruolo` varchar(20) NOT NULL DEFAULT 'user'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+);
 
 --
 -- Dump dei dati per la tabella `utente`
@@ -265,7 +265,7 @@ CREATE TABLE `vino` (
   `gradazione` varchar(20) DEFAULT 'N/D',
   `temperatura` varchar(20) DEFAULT 'N/D',
   `abbinamenti` varchar(255) DEFAULT 'N/D'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+);
 
 --
 -- Dump dei dati per la tabella `vino`

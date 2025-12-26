@@ -19,48 +19,70 @@ if ($ruoloUtente !== 'admin') {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+    $azione = $_POST['azione'] ?? '';
+
+    // === MESSAGGI ===
+    if ($azione === 'msg_risposta') {
+        $messaggioId = isset($_POST['messaggio_id']) ? (int)$_POST['messaggio_id'] : 0;
+        $risposta    = trim($_POST['richiesta1'] ?? '');
+
+        if ($messaggioId > 0 && $risposta !== '') {
+            $db = new DBConnection();
+            $ok = $db->aggiornaStatoMessaggio($messaggioId, 'risposto');
+            $db->closeConnection();
+
+            header("Location: " . $_SERVER['PHP_SELF']);
+            exit;
+        }
+
+        header("location: 404.php");
+        exit;
+    }
+
+    // === ORDINI ===
     $ordineId = isset($_POST['ordine_id']) ? (int)$_POST['ordine_id'] : 0;
-    $azione   = $_POST['azione'] ?? '';
-
     if ($ordineId > 0 && in_array($azione, ['accetta', 'rifiuta'], true)) {
-
         $stato = ($azione === 'accetta') ? 'approvato' : 'annullato';
 
         $db = new DBConnection();
         $ok = $db->aggiornaStatoOrdine($ordineId, $stato);
         $db->closeConnection();
+
         header("Location: " . $_SERVER['PHP_SELF']);
         exit;
     }
 
+    // === PRENOTAZIONI ===
     $prenotazioneId = isset($_POST['prenotazione_id']) ? (int)$_POST['prenotazione_id'] : 0;
-    if ($prenotazioneId > 0 && in_array($azione, ['accetta', 'rifiuta'], true)) {   
+    if ($prenotazioneId > 0 && in_array($azione, ['accetta', 'rifiuta'], true)) {
         $stato = ($azione === 'accetta') ? 'approvato' : 'annullato';
 
         $db = new DBConnection();
         $ok = $db->aggiornaStatoPrenotazione($prenotazioneId, $stato);
         $db->closeConnection();
+
         header("Location: " . $_SERVER['PHP_SELF']);
         exit;
     }
 
-    // se arrivi qui, POST non valido
+    // POST non valido
     header("location: 404.php");
     exit;
 }
+
 
 $htmlContent = caricaPagina('../../html/admin.html');
 $emailUtente = htmlspecialchars($_SESSION['utente']);
 $nomeUtente = htmlspecialchars($_SESSION['nome']);
 
-// 1) Leggo vini dal DB
+// 1) Lettura da DB
 $db = new DBConnection();
 $ordiniArray = $db->getOrdini();
 $prenotazioniArray = $db->getPrenotazioni();
 $messaggiArray = $db->getMessaggi();
 $db->closeConnection();
 
-// 2) Costruisco le righe HTML
+// 2) Costruzione righe tabelle
 
 $ordini = "";
 
@@ -105,28 +127,36 @@ foreach ($prenotazioniArray as $prenotazione) {
     $prenotazioni .= "</tr>";
 }
 
+
 $messaggi = "";
 foreach ($messaggiArray as $messaggio) {
+    $idMsg = (int)$messaggio['id'];
+
     $messaggi .= "<tr>";
-    $messaggi .= '<th scope="row">' . (int)$messaggio['id'] . '</th>';
+    $messaggi .= '<th scope="row">' . $idMsg . '</th>';
     $messaggi .= '<td data-title="Nome">' . htmlspecialchars($messaggio['nome']) . '</td>';
     $messaggi .= '<td data-title="Cognome">' . htmlspecialchars($messaggio['cognome']) . '</td>';
     $messaggi .= '<td data-title="Email">' . htmlspecialchars($messaggio['email']) . '</td>';
     $messaggi .= '<td data-title="Tipo supporto">' . htmlspecialchars($messaggio['tipo_supporto']) . '</td>';
-    $messaggi .= '<td data-title="Telefono">' . htmlspecialchars($messaggio['prefisso']) .' '. htmlspecialchars($messaggio['telefono']) . '</td>';
+    $messaggi .= '<td data-title="Telefono">' . htmlspecialchars($messaggio['prefisso']) . ' ' . htmlspecialchars($messaggio['telefono']) . '</td>';
     $messaggi .= '<td data-title="Messaggio">' . htmlspecialchars($messaggio['messaggio']) . '</td>';
     $messaggi .= '<td data-title="Data invio">' . htmlspecialchars($messaggio['data_invio']) . '</td>';
-    $messaggi .= '<td class="td_richiesta_msg" data-title="Gestione richiesta"> 
-                                <form action="#" method="POST" class="standard-form">
-                                    <label for="richiesta1">Risposta<span aria-hidden="true">*</span></label>
-                                    <input type="text" id="richiesta1" name="richiesta1" required placeholder="Rispondi alle necessità del cliente">
-                                </form>
-                                <form action="#" method="POST" class="standard-form">
-                                    <button type="submit" name="msg_risposta" value="msg_risposta" class="btn-secondary">Invia</button>
-                                </form>
-                            </td>';
+
+    $messaggi .= '<td class="td_richiesta_msg" data-title="Gestione richiesta">
+                    <form id="form_msg_' . $idMsg . '" action="" method="POST" class="standard-form">
+                        <input type="hidden" name="messaggio_id" value="' . $idMsg . '">
+                        <input type="hidden" name="azione" value="msg_risposta">
+
+                        <label for="richiesta1_' . $idMsg . '">Risposta<span aria-hidden="true">*</span></label>
+                        <input type="text" id="richiesta1_' . $idMsg . '" name="richiesta1" required
+                            placeholder="Rispondi alle necessità del cliente">
+                    </form>
+
+                    <button type="submit" form="form_msg_' . $idMsg . '" class="btn-secondary">Invia</button>
+                </td>';
     $messaggi .= "</tr>";
 }
+
 
 // 3) Replace placeholders
 $htmlContent = str_replace("[nome_utente]", $nomeUtente, $htmlContent);
