@@ -389,7 +389,6 @@ class DBConnection {
         return $result;
     }
 
-
     // RECUPERO ORDINI UTENTE
     public function getOrdiniUtente($id_utente) {
         $ordini = [];
@@ -467,6 +466,8 @@ class DBConnection {
         return $messaggi;
     }
 
+
+    // AGGIORNA STATO MESSAGGIO (ADMIN)
     public function aggiornaStatoMessaggio(int $id, string $stato): bool {
         $sql = "UPDATE contatto SET stato = ? WHERE id = ?";
         $stmt = $this->connection->prepare($sql);

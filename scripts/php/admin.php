@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $azione = $_POST['azione'] ?? '';
 
-    // === MESSAGGI (risposta) ===
+    // === MESSAGGI ===
     if ($azione === 'msg_risposta') {
         $messaggioId = isset($_POST['messaggio_id']) ? (int)$_POST['messaggio_id'] : 0;
         $risposta    = trim($_POST['richiesta1'] ?? '');
@@ -75,14 +75,14 @@ $htmlContent = caricaPagina('../../html/admin.html');
 $emailUtente = htmlspecialchars($_SESSION['utente']);
 $nomeUtente = htmlspecialchars($_SESSION['nome']);
 
-// 1) Leggo vini dal DB
+// 1) Lettura da DB
 $db = new DBConnection();
 $ordiniArray = $db->getOrdini();
 $prenotazioniArray = $db->getPrenotazioni();
 $messaggiArray = $db->getMessaggi();
 $db->closeConnection();
 
-// 2) Costruisco le righe HTML
+// 2) Costruzione righe tabelle
 
 $ordini = "";
 
