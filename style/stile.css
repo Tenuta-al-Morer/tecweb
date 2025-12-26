@@ -65,7 +65,7 @@
     
     /* Errori e Link */
     --visitedcolor:           var(--color-red);
-    --red-errors:             var(--color-red);
+    --red-errors: #FF5252;
 
     /* Bottoni ROSSI */
     --btn-red-bg:     var(--color-red);
@@ -2256,7 +2256,7 @@ a.feature-card.card-link {
 }
 
 .text-red { 
-    color: var(--color-red); 
+    color: var(--red-errors); 
 }
 
 /* --- Azioni (Quantità e Link) --- */
