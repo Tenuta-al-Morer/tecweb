@@ -207,36 +207,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================
-     * 5. GESTIONE SLIDER / CAROSELLO INFINITO (CORRETTO PER MULTI-SLIDE)
-     * ========================================== */
+    * 5. GESTIONE SLIDER / CAROSELLO INFINITO
+    * ========================================== */
     const sliderContainer = document.getElementById('imageSlider');
     const slides = document.querySelectorAll('.slide');
     const nextBtn = document.querySelector('.next-btn');
     const prevBtn = document.querySelector('.prev-btn');
 
     if (sliderContainer && slides.length > 0) {
-        
-        
-        const clonesCount = 4; 
-        
-        
-        let currentIndex = clonesCount; 
+
+        // Rilevamento preferenza Reduced Motion
+        const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        const clonesCount = 4;
+        let currentIndex = clonesCount;
         let isTransitioning = false;
         let slideInterval;
-        const intervalTime = 5000; 
+        const intervalTime = 5000;
 
-        
-        
-        
+        // Creazione Cloni 
         for (let i = 0; i < clonesCount; i++) {
-            
-            const slideToClone = slides[slides.length - 1 - i]; 
+            const slideToClone = slides[slides.length - 1 - i];
             const clone = slideToClone.cloneNode(true);
-            clone.classList.add('clone-slide'); 
+            clone.classList.add('clone-slide');
             sliderContainer.prepend(clone);
         }
 
-        
         for (let i = 0; i < clonesCount; i++) {
             const slideToClone = slides[i];
             const clone = slideToClone.cloneNode(true);
@@ -244,32 +240,35 @@ document.addEventListener('DOMContentLoaded', () => {
             sliderContainer.append(clone);
         }
 
-        
         const allSlides = document.querySelectorAll('.slide');
 
-        
-        
         const updateInitialPosition = () => {
-             const slideWidth = allSlides[0].offsetWidth; 
-             sliderContainer.style.transition = 'none'; 
-             sliderContainer.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
+            const slideWidth = allSlides[0].offsetWidth;
+            sliderContainer.style.transition = 'none';
+            sliderContainer.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
         };
-        
-        
+
         updateInitialPosition();
 
-        
         const moveSlide = () => {
-            const slideWidth = allSlides[0].offsetWidth; 
+            const slideWidth = allSlides[0].offsetWidth;
+            
+            // toglie anche l'effetto "scorrimento" sui pulsanti quando le animazioni sono disattivate
+            if (mediaQuery.matches) {
+                sliderContainer.style.transition = 'none';
+            } else {
+                sliderContainer.style.transition = 'transform 0.5s ease-in-out';
+            }
+            
+            
+            // Manteniamo l'animazione solo per i click manuali:
             sliderContainer.style.transition = 'transform 0.5s ease-in-out';
             sliderContainer.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
         };
 
         const nextSlide = () => {
             if (isTransitioning) return;
-            
             if (currentIndex >= allSlides.length - 1) return;
-
             isTransitioning = true;
             currentIndex++;
             moveSlide();
@@ -278,40 +277,34 @@ document.addEventListener('DOMContentLoaded', () => {
         const prevSlide = () => {
             if (isTransitioning) return;
             if (currentIndex <= 0) return;
-
             isTransitioning = true;
             currentIndex--;
             moveSlide();
         };
 
-        
         sliderContainer.addEventListener('transitionend', () => {
             isTransitioning = false;
             const slideWidth = allSlides[0].offsetWidth;
 
-            
-            
             if (currentIndex >= slides.length + clonesCount) {
-                sliderContainer.style.transition = 'none'; 
-                
-                currentIndex = currentIndex - slides.length; 
+                sliderContainer.style.transition = 'none';
+                currentIndex = currentIndex - slides.length;
                 sliderContainer.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
             }
 
-            
             if (currentIndex < clonesCount) {
-                sliderContainer.style.transition = 'none'; 
-                
+                sliderContainer.style.transition = 'none';
                 currentIndex = currentIndex + slides.length;
                 sliderContainer.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
             }
         });
 
-        
+        // Pulsanti 
         if (nextBtn) {
             nextBtn.addEventListener('click', () => {
                 nextSlide();
-                resetTimer();
+                // Resetta il timer solo se non è disabilitato per ridotto movimento
+                resetTimer(); 
             });
         }
 
@@ -322,8 +315,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        
+        // controlla la preferenza 
         const startTimer = () => {
+            // Se l'utente preferisce ridurre il movimento, NON avviamo il timer.
+            if (mediaQuery.matches) return; 
+            
+            // Altrimenti avviamo normalmente
             slideInterval = setInterval(nextSlide, intervalTime);
         };
 
@@ -333,21 +330,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const resetTimer = () => {
             stopTimer();
-            startTimer();
+            startTimer(); // Questo controllerà di nuovo la preferenza e non ripartirà se necessario
         };
 
-        
         sliderContainer.addEventListener('mouseenter', stopTimer);
-        sliderContainer.addEventListener('mouseleave', startTimer);
+        sliderContainer.addEventListener('mouseleave', () => {
+            // riavvia solo se permesso
+            startTimer();
+        });
 
-        
-        
         window.addEventListener('resize', () => {
             const slideWidth = allSlides[0].offsetWidth;
             sliderContainer.style.transition = 'none';
             sliderContainer.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
         });
 
+        // Ascolta cambiamenti nelle impostazioni del sistema in tempo reale
+        mediaQuery.addEventListener('change', () => {
+            if (mediaQuery.matches) {
+                stopTimer(); // Se l'utente attiva l'opzione mentre guarda, fermiamo tutto
+            } else {
+                startTimer(); // Se la disattiva, riprendiamo
+            }
+        });
+
+        // Avvio iniziale
         startTimer();
     }
 
