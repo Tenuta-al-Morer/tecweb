@@ -388,7 +388,7 @@ body.light-mode .table-data td::before {
 
 .dashboard-content h2 {
     font-size: 1.5rem;
-    padding: 0;
+    padding-top: 1em;
     margin-top: 1.5rem;
 }
 
