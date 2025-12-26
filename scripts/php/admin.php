@@ -17,6 +17,38 @@ if ($ruoloUtente !== 'admin') {
     exit();
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $ordineId = isset($_POST['ordine_id']) ? (int)$_POST['ordine_id'] : 0;
+    $azione   = $_POST['azione'] ?? '';
+
+    if ($ordineId > 0 && in_array($azione, ['accetta', 'rifiuta'], true)) {
+
+        $stato = ($azione === 'accetta') ? 'approvato' : 'annullato';
+
+        $db = new DBConnection();
+        $ok = $db->aggiornaStatoOrdine($ordineId, $stato);
+        $db->closeConnection();
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit;
+    }
+
+    $prenotazioneId = isset($_POST['prenotazione_id']) ? (int)$_POST['prenotazione_id'] : 0;
+    if ($prenotazioneId > 0 && in_array($azione, ['accetta', 'rifiuta'], true)) {   
+        $stato = ($azione === 'accetta') ? 'approvato' : 'annullato';
+
+        $db = new DBConnection();
+        $ok = $db->aggiornaStatoPrenotazione($prenotazioneId, $stato);
+        $db->closeConnection();
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit;
+    }
+
+    // se arrivi qui, POST non valido
+    header("location: 404.php");
+    exit;
+}
+
 $htmlContent = caricaPagina('../../html/admin.html');
 $emailUtente = htmlspecialchars($_SESSION['utente']);
 $nomeUtente = htmlspecialchars($_SESSION['nome']);
@@ -32,7 +64,7 @@ $db->closeConnection();
 
 $ordini = "";
 
-foreach ($ordiniArray as $ordine) {
+foreach ($ordiniArray as $ordine) { 
     $ordini .= "<tr>";
     $ordini .= '<th scope="row">' . (int)$ordine['id'] . '</th>';
     $ordini .= '<td data-title="ID Utente">' . (int)$ordine['id_utente'] . '</td>';
@@ -43,9 +75,10 @@ foreach ($ordiniArray as $ordine) {
     $ordini .= '<td data-title="Metodo Pagamento">' . htmlspecialchars($ordine['metodo_pagamento']) . '</td>';
     $ordini .= '<td data-title="Data Creazione">' . htmlspecialchars($ordine['data_creazione']) . '</td>';
     $ordini .= '<td class="td_richiesta_degustazione" data-title="Gestione richiesta"> 
-                    <form action="#" method="POST" class="standard-form">
-                        <button type="submit" name="accetta" value="accetta" class="btn-secondary">Accetta</button>
-                        <button type="submit" name="rifiuta" value="rifiuta" class="btn-secondary">Rifiuta</button>
+                    <form action="" method="POST" class="standard-form">
+                        <input type="hidden" name="ordine_id" value="' . (int)$ordine['id'] . '">
+                        <button type="submit" name="azione" value="accetta" class="btn-secondary">Accetta</button>
+                        <button type="submit" name="azione" value="rifiuta" class="btn-secondary">Rifiuta</button>
                     </form>
                 </td>';
     $ordini .= "</tr>";
@@ -63,11 +96,12 @@ foreach ($prenotazioniArray as $prenotazione) {
     $prenotazioni .= '<td data-title="Numero persone">' . (int)$prenotazione['n_persone'] . '</td>';
     $prenotazioni .= '<td data-title="Data Invio">' . htmlspecialchars($prenotazione['data_invio']) . '</td>';
     $prenotazioni .= '<td class="td_richiesta_degustazione" data-title="Gestione richiesta"> 
-                    <form action="#" method="POST" class="standard-form">
-                        <button type="submit" name="accetta" value="accetta" class="btn-secondary">Accetta</button>
-                        <button type="submit" name="rifiuta" value="rifiuta" class="btn-secondary">Rifiuta</button>
-                    </form>
-                </td>';
+                        <form action="" method="POST" class="standard-form">
+                            <input type="hidden" name="prenotazione_id" value="' . (int)$prenotazione['id'] . '">
+                            <button type="submit" name="azione" value="accetta" class="btn-secondary">Accetta</button>
+                            <button type="submit" name="azione" value="rifiuta" class="btn-secondary">Rifiuta</button>
+                        </form>
+                    </td>';
     $prenotazioni .= "</tr>";
 }
 

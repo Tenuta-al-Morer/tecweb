@@ -376,6 +376,20 @@ class DBConnection {
         return $result;
     }
 
+    // AGGIORNA STATO PRENOTAZIONE (ADMIN)
+    public function aggiornaStatoPrenotazione($id_prenotazione, $nuovo_stato) {
+        $stati_permessi = ['in_attesa', 'approvato', 'annullato'];
+        if (!in_array($nuovo_stato, $stati_permessi)) {
+            return false;
+        }
+        $stmt = $this->connection->prepare("UPDATE prenotazione SET stato = ? WHERE id = ?");
+        $stmt->bind_param("si", $nuovo_stato, $id_prenotazione);
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
+    }
+
+
     // RECUPERO ORDINI UTENTE
     public function getOrdiniUtente($id_utente) {
         $ordini = [];
@@ -452,6 +466,9 @@ class DBConnection {
         $stmtMess->close();
         return $messaggi;
     }
+
+
+
     
     // RECUPERO DETTAGLI ORDINE
     private function getDettagliOrdine($id_ordine) {
