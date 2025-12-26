@@ -150,7 +150,7 @@ if (isset($_REQUEST['action'])) {
     $costoStd = 10.00;
     $shipCost = ($newTotalProd == 0) ? 0 : (($newTotalProd >= $soglia) ? 0 : $costoStd);
     $finalTotal = $newTotalProd + $shipCost;
-    $shipMsg = ($shipCost == 0 && $newTotalProd > 0) ? '<span style="color:#007600; font-weight:bold;">Gratuita</span>' : '€ ' . number_format($shipCost, 2);
+    $shipMsg = ($shipCost == 0 && $newTotalProd > 0) ? '<span class="free-shipping-text">Gratuita</span>' : '€ ' . number_format($shipCost, 2);
     if($newTotalProd == 0) $shipMsg = '€ 0.00';
 
     // --- RISPOSTA JSON SE RICHIESTO ---
@@ -288,8 +288,9 @@ $db->closeConnection();
 // Se ci sono prodotti ridotti, costruiamo il messaggio
 if (!empty($quantitaRidottaMsg)) {
     $listaVini = implode(", ", $quantitaRidottaMsg);
+    // NOTA: La classe .alert-bar è già definita in stile.css con i colori corretti. Rimosso stile inline.
     $alertMsgHTML .= '
-    <div class="alert-bar" style="background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba;">
+    <div class="alert-bar">
         <i class="fas fa-info-circle"></i>
         <span>La quantità di alcuni articoli (<b>' . $listaVini . '</b>) è stata aggiornata in base alla disponibilità attuale.</span>
     </div>';
@@ -313,7 +314,7 @@ if ($totaleProdotti == 0) {
     $msgSpedizione = "€ 0.00";
     $progressHTML = '<p class="shipping-info"><i class="fas fa-shopping-basket"></i> Aggiungi prodotti al carrello.</p>';
 } elseif ($speseSpedizione == 0) {
-    $msgSpedizione = '<span style="color:#007600; font-weight:bold;">Gratuita</span>';
+    $msgSpedizione = '<span class="free-shipping-text">Gratuita</span>';
     $progressHTML = '<p class="shipping-info success"><i class="fas fa-check-circle"></i> Hai diritto alla spedizione GRATUITA!</p>';
 } else {
     $mancante = number_format($sogliaGratuita - $totaleProdotti, 2);
@@ -426,7 +427,7 @@ if (empty($activeItems) && empty($savedItems)) {
         <i class='fas fa-wine-bottle'></i>
         <h2>Il tuo carrello è vuoto</h2>
         <p>Non hai ancora aggiunto prodotti.</p>
-        <a href='vini.php' class='btn-primary' style='margin-top:1.5rem; display:inline-block; width:auto; padding:1rem 2rem;'>Vai allo Shop</a>
+        <a href='vini.php' class='btn-primary btn-shop-empty'>Vai allo Shop</a>
     </div>";
 } 
 else {
@@ -437,10 +438,10 @@ else {
         }
     } else {
         $activeProductsHTML = "
-        <div class='empty-cart-message' style='padding: 2rem;'>
-            <i class='fas fa-wine-bottle' style='font-size:2rem'></i>
+        <div class='empty-cart-message small-empty'>
+            <i class='fas fa-wine-bottle'></i>
             <h3>Il carrello attivo è vuoto</h3>
-            <a href='vini.php' class='btn-primary' style='margin-top:1rem;'>Vai allo Shop</a>
+            <a href='vini.php' class='btn-primary btn-shop-empty'>Vai allo Shop</a>
         </div>";
     }
 
@@ -468,7 +469,7 @@ else {
         <div class='cart-list-container'>
             <h1 class='cart-title-main'>Carrello</h1>
             $activeProductsHTML
-            " . (!empty($activeItems) ? "<div style='text-align:right; margin-top:1.5rem; font-size:1.2rem;'>Totale prodotti (<span id='cart-count-display'>$numArticoli</span>): <strong>€ <span id='cart-list-total'>" . number_format($totaleProdotti, 2) . "</span></strong></div>" : "") . "
+            " . (!empty($activeItems) ? "<div class='cart-list-total-row'>Totale prodotti (<span id='cart-count-display'>$numArticoli</span>): <strong>€ <span id='cart-list-total'>" . number_format($totaleProdotti, 2) . "</span></strong></div>" : "") . "
             $savedProductsHTML
         </div>
 
@@ -486,7 +487,7 @@ else {
                 <span>Totale:</span>
                 <span>€ <span id='summary-total'>" . number_format($totaleFinale, 2) . "</span></span>
             </div>
-            <p style='font-size:0.8rem; text-align:right; color:var(--diversity-color); margin-top:0.5rem;'>IVA inclusa</p>
+            <p class='vat-text'>IVA inclusa</p>
             $checkoutHTML
         </div>
     </div>";

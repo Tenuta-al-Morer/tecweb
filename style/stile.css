@@ -1886,6 +1886,8 @@ Sezione Admin
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
     margin-bottom: 2rem;
+    list-style: none;
+    padding: 0;
 }
 
 .stat-number {
@@ -2176,11 +2178,6 @@ a.feature-card.card-link {
     border-bottom: none; 
 }
 
-.item-saved { 
-    opacity: 0.7; 
-    background-color: rgba(255,255,255,0.02); 
-}
-
 /* Immagine Prodotto */
 .cart-item-img { 
     width: 120px; 
@@ -2226,7 +2223,6 @@ a.feature-card.card-link {
     color: var(--diversity-color); 
 }
 
-/* Prezzo (Colonna dedicata desktop) */
 .cart-item-price-col { 
     text-align: right; 
     min-width: 90px; 
@@ -2239,18 +2235,29 @@ a.feature-card.card-link {
 }
 
 .price-mobile { 
-    display: none; /* Nascosto su desktop */
+    display: none; 
 }
 
-/* Disponibilità e Stock */
 .availability { 
     font-size: 0.85rem; 
     margin-bottom: 1rem; 
     font-weight: 500; 
 }
-.text-green { color: #007600; }
-.text-orange { color: #d68910; }
-.text-red { color: #c0392b; }
+
+.text-green, 
+.shipping-info.success,
+.free-shipping-text { 
+    color: var(--color-green); 
+}
+
+.text-orange,
+.shipping-info.warning { 
+    color: var(--color-yellow); 
+}
+
+.text-red { 
+    color: var(--color-red); 
+}
 
 /* --- Azioni (Quantità e Link) --- */
 .item-actions-row { 
@@ -2284,7 +2291,7 @@ a.feature-card.card-link {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--bodybgcolor); /* Sfondo scuro */
+    background-color: var(--bodybgcolor); 
     color: var(--txtcolor);
     border: none;
     cursor: pointer;
@@ -2295,10 +2302,9 @@ a.feature-card.card-link {
 
 .qty-btn:hover { 
     background-color: var(--gold-color); 
-    color: #000;
+    color: var(--color-bg-dark); 
 }
 
-/* Input centrato */
 .qty-input {
     width: 40px; 
     height: 32px;
@@ -2310,6 +2316,7 @@ a.feature-card.card-link {
     color: var(--txtcolor); 
     padding: 0; 
     font-weight: bold;
+    font-size: 1rem;
     appearance: textfield; 
 }
 
@@ -2319,7 +2326,7 @@ a.feature-card.card-link {
     margin: 0; 
 }
 
-/* Bottoni Elimina / Salva (non più link <a>) */
+/* Bottoni Azione Testuali */
 .action-btn-text {
     background: none;
     border: none;
@@ -2328,14 +2335,37 @@ a.feature-card.card-link {
     cursor: pointer;
     text-decoration: none;
     padding: 0;
+    transition: color 0.2s ease;
 }
 
-.action-btn-text:hover { text-decoration: underline; }
-.btn-delete { color: var(--gold-color); }
-.btn-delete:hover { color: #eecf79; }
-.btn-move { color: var(--primary-color); font-weight: bold; }
-.btn-save { color: var(--txtcolor); }
-.disabled-btn { color: #666; cursor: not-allowed; text-decoration: none; }
+.action-btn-text:hover { 
+    text-decoration: underline; 
+}
+
+.btn-delete { 
+    color: var(--gold-color);
+    text-decoration: underline;
+}
+
+.btn-delete:hover { 
+    color: var(--btn-gold-hover); 
+}
+
+.btn-move { 
+    color: var(--gold-color); 
+    font-weight: bold; 
+}
+
+.btn-save { 
+    color: var(--txtcolor); 
+    text-decoration: underline;
+}
+
+.disabled-btn { 
+    color: var(--txtcolor); 
+    cursor: not-allowed; 
+    text-decoration: none; 
+}
 
 /* --- Box Riepilogo (Destra) --- */
 .cart-summary-box {
@@ -2354,14 +2384,13 @@ a.feature-card.card-link {
     padding-bottom: 1rem; 
     border-bottom: 1px solid var(--bordercolor); 
 }
-.shipping-info.success { color: #007600; }
-.shipping-info.warning { color: var(--gold-color); }
 
 .summary-row { 
     display: flex; 
     justify-content: space-between; 
     margin-bottom: 0.8rem; 
     font-size: 1rem; 
+    color: var(--txtcolor);
 }
 
 .summary-total {
@@ -2374,7 +2403,6 @@ a.feature-card.card-link {
     font-weight: bold; 
     color: var(--gold-color);
 }
-
 
 .btn-full { 
     width: 100%; 
@@ -2389,21 +2417,20 @@ a.feature-card.card-link {
 }
 
 .btn-disabled {
-    background-color: #555 !important;
-    color: #aaa !important;
+    background-color: var(--gray-medium) !important; 
+    color: var(--gray-border) !important; 
     cursor: not-allowed;
-    border-color: #555 !important;
+    border-color: var(--gray-medium) !important;
     box-shadow: none;
 }
 
-/* --- Messaggi e Sezioni Extra --- */
 .empty-cart-message {
     background: var(--card-bg); 
     padding: 4rem 2rem; 
     text-align: center;
     border: 1px solid var(--bordercolor); 
     border-radius: 8px; 
-    grid-column: 1 / -1; /* Occupa tutta la larghezza */
+    grid-column: 1 / -1; 
 }
 
 .empty-cart-message i { 
@@ -2423,17 +2450,55 @@ a.feature-card.card-link {
     color: var(--diversity-color); 
 }
 
+/* Alert Bar adattata al tema Dark/Gold */
 .alert-bar {
     grid-column: 1 / -1; 
-    background-color: #fff3cd; 
-    color: #856404;
+    background-color: var(--table-stripe); 
+    color: var(--txtcolor);
     padding: 1rem; 
     border-radius: 8px; 
     margin-bottom: 1rem; 
-    border: 1px solid #ffeeba;
+    border: 1px solid var(--gold-color); 
     display: flex; 
     align-items: center; 
     gap: 0.5rem;
+}
+
+.alert-bar .free-shipping-text {
+    font-weight: bold;
+}
+
+.cart-list-total-row {
+    text-align: right;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    color: var(--txtcolor);
+}
+
+.vat-text {
+    font-size: 0.8rem;
+    text-align: right;
+    color: var(--diversity-color);
+    margin-top: 0.5rem;
+}
+
+.empty-cart-message.small-empty {
+    padding: 2rem;
+}
+
+.empty-cart-message.small-empty i {
+    font-size: 2rem; 
+}
+
+.empty-cart-message.small-empty .btn-primary {
+    margin-top: 1rem;
+}
+
+.btn-shop-empty {
+    margin-top: 1.5rem;
+    display: inline-block;
+    width: auto;
+    padding: 1rem 2rem;
 }
 
 @media (max-width: 1080px) {

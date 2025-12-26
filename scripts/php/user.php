@@ -4,6 +4,7 @@ require_once 'common.php';
 require_once 'DBConnection.php'; 
 use DB\DBConnection;
 
+// Controllo accesso
 if (!isset($_SESSION['utente_id'])) { 
     header("location: login.php");
     exit();
@@ -14,7 +15,8 @@ $ruoloUtente = $_SESSION['ruolo'];
 $nomeUtenteSessione = isset($_SESSION['nome']) ? $_SESSION['nome'] : 'Utente';
 $emailUtenteSessione = isset($_SESSION['utente']) ? $_SESSION['utente'] : '';
 
-if ($ruoloUtente !== 'user' and $ruoloUtente !== 'admin' and $ruoloUtente !== 'amministratore') {
+// Controllo ruolo
+if ($ruoloUtente !== 'user' && $ruoloUtente !== 'admin' && $ruoloUtente !== 'amministratore') {
     header("location: 403.php");
     exit();
 }
@@ -23,10 +25,8 @@ $db = new DBConnection();
 
 // --- LOGICA ELIMINAZIONE ACCOUNT ---
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['azione_delete']) && $_POST['azione_delete'] == 'elimina_definitivamente') {
-    // Verifica ulteriore se la checkbox è stata spuntata (anche se c'è required in HTML)
     if (isset($_POST['conferma_irreversibile'])) {
         if ($db->eliminaAccount($idUtente)) {
-            // Logout forzato e redirect
             session_unset();
             session_destroy();
             header("location: home.php?msg=account_deleted");
@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['azione_pw']) && $_POST
         }
     }
 
-    // Script per riaprire la tab sicurezza
+    // JS per riaprire la tab sicurezza in caso di errore/successo
     if (!empty($msgPassword)) {
         $msgPassword .= "
         <script>
@@ -71,11 +71,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['azione_pw']) && $_POST
     }
 }
 
-// 1. Recupero Ordini
+// Recupero Dati
 $ordini = $db->getOrdiniUtente($idUtente);
-// 2. Recupero Statistiche
 $stats = $db->getUserStats($idUtente);
-// 3. Recupero Dati Personali Completi
 $infoUtente = $db->getUserInfo($idUtente);
 
 $db->closeConnection();
@@ -95,9 +93,8 @@ function getStatusBadge($stato) {
     return '<span class="order-status-badge status-' . $stato . '">' . htmlspecialchars($testo) . '</span>';
 }
 
-// --- COSTRUZIONE DASHBOARD HTML ---
-
-// A. Ultimo Ordine
+// --- DASHBOARD ---
+// Costruzione ultimo ordine
 $ultimoOrdineHTML = '<p class="text-muted">Nessun ordine recente.</p>';
 if (!empty($ordini)) {
     $last = $ordini[0];
@@ -111,40 +108,57 @@ if (!empty($ordini)) {
     ';
 }
 
-// B. Cards Dashboard
 $dashboardHTML = '
 <div class="page-intro">
     <h2>Bentornato, ' . htmlspecialchars($nomeUtenteSessione) . '!</h2>
     <p>Ecco il riepilogo della tua attività.</p>
 </div>
 
-<div class="dashboard-grid">
-    <a href="#ordini" onclick="document.querySelector(\'[data-section=ordini]\').click()" class="feature-card card-link border-gold">
-        <div class="card-icon"><i class="fas fa-wallet"></i></div>
-        <h3>Il Tuo Valore</h3>
-        <p class="stat-number">€ ' . number_format($stats['totale_speso'], 2, ',', '.') . '</p>
-        <p class="stat-subtitle">su <strong>' . $stats['num_ordini'] . '</strong> ordini totali</p>
-    </a>
-    <a href="#ordini" onclick="document.querySelector(\'[data-section=ordini]\').click()" class="feature-card card-link border-gold">
-        <div class="card-icon"><i class="fas fa-shipping-fast"></i></div>
-        <h3>Ultimo Ordine</h3>
-        ' . $ultimoOrdineHTML . '
-    </a>
-    <a href="#dati" onclick="document.querySelector(\'[data-section=dati]\').click()" class="feature-card card-link border-gold">
-        <div class="card-icon"><i class="fas fa-user-circle"></i></div>
-        <h3>Il Tuo Profilo</h3>
-        <p class="stat-number text-md">' . htmlspecialchars($infoUtente['nome'] ?? $nomeUtenteSessione) . '</p>
-        <p class="profile-email">' . htmlspecialchars($infoUtente['email'] ?? $emailUtenteSessione) . '</p>
-    </a>
-</div>
+<ul class="dashboard-grid">
+    <li>
+        <a href="#ordini" onclick="document.querySelector(\'[data-section=ordini]\').click()" class="feature-card card-link border-gold">
+            <div class="card-icon"><i class="fas fa-wallet" aria-hidden="true"></i></div>
+            <h3>Il Tuo Valore</h3>
+            <p class="stat-number">€ ' . number_format($stats['totale_speso'], 2, ',', '.') . '</p>
+            <p class="stat-subtitle">su <strong>' . $stats['num_ordini'] . '</strong> ordini totali</p>
+        </a>
+    </li>
+    <li>
+        <a href="#ordini" onclick="document.querySelector(\'[data-section=ordini]\').click()" class="feature-card card-link border-gold">
+            <div class="card-icon"><i class="fas fa-shipping-fast" aria-hidden="true"></i></div>
+            <h3>Ultimo Ordine</h3>
+            ' . $ultimoOrdineHTML . '
+        </a>
+    </li>
+    <li>
+        <a href="#dati" onclick="document.querySelector(\'[data-section=dati]\').click()" class="feature-card card-link border-gold">
+            <div class="card-icon"><i class="fas fa-user-circle" aria-hidden="true"></i></div>
+            <h3>Il Tuo Profilo</h3>
+            <p class="stat-number text-md">' . htmlspecialchars($infoUtente['nome'] ?? $nomeUtenteSessione) . '</p>
+            <p class="profile-email">' . htmlspecialchars($infoUtente['email'] ?? $emailUtenteSessione) . '</p>
+        </a>
+    </li>
+</ul>
 ';
 
-// --- COSTRUZIONE TABELLA ORDINI ---
+// --- TABELLA ORDINI  ---
 $tabellaOrdini = '';
 if (empty($ordini)) {
     $tabellaOrdini = '<div class="alert-box"><p><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Non hai ancora effettuato ordini. Visita la sezione <a href="vini.php">Vini!</a></p></div>';
 } else {
-    $tabellaOrdini .= '<div class="table-container"><table class="table-data order-summary-table"><caption>Storico dei tuoi ordini</caption><thead><tr><th>N. Ordine</th><th>Data</th><th>Stato</th><th class="td_richiesta_degustazione">Totale</th><th class="td_richiesta_degustazione">Dettagli</th></tr></thead><tbody>';
+    $tabellaOrdini .= '<div class="table-container">
+        <table class="table-data order-summary-table">
+            <caption>Storico dei tuoi ordini</caption>
+            <thead>
+                <tr>
+                    <th scope="col">N. Ordine</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Stato</th>
+                    <th scope="col" class="td_richiesta_degustazione">Totale</th>
+                    <th scope="col" class="td_richiesta_degustazione">Dettagli</th>
+                </tr>
+            </thead>
+            <tbody>';
 
     foreach ($ordini as $ordine) {
         $id_ordine = htmlspecialchars($ordine['id']);
@@ -166,7 +180,7 @@ if (empty($ordini)) {
     $tabellaOrdini .= '</tbody></table></div>';
 }
 
-// --- COSTRUZIONE DATI PERSONALI (Nuovo Layout + Danger Zone) ---
+// --- DATI PERSONALI ---
 $inizialeNome = strtoupper(substr($infoUtente['nome'], 0, 1));
 $inizialeCognome = strtoupper(substr($infoUtente['cognome'], 0, 1));
 
@@ -174,7 +188,7 @@ $datiPersonaliHTML = '
 <div class="profile-layout">
     <div class="profile-card">
         <div class="profile-header">
-            <div class="profile-avatar">' . $inizialeNome . $inizialeCognome . '</div>
+            <div class="profile-avatar" aria-hidden="true">' . $inizialeNome . $inizialeCognome . '</div>
             <div class="profile-title">
                 <h3>' . htmlspecialchars($infoUtente['nome'] . ' ' . $infoUtente['cognome']) . '</h3>
                 <span class="role-badge">' . htmlspecialchars($ruoloUtente) . '</span>
@@ -182,20 +196,19 @@ $datiPersonaliHTML = '
         </div>
         <div class="profile-body">
             <div class="profile-info-item">
-                <span class="info-label"><i class="fas fa-envelope"></i> Email</span>
+                <span class="info-label"><i class="fas fa-envelope" aria-hidden="true"></i> Email</span>
                 <span class="info-value">' . htmlspecialchars($infoUtente['email']) . '</span>
             </div>
             <div class="profile-info-item">
-                <span class="info-label"><i class="fas fa-id-badge"></i> ID Utente</span>
+                <span class="info-label"><i class="fas fa-id-badge" aria-hidden="true"></i> ID Utente</span>
                 <span class="info-value">#' . $idUtente . '</span>
             </div>
         </div>
     </div>
 
     <div class="danger-zone">
-        <h3><i class="fas fa-exclamation-triangle"></i> Zona Pericolosa</h3>
+        <h3><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Zona Pericolosa</h3>
         <p>L\'eliminazione dell\'account è <strong>irreversibile</strong>. Perderai l\'accesso all\'area riservata.</p>
-        <p class="small-text">Nota: I tuoi ordini già effettuati rimarranno nei nostri registri per fini fiscali e legali, ma non saranno più associati a questo account.</p>
         
         <form action="user.php" method="POST" class="delete-account-form">
             <input type="hidden" name="azione_delete" value="elimina_definitivamente">
@@ -212,7 +225,7 @@ $datiPersonaliHTML = '
     </div>
 </div>';
 
-// --- COSTRUZIONE FORM PASSWORD ---
+// --- FORM PASSWORD ---
 $formPasswordHTML = '
 <div class="password-form-container">
     ' . $msgPassword . '
@@ -223,7 +236,7 @@ $formPasswordHTML = '
         <div class="form-group">
             <label for="vecchia_password">Vecchia Password</label>
             <div class="password-wrapper">
-                <input type="password" id="vecchia_password" name="vecchia_password" required placeholder="Inserisci la password attuale">
+                <input type="password" id="vecchia_password" name="vecchia_password" required placeholder="Inserisci la password attuale" autocomplete="current-password">
                 <button type="button" class="toggle-password" aria-pressed="false">
                     <i class="fas fa-eye" aria-hidden="true"></i>
                     <span class="visually-hidden">Mostra password</span>
@@ -234,7 +247,7 @@ $formPasswordHTML = '
         <div class="form-group">
             <label for="nuova_password">Nuova Password</label>
             <div class="password-wrapper">
-                <input type="password" id="nuova_password" name="nuova_password" required placeholder="Inserisci la nuova password">
+                <input type="password" id="nuova_password" name="nuova_password" required placeholder="Inserisci la nuova password" autocomplete="new-password">
                 <button type="button" class="toggle-password" aria-pressed="false">
                     <i class="fas fa-eye" aria-hidden="true"></i>
                     <span class="visually-hidden">Mostra password</span>
@@ -245,7 +258,7 @@ $formPasswordHTML = '
         <div class="form-group">
             <label for="ripeti_password">Ripeti Nuova Password</label>
             <div class="password-wrapper">
-                <input type="password" id="ripeti_password" name="ripeti_password" required placeholder="Ripeti la nuova password">
+                <input type="password" id="ripeti_password" name="ripeti_password" required placeholder="Ripeti la nuova password" autocomplete="new-password">
                 <button type="button" class="toggle-password" aria-pressed="false">
                     <i class="fas fa-eye" aria-hidden="true"></i>
                     <span class="visually-hidden">Mostra password</span>
@@ -258,18 +271,14 @@ $formPasswordHTML = '
 </div>';
 
 // --- OUTPUT FINALE ---
-$htmlContent = caricaPagina('../../html/user.html');
+$htmlContent = caricaPagina('../../html/user.html'); 
 
+// Sostituzioni
 $htmlContent = str_replace("[email_utente]", htmlspecialchars($infoUtente['email']), $htmlContent);
 $htmlContent = str_replace("[riferimento]", $ruoloUtente, $htmlContent);
 
-// Sostituzione Dashboard
-$dashboardDefaultContent = '<h2>Riepilogo Attività</h2>
-                    <div class="alert-box">
-                        <p><i class="fas fa-info-circle" aria-hidden="true"></i> Qui troverai una panoramica dei tuoi ultimi ordini, prodotti preferiti e dati principali. (In sviluppo...)</p>
-                    </div>';
-
-$htmlContent = str_replace($dashboardDefaultContent, $dashboardHTML, $htmlContent);
+// Sostituzione Blocchi Dinamici
+$htmlContent = str_replace("[DASHBOARD_CONTENT]", $dashboardHTML, $htmlContent);
 $htmlContent = str_replace("[TABELLA_ORDINI]", $tabellaOrdini, $htmlContent); 
 $htmlContent = str_replace("[DATI_PERSONALI]", $datiPersonaliHTML, $htmlContent); 
 $htmlContent = str_replace("[FORM_PASSWORD]", $formPasswordHTML, $htmlContent);
