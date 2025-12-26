@@ -452,6 +452,9 @@ class DBConnection {
         $stmtMess->close();
         return $messaggi;
     }
+
+
+
     
     // RECUPERO DETTAGLI ORDINE
     private function getDettagliOrdine($id_ordine) {
