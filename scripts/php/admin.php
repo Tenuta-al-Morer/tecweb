@@ -29,10 +29,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $db = new DBConnection();
         $ok = $db->aggiornaStatoOrdine($ordineId, $stato);
         $db->closeConnection();
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit;
+    }
 
-        // (debug veloce) se vuoi verificare che la query abbia modificato:
-        // var_dump($ok); exit;
+    $prenotazioneId = isset($_POST['prenotazione_id']) ? (int)$_POST['prenotazione_id'] : 0;
+    if ($prenotazioneId > 0 && in_array($azione, ['accetta', 'rifiuta'], true)) {   
+        $stato = ($azione === 'accetta') ? 'approvato' : 'annullato';
 
+        $db = new DBConnection();
+        $ok = $db->aggiornaStatoPrenotazione($prenotazioneId, $stato);
+        $db->closeConnection();
         header("Location: " . $_SERVER['PHP_SELF']);
         exit;
     }
@@ -41,10 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("location: 404.php");
     exit;
 }
-
-
-
-
 
 $htmlContent = caricaPagina('../../html/admin.html');
 $emailUtente = htmlspecialchars($_SESSION['utente']);
@@ -93,11 +96,12 @@ foreach ($prenotazioniArray as $prenotazione) {
     $prenotazioni .= '<td data-title="Numero persone">' . (int)$prenotazione['n_persone'] . '</td>';
     $prenotazioni .= '<td data-title="Data Invio">' . htmlspecialchars($prenotazione['data_invio']) . '</td>';
     $prenotazioni .= '<td class="td_richiesta_degustazione" data-title="Gestione richiesta"> 
-                    <form action="#" method="POST" class="standard-form">
-                        <button type="submit" name="accetta" value="accetta" class="btn-secondary">Accetta</button>
-                        <button type="submit" name="rifiuta" value="rifiuta" class="btn-secondary">Rifiuta</button>
-                    </form>
-                </td>';
+                        <form action="" method="POST" class="standard-form">
+                            <input type="hidden" name="prenotazione_id" value="' . (int)$prenotazione['id'] . '">
+                            <button type="submit" name="azione" value="accetta" class="btn-secondary">Accetta</button>
+                            <button type="submit" name="azione" value="rifiuta" class="btn-secondary">Rifiuta</button>
+                        </form>
+                    </td>';
     $prenotazioni .= "</tr>";
 }
 
