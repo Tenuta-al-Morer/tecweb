@@ -284,7 +284,7 @@ CREATE TABLE `vino` (
   `nome` varchar(255) NOT NULL,
   `prezzo` decimal(10,2) NOT NULL,
   `quantita_stock` int(11) NOT NULL DEFAULT 0,
-  `stato` enum('attivo','nascosto','fuori_produzione') DEFAULT 'attivo',
+  `stato` enum('attivo','nascosto') DEFAULT 'attivo',
   `img` varchar(255) NOT NULL,
   `categoria` enum('rossi','bianchi','selezione') NOT NULL,
   `descrizione_breve` varchar(255) NOT NULL,
@@ -305,12 +305,12 @@ INSERT INTO `vino` (`id`, `nome`, `prezzo`, `quantita_stock`, `stato`, `img`, `c
 (2, 'Merlot', 14.00, 104, 'attivo', '../../images/tr/Merlot.webp', 'rossi', 'Morbido e vellutato.', 'Il classico Merlot: morbido, vellutato e versatile. Ideale per ogni occasione.', 'Merlot 100%', '2022', '12.5% Vol', '16-18°C', 'Arrosti, Formaggi media stagionatura'),
 (3, 'Cabernet Franc', 16.00, 97, 'nascosto', '../../images/tr/Cabernet Franc 1.webp', 'rossi', 'Deciso e persistente.', 'Note erbacee caratteristiche, gusto deciso e persistente. Un vino di carattere.', 'Cabernet Franc', '2021', '13.0% Vol', '16-18°C', 'Salumi, Grigliate'),
 (4, 'Refosco', 15.50, 164, 'attivo', '../../images/tr/Refosco.webp', 'rossi', 'Carattere forte e intenso.', 'Autoctono dal carattere forte, colore rosso rubino intenso con riflessi violacei.', 'Refosco p.r.', '2021', '13.0% Vol', '16-18°C', 'Piatti tipici veneti, Carni grasse'),
-(5, 'Chardonnay', 13.50, 229, 'fuori_produzione', '../../images/tr/Chardonnay.webp', 'bianchi', 'Elegante e fruttato.', 'Elegante, fruttato con sentori di mela golden e crosta di pane.', 'Chardonnay', '2023', '12.0% Vol', '8-10°C', 'Antipasti magri, Pesce'),
+(5, 'Chardonnay', 13.50, 229, 'attivo', '../../images/tr/Chardonnay.webp', 'bianchi', 'Elegante e fruttato.', 'Elegante, fruttato con sentori di mela golden e crosta di pane.', 'Chardonnay', '2023', '12.0% Vol', '8-10°C', 'Antipasti magri, Pesce'),
 (6, 'Manzoni Bianco', 15.00, 62, 'attivo', '../../images/tr/Manzoni Bianco.webp', 'bianchi', 'Aromatico e strutturato.', 'Incrocio Riesling e Pinot Bianco. Aromatico, strutturato e di grande eleganza.', 'Incrocio Manzoni', '2023', '13.0% Vol', '10-12°C', 'Risotti, Crostacei'),
 (7, 'Pinot Grigio', 13.00, 196, 'nascosto', '../../images/tr/Pinot Grigio.webp', 'bianchi', 'Fresco e sapido.', 'Fresco, sapido e piacevole. Ottimo come aperitivo o tutto pasto leggero.', 'Pinot Grigio', '2023', '12.0% Vol', '8-10°C', 'Aperitivi, Carni bianche'),
 (8, 'Prosecco', 12.50, 0, 'attivo', '../../images/tr/Prosecco.webp', 'bianchi', 'Le bollicine venete.', 'Le bollicine venete per eccellenza. Fresco, vivace e floreale.', 'Glera 100%', '2024', '11.0% Vol', '6-8°C', 'Brindisi, Aperitivi, Dolci secchi'),
 (9, 'Gran Morer', 25.00, 127, 'attivo', '../../images/tr/Gran Morer.webp', 'selezione', 'Riserva speciale.', 'La nostra riserva speciale. Invecchiato in botte, complesso e speziato.', 'Uvaggio Segreto', '2018', '14.5% Vol', '18-20°C', 'Meditazione, Carni importanti'),
-(10, 'Vigna Dorata', 22.00, 19, 'fuori_produzione', '../../images/tr/Vigna Dorata.webp', 'selezione', 'Dolce e avvolgente.', 'Selezione di uve passite, dolce, avvolgente e dai riflessi dorati.', 'Verduzzo', '2020', '14.0% Vol', '10-12°C', 'Pasticceria secca, Formaggi erborinati'),
+(10, 'Vigna Dorata', 22.00, 19, 'attivo', '../../images/tr/Vigna Dorata.webp', 'selezione', 'Dolce e avvolgente.', 'Selezione di uve passite, dolce, avvolgente e dai riflessi dorati.', 'Verduzzo', '2020', '14.0% Vol', '10-12°C', 'Pasticceria secca, Formaggi erborinati'),
 (11, 'Incanto', 20.00, 284, 'attivo', '../../images/tr/Incanto.webp', 'selezione', 'Profumi floreali.', 'Un vino che incanta per i suoi profumi floreali intensi e la persistenza.', 'Vitigni aromatici', '2022', '12.5% Vol', '8-10°C', 'Piatti speziati, Formaggi freschi'),
 (12, 'Rosae Nobile', 19.00, 19, 'attivo', '../../images/tr/Rosae Nobile.webp', 'selezione', 'Rosato di alta classe.', 'Rosato di alta classe, note di frutti di bosco e rosa canina.', 'Raboso vinif. in bianco', '2023', '12.0% Vol', '8-10°C', 'Antipasti di pesce, Sushi');
 

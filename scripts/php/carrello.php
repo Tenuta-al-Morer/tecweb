@@ -341,9 +341,6 @@ function renderCartItem($item, $isLogged, $type = 'active') {
     $availClass = "availability"; 
     
     // --- LOGICA DISPONIBILITÀ MODIFICATA ---
-    if ($statoVino === 'fuori_produzione') {
-        $availText = "Fuori Produzione";
-        $availClass .= " text-red";
     } elseif ($statoVino === 'nascosto' || $statoVino !== 'attivo') {
         $availText = "Non disponibile";
         $availClass .= " text-red";
