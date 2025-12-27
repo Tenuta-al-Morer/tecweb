@@ -85,7 +85,7 @@ class DBConnection {
 
     // RECUPERO DATI ANAGRAFICI UTENTE
     public function getUserInfo($id) {
-        $stmt = $this->connection->prepare("SELECT nome, cognome, email FROM utente WHERE id = ?");
+        $stmt = $this->connection->prepare("SELECT nome, cognome, email, indirizzo, citta, cap, provincia, prefisso, telefono FROM utente WHERE id = ?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -386,6 +386,24 @@ class DBConnection {
         $stmt->bind_param("si", $nuovo_stato, $id_prenotazione);
         $result = $stmt->execute();
         $stmt->close();
+        return $result;
+    }
+
+    public function aggiornaDatiSpedizione($id_utente, $indirizzo, $citta, $cap, $provincia, $prefisso, $telefono) {
+        
+        $query = "UPDATE utente 
+                  SET indirizzo = ?, citta = ?, cap = ?, provincia = ?, prefisso = ?, telefono = ? 
+                  WHERE id = ?";
+        
+        $stmt = $this->connection->prepare($query);
+        if (!$stmt) { return false; }
+
+        // "ssssssi" = 6 stringhe + 1 intero
+        $stmt->bind_param("ssssssi", $indirizzo, $citta, $cap, $provincia, $prefisso, $telefono, $id_utente);
+        
+        $result = $stmt->execute();
+        $stmt->close();
+
         return $result;
     }
 

@@ -47,6 +47,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $risultato = $db->creaOrdine($id_utente, $indirizzo, $metodo, $costoSpedizione);
 
     if ($risultato['success']) {
+        $raw_indirizzo = trim($_POST['indirizzo']);
+        $raw_citta     = trim($_POST['citta']);
+        $raw_cap       = trim($_POST['cap']);
+        $raw_provincia = trim($_POST['provincia']);
+        $raw_prefisso  = trim($_POST['prefisso']);
+        $raw_telefono  = trim($_POST['telefono']);
+
+        $db->aggiornaDatiSpedizione(
+            $id_utente, 
+            $raw_indirizzo, 
+            $raw_citta, 
+            $raw_cap, 
+            $raw_provincia, 
+            $raw_prefisso,  
+            $raw_telefono   
+        );
+
         header("Location: user.php#ordini"); 
         exit();
     } else {
@@ -59,12 +76,12 @@ $userInfo = $db->getUserInfo($id_utente);
 
 $val_nome = $userInfo['nome'] ?? '';
 $val_cognome = $userInfo['cognome'] ?? '';
-$val_indirizzo = ''; 
-$val_citta = ''; 
-$val_cap = ''; 
-$val_provincia = ''; 
-$val_prefisso = '+39'; 
-$val_telefono = '';
+$val_indirizzo = $userInfo['indirizzo'] ?? '';
+$val_citta     = $userInfo['citta'] ?? ''; 
+$val_cap       = $userInfo['cap'] ?? ''; 
+$val_provincia = $userInfo['provincia'] ?? ''; 
+$val_prefisso  = $userInfo['prefisso'] ?? '+39'; 
+$val_telefono  = $userInfo['telefono'] ?? '';
 
 // --- GENERAZIONE LISTA PRODOTTI HTML ---
 $totaleProdotti = 0;
