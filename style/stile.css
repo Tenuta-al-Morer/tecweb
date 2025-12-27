@@ -2539,7 +2539,6 @@ a.feature-card.card-link {
         align-items: flex-start;
     }
 }
-
 /* =========================================
    CHECKOUT PAGE 
    ========================================= */
@@ -2587,7 +2586,6 @@ a.feature-card.card-link {
 /* --- Layout e Navigazione --- */
 .back-nav { margin-bottom: 1.5rem; }
 
-/* pulsante indietro (Outline) */
 .btn-back-outline {
     display: inline-flex;
     align-items: center;
@@ -2629,7 +2627,7 @@ a.feature-card.card-link {
 /* --- Sezioni Form & Input --- */
 .checkout-section {
     background-color: var(--card-bg);
-    border: 1px solid var(--gold-color);
+    border: 1px solid var(--bordercolor);
     border-radius: 8px;
     padding: 2rem;
     margin-bottom: 2rem;
@@ -2648,13 +2646,12 @@ a.feature-card.card-link {
     color: var(--gold-color);
 }
 
-/* Griglia Input */
 .grid-layout-form { display: flex; flex-direction: column; gap: 0; }
 .form-group.row-three { display: flex; gap: 1rem; }
 .flex-grow-1 { flex: 1; }
 .flex-grow-2 { flex: 2; }
 
-/* Gestione telefono */
+/* --- Gestione telefono --- */
 .checkout-details .phone-group {
     display: flex;
     gap: 10px;
@@ -2669,7 +2666,7 @@ a.feature-card.card-link {
     text-align: center;
 }
 
-/* --- Payment Cards  --- */
+/* --- Payment Cards --- */
 .payment-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -2702,7 +2699,6 @@ a.feature-card.card-link {
     background-color: var(--card-bg);
 }
 
-/* Stato Checked */
 .payment-card input[type="radio"]:checked + .payment-content {
     border-color: var(--gold-color);
     background-color: rgba(197, 165, 81, 0.1);
@@ -2710,7 +2706,6 @@ a.feature-card.card-link {
     transform: translateY(-2px);
 }
 
-/* Accessibilità */
 .payment-card input[type="radio"]:focus-visible + .payment-content {
     outline: 2px solid var(--pure-white);
     outline-offset: 4px;
@@ -2724,14 +2719,13 @@ a.feature-card.card-link {
 /* --- Riepilogo --- */
 .summary-box {
     background-color: var(--card-bg);
-    border: 1px solid var(--gold-color);
+    border: 1px solid var(--bordercolor);
     border-radius: 8px;
     padding: 1.5rem;
     position: sticky;
     top: 2rem;
 }
 
-/* Lista Prodotti */
 .summary-items-list {
     max-height: 350px;
     overflow-y: auto;
@@ -2744,10 +2738,9 @@ a.feature-card.card-link {
 .summary-items-list::-webkit-scrollbar { width: 5px; }
 .summary-items-list::-webkit-scrollbar-thumb { background-color: var(--gold-color); border-radius: 3px; }
 
-/* Item Riepilogo (Con immagine) */
 .summary-item-rich {
     display: grid;
-    grid-template-columns: 50px 1fr auto; /* Img - Info - Prezzo */
+    grid-template-columns: 50px 1fr auto; 
     gap: 0.8rem;
     padding: 1rem 0;
     border-bottom: 1px solid var(--bordercolor);
@@ -2800,7 +2793,6 @@ a.feature-card.card-link {
     color: var(--gold-color);
 }
 
-/* Totali */
 .summary-totals .row {
     display: flex; justify-content: space-between; margin-bottom: 0.5rem;
 }
@@ -2819,3 +2811,208 @@ a.feature-card.card-link {
     margin-top: 1rem;
 }
 
+
+/* =========================================
+   CHECKOUT MOBILE (< 940px)
+   ========================================= */
+
+@media screen and (max-width: 940px) {
+
+    /* --- Layout Generale --- */
+    .checkout-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 0rem; 
+    }
+
+    .checkout-layout > * {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .checkout-title {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        border-bottom: none; 
+    }
+
+    /* --- Form e Input --- */
+    .checkout-section {
+        padding: 1.5rem;
+        border: 1px solid var(--bordercolor);
+        box-shadow: none; 
+    }
+
+    .checkout-section h2 {
+        font-size: 1.3rem;
+        margin-bottom: 1.2rem;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    select {
+        font-size: 16px; 
+        min-height: 48px; 
+    }
+
+    .form-group.row-three {
+        flex-wrap: wrap; 
+        gap: 1rem;
+    }
+
+    .form-group.row-three .flex-grow-2 {
+        flex: 0 0 100%;
+        width: 100%;
+    }
+
+    .form-group.row-three .flex-grow-1 {
+        flex: 1; 
+    }
+
+    .checkout-details .phone-group {
+        gap: 0.5rem;
+    }
+    
+    .checkout-details .phone-prefix {
+        width: 80px; 
+    }
+
+    /* --- Payment Cards --- */
+    .payment-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .payment-card {
+        width: 100%;
+    }
+
+    .payment-content {
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: left;
+        padding: 1rem;
+        min-height: auto;
+        gap: 1rem;
+        /* Utilizzo var(--card-bg) per supporto Light/Dark automatico */
+        background-color: var(--card-bg); 
+        border: 1px solid var(--bordercolor);
+        color: var(--txtcolor);
+    }
+    
+    .payment-card input[type="radio"]:checked + .payment-content {
+        background-color: rgba(197, 165, 81, 0.05);
+        border-color: var(--gold-color);
+        box-shadow: none;
+    }
+
+    .icon-large {
+        font-size: 1.6rem;
+        margin-bottom: 0; 
+        /* Usa txtcolor di base, diventa gold quando selezionato (vedi regola desktop) */
+        color: var(--txtcolor); 
+        width: 30px; 
+        text-align: center;
+    }
+    
+    .payment-card input[type="radio"]:checked + .payment-content .icon-large {
+        color: var(--gold-color);
+    }
+
+    .payment-title {
+        font-size: 1rem;
+        display: block;
+        color: var(--txtcolor);
+    }
+
+    .payment-desc {
+        font-size: 0.8rem;
+        display: block;
+        margin-top: 2px;
+        color: var(--diversity-color);
+    }
+    
+    .payment-icons {
+        display: none; 
+    }
+
+    /* --- Riepilogo Ordine --- */
+    .checkout-sidebar {
+        margin-top: 0;
+    }
+
+    .summary-box {
+        position: static; 
+        border: 1px solid var(--bordercolor);
+        padding: 1.5rem;
+    }
+    
+    .summary-box h3 {
+        color: var(--gold-color);
+        border-bottom: 1px solid var(--bordercolor);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .summary-items-list {
+        max-height: 300px;
+        background-color: var(--bodybgcolor); 
+        border: 1px solid var(--bordercolor);
+        border-radius: 4px;
+        padding: 0.5rem;
+    }
+
+    .summary-item-rich {
+        grid-template-columns: 50px 1fr auto;
+        gap: 0.8rem;
+    }
+
+    .summary-totals {
+        margin-top: 1.5rem;
+    }
+
+    .summary-totals .row {
+        font-size: 1rem;
+        color: var(--txtcolor);
+    }
+
+    .summary-totals .total {
+        font-size: 1.3rem;
+        color: var(--gold-color);
+        border-top: 2px solid var(--bordercolor);
+        padding-top: 1rem;
+    }
+
+    .summary-actions .btn-primary {
+        width: 100%;
+        padding: 1.2rem;
+        font-size: 1.1rem;
+        margin-top: 1.5rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+    
+    .secure-info {
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        border-top: 1px dashed var(--bordercolor);
+    }
+}
+
+/* --- Small Devices --- */
+@media screen and (max-width: 400px) {
+    .form-group.row-two {
+        flex-direction: column; 
+    }
+    
+    .payment-content {
+        padding: 0.8rem;
+    }
+    
+    .payment-title {
+        font-size: 0.95rem;
+    }
+}
