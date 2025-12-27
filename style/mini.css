@@ -668,15 +668,16 @@ body.light-mode .table-data td::before {
         padding: 1rem; 
     }
 
-    /* --- SCHEDA PRODOTTO  --- */
+    /* --- SCHEDA PRODOTTO --- */
     .cart-item {
         display: flex;
         flex-wrap: wrap; 
         padding: 1.5rem 0;
         align-items: flex-start; 
+        gap: 0; 
     }
 
-    /* FOTO: Fissa a sinistra */
+    /* FOTO */
     .cart-item-img {
         width: 90px;
         margin-right: 1rem;
@@ -690,7 +691,7 @@ body.light-mode .table-data td::before {
         object-fit: contain;
     }
 
-    /* TESTO: A destra (Flessibile) */
+    /* TESTO */
     .cart-item-details {
         flex: 1; 
         min-width: 0; 
@@ -704,7 +705,7 @@ body.light-mode .table-data td::before {
         line-height: 1.3;
     }
 
-    /* Prezzo visibile sotto il titolo su mobile */
+    /* Prezzo mobile */
     .price-mobile {
         font-size: 1.1rem;
         font-weight: bold;
@@ -717,7 +718,7 @@ body.light-mode .table-data td::before {
         display: none;
     }
 
-    /* RIGA AZIONI (Sotto a tutto) */
+    /* RIGA AZIONI */
     .item-actions-row {
         width: 100%;    
         order: 3;      
@@ -738,7 +739,7 @@ body.light-mode .table-data td::before {
 
     /* Selettore Quantità */
     .qty-selector {
-        height: 40px;
+        height: 42px; 
         display: flex;
         border-radius: 4px;
         border: 1px solid var(--bordercolor);
@@ -747,38 +748,68 @@ body.light-mode .table-data td::before {
     }
 
     .qty-btn {
-        width: 35px;
+        width: 40px;
         height: 100%;
         font-size: 1.2rem;
     }
     
     .qty-input {
-        width: 35px;
+        width: 40px;
         height: 100%;
         font-size: 1rem;
     }
 
+    /* Stile base pulsanti azione */
     .action-btn-text {
-        height: 40px;
+        height: 42px;
         display: flex;
         align-items: center;
         justify-content: center;
         border: 1px solid var(--bordercolor);
         border-radius: 4px;
-        background-color: var(--card-bg);
+        background-color: transparent;
         color: var(--txtcolor);
-        font-size: 0.85rem;
+        font-size: 0.9rem;
+        font-weight: 600;
         text-decoration: none;
         flex: 1 1 auto; 
         min-width: 90px; 
         padding: 0 0.5rem;
+        transition: all 0.2s ease;
     }
 
-    .btn-delete {
-        color: var(--txtcolor); 
+    /* Stile Eliminazione (Rosso) */
+    .action-btn-text.btn-delete {
+        border-color: var(--red-errors);
+        color: var(--red-errors);
     }
 
-    .action-btn-text:active {
-        background-color: var(--bordercolor);
+    .action-btn-text.btn-delete:active,
+    .action-btn-text.btn-delete:hover {
+        background-color: var(--btn-red-bg);
+        color: var(--pure-white);
+    }
+
+    /* Stile Salva/Sposta (Oro) */
+    .action-btn-text.btn-save,
+    .action-btn-text.btn-move {
+        border-color: var(--gold-color);
+        color: var(--gold-color);
+    }
+
+    .action-btn-text.btn-save:active,
+    .action-btn-text.btn-save:hover,
+    .action-btn-text.btn-move:active,
+    .action-btn-text.btn-move:hover {
+        background-color: var(--gold-color);
+        color: var(--bodybgcolor);
+    }
+
+    /* Stile Disabilitato */
+    .action-btn-text.disabled-btn {
+        border-color: var(--bordercolor);
+        color: var(--diversity-color);
+        opacity: 0.5;
+        pointer-events: none;
     }
 }

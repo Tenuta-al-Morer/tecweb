@@ -2458,6 +2458,7 @@ a.feature-card.card-link {
     margin-bottom: 1rem; 
     color: var(--gold-color); 
     font-size: 1.8rem;
+    line-height: 1.4;
 }
 
 /* Alert Bar */
