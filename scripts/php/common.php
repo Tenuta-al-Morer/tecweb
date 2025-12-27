@@ -17,23 +17,23 @@ function caricaPagina($nomeFileHTML) {
 
     // 3. Logica ICONA UTENTE
     $userIconHTML = "";
-    
-    // Recupero il nome del file corrente 
     $paginaCorrente = basename($_SERVER['PHP_SELF']);
+    
+    $isLogged = isset($_SESSION['utente']); 
 
-    if(isset($_SESSION['utente'])) {
-        // --- UTENTE LOGGATO (Uso fa-user-circle) ---
-        
-        // Controllo se sono GIA' nella pagina utente o admin
+    if ($isLogged) {
+        // --- UTENTE LOGGATO ---
+
+
         if ($paginaCorrente === 'user.php' || $paginaCorrente === 'admin.php') {
-            // Sono già qui: NIENTE LINK, solo icona visiva + aria-current
+            // Se sono già nella pagina profilo, mostro solo l'icona (senza link)
             $userIconHTML = '
             <span class="current-page-icon" aria-current="page" title="Sei nella tua Area Riservata">
                 <i class="fas fa-user-circle" style="color: var(--primary-color);" aria-hidden="true"></i>
                 <span class="visually-hidden">Area Riservata (Pagina corrente)</span>
             </span>';
         } else {
-            // Sono altrove: Mostro il LINK per tornare al profilo
+            // Sono loggato ma in un'altra pagina -> Link all'area riservata
             $userIconHTML = '
             <a href="utente.php" title="Vai alla tua Area Riservata">
                 <i class="fas fa-user-circle" aria-hidden="true"></i>
@@ -42,13 +42,23 @@ function caricaPagina($nomeFileHTML) {
         }
 
     } else {
-        
-        // Link al Login con icona di "ingresso" moderna
-        $userIconHTML = '
-        <a href="login.php" title="Accedi">
-            <i class="fas fa-key" aria-hidden="true"></i>
-            <span class="visually-hidden">Accedi</span>
-        </a>';
+        // --- UTENTE NON LOGGATO ---
+
+        if ($paginaCorrente === 'carrello.php') {
+            // Sono nel carrello e non loggato -> Link al login con redirect al carrello
+            $userIconHTML = '
+            <a href="login.php?return=carrello.php" title="Accedi per completare l\'ordine">
+                <i class="fas fa-key" aria-hidden="true"></i>
+                <span class="visually-hidden">Accedi</span>
+            </a>';
+        } else {
+            // Non loggato, pagina generica -> Link al login standard
+            $userIconHTML = '
+            <a href="login.php" title="Accedi">
+                <i class="fas fa-key" aria-hidden="true"></i>
+                <span class="visually-hidden">Accedi</span>
+            </a>';
+        }
     }
 
     // 4. Sostituzione del placeholder

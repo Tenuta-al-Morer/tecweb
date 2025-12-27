@@ -134,7 +134,7 @@ class DBConnection {
     // FUNZIONE PER SALVARE UNA PRENOTAZIONE
     public function salvaPrenotazione($nome, $cognome, $email, $tipo_degustazione, $prefisso, $telefono, $data_visita, $n_persone) {
         $query = "INSERT INTO prenotazione (nome, cognome, email, tipo_degustazione, prefisso, telefono, data_visita, n_persone, data_invio, stato) 
-                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), 'In attesa')";
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), 'in_attesa')";
         
         $stmt = $this->connection->prepare($query);
         if (!$stmt) { return false; }
