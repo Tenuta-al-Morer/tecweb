@@ -350,7 +350,7 @@ function renderCartItem($item, $isLogged, $type = 'active') {
     } elseif ($stock <= 0) {
         $availText = "Esaurito";
         $availClass .= " text-red";
-    } elseif ($stock < 50) { 
+    } elseif ($stock < 100) { 
         $availText = "Rimanenti solo $stock bottiglie";
         $availClass .= " text-orange"; 
     } else {
