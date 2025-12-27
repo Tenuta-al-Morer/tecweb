@@ -341,7 +341,7 @@ function renderCartItem($item, $isLogged, $type = 'active') {
     $availClass = "availability"; 
     
     // --- LOGICA DISPONIBILITÀ MODIFICATA ---
-    } elseif ($statoVino === 'nascosto' || $statoVino !== 'attivo') {
+    if ($statoVino === 'nascosto' || $statoVino !== 'attivo') {
         $availText = "Non disponibile";
         $availClass .= " text-red";
     } elseif ($stock <= 0) {
