@@ -17,8 +17,8 @@ $ruoloUtente = $_SESSION['ruolo'];
 if ($ruoloUtente === 'admin') {
     header("location: admin.php");
     exit();
-} else if ($ruoloUtente === 'moderatore') {
-    header("location: moderatore.php");
+} else if ($ruoloUtente === 'amministratore') {
+    header("location: amministratore.php");
     exit();
 } else if ($ruoloUtente == 'user') {
     header("location: user.php");
