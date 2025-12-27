@@ -2539,3 +2539,283 @@ a.feature-card.card-link {
         align-items: flex-start;
     }
 }
+
+/* =========================================
+   CHECKOUT PAGE 
+   ========================================= */
+
+.checkout-steps {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.checkout-steps ol {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    padding: 0;
+    margin: 0;
+    font-family: 'Lexend', sans-serif;
+    font-size: 0.95rem;
+}
+
+.checkout-steps li {
+    display: flex;
+    align-items: center;
+    color: var(--gray-light);
+}
+
+.checkout-steps a {
+    color: var(--gray-border);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.checkout-steps a:hover { color: var(--gold-color); }
+
+.checkout-steps .step-active {
+    color: var(--gold-color);
+    border-bottom: 2px solid var(--gold-color);
+    padding-bottom: 2px;
+}
+
+.checkout-steps .step-done a {
+    color: var(--gray-text);
+}
+
+/* --- Layout e Navigazione --- */
+.back-nav { margin-bottom: 1.5rem; }
+
+/* pulsante indietro (Outline) */
+.btn-back-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--gold-color);
+    border-radius: 4px;
+    color: var(--gold-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    background-color: transparent;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.btn-back-outline:hover {
+    background-color: var(--gold-color);
+    color: var(--bodybgcolor);
+    transform: translateX(-3px);
+    box-shadow: 0 0 10px var(--shadow-gold);
+}
+
+.checkout-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--txtcolor);
+    border-bottom: 1px solid var(--bordercolor);
+    padding-bottom: 0.5rem;
+}
+
+.checkout-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 3rem;
+    align-items: start;
+}
+
+/* --- Sezioni Form & Input --- */
+.checkout-section {
+    background-color: var(--card-bg);
+    border: 1px solid var(--gold-color);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.checkout-section h2 {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--gold-color);
+}
+
+/* Griglia Input */
+.grid-layout-form { display: flex; flex-direction: column; gap: 0; }
+.form-group.row-three { display: flex; gap: 1rem; }
+.flex-grow-1 { flex: 1; }
+.flex-grow-2 { flex: 2; }
+
+/* Gestione telefono */
+.checkout-details .phone-group {
+    display: flex;
+    gap: 10px;
+}
+
+.checkout-details .phone-prefix {
+    width: 80px;
+    flex-shrink: 0;
+}
+
+.checkout-details .phone-prefix input {
+    text-align: center;
+}
+
+/* --- Payment Cards  --- */
+.payment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    border: none;
+}
+
+.payment-card {
+    position: relative;
+    cursor: pointer;
+}
+
+.payment-card input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0; height: 0;
+}
+
+.payment-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1.5rem;
+    border: 2px solid var(--bordercolor);
+    border-radius: 8px;
+    height: 100%;
+    transition: all 0.3s ease;
+    background-color: var(--card-bg);
+}
+
+/* Stato Checked */
+.payment-card input[type="radio"]:checked + .payment-content {
+    border-color: var(--gold-color);
+    background-color: rgba(197, 165, 81, 0.1);
+    box-shadow: 0 0 15px rgba(197, 165, 81, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Accessibilità */
+.payment-card input[type="radio"]:focus-visible + .payment-content {
+    outline: 2px solid var(--pure-white);
+    outline-offset: 4px;
+}
+
+.icon-large { font-size: 2rem; margin-bottom: 0.5rem; color: var(--txtcolor); transition: color 0.3s; }
+.payment-card input[type="radio"]:checked + .payment-content .icon-large { color: var(--gold-color); }
+.payment-title { font-weight: bold; display: block; margin-bottom: 0.3rem; }
+.payment-desc { font-size: 0.8rem; color: var(--diversity-color); }
+
+/* --- Riepilogo --- */
+.summary-box {
+    background-color: var(--card-bg);
+    border: 1px solid var(--gold-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    position: sticky;
+    top: 2rem;
+}
+
+/* Lista Prodotti */
+.summary-items-list {
+    max-height: 350px;
+    overflow-y: auto;
+    padding-right: 5px;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    padding: 0.5rem;
+}
+
+.summary-items-list::-webkit-scrollbar { width: 5px; }
+.summary-items-list::-webkit-scrollbar-thumb { background-color: var(--gold-color); border-radius: 3px; }
+
+/* Item Riepilogo (Con immagine) */
+.summary-item-rich {
+    display: grid;
+    grid-template-columns: 50px 1fr auto; /* Img - Info - Prezzo */
+    gap: 0.8rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--bordercolor);
+    align-items: center;
+}
+
+.summary-item-rich:last-child {
+    border-bottom: none;
+}
+
+.mini-img-wrapper {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: var(--pure-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--bordercolor);
+}
+
+.mini-img-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.rich-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.rich-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    line-height: 1.2;
+    color: var(--txtcolor);
+}
+
+.rich-qty {
+    font-size: 0.8rem;
+    color: var(--diversity-color);
+}
+
+.rich-price {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--gold-color);
+}
+
+/* Totali */
+.summary-totals .row {
+    display: flex; justify-content: space-between; margin-bottom: 0.5rem;
+}
+
+.summary-totals .total {
+    border-top: 1px solid var(--bordercolor);
+    padding-top: 1rem;
+    margin-top: 1rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--gold-color);
+}
+
+.secure-info {
+    text-align: center; font-size: 0.8rem; color: var(--diversity-color);
+    margin-top: 1rem;
+}
+

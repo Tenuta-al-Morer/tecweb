@@ -828,4 +828,48 @@ document.addEventListener('DOMContentLoaded', () => {
             else el.innerText = value;
         }
     }
+
+    /* ==========================================
+     * 10. CHECKOUT LOGIC
+     * ========================================== */
+    const checkoutForm = document.getElementById('checkout-form');
+    
+    if (checkoutForm) {
+        const paymentRadios = document.querySelectorAll('input[name="metodo_pagamento"]');
+        
+        paymentRadios.forEach(radio => {
+            radio.addEventListener('change', () => {
+            });
+            
+            const card = radio.closest('.payment-card');
+            if(card) {
+                card.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        radio.checked = true;
+                        radio.dispatchEvent(new Event('change'));
+                    }
+                });
+            }
+        });
+
+        // Prevenzione Doppio Invio Ordine
+        checkoutForm.addEventListener('submit', function(e) {
+            const btn = this.querySelector('button[type="submit"]');
+            
+            if (this.checkValidity()) {
+                if (btn) {
+                    btn.disabled = true;
+                    const originalText = btn.innerText;
+                    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Elaborazione...';
+                    
+                    // Timeout di sicurezza nel caso il server non risponda (riabilita dopo 10s)
+                    setTimeout(() => {
+                        btn.disabled = false;
+                        btn.innerText = originalText;
+                    }, 10000);
+                }
+            }
+        });
+    }
 });
