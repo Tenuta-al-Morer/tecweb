@@ -18,34 +18,37 @@ function caricaPagina($nomeFileHTML) {
     // Recupero dati sessione
     $paginaCorrente = basename($_SERVER['PHP_SELF']);
     $isLogged = isset($_SESSION['utente']);
-    $ruolo = isset($_SESSION['ruolo']) ? $_SESSION['ruolo'] : null; // Recupero il ruolo se esiste
+    $ruolo = isset($_SESSION['ruolo']) ? $_SESSION['ruolo'] : null;
 
     // ---------------------------------------------------
-    // A. LOGICA ICONA CARRELLO / MATITA
+    // A. LOGICA ICONA PRIMARIA (CARRELLO o MATITA)
     // ---------------------------------------------------
     $cartIconHTML = "";
 
-    // CASO ADMIN o AMMINISTRATORE (Mostra Matita)
-    if ($isLogged && ($ruolo === 'admin' || $ruolo === 'amministratore')) {
+    // 1. CASO ADMIN: Vede la Matita
+    if ($isLogged && $ruolo === 'admin') {
         
-        if ($paginaCorrente === 'editVini.php') {
-            // Sono GIA' nella pagina di modifica -> Icona statica (colorata)
+        if ($paginaCorrente === 'admin.php') {
+            // Icona statica se sono già in modifica
             $cartIconHTML = '
             <span class="current-page-icon" aria-current="page" title="Sei in Modifica Vini">
                 <i class="fas fa-pen" aria-hidden="true"></i>
                 <span class="visually-hidden">Modifica Vini (Pagina corrente)</span>
             </span>';
         } else {
-            // Sono in altre pagine -> Link a Modifica
+            // Link a Modifica
             $cartIconHTML = '
-            <a href="editVini.php" title="Modifica Vini">
+            <a href="admin.php" title="Modifica Vini">
                 <i class="fas fa-pen" aria-hidden="true"></i>
                 <span class="visually-hidden">Modifica Vini</span>
             </a>';
         }
-
     } 
-    // CASO UTENTE STANDARD o OSPITE (Mostra Carrello)
+    // 2. CASO staff: NON vede la Matita (né il carrello)
+    elseif ($isLogged && $ruolo === 'staff') {
+        $cartIconHTML = ""; // Vuoto intenzionale
+    }
+    // 3. CASO UTENTE STANDARD o OSPITE: Vede il Carrello
     else {
         
         if ($paginaCorrente === 'carrello.php' || $paginaCorrente === 'checkout.php' ) {
@@ -55,7 +58,6 @@ function caricaPagina($nomeFileHTML) {
                 <span class="visually-hidden" lang="en">Shop (Pagina corrente)</span>
             </span>';
         } else {
-            // Sono in altre pagine -> Link al Carrello
             $cartIconHTML = '
             <a href="carrello.php" title="Vai al carrello">
                 <i class="fas fa-shopping-cart" aria-hidden="true"></i>
@@ -65,30 +67,49 @@ function caricaPagina($nomeFileHTML) {
     }
 
     // ---------------------------------------------------
-    // B. LOGICA ICONA UTENTE 
+    // B. LOGICA ICONA SECONDARIA (UTENTE o TABELLA)
     // ---------------------------------------------------
     $userIconHTML = "";
 
     if ($isLogged) {
-        // --- UTENTE LOGGATO ---
-        if ($paginaCorrente === 'user.php' || $paginaCorrente === 'admin.php' || $paginaCorrente === 'amministratore.php') {
-            // Se sono già nella pagina profilo
-            $userIconHTML = '
-            <span class="current-page-icon" aria-current="page" title="Sei nella tua Area Riservata">
-                <i class="fas fa-user-circle" aria-hidden="true"></i>
-                <span class="visually-hidden">Area Riservata (Pagina corrente)</span>
-            </span>';
-        } else {
-            // Sono loggato ma altrove 
-            $userIconHTML = '
-            <a href="utente.php" title="Vai alla tua Area Riservata">
-                <i class="fas fa-user-circle" aria-hidden="true"></i>
-                <span class="visually-hidden">Area Riservata</span>
-            </a>';
+        
+        // --- ADMIN o staff (Vedono la Tabella) ---
+        if ($ruolo === 'admin' || $ruolo === 'staff') {
+            
+            // Entrambi mandano a utente.php 
+            if ($paginaCorrente === 'gestionale.php' || $paginaCorrente === 'staff.php') {
+                $userIconHTML = '
+                <span class="current-page-icon" aria-current="page" title="Sei nella Dashboard">
+                    <i class="fas fa-table" aria-hidden="true"></i>
+                    <span class="visually-hidden">Dashboard (Pagina corrente)</span>
+                </span>';
+            } else {
+                $userIconHTML = '
+                <a href="utente.php" title="Vai alla Dashboard">
+                    <i class="fas fa-table" aria-hidden="true"></i>
+                    <span class="visually-hidden">Dashboard</span>
+                </a>';
+            }
+        } 
+        // --- UTENTE STANDARD (Vede l'omino) ---
+        else {
+            if ($paginaCorrente === 'areaPersonale.php') {
+                $userIconHTML = '
+                <span class="current-page-icon" aria-current="page" title="Sei nella tua Area Riservata">
+                    <i class="fas fa-user-circle" aria-hidden="true"></i>
+                    <span class="visually-hidden">Area Riservata (Pagina corrente)</span>
+                </span>';
+            } else {
+                $userIconHTML = '
+                <a href="utente.php" title="Vai alla tua Area Riservata">
+                    <i class="fas fa-user-circle" aria-hidden="true"></i>
+                    <span class="visually-hidden">Area Riservata</span>
+                </a>';
+            }
         }
 
     } else {
-        // --- UTENTE NON LOGGATO ---
+        // --- OSPITE (NON LOGGATO) ---
         if ($paginaCorrente === 'carrello.php') {
             $userIconHTML = '
             <a href="login.php?return=carrello.php" title="Accedi per completare l\'ordine">
@@ -104,9 +125,9 @@ function caricaPagina($nomeFileHTML) {
         }
     }
 
-    // Sostituisco il nuovo segnaposto del carrello
+    // Sostituisco il segnaposto del carrello/matita
     $htmlContent = str_replace("[cart_icon_link]", $cartIconHTML, $htmlContent);
-    // Sostituisco il segnaposto utente
+    // Sostituisco il segnaposto utente/tabella
     $htmlContent = str_replace("[user_area_link]", $userIconHTML, $htmlContent);
 
     return $htmlContent;

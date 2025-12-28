@@ -466,7 +466,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Gestione Reload pagina: se c'è un #hash nell'URL (es. user.php#ordini), apri quella tab
+        // Gestione Reload pagina: se c'è un #hash nell'URL (es. areaPersonale.php#ordini), apri quella tab
         const currentHash = window.location.hash.replace('#', '');
         if (currentHash) {
             const activeLink = document.querySelector(`.user-nav-link[data-section="${currentHash}"]`);

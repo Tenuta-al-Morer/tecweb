@@ -15,13 +15,13 @@ if (!isset($_SESSION['utente'])) {
 $ruoloUtente = $_SESSION['ruolo'];
 
 if ($ruoloUtente === 'admin') {
-    header("location: admin.php");
+    header("location: gestionale.php");
     exit();
-} else if ($ruoloUtente === 'amministratore') {
-    header("location: amministratore.php");
+} else if ($ruoloUtente === 'staff') {
+    header("location: gestionale.php");
     exit();
 } else if ($ruoloUtente == 'user') {
-    header("location: user.php");
+    header("location: areaPersonale.php");
     exit();
 }
 ?>

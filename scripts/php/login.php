@@ -29,7 +29,7 @@ session_start();
 if (isset($_SESSION["utente"])) {
     
     if(isset($_SESSION["ruolo"]) && $_SESSION["ruolo"] === 'admin') {
-        header("location: admin.php"); 
+        header("location: gestionale.php"); 
     } else {
         header("location: utente.php"); 
     }
@@ -106,7 +106,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
                     header("location: " . $_POST['redirect_to']);
                 } else {
                     if ($ris['ruolo'] === 'admin') {
-                        header("location: admin.php");
+                        header("location: gestionale.php");
                     } else {
                         header("location: utente.php");
                     }

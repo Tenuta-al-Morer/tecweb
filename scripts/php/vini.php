@@ -10,7 +10,7 @@ use DB\DBConnection;
 $userLinkHTML = '';
 if (isset($_SESSION['utente'])) {
     // Utente loggato: Link alla dashboard corretta
-    $targetPage = ($_SESSION['ruolo'] === 'admin') ? 'admin.php' : 'user.php'; // o utente.php
+    $targetPage = ($_SESSION['ruolo'] === 'admin') ? 'gestionale.php' : 'areaPersonale.php'; // o utente.php
     $userLinkHTML = '<a href="' . $targetPage . '" aria-label="Area Personale"><i class="fas fa-user-check"></i></a>';
 } else {
     // Ospite: Link al login

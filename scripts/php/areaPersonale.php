@@ -16,7 +16,7 @@ $nomeUtenteSessione = isset($_SESSION['nome']) ? $_SESSION['nome'] : 'Utente';
 $emailUtenteSessione = isset($_SESSION['utente']) ? $_SESSION['utente'] : '';
 
 // Controllo ruolo
-if ($ruoloUtente !== 'user' && $ruoloUtente !== 'admin' && $ruoloUtente !== 'amministratore') {
+if ($ruoloUtente !== 'user' && $ruoloUtente !== 'admin' && $ruoloUtente !== 'staff') {
     header("location: 403.php");
     exit();
 }
@@ -210,7 +210,7 @@ $datiPersonaliHTML = '
         <h3><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Zona Pericolosa</h3>
         <p>L\'eliminazione dell\'account è <strong>irreversibile</strong>. Perderai l\'accesso all\'area riservata.</p>
         
-        <form action="user.php" method="POST" class="delete-account-form">
+        <form action="areaPersonale.php" method="POST" class="delete-account-form">
             <input type="hidden" name="azione_delete" value="elimina_definitivamente">
             
             <div class="checkbox-wrapper-delete">
@@ -230,7 +230,7 @@ $formPasswordHTML = '
 <div class="password-form-container">
     ' . $msgPassword . '
     
-    <form action="user.php#sicurezza" method="POST" class="auth-form">
+    <form action="areaPersonale.php#sicurezza" method="POST" class="auth-form">
         <input type="hidden" name="azione_pw" value="cambia">
         
         <div class="form-group">
@@ -271,7 +271,7 @@ $formPasswordHTML = '
 </div>';
 
 // --- OUTPUT FINALE ---
-$htmlContent = caricaPagina('../../html/user.html'); 
+$htmlContent = caricaPagina('../../html/areaPersonale.html'); 
 
 // Sostituzioni
 $htmlContent = str_replace("[email_utente]", htmlspecialchars($infoUtente['email']), $htmlContent);

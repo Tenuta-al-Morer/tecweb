@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Creato il: Dic 27, 2025 alle 20:03
+-- Creato il: Dic 28, 2025 alle 19:05
 -- Versione del server: 11.8.3-MariaDB-0+deb13u1 from Debian
 -- Versione PHP: 8.4.11
 
@@ -39,7 +39,8 @@ CREATE TABLE `carrello` (
 
 INSERT INTO `carrello` (`id`, `id_utente`, `data_aggiornamento`) VALUES
 (1, 6, '2025-12-22 22:39:38'),
-(2, 5, '2025-12-27 14:09:07');
+(2, 5, '2025-12-27 14:09:07'),
+(3, 7, '2025-12-28 12:19:45');
 
 -- --------------------------------------------------------
 
@@ -62,7 +63,8 @@ CREATE TABLE `carrello_elemento` (
 
 INSERT INTO `carrello_elemento` (`id`, `id_carrello`, `id_vino`, `quantita`, `data_inserimento`, `stato`) VALUES
 (6, 1, 7, 1, '2025-12-25 17:14:02', 'salvato'),
-(10, 1, 8, 0, '2025-12-27 01:27:14', 'salvato');
+(10, 1, 8, 0, '2025-12-27 01:27:14', 'salvato'),
+(21, 3, 2, 3, '2025-12-28 12:19:45', 'attivo');
 
 -- --------------------------------------------------------
 
@@ -158,7 +160,9 @@ INSERT INTO `ordine` (`id`, `id_utente`, `stato_ordine`, `totale_prodotti`, `cos
 (12, 6, 'in_attesa', 247.00, 0.00, 247.00, 'Via Roma 10, Conselve 12345 (pd)', 'PayPal', NULL, '2025-12-27 14:34:20'),
 (13, 6, 'in_attesa', 295.00, 0.00, 295.00, 'Via Appia nuova 10, Roma 00100 (RM)', 'Bonifico', NULL, '2025-12-27 20:49:26'),
 (14, 6, 'in_attesa', 92.50, 0.00, 92.50, 'Via Appia nuova 10, Roma 12345 (RM)', 'PayPal', NULL, '2025-12-27 20:54:18'),
-(15, 6, 'in_attesa', 100.00, 0.00, 100.00, 'Via Appia nuova 10, Roma 12345 (RM)', 'Carta di Credito', NULL, '2025-12-27 21:02:16');
+(15, 6, 'in_attesa', 100.00, 0.00, 100.00, 'Via Appia nuova 10, Roma 12345 (RM)', 'Carta di Credito', NULL, '2025-12-27 21:02:16'),
+(16, 6, 'in_attesa', 724.50, 0.00, 724.50, 'Via Appia nuova 10, Roma 12345 (RM)', 'Carta di Credito', NULL, '2025-12-27 21:04:12'),
+(17, 6, 'in_attesa', 96.50, 0.00, 96.50, 'Via Appia nuova 10, Roma 12345 (RM)', 'Carta di Credito', NULL, '2025-12-28 02:19:04');
 
 -- --------------------------------------------------------
 
@@ -194,7 +198,11 @@ INSERT INTO `ordine_elemento` (`id`, `id_ordine`, `id_vino`, `nome_vino_storico`
 (20, 13, 5, 'Chardonnay', 4, 13.50),
 (21, 13, 6, 'Manzoni Bianco', 4, 15.00),
 (22, 14, 1, 'Raboso del Piave', 5, 18.50),
-(23, 15, 9, 'Gran Morer', 4, 25.00);
+(23, 15, 9, 'Gran Morer', 4, 25.00),
+(24, 16, 1, 'Raboso del Piave', 33, 18.50),
+(25, 16, 12, 'Rosae Nobile', 6, 19.00),
+(26, 17, 2, 'Merlot', 4, 14.00),
+(27, 17, 5, 'Chardonnay', 3, 13.50);
 
 -- --------------------------------------------------------
 
@@ -270,7 +278,7 @@ CREATE TABLE `utente` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `data_registrazione` datetime NOT NULL DEFAULT current_timestamp(),
-  `ruolo` enum('user','admin','amministratore') NOT NULL DEFAULT 'user',
+  `ruolo` enum('user','admin','staff') NOT NULL DEFAULT 'user',
   `indirizzo` varchar(255) DEFAULT NULL,
   `citta` varchar(100) DEFAULT NULL,
   `cap` varchar(10) DEFAULT NULL,
@@ -285,7 +293,8 @@ CREATE TABLE `utente` (
 
 INSERT INTO `utente` (`id`, `nome`, `cognome`, `email`, `password`, `data_registrazione`, `ruolo`, `indirizzo`, `citta`, `cap`, `provincia`, `prefisso`, `telefono`) VALUES
 (5, 'TestAdmin', 'Admin', 'admin@test.com', '$2y$10$C4nvcMK.3tnfALXz9sUmmeT.bJZxczgp.A3L1okyuOZf6NjWw561m', '2025-12-08 17:34:01', 'admin', NULL, NULL, NULL, NULL, '+39', NULL),
-(6, 'TestUser', 'User', 'user@test.com', '$2y$10$CubhFtqfSPXVCYsGn4Y5B.MOwk80YcjYZz3hS8fAtb4xdPygFNy/G', '2025-12-08 17:34:01', 'user', 'Via Appia nuova 10', 'Roma', '12345', 'RM', '+39', '35101555408');
+(6, 'TestUser', 'User', 'user@test.com', '$2y$10$CubhFtqfSPXVCYsGn4Y5B.MOwk80YcjYZz3hS8fAtb4xdPygFNy/G', '2025-12-08 17:34:01', 'user', 'Via Appia nuova 10', 'Roma', '12345', 'RM', '+39', '35101555408'),
+(7, 'TestAmministratore', 'Amministratore', 'amministratore@test.com', '$2y$12$StxkEY8E/fxSzhcqa8iGt.L1p0YpZITI62BAAerYTVDCy5blypgLW', '2025-12-28 12:17:04', 'staff', NULL, NULL, NULL, NULL, '+39', NULL);
 
 -- --------------------------------------------------------
 
@@ -315,18 +324,18 @@ CREATE TABLE `vino` (
 --
 
 INSERT INTO `vino` (`id`, `nome`, `prezzo`, `quantita_stock`, `stato`, `img`, `categoria`, `descrizione_breve`, `descrizione_estesa`, `vitigno`, `annata`, `gradazione`, `temperatura`, `abbinamenti`) VALUES
-(1, 'Raboso del Piave', 18.50, 33, 'attivo', '../../images/tr/Raboso del Piave.webp', 'rossi', 'Un vino rosso corposo e avvolgente.', 'Un vino rosso corposo e avvolgente, perfetto per carni rosse e formaggi stagionati. Note di marasca e prugna.', 'Raboso 100%', '2019', '13.5% Vol', '18-20°C', 'Carni rosse, Selvaggina'),
-(2, 'Merlot', 14.00, 100, 'attivo', '../../images/tr/Merlot.webp', 'rossi', 'Morbido e vellutato.', 'Il classico Merlot: morbido, vellutato e versatile. Ideale per ogni occasione.', 'Merlot 100%', '2022', '12.5% Vol', '16-18°C', 'Arrosti, Formaggi media stagionatura'),
+(1, 'Raboso del Piave', 18.50, 0, 'attivo', '../../images/tr/Raboso del Piave.webp', 'rossi', 'Un vino rosso corposo e avvolgente.', 'Un vino rosso corposo e avvolgente, perfetto per carni rosse e formaggi stagionati. Note di marasca e prugna.', 'Raboso 100%', '2019', '13.5% Vol', '18-20°C', 'Carni rosse, Selvaggina'),
+(2, 'Merlot', 14.00, 96, 'attivo', '../../images/tr/Merlot.webp', 'rossi', 'Morbido e vellutato.', 'Il classico Merlot: morbido, vellutato e versatile. Ideale per ogni occasione.', 'Merlot 100%', '2022', '12.5% Vol', '16-18°C', 'Arrosti, Formaggi media stagionatura'),
 (3, 'Cabernet Franc', 16.00, 97, 'nascosto', '../../images/tr/Cabernet Franc 1.webp', 'rossi', 'Deciso e persistente.', 'Note erbacee caratteristiche, gusto deciso e persistente. Un vino di carattere.', 'Cabernet Franc', '2021', '13.0% Vol', '16-18°C', 'Salumi, Grigliate'),
 (4, 'Refosco', 15.50, 158, 'attivo', '../../images/tr/Refosco.webp', 'rossi', 'Carattere forte e intenso.', 'Autoctono dal carattere forte, colore rosso rubino intenso con riflessi violacei.', 'Refosco p.r.', '2021', '13.0% Vol', '16-18°C', 'Piatti tipici veneti, Carni grasse'),
-(5, 'Chardonnay', 13.50, 225, 'attivo', '../../images/tr/Chardonnay.webp', 'bianchi', 'Elegante e fruttato.', 'Elegante, fruttato con sentori di mela golden e crosta di pane.', 'Chardonnay', '2023', '12.0% Vol', '8-10°C', 'Antipasti magri, Pesce'),
+(5, 'Chardonnay', 13.50, 222, 'attivo', '../../images/tr/Chardonnay.webp', 'bianchi', 'Elegante e fruttato.', 'Elegante, fruttato con sentori di mela golden e crosta di pane.', 'Chardonnay', '2023', '12.0% Vol', '8-10°C', 'Antipasti magri, Pesce'),
 (6, 'Manzoni Bianco', 15.00, 58, 'attivo', '../../images/tr/Manzoni Bianco.webp', 'bianchi', 'Aromatico e strutturato.', 'Incrocio Riesling e Pinot Bianco. Aromatico, strutturato e di grande eleganza.', 'Incrocio Manzoni', '2023', '13.0% Vol', '10-12°C', 'Risotti, Crostacei'),
 (7, 'Pinot Grigio', 13.00, 196, 'nascosto', '../../images/tr/Pinot Grigio.webp', 'bianchi', 'Fresco e sapido.', 'Fresco, sapido e piacevole. Ottimo come aperitivo o tutto pasto leggero.', 'Pinot Grigio', '2023', '12.0% Vol', '8-10°C', 'Aperitivi, Carni bianche'),
 (8, 'Prosecco', 12.50, 0, 'attivo', '../../images/tr/Prosecco.webp', 'bianchi', 'Le bollicine venete.', 'Le bollicine venete per eccellenza. Fresco, vivace e floreale.', 'Glera 100%', '2024', '11.0% Vol', '6-8°C', 'Brindisi, Aperitivi, Dolci secchi'),
 (9, 'Gran Morer', 25.00, 118, 'attivo', '../../images/tr/Gran Morer.webp', 'selezione', 'Riserva speciale.', 'La nostra riserva speciale. Invecchiato in botte, complesso e speziato.', 'Uvaggio Segreto', '2018', '14.5% Vol', '18-20°C', 'Meditazione, Carni importanti'),
 (10, 'Vigna Dorata', 22.00, 19, 'attivo', '../../images/tr/Vigna Dorata.webp', 'selezione', 'Dolce e avvolgente.', 'Selezione di uve passite, dolce, avvolgente e dai riflessi dorati.', 'Verduzzo', '2020', '14.0% Vol', '10-12°C', 'Pasticceria secca, Formaggi erborinati'),
 (11, 'Incanto', 20.00, 277, 'attivo', '../../images/tr/Incanto.webp', 'selezione', 'Profumi floreali.', 'Un vino che incanta per i suoi profumi floreali intensi e la persistenza.', 'Vitigni aromatici', '2022', '12.5% Vol', '8-10°C', 'Piatti speziati, Formaggi freschi'),
-(12, 'Rosae Nobile', 19.00, 6, 'attivo', '../../images/tr/Rosae Nobile.webp', 'selezione', 'Rosato di alta classe.', 'Rosato di alta classe, note di frutti di bosco e rosa canina.', 'Raboso vinif. in bianco', '2023', '12.0% Vol', '8-10°C', 'Antipasti di pesce, Sushi');
+(12, 'Rosae Nobile', 19.00, 0, 'attivo', '../../images/tr/Rosae Nobile.webp', 'selezione', 'Rosato di alta classe.', 'Rosato di alta classe, note di frutti di bosco e rosa canina.', 'Raboso vinif. in bianco', '2023', '12.0% Vol', '8-10°C', 'Antipasti di pesce, Sushi');
 
 --
 -- Indici per le tabelle scaricate
@@ -407,13 +416,13 @@ ALTER TABLE `vino`
 -- AUTO_INCREMENT per la tabella `carrello`
 --
 ALTER TABLE `carrello`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `carrello_elemento`
 --
 ALTER TABLE `carrello_elemento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT per la tabella `contatto`
@@ -431,13 +440,13 @@ ALTER TABLE `contatto_archivio`
 -- AUTO_INCREMENT per la tabella `ordine`
 --
 ALTER TABLE `ordine`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT per la tabella `ordine_elemento`
 --
 ALTER TABLE `ordine_elemento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT per la tabella `prenotazione`
@@ -455,7 +464,7 @@ ALTER TABLE `prenotazione_archivio`
 -- AUTO_INCREMENT per la tabella `utente`
 --
 ALTER TABLE `utente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT per la tabella `vino`

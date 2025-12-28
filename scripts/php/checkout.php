@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             $raw_telefono   
         );
 
-        header("Location: user.php#ordini"); 
+        header("Location: areaPersonale.php#ordini"); 
         exit();
     } else {
         $errorMsg = '<div class="alert-box"><p><i class="fas fa-exclamation-triangle"></i> Errore durante l\'ordine: ' . $risultato['error'] . '</p></div>';

@@ -179,7 +179,7 @@ if (isset($_REQUEST['action'])) {
 
 $userLinkHTML = '';
 if (isset($_SESSION['utente'])) {
-    $targetPage = ($_SESSION['ruolo'] === 'admin') ? 'admin.php' : 'user.php';
+    $targetPage = ($_SESSION['ruolo'] === 'admin') ? 'gestionale.php' : 'areaPersonale.php';
     $userLinkHTML = '<a href="' . $targetPage . '" aria-label="Area Personale"><i class="fas fa-user-check"></i></a>';
 } else {
     $userLinkHTML = '<a href="login.php" aria-label="Accedi o Registrati"><i class="fas fa-user"></i></a>';
