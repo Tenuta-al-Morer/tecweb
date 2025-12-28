@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Creato il: Dic 28, 2025 alle 19:05
+-- Creato il: Dic 28, 2025 alle 19:41
 -- Versione del server: 11.8.3-MariaDB-0+deb13u1 from Debian
 -- Versione PHP: 8.4.11
 
@@ -62,9 +62,7 @@ CREATE TABLE `carrello_elemento` (
 --
 
 INSERT INTO `carrello_elemento` (`id`, `id_carrello`, `id_vino`, `quantita`, `data_inserimento`, `stato`) VALUES
-(6, 1, 7, 1, '2025-12-25 17:14:02', 'salvato'),
-(10, 1, 8, 0, '2025-12-27 01:27:14', 'salvato'),
-(21, 3, 2, 3, '2025-12-28 12:19:45', 'attivo');
+(5, 1, 8, 0, '2025-12-27 01:27:14', 'salvato');
 
 -- --------------------------------------------------------
 
@@ -294,7 +292,7 @@ CREATE TABLE `utente` (
 INSERT INTO `utente` (`id`, `nome`, `cognome`, `email`, `password`, `data_registrazione`, `ruolo`, `indirizzo`, `citta`, `cap`, `provincia`, `prefisso`, `telefono`) VALUES
 (5, 'TestAdmin', 'Admin', 'admin@test.com', '$2y$10$C4nvcMK.3tnfALXz9sUmmeT.bJZxczgp.A3L1okyuOZf6NjWw561m', '2025-12-08 17:34:01', 'admin', NULL, NULL, NULL, NULL, '+39', NULL),
 (6, 'TestUser', 'User', 'user@test.com', '$2y$10$CubhFtqfSPXVCYsGn4Y5B.MOwk80YcjYZz3hS8fAtb4xdPygFNy/G', '2025-12-08 17:34:01', 'user', 'Via Appia nuova 10', 'Roma', '12345', 'RM', '+39', '35101555408'),
-(7, 'TestAmministratore', 'Amministratore', 'amministratore@test.com', '$2y$12$StxkEY8E/fxSzhcqa8iGt.L1p0YpZITI62BAAerYTVDCy5blypgLW', '2025-12-28 12:17:04', 'staff', NULL, NULL, NULL, NULL, '+39', NULL);
+(7, 'TestStaff', 'Staff', 'staff@test.com', '$2y$12$StxkEY8E/fxSzhcqa8iGt.L1p0YpZITI62BAAerYTVDCy5blypgLW', '2025-12-28 12:17:04', 'staff', NULL, NULL, NULL, NULL, '+39', NULL);
 
 -- --------------------------------------------------------
 
