@@ -11,6 +11,23 @@ if (!isset($_SESSION['utente'])) {
     exit();
 }
 
+// BLOCCO DI CONTROLLO RUOLI (ADMIN/STAFF)
+$ruolo = $_SESSION['ruolo']; 
+
+// Se l'utente è admin o staff
+if ($ruolo === 'admin' || $ruolo === 'staff') {
+    $db = new DBConnection();
+    
+    // Svuota il carrello nel database
+    $db->svuotaCarrelloUtente($_SESSION['utente_id']);
+    $db->closeConnection();
+    
+    // Reindirizza alla dashboard gestionale (o dove preferisci)
+    header("Location: gestionale.php");
+    exit();
+}
+
+
 $db = new DBConnection();
 $id_utente = $_SESSION['utente_id'];
 

@@ -6,6 +6,26 @@ require_once 'DBConnection.php';
 use DB\DBConnection;
 
 // ============================================================
+// BLOCCO DI CONTROLLO RUOLI (ADMIN/STAFF)
+// ============================================================
+if (isset($_SESSION['utente']) && isset($_SESSION['ruolo'])) {
+    $ruolo = $_SESSION['ruolo']; 
+    
+    // Se l'utente è admin o staff
+    if ($ruolo === 'admin' || $ruolo === 'staff') {
+        $db = new DBConnection();
+        
+        // Svuota il carrello nel database
+        $db->svuotaCarrelloUtente($_SESSION['utente_id']);
+        $db->closeConnection();
+        
+        // Reindirizza alla dashboard gestionale (o dove preferisci)
+        header("Location: gestionale.php");
+        exit();
+    }
+}
+
+// ============================================================
 // 1. GESTIONE AZIONI (AJAX & STANDARD)
 // ============================================================
 

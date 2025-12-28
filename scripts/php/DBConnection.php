@@ -407,6 +407,20 @@ class DBConnection {
         return $result;
     }
 
+    // SVUOTA COMPLETAMENTE IL CARRELLO (Per Admin/Staff)
+    public function svuotaCarrelloUtente($id_utente) {
+        $id_carrello = $this->getCarrelloId($id_utente);
+        
+        $stmt = $this->connection->prepare("DELETE FROM carrello_elemento WHERE id_carrello = ?");
+        if (!$stmt) return false;
+        
+        $stmt->bind_param("i", $id_carrello);
+        $result = $stmt->execute();
+        $stmt->close();
+        
+        return $result;
+    }
+
     // RECUPERO ORDINI UTENTE
     public function getOrdiniUtente($id_utente) {
         $ordini = [];
