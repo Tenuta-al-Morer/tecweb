@@ -163,7 +163,6 @@ body.light-mode .table-data tbody tr:hover {
 }
 
 /* MODIFICA LIGHT MODE: Aggiunto select */
-/* NUOVO CODICE CORRETTO */
 body.light-mode .form-group input:not([type="checkbox"]):not([type="radio"]), /* Aggiunta specificità qui */
 body.light-mode .form-group textarea,
 body.light-mode select {
@@ -315,6 +314,16 @@ body.light-mode .navigationHelp:focus {
 }
 
 .td_richiesta_msg{ display:flex; gap: 0.2em;  flex-direction: column;}
+
+.td_richiesta_msg input[type="text"] {
+  width: 100%;
+  padding: 0.55rem 0.8rem;
+  background-color: var(--navbgcolor);
+  color: var(--txtcolor);
+  border: 1px solid var(--bordercolor);
+  border-radius: 4px;
+}
+
 
 .btn-secondary {
     display: inline-block;

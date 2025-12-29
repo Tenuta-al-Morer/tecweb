@@ -151,7 +151,7 @@ foreach ($messaggiArray as $messaggio) {
                         <input type="text" id="richiesta1_' . $idMsg . '" name="richiesta1" required
                             placeholder="Rispondi alle necessità del cliente">
                     </form>
-
+                    
                     <button type="submit" form="form_msg_' . $idMsg . '" class="btn-secondary">Invia</button>
                 </td>';
     $messaggi .= "</tr>";
