@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mstevani`
+-- Database: `acontari`
 --
 
 -- --------------------------------------------------------
@@ -112,6 +112,7 @@ CREATE TABLE `contatto_archivio` (
   `prefisso` varchar(10) NOT NULL,
   `telefono` varchar(20) NOT NULL,
   `messaggio` text NOT NULL,
+  `risposta` text DEFAULT NULL,
   `data_invio` datetime NOT NULL DEFAULT current_timestamp(),
   `stato` enum('aperto','risposto','chiuso') NOT NULL DEFAULT 'chiuso'
 ) ;
