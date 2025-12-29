@@ -108,15 +108,15 @@ class DBConnection {
         return $result;
     }
 
-    // FUNZIONE ARCHIVIA MESSAGGIO
-    public function archiviaMessaggio($id) {
-        $queryCopia = "INSERT INTO contatto_archivio (id, nome, cognome, email, tipo_supporto, prefisso, telefono, messaggio, data_invio, stato)
-                       SELECT id, nome, cognome, email, tipo_supporto, prefisso, telefono, messaggio, data_invio, 'chiuso'
+    // FUNZIONE ARCHIVIA MESSAGGIO (Lato STAFF) - Da sistemare
+    public function archiviaMessaggio($id, $messaggioRisposta) {
+       $queryCopia = "INSERT INTO contatto_archivio (id, nome, cognome, email, tipo_supporto, prefisso, telefono, messaggio, risposta, data_invio, stato)
+                       SELECT id, nome, cognome, email, tipo_supporto, prefisso, telefono, messaggio, ?, data_invio, 'risposto'
                        FROM contatto WHERE id = ?";
         
         $stmt = $this->connection->prepare($queryCopia);
         if (!$stmt) return false;
-        $stmt->bind_param("i", $id);
+        $stmt->bind_param("si", $messaggioRisposta, $id);
         $esitoCopia = $stmt->execute();
         $stmt->close();
 
