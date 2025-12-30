@@ -190,9 +190,6 @@ footer {
     padding: 2em 1.5em;
 }
 
-.btn-secondary {
-    width: 50%;
-}
 
 .login-header-logo img {
     height: 4.5em;
@@ -333,6 +330,13 @@ body.light-mode .table-data td::before {
 
 .table-data td.order-details-cell::before {
     content: none;
+}
+
+/* DOPO */
+.td_richiesta_msg .btn-secondary{
+  width: auto;
+  margin-top: .5rem;
+  float: none;
 }
 
 @media screen and (max-width: 768px) {
@@ -823,4 +827,14 @@ body.light-mode .table-data td::before {
 
 .admin-tab {
     width: 60%;    
+}
+
+
+/* =========================================
+   ACCESSIBILITÀ (mini.css): touch target >= 44x44px
+   Esclusi radio/checkbox
+   ========================================= */
+.admin-tab, table button{
+    min-width: 44px;
+    min-height: 44px;
 }

@@ -313,7 +313,22 @@ body.light-mode .navigationHelp:focus {
     font-weight: 500;
 }
 
-.td_richiesta_msg{ display:flex; gap: 0.2em;  flex-direction: column;}
+.td_richiesta_msg{
+  vertical-align: top;
+  padding-right: 1rem;
+}
+
+.td_richiesta_msg form{
+  margin: 0;
+}
+
+.td_richiesta_msg .btn-secondary{
+  width: auto;
+  margin-top: .5rem;
+  float: right;               
+}
+
+
 
 .td_richiesta_msg input[type="text"] {
   width: 100%;
@@ -347,11 +362,7 @@ body.light-mode .navigationHelp:focus {
     justify-content: flex-end;  
 }
 
-.td_richiesta_msg .btn-secondary {
-    width: auto;
-    font-size: 0.6rem;
-    padding: 0.4rem 1rem;
-}
+
 
 
 
@@ -3105,3 +3116,16 @@ a.feature-card.card-link {
   outline: 2px solid var(--gold-color);
   outline-offset: 3px;
 }
+
+
+/* =========================================
+   ACCESSIBILITÀ: touch target >= 44x44px
+   (esclusi radio/checkbox)
+   Incolla in fondo al file
+   ========================================= */
+
+.admin-tab, table button{
+    min-width: 44px;
+    min-height: 44px;
+}
+
