@@ -81,6 +81,7 @@ $db = new DBConnection();
 $ordiniArray = $db->getOrdini();
 $prenotazioniArray = $db->getPrenotazioni();
 $messaggiArray = $db->getMessaggi();
+$messaggiArchivioArray = $db->getMessaggiArchivio();
 $db->closeConnection();
 
 // 2) Costruzione righe tabelle
@@ -158,6 +159,22 @@ foreach ($messaggiArray as $messaggio) {
     $messaggi .= "</tr>";
 }
 
+$messaggiArchivio = "";
+foreach ($messaggiArchivioArray as $messaggio) {
+    $idMsg = (int)$messaggio['id'];
+    $messaggiArchivio .= "<tr>";
+    $messaggiArchivio .= '<th scope="row">' . $idMsg . '</th>';
+    $messaggiArchivio .= '<td data-title="Nome">' . htmlspecialchars($messaggio['nome']) . '</td>';
+    $messaggiArchivio .= '<td data-title="Cognome">' . htmlspecialchars($messaggio['cognome']) . '</td>';
+    $messaggiArchivio .= '<td data-title="Email">' . htmlspecialchars($messaggio['email']) . '</td>';
+    $messaggiArchivio .= '<td data-title="Tipo supporto">' . htmlspecialchars($messaggio['tipo_supporto']) . '</td>';
+    $messaggiArchivio .= '<td data-title="Telefono">' . htmlspecialchars($messaggio['prefisso']) . ' ' . htmlspecialchars($messaggio['telefono']) . '</td>';
+    $messaggiArchivio .= '<td data-title="Messaggio">' . htmlspecialchars($messaggio['messaggio']) . '</td>';
+    $messaggiArchivio .= '<td data-title="Data invio">' . htmlspecialchars($messaggio['data_invio']) . '</td>';
+    $messaggiArchivio .= '<td data-title="Risposta">' . htmlspecialchars($messaggio['risposta']) . '</td>';
+    $messaggiArchivio .= "</tr>";
+}
+
 
 // 3) Replace placeholders
 $htmlContent = str_replace("[nome_utente]", $nomeUtente, $htmlContent);
@@ -166,6 +183,7 @@ $htmlContent = str_replace("[riferimento]", $ruoloUtente, $htmlContent);
 $htmlContent = str_replace("[riga_ordini]", $ordini, $htmlContent);
 $htmlContent = str_replace("[riga_prenotazioni]", $prenotazioni, $htmlContent);
 $htmlContent = str_replace("[riga_messaggi]", $messaggi, $htmlContent);
+$htmlContent = str_replace("[riga_messaggi_archivio]", $messaggiArchivio, $htmlContent);
 
 echo $htmlContent;
 ?>

@@ -108,11 +108,12 @@ class DBConnection {
         return $result;
     }
 
+
     // FUNZIONE ARCHIVIA MESSAGGIO (Lato STAFF) - Da sistemare
     public function archiviaMessaggio($id, $messaggioRisposta) {
-       $queryCopia = "INSERT INTO contatto_archivio (id, nome, cognome, email, tipo_supporto, prefisso, telefono, messaggio, risposta, data_invio, stato)
-                       SELECT id, nome, cognome, email, tipo_supporto, prefisso, telefono, messaggio, ?, data_invio, 'risposto'
-                       FROM contatto WHERE id = ?";
+       $queryCopia = "UPDATE contatto_archivio 
+                      SET risposta = ?, stato = 'risposto' 
+                      WHERE id = ?";
         
         $stmt = $this->connection->prepare($queryCopia);
         if (!$stmt) return false;
@@ -442,7 +443,7 @@ class DBConnection {
         return $ordini;
     }
 
-    // RECUPERO TUTTI GLI ORDINI (ADMIN)
+    // RECUPERO TUTTI GLI ORDINI (GESTIONALE)
     public function getOrdini() {
         $ordini = [];
         
@@ -461,6 +462,7 @@ class DBConnection {
         $stmtOrd->close();
         return $ordini;
     }
+
 
     // RECUPERO PRENOTAZIONI (ADMIN)
     public function getPrenotazioni() {
@@ -481,10 +483,27 @@ class DBConnection {
         return $prenotazioni;
     }
 
-    // RECUPERO MESSAGGI (ADMIN)
+    // RECUPERO MESSAGGI (GESTIONALE)
     public function getMessaggi() {
         $messaggi = [];
-        $queryMessaggi = "SELECT * FROM contatto WHERE stato='aperto' ORDER BY data_invio DESC";
+        $queryMessaggi = "SELECT * FROM contatto_archivio WHERE stato = 'aperto' ORDER BY data_invio DESC";
+        $stmtMess = $this->connection->prepare($queryMessaggi);
+        if (!$stmtMess) { return []; } 
+        
+        $stmtMess->execute();
+        $resultMess = $stmtMess->get_result();
+
+        while ($messaggio = $resultMess->fetch_assoc()) {
+            $messaggi[] = $messaggio;
+        }
+        $stmtMess->close();
+        return $messaggi;
+    }
+
+    // RECUPERO MESSAGGI ARCHIVIO (GESTIONALE)
+    public function getMessaggiArchivio() {
+        $messaggi = [];
+        $queryMessaggi = "SELECT * FROM contatto_archivio WHERE stato != 'aperto' ORDER BY data_invio DESC";
         $stmtMess = $this->connection->prepare($queryMessaggi);
         if (!$stmtMess) { return []; } 
         

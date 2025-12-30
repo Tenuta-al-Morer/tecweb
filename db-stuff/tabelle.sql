@@ -31,7 +31,7 @@ CREATE TABLE `carrello` (
   `id` int(11) NOT NULL,
   `id_utente` int(11) NOT NULL,
   `data_aggiornamento` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ;
+) ENGINE=InnoDB;
 
 --
 -- Dump dei dati per la tabella `carrello`
@@ -55,7 +55,7 @@ CREATE TABLE `carrello_elemento` (
   `quantita` int(11) NOT NULL DEFAULT 1,
   `data_inserimento` datetime DEFAULT current_timestamp(),
   `stato` enum('attivo','salvato') NOT NULL DEFAULT 'attivo'
-) ;
+) ENGINE=InnoDB;
 
 --
 -- Dump dei dati per la tabella `carrello_elemento`
@@ -63,39 +63,6 @@ CREATE TABLE `carrello_elemento` (
 
 INSERT INTO `carrello_elemento` (`id`, `id_carrello`, `id_vino`, `quantita`, `data_inserimento`, `stato`) VALUES
 (5, 1, 8, 0, '2025-12-27 01:27:14', 'salvato');
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `contatto`
---
-
-CREATE TABLE `contatto` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(50) NOT NULL,
-  `cognome` varchar(50) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `tipo_supporto` varchar(128) NOT NULL,
-  `prefisso` varchar(10) NOT NULL,
-  `telefono` varchar(20) NOT NULL,
-  `messaggio` text NOT NULL,
-  `data_invio` datetime NOT NULL DEFAULT current_timestamp(),
-  `stato` enum('aperto','risposto','chiuso') NOT NULL DEFAULT 'aperto'
-) ;
-
---
--- Dump dei dati per la tabella `contatto`
---
-
-INSERT INTO `contatto` (`id`, `nome`, `cognome`, `email`, `tipo_supporto`, `prefisso`, `telefono`, `messaggio`, `data_invio`, `stato`) VALUES
-(2, 'Test', 'User', 'user@test.com', 'Ordine', '+39', '3331234567', 'Buongiorno, vorrei sapere quando verrà spedito il mio ordine.', '2025-12-22 22:39:38', 'aperto'),
-(3, 'Michele', 'Stevanin', 'michele.stevanin@gmail.com', 'assistenza', '+39', '3510408301', 'vediamo se funziona tutto questo', '2025-12-27 00:58:06', 'aperto'),
-(4, 'Luca', 'Toni', 'luca.toni@calcio.it', 'informazioni_vini', '+39', '3339998887', 'Salve, vorrei sapere se il Raboso è barricato. Grazie.', '2025-12-27 01:23:34', 'aperto'),
-(5, 'Maria', 'Callas', 'divina@opera.com', 'visita_degustazione', '+39', '3337776665', 'Organizzate visite per gruppi numerosi (50 persone)?', '2025-12-27 01:23:34', 'aperto'),
-(6, 'Sandro', 'Pertini', 'sandro@presidente.it', 'ordine_online', '+39', '3331111111', 'Ho sbagliato indirizzo nell\'ultimo ordine, come posso cambiare?', '2025-12-27 01:23:34', 'aperto'),
-(7, 'Bebe', 'Vio', 'bebe@scherma.it', 'partnership', '+39', '3332222222', 'Vorrei proporre i vostri vini per un evento sportivo.', '2025-12-27 01:23:34', 'aperto'),
-(8, 'Roberto', 'Baggio', 'codino@divino.it', 'assistenza', '+39', '3334444444', 'Il codice sconto non funziona nel carrello.', '2025-12-27 01:23:34', 'risposto'),
-(9, 'Paolo', 'Rossi', 'pablito@mondiale.it', 'altro', '+39', '3335555555', 'Avete distributori in Spagna?', '2025-12-27 01:23:34', 'aperto');
 
 -- --------------------------------------------------------
 
@@ -114,15 +81,44 @@ CREATE TABLE `contatto_archivio` (
   `messaggio` text NOT NULL,
   `risposta` text DEFAULT NULL,
   `data_invio` datetime NOT NULL DEFAULT current_timestamp(),
-  `stato` enum('aperto','risposto','chiuso') NOT NULL DEFAULT 'chiuso'
-) ;
+  `stato` enum('aperto','risposto') NOT NULL
+) ENGINE=InnoDB;
 
 --
 -- Dump dei dati per la tabella `contatto_archivio`
 --
 
-INSERT INTO `contatto_archivio` (`id`, `nome`, `cognome`, `email`, `tipo_supporto`, `prefisso`, `telefono`, `messaggio`, `data_invio`, `stato`) VALUES
-(1, 'Test', 'User', 'user@test.com', 'Informazioni', '+39', '3331234567', 'Ho bisogno di informazioni sulle degustazioni.', '2025-12-22 22:39:38', 'chiuso');
+INSERT INTO `contatto_archivio`
+(`id`, `nome`, `cognome`, `email`, `tipo_supporto`, `prefisso`, `telefono`,
+ `messaggio`, `risposta`, `data_invio`, `stato`)
+VALUES
+(1, 'Test', 'User', 'user@test.com', 'Informazioni', '+39', '3331234567',
+ 'Ho bisogno di informazioni sulle degustazioni.', ' - ',
+ '2025-12-22 22:39:38', 'risposto'),
+(2, 'Test', 'User', 'user@test.com', 'Ordine', '+39', '3331234567',
+ 'Buongiorno, vorrei sapere quando verrà spedito il mio ordine.', '',
+ '2025-12-22 22:39:38', 'aperto'),
+(3, 'Michele', 'Stevanin', 'michele.stevanin@gmail.com', 'assistenza', '+39', '3510408301',
+ 'vediamo se funziona tutto questo', '',
+ '2025-12-27 00:58:06', 'aperto'),
+(4, 'Luca', 'Toni', 'luca.toni@calcio.it', 'informazioni_vini', '+39', '3339998887',
+ 'Salve, vorrei sapere se il Raboso è barricato. Grazie.', '',
+ '2025-12-27 01:23:34', 'aperto'),
+(5, 'Maria', 'Callas', 'divina@opera.com', 'visita_degustazione', '+39', '3337776665',
+ 'Organizzate visite per gruppi numerosi (50 persone)?', '',
+ '2025-12-27 01:23:34', 'aperto'),
+(6, 'Sandro', 'Pertini', 'sandro@presidente.it', 'ordine_online', '+39', '3331111111',
+ 'Ho sbagliato indirizzo nell\'ultimo ordine, come posso cambiare?', '',
+ '2025-12-27 01:23:34', 'aperto'),
+(7, 'Bebe', 'Vio', 'bebe@scherma.it', 'partnership', '+39', '3332222222',
+ 'Vorrei proporre i vostri vini per un evento sportivo.', '',
+ '2025-12-27 01:23:34', 'aperto'),
+(8, 'Roberto', 'Baggio', 'codino@divino.it', 'assistenza', '+39', '3334444444',
+ 'Il codice sconto non funziona nel carrello.', ' esempio di risposta fornita dal supporto.',
+ '2025-12-27 01:23:34', 'risposto'),
+(9, 'Paolo', 'Rossi', 'pablito@mondiale.it', 'altro', '+39', '3335555555',
+ 'Avete distributori in Spagna?', '',
+ '2025-12-27 01:23:34', 'aperto');
 
 -- --------------------------------------------------------
 
@@ -141,7 +137,7 @@ CREATE TABLE `ordine` (
   `metodo_pagamento` varchar(50) NOT NULL,
   `id_transazione` varchar(255) DEFAULT NULL,
   `data_creazione` datetime DEFAULT current_timestamp()
-) ;
+) ENGINE=InnoDB;
 
 --
 -- Dump dei dati per la tabella `ordine`
@@ -176,7 +172,7 @@ CREATE TABLE `ordine_elemento` (
   `nome_vino_storico` varchar(255) NOT NULL,
   `quantita` int(11) NOT NULL,
   `prezzo_acquisto` decimal(10,2) NOT NULL
-) ;
+) ENGINE=InnoDB;
 
 --
 -- Dump dei dati per la tabella `ordine_elemento`
@@ -221,7 +217,7 @@ CREATE TABLE `prenotazione` (
   `n_persone` int(11) NOT NULL,
   `data_invio` datetime NOT NULL DEFAULT current_timestamp(),
   `stato` enum('in_attesa','approvato','annullato','completato') NOT NULL DEFAULT 'in_attesa'
-) ;
+) ENGINE=InnoDB;
 
 --
 -- Dump dei dati per la tabella `prenotazione`
@@ -255,7 +251,7 @@ CREATE TABLE `prenotazione_archivio` (
   `n_persone` int(11) NOT NULL,
   `data_invio` datetime NOT NULL DEFAULT current_timestamp(),
   `stato` enum('in_attesa','approvato','annullato','completato') NOT NULL DEFAULT 'completato'
-) ;
+) ENGINE=InnoDB;
 
 --
 -- Dump dei dati per la tabella `prenotazione_archivio`
@@ -284,7 +280,7 @@ CREATE TABLE `utente` (
   `provincia` varchar(10) DEFAULT NULL,
   `prefisso` varchar(10) DEFAULT '+39',
   `telefono` varchar(20) DEFAULT NULL
-) ;
+) ENGINE=InnoDB;
 
 --
 -- Dump dei dati per la tabella `utente`
@@ -316,7 +312,7 @@ CREATE TABLE `vino` (
   `gradazione` varchar(20) DEFAULT 'N/D',
   `temperatura` varchar(20) DEFAULT 'N/D',
   `abbinamenti` varchar(255) DEFAULT 'N/D'
-) ;
+) ENGINE=InnoDB;
 
 --
 -- Dump dei dati per la tabella `vino`
@@ -341,6 +337,20 @@ INSERT INTO `vino` (`id`, `nome`, `prezzo`, `quantita_stock`, `stato`, `img`, `c
 --
 
 --
+-- Indici per le tabelle `utente`
+-- (devono venire PRIMA delle FK che lo referenziano)
+--
+ALTER TABLE `utente`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indici per le tabelle `vino`
+--
+ALTER TABLE `vino`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indici per le tabelle `carrello`
 --
 ALTER TABLE `carrello`
@@ -356,15 +366,21 @@ ALTER TABLE `carrello_elemento`
   ADD KEY `fk_elemento_carrello_vino` (`id_vino`);
 
 --
--- Indici per le tabelle `contatto`
---
-ALTER TABLE `contatto`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indici per le tabelle `contatto_archivio`
 --
 ALTER TABLE `contatto_archivio`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `prenotazione`
+--
+ALTER TABLE `prenotazione`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `prenotazione_archivio`
+--
+ALTER TABLE `prenotazione_archivio`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -383,125 +399,69 @@ ALTER TABLE `ordine_elemento`
   ADD KEY `fk_dettaglio_ordine_vino` (`id_vino`);
 
 --
--- Indici per le tabelle `prenotazione`
---
-ALTER TABLE `prenotazione`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indici per le tabelle `prenotazione_archivio`
---
-ALTER TABLE `prenotazione_archivio`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indici per le tabelle `utente`
---
-ALTER TABLE `utente`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
--- Indici per le tabelle `vino`
---
-ALTER TABLE `vino`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT per le tabelle scaricate
+-- (ora che le PK esistono, queste ALTER funzionano)
 --
 
---
--- AUTO_INCREMENT per la tabella `carrello`
---
 ALTER TABLE `carrello`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
---
--- AUTO_INCREMENT per la tabella `carrello_elemento`
---
 ALTER TABLE `carrello_elemento`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
---
--- AUTO_INCREMENT per la tabella `contatto`
---
-ALTER TABLE `contatto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT per la tabella `contatto_archivio`
---
 ALTER TABLE `contatto_archivio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
---
--- AUTO_INCREMENT per la tabella `ordine`
---
 ALTER TABLE `ordine`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
---
--- AUTO_INCREMENT per la tabella `ordine_elemento`
---
 ALTER TABLE `ordine_elemento`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
---
--- AUTO_INCREMENT per la tabella `prenotazione`
---
 ALTER TABLE `prenotazione`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
---
--- AUTO_INCREMENT per la tabella `prenotazione_archivio`
---
 ALTER TABLE `prenotazione_archivio`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
---
--- AUTO_INCREMENT per la tabella `utente`
---
 ALTER TABLE `utente`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
---
--- AUTO_INCREMENT per la tabella `vino`
---
 ALTER TABLE `vino`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- Limiti per le tabelle scaricate
+-- Limiti per le tabelle scaricate (FK)
 --
 
---
--- Limiti per la tabella `carrello`
---
 ALTER TABLE `carrello`
-  ADD CONSTRAINT `fk_carrello_utente` FOREIGN KEY (`id_utente`) REFERENCES `utente` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `fk_carrello_utente`
+  FOREIGN KEY (`id_utente`) REFERENCES `utente` (`id`)
+  ON DELETE CASCADE;
 
---
--- Limiti per la tabella `carrello_elemento`
---
 ALTER TABLE `carrello_elemento`
-  ADD CONSTRAINT `fk_elemento_carrello_cart` FOREIGN KEY (`id_carrello`) REFERENCES `carrello` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_elemento_carrello_vino` FOREIGN KEY (`id_vino`) REFERENCES `vino` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `fk_elemento_carrello_cart`
+  FOREIGN KEY (`id_carrello`) REFERENCES `carrello` (`id`)
+  ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_elemento_carrello_vino`
+  FOREIGN KEY (`id_vino`) REFERENCES `vino` (`id`)
+  ON DELETE CASCADE;
 
---
--- Limiti per la tabella `ordine`
---
 ALTER TABLE `ordine`
-  ADD CONSTRAINT `fk_ordine_utente_smart` FOREIGN KEY (`id_utente`) REFERENCES `utente` (`id`) ON DELETE SET NULL;
+  ADD CONSTRAINT `fk_ordine_utente_smart`
+  FOREIGN KEY (`id_utente`) REFERENCES `utente` (`id`)
+  ON DELETE SET NULL;
 
---
--- Limiti per la tabella `ordine_elemento`
---
 ALTER TABLE `ordine_elemento`
-  ADD CONSTRAINT `fk_dettaglio_ordine_ord` FOREIGN KEY (`id_ordine`) REFERENCES `ordine` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_dettaglio_ordine_vino` FOREIGN KEY (`id_vino`) REFERENCES `vino` (`id`);
+  ADD CONSTRAINT `fk_dettaglio_ordine_ord`
+  FOREIGN KEY (`id_ordine`) REFERENCES `ordine` (`id`)
+  ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_dettaglio_ordine_vino`
+  FOREIGN KEY (`id_vino`) REFERENCES `vino` (`id`);
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
