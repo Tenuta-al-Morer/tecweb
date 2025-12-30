@@ -162,16 +162,14 @@ body.light-mode .table-data tbody tr:hover {
     background-color: var(--card-shadow);
 }
 
-/* MODIFICA LIGHT MODE: Aggiunto select */
-body.light-mode .form-group input:not([type="checkbox"]):not([type="radio"]), /* Aggiunta specificità qui */
+body.light-mode .form-group input:not([type="checkbox"]):not([type="radio"]), 
 body.light-mode .form-group textarea,
 body.light-mode select {
     background-color: var(--bodybgcolor); 
     border-color: var(--txtcolor); 
-    color: var(--txtcolor); /* Assicura che anche il testo sia leggibile */
+    color: var(--txtcolor); 
 }
 
-/* MODIFICA LIGHT MODE FOCUS: Aggiunto select:focus */
 body.light-mode .form-group input:focus,
 body.light-mode .form-group textarea:focus,
 body.light-mode select:focus {
@@ -260,8 +258,26 @@ body.light-mode .navigationHelp:focus {
     transform: translateY(-2px);
 }
 
+.btn-secondary {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--gold-color);
+    color: var(--bodybgcolor); 
+    border: none;
+    font-family: 'Lexend', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+
 /* =========================================
-   AREA ADMIN 
+   AREA GESTIONALE  
    ========================================= */
 
 .admin-tabs {
@@ -292,6 +308,13 @@ body.light-mode .navigationHelp:focus {
     background: var(--gold-color);
     color: var(--bodybgcolor);
 }
+
+.admin-tab.is-active {
+  background-color: gold;
+  color: #000;
+  border-color: goldenrod;
+}
+
 
 /* Gestione tabelle admin */
 .td_richiesta_degustazione {
@@ -329,7 +352,6 @@ body.light-mode .navigationHelp:focus {
 }
 
 
-
 .td_richiesta_msg input[type="text"] {
   width: 100%;
   padding: 0.55rem 0.8rem;
@@ -340,29 +362,148 @@ body.light-mode .navigationHelp:focus {
 }
 
 
-.btn-secondary {
-    display: inline-block;
-    margin-top: 0.5rem;
-    padding: 0.5rem 1rem;
-    background-color: var(--gold-color);
-    color: var(--bodybgcolor); 
-    border: none;
-    font-family: 'Lexend', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 400;
-    text-transform: uppercase;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    width: 100%;
-}
-
 .td_richiesta_msg form:last-child {
     display: flex;
     justify-content: flex-end;  
 }
 
+/* Tabelle responsive area admin */
+@media screen and (max-width: 1300px) {
+    .table-container:has(.table-early-break) {
+        border: none;
+    }
 
+    .table-early-break caption {
+        position: absolute;
+        text-indent: -999em;
+        border-bottom: none;
+    }
+    
+    .table-early-break {
+        border: none; 
+    }
+
+    .table-early-break, .table-early-break thead, .table-early-break tbody,
+    .table-early-break th, .table-early-break td, .table-early-break tr {
+        display: block;
+    }
+
+    .table-early-break thead tr {
+        position: absolute; 
+        top: -9999px; 
+        left: -9999px;
+    }
+
+    .table-early-break tr {
+        border: 1px solid var(--bordercolor); 
+        border-radius: 8px; 
+        margin-bottom: 2em;
+        background-color: var(--card-bg); 
+        box-shadow: 0 4px 8px var(--pure-black); 
+        overflow: hidden;
+    }
+
+    .table-early-break tbody th {
+        background-color: var(--table-stripe);
+        color: var(--gold-color);
+        font-weight: 700;
+        text-align: center; 
+        padding: 1em;
+        border-bottom: 1px solid var(--bordercolor);
+        font-size: 1.1em;
+    }
+
+    .table-early-break td {
+        border: none; 
+        border-bottom: 1px solid var(--subheader-border-color); 
+        position: relative;
+        padding: 0.8em 1em;
+        text-align: left; 
+    }
+
+    .table-early-break td:last-child { 
+        border-bottom: 0; 
+    }
+
+    .table-early-break td::before {
+        content: attr(data-title) ": "; 
+        color: var(--gold-color);
+        font-weight: 700;
+        
+        display: inline;
+        margin-right: 0.3em;
+    }
+}
+
+/* = = = = = = = = = = = = 
+   SWITCH ADMIN TABLE HEAD
+   = = = = = = = = = = = =  */
+
+.admin-table-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.admin-table-head > h2 {
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+.admin-table-head label.switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 56px;
+  height: 30px;
+  flex: 0 0 auto;
+}
+
+.admin-table-head label.switch > input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+}
+
+.admin-table-head label.switch > span.slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  background-color: var(--gray-light);
+  transition: background-color .25s ease, box-shadow .25s ease;
+  border-radius: 999px;
+  display: block;
+}
+
+.admin-table-head label.switch > span.slider::before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  left: 4px;
+  top: 4px;
+  background-color: var(--pure-white);
+  transition: transform .25s ease;
+  border-radius: 50%;
+}
+
+.admin-table-head label.switch > input[type="checkbox"]:checked + span.slider {
+  background-color: var(--gold-color);
+}
+
+.admin-table-head label.switch > input[type="checkbox"]:checked + span.slider::before {
+  transform: translateX(26px);
+}
+
+.admin-table-head label.switch > input[type="checkbox"]:focus-visible + span.slider {
+  outline: 2px solid var(--gold-color);
+  outline-offset: 3px;
+}
 
 
 
@@ -451,7 +592,6 @@ select {
     transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
 
-/* Focus: NON rimuovere outline per checkbox/radio */
 .form-group input:not([type="checkbox"]):not([type="radio"]):focus,
 .form-group textarea:focus,
 select:focus {
@@ -856,73 +996,7 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
 main h1 { margin-bottom: 0.3em; }
 main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolor); }
 
-/* Tabelle responsive area admin */
-@media screen and (max-width: 1300px) {
-    .table-container:has(.table-early-break) {
-        border: none;
-    }
 
-    .table-early-break caption {
-        position: absolute;
-        text-indent: -999em;
-        border-bottom: none;
-    }
-    
-    .table-early-break {
-        border: none; 
-    }
-
-    .table-early-break, .table-early-break thead, .table-early-break tbody,
-    .table-early-break th, .table-early-break td, .table-early-break tr {
-        display: block;
-    }
-
-    .table-early-break thead tr {
-        position: absolute; 
-        top: -9999px; 
-        left: -9999px;
-    }
-
-    .table-early-break tr {
-        border: 1px solid var(--bordercolor); 
-        border-radius: 8px; 
-        margin-bottom: 2em;
-        background-color: var(--card-bg); 
-        box-shadow: 0 4px 8px var(--pure-black); 
-        overflow: hidden;
-    }
-
-    .table-early-break tbody th {
-        background-color: var(--table-stripe);
-        color: var(--gold-color);
-        font-weight: 700;
-        text-align: center; 
-        padding: 1em;
-        border-bottom: 1px solid var(--bordercolor);
-        font-size: 1.1em;
-    }
-
-    .table-early-break td {
-        border: none; 
-        border-bottom: 1px solid var(--subheader-border-color); 
-        position: relative;
-        padding: 0.8em 1em;
-        text-align: left; 
-    }
-
-    .table-early-break td:last-child { 
-        border-bottom: 0; 
-    }
-
-    .table-early-break td::before {
-        content: attr(data-title) ": "; 
-        color: var(--gold-color);
-        font-weight: 700;
-        
-        display: inline;
-        margin-right: 0.3em;
-    }
-}
 
 /* =========================================
    HERO SECTION 
@@ -1137,7 +1211,7 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
 .next-btn { right: 10px; border-radius: 4px; }
 
 @media screen and (min-width: 700px) { .slide { flex: 0 0 50%; } }
-@media screen and (min-width: 1200px) { .slide { flex: 0 0 33.333%; } }
+@media screen and (min-width: 1200px) { .slide { flex: 0 0 33.333%; } } /*Da allineare con i breakpoint*/
 @media screen and (min-width: 1600px) { .slide { flex: 0 0 25%; } }
 
 @media screen and (max-width: 1100px) {
@@ -1316,7 +1390,6 @@ footer a:visited { color: var(--gold-color); }
     align-items: center;
 }
 
-/* MODIFICA AUTH FORM: Aggiunto select */
 .auth-form input:not([type="checkbox"]):not([type="radio"]),
 .auth-form select {
     width: 100%; 
@@ -1423,7 +1496,6 @@ input:-webkit-autofill:focus {
     accent-color: var(--gold-color); 
 }
 
-/* Focus visibile per checkbox (fallback focus + focus-visible) */
 .checkbox-container input[type="checkbox"]:focus,
 .checkbox-container input[type="checkbox"]:focus-visible {
     outline: 3px solid var(--gold-color);
@@ -1687,20 +1759,11 @@ footer {
     margin-top: 0 !important
 }
 
-/*
-================================
-Sezione Admin
-================================
-*/
 
-.admin-tab.is-active {
-  background-color: gold;
-  color: #000;
-  border-color: goldenrod;
-}
+
 
 /* =========================================
-   AREA RISERVATA UTENTE 
+   AREA RISERVATA User 
    ========================================= */
 
 .user-dashboard-container {
@@ -1812,7 +1875,10 @@ Sezione Admin
     color: var(--pure-white);
 }
 
-/* TABLE STYLES SPECIFICI PER GLI ORDINI */
+/* =========================================
+TABELLE ORDINI E DETTAGLI
+============================================
+*/
 
 .order-summary-table {
     width: 100%;
@@ -1842,12 +1908,10 @@ Sezione Admin
     text-align: center;
 }
 
-/* Stili badge con variabili */
 .status-in_attesa { background-color: var(--gray-light); color: var(--pure-white); }
 .status-approvato { background-color: var(--color-green); color: var(--pure-white); } 
 .status-annullato { background-color: var(--btn-red-bg); color: var(--pure-white); } 
 
-/* DETTAGLIO ORDINE NASCOSTO */
 .order-details-row {
     background-color: var(--table-stripe); 
 }
@@ -1995,7 +2059,7 @@ a.feature-card.card-link {
 }
 
 /* =========================================
-   PROFILO UTENTE E DANGER ZONE
+   PROFILO USER E DANGER ZONE
    ========================================= */
    
 .profile-layout {
@@ -3041,87 +3105,11 @@ a.feature-card.card-link {
 }
 
 
-/* =========================================
-   STAFF => Visualizza archivio: vini/prenotazioni/messaggi
-   ========================================= */
-
-.admin-table-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.admin-table-head > h2 {
-  margin: 0;
-  flex: 1 1 auto;
-}
-
-/* ===== switch ===== */
-.admin-table-head label.switch {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  width: 56px;
-  height: 30px;
-  flex: 0 0 auto;
-}
-
-/* nasconde SOLO il checkbox dello switch (non altri checkbox del sito) */
-.admin-table-head label.switch > input[type="checkbox"] {
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-  margin: 0;
-  padding: 0;
-}
-
-/* binario */
-.admin-table-head label.switch > span.slider {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  background-color: var(--gray-light);
-  transition: background-color .25s ease, box-shadow .25s ease;
-  border-radius: 999px;
-  display: block;
-}
-
-/* pallino */
-.admin-table-head label.switch > span.slider::before {
-  content: "";
-  position: absolute;
-  width: 22px;
-  height: 22px;
-  left: 4px;
-  top: 4px;
-  background-color: var(--pure-white);
-  transition: transform .25s ease;
-  border-radius: 50%;
-}
-
-/* ON */
-.admin-table-head label.switch > input[type="checkbox"]:checked + span.slider {
-  background-color: var(--gold-color);
-}
-
-.admin-table-head label.switch > input[type="checkbox"]:checked + span.slider::before {
-  transform: translateX(26px);
-}
-
-/* focus accessibile */
-.admin-table-head label.switch > input[type="checkbox"]:focus-visible + span.slider {
-  outline: 2px solid var(--gold-color);
-  outline-offset: 3px;
-}
 
 
 /* =========================================
    ACCESSIBILITÀ: touch target >= 44x44px
    (esclusi radio/checkbox)
-   Incolla in fondo al file
    ========================================= */
 
 .admin-tab, table button{
