@@ -330,6 +330,19 @@ body.light-mode .wine-article {
     box-shadow: none;
 }
 
+/* Input quantità editabile */
+.input-qty {
+    background-color: var(--pure-white);
+    cursor: text; /* Cursore di testo */
+    -moz-appearance: textfield; /* Rimuove le freccette native brutte su Firefox */
+}
+/* Rimuove freccette native su Chrome/Safari */
+.input-qty::-webkit-outer-spin-button,
+.input-qty::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 /* --- RESPONSIVE --- */
 @media (max-width: 1200px) {
     .sezione { grid-template-columns: repeat(2, 1fr); gap: 20px; }
