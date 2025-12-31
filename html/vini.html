@@ -173,8 +173,10 @@
                     
                     <div class="popup-info">
                         <h2 id="pop-titolo" tabindex="-1"></h2>
-                        
+
                         <p id="pop-descrizione"></p>
+
+                        <p id="pop-stock" class="stock-info" style="margin-bottom: 1rem;"></p>
 
                         <div class="tech-wrapper">
                             <table class="wine-table">
@@ -208,9 +210,11 @@
                         
                         <div class="shop-ov">
                             <div class="selettore-quantita">
-                                    <button type="button" onclick="aggiornaQuantita(this, -1)" aria-label="Diminuisci quantità">-</button>
-                                    <input type="number" class="input-qty" value="1" min="1" readonly aria-label="Quantità da acquistare">
-                                    <button type="button" onclick="aggiornaQuantita(this, 1)" aria-label="Aumenta quantità">+</button>
+                                    <button type="button" onclick="gestisciQuantitaVino(this, -1)" aria-label="Diminuisci quantità">-</button>
+                                    
+                                    <input type="number" class="input-qty" value="1" min="1" aria-label="Quantità da acquistare" onchange="validaInputVino(this)">
+                                    
+                                    <button type="button" onclick="gestisciQuantitaVino(this, 1)" aria-label="Aumenta quantità">+</button>
                             </div>
                             <button class="buy-button" onclick="gestisciCarrelloPopup()">Aggiungi al Carrello</button>
                         </div>
@@ -228,60 +232,55 @@
             let slideImages = [];
             let lastFocusedElement;
             let scrollPosition = 0;
-            
-            // NUOVA VARIABILE: Serve per ricordare quale vino è aperto nel popup
             let currentOpenWineId = 0; 
 
-            // --- NUOVA FUNZIONE: Aggiunge dal bottone "Acquista" nella lista ---
+            /* --- GESTIONE AGGIUNTA AL CARRELLO --- */
+            
             function aggiungiDaCard(idVino) {
-                // Recupera la quantità dall'input specifico di quella card
                 const inputQty = document.getElementById('qty-' + idVino);
                 const quantita = inputQty ? inputQty.value : 1;
-                
-                // Reindirizza alla pagina che fa il lavoro sporco
                 inviaAlCarrello(idVino, quantita);
             }
 
-            // --- NUOVA FUNZIONE: Aggiunge dal bottone nel Popup Dettagli ---
             function gestisciCarrelloPopup() {
-                // Recupera la quantità dall'input dentro il popup
                 const qtyInput = document.querySelector('.shop-ov .input-qty');
                 const quantita = qtyInput ? qtyInput.value : 1;
                 
                 if(currentOpenWineId > 0) {
                     inviaAlCarrello(currentOpenWineId, quantita);
-                    
-                    // Resetta a 1 dopo l'aggiunta (estetica)
-                    if(qtyInput) qtyInput.value = 1;
                     chiudiDettagli();
                 } else {
                     console.error("ID Vino non trovato nel popup");
                 }
             }
 
-            // --- FUNZIONE COMUNE PER IL REDIRECT ---
             function inviaAlCarrello(id, qty) {
-                // Costruisce l'URL: carrello.php?action=aggiungi&id_vino=1&quantita=2
                 const url = `carrello.php?action=aggiungi&id_vino=${id}&quantita=${qty}`;
                 window.location.href = url;
             }
 
-            // APERTURA POPUP (Aggiornata per leggere l'ID)
+            /* --- GESTIONE POPUP DETTAGLI --- */
+
             function apriDettagli(bottone) {
                 scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
                 lastFocusedElement = bottone;
 
                 const articolo = bottone.closest('.wine-article');
                 
-                // RECUPERO DATI HTML
-                // Nota: ora leggiamo anche dataset.id che abbiamo aggiunto nel PHP
+                // 1. RECUPERO DATI
                 currentOpenWineId = articolo.dataset.id; 
                 const nome = articolo.dataset.nome;
                 const desc = articolo.dataset.descrizione;
                 const img = articolo.dataset.img;
                 const prezzo = articolo.dataset.prezzo;
+                const stock = parseInt(articolo.dataset.stock);
 
-                // Recupera dati dal div nascosto
+                // RECUPERO QUANTITÀ ATTUALE DALLA CARD
+                // Questo assicura che se ho messo "5" nella lista, nel popup trovo "5"
+                const inputCard = document.getElementById('qty-' + currentOpenWineId);
+                const quantitaAttuale = inputCard ? parseInt(inputCard.value) : 1;
+
+                // Recupero dati nascosti
                 const hiddenData = articolo.querySelector('.hidden-data');
                 const vitigno = hiddenData.querySelector('[data-key="vitigno"]').innerText;
                 const annata = hiddenData.querySelector('[data-key="annata"]').innerText;
@@ -289,7 +288,7 @@
                 const temperatura = hiddenData.querySelector('[data-key="temperatura"]').innerText;
                 const abbinamenti = hiddenData.querySelector('[data-key="abbinamenti"]').innerText;
 
-                // Popola campi interfaccia
+                // 2. POPOLAMENTO TESTI
                 document.getElementById('pop-titolo').innerText = nome;
                 document.getElementById('pop-descrizione').innerText = desc;
                 document.getElementById('pop-prezzo').innerText = prezzo;
@@ -299,53 +298,81 @@
                 document.getElementById('tab-grado').innerText = gradazione;
                 document.getElementById('tab-temp').innerText = temperatura;
                 document.getElementById('tab-abbinamenti').innerText = abbinamenti;
-                
-                // Reset quantità popup a 1 ogni volta che apri
-                const popupQty = document.querySelector('.shop-ov .input-qty');
-                if(popupQty) popupQty.value = 1;
 
-                // Gestione Immagini
+                // 3. LOGICA STOCK & INPUT NEL POPUP
+                const popStock = document.getElementById('pop-stock');
+                const inputQtyPopup = document.querySelector('.shop-ov .input-qty');
+                const btnAcquistaPopup = document.querySelector('.shop-ov .buy-button');
+                const btnsQtyPopup = document.querySelectorAll('.shop-ov .selettore-quantita button');
+
+                // Reset stile e valore
+                popStock.className = 'stock-info'; 
+                popStock.style.justifyContent = 'flex-start';
+
+                if(inputQtyPopup) {
+                    inputQtyPopup.value = quantitaAttuale; // Sincronizza valore
+                    inputQtyPopup.max = stock;           // Sincronizza limite
+                    inputQtyPopup.disabled = false;
+                    inputQtyPopup.readOnly = false;
+                    
+                    // IMPORTANTE: Resetta eventi per evitare conflitti o vecchi listener
+                    // Usiamo solo onchange per la validazione finale
+                    inputQtyPopup.onkeyup = null;
+                    inputQtyPopup.oninput = null;
+                    inputQtyPopup.onchange = function() { validaInputVino(this); };
+                }
+
+                if (stock <= 0) {
+                    // Esaurito
+                    popStock.innerHTML = '<i class="fas fa-times-circle"></i> Esaurito';
+                    popStock.classList.add('stock-error');
+                    
+                    if(inputQtyPopup) { inputQtyPopup.disabled = true; inputQtyPopup.value = 0; }
+                    if(btnAcquistaPopup) { btnAcquistaPopup.disabled = true; btnAcquistaPopup.style.opacity = "0.5"; }
+                    btnsQtyPopup.forEach(btn => btn.disabled = true);
+                }
+                else {
+                    // Disponibile
+                    if (stock < 20) {
+                        popStock.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Ultimi ' + stock + ' pezzi!';
+                        popStock.classList.add('stock-warning');
+                    } else {
+                        popStock.innerHTML = '<i class="fas fa-check-circle"></i> Disponibilità: ' + stock + ' bottiglie';
+                        popStock.classList.add('stock-ok');
+                    }
+
+                    if(btnAcquistaPopup) { 
+                        btnAcquistaPopup.disabled = false; 
+                        btnAcquistaPopup.style.opacity = "1"; 
+                    }
+                    btnsQtyPopup.forEach(btn => btn.disabled = false);
+                }
+
+                // Galleria
                 slideImages = [img, img, img]; 
                 currentSlideIndex = 0;
                 updateGalleryView();
 
                 const overlay = document.getElementById('overlay-dettagli');
                 overlay.style.display = 'flex';
-                
                 document.body.classList.add('no-scroll');
                 document.body.style.top = `-${scrollPosition}px`;
-
                 setTimeout(() => {
                     const closeBtn = overlay.querySelector('.close-btn');
                     if (closeBtn) closeBtn.focus();
                 }, 100);
             }
 
-            // CHIUSURA POPUP
             function chiudiDettagli() {
                 const overlay = document.getElementById('overlay-dettagli');
                 overlay.style.display = 'none';
-                
                 document.body.classList.remove('no-scroll');
                 document.body.style.top = '';
                 window.scrollTo(0, scrollPosition);
-
                 if (lastFocusedElement) lastFocusedElement.focus();
             }
 
-            // GESTIONE QUANTITÀ + -
-            function aggiornaQuantita(bottone, variazione) {
-                const parent = bottone.parentElement;
-                const input = parent.querySelector('.input-qty');
-                let valore = parseInt(input.value);
-                let nuovoValore = valore + variazione;
-                
-                if (nuovoValore >= 1) {
-                    input.value = nuovoValore;
-                }
-            }
-
-            // GALLERIA IMMAGINI
+            /* --- GALLERIA --- */
             function cambiaSlide(direzione) {
                 currentSlideIndex += direzione;
                 if (currentSlideIndex >= slideImages.length) currentSlideIndex = 0;
@@ -373,6 +400,47 @@
                 document.querySelectorAll('.thumbnails-row img').forEach(img => img.classList.remove('active-thumb'));
                 const activeThumb = document.getElementById('thumb-' + currentSlideIndex);
                 if(activeThumb) activeThumb.classList.add('active-thumb');
+            }
+
+            /* --- GESTIONE QUANTITÀ E VALIDAZIONE --- */
+
+            // Funzione per i bottoni + e - (Controllo immediato, qui va bene)
+            function gestisciQuantitaVino(btn, delta) {
+                const container = btn.parentElement;
+                const input = container.querySelector('.input-qty');
+                
+                if (!input || input.disabled) return;
+
+                let currentValue = parseInt(input.value) || 0;
+                let maxStock = parseInt(input.max) || 999;
+                
+                let newValue = currentValue + delta;
+
+                // Controlla i limiti
+                if (newValue >= 1 && newValue <= maxStock) {
+                    input.value = newValue;
+                } else if (newValue > maxStock) {
+                    input.value = maxStock;
+                } else {
+                    input.value = 1;
+                }
+            }
+
+            // Funzione validazione MANUALE (Solo su onchange/blur)
+            function validaInputVino(input) {
+                let value = parseInt(input.value);
+                let maxStock = parseInt(input.max);
+
+                // 1. Se vuoto o non numerico o < 1 -> resetta a 1
+                if (isNaN(value) || input.value === "" || value < 1) {
+                    input.value = 0;
+                    return; 
+                } 
+                
+                // 2. Se supera il massimo -> correggi al massimo
+                if (value > maxStock) {
+                    input.value = maxStock;
+                }
             }
         </script>
 
