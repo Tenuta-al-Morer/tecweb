@@ -358,6 +358,8 @@ document.addEventListener('DOMContentLoaded', () => {
         startTimer();
     }
 
+    
+
     /* ==========================================
      * 6. ADMIN TABS (mostra una tabella alla volta)
      * ========================================== */
@@ -422,6 +424,24 @@ document.addEventListener('DOMContentLoaded', () => {
             showAll();
         }
     }
+
+    // 6bis. Toggle archivio messaggi
+    const toggleArchivio = document.getElementById("toggleArchivioMessaggi");
+    const tabellaArchivio = document.getElementById("tab-info-archivio");
+
+    function applyArchivioVisibility() {
+        if (!toggleArchivio || !tabellaArchivio) return;
+        tabellaArchivio.style.display = toggleArchivio.checked ? "table" : "none";
+    }
+
+    // stato iniziale
+    applyArchivioVisibility();
+
+    // cambia quando clicchi lo switch
+    if (toggleArchivio) {
+        toggleArchivio.addEventListener("change", applyArchivioVisibility);
+    }
+
 
     /* ==========================================
      * 7. USER DASHBOARD (Area Riservata)

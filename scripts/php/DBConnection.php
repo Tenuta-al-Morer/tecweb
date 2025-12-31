@@ -95,26 +95,20 @@ class DBConnection {
 
     // FUNZIONE ARCHIVIA MESSAGGIO (Lato STAFF) - Da sistemare
     public function archiviaMessaggio($id, $messaggioRisposta) {
-       $queryCopia = "UPDATE contatto_archivio 
-                      SET risposta = ?, stato = 'risposto' 
-                      WHERE id = ?";
-        
-        $stmt = $this->connection->prepare($queryCopia);
+        $sql = "UPDATE contatto_archivio
+                SET risposta = ?, stato = 'risposto'
+                WHERE id = ?";
+
+        $stmt = $this->connection->prepare($sql);
         if (!$stmt) return false;
+
         $stmt->bind_param("si", $messaggioRisposta, $id);
-        $esitoCopia = $stmt->execute();
+        $ok = $stmt->execute();
         $stmt->close();
 
-        if ($esitoCopia) {
-            $queryCancella = "DELETE FROM contatto WHERE id = ?";
-            $stmtDel = $this->connection->prepare($queryCancella);
-            $stmtDel->bind_param("i", $id);
-            $stmtDel->execute();
-            $stmtDel->close();
-            return true;
-        }
-        return false;
+        return $ok;
     }
+
 
     // FUNZIONE PER SALVARE UNA PRENOTAZIONE
     public function salvaPrenotazione($nome, $cognome, $email, $tipo_degustazione, $prefisso, $telefono, $data_visita, $n_persone) {
