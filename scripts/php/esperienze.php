@@ -66,20 +66,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $db->closeConnection();
 
             if ($risultato) {
-                // Successo: Messaggio verde e PULIZIA campi
-                $feedbackMessage = '<div class="alert success"><i class="fas fa-check-circle"></i> Richiesta inviata! Ti contatteremo per confermare.</div>';
+                // Successo: Messaggio verde e PULIZIA campi (con role="alert")
+                $feedbackMessage = '<div class="alert success" role="alert"><i class="fas fa-check-circle"></i> Richiesta inviata! Ti contatteremo per confermare.</div>';
                 // Resetto i valori
                 $valori = array_fill_keys(array_keys($valori), ''); 
                 $valori['prefisso'] = '+39'; 
             } else {
-                $feedbackMessage = '<div class="alert error"><i class="fas fa-exclamation-triangle"></i> Errore nel salvataggio. Riprova più tardi.</div>';
+                // Errore generico (con role="alert")
+                $feedbackMessage = '<div class="alert error" role="alert"><i class="fas fa-exclamation-triangle"></i> Errore nel salvataggio. Riprova più tardi.</div>';
             }
         } catch (Exception $e) {
-            $feedbackMessage = '<div class="alert error"><i class="fas fa-bomb"></i> Errore di sistema.</div>';
+            $feedbackMessage = '<div class="alert error" role="alert"><i class="fas fa-bomb"></i> Errore di sistema.</div>';
         }
     } else {
-        // Ci sono errori: Messaggio rosso
-        $feedbackMessage = '<div class="alert error"><ul>';
+        // Ci sono errori: Messaggio rosso (con role="alert")
+        $feedbackMessage = '<div class="alert error" role="alert"><ul>';
         foreach ($errori as $err) {
             $feedbackMessage .= "<li>" . $err . "</li>";
         }

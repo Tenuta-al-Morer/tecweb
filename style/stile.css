@@ -3117,3 +3117,27 @@ a.feature-card.card-link {
     min-height: 44px;
 }
 
+/* =========================================
+   AGGIUNTE PER ERRORI E SPACER
+   ========================================= */
+.error-message {
+    color: var(--red-errors);
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    display: block;
+    line-height: 1.4; 
+}
+
+/* Lo spacer deve essere identico all'errore ma invisibile */
+.error-spacer {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    display: block;
+    line-height: 1.4;
+    visibility: hidden; 
+    user-select: none; 
+}

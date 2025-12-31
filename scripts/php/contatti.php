@@ -52,21 +52,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             );
             $db->closeConnection();
 
-            if ($risultato) {
-                // Successo: Messaggio verde e PULIZIA campi
-                $feedbackMessage = '<div class="alert success"><i class="fas fa-check-circle"></i> Messaggio inviato con successo! Ti risponderemo presto.</div>';
-                // Resetto i valori per mostrare il form vuoto
-                $valori = array_fill_keys(array_keys($valori), ''); 
-                $valori['prefisso'] = '+39'; // Rimetto default
-            } else {
-                $feedbackMessage = '<div class="alert error"><i class="fas fa-exclamation-triangle"></i> Errore nel salvataggio. Riprova più tardi.</div>';
-            }
-        } catch (Exception $e) {
-            $feedbackMessage = '<div class="alert error"><i class="fas fa-bomb"></i> Errore di sistema.</div>';
+        if ($risultato) {
+            // Successo
+            $feedbackMessage = '<div class="alert success" role="alert"><i class="fas fa-check-circle"></i> Messaggio inviato con successo! Ti risponderemo presto.</div>';
+        } else {
+            // Errore generico
+            $feedbackMessage = '<div class="alert error" role="alert"><i class="fas fa-exclamation-triangle"></i> Errore nel salvataggio. Riprova più tardi.</div>';
         }
+    } catch (Exception $e) {
+        $feedbackMessage = '<div class="alert error" role="alert"><i class="fas fa-bomb"></i> Errore di sistema.</div>';
+    }
     } else {
-        // Ci sono errori di validazione: Messaggio rosso
-        $feedbackMessage = '<div class="alert error"><ul>';
+        // Ci sono errori di validazione PHP
+        $feedbackMessage = '<div class="alert error" role="alert"><ul>';
         foreach ($errori as $err) {
             $feedbackMessage .= "<li>" . $err . "</li>";
         }
