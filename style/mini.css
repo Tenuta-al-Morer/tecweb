@@ -740,10 +740,9 @@ body.light-mode .table-data td::before {
     }
 
     /* --- BOTTONI E QUANTITÀ --- */
-
     /* Selettore Quantità */
     .qty-selector {
-        height: 42px; 
+        height: 44px; 
         display: flex;
         border-radius: 4px;
         border: 1px solid var(--bordercolor);
@@ -752,20 +751,22 @@ body.light-mode .table-data td::before {
     }
 
     .qty-btn {
-        width: 40px;
+        min-width: 44px;
+        width: 44px;    
         height: 100%;
         font-size: 1.2rem;
     }
     
     .qty-input {
-        width: 40px;
+        min-width: 44px; 
+        width: 44px;
         height: 100%;
         font-size: 1rem;
     }
 
     /* Stile base pulsanti azione */
     .action-btn-text {
-        height: 42px;
+        min-height: 44px;
         display: flex;
         align-items: center;
         justify-content: center;

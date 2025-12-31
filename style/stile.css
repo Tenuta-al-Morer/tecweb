@@ -1354,6 +1354,11 @@ footer a:visited {
     transition: transform 0.3s ease;
 }
 
+.login-header-logo a {
+    display: inline-block;
+    line-height: 0;       
+}
+
 .login-header-logo a:hover img {
     transform: scale(1.05);
 }
@@ -1462,6 +1467,7 @@ footer a:visited {
 
 .password-wrapper input {
     padding-right: 2.5rem; 
+    padding-right: 50px !important; 
 }
 
 .auth-form input:not([type="checkbox"]):not([type="radio"]):focus {
@@ -1512,6 +1518,18 @@ input:-webkit-autofill:focus {
     color: var(--gold-color);
 }
 
+.toggle-password {
+    min-width: 44px;      
+    min-height: 44px;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5px;          
+    padding: 0;           
+}
+
 .form-row {
     display: flex;
     gap: 1rem;
@@ -1557,15 +1575,26 @@ input:-webkit-autofill:focus {
 .forgot-password,
 .auth-footer a,
 .checkbox-container a {
-    color: var(--diversity-color);
+    color: var(--gold-color); 
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s;
 }
 
-.auth-footer a,
+.auth-footer a {
+    display: inline-block;
+    min-width: 24px;
+    min-height: 24px;
+    line-height: 24px;   
+}
+
 .checkbox-container a {
-    color: var(--gold-color); 
+    display: inline-block;    
+    min-width: 24px;        
+    min-height: 24px;      
+    line-height: 24px;       
+    vertical-align: middle;   
+    box-sizing: border-box;   
 }
 
 .forgot-password:hover,
@@ -2342,6 +2371,12 @@ a.feature-card.card-link {
     object-fit: contain; 
 }
 
+.cart-item-img a {
+    display: block;
+    min-height: 44px;
+    min-width: 44px;
+}
+
 /* Dettagli Prodotto: Area Centrale Alta */
 .cart-item-details { 
     grid-area: details;
@@ -2360,6 +2395,12 @@ a.feature-card.card-link {
     color: var(--txtcolor); 
     text-decoration: none; 
     transition: color 0.2s;
+    display: inline-flex; 
+    align-items: center;
+    min-height: 44px;  
+    min-width: 44px; 
+    box-sizing: border-box; 
+    vertical-align: middle;  
 }
 
 .cart-item-details h3 a:hover { 
