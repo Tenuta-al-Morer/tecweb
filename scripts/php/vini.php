@@ -36,48 +36,90 @@ $htmlSelezione = "";
 // Funzione helper locale per generare la singola card
 function costruisciCardVino($vino) {
     // Sanificazione
-    $id = (int)$vino['id']; // Assicuriamoci che l'ID sia un intero
+    $id = (int)$vino['id'];
     $nome = htmlspecialchars($vino['nome']);
     $prezzo = number_format($vino['prezzo'], 2, ',', '.');
     $img = htmlspecialchars($vino['img']);
     $descBreve = htmlspecialchars($vino['descrizione_breve']);
     $descEstesa = htmlspecialchars($vino['descrizione_estesa']);
-    
-    // Dati tecnici
-    $vitigno = htmlspecialchars($vino['vitigno'] ?? 'N/D');
-    $annata = htmlspecialchars($vino['annata'] ?? 'N/D');
-    $gradazione = htmlspecialchars($vino['gradazione'] ?? 'N/D');
-    $temperatura = htmlspecialchars($vino['temperatura'] ?? 'N/D');
-    $abbinamenti = htmlspecialchars($vino['abbinamenti'] ?? 'N/D');
+    $stock = (int)$vino['quantita_stock'];
 
-    // Costruzione Blocco HTML
+    // Dati tecnici
+    $vitigno = htmlspecialchars($vino['vitigno'] ?? '-');
+    $annata = htmlspecialchars($vino['annata'] ?? '-');
+    $gradazione = htmlspecialchars($vino['gradazione'] ?? '-');
+    $temperatura = htmlspecialchars($vino['temperatura'] ?? '-');
+    $abbinamenti = htmlspecialchars($vino['abbinamenti'] ?? '-');
+
+    // --- LOGICA STOCK CON CLASSI CSS ---
+    $classeStock = "";
+    $iconaStock = "";
+    $testoStock = "";
+    $disableBtn = "";
+    
+    if ($stock <= 0) {
+        // ESAURITO
+        $classeStock = "stock-error";
+        $iconaStock = "fa-times-circle";
+        $testoStock = "Esaurito";
+        $disableBtn = "disabled"; 
+    } 
+    elseif ($stock < 100) { 
+        // POCHI PEZZI
+        $classeStock = "stock-warning";
+        $iconaStock = "fa-exclamation-triangle";
+        $testoStock = "Ultimi " . $stock . " pezzi!";
+    } 
+    else {
+        // DISPONIBILE
+        $classeStock = "stock-ok";
+        $iconaStock = "fa-check-circle";
+        $testoStock = "Disponibile";
+    }
+
+    // Costruzione stringa HTML Stock
+    $htmlStock = '<p class="stock-info ' . $classeStock . '">
+                    <i class="fas ' . $iconaStock . '"></i> ' . $testoStock . '
+                  </p>';
+
     return '
     <article class="wine-article" 
             data-id="' . $id . '"
             data-nome="' . $nome . '" 
             data-descrizione="' . $descEstesa . '" 
             data-img="' . $img . '"
-            data-prezzo="' . $prezzo . '">
+            data-prezzo="' . $prezzo . '"
+            data-stock="' . $stock . '">
         
         <div class="wine-item">
             <img src="' . $img . '" alt="Bottiglia di ' . $nome . '" class="wine-image" loading="lazy">
             <div class="content-wine-article">
                 <h3>' . $nome . '</h3>
                 <p>' . $descBreve . '</p> 
+                ' . $htmlStock . '
             </div>
         </div>
         
         <div class="actions">
             <div class="selettore-quantita">
-                <button type="button" onclick="aggiornaQuantita(this, -1)" aria-label="Diminuisci quantità">-</button>
+                <button type="button" onclick="gestisciQuantitaVino(this, -1)" aria-label="Diminuisci quantità" ' . $disableBtn . '>-</button>
                 
                 <label for="qty-' . $id . '" class="visually-hidden">Quantità</label>
-                <input type="number" id="qty-' . $id . '" class="input-qty" name="quantita" value="1" min="1" readonly>
                 
-                <button type="button" onclick="aggiornaQuantita(this, 1)" aria-label="Aumenta quantità">+</button>
+                <input type="number" 
+                       id="qty-' . $id . '" 
+                       class="input-qty" 
+                       name="quantita" 
+                       value="1" 
+                       min="1" 
+                       max="' . $stock . '" 
+                       onchange="validaInputVino(this)" 
+                       ' . $disableBtn . '>
+                
+                <button type="button" onclick="gestisciQuantitaVino(this, 1)" aria-label="Aumenta quantità" ' . $disableBtn . '>+</button>
             </div>
             
-            <button class="buy-button" onclick="aggiungiDaCard(' . $id . ')" aria-label="Aggiungi al carrello">Acquista</button>
+            <button class="buy-button" onclick="aggiungiDaCard(' . $id . ')" aria-label="Aggiungi al carrello" ' . $disableBtn . '>Acquista</button>
             <button class="details-button" onclick="apriDettagli(this)" aria-label="Vedi dettagli">Info</button>
         </div>
         
