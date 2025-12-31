@@ -334,7 +334,7 @@ body.light-mode .wine-article {
 .input-qty {
     background-color: var(--pure-white);
     cursor: text; /* Cursore di testo */
-    -moz-appearance: textfield; /* Rimuove le freccette native brutte su Firefox */
+    -moz-appearance: textfield; /* Rimuove le freccette native su Firefox */
 }
 /* Rimuove freccette native su Chrome/Safari */
 .input-qty::-webkit-outer-spin-button,
