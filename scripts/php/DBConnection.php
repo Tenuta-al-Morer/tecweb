@@ -92,22 +92,6 @@ class DBConnection {
         return $result->fetch_assoc();
     }
 
-    // FUNZIONE PER SALVARE UN MESSAGGIO
-    public function salvaMessaggio($nome, $cognome, $email, $tipo_supporto, $prefisso, $telefono, $messaggio) {
-        $query = "INSERT INTO contatto (nome, cognome, email, tipo_supporto, prefisso, telefono, messaggio, data_invio, stato) 
-                  VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), 'aperto')";
-        
-        $stmt = $this->connection->prepare($query);
-        if (!$stmt) { return false; }
-
-        $stmt->bind_param("sssssss", $nome, $cognome, $email, $tipo_supporto, $prefisso, $telefono, $messaggio);
-        
-        $result = $stmt->execute();
-        $stmt->close();
-
-        return $result;
-    }
-
 
     // FUNZIONE ARCHIVIA MESSAGGIO (Lato STAFF) - Da sistemare
     public function archiviaMessaggio($id, $messaggioRisposta) {

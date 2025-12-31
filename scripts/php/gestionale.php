@@ -28,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($messaggioId > 0 && $risposta !== '') {
             $db = new DBConnection();
-            $ok = $db->aggiornaStatoMessaggio($messaggioId, 'risposto');
             $ok = $db->archiviaMessaggio($messaggioId, $risposta);
             $db->closeConnection();
 
