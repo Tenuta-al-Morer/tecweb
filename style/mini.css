@@ -30,6 +30,7 @@
 }
 
 .menu-toggle:hover,
+.menu-toggle:focus,
 .menu-toggle[aria-expanded="true"] {
     color: var(--gold-color);
 }
@@ -174,7 +175,7 @@ footer {
     opacity: 1;
 }
 
-#theme-toggle:hover {
+#theme-toggle:hover, #theme-toggle:focus {
     transform: scale(1.2);
 }
 
@@ -790,7 +791,9 @@ body.light-mode .table-data td::before {
     }
 
     .action-btn-text.btn-delete:active,
-    .action-btn-text.btn-delete:hover {
+    .action-btn-text.btn-delete:hover,
+    .action-btn-text.btn-delete:focus,
+    .action-btn-text.btn-delete:focus-visible {
         background-color: var(--btn-red-bg);
         color: var(--pure-white);
     }
@@ -805,7 +808,11 @@ body.light-mode .table-data td::before {
     .action-btn-text.btn-save:active,
     .action-btn-text.btn-save:hover,
     .action-btn-text.btn-move:active,
-    .action-btn-text.btn-move:hover {
+    .action-btn-text.btn-move:hover,
+    .action-btn-text.btn-save:focus,
+    .action-btn-text.btn-save:focus-visible,
+    .action-btn-text.btn-move:focus,
+    .action-btn-text.btn-move:focus-visible {
         background-color: var(--gold-color);
         color: var(--bodybgcolor);
     }

@@ -213,6 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('.slide');
     const nextBtn = document.querySelector('.next-btn');
     const prevBtn = document.querySelector('.prev-btn');
+    const pauseBtn = document.getElementById('pauseBtn');
 
     if (sliderContainer && slides.length > 0) {
 
@@ -224,6 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let isTransitioning = false;
         let slideInterval;
         const intervalTime = 5000;
+        let userPaused = false;
 
         // Creazione Cloni 
         for (let i = 0; i < clonesCount; i++) {
@@ -317,10 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // controlla la preferenza 
         const startTimer = () => {
-            // Se l'utente preferisce ridurre il movimento, NON avviamo il timer.
-            if (mediaQuery.matches) return; 
-            
-            // Altrimenti avviamo normalmente
+            if (mediaQuery.matches || userPaused) return;
             slideInterval = setInterval(nextSlide, intervalTime);
         };
 
@@ -333,10 +332,48 @@ document.addEventListener('DOMContentLoaded', () => {
             startTimer(); // Questo controllerà di nuovo la preferenza e non ripartirà se necessario
         };
 
+        // Event Listeners Pulsanti Navigazione
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetTimer(); 
+            });
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetTimer();
+            });
+        }
+
+        // Logica pulsante Play/Pausa
+        if (pauseBtn) {
+            pauseBtn.addEventListener('click', () => {
+                userPaused = !userPaused; // Inverte lo stato
+                
+                const icon = pauseBtn.querySelector('i');
+
+                if (userPaused) {
+                    // Se PAUSA ATTIVA: ferma timer e cambia icona in PLAY
+                    stopTimer();
+                    icon.classList.remove('fa-pause');
+                    icon.classList.add('fa-play');
+                    pauseBtn.setAttribute('aria-label', 'Riprendi lo scorrimento automatico');
+                } else {
+                    // Se PAUSA DISATTIVA: riavvia timer e cambia icona in PAUSA
+                    startTimer();
+                    icon.classList.remove('fa-play');
+                    icon.classList.add('fa-pause');
+                    pauseBtn.setAttribute('aria-label', 'Metti in pausa lo scorrimento automatico');
+                }
+            });
+        }
+
+        // Hover logic
         sliderContainer.addEventListener('mouseenter', stopTimer);
         sliderContainer.addEventListener('mouseleave', () => {
-            // riavvia solo se permesso
-            startTimer();
+            startTimer(); 
         });
 
         window.addEventListener('resize', () => {
@@ -345,20 +382,19 @@ document.addEventListener('DOMContentLoaded', () => {
             sliderContainer.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
         });
 
-        // Ascolta cambiamenti nelle impostazioni del sistema in tempo reale
         mediaQuery.addEventListener('change', () => {
             if (mediaQuery.matches) {
-                stopTimer(); // Se l'utente attiva l'opzione mentre guarda, fermiamo tutto
+                stopTimer();
             } else {
-                startTimer(); // Se la disattiva, riprendiamo
+                // Riavvia solo se l'utente non ha messo pausa manualmente
+                if (!userPaused) startTimer(); 
             }
         });
 
         // Avvio iniziale
         startTimer();
     }
-
-    
+   
 
     /* ==========================================
      * 6. ADMIN TABS (mostra una tabella alla volta)
