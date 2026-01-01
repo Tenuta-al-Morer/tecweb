@@ -69,14 +69,12 @@ if (isset($_REQUEST['action'])) {
          header("Location: carrello.php"); exit();
     }
 
+    // B. Calcolo il limite massimo: lo stock reale
     $realStock = (int)$vinoInfo['quantita_stock'];
 
-    // B. Calcolo il limite massimo: il più basso tra 100 e lo stock reale
-    $maxAllowable = ($realStock > 100) ? 100 : $realStock;
-
     // C. Applico il limite alla quantità desiderata
-    if ($new_qty > $maxAllowable) {
-        $new_qty = $maxAllowable;
+    if ($new_qty > $realStock) {
+        $new_qty = $realStock;
     }
     
     // D. Controllo specifico per l'azione "Aggiungi" (dalla pagina vini)
@@ -124,8 +122,8 @@ if (isset($_REQUEST['action'])) {
                 $_SESSION['guest_cart'][$id_vino] = $qty_to_add;
             }
             // Ricontrollo che la somma totale nel carrello guest non superi lo stock
-            if ($_SESSION['guest_cart'][$id_vino] > $maxAllowable) {
-                $_SESSION['guest_cart'][$id_vino] = $maxAllowable;
+            if ($_SESSION['guest_cart'][$id_vino] > $realStock) {
+                $_SESSION['guest_cart'][$id_vino] = $realStock;
             }
         } 
         elseif ($new_qty <= 0 || $action === 'rimuovi') {
@@ -308,7 +306,6 @@ $db->closeConnection();
 // Se ci sono prodotti ridotti, costruiamo il messaggio
 if (!empty($quantitaRidottaMsg)) {
     $listaVini = implode(", ", $quantitaRidottaMsg);
-    // NOTA: La classe .alert-bar è già definita in stile.css con i colori corretti. Rimosso stile inline.
     $alertMsgHTML .= '
     <div class="alert-bar">
         <i class="fas fa-info-circle"></i>
@@ -347,7 +344,7 @@ function renderCartItem($item, $isLogged, $type = 'active') {
     $idR = isset($item['id_riga']) ? $item['id_riga'] : 0;
     $idV = isset($item['id_vino']) ? $item['id_vino'] : $item['id'];
     $qty = $item['quantita'];
-    $stock = $item['quantita_stock'];
+    $stock = (int)$item['quantita_stock']; 
     
     // Recupero lo stato del vino (default attivo se non c'è)
     $statoVino = isset($item['stato_vino']) ? $item['stato_vino'] : (isset($item['stato']) ? $item['stato'] : 'attivo');
@@ -360,7 +357,7 @@ function renderCartItem($item, $isLogged, $type = 'active') {
     $availText = "";
     $availClass = "availability"; 
     
-    // --- LOGICA DISPONIBILITÀ MODIFICATA ---
+    // --- LOGICA DISPONIBILITÀ ---
     if ($statoVino === 'nascosto' || $statoVino !== 'attivo') {
         $availText = "Non disponibile";
         $availClass .= " text-red";
@@ -384,7 +381,8 @@ function renderCartItem($item, $isLogged, $type = 'active') {
             $btnSalva = "<span class='separator'>|</span> <button type='button' class='action-btn-text btn-save ajax-cmd' data-action='salva_per_dopo' data-id-riga='$idR' data-id-vino='$idV'>Salva per dopo</button>";
         }
 
-        $limitMax = ($stock > 100) ? 100 : $stock;
+        // Il limite massimo è esattamente lo stock disponibile
+        $limitMax = $stock; 
 
         $actionsHTML = "
             <div class='qty-selector'>
@@ -392,7 +390,7 @@ function renderCartItem($item, $isLogged, $type = 'active') {
                 
                 <label for='qty_v_$idV' class='visually-hidden'>Quantità per $nome</label>
 
-                <input type='number' id='qty_v_$idV' value='$qty' class='qty-input' min='1' max='$limitMax' data-id-riga='$idR' data-id-vino='$idV'>
+                <input type='number' id='qty_v_$idV' value='$qty' class='qty-input' min='1' max='$limitMax' data-stock='$stock' data-id-riga='$idR' data-id-vino='$idV'>
                 
                 <button type='button' class='qty-btn ajax-cmd' data-action='piu' data-id-riga='$idR' data-id-vino='$idV'>+</button>
             </div>

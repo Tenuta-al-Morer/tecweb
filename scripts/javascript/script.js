@@ -872,11 +872,20 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!inputQty) inputQty = document.getElementById('qty_' + idRiga);
 
             let currentQty = 1;
-            if (inputQty) currentQty = parseInt(inputQty.value);
+            let maxStock = 9999; // Valore di default alto se non trova lo stock
+
+            if (inputQty) {
+                currentQty = parseInt(inputQty.value);
+                // Recuperiamo lo stock reale dall'attributo HTML
+                let stockAttr = inputQty.getAttribute('data-stock');
+                if (stockAttr) {
+                    maxStock = parseInt(stockAttr);
+                }
+            }
 
             // --- CONTROLLO LIMITE MASSIMO (Button +) ---
-            // Se premo PIU e sono già a 100 (o più), mi fermo.
-            if (action === 'piu' && currentQty >= 100) {
+            if (action === 'piu' && currentQty >= maxStock) {
+                alert("Quantità massima disponibile raggiunta.");
                 return; // Non fa nulla
             }
 
@@ -902,17 +911,24 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.addEventListener('change', function(e) {
         if (e.target.classList.contains('qty-input')) {
             const input = e.target;
-            let newVal = parseInt(input.value); // Uso let per poterlo modificare
+            let newVal = parseInt(input.value); 
             const idRiga = input.getAttribute('data-id-riga');
             const idVino = input.getAttribute('data-id-vino');
+            
+            // Recuperiamo lo stock dall'attributo
+            let maxStock = 9999;
+            let stockAttr = input.getAttribute('data-stock');
+            if (stockAttr) {
+                maxStock = parseInt(stockAttr);
+            }
 
             let action = 'aggiorna_quantita';
             
             // --- CONTROLLO LIMITE MASSIMO (Input manuale) ---
-            if (newVal > 100) {
-                input.value = 100;
-                newVal = 100;
-                // Procedo con l'aggiornamento a 100
+            if (newVal > maxStock) {
+                input.value = maxStock;
+                newVal = maxStock;
+                alert("Quantità adattata alla disponibilità massima: " + maxStock);
             }
 
             // --- CONTROLLO LIMITE MINIMO (Input manuale) ---
