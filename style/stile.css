@@ -859,6 +859,27 @@ a.logo-link:hover img, a.logo-link:focus img { transform: scale(1.05); }
     min-height: 44px;
 }
 
+.mobile-icons a,
+.mobile-icons span.current-page-icon {
+    justify-content: center;
+    padding: 0 !important;  
+    width: 44px;            
+}
+
+.mobile-icons span[aria-current="page"] {
+    padding: 0; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+}
+
+.mobile-icons i, 
+.mobile-icons span i {
+    font-size: 1.4rem; 
+}
+
 .mobile-icons {
     gap: 5px;
 }
@@ -1878,6 +1899,16 @@ footer {
     padding-top: 2rem;
     padding-bottom: 2rem;
     border-right: 1px solid var(--bordercolor);
+}
+
+.dashboard-sidebar h2.visually-hidden {
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    width: 1px;
+    height: 1px;
 }
 
 .user-nav-list {
@@ -3252,3 +3283,6 @@ a.feature-card.card-link {
     visibility: hidden; 
     user-select: none; 
 }
+
+
+
