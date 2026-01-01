@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"  crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
+
 <body> 
     <header>
         <nav id="help">
@@ -61,7 +62,7 @@
             <nav id="breadcrumb">
                 <div class="breadcrumb-container">
                     <span>Ti trovi in: </span>
-                    <a href="home.php"><span class="visually-hidden" lang="en">Home</span><i class="fas fa-home home-icon" aria-hidden="true"></i></a><span aria-hidden="true"> &gt; </span> 
+                    <a href="home.php"><span class="visually-hidden" lang="en">Home</span><i class="fas fa-home home-icon" aria-hidden="true"></i></a><span aria-hidden="true"> > </span> 
                     <span class="current-page">Contatti</span>
                     <i class="fas fa-address-book" aria-hidden="true"></i> 
                 </div>
@@ -85,7 +86,7 @@
                 <p><i class="fas fa-wine-glass-alt" aria-hidden="true"></i> 
                 <strong>Vuoi prenotare una visita o una degustazione?</strong></p>
                 <p>Per gestire al meglio la tua accoglienza, ti preghiamo di usare l'apposita sezione.</p>
-                <a href=esperienze.php" class="btn-text-link">Vai alla pagina Esperienze <span aria-hidden="true">→</span></a>
+                <a href="esperienze.php" class="btn-text-link">Vai alla pagina Esperienze <span aria-hidden="true">→</span></a>
             </aside>
 
             <div class="grid-layout">
@@ -146,7 +147,7 @@
                     <h2 id="form-title">Scrivici</h2>
                     <p>Per domande generali, utilizza il modulo sottostante. I campi con l'asterisco (<span aria-hidden="true">*</span>) sono obbligatori.</p>
                     
-                    <div id="feedback-container">
+                    <div id="feedback-container" aria-live="polite">
                         [feedback_message]
                     </div>
 
@@ -157,18 +158,18 @@
                             <div class="form-group row-two">
                                 <div>
                                     <label for="nome">Nome<span aria-hidden="true">*</span></label>
-                                    <input type="text" id="nome" name="nome" required autocomplete="name" placeholder="Mario" value="[val_nome]">
+                                    <input type="text" id="nome" name="nome" required autocomplete="name" value="[val_nome]">
                                 </div>
                                 <div>
                                     <label for="cognome">Cognome<span aria-hidden="true">*</span></label>
-                                    <input type="text" id="cognome" name="cognome" required autocomplete="surname" placeholder="Rossi" value="[val_cognome]">
+                                    <input type="text" id="cognome" name="cognome" required autocomplete="surname" value="[val_cognome]">
                                 </div>
                             </div>
 
                             <div class="form-group row-two">
                                 <div>
                                     <label for="email">Email<span aria-hidden="true">*</span></label>
-                                    <input type="email" id="email" name="email" required autocomplete="email" placeholder="esempio@email.com" value="[val_email]">
+                                    <input type="email" id="email" name="email" required autocomplete="email" value="[val_email]">
                                 </div>
 
                                 <div>
@@ -199,7 +200,7 @@
 
                                     <div class="phone-number">
                                         <label for="telefono" class="visually-hidden">Numero di telefono</label>
-                                        <input type="tel" id="telefono" name="telefono" autocomplete="tel-national" placeholder="333 0000000" value="[val_telefono]">
+                                        <input type="tel" id="telefono" name="telefono" autocomplete="tel-national" value="[val_telefono]">
                                     </div>
 
                                 </div>
@@ -207,7 +208,7 @@
 
                             <p class="form-group">
                                 <label for="messaggio">Messaggio<span aria-hidden="true">*</span></label>
-                                <textarea id="messaggio" name="messaggio" rows="5" required placeholder="Scrivi qui la tua richiesta...">[val_messaggio]</textarea>
+                                <textarea id="messaggio" name="messaggio" rows="5" required>[val_messaggio]</textarea>
                             </p>
 
                             <p class="checkbox-container">
@@ -228,7 +229,7 @@
     <footer>
         <div class="footer-content">
             <small>
-                &copy; 2025 Tenuta al Morer - <abbr title="Partita">P.</abbr> <abbr title="Imposta sul Valore Aggiunto">IVA</abbr> 00000000000 <br>
+                © 2025 Tenuta al Morer - <abbr title="Partita">P.</abbr> <abbr title="Imposta sul Valore Aggiunto">IVA</abbr> 00000000000 <br>
                 <a href="policy.php">Note legali</a> | 
                 <a href="policy.php#privacy-policy"><span lang="en">Privacy Policy</span></a> | 
                 <a href="policy.php#accessibility">Accessibilità</a>

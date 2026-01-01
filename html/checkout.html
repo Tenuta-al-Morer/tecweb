@@ -6,7 +6,6 @@
     <link rel="icon" href="../../images/logo.ico" type="image/x-icon">
 
     <meta name="description" content="Checkout della Tenuta al Morer. Completa il tuo ordine inserendo i dati di spedizione e pagamento.">
-    <meta name="keywords" content="checkout, Tenuta al Morer, ordine, spedizione, pagamento">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +18,7 @@
     <link rel="stylesheet" href="../../style/mini.css" media="screen and (max-width:940px)">
     <link rel="stylesheet" href="../../style/stampa.css" media="print">  
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"  crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body> 
@@ -62,7 +61,9 @@
 
     <main id="content" class="container">
         
-        [alert_msg]
+        <div id="php-errors" aria-live="assertive">
+            [alert_msg]
+        </div>
 
         <div class="back-nav">
             <a href="carrello.php" class="btn-back-outline">
@@ -82,45 +83,45 @@
                     <div class="grid-layout-form">
                         <div class="form-group row-two">
                             <div>
-                                <label for="nome">Nome *</label>
-                                <input type="text" id="nome" name="nome" required autocomplete="given-name" value="[val_nome]" placeholder="Mario">
+                                <label for="nome">Nome<span aria-hidden="true">*</span></label>
+                                <input type="text" id="nome" name="nome" required autocomplete="given-name" value="[val_nome]">
                             </div>
                             <div>
-                                <label for="cognome">Cognome *</label>
-                                <input type="text" id="cognome" name="cognome" required autocomplete="family-name" value="[val_cognome]" placeholder="Rossi">
+                                <label for="cognome">Cognome<span aria-hidden="true">*</span></label>
+                                <input type="text" id="cognome" name="cognome" required autocomplete="family-name" value="[val_cognome]">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="indirizzo">Indirizzo e n. civico *</label>
-                            <input type="text" id="indirizzo" name="indirizzo" required autocomplete="shipping street-address" placeholder="Via Appia Nuova, 10" value="[val_indirizzo]">
+                            <label for="indirizzo">Indirizzo e n. civico<span aria-hidden="true">*</span></label>
+                            <input type="text" id="indirizzo" name="indirizzo" required autocomplete="shipping street-address" value="[val_indirizzo]">
                         </div>
 
                         <div class="form-group row-three">
                             <div class="flex-grow-2">
-                                <label for="citta">Città *</label>
-                                <input type="text" id="citta" name="citta" required autocomplete="shipping address-level2" value="[val_citta]" placeholder="Roma">
+                                <label for="citta">Città<span aria-hidden="true">*</span></label>
+                                <input type="text" id="citta" name="citta" required autocomplete="shipping address-level2" value="[val_citta]">
                             </div>
                             <div class="flex-grow-1">
-                                <label for="provincia">Prov. *</label>
-                                <input type="text" id="provincia" name="provincia" required maxlength="2" autocomplete="shipping address-level1" style="text-transform:uppercase" placeholder="RM" value="[val_provincia]">
+                                <label for="provincia">Prov.<span aria-hidden="true">*</span></label>
+                                <input type="text" id="provincia" name="provincia" required maxlength="2" autocomplete="shipping address-level1" style="text-transform:uppercase" value="[val_provincia]">
                             </div>
                             <div class="flex-grow-1">
-                                <label for="cap">CAP *</label>
-                                <input type="text" id="cap" name="cap" required pattern="[0-9]{5}" maxlength="5" autocomplete="shipping postal-code" inputmode="numeric" value="[val_cap]" placeholder="00100">
+                                <label for="cap">CAP<span aria-hidden="true">*</span></label>
+                                <input type="text" id="cap" name="cap" required pattern="[0-9]{5}" maxlength="5" autocomplete="shipping postal-code" inputmode="numeric" value="[val_cap]">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label id="phone-label">Telefono (per il corriere) *</label>
+                            <label id="phone-label">Telefono (per il corriere)<span aria-hidden="true">*</span></label>
                             <div class="phone-group" role="group" aria-labelledby="phone-label">
                                 <div class="phone-prefix">
                                     <label for="prefisso" class="visually-hidden">Prefisso</label>
-                                    <input type="text" id="prefisso" name="prefisso" value="[val_prefisso]" required autocomplete="tel-country-code" placeholder="+39">
+                                    <input type="text" id="prefisso" name="prefisso" value="[val_prefisso]" required autocomplete="tel-country-code">
                                 </div>
                                 <div class="phone-number" style="flex-grow:1;">
                                     <label for="telefono" class="visually-hidden">Numero</label>
-                                    <input type="tel" id="telefono" name="telefono" required autocomplete="tel-national" placeholder="333 1234567" value="[val_telefono]">
+                                    <input type="tel" id="telefono" name="telefono" required autocomplete="tel-national" value="[val_telefono]">
                                 </div>
                             </div>
                         </div>

@@ -213,6 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('.slide');
     const nextBtn = document.querySelector('.next-btn');
     const prevBtn = document.querySelector('.prev-btn');
+    const pauseBtn = document.getElementById('pauseBtn');
 
     if (sliderContainer && slides.length > 0) {
 
@@ -224,6 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let isTransitioning = false;
         let slideInterval;
         const intervalTime = 5000;
+        let userPaused = false;
 
         // Creazione Cloni 
         for (let i = 0; i < clonesCount; i++) {
@@ -317,10 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // controlla la preferenza 
         const startTimer = () => {
-            // Se l'utente preferisce ridurre il movimento, NON avviamo il timer.
-            if (mediaQuery.matches) return; 
-            
-            // Altrimenti avviamo normalmente
+            if (mediaQuery.matches || userPaused) return;
             slideInterval = setInterval(nextSlide, intervalTime);
         };
 
@@ -333,10 +332,48 @@ document.addEventListener('DOMContentLoaded', () => {
             startTimer(); // Questo controllerà di nuovo la preferenza e non ripartirà se necessario
         };
 
+        // Event Listeners Pulsanti Navigazione
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetTimer(); 
+            });
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetTimer();
+            });
+        }
+
+        // Logica pulsante Play/Pausa
+        if (pauseBtn) {
+            pauseBtn.addEventListener('click', () => {
+                userPaused = !userPaused; // Inverte lo stato
+                
+                const icon = pauseBtn.querySelector('i');
+
+                if (userPaused) {
+                    // Se PAUSA ATTIVA: ferma timer e cambia icona in PLAY
+                    stopTimer();
+                    icon.classList.remove('fa-pause');
+                    icon.classList.add('fa-play');
+                    pauseBtn.setAttribute('aria-label', 'Riprendi lo scorrimento automatico');
+                } else {
+                    // Se PAUSA DISATTIVA: riavvia timer e cambia icona in PAUSA
+                    startTimer();
+                    icon.classList.remove('fa-play');
+                    icon.classList.add('fa-pause');
+                    pauseBtn.setAttribute('aria-label', 'Metti in pausa lo scorrimento automatico');
+                }
+            });
+        }
+
+        // Hover logic
         sliderContainer.addEventListener('mouseenter', stopTimer);
         sliderContainer.addEventListener('mouseleave', () => {
-            // riavvia solo se permesso
-            startTimer();
+            startTimer(); 
         });
 
         window.addEventListener('resize', () => {
@@ -345,20 +382,19 @@ document.addEventListener('DOMContentLoaded', () => {
             sliderContainer.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
         });
 
-        // Ascolta cambiamenti nelle impostazioni del sistema in tempo reale
         mediaQuery.addEventListener('change', () => {
             if (mediaQuery.matches) {
-                stopTimer(); // Se l'utente attiva l'opzione mentre guarda, fermiamo tutto
+                stopTimer();
             } else {
-                startTimer(); // Se la disattiva, riprendiamo
+                // Riavvia solo se l'utente non ha messo pausa manualmente
+                if (!userPaused) startTimer(); 
             }
         });
 
         // Avvio iniziale
         startTimer();
     }
-
-    
+   
 
     /* ==========================================
      * 6. ADMIN TABS (mostra una tabella alla volta)
@@ -553,75 +589,175 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================
-     * 8. VALIDAZIONE FORM GENERICA (Client-Side)
-     * ========================================== */
+    * 8. VALIDAZIONE FORM GENERICA 
+    * ========================================== */
     const forms = document.querySelectorAll('form');
 
-    // Funzione per trovare dove mettere l'errore
+    // Trova il contenitore padre corretto
     const getErrorContainer = (input) => {
         const parent = input.parentElement;
 
-        // CASO 1: Password (c'è il wrapper con l'occhio) -> L'errore va fuori dal wrapper, nel form-group
         if (parent.classList.contains('password-wrapper')) {
-            return parent.closest('.form-group');
+            return parent.parentElement;
         }
 
-        // CASO 2: Telefono (prefisso o numero) -> L'errore va sotto tutto il gruppo telefono
         if (parent.classList.contains('phone-prefix') || parent.classList.contains('phone-number')) {
-            return parent.closest('.form-group');
+            return parent.closest('.phone-group');
+        }
+        
+        if (input.type === 'checkbox') {
+            return input.closest('.checkbox-container') || parent;
         }
 
-        // CASO 3: Standard e Colonne Affiancate (row-two)
         return parent; 
     };
 
-    // Funzione per mostrare errore
+    // Crea elemento errore o spacer
+    const createErrorElement = (message, isSpacer = false) => {
+        const div = document.createElement('div');
+        
+        if (isSpacer) {
+            div.className = 'error-spacer';
+            div.setAttribute('aria-hidden', 'true');
+            div.innerHTML = `<i class="fas fa-exclamation-circle"></i> &nbsp;`; 
+        } else {
+            div.className = 'error-message';
+            div.setAttribute('role', 'alert');
+            div.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+        }
+        return div;
+    };
+
+    // Bilancia le altezze nelle righe a due colonne
+    const syncRowAlignment = (input) => {
+        const container = getErrorContainer(input);
+        const rowParent = container.closest('.row-two, .form-row');
+
+        if (!rowParent) return;
+
+        const cols = Array.from(rowParent.children);
+        const sibling = cols.find(c => c !== container);
+
+        if (!sibling) return; 
+
+        const myError = container.querySelector('.error-message');
+        const siblingError = sibling.querySelector('.error-message');
+        const siblingSpacer = sibling.querySelector('.error-spacer');
+        const mySpacer = container.querySelector('.error-spacer');
+
+        // Aggiungi spacer al fratello se necessario
+        if (myError && !siblingError && !siblingSpacer) {
+            const label = sibling.querySelector('label');
+            const spacer = createErrorElement('', true);
+            
+            if (label) label.after(spacer);
+            else sibling.prepend(spacer);
+        }
+
+        // Rimuovi spacer locale se ora c'è un errore vero
+        if (myError && mySpacer) {
+            mySpacer.remove();
+        }
+
+        // Aggiungi spacer a me se il fratello ha errore
+        if (siblingError && !myError && !mySpacer) {
+            const label = container.querySelector('label');
+            const spacer = createErrorElement('', true);
+            
+            if (label) label.after(spacer);
+            else container.prepend(spacer);
+        }
+
+        // Pulisci tutto se nessuno ha errori
+        if (!myError && !siblingError) {
+            if (mySpacer) mySpacer.remove();
+            if (siblingSpacer) siblingSpacer.remove();
+        }
+        
+        // Pulisci spacer residui se entrambi hanno errori
+        if (myError && siblingError) {
+            if (mySpacer) mySpacer.remove();
+            if (siblingSpacer) siblingSpacer.remove();
+        }
+    };
+
     const showError = (input, message) => {
         const container = getErrorContainer(input);
         
-        // Rimuovi eventuali errori precedenti nello stesso container
-        const existingError = container.querySelector('.error-message');
-        if (existingError) existingError.remove();
+        // Rimuovi errori o spacer precedenti
+        if (input.type === 'checkbox') {
+            // Per checkbox, l'errore è il fratello precedente (esterno al container)
+            const prev = container.previousElementSibling;
+            if (prev && prev.classList.contains('error-message')) {
+                prev.remove();
+            }
+        } else {
+            // Per altri input, l'errore è dentro
+            const existingError = container.querySelector('.error-message');
+            if (existingError) existingError.remove();
+        }
 
-        // Aggiungi classe errore all'input
+        const existingSpacer = container.querySelector('.error-spacer');
+        if (existingSpacer) existingSpacer.remove();
+
         input.classList.add('input-error');
+        input.setAttribute('aria-invalid', 'true');
 
-        // Crea il messaggio
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'error-message';
-        errorDiv.style.color = 'var(--accent-color)'; 
-        errorDiv.style.fontSize = '0.85rem';
-        errorDiv.style.marginTop = '0.25rem';
-        errorDiv.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
-        
-        container.appendChild(errorDiv);
+        const errorDiv = createErrorElement(message, false);
+        const errorId = 'error-' + input.id;
+        errorDiv.id = errorId;
+        input.setAttribute('aria-describedby', errorId);
+
+        // Posizionamento
+        if (input.type === 'checkbox') {
+            container.before(errorDiv);
+        } else {
+            const label = container.querySelector('label');
+            if (label) {
+                label.after(errorDiv);
+            } else {
+                container.prepend(errorDiv);
+            }
+            syncRowAlignment(input);
+        }
     };
 
-    // Funzione per rimuovere errore
     const clearError = (input) => {
         const container = getErrorContainer(input);
-        const existingError = container.querySelector('.error-message');
-        if (existingError) existingError.remove();
+        
+        if (input.type === 'checkbox') {
+            const prev = container.previousElementSibling;
+            if (prev && prev.classList.contains('error-message')) {
+                prev.remove();
+            }
+        } else {
+            const existingError = container.querySelector('.error-message');
+            if (existingError) existingError.remove();
+            
+            syncRowAlignment(input);
+        }
+        
         input.classList.remove('input-error');
+        input.removeAttribute('aria-invalid');
+        input.removeAttribute('aria-describedby');
     };
 
-    // Logica di controllo singolo campo
     const validateField = (input) => {
         const value = input.value.trim();
 
-        // 0. Controllo Checkbox
+        // Checkbox
         if (input.type === 'checkbox' && input.hasAttribute('required') && !input.checked) {
             showError(input, 'Devi accettare per proseguire');
             return false;
         }
 
-        // 1. Controllo Required (Testo/Select)
+        // Required generico
         if (input.type !== 'checkbox' && input.hasAttribute('required') && value === '') {
             showError(input, 'Campo obbligatorio');
             return false;
         }
 
-        // 2. Controllo Email
+        // Email
         if (input.type === 'email' && value !== '') {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(value)) {
@@ -630,7 +766,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // 3. Controllo Pattern
+        // Pattern
         if (input.hasAttribute('pattern') && value !== '') {
             const regex = new RegExp('^' + input.getAttribute('pattern') + '$');
             const msg = input.getAttribute('title') || 'Formato errato';
@@ -641,7 +777,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // 4. Controllo MinLength
+        // MinLength
         if (input.hasAttribute('minlength') && value !== '') {
             const min = input.getAttribute('minlength');
             if (value.length < min) {
@@ -650,7 +786,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // 5. Controllo Uguaglianza Password
+        // Conferma Password
         const passwordMap = {
             'confirm-password': 'password',
             'ripeti_password': 'nuova_password'
@@ -667,18 +803,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Se tutto ok
         clearError(input);
         return true;
     };
 
-    // Attivazione su tutti i form
+    // Inizializzazione Listener
     forms.forEach(form => {
         form.setAttribute('novalidate', true);
-
         const inputs = form.querySelectorAll('input, select, textarea');
 
-        // A. Controllo al Submit
         form.addEventListener('submit', (e) => {
             let isValid = true;
             inputs.forEach(input => {
@@ -688,22 +821,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!isValid) {
                 e.preventDefault();
-                const firstError = form.querySelector('.input-error');
+                const firstError = document.querySelector('.error-message');
                 if(firstError) firstError.scrollIntoView({behavior: 'smooth', block: 'center'});
             }
         });
 
-        // B. Controllo "Live"
         inputs.forEach(input => {
-            // Quando esci dal campo
             input.addEventListener('blur', () => validateField(input));
             
-            // Mentre scrivi (per testo)
             input.addEventListener('input', () => {
                 if(input.classList.contains('input-error')) {
                     validateField(input);
                 }
-                // Logica Password Live
                 if (input.name === 'password' || input.name === 'nuova_password') {
                     const form = input.closest('form');
                     const confirmName = input.name === 'password' ? 'confirm-password' : 'ripeti_password';
@@ -714,7 +843,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Mentre clicchi (per checkbox e radio)
             if (input.type === 'checkbox' || input.type === 'radio') {
                 input.addEventListener('change', () => {
                     validateField(input);

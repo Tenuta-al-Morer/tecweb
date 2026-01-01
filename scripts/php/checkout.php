@@ -11,22 +11,17 @@ if (!isset($_SESSION['utente'])) {
     exit();
 }
 
-// BLOCCO DI CONTROLLO RUOLI (ADMIN/STAFF)
 $ruolo = $_SESSION['ruolo']; 
 
-// Se l'utente è admin o staff
+// Se l'utente è admin o staff, svuota carrello e reindirizza
 if ($ruolo === 'admin' || $ruolo === 'staff') {
     $db = new DBConnection();
-    
-    // Svuota il carrello nel database
     $db->svuotaCarrelloUtente($_SESSION['utente_id']);
     $db->closeConnection();
     
-    // Reindirizza alla dashboard gestionale (o dove preferisci)
     header("Location: gestionale.php");
     exit();
 }
-
 
 $db = new DBConnection();
 $id_utente = $_SESSION['utente_id'];
@@ -54,7 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
     $metodo = $_POST['metodo_pagamento'];
     
-    // Ricalcolo totali backend
     $totaleProdotti = 0;
     foreach ($itemsAttivi as $item) $totaleProdotti += $item['totale_riga'];
     
@@ -84,7 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         header("Location: areaPersonale.php#ordini"); 
         exit();
     } else {
-        $errorMsg = '<div class="alert-box"><p><i class="fas fa-exclamation-triangle"></i> Errore durante l\'ordine: ' . $risultato['error'] . '</p></div>';
+        // Messaggio di errore accessibile
+        $errorMsg = '<div class="alert error" role="alert"><i class="fas fa-exclamation-triangle"></i> Errore durante l\'ordine: ' . htmlspecialchars($risultato['error']) . '</div>';
     }
 }
 
