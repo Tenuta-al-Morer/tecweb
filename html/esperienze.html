@@ -116,27 +116,31 @@
                             <div class="form-group row-two">
                                 <div>
                                     <label for="nome">Nome<span aria-hidden="true">*</span></label>
-                                    <input type="text" id="nome" name="nome" required autocomplete="name" value="[val_nome]">
+                                    <input type="text" id="nome" name="nome" required autocomplete="name" value="[val_nome]" aria-describedby="nome-hint">
+                                    <small id="nome-hint" class="input-help">Es: Mario</small>
                                 </div>
                                 <div>
                                     <label for="cognome">Cognome<span aria-hidden="true">*</span></label>
-                                    <input type="text" id="cognome" name="cognome" required autocomplete="family-name" value="[val_cognome]">
+                                    <input type="text" id="cognome" name="cognome" required autocomplete="family-name" value="[val_cognome]" aria-describedby="cognome-hint">
+                                    <small id="cognome-hint" class="input-help">Es: Rossi</small>
                                 </div>
                             </div>
 
                             <div class="form-group row-two">
                                 <div>
                                     <label for="email">Email<span aria-hidden="true">*</span></label>
-                                    <input type="email" id="email" name="email" required autocomplete="email" value="[val_email]">
+                                    <input type="email" id="email" name="email" required autocomplete="email" value="[val_email]" aria-describedby="email-hint">
+                                    <small id="email-hint" class="input-help">Es: mario.rossi@email.com</small>
                                 </div>
 
                                 <div>
                                     <label for="tipo_degustazione">Tipo degustazione<span aria-hidden="true">*</span></label>
-                                    <select id="tipo_degustazione" name="tipo_degustazione" required>
+                                    <select id="tipo_degustazione" name="tipo_degustazione" required aria-describedby="tipo_degustazione-hint">
                                         <option value="" disabled [sel_default]>Seleziona...</option>
                                         <option value="Linea Oro" [sel_Linea Oro]>Linea Oro</option>
                                         <option value="Piave" [sel_Piave]>Piave</option>
                                     </select>
+                                    <small id="tipo_degustazione-hint" class="input-help">Scegli il pacchetto che preferisci.</small>
                                 </div>
                   
                             </div>
@@ -148,12 +152,14 @@
                                     
                                     <div class="phone-prefix">
                                         <label for="prefisso" class="visually-hidden">Prefisso internazionale</label>
-                                        <input type="text" id="prefisso" name="prefisso" value="[val_prefisso]" autocomplete="tel-country-code">
+                                        <input type="text" id="prefisso" name="prefisso" value="[val_prefisso]" autocomplete="tel-country-code" aria-describedby="prefisso-hint">
+                                        <small id="prefisso-hint" class="input-help">Es: +39</small>
                                     </div>
 
                                     <div class="phone-number">
                                         <label for="telefono" class="visually-hidden">Numero di telefono</label>
-                                        <input type="tel" id="telefono" name="telefono" autocomplete="tel-national" value="[val_telefono]">
+                                        <input type="tel" id="telefono" name="telefono" autocomplete="tel-national" value="[val_telefono]" aria-describedby="telefono-hint">
+                                        <small id="telefono-hint" class="input-help">Es: 333 1234567</small>
                                     </div>
 
                                 </div>
@@ -162,11 +168,13 @@
                             <div class="form-group row-two">
                                 <div>
                                     <label for="data">Data<span aria-hidden="true">*</span></label>
-                                    <input type="date" id="data" name="data" required value="[val_data]">
+                                    <input type="date" id="data" name="data" required value="[val_data]" aria-describedby="data-hint">
+                                    <small id="data-hint" class="input-help">Seleziona il giorno desiderato per la visita.</small>
                                 </div>
                                 <div>
                                     <label for="persone">Persone<span aria-hidden="true">*</span></label>
-                                    <input type="number" id="persone" name="persone" min="1" max="50" required value="[val_persone]">
+                                    <input type="number" id="persone" name="persone" min="1" max="50" required value="[val_persone]" aria-describedby="persone-hint">
+                                    <small id="persone-hint" class="input-help">Numero partecipanti (min 1, max 50).</small>
                                 </div>
                             </div>
 

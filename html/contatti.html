@@ -158,23 +158,26 @@
                             <div class="form-group row-two">
                                 <div>
                                     <label for="nome">Nome<span aria-hidden="true">*</span></label>
-                                    <input type="text" id="nome" name="nome" required autocomplete="name" value="[val_nome]">
+                                    <input type="text" id="nome" name="nome" required autocomplete="name" value="[val_nome]" aria-describedby="nome-hint">
+                                    <small id="nome-hint" class="input-help">Es: Mario</small>
                                 </div>
                                 <div>
                                     <label for="cognome">Cognome<span aria-hidden="true">*</span></label>
-                                    <input type="text" id="cognome" name="cognome" required autocomplete="surname" value="[val_cognome]">
+                                    <input type="text" id="cognome" name="cognome" required autocomplete="surname" value="[val_cognome]" aria-describedby="cognome-hint">
+                                    <small id="cognome-hint" class="input-help">Es: Rossi</small>
                                 </div>
                             </div>
 
                             <div class="form-group row-two">
                                 <div>
                                     <label for="email">Email<span aria-hidden="true">*</span></label>
-                                    <input type="email" id="email" name="email" required autocomplete="email" value="[val_email]">
+                                    <input type="email" id="email" name="email" required autocomplete="email" value="[val_email]" aria-describedby="email-hint">
+                                    <small id="email-hint" class="input-help">Es: mario.rossi@email.com</small>
                                 </div>
 
                                 <div>
                                     <label for="tipo_supporto">Tipo di richiesta<span aria-hidden="true">*</span></label>
-                                    <select id="tipo_supporto" name="tipo_supporto" required>
+                                    <select id="tipo_supporto" name="tipo_supporto" required aria-describedby="tipo_supporto-hint">
                                         <option value="" disabled [sel_default]>Seleziona...</option>
                                         <option value="informazioni_vini" [sel_informazioni_vini]>Informazioni sui vini</option>
                                         <option value="visita_degustazione" [sel_visita_degustazione]>Visita e degustazione</option>
@@ -184,6 +187,7 @@
                                         <option value="assistenza" [sel_assistenza]>Assistenza tecnica</option>
                                         <option value="altro" [sel_altro]>Altro</option>
                                     </select>
+                                    <small id="tipo_supporto-hint" class="input-help">Seleziona l'argomento principale della richiesta.</small>
                                 </div>
                   
                             </div>
@@ -195,21 +199,24 @@
                                     
                                     <div class="phone-prefix">
                                         <label for="prefisso" class="visually-hidden">Prefisso internazionale</label>
-                                        <input type="text" id="prefisso" name="prefisso" value="[val_prefisso]" autocomplete="tel-country-code">
+                                        <input type="text" id="prefisso" name="prefisso" value="[val_prefisso]" autocomplete="tel-country-code" aria-describedby="prefisso-hint">
+                                        <small id="prefisso-hint" class="input-help">Es: +39</small>
                                     </div>
 
                                     <div class="phone-number">
                                         <label for="telefono" class="visually-hidden">Numero di telefono</label>
-                                        <input type="tel" id="telefono" name="telefono" autocomplete="tel-national" value="[val_telefono]">
+                                        <input type="tel" id="telefono" name="telefono" autocomplete="tel-national" value="[val_telefono]" aria-describedby="telefono-hint">
+                                        <small id="telefono-hint" class="input-help">Es: 333 1234567</small>
                                     </div>
 
                                 </div>
                             </div>
 
-                            <p class="form-group">
+                            <div class="form-group">
                                 <label for="messaggio">Messaggio<span aria-hidden="true">*</span></label>
-                                <textarea id="messaggio" name="messaggio" rows="5" required>[val_messaggio]</textarea>
-                            </p>
+                                <textarea id="messaggio" name="messaggio" rows="5" required aria-describedby="messaggio-hint">[val_messaggio]</textarea>
+                                <small id="messaggio-hint" class="input-help">Es: Vorrei maggiori informazioni sulla disponibilità del Prosecco DOC...</small>
+                            </div>
 
                             <p class="checkbox-container">
                                 <input type="checkbox" id="privacy" name="privacy" required>
