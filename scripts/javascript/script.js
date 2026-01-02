@@ -623,6 +623,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             div.className = 'error-message';
             div.setAttribute('role', 'alert');
+            div.setAttribute('aria-live', 'assertive'); // Aggiungi aria-live="assertive"
             div.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
         }
         return div;
@@ -683,16 +684,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const showError = (input, message) => {
         const container = getErrorContainer(input);
-        
-        // Rimuovi errori o spacer precedenti
+        const errorId = 'error-' + input.id;
+
         if (input.type === 'checkbox') {
-            // Per checkbox, l'errore è il fratello precedente (esterno al container)
             const prev = container.previousElementSibling;
             if (prev && prev.classList.contains('error-message')) {
                 prev.remove();
             }
         } else {
-            // Per altri input, l'errore è dentro
             const existingError = container.querySelector('.error-message');
             if (existingError) existingError.remove();
         }
@@ -703,12 +702,14 @@ document.addEventListener('DOMContentLoaded', () => {
         input.classList.add('input-error');
         input.setAttribute('aria-invalid', 'true');
 
-        const errorDiv = createErrorElement(message, false);
-        const errorId = 'error-' + input.id;
-        errorDiv.id = errorId;
-        input.setAttribute('aria-describedby', errorId);
+        const currentDescribedBy = input.getAttribute('aria-describedby') || '';
+        const ids = currentDescribedBy.split(' ').filter(id => id !== errorId && id !== '');
+        ids.push(errorId);
+        input.setAttribute('aria-describedby', ids.join(' '));
 
-        // Posizionamento
+        const errorDiv = createErrorElement(message, false);
+        errorDiv.id = errorId;
+        
         if (input.type === 'checkbox') {
             container.before(errorDiv);
         } else {
@@ -724,7 +725,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const clearError = (input) => {
         const container = getErrorContainer(input);
-        
+        const errorId = 'error-' + input.id;
+
         if (input.type === 'checkbox') {
             const prev = container.previousElementSibling;
             if (prev && prev.classList.contains('error-message')) {
@@ -733,13 +735,20 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             const existingError = container.querySelector('.error-message');
             if (existingError) existingError.remove();
-            
             syncRowAlignment(input);
         }
-        
+
         input.classList.remove('input-error');
         input.removeAttribute('aria-invalid');
-        input.removeAttribute('aria-describedby');
+
+        const currentDescribedBy = input.getAttribute('aria-describedby') || '';
+        const ids = currentDescribedBy.split(' ').filter(id => id !== errorId && id !== '');
+
+        if (ids.length > 0) {
+            input.setAttribute('aria-describedby', ids.join(' '));
+        } else {
+            input.removeAttribute('aria-describedby');
+        }
     };
 
     const validateField = (input) => {
@@ -850,6 +859,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
 
 
     /* ==========================================
