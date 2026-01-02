@@ -614,20 +614,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Crea elemento errore o spacer
     const createErrorElement = (message, isSpacer = false) => {
-        const div = document.createElement('div');
-        
-        if (isSpacer) {
-            div.className = 'error-spacer';
-            div.setAttribute('aria-hidden', 'true');
-            div.innerHTML = `<i class="fas fa-exclamation-circle"></i> &nbsp;`; 
-        } else {
-            div.className = 'error-message';
-            div.setAttribute('role', 'alert');
-            div.setAttribute('aria-live', 'assertive'); // Aggiungi aria-live="assertive"
-            div.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
-        }
-        return div;
-    };
+    const div = document.createElement('div');
+    
+    if (isSpacer) {
+        div.className = 'error-spacer';
+        div.setAttribute('aria-hidden', 'true');
+        div.innerHTML = `<i class="fas fa-exclamation-circle"></i> &nbsp;`; 
+    } else {
+        div.className = 'error-message';
+        div.setAttribute('role', 'alert');
+        div.setAttribute('aria-live', 'polite'); 
+        div.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+    }
+    return div;
+};
 
     // Bilancia le altezze nelle righe a due colonne
     const syncRowAlignment = (input) => {
@@ -684,6 +684,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const showError = (input, message) => {
         const container = getErrorContainer(input);
+        const currentError = container.querySelector('.error-message');
+        if (currentError && currentError.textContent.includes(message)) {
+            return; 
+        }
         const errorId = 'error-' + input.id;
 
         if (input.type === 'checkbox') {
@@ -692,8 +696,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 prev.remove();
             }
         } else {
-            const existingError = container.querySelector('.error-message');
-            if (existingError) existingError.remove();
+            if (currentError) currentError.remove();
         }
 
         const existingSpacer = container.querySelector('.error-spacer');
@@ -702,6 +705,7 @@ document.addEventListener('DOMContentLoaded', () => {
         input.classList.add('input-error');
         input.setAttribute('aria-invalid', 'true');
 
+        // Gestione aria-describedby
         const currentDescribedBy = input.getAttribute('aria-describedby') || '';
         const ids = currentDescribedBy.split(' ').filter(id => id !== errorId && id !== '');
         ids.push(errorId);
