@@ -145,7 +145,7 @@
             </div>
         </section>
 
-        <!-- SEZIONE: richieste esperienze -->
+        <!-- SEZIONE: richieste degustazioni (prenotazioni) -->
         <p id="descrizione-tab-esperienze" class="visually-hidden">
             La tabella riassume la prenotazione delle esperienze e permette di gestire le richieste: DA COMPLETARE
         </p>
@@ -154,19 +154,20 @@
             <h2>Richieste esperienze</h2>
 
             <label class="switch" aria-label="Attiva/disattiva visualizzazione archivio prenotazioni">
-                <input type="checkbox">
+                <input type="checkbox" id="toggleArchivioPrenotazioni">
                 <span class="slider"></span>
             </label> Visualizza archivio prenotazioni
             </div>
 
             <div class="table-container">
-                <table class="table-data table-early-break" id="tab-degustazioni" aria-describedby="descrizione-tab-esperienze">
+                <table class="table-data table-early-break" id="tab-degustazioni" aria-describedby="descrizione-tab-degustazioni">
                     <thead>
                         <tr>
                             <th scope="col" abbr="ID">ID prenotazione</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Cognome</th>
                             <th scope="col">Email</th>
+                            <th scope="col" abbr="Tipo">Tipo Degustazione</th>
                             <th scope="col">Telefono</th>
                             <th scope="col" abbr="Data">Data visita</th>                            
                             <th scope="col" abbr="Persone">Numero persone</th>
@@ -176,6 +177,27 @@
                     </thead>
                     <tbody> <!--RIEMPIREMO COMN DB-->
                         [riga_prenotazioni]
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-container">
+                <table class="table-data table-early-break" id="tab-degustazioni-archivio" aria-describedby="descrizione-tab-degustazioni">
+                    <thead>
+                        <tr>
+                            <th scope="col" abbr="ID">ID prenotazione</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Cognome</th>
+                            <th scope="col">Email</th>
+                            <th scope="col" abbr="Tipo">Tipo Degustazione</th>
+                            <th scope="col">Telefono</th> 
+                            <th scope="col" abbr="Data">Data visita</th>                            
+                            <th scope="col" abbr="Persone">Numero persone</th>
+                            <th scope="col">Data Invio</th>
+                            <th scope="col" abbr="Stato">Stato richiesta</th>
+                        </tr>
+                    </thead>
+                    <tbody> <!--RIEMPIREMO COMN DB-->
+                        [riga_prenotazioni_archivio]
                     </tbody>
                 </table>
             </div>

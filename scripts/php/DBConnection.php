@@ -442,11 +442,29 @@ class DBConnection {
     }
 
 
-    // RECUPERO PRENOTAZIONI (ADMIN)
+    // RECUPERO PRENOTAZIONI (GESTIONALE)
     public function getPrenotazioni() {
         $prenotazioni = [];
         
         $queryPrenotazioni = "SELECT * FROM prenotazione WHERE stato='in_attesa' ORDER BY data_invio DESC";
+        $stmtPren = $this->connection->prepare($queryPrenotazioni);
+        if (!$stmtPren) { return []; }
+
+        $stmtPren->execute();
+        $resultPren = $stmtPren->get_result();
+
+        while ($prenotazione = $resultPren->fetch_assoc()) {
+            $prenotazioni[] = $prenotazione;
+        }
+        
+        $stmtPren->close();
+        return $prenotazioni;
+    }
+
+    public function getPrenotazioniArchivio() {
+        $prenotazioni = [];
+        
+        $queryPrenotazioni = "SELECT * FROM prenotazione_archivio ORDER BY data_invio DESC";
         $stmtPren = $this->connection->prepare($queryPrenotazioni);
         if (!$stmtPren) { return []; }
 

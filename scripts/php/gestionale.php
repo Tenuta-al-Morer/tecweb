@@ -79,6 +79,7 @@ $nomeUtente = htmlspecialchars($_SESSION['nome']);
 $db = new DBConnection();
 $ordiniArray = $db->getOrdini();
 $prenotazioniArray = $db->getPrenotazioni();
+$prenotazioniArchivioArray = $db->getPrenotazioniArchivio();
 $messaggiArray = $db->getMessaggi();
 $messaggiArchivioArray = $db->getMessaggiArchivio();
 $db->closeConnection();
@@ -114,6 +115,7 @@ foreach ($prenotazioniArray as $prenotazione) {
     $prenotazioni .= '<td data-title="Nome">' . htmlspecialchars($prenotazione['nome']) . '</td>';
     $prenotazioni .= '<td data-title="Cognome">' . htmlspecialchars($prenotazione['cognome']) . '</td>';
     $prenotazioni .= '<td data-title="Email">' . htmlspecialchars($prenotazione['email']) . '</td>';
+    $prenotazioni .= '<td data-title="Tipo Degustazione">' . htmlspecialchars($prenotazione['tipo_degustazione']) . '</td>';
     $prenotazioni .= '<td data-title="Telefono">' . htmlspecialchars($prenotazione['prefisso']) . ' '. htmlspecialchars($prenotazione['telefono']) . '</td>';
     $prenotazioni .= '<td data-title="Data visita">' . htmlspecialchars($prenotazione['data_visita']) . '</td>';
     $prenotazioni .= '<td data-title="Numero persone">' . (int)$prenotazione['n_persone'] . '</td>';
@@ -126,6 +128,22 @@ foreach ($prenotazioniArray as $prenotazione) {
                         </form>
                     </td>';
     $prenotazioni .= "</tr>";
+}
+
+$prenotazioniArchivio = "";
+foreach ($prenotazioniArchivioArray as $prenotazione) {
+    $prenotazioniArchivio .= "<tr>";
+    $prenotazioniArchivio .= '<th scope="row">' . (int)$prenotazione['id'] . '</th>';
+    $prenotazioniArchivio .= '<td data-title="Nome">' . htmlspecialchars($prenotazione['nome']) . '</td>';
+    $prenotazioniArchivio .= '<td data-title="Cognome">' . htmlspecialchars($prenotazione['cognome']) . '</td>';
+    $prenotazioniArchivio .= '<td data-title="Email">' . htmlspecialchars($prenotazione['email']) . '</td>';
+    $prenotazioniArchivio .= '<td data-title="Tipo Degustazione">' . htmlspecialchars($prenotazione['tipo_degustazione']) . '</td>';
+    $prenotazioniArchivio .= '<td data-title="Telefono">' . htmlspecialchars($prenotazione['prefisso']) . ' '. htmlspecialchars($prenotazione['telefono']) . '</td>';
+    $prenotazioniArchivio .= '<td data-title="Data visita">' . htmlspecialchars($prenotazione['data_visita']) . '</td>';
+    $prenotazioniArchivio .= '<td data-title="Numero persone">' . (int)$prenotazione['n_persone'] . '</td>';
+    $prenotazioniArchivio .= '<td data-title="Data Invio">' . htmlspecialchars($prenotazione['data_invio']) . '</td>';
+    $prenotazioniArchivio .= '<td data-title="Stato">' . htmlspecialchars($prenotazione['stato']) . '</td>';
+    $prenotazioniArchivio .= "</tr>";
 }
 
 
@@ -181,6 +199,7 @@ $htmlContent = str_replace("[email_utente]", $emailUtente, $htmlContent);
 $htmlContent = str_replace("[riferimento]", $ruoloUtente, $htmlContent);
 $htmlContent = str_replace("[riga_ordini]", $ordini, $htmlContent);
 $htmlContent = str_replace("[riga_prenotazioni]", $prenotazioni, $htmlContent);
+$htmlContent = str_replace("[riga_prenotazioni_archivio]", $prenotazioniArchivio, $htmlContent);
 $htmlContent = str_replace("[riga_messaggi]", $messaggi, $htmlContent);
 $htmlContent = str_replace("[riga_messaggi_archivio]", $messaggiArchivio, $htmlContent);
 

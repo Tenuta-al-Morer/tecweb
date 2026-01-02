@@ -461,22 +461,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 6bis. Toggle archivio messaggi
-    const toggleArchivio = document.getElementById("toggleArchivioMessaggi");
-    const tabellaArchivio = document.getElementById("tab-info-archivio");
+    //6bis: Utility: collega uno switch a una tabella archivio (show/hide)
+    function bindArchiveToggle(toggleId, tableId, displayMode = "table") {
+        const toggle = document.getElementById(toggleId);
+        const table = document.getElementById(tableId);
 
-    function applyArchivioVisibility() {
-        if (!toggleArchivio || !tabellaArchivio) return;
-        tabellaArchivio.style.display = toggleArchivio.checked ? "table" : "none";
+        if (!toggle || !table) return;
+
+        const apply = () => {
+            table.style.display = toggle.checked ? displayMode : "none";
+        };
+
+        apply(); // stato iniziale
+        toggle.addEventListener("change", apply);
     }
 
-    // stato iniziale
-    applyArchivioVisibility();
+    // Messaggi (già ok, ma ora con funzione unica)
+    bindArchiveToggle("toggleArchivioMessaggi", "tab-info-archivio", "table");
 
-    // cambia quando clicchi lo switch
-    if (toggleArchivio) {
-        toggleArchivio.addEventListener("change", applyArchivioVisibility);
-    }
+    // Prenotazioni archivio
+    bindArchiveToggle("toggleArchivioPrenotazioni", "tab-degustazioni-archivio", "table");
+
+    // Ordini archivio (se hai creato tab-ordini-archivio e lo switch con id)
+    bindArchiveToggle("toggleArchivioOrdini", "tab-ordini-archivio", "table");
+
 
 
     /* ==========================================
