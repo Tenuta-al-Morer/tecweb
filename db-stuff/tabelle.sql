@@ -202,40 +202,6 @@ INSERT INTO `ordine_elemento` (`id`, `id_ordine`, `id_vino`, `nome_vino_storico`
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `prenotazione`
---
-
-CREATE TABLE `prenotazione` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(50) NOT NULL,
-  `cognome` varchar(50) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `tipo_degustazione` varchar(50) NOT NULL,
-  `prefisso` varchar(10) NOT NULL,
-  `telefono` varchar(20) NOT NULL,
-  `data_visita` date NOT NULL,
-  `n_persone` int(11) NOT NULL,
-  `data_invio` datetime NOT NULL DEFAULT current_timestamp(),
-  `stato` enum('in_attesa','approvato','annullato','completato') NOT NULL DEFAULT 'in_attesa'
-) ENGINE=InnoDB;
-
---
--- Dump dei dati per la tabella `prenotazione`
---
-
-INSERT INTO `prenotazione` (`id`, `nome`, `cognome`, `email`, `tipo_degustazione`, `prefisso`, `telefono`, `data_visita`, `n_persone`, `data_invio`, `stato`) VALUES
-(3, 'Test', 'User', 'user@test.com', 'Degustazione Classica', '+39', '3331234567', '2026-01-15', 2, '2025-12-22 22:39:38', 'approvato'),
-(5, 'Mario', 'Rossi', 'mario.rossi@fake.com', 'Linea Oro', '+39', '3331112223', '2026-02-14', 2, '2025-12-27 01:23:25', 'in_attesa'),
-(6, 'Luigi', 'Verdi', 'luigi.v@provider.it', 'Piave', '+39', '3334445556', '2026-03-01', 4, '2025-12-27 01:23:25', 'in_attesa'),
-(7, 'Anna', 'Bianchi', 'anna.b@testmail.com', 'Linea Oro', '+39', '3209876543', '2026-01-20', 10, '2025-12-20 10:00:00', 'approvato'),
-(8, 'John', 'Doe', 'j.doe@international.com', 'Piave', '+1', '5550199', '2026-04-10', 2, '2025-12-27 01:23:25', 'annullato'),
-(9, 'Elena', 'Neri', 'elena.n@fake.com', 'Linea Oro', '+39', '3471234567', '2026-02-28', 6, '2025-11-15 08:00:00', 'annullato'),
-(10, 'Giulia', 'Gialli', 'giulia.g@posta.it', 'Piave', '+39', '3310000000', '2026-05-05', 3, '2025-12-27 01:23:25', 'in_attesa'),
-(11, 'test', 'test', 'tes@test.test', 'Linea Oro', '+39', '43243243', '2026-03-12', 3, '2025-12-27 01:27:41', 'in_attesa');
-
--- --------------------------------------------------------
-
---
 -- Struttura della tabella `prenotazione_archivio`
 --
 
@@ -250,7 +216,7 @@ CREATE TABLE `prenotazione_archivio` (
   `data_visita` date NOT NULL,
   `n_persone` int(11) NOT NULL,
   `data_invio` datetime NOT NULL DEFAULT current_timestamp(),
-  `stato` enum('in_attesa','approvato','annullato','completato') NOT NULL DEFAULT 'completato'
+  `stato` enum('in_attesa','approvato','annullato') NOT NULL DEFAULT 'in_attesa'
 ) ENGINE=InnoDB;
 
 --
@@ -258,7 +224,15 @@ CREATE TABLE `prenotazione_archivio` (
 --
 
 INSERT INTO `prenotazione_archivio` (`id`, `nome`, `cognome`, `email`, `tipo_degustazione`, `prefisso`, `telefono`, `data_visita`, `n_persone`, `data_invio`, `stato`) VALUES
-(1, 'Test', 'User', 'user@test.com', 'Degustazione Premium', '+39', '3331234567', '2025-10-10', 4, '2025-12-22 22:39:38', 'completato');
+(1, 'Test', 'User', 'user@test.com', 'Degustazione Premium', '+39', '3331234567', '2025-10-10', 4, '2025-12-22 22:39:38', 'approvato'),
+(3, 'Test', 'User', 'user@test.com', 'Degustazione Classica', '+39', '3331234567', '2026-01-15', 2, '2025-12-22 22:39:38', 'approvato'),
+(5, 'Mario', 'Rossi', 'mario.rossi@fake.com', 'Linea Oro', '+39', '3331112223', '2026-02-14', 2, '2025-12-27 01:23:25', 'in_attesa'),
+(6, 'Luigi', 'Verdi', 'luigi.v@provider.it', 'Piave', '+39', '3334445556', '2026-03-01', 4, '2025-12-27 01:23:25', 'in_attesa'),
+(7, 'Anna', 'Bianchi', 'anna.b@testmail.com', 'Linea Oro', '+39', '3209876543', '2026-01-20', 10, '2025-12-20 10:00:00', 'approvato'),
+(8, 'John', 'Doe', 'j.doe@international.com', 'Piave', '+1', '5550199', '2026-04-10', 2, '2025-12-27 01:23:25', 'annullato'),
+(9, 'Elena', 'Neri', 'elena.n@fake.com', 'Linea Oro', '+39', '3471234567', '2026-02-28', 6, '2025-11-15 08:00:00', 'annullato'),
+(10, 'Giulia', 'Gialli', 'giulia.g@posta.it', 'Piave', '+39', '3310000000', '2026-05-05', 3, '2025-12-27 01:23:25', 'in_attesa'),
+(11, 'test', 'test', 'tes@test.test', 'Linea Oro', '+39', '43243243', '2026-03-12', 3, '2025-12-27 01:27:41', 'in_attesa');
 
 -- --------------------------------------------------------
 
@@ -372,12 +346,6 @@ ALTER TABLE `contatto_archivio`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indici per le tabelle `prenotazione`
---
-ALTER TABLE `prenotazione`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indici per le tabelle `prenotazione_archivio`
 --
 ALTER TABLE `prenotazione_archivio`
@@ -417,9 +385,6 @@ ALTER TABLE `ordine`
 
 ALTER TABLE `ordine_elemento`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
-
-ALTER TABLE `prenotazione`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 ALTER TABLE `prenotazione_archivio`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;

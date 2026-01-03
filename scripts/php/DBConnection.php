@@ -446,7 +446,7 @@ class DBConnection {
     public function getPrenotazioni() {
         $prenotazioni = [];
         
-        $queryPrenotazioni = "SELECT * FROM prenotazione WHERE stato='in_attesa' ORDER BY data_invio DESC";
+        $queryPrenotazioni = "SELECT * FROM prenotazione_archivio WHERE stato='in_attesa' ORDER BY data_invio DESC";
         $stmtPren = $this->connection->prepare($queryPrenotazioni);
         if (!$stmtPren) { return []; }
 
@@ -464,7 +464,7 @@ class DBConnection {
     public function getPrenotazioniArchivio() {
         $prenotazioni = [];
         
-        $queryPrenotazioni = "SELECT * FROM prenotazione_archivio ORDER BY data_invio DESC";
+        $queryPrenotazioni = "SELECT * FROM prenotazione_archivio WHERE stato!='in_attesa' ORDER BY data_invio DESC";
         $stmtPren = $this->connection->prepare($queryPrenotazioni);
         if (!$stmtPren) { return []; }
 
