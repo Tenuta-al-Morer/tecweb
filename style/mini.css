@@ -138,6 +138,11 @@
     width: 100%;
 }
 
+.primary-navigation span[aria-current="page"] {
+    color: var(--gold-color-nav);
+    text-decoration: none;
+}
+
 .primary-navigation a:hover,
 .primary-navigation a:focus {
     background-color: var(--hover-faded);

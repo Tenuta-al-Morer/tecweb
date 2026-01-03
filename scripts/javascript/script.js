@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const themeToggleBtn = document.getElementById('theme-toggle');
         
         
-        const sunIcon = `
+        const sunIconOld = `
             <span class="visually-hidden">Passa alla modalità chiara</span>
             <svg xmlns="http:
                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -57,13 +57,35 @@ document.addEventListener('DOMContentLoaded', () => {
             </svg>
         `;
 
-        const moonIcon = `
+        const moonIconOld = `
             <span class="visually-hidden">Passa alla modalità scura</span>
             <i class="fas fa-moon" aria-hidden="true"></i>
         `;
 
 
         
+        const sunIcon = `
+            <span class="visually-hidden">Passa alla modalita chiara</span>
+            <svg viewBox="0 0 24 24" class="theme-icon" aria-hidden="true">
+                <circle cx="12" cy="12" r="4.5"></circle>
+                <line x1="12" y1="2" x2="12" y2="4"></line>
+                <line x1="12" y1="20" x2="12" y2="22"></line>
+                <line x1="4.2" y1="4.2" x2="5.8" y2="5.8"></line>
+                <line x1="18.2" y1="18.2" x2="19.8" y2="19.8"></line>
+                <line x1="2" y1="12" x2="4" y2="12"></line>
+                <line x1="20" y1="12" x2="22" y2="12"></line>
+                <line x1="4.2" y1="19.8" x2="5.8" y2="18.2"></line>
+                <line x1="18.2" y1="5.8" x2="19.8" y2="4.2"></line>
+            </svg>
+        `;
+
+        const moonIcon = `
+            <span class="visually-hidden">Passa alla modalita scura</span>
+            <svg viewBox="0 0 24 24" class="theme-icon" aria-hidden="true">
+                <path d="M21 14.5A9 9 0 1 1 11.5 3a7.4 7.4 0 0 0 9.5 11.5z"></path>
+            </svg>
+        `;
+
         const setLightMode = (enableLight) => {
             if (enableLight) {
                 

@@ -789,13 +789,13 @@ a.navigationHelp:visited {
 .main-nav-bar {
     align-items: stretch; 
     color: var(--pure-white);
-    padding: 0 3em; 
+    padding: 0 2.5em; 
     background-color: var(--navbgcolor);
     display: flex;
-    gap: 0;
+    gap: 1.5rem;
     flex-wrap: nowrap;
     transition: background-color 0.3s ease, color 0.3s ease;
-    min-height: 70px; 
+    min-height: 72px; 
 }
 
 .logo-link {
@@ -821,36 +821,39 @@ a.logo-link:hover img, a.logo-link:focus img { transform: scale(1.05); }
     font-size: 1.2em;
     list-style: none;
     margin: 0;
+    gap: 1.2rem;
 }
 
 .primary-navigation li {
     display: flex;    
     align-items: center; 
-    padding: 0 0.2em;
+    padding: 0;
 }
 
-.primary-navigation li:not(:first-child)::before {
-    content: "";
-    width: 1px;
-    height: 30px;         
-    background-color: var(--nav-separator-color);
-
-    display: block;
-    margin: auto 0;   
-    margin-right: 0.4em;   
-}
+.primary-navigation li:not(:first-child)::before { display: none; }
 
 
 .primary-navigation a {
-    color: var(--pure-white); padding: 0.5em 0.3em; border-radius: 3px;
+    color: var(--pure-white); padding: 0.4em 0.2em; border-radius: 3px;
     text-decoration: none; transition: color 0.3s; display: inline-flex; align-items: center; gap: 0.35em;
     min-height: 44px;
     min-width: 44px;
 }
 
 .primary-navigation a:hover, .primary-navigation a:focus { color: var(--gold-color-nav); }
-.primary-navigation span[aria-current="page"],
-.mobile-icons span[aria-current="page"] { padding:0.3em; border: 3px solid var(--gold-color-nav); border-radius: 15px; }
+.primary-navigation span[aria-current="page"] {
+    color: var(--gold-color-nav);
+    padding: 0.4em 0.2em;
+    text-decoration: none;
+}
+
+.mobile-icons span[aria-current="page"] {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    color: var(--gold-color-nav);
+    filter: drop-shadow(0 0 6px rgba(197, 165, 81, 0.35));
+}
 
 .primary-navigation a.is-visited::before,
 .mobile-icons a.is-visited::before {
@@ -866,10 +869,9 @@ a.logo-link:hover img, a.logo-link:focus img { transform: scale(1.05); }
 .mobile-icons {
     align-items: center; 
     border-left: none; 
-    
     order: 3; 
     display: flex; 
-    gap: 0.8em;
+    gap: 0.6em;
     margin-left: 0; 
     flex-shrink: 0;
 }
@@ -877,11 +879,11 @@ a.logo-link:hover img, a.logo-link:focus img { transform: scale(1.05); }
 .mobile-icons::before {
     content: "";
     width: 1px;
-    height: 30px; 
+    height: 26px; 
     background-color: var(--nav-separator-color);
     display: block;
-    margin-right: 0.5em;
-    margin-left: 1em;   
+    margin-right: 0.4em;
+    margin-left: 0.8em;   
 }
 
 .mobile-icons a {
@@ -943,15 +945,17 @@ a.logo-link:hover img, a.logo-link:focus img { transform: scale(1.05); }
 
 #breadcrumb {
     background: none; border: none; padding: 0; margin: 0;
-    font-family: 'Lexend', sans-serif; font-size: 1.1rem;; flex-grow: 1; 
+    font-family: 'Lexend', sans-serif; font-size: 1rem; flex-grow: 1; 
 }
 
-.breadcrumb-container { display: flex; align-items: center; gap: 0.5em; color: var(--pure-white); opacity: 0.8; }
+.breadcrumb-container { display: flex; align-items: center; gap: 0.6em; color: var(--pure-white); opacity: 0.9; }
+.breadcrumb-container a { color: var(--pure-white); text-decoration: none; }
+.breadcrumb-container a:hover, .breadcrumb-container a:focus { color: var(--gold-color-nav); }
 #breadcrumb img { height: 3em; }
 .separator { color: var(--nav-separator-color); font-size: 0.9em; }
 
 .current-page {
-    font-weight: 600; color: var(--pure-white); text-transform: uppercase; letter-spacing: 0.05em;
+    font-weight: 600; color: var(--gold-color-nav); text-transform: none; letter-spacing: 0.02em;
 }
 
 .breadcrumb-container a i { color: var(--gold-color-nav); transition: all 0.3s ease; min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; }
@@ -970,9 +974,19 @@ a.logo-link:hover img, a.logo-link:focus img { transform: scale(1.05); }
 #theme-toggle i { pointer-events: none; }
 
 #theme-toggle svg {
-    width: 1.3em;     
-    height: 1.3em;    
+    width: 1.1em;     
+    height: 1.1em;    
     display: block;   
+}
+
+.theme-icon {
+    width: 1.1em;
+    height: 1.1em;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .sub-header button {
