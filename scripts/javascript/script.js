@@ -483,7 +483,8 @@ document.addEventListener('DOMContentLoaded', () => {
     bindArchiveToggle("toggleArchivioPrenotazioni", "tab-degustazioni-archivio", "table");
 
     // Ordini archivio (se hai creato tab-ordini-archivio e lo switch con id)
-    bindArchiveToggle("toggleArchivioOrdini", "tab-ordini-archivio", "table");
+    bindArchiveToggle("toggleArchivioVini", "tab-ordini-archivio", "table");
+
 
 
 
