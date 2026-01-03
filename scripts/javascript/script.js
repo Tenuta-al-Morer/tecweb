@@ -387,24 +387,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
+            const pauseIcon = `
+                <svg class="slider-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <line x1="9" y1="6" x2="9" y2="18"></line>
+                    <line x1="15" y1="6" x2="15" y2="18"></line>
+                </svg>
+            `;
+
+            const playIcon = `
+                <svg class="slider-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M10 7 L17 12 L10 17 Z"></path>
+                </svg>
+            `;
+
             // Logica pulsante Play/Pausa
             if (pauseBtn) {
                 pauseBtn.addEventListener('click', () => {
                     userPaused = !userPaused; // Inverte lo stato
-                    
-                    const icon = pauseBtn.querySelector('i');
 
                     if (userPaused) {
                         // Se PAUSA ATTIVA: ferma timer e cambia icona in PLAY
                         stopTimer();
-                        icon.classList.remove('fa-pause');
-                        icon.classList.add('fa-play');
+                        pauseBtn.innerHTML = playIcon;
                         pauseBtn.setAttribute('aria-label', 'Riprendi lo scorrimento automatico');
                     } else {
                         // Se PAUSA DISATTIVA: riavvia timer e cambia icona in PAUSA
                         startTimer();
-                        icon.classList.remove('fa-play');
-                        icon.classList.add('fa-pause');
+                        pauseBtn.innerHTML = pauseIcon;
                         pauseBtn.setAttribute('aria-label', 'Metti in pausa lo scorrimento automatico');
                     }
                 });
@@ -510,8 +519,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!toggle || !table) return;
 
+            const container = table.closest(".table-container");
+            const containerDisplay = container ? "block" : null;
+
             const apply = () => {
                 table.style.display = toggle.checked ? displayMode : "none";
+                if (container) {
+                    container.style.display = toggle.checked ? containerDisplay : "none";
+                }
             };
 
             apply(); // stato iniziale
@@ -585,55 +600,57 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // B. Gestione Espansione Ordini (Mostra/Nascondi Dettagli)
-        const orderTable = document.querySelector('.order-summary-table');
+        const orderTables = document.querySelectorAll('.order-summary-table');
         
-        if (orderTable) {
-            orderTable.addEventListener('click', (e) => {
-                // Cerchiamo se il click è avvenuto dentro un bottone toggle
-                const toggleButton = e.target.closest('.toggle-details-btn');
-                
-                if (toggleButton) {
-                    e.preventDefault();
+        if (orderTables.length > 0) {
+            orderTables.forEach((orderTable) => {
+                orderTable.addEventListener('click', (e) => {
+                    // Cerchiamo se il click è avvenuto dentro un bottone toggle
+                    const toggleButton = e.target.closest('.toggle-details-btn');
                     
-                    // Recuperiamo l'ID dell'ordine dal bottone
-                    const orderId = toggleButton.getAttribute('data-order-id');
-                    // Troviamo la riga dei dettagli corrispondente
-                    const detailRow = document.getElementById('details-row-' + orderId);
-                    // Troviamo la riga "padre" (la card superiore)
-                    const summaryRow = toggleButton.closest('tr');
-
-                    const icon = toggleButton.querySelector('i');
-                    
-                    if (detailRow) {
-                        // Toggle visibilità
-                        const isHidden = detailRow.classList.contains('is-hidden');
+                    if (toggleButton) {
+                        e.preventDefault();
                         
-                        if (isHidden) {
-                            // APRI
-                            detailRow.classList.remove('is-hidden');
-                            // AGGIUNTA: Aggiungiamo classe per lo stile unito
-                            if (summaryRow) summaryRow.classList.add('card-is-open'); 
+                        // Recuperiamo l'ID dell'ordine dal bottone
+                        const orderId = toggleButton.getAttribute('data-order-id');
+                        // Troviamo la riga dei dettagli corrispondente
+                        const detailRow = document.getElementById('details-row-' + orderId);
+                        // Troviamo la riga "padre" (la card superiore)
+                        const summaryRow = toggleButton.closest('tr');
 
-                            toggleButton.setAttribute('aria-expanded', 'true');
-                            // Cambia icona
-                            if(icon) {
-                                icon.classList.remove('fa-chevron-down');
-                                icon.classList.add('fa-chevron-up');
-                            }
-                        } else {
-                            // CHIUDI
-                            detailRow.classList.add('is-hidden');
-                            if (summaryRow) summaryRow.classList.remove('card-is-open');
+                        const icon = toggleButton.querySelector('i');
+                        
+                        if (detailRow) {
+                            // Toggle visibilità
+                            const isHidden = detailRow.classList.contains('is-hidden');
+                            
+                            if (isHidden) {
+                                // APRI
+                                detailRow.classList.remove('is-hidden');
+                                // AGGIUNTA: Aggiungiamo classe per lo stile unito
+                                if (summaryRow) summaryRow.classList.add('card-is-open'); 
 
-                            toggleButton.setAttribute('aria-expanded', 'false');
-                            // Cambia icona
-                            if(icon) {
-                                icon.classList.remove('fa-chevron-up');
-                                icon.classList.add('fa-chevron-down');
+                                toggleButton.setAttribute('aria-expanded', 'true');
+                                // Cambia icona
+                                if (icon) {
+                                    icon.classList.remove('fa-chevron-down');
+                                    icon.classList.add('fa-chevron-up');
+                                }
+                            } else {
+                                // CHIUDI
+                                detailRow.classList.add('is-hidden');
+                                if (summaryRow) summaryRow.classList.remove('card-is-open');
+
+                                toggleButton.setAttribute('aria-expanded', 'false');
+                                // Cambia icona
+                                if (icon) {
+                                    icon.classList.remove('fa-chevron-up');
+                                    icon.classList.add('fa-chevron-down');
+                                }
                             }
                         }
                     }
-                }
+                });
             });
         }
     });

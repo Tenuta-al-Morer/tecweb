@@ -303,7 +303,7 @@ class DBConnection {
     }
 
     // CHECKOUT: CREAZIONE ORDINE
-    public function creaOrdine($id_utente, $indirizzo_spedizione, $metodo_pagamento, $costo_spedizione = 10.00) {
+    public function creaOrdine($id_utente, $indirizzo_spedizione, $costo_spedizione = 10.00) {
         $allItems = $this->getCarrelloUtente($id_utente);
         $items = array_filter($allItems, function($i) { return $i['stato'] === 'attivo'; });
         
@@ -323,8 +323,8 @@ class DBConnection {
         $this->connection->begin_transaction();
 
         try {
-            $stmtOrd = $this->connection->prepare("INSERT INTO ordine (id_utente, totale_prodotti, costo_spedizione, totale_finale, indirizzo_spedizione, metodo_pagamento, stato_ordine) VALUES (?, ?, ?, ?, ?, ?, 'in_attesa')");
-            $stmtOrd->bind_param("idddss", $id_utente, $totale_prodotti, $costo_spedizione, $totale_finale, $indirizzo_spedizione, $metodo_pagamento);
+            $stmtOrd = $this->connection->prepare("INSERT INTO ordine (id_utente, totale_prodotti, costo_spedizione, totale_finale, indirizzo_spedizione, stato_ordine) VALUES (?, ?, ?, ?, ?, 'in_attesa')");
+            $stmtOrd->bind_param("iddds", $id_utente, $totale_prodotti, $costo_spedizione, $totale_finale, $indirizzo_spedizione);
             $stmtOrd->execute();
             $id_ordine = $stmtOrd->insert_id;
 

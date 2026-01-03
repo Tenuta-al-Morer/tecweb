@@ -47,15 +47,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $numero = trim($_POST['telefono']);
     $telefonoCompleto = $prefisso . " " . $numero;
 
-    $metodo = $_POST['metodo_pagamento'];
-    
     $totaleProdotti = 0;
     foreach ($itemsAttivi as $item) $totaleProdotti += $item['totale_riga'];
     
     $sogliaGratuita = 49.00;
     $costoSpedizione = ($totaleProdotti >= $sogliaGratuita) ? 0.00 : 10.00;
 
-    $risultato = $db->creaOrdine($id_utente, $indirizzo, $metodo, $costoSpedizione);
+    $risultato = $db->creaOrdine($id_utente, $indirizzo, $costoSpedizione);
 
     if ($risultato['success']) {
         $raw_indirizzo = trim($_POST['indirizzo']);

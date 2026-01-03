@@ -2,10 +2,10 @@
 <html lang="it">
 <head>
     <meta charset="utf-8">
-    <title>Checkout - Tenuta al Morer</title>
+    <title>Spedizione - Tenuta al Morer</title>
     <link rel="icon" href="../../images/logo.ico" type="image/x-icon">
 
-    <meta name="description" content="Checkout della Tenuta al Morer. Completa il tuo ordine inserendo i dati di spedizione e pagamento.">
+    <meta name="description" content="Completa il tuo ordine inserendo i dati di spedizione.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,8 +51,8 @@
                     <span>Ti trovi in: </span>
                     <a href="home.php"><span class="visually-hidden" lang="en">Home</span><i class="fas fa-home home-icon" aria-hidden="true"></i></a><span aria-hidden="true"> &gt; </span> 
                     <a href="carrello.php"><span class="visually-hidden">Carrello</span><i class="fas fa-shopping-cart" aria-hidden="true"></i></a><span aria-hidden="true"> &gt; </span>
-                    <span class="current-page" aria-current="page" lang="en">Checkout</span>
-                    <i class="fas fa-credit-card contact-icon" aria-hidden="true"></i> 
+                    <span class="current-page" aria-current="page">Spedizione</span>
+                    <i class="fas fa-truck contact-icon" aria-hidden="true"></i> 
                 </div>
             </nav>
             <button id="theme-toggle" aria-label="Cambia tema"><i class="fas fa-moon" aria-hidden="true"></i></button>
@@ -71,7 +71,7 @@
             </a>
         </div>
 
-        <h1 class="checkout-title">Spedizione e Pagamento</h1>
+        <h1 class="checkout-title">Spedizione</h1>
 
         <form action="checkout.php" method="POST" id="checkout-form" class="checkout-layout">
             
@@ -137,42 +137,6 @@
                     </div>
                 </section>
 
-                <section class="checkout-section" aria-labelledby="payment-heading">
-                    <h2 id="payment-heading"><i class="fas fa-credit-card" aria-hidden="true"></i> Metodo di Pagamento</h2>
-                    
-                    <fieldset class="payment-grid">
-                        <legend class="visually-hidden">Seleziona un metodo di pagamento</legend>
-                        
-                        <label class="payment-card">
-                            <input type="radio" name="metodo_pagamento" value="Carta di Credito" checked>
-                            <div class="payment-content">
-                                <i class="fas fa-credit-card icon-large"></i>
-                                <span class="payment-title">Carta di Credito</span>
-                                <span class="payment-icons">
-                                    <i class="fab fa-cc-visa"></i> <i class="fab fa-cc-mastercard"></i>
-                                </span>
-                            </div>
-                        </label>
-
-                        <label class="payment-card">
-                            <input type="radio" name="metodo_pagamento" value="PayPal">
-                            <div class="payment-content">
-                                <i class="fab fa-paypal icon-large"></i>
-                                <span class="payment-title">PayPal</span>
-                                <span class="payment-desc">Paga sicuro con il tuo account</span>
-                            </div>
-                        </label>
-
-                        <label class="payment-card">
-                            <input type="radio" name="metodo_pagamento" value="Bonifico">
-                            <div class="payment-content">
-                                <i class="fas fa-university icon-large"></i>
-                                <span class="payment-title">Bonifico Bancario</span>
-                                <span class="payment-desc">L'ordine partirà all'accredito</span>
-                            </div>
-                        </label>
-                    </fieldset>
-                </section>
             </div>
 
             <aside class="checkout-sidebar" id="order-summary">
@@ -200,8 +164,7 @@
 
                     <div class="summary-actions">
                         <input type="hidden" name="action" value="crea_ordine">
-                        <button type="submit" class="btn-primary btn-full pulse-on-hover">Conferma e Paga</button>
-                        <p class="secure-info"><i class="fas fa-lock"></i> Pagamenti crittografati e sicuri</p>
+                        <button type="submit" class="btn-primary btn-full pulse-on-hover">Conferma Ordine</button>
                     </div>
                 </div>
             </aside>

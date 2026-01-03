@@ -89,40 +89,70 @@ $db->closeConnection();
 
 $ordini = "";
 
-foreach ($ordiniArray as $ordine) { 
-    $ordini .= "<tr>";
-    $ordini .= '<th scope="row">' . (int)$ordine['id'] . '</th>';
+foreach ($ordiniArray as $ordine) {
+    $ordineId = (int)$ordine['id'];
+
+    $ordini .= '<tr data-order-id="' . $ordineId . '">';
+    $ordini .= '<th scope="row">' . $ordineId . '</th>';
     $ordini .= '<td data-title="ID Utente">' . (int)$ordine['id_utente'] . '</td>';
-    $ordini .= '<td data-title="Costo Prodotti">' . number_format($ordine['totale_prodotti'], 2) . ' €</td>';
-    $ordini .= '<td data-title="Costo Spedizione">' . number_format($ordine['costo_spedizione'], 2) . ' €</td>';
-    $ordini .= '<td data-title="Totale Finale">' . number_format($ordine['totale_finale'], 2) . ' €</td>';
-    $ordini .= '<td data-title="Indirizzo Spedizione">' . htmlspecialchars($ordine['indirizzo_spedizione']) . '</td>';
-    $ordini .= '<td data-title="Metodo Pagamento">' . htmlspecialchars($ordine['metodo_pagamento']) . '</td>';
+    $ordini .= '<td data-title="Totale Finale">' . number_format($ordine['totale_finale'], 2) . ' EUR</td>';
     $ordini .= '<td data-title="Data Creazione">' . htmlspecialchars($ordine['data_creazione']) . '</td>';
+    $ordini .= '<td class="td_richiesta_degustazione" data-title="Dettagli">
+                    <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $ordineId . '" aria-expanded="false" aria-controls="details-row-' . $ordineId . '">
+                        Mostra <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                </td>';
     $ordini .= '<td class="td_richiesta_degustazione" data-title="Gestione richiesta"> 
                     <form action="" method="POST" class="standard-form">
-                        <input type="hidden" name="ordine_id" value="' . (int)$ordine['id'] . '">
-                        <button type="submit" name="azione" value="accetta" class="btn-secondary">Accetta</button>
-                        <button type="submit" name="azione" value="rifiuta" class="btn-secondary">Rifiuta</button>
+                        <input type="hidden" name="ordine_id" value="' . $ordineId . '">
+                        <button type="submit" name="azione" value="accetta" class="btn-secondary btn-accept">Accetta</button>
+                        <button type="submit" name="azione" value="rifiuta" class="btn-secondary btn-reject">Rifiuta</button>
                     </form>
                 </td>';
-    $ordini .= "</tr>";
+    $ordini .= '</tr>';
+
+    $ordini .= '<tr class="order-details-row is-hidden" id="details-row-' . $ordineId . '"><td colspan="6" class="order-details-cell"><div class="details-content">';
+    $ordini .= '<div class="details-section"><h4>Prodotti Ordinati:</h4><ul class="details-products-list">';
+    if (!empty($ordine['elementi'])) {
+        foreach ($ordine['elementi'] as $item) {
+            $ordini .= '<li><span>' . (int)$item['quantita'] . 'x ' . htmlspecialchars($item['nome_vino_storico']) . '</span><span>' . number_format($item['prezzo_acquisto'], 2) . ' EUR</span></li>';
+        }
+    } else {
+        $ordini .= '<li><span>Nessun prodotto associato.</span><span>0.00 EUR</span></li>';
+    }
+    $ordini .= '</ul></div>';
+    $ordini .= '<div class="details-section"><h4>Riepilogo e Spedizione:</h4><p><strong>Indirizzo Spedizione:</strong> ' . nl2br(htmlspecialchars($ordine['indirizzo_spedizione'])) . '</p><div class="details-summary"><p>Totale Prodotti: ' . number_format($ordine['totale_prodotti'], 2) . ' EUR</p><p>Costo Spedizione: ' . number_format($ordine['costo_spedizione'], 2) . ' EUR</p><p><strong>Totale Finale: <span>' . number_format($ordine['totale_finale'], 2) . ' EUR</span></strong></p></div></div></div></td></tr>';
 }
 
 $ordiniArchivio = "";
 
-foreach ($ordiniArchivioArray as $ordine) { 
-    $ordiniArchivio .= "<tr>";
-    $ordiniArchivio .= '<th scope="row">' . (int)$ordine['id'] . '</th>';
+foreach ($ordiniArchivioArray as $ordine) {
+    $ordineId = (int)$ordine['id'];
+
+    $ordiniArchivio .= '<tr data-order-id="' . $ordineId . '">';
+    $ordiniArchivio .= '<th scope="row">' . $ordineId . '</th>';
     $ordiniArchivio .= '<td data-title="ID Utente">' . (int)$ordine['id_utente'] . '</td>';
-    $ordiniArchivio .= '<td data-title="Costo Prodotti">' . number_format($ordine['totale_prodotti'], 2) . ' €</td>';
-    $ordiniArchivio .= '<td data-title="Costo Spedizione">' . number_format($ordine['costo_spedizione'], 2) . ' €</td>';
-    $ordiniArchivio .= '<td data-title="Totale Finale">' . number_format($ordine['totale_finale'], 2) . ' €</td>';
-    $ordiniArchivio .= '<td data-title="Indirizzo Spedizione">' . htmlspecialchars($ordine['indirizzo_spedizione']) . '</td>';
-    $ordiniArchivio .= '<td data-title="Metodo Pagamento">' . htmlspecialchars($ordine['metodo_pagamento']) . '</td>';
+    $ordiniArchivio .= '<td data-title="Totale Finale">' . number_format($ordine['totale_finale'], 2) . ' EUR</td>';
     $ordiniArchivio .= '<td data-title="Data Creazione">' . htmlspecialchars($ordine['data_creazione']) . '</td>';
     $ordiniArchivio .= '<td data-title="Stato">' . htmlspecialchars($ordine['stato_ordine']) . '</td>';
-    $ordiniArchivio .= "</tr>";
+    $ordiniArchivio .= '<td class="td_richiesta_degustazione" data-title="Dettagli">
+                            <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $ordineId . '" aria-expanded="false" aria-controls="details-row-' . $ordineId . '">
+                                Mostra <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                        </td>';
+    $ordiniArchivio .= '</tr>';
+
+    $ordiniArchivio .= '<tr class="order-details-row is-hidden" id="details-row-' . $ordineId . '"><td colspan="6" class="order-details-cell"><div class="details-content">';
+    $ordiniArchivio .= '<div class="details-section"><h4>Prodotti Ordinati:</h4><ul class="details-products-list">';
+    if (!empty($ordine['elementi'])) {
+        foreach ($ordine['elementi'] as $item) {
+            $ordiniArchivio .= '<li><span>' . (int)$item['quantita'] . 'x ' . htmlspecialchars($item['nome_vino_storico']) . '</span><span>' . number_format($item['prezzo_acquisto'], 2) . ' EUR</span></li>';
+        }
+    } else {
+        $ordiniArchivio .= '<li><span>Nessun prodotto associato.</span><span>0.00 EUR</span></li>';
+    }
+    $ordiniArchivio .= '</ul></div>';
+    $ordiniArchivio .= '<div class="details-section"><h4>Riepilogo e Spedizione:</h4><p><strong>Indirizzo Spedizione:</strong> ' . nl2br(htmlspecialchars($ordine['indirizzo_spedizione'])) . '</p><div class="details-summary"><p>Totale Prodotti: ' . number_format($ordine['totale_prodotti'], 2) . ' EUR</p><p>Costo Spedizione: ' . number_format($ordine['costo_spedizione'], 2) . ' EUR</p><p><strong>Totale Finale: <span>' . number_format($ordine['totale_finale'], 2) . ' EUR</span></strong></p></div></div></div></td></tr>';
 }
 
 
@@ -134,7 +164,7 @@ foreach ($prenotazioniArray as $prenotazione) {
     $prenotazioni .= '<td data-title="Cognome">' . htmlspecialchars($prenotazione['cognome']) . '</td>';
     $prenotazioni .= '<td data-title="Email">' . htmlspecialchars($prenotazione['email']) . '</td>';
     $prenotazioni .= '<td data-title="Tipo Degustazione">' . htmlspecialchars($prenotazione['tipo_degustazione']) . '</td>';
-    $prenotazioni .= '<td data-title="Telefono">' . htmlspecialchars($prenotazione['prefisso']) . ' '. htmlspecialchars($prenotazione['telefono']) . '</td>';
+    $prenotazioni .= '<td data-title="Telefono">' . htmlspecialchars($prenotazione['prefisso']) . ' ' . htmlspecialchars($prenotazione['telefono']) . '</td>';
     $prenotazioni .= '<td data-title="Data visita">' . htmlspecialchars($prenotazione['data_visita']) . '</td>';
     $prenotazioni .= '<td data-title="Numero persone">' . (int)$prenotazione['n_persone'] . '</td>';
     $prenotazioni .= '<td data-title="Data Invio">' . htmlspecialchars($prenotazione['data_invio']) . '</td>';
@@ -156,7 +186,7 @@ foreach ($prenotazioniArchivioArray as $prenotazione) {
     $prenotazioniArchivio .= '<td data-title="Cognome">' . htmlspecialchars($prenotazione['cognome']) . '</td>';
     $prenotazioniArchivio .= '<td data-title="Email">' . htmlspecialchars($prenotazione['email']) . '</td>';
     $prenotazioniArchivio .= '<td data-title="Tipo Degustazione">' . htmlspecialchars($prenotazione['tipo_degustazione']) . '</td>';
-    $prenotazioniArchivio .= '<td data-title="Telefono">' . htmlspecialchars($prenotazione['prefisso']) . ' '. htmlspecialchars($prenotazione['telefono']) . '</td>';
+    $prenotazioniArchivio .= '<td data-title="Telefono">' . htmlspecialchars($prenotazione['prefisso']) . ' ' . htmlspecialchars($prenotazione['telefono']) . '</td>';
     $prenotazioniArchivio .= '<td data-title="Data visita">' . htmlspecialchars($prenotazione['data_visita']) . '</td>';
     $prenotazioniArchivio .= '<td data-title="Numero persone">' . (int)$prenotazione['n_persone'] . '</td>';
     $prenotazioniArchivio .= '<td data-title="Data Invio">' . htmlspecialchars($prenotazione['data_invio']) . '</td>';
@@ -186,7 +216,7 @@ foreach ($messaggiArray as $messaggio) {
 
                         <label for="richiesta1_' . $idMsg . '">Risposta<span aria-hidden="true">*</span></label>
                         <input type="text" id="richiesta1_' . $idMsg . '" name="richiesta1" required
-                            placeholder="Rispondi alle necessità del cliente">
+                            placeholder="Rispondi alle necessita del cliente">
                     </form>
                     
                     <button type="submit" form="form_msg_' . $idMsg . '" class="btn-secondary">Invia</button>
@@ -221,6 +251,10 @@ $htmlContent = str_replace("[riga_prenotazioni]", $prenotazioni, $htmlContent);
 $htmlContent = str_replace("[riga_prenotazioni_archivio]", $prenotazioniArchivio, $htmlContent);
 $htmlContent = str_replace("[riga_messaggi]", $messaggi, $htmlContent);
 $htmlContent = str_replace("[riga_messaggi_archivio]", $messaggiArchivio, $htmlContent);
+
+// Pulizia placeholder menu
+$htmlContent = str_replace("[cart_icon_link]", "", $htmlContent);
+$htmlContent = str_replace("[user_area_link]", "", $htmlContent);
 
 echo $htmlContent;
 ?>

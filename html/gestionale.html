@@ -6,7 +6,7 @@
     <title>Area Gestionale - Tenuta al Morer</title>
     <link rel="icon" href="../../images/logo.ico" type="image/x-icon">
 
-    <meta name="description" content="Gestisci l'area gestionale dell'azienda; ordinazioni, prenotazioni ed eventuali richieste da parte dei clienti.">
+    <meta name="description" content="Gestisci l'area gestionale dell'azienda: ordini, prenotazioni e richieste dei clienti.">
     <meta name="keywords" content="esperienze, degustazioni, Tenuta al Morer, vini, messaggi, gestione, richieste">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -61,8 +61,8 @@
                 <div class="breadcrumb-container">
                     <span>Ti trovi in: </span>
                     <a href="home.php"><span class="visually-hidden" lang="en">Home</span><i class="fas fa-home home-icon" aria-hidden="true"></i></a><span aria-hidden="true"> &gt; </span> 
-                    <span class="current-page">Area Personale</span>
-                    <i class="fas fa-user" aria-hidden="true"></i>
+                    <span class="current-page">Area Gestionale</span>
+                    <i class="fas fa-user-cog" aria-hidden="true"></i>
                 </div>
             </nav>
 
@@ -73,259 +73,229 @@
     </header>
 
     <main id="content-ad"> 
-        <div class="auth-container">
-            <h1>Area Riservata</h1>
-            
-            <p>
-                Sei loggato come: <strong>[email_utente]</strong>
-            </p>
-            
-            <form action="logout.php" method="POST" class="auth-form">
-                <button type="submit" class="btn-primary btn-red">
-                    <span lang="en">LOGOUT</span> (ESCI)
-                </button>
-            </form>
+        <div class="user-dashboard-container">
+            <aside class="dashboard-sidebar">
+                <h2 class="visually-hidden">Menu area gestionale</h2>
+                <nav>
+                    <ul class="user-nav-list">
+                        <li><a href="#ordini" class="user-nav-link is-active" data-section="ordini">Ordini</a></li>
+                        <li><a href="#esperienze" class="user-nav-link" data-section="esperienze">Richieste esperienze</a></li>
+                        <li><a href="#messaggi" class="user-nav-link" data-section="messaggi">Messaggi clienti</a></li>
+                        <li>
+                            <form action="logout.php" method="POST" class="logout-form">
+                                <button type="submit" class="btn-secondary logout-btn">
+                                    <i class="fas fa-sign-out-alt" aria-hidden="true"></i> Logout
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <div class="dashboard-content">
+                <h1>Area Gestionale</h1>
+                <p>
+                    Sei loggato come: <strong>[email_utente]</strong>. Ruolo: <strong>[riferimento]</strong>.
+                    Usa il menu a sinistra per navigare.
+                </p>
+
+                <section id="ordini" class="content-section is-visible">
+                    <h2>Ordini</h2>
+                    <p id="descrizione-tab-ordini" class="visually-hidden">
+                        La tabella riassume le richieste "in_attesa" di acquisto dei vini effettuate dagli utenti.
+                        Ogni riga rappresenta un singolo ordine. Le colonne riportano: ID ordine, ID utente,
+                        totale finale, data di creazione, gestione richiesta e un comando per aprire i dettagli.
+                    </p>
+
+                    <p id="descrizione-tab-ordini-archivio" class="visually-hidden">
+                        La tabella riassume le richieste di acquisto dei vini gia gestite dallo staff.
+                        Le colonne riportano: ID ordine, ID utente, totale finale, data di creazione,
+                        stato richiesta e un comando per aprire i dettagli.
+                    </p>
+
+                    <section id="section-vini">
+                        <div class="admin-table-head">
+                        <label class="switch">
+                            <input type="checkbox" id="toggleArchivioVini">
+                            <span class="slider"></span>
+                            <span class="switch-text">Visualizza archivio ordini</span>
+                        </label>
+                        </div>
+
+                        <div class="table-container">
+                            <table class="table-data table-early-break order-summary-table" id="tab-ordini" aria-describedby="descrizione-tab-ordini">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" abbr="ID">ID Ordine</th>
+                                        <th scope="col" abbr="Utente">ID Utente</th>
+                                        <th scope="col" abbr="Totale">Totale Finale</th>
+                                        <th scope="col" abbr="Data">Data Creazione</th>
+                                        <th scope="col" abbr="Dettagli">Dettagli</th>
+                                        <th scope="col" abbr="Gestione">Gestione richiesta</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    [riga_ordini]
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="table-container">
+                            <table class="table-data table-early-break order-summary-table" id="tab-ordini-archivio" aria-describedby="descrizione-tab-ordini-archivio">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" abbr="ID">ID Ordine</th>
+                                        <th scope="col" abbr="Utente">ID Utente</th>
+                                        <th scope="col" abbr="Totale">Totale Finale</th>
+                                        <th scope="col" abbr="Data">Data Creazione</th>
+                                        <th scope="col" abbr="Stato">Stato richiesta</th>
+                                        <th scope="col" abbr="Dettagli">Dettagli</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    [riga_ordini_archivio]
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </section>
+                </section>
+
+                <section id="esperienze" class="content-section is-hidden">
+                    <h2>Richieste esperienze</h2>
+                    <p id="descrizione-tab-degustazioni" class="visually-hidden">
+                        La tabella riassume le richieste di prenotazione delle degustazioni.
+                        Le colonne riportano: ID prenotazione, nome, cognome, email, tipo degustazione,
+                        telefono, data visita, numero persone, data invio e gestione richiesta.
+                    </p>
+
+                    <p id="descrizione-tab-degustazioni-archivio" class="visually-hidden">
+                        La tabella riassume le richieste di prenotazione gia gestite dallo staff.
+                        Le colonne riportano: ID prenotazione, nome, cognome, email, tipo degustazione,
+                        telefono, data visita, numero persone, data invio e stato richiesta.
+                    </p>
+
+                    <section id="section-esperienze">
+                        <div class="admin-table-head">
+                        <label class="switch">
+                            <input type="checkbox" id="toggleArchivioPrenotazioni">
+                            <span class="slider"></span>
+                            <span class="switch-text">Visualizza archivio prenotazioni</span>
+                        </label>
+                        </div>
+
+                        <div class="table-container">
+                            <table class="table-data table-early-break" id="tab-degustazioni" aria-describedby="descrizione-tab-degustazioni">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" abbr="ID">ID prenotazione</th>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">Cognome</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col" abbr="Tipo">Tipo Degustazione</th>
+                                        <th scope="col">Telefono</th>
+                                        <th scope="col" abbr="Data">Data visita</th>                            
+                                        <th scope="col" abbr="Persone">Numero persone</th>
+                                        <th scope="col">Data Invio</th>
+                                        <th scope="col" abbr="Gestione">Gestione richiesta</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    [riga_prenotazioni]
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="table-container">
+                            <table class="table-data table-early-break" id="tab-degustazioni-archivio" aria-describedby="descrizione-tab-degustazioni-archivio">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" abbr="ID">ID prenotazione</th>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">Cognome</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col" abbr="Tipo">Tipo Degustazione</th>
+                                        <th scope="col">Telefono</th> 
+                                        <th scope="col" abbr="Data">Data visita</th>                            
+                                        <th scope="col" abbr="Persone">Numero persone</th>
+                                        <th scope="col">Data Invio</th>
+                                        <th scope="col" abbr="Stato">Stato richiesta</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    [riga_prenotazioni_archivio]
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </section>
+
+                <section id="messaggi" class="content-section is-hidden">
+                    <h2>Messaggi clienti</h2>
+                    <p id="descrizione-tab-messaggi" class="visually-hidden">
+                        La tabella riassume le richieste di assistenza inviate dai clienti.
+                        Le colonne riportano: ID richiesta, nome, cognome, email, tipo supporto,
+                        telefono, messaggio, data invio e gestione richiesta.
+                    </p>
+
+                    <p id="descrizione-tab-messaggi-archivio" class="visually-hidden">
+                        La tabella riassume le richieste di assistenza gia gestite dallo staff.
+                        Le colonne riportano: ID richiesta, nome, cognome, email, tipo supporto,
+                        telefono, messaggio, data invio e risposta dell'operatore.
+                    </p>
+
+                    <section id="section-messaggi">
+                        <div class="admin-table-head">
+                            <label class="switch">
+                                <input type="checkbox" id="toggleArchivioMessaggi">
+                                <span class="slider"></span>
+                                <span class="switch-text">Visualizza archivio richieste</span>
+                            </label>
+                            </div>
+                        <div class="table-container">
+                            <table class="table-data table-early-break" id="tab-info" aria-describedby="descrizione-tab-messaggi">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" abbr="ID">ID richiesta</th>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">Cognome</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col" abbr="Tipo">Tipo supporto</th>
+                                        <th scope="col">Telefono</th>
+                                        <th scope="col">Messaggio</th>
+                                        <th scope="col" abbr="Data">Data invio</th>
+                                        <th scope="col" abbr="Gestione">Gestione richiesta</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    [riga_messaggi]
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="table-container archive-table">
+                            <table class="table-data table-early-break" id="tab-info-archivio" aria-describedby="descrizione-tab-messaggi-archivio">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" abbr="ID">ID richiesta</th>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">Cognome</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col" abbr="Tipo">Tipo supporto</th>
+                                        <th scope="col">Telefono</th>
+                                        <th scope="col">Messaggio</th>
+                                        <th scope="col" abbr="Data">Data invio</th>
+                                        <th scope="col">Risposta</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    [riga_messaggi_archivio]
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </section>
+            </div>
         </div>
-
-        <h3>Gentile Utente [nome_utente], in questa pagina è possibile gestire le richieste fatte dai suoi clienti.</h3>
-
-        <div class="admin-tabs">
-            <!-- TAB VINI -->
-            <a href="#tab-vini" class="admin-tab">
-                <i class="fas fa-wine-bottle" aria-hidden="true"></i>
-                Gestione vini
-            </a>
-
-            <!-- TAB DEGUSTAZIONI -->
-            <a href="#tab-degustazioni" class="admin-tab">
-                <i class="fas fa-wine-glass-alt" aria-hidden="true"></i>
-                Gestione degustazioni
-            </a>
-
-            <!-- TAB MESSAGGI -->
-            <a href="#tab-info" class="admin-tab">
-                <i class="fas fa-envelope" aria-hidden="true"></i>
-                Messaggi utenti
-            </a>
-        </div>
-        <!-- SEZIONE: richieste VINI -->
-        <p id="descrizione-tab-ordini" class="visually-hidden">
-            La tabella riassume le richieste "in_attesa" di acquisto dei vini effettuate dagli utenti.
-            Ogni riga rappresenta un singolo ordine, mentre le colonne riportano,
-            da sinistra a destra: l’identificativo dell’ordine, l’identificativo
-            dell’utente, il costo dei prodotti, il costo della spedizione,
-            il totale finale, l’indirizzo di spedizione, il metodo di pagamento,
-            la data di creazione dell’ordine e l’area di gestione per
-            modificare lo stato della richiesta.
-        </p>
-
-        <p id="descrizione-tab-ordini-archivio" class="visually-hidden">
-            La tabella riassume le richieste di acquisto dei vini effettuate dagli utenti, già gestite dallo staff.
-            Ogni riga rappresenta un singolo ordine, mentre le colonne riportano,
-            da sinistra a destra: l’identificativo dell’ordine, l’identificativo
-            dell’utente, il costo dei prodotti, il costo della spedizione,
-            il totale finale, l’indirizzo di spedizione, il metodo di pagamento,
-            la data di creazione dell’ordine e lo stato della richiesta.
-        </p>
-
-        <section id="section-vini">
-            <div class="admin-table-head">
-            <h2>Richieste vini</h2>
-
-            <label class="switch" aria-label="Attiva/disattiva visualizzazione archivio ordini">
-                <input type="checkbox" id="toggleArchivioVini">
-                <span class="slider"></span>
-            </label> Visualizza archivio ordini
-            </div>
-
-            <div class="table-container">
-                <table class="table-data table-early-break" id="tab-ordini" aria-describedby="descrizione-tab-ordini">
-                    <thead>
-                        <tr>
-                            <th scope="col" abbr="ID">ID Ordine</th>
-                            <th scope="col" abbr="Utente">ID Utente</th>
-                            <th scope="col" abbr="Prodotti">Costo Prodotti</th>
-                            <th scope="col" abbr="Spedizione">Costo Spedizione</th>
-                            <th scope="col" abbr="Totale">Totale Finale</th>
-                            <th scope="col" abbr="Indirizzo">Indirizzo Spedizione</th>
-                            <th scope="col" abbr="Pagamento">Metodo Pagamento</th>
-                            <th scope="col" abbr="Data">Data Creazione</th>
-                            <th scope="col" abbr="Gestione">Gestione richiesta</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        [riga_ordini]
-                    </tbody>
-                </table>
-
-            </div>
-            <div class="table-container">
-                <table class="table-data table-early-break" id="tab-ordini-archivio" aria-describedby="descrizione-tab-ordini-archivio">
-                    <thead>
-                        <tr>
-                            <th scope="col" abbr="ID">ID Ordine</th>
-                            <th scope="col" abbr="Utente">ID Utente</th>
-                            <th scope="col" abbr="Prodotti">Costo Prodotti</th>
-                            <th scope="col" abbr="Spedizione">Costo Spedizione</th>
-                            <th scope="col" abbr="Totale">Totale Finale</th>
-                            <th scope="col" abbr="Indirizzo">Indirizzo Spedizione</th>
-                            <th scope="col" abbr="Pagamento">Metodo Pagamento</th>
-                            <th scope="col" abbr="Data">Data Creazione</th>
-                            <th scope="col" abbr="Stato">Stato richiesta</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        [riga_ordini_archivio]
-                    </tbody>
-                </table>
-
-            </div>
-        </section>
-
-        <!-- SEZIONE: richieste degustazioni (prenotazioni) -->
-        <p id="descrizione-tab-degustazioni" class="visually-hidden">
-            La tabella riassume le richieste di prenotazione delle degustazioni.
-            Ogni riga rappresenta una singola prenotazione, mentre le colonne riportano,
-            da sinistra a destra: l’identificativo della prenotazione, il nome e il cognome
-            del richiedente, l’indirizzo email, il tipo di degustazione richiesta,
-            il numero di telefono, la data della visita, il numero di partecipanti,
-            la data di invio della richiesta e l’area di gestione per gestire
-            lo stato della prenotazione.
-        </p>
-
-        <p id="descrizione-tab-degustazioni-archivio" class="visually-hidden">
-            La tabella riassume le richieste di prenotazione delle degustazioni, già gestite dallo staff.
-            Ogni riga rappresenta una singola prenotazione, mentre le colonne riportano,
-            da sinistra a destra: l’identificativo della prenotazione, il nome e il cognome
-            del richiedente, l’indirizzo email, il tipo di degustazione richiesta,
-            il numero di telefono, la data della visita, il numero di partecipanti,
-            la data di invio della richiesta e lo stato della prenotazione.
-        </p>
-
-        <section id="section-esperienze">
-            <div class="admin-table-head">
-            <h2>Richieste esperienze</h2>
-
-            <label class="switch" aria-label="Attiva/disattiva visualizzazione archivio prenotazioni">
-                <input type="checkbox" id="toggleArchivioPrenotazioni">
-                <span class="slider"></span>
-            </label> Visualizza archivio prenotazioni
-            </div>
-
-            <div class="table-container">
-                <table class="table-data table-early-break" id="tab-degustazioni" aria-describedby="descrizione-tab-degustazioni">
-                    <thead>
-                        <tr>
-                            <th scope="col" abbr="ID">ID prenotazione</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Cognome</th>
-                            <th scope="col">Email</th>
-                            <th scope="col" abbr="Tipo">Tipo Degustazione</th>
-                            <th scope="col">Telefono</th>
-                            <th scope="col" abbr="Data">Data visita</th>                            
-                            <th scope="col" abbr="Persone">Numero persone</th>
-                            <th scope="col">Data Invio</th>
-                            <th scope="col" abbr="Gestione">Gestione richiesta</th>
-                        </tr>
-                    </thead>
-                    <tbody> <!--RIEMPIREMO COMN DB-->
-                        [riga_prenotazioni]
-                    </tbody>
-                </table>
-            </div>
-            <div class="table-container">
-                <table class="table-data table-early-break" id="tab-degustazioni-archivio" aria-describedby="descrizione-tab-degustazioni-archivio">
-                    <thead>
-                        <tr>
-                            <th scope="col" abbr="ID">ID prenotazione</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Cognome</th>
-                            <th scope="col">Email</th>
-                            <th scope="col" abbr="Tipo">Tipo Degustazione</th>
-                            <th scope="col">Telefono</th> 
-                            <th scope="col" abbr="Data">Data visita</th>                            
-                            <th scope="col" abbr="Persone">Numero persone</th>
-                            <th scope="col">Data Invio</th>
-                            <th scope="col" abbr="Stato">Stato richiesta</th>
-                        </tr>
-                    </thead>
-                    <tbody> <!--RIEMPIREMO COMN DB-->
-                        [riga_prenotazioni_archivio]
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- SEZIONE: messaggi clienti -->
-        <p id="descrizione-tab-messaggi" class="visually-hidden">
-            La tabella riassume le richieste di assistenza inviate dai clienti.
-            Ogni riga rappresenta una singola richiesta, mentre le colonne riportano,
-            da sinistra a destra: l’identificativo della richiesta, il nome e il cognome
-            del cliente, l’indirizzo email, il tipo di supporto richiesto, il numero
-            di telefono, il contenuto del messaggio, la data di invio e l’area di gestione
-            per rispondere alla richiesta.
-        </p>
-
-        <p id="descrizione-tab-messaggi-archivio" class="visually-hidden">
-            La tabella riassume le richieste di assistenza inviate dai clienti, già gestite dallo staff.
-            Ogni riga rappresenta una singola richiesta, mentre le colonne riportano,
-            da sinistra a destra: l’identificativo della richiesta, il nome e il cognome
-            del cliente, l’indirizzo email, il tipo di supporto richiesto, il numero
-            di telefono, il contenuto del messaggio, la data di invio e la risposta effettuata dall'operatore.
-        </p>
-
-        <section id="section-messaggi">
-            <div class="admin-table-head">
-                <h2>Richieste da parte dei clienti</h2>
-
-                <label class="switch" aria-label="Attiva/disattiva visualizzazione archivio messaggi">
-                    <input type="checkbox" id="toggleArchivioMessaggi">
-                    <span class="slider"></span>
-                </label> Visualizza archivio richieste
-                </div>
-            <div class="table-container">
-                <table class="table-data table-early-break" id="tab-info" aria-describedby="descrizione-tab-messaggi">
-                    <thead>
-                        <tr>
-                            <th scope="col" abbr="ID">ID richiesta</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Cognome</th>
-                            <th scope="col">Email</th>
-                            <th scope="col" abbr="Tipo">Tipo supporto</th>
-                            <th scope="col">Telefono</th>
-                            <th scope="col">Messaggio</th>
-                            <th scope="col" abbr="Data">Data invio</th>
-                            <th scope="col" abbr="Gestione">Gestione richiesta</th>
-                        </tr>
-                    </thead>
-                    <tbody> <!--RIEMPIREMO COMN DB-->
-                        [riga_messaggi]
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="table-container archive-table">
-                <table class="table-data table-early-break" id="tab-info-archivio" aria-describedby="descrizione-tab-messaggi-archivio">
-                    <thead>
-                        <tr>
-                            <th scope="col" abbr="ID">ID richiesta</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Cognome</th>
-                            <th scope="col">Email</th>
-                            <th scope="col" abbr="Tipo">Tipo supporto</th>
-                            <th scope="col">Telefono</th>
-                            <th scope="col">Messaggio</th>
-                            <th scope="col" abbr="Data">Data invio</th>
-                            <th scope="col">Risposta</th>
-                        </tr>
-                    </thead>
-                    <tbody> <!--RIEMPIREMO COMN DB-->
-                        [riga_messaggi_archivio]
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
     </main>
 
     <footer>
@@ -334,7 +304,7 @@
                 &copy; 2025 Tenuta al Morer - <abbr title="Partita">P.</abbr> <abbr title="Imposta sul Valore Aggiunto">IVA</abbr> 00000000000 <br>
                 <a href="policy.php">Note legali</a> | 
                 <a href="policy.php#privacy-policy"><span lang="en">Privacy Policy</span></a> | 
-                <a href="policy.php#accessibility">Accessibilità</a>
+                <a href="policy.php#accessibility">Accessibilita</a>
             </small>
         </div>
     </footer>
