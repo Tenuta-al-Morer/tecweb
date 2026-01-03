@@ -93,20 +93,34 @@ class DBConnection {
     }
 
 
-    // FUNZIONE ARCHIVIA MESSAGGIO (Lato STAFF) - Da sistemare
-    public function salvaMessaggio($id, $messaggioRisposta) {
-        $sql = "UPDATE contatto_archivio
-                SET risposta = ?, stato = 'risposto'
-                WHERE id = ?";
+    public function salvaMessaggio($nome, $cognome, $email, $tipo_supporto, $prefisso, $telefono, $messaggio) {
+        
+        // Query di inserimento nella nuova tabella
+        $query = "INSERT INTO contatto_archivio 
+                 (nome, cognome, email, tipo_supporto, prefisso, telefono, messaggio, data_invio, stato) 
+                 VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), 'aperto')";
 
-        $stmt = $this->connection->prepare($sql);
-        if (!$stmt) return false;
+        $stmt = $this->connection->prepare($query);
+        
+        if (!$stmt) {
+            return false; 
+        }
 
-        $stmt->bind_param("si", $messaggioRisposta, $id);
-        $ok = $stmt->execute();
+        // "sssssss" indica che sono 7 stringhe
+        $stmt->bind_param("sssssss", 
+            $nome, 
+            $cognome, 
+            $email, 
+            $tipo_supporto, 
+            $prefisso, 
+            $telefono, 
+            $messaggio
+        );
+
+        $result = $stmt->execute();
         $stmt->close();
 
-        return $ok;
+        return $result;
     }
 
 
