@@ -74,33 +74,20 @@
         <main id="content-admin" class="admin-wrapper"> 
         <div class="admin-header-row">
             <div>
-                <h1>Gestione Catalogo Vini</h1>
+                <h1>[titolo_admin]</h1>
                 <p>Operatore: <strong>[nome_utente]</strong></p>
             </div>
-            <button class="btn-primary" onclick="apriModalNuovo()" aria-label="Aggiungi nuovo vino">
-                <i class="fas fa-plus" aria-hidden="true"></i> Nuovo Vino
-            </button>
+            <div class="admin-header-actions">
+                <div class="admin-switch">
+                    <a href="admin.php?view=vini" class="[tab_vini_class]">Catalogo Vini</a>
+                    <a href="admin.php?view=utenti" class="[tab_utenti_class]">Utenti</a>
+                </div>
+                [btn_nuovo_vino]
+            </div>
         </div>
 
-        <div class="table-responsive">
-            <table class="compact-table">
-                <caption>Elenco vini nel database</caption>
-                <thead>
-                    <tr>
-                        <th scope="col" style="width: 50px;">ID</th>
-                        <th scope="col" style="width: 80px;">Img</th>
-                        <th scope="col">Dettagli Vino</th>
-                        <th scope="col">Prezzo</th>
-                        <th scope="col">Stock</th>
-                        <th scope="col">Stato</th>
-                        <th scope="col" style="width: 120px;">Azioni</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    [riga_vini]
-                </tbody>
-            </table>
-        </div>
+        [sezione_vini]
+        [sezione_utenti]
     </main>
 
     <div id="modalVino" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
@@ -111,6 +98,7 @@
             <form action="admin.php" method="POST">
                 <input type="hidden" name="azione" value="salva_vino">
                 <input type="hidden" name="id_vino" id="id_vino" value="">
+                <input type="hidden" name="view" value="vini">
 
                 <div class="form-grid">
                     <div class="admin-form-group">

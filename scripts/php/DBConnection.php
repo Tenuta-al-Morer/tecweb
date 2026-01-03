@@ -412,6 +412,35 @@ class DBConnection {
         return $stmt->execute();
     }
 
+    // 6. RECUPERA TUTTI GLI UTENTI (Admin)
+    public function getUtentiAdmin() {
+        $result = $this->connection->query("SELECT id, nome, cognome, email, ruolo, data_registrazione FROM utente ORDER BY id DESC");
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    // 7. AGGIORNA RUOLO UTENTE (Admin)
+    public function aggiornaRuoloUtente($id, $ruolo) {
+        $ruoli_permessi = ['user', 'staff', 'admin'];
+        if (!in_array($ruolo, $ruoli_permessi, true)) {
+            return false;
+        }
+
+        $stmt = $this->connection->prepare("UPDATE utente SET ruolo = ? WHERE id = ?");
+        $stmt->bind_param("si", $ruolo, $id);
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
+    }
+
+    // 8. ELIMINA UTENTE (Admin)
+    public function eliminaUtenteAdmin($id) {
+        $stmt = $this->connection->prepare("DELETE FROM utente WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
+    }
+
     // AGGIORNA STATO ORDINE (ADMIN)
     public function aggiornaStatoOrdine($id_ordine, $nuovo_stato) {
         $stati_permessi = ['in_attesa', 'approvato', 'annullato'];
