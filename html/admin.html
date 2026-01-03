@@ -72,18 +72,19 @@
         </header>
 
         <main id="content-admin" class="admin-wrapper"> 
-        <div class="admin-header-row">
-            <div>
-                <h1>[titolo_admin]</h1>
-                <p>Operatore: <strong>[nome_utente]</strong></p>
-            </div>
-            <div class="admin-header-actions">
-                <div class="admin-switch">
-                    <a href="admin.php?view=vini" class="[tab_vini_class]">Catalogo Vini</a>
-                    <a href="admin.php?view=utenti" class="[tab_utenti_class]">Utenti</a>
-                </div>
-                [btn_nuovo_vino]
-            </div>
+        <div class="admin-page-title">
+            <h1>Gestione amministrazione</h1>
+            <p>Operatore: <strong>[nome_utente]</strong></p>
+        </div>
+
+        <div class="admin-switch admin-switch-full">
+            <a href="admin.php?view=vini" class="[tab_vini_class]">Gestione Vini</a>
+            <a href="admin.php?view=utenti" class="[tab_utenti_class]">Gestione Utenti</a>
+        </div>
+
+        <div class="admin-section-head">
+            <h2>[titolo_admin]</h2>
+            [btn_nuovo_vino]
         </div>
 
         [sezione_vini]
