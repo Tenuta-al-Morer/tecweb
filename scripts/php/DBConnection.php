@@ -163,6 +163,22 @@ class DBConnection {
         return false;
     }
 
+    // FUNZIONE ARCHIVIA MESSAGGIO
+    public function archiviaMessaggio($id, $risposta) {
+        $sql = "UPDATE contatto_archivio
+                SET risposta = ?, stato = 'risposto'
+                WHERE id = ?";
+
+        $stmt = $this->connection->prepare($sql);
+        if (!$stmt) return false;
+
+        $stmt->bind_param("si", $risposta, $id);
+        $ok = $stmt->execute();
+        $stmt->close();
+
+        return $ok;
+    }
+
     // ============================================================
     // SEZIONE E-COMMERCE
     // ============================================================
