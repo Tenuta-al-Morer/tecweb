@@ -6,7 +6,7 @@
     <title>Area Admin - Tenuta al Morer</title>
     <link rel="icon" href="../../images/logo.ico" type="image/x-icon">
 
-    <meta name="description" content="Gestisci la tua area personale, le ordinazioni, le prenotazioni ed eventuali richieste da parte dei clienti.">
+    <meta name="description" content="Gestisci l'area gestionale dell'azienda; ordinazioni, prenotazioni ed eventuali richieste da parte dei clienti.">
     <meta name="keywords" content="esperienze, degustazioni, Tenuta al Morer, vini, messaggi, gestione, richieste">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -82,7 +82,7 @@
             
             <form action="logout.php" method="POST" class="auth-form">
                 <button type="submit" class="btn-primary btn-red">
-                    LOGOUT (ESCI)
+                    <span lang="en">LOGOUT</span> (ESCI)
                 </button>
             </form>
         </div>
@@ -96,10 +96,10 @@
                 Gestione vini
             </a>
 
-            <!-- TAB ESPERIENZE -->
+            <!-- TAB DEGUSTAZIONI -->
             <a href="#tab-degustazioni" class="admin-tab">
                 <i class="fas fa-wine-glass-alt" aria-hidden="true"></i>
-                Richieste esperienze
+                Gestione degustazioni
             </a>
 
             <!-- TAB MESSAGGI -->
@@ -109,9 +109,16 @@
             </a>
         </div>
         <!-- SEZIONE: richieste VINI -->
-        <p id="descrizione-tab-vini" class="visually-hidden">
-            La tabella riassume gli ordini di vini e permette di gestire le richieste: DA COMPLETARE
+        <p id="descrizione-tab-ordini" class="visually-hidden">
+            La tabella riassume le richieste "in_attesa" di acquisto dei vini effettuate dagli utenti.
+            Ogni riga rappresenta un singolo ordine, mentre le colonne riportano,
+            da sinistra a destra: l’identificativo dell’ordine, l’identificativo
+            dell’utente, il costo dei prodotti, il costo della spedizione,
+            il totale finale, l’indirizzo di spedizione, il metodo di pagamento,
+            la data di creazione dell’ordine e l’area di gestione per
+            modificare lo stato della richiesta.
         </p>
+
         <section id="section-vini">
             <div class="admin-table-head">
             <h2>Richieste vini</h2>
