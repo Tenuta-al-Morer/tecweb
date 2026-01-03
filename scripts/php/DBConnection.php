@@ -112,7 +112,7 @@ class DBConnection {
 
     // FUNZIONE PER SALVARE UNA PRENOTAZIONE
     public function salvaPrenotazione($nome, $cognome, $email, $tipo_degustazione, $prefisso, $telefono, $data_visita, $n_persone) {
-        $query = "INSERT INTO prenotazione (nome, cognome, email, tipo_degustazione, prefisso, telefono, data_visita, n_persone, data_invio, stato) 
+        $query = "INSERT INTO prenotazione_archivio (nome, cognome, email, tipo_degustazione, prefisso, telefono, data_visita, n_persone, data_invio, stato) 
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), 'in_attesa')";
         
         $stmt = $this->connection->prepare($query);
@@ -130,7 +130,7 @@ class DBConnection {
     public function archiviaPrenotazione($id) {
         $queryCopia = "INSERT INTO prenotazione_archivio (id, nome, cognome, email, tipo_degustazione, prefisso, telefono, data_visita, n_persone, data_invio, stato)
                        SELECT id, nome, cognome, email, tipo_degustazione, prefisso, telefono, data_visita, n_persone, data_invio, 'Completato'
-                       FROM prenotazione WHERE id = ?";
+                       FROM prenotazione_archivio WHERE id = ?";
         
         $stmt = $this->connection->prepare($queryCopia);
         if (!$stmt) return false;
