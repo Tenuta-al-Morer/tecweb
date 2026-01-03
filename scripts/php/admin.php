@@ -16,6 +16,11 @@ $view = $_GET['view'] ?? ($_POST['view'] ?? 'vini');
 if (!in_array($view, ['vini', 'utenti'], true)) {
     $view = 'vini';
 }
+// Ricerca utenti (solo view=utenti)
+$query = '';
+if ($view === 'utenti') {
+    $query = trim($_GET['q'] ?? '');
+}
 
 // 3. Gestione Azioni (POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -157,6 +162,16 @@ foreach ($viniArray as $v) {
 }
 
 $rigaUtenti = "";
+if ($view === 'utenti' && $query !== '') {
+    $utentiArray = array_filter($utentiArray, function ($u) use ($query) {
+        $q = strtolower($query);
+        return (stripos($u['nome'], $q) !== false)
+            || (stripos($u['cognome'], $q) !== false)
+            || (stripos($u['email'], $q) !== false)
+            || (stripos($u['ruolo'], $q) !== false)
+            || (stripos((string)$u['id'], $q) !== false);
+    });
+}
 foreach ($utentiArray as $u) {
     $idUtente = (int)$u['id'];
     $isSelf = ($idUtente === (int)$_SESSION['utente_id']);
@@ -255,10 +270,22 @@ $btnNuovoVino = ($view === 'vini')
     ? "<button class=\"btn-primary\" onclick=\"apriModalNuovo()\" aria-label=\"Aggiungi nuovo vino\">\n            <i class=\"fas fa-plus\" aria-hidden=\"true\"></i> Nuovo Vino\n       </button>"
     : "";
 
+$userSearchForm = "";
+if ($view === 'utenti') {
+    $safeQuery = htmlspecialchars($query, ENT_QUOTES);
+    $userSearchForm = "<form method=\"GET\" action=\"admin.php\" class=\"admin-search-form\" role=\"search\">
+            <input type=\"hidden\" name=\"view\" value=\"utenti\">
+            <label for=\"admin-search\" class=\"admin-search-label\">Cerca utente</label>
+            <input type=\"search\" id=\"admin-search\" name=\"q\" value=\"{$safeQuery}\" placeholder=\"Nome, email o ruolo\" class=\"admin-search-input\">
+            <button type=\"submit\" class=\"btn-secondary admin-search-button\">Cerca</button>
+        </form>";
+}
+
 $htmlContent = str_replace("[nome_utente]", $nomeUtente, $htmlContent);
 $htmlContent = str_replace("[titolo_admin]", $titoloAdmin, $htmlContent);
 $htmlContent = str_replace("[tab_vini_class]", $tabViniClass, $htmlContent);
 $htmlContent = str_replace("[tab_utenti_class]", $tabUtentiClass, $htmlContent);
+$htmlContent = str_replace("[user_search_form]", $userSearchForm, $htmlContent);
 $htmlContent = str_replace("[btn_nuovo_vino]", $btnNuovoVino, $htmlContent);
 $htmlContent = str_replace("[sezione_vini]", ($view === 'vini') ? $sezioneVini : "", $htmlContent);
 $htmlContent = str_replace("[sezione_utenti]", ($view === 'utenti') ? $sezioneUtenti : "", $htmlContent);
