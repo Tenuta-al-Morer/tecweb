@@ -117,7 +117,7 @@
             <h2>Richieste vini</h2>
 
             <label class="switch" aria-label="Attiva/disattiva visualizzazione archivio ordini">
-                <input type="checkbox">
+                <input type="checkbox" id="toggleArchivioVini">
                 <span class="slider"></span>
             </label> Visualizza archivio ordini
             </div>
@@ -139,6 +139,27 @@
                     </thead>
                     <tbody>
                         [riga_ordini]
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="table-container">
+                <table class="table-data table-early-break" id="tab-ordini-archivio" aria-describedby="descrizione-tab-ordini-archivio">
+                    <thead>
+                        <tr>
+                            <th scope="col" abbr="ID">ID Ordine</th>
+                            <th scope="col" abbr="Utente">ID Utente</th>
+                            <th scope="col" abbr="Prodotti">Costo Prodotti</th>
+                            <th scope="col" abbr="Spedizione">Costo Spedizione</th>
+                            <th scope="col" abbr="Totale">Totale Finale</th>
+                            <th scope="col" abbr="Indirizzo">Indirizzo Spedizione</th>
+                            <th scope="col" abbr="Pagamento">Metodo Pagamento</th>
+                            <th scope="col" abbr="Data">Data Creazione</th>
+                            <th scope="col" abbr="Stato">Stato richiesta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        [riga_ordini_archivio]
                     </tbody>
                 </table>
 

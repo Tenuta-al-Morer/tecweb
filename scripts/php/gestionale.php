@@ -78,6 +78,7 @@ $nomeUtente = htmlspecialchars($_SESSION['nome']);
 // 1) Lettura da DB
 $db = new DBConnection();
 $ordiniArray = $db->getOrdini();
+$ordiniArchivioArray = $db->getOrdiniArchivio();
 $prenotazioniArray = $db->getPrenotazioni();
 $prenotazioniArchivioArray = $db->getPrenotazioniArchivio();
 $messaggiArray = $db->getMessaggi();
@@ -107,6 +108,23 @@ foreach ($ordiniArray as $ordine) {
                 </td>';
     $ordini .= "</tr>";
 }
+
+$ordiniArchivio = "";
+
+foreach ($ordiniArchivioArray as $ordine) { 
+    $ordiniArchivio .= "<tr>";
+    $ordiniArchivio .= '<th scope="row">' . (int)$ordine['id'] . '</th>';
+    $ordiniArchivio .= '<td data-title="ID Utente">' . (int)$ordine['id_utente'] . '</td>';
+    $ordiniArchivio .= '<td data-title="Costo Prodotti">' . number_format($ordine['totale_prodotti'], 2) . ' €</td>';
+    $ordiniArchivio .= '<td data-title="Costo Spedizione">' . number_format($ordine['costo_spedizione'], 2) . ' €</td>';
+    $ordiniArchivio .= '<td data-title="Totale Finale">' . number_format($ordine['totale_finale'], 2) . ' €</td>';
+    $ordiniArchivio .= '<td data-title="Indirizzo Spedizione">' . htmlspecialchars($ordine['indirizzo_spedizione']) . '</td>';
+    $ordiniArchivio .= '<td data-title="Metodo Pagamento">' . htmlspecialchars($ordine['metodo_pagamento']) . '</td>';
+    $ordiniArchivio .= '<td data-title="Data Creazione">' . htmlspecialchars($ordine['data_creazione']) . '</td>';
+    $ordiniArchivio .= '<td data-title="Stato">' . htmlspecialchars($ordine['stato_ordine']) . '</td>';
+    $ordiniArchivio .= "</tr>";
+}
+
 
 $prenotazioni = "";
 foreach ($prenotazioniArray as $prenotazione) {
@@ -198,6 +216,7 @@ $htmlContent = str_replace("[nome_utente]", $nomeUtente, $htmlContent);
 $htmlContent = str_replace("[email_utente]", $emailUtente, $htmlContent);
 $htmlContent = str_replace("[riferimento]", $ruoloUtente, $htmlContent);
 $htmlContent = str_replace("[riga_ordini]", $ordini, $htmlContent);
+$htmlContent = str_replace("[riga_ordini_archivio]", $ordiniArchivio, $htmlContent);
 $htmlContent = str_replace("[riga_prenotazioni]", $prenotazioni, $htmlContent);
 $htmlContent = str_replace("[riga_prenotazioni_archivio]", $prenotazioniArchivio, $htmlContent);
 $htmlContent = str_replace("[riga_messaggi]", $messaggi, $htmlContent);

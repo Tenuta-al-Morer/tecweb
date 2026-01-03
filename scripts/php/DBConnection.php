@@ -441,6 +441,25 @@ class DBConnection {
         return $ordini;
     }
 
+    public function getOrdiniArchivio() {
+        $ordini = [];
+        
+        $queryOrdini = "SELECT * FROM ordine WHERE stato_ordine!='in_attesa' ORDER BY data_creazione DESC";
+        $stmtOrd = $this->connection->prepare($queryOrdini);
+        if (!$stmtOrd) { return []; }
+
+        $stmtOrd->execute();
+        $resultOrd = $stmtOrd->get_result();
+
+        while ($ordine = $resultOrd->fetch_assoc()) {
+            $ordine['elementi'] = $this->getDettagliOrdine($ordine['id']);
+            $ordini[] = $ordine;
+        }
+        
+        $stmtOrd->close();
+        return $ordini;
+    }
+
 
     // RECUPERO PRENOTAZIONI (GESTIONALE)
     public function getPrenotazioni() {
