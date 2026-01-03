@@ -662,6 +662,212 @@ body.light-mode .table-data td::before {
     }
 }
 
+
+/* =========================================
+   RESPONSIVE ADMIN (Mobile Card View - Ottimizzata)
+   ========================================= */
+@media screen and (max-width: 900px) {
+    
+    /* --- 1. HEADER ADMIN MOBILE --- */
+
+    .admin-header-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2rem;
+        text-align: center;
+        margin-bottom: 2.5rem;
+        padding-bottom: 1rem;
+    }
+
+    .admin-header-row > div {
+        width: 100%;
+    }
+
+    .admin-header-row h1 {
+        font-size: 2rem;
+        line-height: 1.2em;
+        margin-bottom: 0.8rem;
+    }
+
+    .admin-header-row p {
+        margin-bottom: 0;
+    }
+
+    .admin-header-row button.btn-primary {
+        width: 100%;
+        justify-content: center;
+        padding: 1.2rem;
+        margin-top: 0.5rem;
+    }
+
+    /* --- 2. TABELLA COMPATTA (Card View) --- */
+    .compact-table thead {
+        display: none;
+    }
+
+    .compact-table, .compact-table tbody, .compact-table tr, .compact-table td {
+        display: block;
+        width: 100%;
+    }
+
+    /* CAPTION: Centrata e stilizzata */
+    .compact-table caption {
+        display: block;
+        position: static;
+        text-indent: 0;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-family: 'Lexend', sans-serif;
+        font-weight: 700;
+        color: var(--gold-color);
+        font-size: 1.3rem;
+        border-bottom: 2px solid var(--bordercolor);
+        padding-bottom: 0.5rem;
+    }
+
+    /* CARD (Riga Tabella) */
+    .compact-table tr {
+        margin-bottom: 2rem;
+        background-color: var(--card-bg);
+        border: 1px solid var(--bordercolor);
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Ombra più marcata per stacco */
+        padding: 1.5rem;
+        position: relative;
+    }
+
+    /* CELLE (Righe interne) */
+    .compact-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.8rem 0;
+        border-bottom: 1px dashed var(--bordercolor); /* Linea tratteggiata più leggera */
+        text-align: right;
+        gap: 1rem; /* Spazio vitale tra etichetta e valore */
+    }
+
+    .compact-table td:last-child {
+        border-bottom: none;
+        padding-top: 1.5rem;
+        justify-content: center;
+    }
+
+    /* ETICHETTE (Sinistra) */
+    .compact-table td::before {
+        content: attr(data-title);
+        font-weight: 700;
+        color: var(--gold-color);
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 0.05em;
+        text-align: left;
+        flex-shrink: 0; /* Impedisce all'etichetta di schiacciarsi */
+    }
+
+    /* --- ECCEZIONI DI LAYOUT --- */
+
+    /* ID: Discreto in alto a destra */
+    .compact-table td[data-title="ID"] {
+        position: absolute;
+        top: 1rem;
+        right: 1.5rem;
+        border: none;
+        padding: 0;
+        width: auto;
+        font-size: 0.85rem;
+        color: var(--diversity-color);
+    }
+    .compact-table td[data-title="ID"]::before { display: none; }
+
+    /* FOTO: Grande e centrata */
+    .compact-table td[data-title="Anteprima"] {
+        justify-content: center;
+        border-bottom: none;
+        padding-bottom: 1rem;
+    }
+    .compact-table td[data-title="Anteprima"]::before { display: none; }
+    
+    .admin-thumb {
+        width: 120px;
+        height: 120px;
+        border-radius: 8px;
+        background-color: var(--pure-white);
+        border: 1px solid var(--bordercolor);
+    }
+
+    /* DETTAGLI: Testo centrato sotto la foto */
+    .compact-table td[data-title="Dettagli"] {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.5rem;
+        border-bottom: 1px solid var(--bordercolor); /* Linea solida per separare header */
+        padding-bottom: 1.2rem;
+    }
+    .compact-table td[data-title="Dettagli"]::before { display: none; }
+    
+    .wine-title { 
+        font-size: 1.4rem; 
+        margin-bottom: 0;
+        color: var(--card-title-color); 
+    }
+    
+    .truncate { 
+        white-space: normal;
+        text-align: center;
+        font-size: 0.95rem;
+        line-height: 1.4;
+        color: var(--txtcolor);
+    }
+
+    /* AZIONI: Bottoni grandi affiancati */
+    .action-group {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .btn-icon {
+        flex: 1; /* Si allargano per riempire lo spazio */
+        height: 48px;
+        font-size: 1.2rem;
+        border-radius: 6px;
+        background-color: var(--navbgcolor); /* Sfondo per contrasto */
+    }
+    .admin-wrapper {
+        margin: 0rem 4rem;
+        width: 100%;
+        box-sizing: border-box;
+        border: none;
+        box-shadow: none;
+        background: transparent;
+        align-self: center;
+    }
+
+    body.light-mode .compact-table tr {
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    body.light-mode .compact-table td {
+        border-bottom-color: #f0f0f0;
+    }
+
+    body.light-mode .wine-title {
+        color: #222;
+    }
+    
+    body.light-mode .compact-table caption {
+        color: #8a6b1e; /* Oro scuro */
+    }
+
+    body.light-mode .btn-icon {
+        color: var(--pure-white)
+    }
+}
+
 /* =========================================
    Pagina carrello
    ========================================= */
