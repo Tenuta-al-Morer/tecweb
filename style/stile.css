@@ -8,115 +8,203 @@
 }
 
 :root {
-    /* PALETTE PRIMITIVA */
+    /* PALETTE BASE */
     --pure-white:  #ffffff;
     --pure-black:  #000000;
-    
+    --transparent: transparent;
+
     /* Brand Colors */
-    --color-gold:     #C5A551; 
-    --color-red:      #b41124; 
-    --color-bg-dark:  #1D1D1D; 
-    --color-bg-light: #F7F4EB;
+    --color-gold:        #C5A551;
+    --color-gold-hover:  #D2B360;
+    --color-gold-active: #A9883A;
+    --color-gold-dark:   #8a6b1e;
+    --color-bg-dark:     #1D1D1D; 
+    --color-bg-light:    #F7F4EB;
 
-    /* Scala dei Grigi (Ridotta a 4 step) */
-    --gray-dark:      #252525; 
-    --gray-medium:    #333333; 
-    --gray-light:     #616161;
-    --gray-text:      #e0e0e0; 
-    --gray-border:    #b6b6b6; 
+    /* Rossi (base + derivazioni) */
+    --color-red:         #5B181B;
+    --color-red-hover:   #4A1214;
+    --color-red-active:  #360D0E;
+    --color-red-strong:  #7A1F23;
+    --color-red-soft:    #f5d6d7;
+    --color-red-border:  #e8b5b7;
 
-    /* Sfumature Warm/Gold */
-    --warm-black:     #292621; 
-    --gold-shadow:    #5c4d26;
-    --gold-focus:     #3e3827;
-    
+    /* Verdi (stato positivo) */
+    --color-green:        #28a745;
+    --color-green-hover:  #1f7e34;
+    --color-green-active: #145a24;
+    --color-green-text:   #155724;
+    --color-green-bg:     #d4edda;
+    --color-green-border: #c3e6cb;
+
+    /* Altri stati */
+    --color-blue:   #007bff;
+    --color-cyan:   #17a2b8;
+    --color-yellow: #ffc107;
+    --color-yellow-dark: #92480c;
+
+    /* Testi */
+    --text-on-dark: #e0e0e0;
+    --text-on-light: #121212;
+    --text-strong:  #222222;
+    --text-medium:  #333333;
+    --text-emphasis:#444444;
+    --text-soft:    #5a5a5a;
+    --text-muted:   #555555;
+    --text-subtle:  #666666;
+    --text-faded:   #6a6a6a;
+    --text-cream:   #f5f2eb;
+
+    /* Superfici */
+    --surface-dark:        var(--color-bg-dark);
+    --surface-dark-alt:    #252525;
+    --surface-dark-muted:  #333333;
+    --surface-warm-dark:   #292621;
+    --surface-light:       #f4f4f4;
+    --surface-light-alt:   #f9f9f9;
+    --surface-light-strong:#f0f0f0;
+    --surface-white:       #ffffff;
+    --surface-cream:       #f7f2e9;
+    --surface-cream-alt:   #f5f2eb;
+    --surface-cream-muted: #f2efe6;
+    --surface-cream-soft:  #eee8d5;
+    --surface-cream-strong:#eae4d4;
+    --surface-cream-stronger:#e1d8c2;
+    --surface-cream-border:#e0d7c3;
+    --surface-cream-bright:#fbf9f4;
+    --surface-cream-deep:  #e9dfbd;
+    --surface-nav-light:   #f6f1e7;
+
+    /* Alias neutrali (compatibilità) */
+    --gray-dark:   var(--surface-dark-alt);
+    --gray-medium: var(--surface-dark-muted);
+    --gray-light:  var(--border-separator);
+    --gray-text:   var(--text-on-dark);
+    --gray-border: var(--border-default);
+
+    /* Bordi */
+    --border-default:       #b6b6b6;
+    --border-separator:     #616161;
+    --border-subheader:     #333333;
+    --border-strong:        #4b4b4b;
+    --border-strong-alt:    #444444;
+    --border-light:         #e0e0e0;
+    --border-light-strong:  #dddddd;
+    --border-light-stronger:#cccccc;
+    --border-light-muted:   #dddddd;
+    --border-light-subtle:  #eeeeee;
+    --border-cream:         #cfc7b5;
+    --border-nav-separator-light: #c8c0b2;
+    --border-subheader-light:     #d4ccbe;
+
     /* Layout */
-    --bodybgcolor:            var(--color-bg-dark);
-    --navbgcolor:             var(--color-bg-dark);
-    --bodybgcolor:              var(--color-bg-dark);
-    --hero-overlay-light:     var(--gray-medium); 
+    --bodybgcolor:            var(--surface-dark);
+    --navbgcolor:             var(--surface-dark);
+    --hero-overlay-light:     var(--surface-dark-muted);
 
     /* Testi e Bordi */
-    --txtcolor:               var(--gray-text);
-    --diversity-color:        var(--gray-text); 
-    --bordercolor:            var(--gray-border);
-    --nav-separator-color:    var(--gray-light);
-    --subheader-border-color: var(--gray-medium);
+    --txtcolor:               var(--text-on-dark);
+    --diversity-color:        var(--text-on-dark); 
+    --bordercolor:            var(--border-default);
+    --nav-separator-color:    var(--border-separator);
+    --subheader-border-color: var(--border-subheader);
 
     /* Elementi UI */
-    --code-bg:                var(--gray-medium);
-    --table-stripe:           var(--gray-dark);
-    --slider-btn-bg:          var(--gray-dark);
+    --code-bg:                var(--surface-dark-muted);
+    --table-stripe:           var(--surface-dark-alt);
+    --slider-btn-bg:          var(--surface-dark-alt);
     
     /* Cards */
-    --card-bg:                var(--color-bg-dark);
-    --card-border:            var(--gray-medium);
+    --card-bg:                var(--surface-dark);
+    --card-border:            var(--surface-dark-muted);
     --card-title-color:       var(--pure-white);
-    --card-desc-color:        var(--gray-text);
+    --card-desc-color:        var(--text-on-dark);
     --card-shadow:            var(--pure-black);
     --card-hover-shadow:      var(--pure-black); 
 
     /* Logica Gold */
     --gold-color:             var(--color-gold);
     --gold-color-nav:         var(--color-gold);
-    --shadow-gold:            var(--gold-shadow);
-    --focus-gold:             var(--gold-focus);
-    --hover-faded:            var(--warm-black);
+    --shadow-gold:            #5c4d26;
+    --focus-gold:             #3e3827;
+    --hover-faded:            var(--surface-warm-dark);
     
     /* Errori e Link */
     --visitedcolor:           var(--color-red);
-    --red-errors: #FF5252;
+    --red-errors:             var(--color-red-strong);
 
     /* Bottoni ROSSI */
     --btn-red-bg:     var(--color-red);
-    --btn-red-hover:  #80111D;
-    --btn-red-active: #4C0810; 
+    --btn-red-hover:  var(--color-red-hover);
+    --btn-red-active: var(--color-red-active); 
     --btn-red-text:   var(--pure-white);
 
-    /* Bottoni ORO (Intatti ma ottimizzati) */
+    /* Bottoni ORO */
     --btn-gold-bg:     var(--color-gold);
-    --btn-gold-hover:  #D2B360;
+    --btn-gold-hover:  var(--color-gold-hover);
     --btn-hover-bg:    var(--color-gold); 
-    --btn-gold-active: #A9883A;
+    --btn-gold-active: var(--color-gold-active);
     --btn-gold-text:   var(--color-bg-dark);
+    --btn-gold-border: var(--color-gold-active);
 
-    /* Status Colors  */
-    --color-green:        #28a745;
-    --color-blue:         #007bff;
-    --color-cyan:         #17a2b8;
-    --color-yellow:       #ffc107;
+    /* Overlay e Shadow */
+    --shadow-black-05: rgba(0,0,0,0.05);
+    --shadow-black-10: rgba(0,0,0,0.1);
+    --shadow-black-15: rgba(0,0,0,0.15);
+    --shadow-black-20: rgba(0,0,0,0.2);
+    --shadow-black-25: rgba(0,0,0,0.25);
+    --shadow-black-30: rgba(0,0,0,0.3);
+    --shadow-black-35: rgba(0,0,0,0.35);
+    --shadow-black-45: rgba(0,0,0,0.45);
+    --shadow-black-65: rgba(0,0,0,0.65);
+    --overlay-black-85: rgba(0,0,0,0.85);
+    --overlay-white-04: rgba(255,255,255,0.04);
+    --overlay-white-08: rgba(255,255,255,0.08);
+    --overlay-white-10: rgba(255,255,255,0.1);
+    --overlay-white-70: rgba(255,255,255,0.7);
+    --overlay-white-90: rgba(255,255,255,0.9);
+    --gold-glow-05: rgba(197,165,81,0.05);
+    --gold-glow-10: rgba(197,165,81,0.1);
+    --gold-glow-30: rgba(197,165,81,0.3);
+    --gold-glow-35: rgba(197,165,81,0.35);
+    --border-gold-soft: rgba(197,165,81,0.33);
+    --gold-glow-dark-20: rgba(138,107,30,0.2);
+    --overlay-red-60: rgba(91,24,27,0.6);
+    --overlay-warm-60: rgba(10,5,0,0.6);
+    --state-accept-bg: rgba(40,167,69,0.2);
+    --state-reject-bg: rgba(91,24,27,0.2);
 }
 
 
 body.light-mode {
-    /* --- Primitive Locali  --- */
-    --light-bg:    #f4f4f4; 
-    --color-yellow:   #92480c;
-    --color-green:        #0b501b;
-    --red-errors: #752222;
-    
-    /* Brand & Testi */
-    --gold-color:       #8a6b1e;
-    --txtcolor:         #121212;
-    --card-title-color: #222222; 
-    --card-desc-color:  #555555;
-    --color-red:      #680f19; 
-    
-    /* Sfondi */
-    --bodybgcolor:      var(--light-bg); 
-    --code-bg:          var(--light-bg); 
-    --card-bg:          var(--light-bg);
-    --table-stripe:     var(--light-bg);
-    
-    /* Bordi e Elementi UI */
-    --bordercolor:      #4b4b4b;
-    --card-border:      #dddddd;
-    --diversity-color:  #333333;
-    --btn-hover-bg:     #ddae48;
-
-    /* Ombre */
-    --card-shadow:       #e0e0e0;
-    --card-hover-shadow: var(--card-shadow); 
+    --gold-color:       var(--color-gold-dark);
+    --gold-color-nav:   var(--color-gold);
+    --txtcolor:         var(--text-on-light);
+    --card-title-color: var(--text-strong); 
+    --card-desc-color:  var(--text-muted);
+    --bodybgcolor:      var(--surface-light); 
+    --code-bg:          var(--surface-light); 
+    --card-bg:          var(--surface-light);
+    --table-stripe:     var(--surface-light);
+    --bordercolor:      var(--border-strong);
+    --card-border:      var(--border-light-strong);
+    --diversity-color:  var(--text-medium);
+    --btn-hover-bg:     var(--color-gold-hover);
+    --navbgcolor:       var(--color-bg-dark);
+    --nav-separator-color: var(--border-separator);
+    --subheader-border-color: var(--border-subheader);
+    --card-shadow:       var(--border-light);
+    --card-hover-shadow: var(--border-light);
+    --color-yellow:     var(--color-yellow-dark);
+    --color-green:      #0b501b;
+    --color-green-hover:#0b501b;
+    --color-green-active:#0b501b;
+    --red-errors:       var(--color-red-strong);
+    --gray-dark:   var(--surface-light-strong);
+    --gray-medium: var(--border-strong);
+    --gray-light:  var(--border-nav-separator-light);
+    --gray-text:   var(--text-on-light);
+    --gray-border: var(--border-strong);
 }
 
 html {
@@ -222,7 +310,7 @@ body.light-mode .navigationHelp:focus {
     font-size: 0.9em;
     display: inline-block;
     cursor: pointer;
-    border: 2px solid transparent;
+    border: 2px solid var(--transparent);
 }
 
 .btn-outline-white {
@@ -293,7 +381,7 @@ body.light-mode .navigationHelp:focus {
 
 .admin-tab {
     padding: 0.5rem 1rem;
-    background: transparent;
+    background: var(--transparent);
     color: var(--gold-color);
     text-decoration: none;
     font-family: 'Lexend', sans-serif;
@@ -314,9 +402,9 @@ body.light-mode .navigationHelp:focus {
 }
 
 .admin-tab.is-active {
-  background-color: gold;
-  color: #000;
-  border-color: goldenrod;
+  background-color: var(--color-gold);
+  color: var(--pure-black);
+  border-color: var(--btn-gold-border);
 }
 
 
@@ -347,13 +435,13 @@ body.light-mode .navigationHelp:focus {
 }
 
 .btn-accept:hover, .btn-accept:focus {
-    background-color: #1f7e34;
-    border-color: #1f7e34;
+    background-color: var(--color-green-hover);
+    border-color: var(--color-green-hover);
 }
 
 .btn-accept:active {
-    background-color: #145a24;
-    border-color: #145a24;
+    background-color: var(--color-green-active);
+    border-color: var(--color-green-active);
 }
 
 .btn-reject {
@@ -587,7 +675,7 @@ body.light-mode .navigationHelp:focus {
     padding: 1.5rem;
     margin-bottom: 3rem;
     border-radius: 4px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 6px var(--shadow-black-10); 
 }
 
 .alert-box p { margin: 0; font-size: 1.1rem; color: var(--txtcolor); }
@@ -623,7 +711,7 @@ body.light-mode .navigationHelp:focus {
 .btn-text-link {
     display: inline-block; margin-top: 0.8rem; font-weight: 700;
     color: var(--gold-color); text-decoration: none;
-    border-bottom: 2px solid transparent; transition: border-color 0.3s ease;
+    border-bottom: 2px solid var(--transparent); transition: border-color 0.3s ease;
 }
 
 .btn-text-link:hover, .btn-text-link:focus { border-bottom-color: var(--gold-color); }
@@ -737,7 +825,7 @@ body.light-mode ::-webkit-calendar-picker-indicator {
     margin-top: 1em;
     margin-bottom: 1rem;
     border-radius: 4px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 6px var(--shadow-black-10); 
 }
 
 .deg-card h3 { margin-bottom: 0.8em; font-size: 1.25em; }
@@ -852,7 +940,7 @@ a.logo-link:hover img, a.logo-link:focus img { transform: scale(1.05); }
     border: none;
     border-radius: 0;
     color: var(--gold-color-nav);
-    filter: drop-shadow(0 0 6px rgba(197, 165, 81, 0.35));
+    filter: drop-shadow(0 0 6px var(--gold-glow-35));
 }
 
 .primary-navigation a.is-visited::before,
@@ -1148,7 +1236,7 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
     max-width: 900px;
     margin: 0 auto;
     padding: 0;
-    background-color: transparent;
+    background-color: var(--transparent);
     border-radius: 0;
     border: none;
     backdrop-filter: none;
@@ -1166,8 +1254,8 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
     height: 100%;
     background: linear-gradient(
         to bottom,
-        rgba(90, 26, 26, 0.6),
-        rgba(10, 5, 0, 0.6)
+        var(--overlay-red-60),
+        var(--overlay-warm-60)
     );
     z-index: 2; 
 }
@@ -1214,7 +1302,7 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
     background-color: var(--btn-red-bg);
     color: var(--btn-red-text);
     border-color: var(--btn-red-bg);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 18px 40px var(--shadow-black-45);
     transition: 
         background-color 0.2s ease,
         border-color 0.2s ease,
@@ -1233,11 +1321,11 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
     background-color: var(--btn-red-active);
     border-color: var(--btn-red-active);
     transform: translateY(0);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 10px 25px var(--shadow-black-35);
 }
 
 .hero-actions .btn-outline-second {
-    background-color: transparent;
+    background-color: var(--transparent);
     color: var(--btn-red-text);
     border-color: var(--btn-gold-bg);
     box-shadow: none;
@@ -1249,13 +1337,13 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
 
 .hero-actions .btn-outline-second:hover,
 .hero-actions .btn-outline-second:focus {
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: var(--overlay-white-08);
     border-color: var(--btn-gold-hover);
     transform: translateY(-1px);
 }
 
 .hero-actions .btn-outline-second:active {
-    background-color: rgba(255, 255, 255, 0.04);
+    background-color: var(--overlay-white-04);
     border-color: var(--btn-gold-active);
     transform: translateY(0);
 }
@@ -1318,9 +1406,9 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
 
 .slider-btn {
     position: absolute; top: 50%; transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.35);
+    background-color: var(--shadow-black-35);
     color: var(--pure-white);
-    border: 1px solid rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--overlay-white-70);
     width: 44px;
     height: 44px;
     padding: 0;
@@ -1373,7 +1461,7 @@ footer {
     justify-content: center;
     align-items: center;
     transition: background-color 0.3s ease, color 0.3s ease;
-    border-top: 1px solid #c5a45154;
+    border-top: 1px solid var(--border-gold-soft);
 }
 
 footer small {
@@ -1418,7 +1506,7 @@ footer a:visited {
     align-items: center;
     justify-content: center;
 
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 6px 15px var(--shadow-black-25);
 
     opacity: 0;
     visibility: hidden;
@@ -1499,11 +1587,11 @@ footer a:visited {
 }
 
 .btn-red {
-    background-color: #d9534f; border-color: #d9534f;
+    background-color: var(--btn-red-bg); border-color: var(--btn-red-bg);
 }
 
 .btn-red:hover, .btn-red:focus {
-    background-color: #c9302c; border-color: #c9302c;
+    background-color: var(--btn-red-hover); border-color: var(--btn-red-hover);
 }
 
 .auth-container p {
@@ -1561,7 +1649,7 @@ footer a:visited {
 .auth-form select {
     width: 100%; 
     padding: 0.8rem;
-    background-color: transparent;
+    background-color: var(--transparent);
     border: 1px solid var(--bordercolor);
     border-radius: 4px;
     color: var(--txtcolor);
@@ -1741,18 +1829,18 @@ input:-webkit-autofill:focus {
 .alert {
     padding: 15px;
     margin-bottom: 20px;
-    border: 1px solid transparent;
+    border: 1px solid var(--transparent);
     border-radius: 4px;
 }
 .alert.success {
-    color: #155724;
-    background-color: #d4edda;
-    border-color: #c3e6cb;
+    color: var(--color-green-text);
+    background-color: var(--color-green-bg);
+    border-color: var(--color-green-border);
 }
 .alert.error {
     color: var(--red-errors);
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
+    background-color: var(--color-red-soft);
+    border-color: var(--color-red-border);
 }
 
 .alert.error ul {
@@ -1790,23 +1878,23 @@ input:-webkit-autofill:focus {
    ========================================= */
 
 .sub-header {
-    border-bottom: 1px solid #c5a45154 ;
-    border-top: 1px solid #c5a45154 ;
+    border-bottom: 1px solid var(--border-gold-soft);
+    border-top: 1px solid var(--border-gold-soft);
 }
 
 .tenuta-body {
     background-color: var(--bodybgcolor); 
-    color: #f5f2eb;
+    color: var(--text-cream);
     font-family: "Lexend", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 .tenuta-body.light-mode {
-    background-color: #f7f2e9;
+    background-color: var(--surface-cream);
     color: var(--bodybgcolor);
 }
 
 .tenuta-body.light-mode .tenuta-main {
-    background-color: #f7f2e9;
+    background-color: var(--surface-cream);
 }
 
 .tenuta-main {
@@ -1875,7 +1963,7 @@ input:-webkit-autofill:focus {
     border-radius: 32px;
     object-fit: cover;
     aspect-ratio: 4 / 3;
-    box-shadow: 0 24px 55px rgba(0, 0, 0, 0.65);
+    box-shadow: 0 24px 55px var(--shadow-black-65);
 }
 
 .tenuta-card-text {
@@ -2003,11 +2091,11 @@ footer {
     font-weight: 500;
     border-radius: 4px 0 0 4px;
     transition: background-color 0.3s, color 0.3s, border-left 0.3s;
-    border-left: 3px solid transparent;
+    border-left: 3px solid var(--transparent);
 }
 
 .user-nav-link:hover, .user-nav-link:focus {
-    background-color: var(--warm-black);
+    background-color: var(--surface-warm-dark);
     color: var(--pure-white);
 }
 
@@ -2020,12 +2108,12 @@ footer {
 
 body.light-mode .user-nav-link:hover,
 body.light-mode .user-nav-link:focus {
-    background-color: #eae4d4;
-    color: #222222;
+    background-color: var(--surface-cream-strong);
+    color: var(--text-strong)222;
 }
 
 body.light-mode .user-nav-link.is-active {
-    background-color: #e1d8c2;
+    background-color: var(--surface-cream-stronger);
     color: var(--gold-color);
     border-left-color: var(--gold-color);
 }
@@ -2371,7 +2459,7 @@ a.feature-card.card-link {
 
 .danger-zone {
     border: 1px solid var(--color-red);
-    background-color: color-mix(in srgb, var(--color-red), transparent 90%);
+    background-color: color-mix(in srgb, var(--color-red), var(--transparent) 90%);
     border-radius: 8px;
     padding: 2rem;
     margin-top: 2rem;
@@ -2641,7 +2729,7 @@ a.feature-card.card-link {
     border: none;
     border-left: 1px solid var(--bordercolor); 
     border-right: 1px solid var(--bordercolor);
-    background: transparent; 
+    background: var(--transparent); 
     color: var(--txtcolor); 
     padding: 0; 
     font-weight: bold;
@@ -2913,7 +3001,7 @@ a.feature-card.card-link {
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
-    background-color: transparent;
+    background-color: var(--transparent);
     text-transform: uppercase;
     font-size: 0.9rem;
 }
@@ -2947,7 +3035,7 @@ a.feature-card.card-link {
     border-radius: 8px;
     padding: 2rem;
     margin-bottom: 2rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px var(--shadow-black-20);
 }
 
 .checkout-section h2 {
@@ -3017,8 +3105,8 @@ a.feature-card.card-link {
 
 .payment-card input[type="radio"]:checked + .payment-content {
     border-color: var(--gold-color);
-    background-color: rgba(197, 165, 81, 0.1);
-    box-shadow: 0 0 15px rgba(197, 165, 81, 0.3);
+    background-color: var(--gold-glow-10);
+    box-shadow: 0 0 15px var(--gold-glow-30);
     transform: translateY(-2px);
 }
 
@@ -3234,17 +3322,17 @@ a.feature-card.card-link {
 }
 
 body.light-mode .admin-search-label {
-    color: #333333;
+    color: var(--text-medium)333;
 }
 
 body.light-mode .admin-search-input {
-    background-color: #ffffff;
-    color: #222222;
-    border-color: #cfc7b5;
+    background-color: var(--pure-white);
+    color: var(--text-strong)222;
+    border-color: var(--border-cream);
 }
 
 body.light-mode .admin-search-input::placeholder {
-    color: #6a6a6a;
+    color: var(--text-faded);
 }
 
 .admin-header-actions {
@@ -3293,13 +3381,13 @@ body.light-mode .admin-search-input::placeholder {
     text-transform: uppercase;
     letter-spacing: 0.04em;
     transition: all 0.2s ease;
-    border: 1px solid transparent;
+    border: 1px solid var(--transparent);
 }
 
 .admin-switch .btn-primary {
     background-color: var(--gold-color);
     color: var(--bodybgcolor);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 6px 14px var(--shadow-black-25);
     margin-top: 0;
     width: auto;
 }
@@ -3307,13 +3395,13 @@ body.light-mode .admin-search-input::placeholder {
 .admin-switch .btn-primary:hover,
 .admin-switch .btn-primary:focus {
     transform: none;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 16px var(--shadow-black-30);
 }
 
 .admin-switch .btn-secondary {
-    background-color: transparent;
+    background-color: var(--transparent);
     color: var(--txtcolor);
-    border-color: transparent;
+    border-color: var(--transparent);
     margin-top: 0;
     width: auto;
 }
@@ -3419,12 +3507,12 @@ body.light-mode .admin-search-input::placeholder {
     text-transform: uppercase;
 }
 .badge-active {
-    background-color: rgba(40, 167, 69, 0.2);
+    background-color: var(--state-accept-bg);
     color: var(--color-green);
     border: 1px solid var(--color-green);
 }
 .badge-hidden {
-    background-color: rgba(180, 17, 36, 0.2);
+    background-color: var(--state-reject-bg);
     color: var(--color-red);
     border: 1px solid var(--color-red);
 }
@@ -3437,7 +3525,7 @@ body.light-mode .admin-search-input::placeholder {
 }
 
 .btn-icon {
-    background: transparent;
+    background: var(--transparent);
     border: 1px solid var(--bordercolor);
     color: var(--txtcolor);
     width: 44px;
@@ -3467,7 +3555,7 @@ body.light-mode .admin-search-input::placeholder {
     display: none;
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.85);
+    background-color: var(--overlay-black-85);
     z-index: 2000;
     align-items: center; justify-content: center;
     backdrop-filter: blur(2px);
@@ -3514,87 +3602,87 @@ body.light-mode .admin-search-input::placeholder {
     display: block; margin-bottom: 0.5rem; font-weight: 700; color: var(--gold-color);
 }
 body.light-mode .admin-wrapper {
-    background-color: #ffffff; /* Bianco puro */
-    border-color: #e0e0e0;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    background-color: var(--pure-white); /* Bianco puro */
+    border-color: var(--border-light);
+    box-shadow: 0 4px 15px var(--shadow-black-05);
 }
 
 body.light-mode .admin-switch {
-    background-color: #f2efe6;
-    border-color: #e0d7c3;
+    background-color: var(--surface-cream-muted);
+    border-color: var(--surface-cream-border);
 }
 
 body.light-mode .admin-switch .btn-secondary {
-    color: #5a5a5a;
+    color: var(--text-soft);
 }
 
 body.light-mode .admin-switch .btn-secondary:hover,
 body.light-mode .admin-switch .btn-secondary:focus {
-    background-color: #eae4d4;
-    color: #333333;
+    background-color: var(--surface-cream-strong);
+    color: var(--text-medium)333;
 }
 
 body.light-mode .compact-table {
-    background-color: #ffffff;
-    color: #333333;
+    background-color: var(--pure-white);
+    color: var(--text-medium)333;
 }
 
 body.light-mode .compact-table th {
-    background-color: #f4f4f4; /* Grigio chiaro per header */
-    color: #8a6b1e; /* Oro scuro leggibile */
-    border-bottom: 2px solid #ddd;
+    background-color: var(--surface-light); /* Grigio chiaro per header */
+    color: var(--color-gold-dark); /* Oro scuro leggibile */
+    border-bottom: 2px solid var(--border-light-muted);
     font-weight: 800;
 }
 
 body.light-mode .compact-table td {
-    border-bottom: 1px solid #eee;
-    color: #444;
+    border-bottom: 1px solid var(--border-light-subtle);
+    color: var(--text-emphasis);
 }
 
 body.light-mode .compact-table tr:hover {
-    background-color: #f9f9f9; /* Hover chiarissimo */
+    background-color: var(--surface-light-alt); /* Hover chiarissimo */
 }
 
 body.light-mode .wine-title {
-    color: #222; /* Nero per il titolo vino */
+    color: var(--text-strong); /* Nero per il titolo vino */
 }
 
 body.light-mode .truncate {
-    color: #666; /* Grigio scuro per descrizioni */
+    color: var(--text-subtle); /* Grigio scuro per descrizioni */
 }
 
 /* Input Form in Light Mode */
 body.light-mode .admin-input {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    color: #333;
+    background-color: var(--pure-white);
+    border: 1px solid var(--border-light-stronger);
+    color: var(--text-medium);
 }
 
 body.light-mode .admin-input:focus {
     border-color: var(--gold-color);
-    background-color: #fff;
-    box-shadow: 0 0 0 3px rgba(138, 107, 30, 0.2);
+    background-color: var(--pure-white);
+    box-shadow: 0 0 0 3px var(--gold-glow-dark-20);
 }
 
 /* Modale in Light Mode */
 body.light-mode .modal-box {
-    background-color: #fff;
-    color: #333;
-    border: 1px solid #ddd;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    background-color: var(--pure-white);
+    color: var(--text-medium);
+    border: 1px solid var(--border-light-muted);
+    box-shadow: 0 10px 40px var(--shadow-black-15);
 }
 
 body.light-mode .modal-overlay {
-    background-color: rgba(255, 255, 255, 0.7); /* Sfondo sfuocato chiaro */
+    background-color: var(--overlay-white-70); /* Sfondo sfuocato chiaro */
     backdrop-filter: blur(4px);
 }
 
 body.light-mode .close-modal {
-    color: #555;
+    color: var(--text-muted);
 }
 
 body.light-mode .close-modal:hover {
-    color: #000;
+    color: var(--pure-black);
 }
 
 
@@ -3691,7 +3779,7 @@ body.light-mode .close-modal:hover {
     }
     
     .payment-card input[type="radio"]:checked + .payment-content {
-        background-color: rgba(197, 165, 81, 0.05);
+        background-color: var(--gold-glow-05);
         border-color: var(--gold-color);
         box-shadow: none;
     }
@@ -3699,7 +3787,7 @@ body.light-mode .close-modal:hover {
     .icon-large {
         font-size: 1.6rem;
         margin-bottom: 0; 
-        /* Usa txtcolor di base, diventa gold quando selezionato (vedi regola desktop) */
+        /* Usa txtcolor di base, diventa var(--color-gold) quando selezionato (vedi regola desktop) */
         color: var(--txtcolor); 
         width: 30px; 
         text-align: center;
@@ -3778,7 +3866,7 @@ body.light-mode .close-modal:hover {
         padding: 1.2rem;
         font-size: 1.1rem;
         margin-top: 1.5rem;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        box-shadow: 0 4px 6px var(--shadow-black-20);
     }
     
     .secure-info {

@@ -445,7 +445,7 @@ body.light-mode .table-data td::before {
     padding: 0.5rem;
     font-size: 0.85rem;
     line-height: 1.2;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 4px var(--shadow-black-05);
 }
 
 .user-nav-link.is-active {
@@ -580,7 +580,7 @@ body.light-mode .table-data td::before {
     border: 1px solid var(--bordercolor);
     border-radius: 8px;
     background-color: var(--card-bg);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 5px var(--shadow-black-05);
     overflow: hidden;
 }
 
@@ -736,7 +736,7 @@ body.light-mode .table-data td::before {
         background-color: var(--card-bg);
         border: 1px solid var(--bordercolor);
         border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Ombra più marcata per stacco */
+        box-shadow: 0 4px 15px var(--shadow-black-10); /* Ombra più marcata per stacco */
         padding: 1.5rem;
         position: relative;
     }
@@ -846,26 +846,26 @@ body.light-mode .table-data td::before {
         box-sizing: border-box;
         border: none;
         box-shadow: none;
-        background: transparent;
+        background: var(--transparent);
         align-self: center;
     }
 
     body.light-mode .compact-table tr {
-        background-color: #ffffff;
-        border: 1px solid #e0e0e0;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        background-color: var(--pure-white);
+        border: 1px solid var(--border-light);
+        box-shadow: 0 2px 8px var(--shadow-black-05);
     }
 
     body.light-mode .compact-table td {
-        border-bottom-color: #f0f0f0;
+        border-bottom-color: var(--surface-light-strong);
     }
 
     body.light-mode .wine-title {
-        color: #222;
+        color: var(--text-strong);
     }
     
     body.light-mode .compact-table caption {
-        color: #8a6b1e; /* Oro scuro */
+        color: var(--color-gold-dark); /* Oro scuro */
     }
 
     body.light-mode .btn-icon {
@@ -984,7 +984,7 @@ body.light-mode .table-data td::before {
         justify-content: center;
         border: 1px solid var(--bordercolor);
         border-radius: 4px;
-        background-color: transparent;
+        background-color: var(--transparent);
         color: var(--txtcolor);
         font-size: 0.9rem;
         font-weight: 600;
