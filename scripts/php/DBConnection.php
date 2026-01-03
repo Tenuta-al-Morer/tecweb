@@ -361,7 +361,7 @@ class DBConnection {
         if (!in_array($nuovo_stato, $stati_permessi)) {
             return false;
         }
-        $stmt = $this->connection->prepare("UPDATE prenotazione SET stato = ? WHERE id = ?");
+        $stmt = $this->connection->prepare("UPDATE prenotazione_archivio SET stato = ? WHERE id = ?");
         $stmt->bind_param("si", $nuovo_stato, $id_prenotazione);
         $result = $stmt->execute();
         $stmt->close();
