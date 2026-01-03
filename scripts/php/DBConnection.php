@@ -341,6 +341,47 @@ class DBConnection {
         }
     }
 
+    
+    // ============================================================
+    // SEZIONE ADMIN - GESTIONE VINI
+    // ============================================================
+
+    // 1. RECUPERA TUTTI I VINI (Anche nascosti)
+    public function getTuttiViniAdmin() {
+        $result = $this->connection->query("SELECT * FROM vino ORDER BY id DESC"); 
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    // 2. INSERISCI NUOVO VINO
+    public function inserisciVino($dati) {
+        $query = "INSERT INTO vino (nome, prezzo, quantita_stock, stato, img, categoria, descrizione_breve, descrizione_estesa, vitigno, annata, gradazione, temperatura, abbinamenti) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("sdissssssssss", $dati['nome'], $dati['prezzo'], $dati['quantita_stock'], $dati['stato'], $dati['img'], $dati['categoria'], $dati['descrizione_breve'], $dati['descrizione_estesa'], $dati['vitigno'], $dati['annata'], $dati['gradazione'], $dati['temperatura'], $dati['abbinamenti']);
+        return $stmt->execute();
+    }
+
+    // 3. MODIFICA VINO
+    public function modificaVino($id, $dati) {
+        $query = "UPDATE vino SET nome=?, prezzo=?, quantita_stock=?, stato=?, img=?, categoria=?, descrizione_breve=?, descrizione_estesa=?, vitigno=?, annata=?, gradazione=?, temperatura=?, abbinamenti=? WHERE id=?";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("sdissssssssssi", $dati['nome'], $dati['prezzo'], $dati['quantita_stock'], $dati['stato'], $dati['img'], $dati['categoria'], $dati['descrizione_breve'], $dati['descrizione_estesa'], $dati['vitigno'], $dati['annata'], $dati['gradazione'], $dati['temperatura'], $dati['abbinamenti'], $id);
+        return $stmt->execute();
+    }
+
+    // 4. CAMBIO STATO RAPIDO
+    public function toggleStatoVino($id, $nuovoStato) {
+        $stmt = $this->connection->prepare("UPDATE vino SET stato = ? WHERE id = ?");
+        $stmt->bind_param("si", $nuovoStato, $id);
+        return $stmt->execute();
+    }
+
+    // 5. ELIMINA VINO
+    public function eliminaVino($id) {
+        $stmt = $this->connection->prepare("DELETE FROM vino WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        return $stmt->execute();
+    }
+
     // AGGIORNA STATO ORDINE (ADMIN)
     public function aggiornaStatoOrdine($id_ordine, $nuovo_stato) {
         $stati_permessi = ['in_attesa', 'approvato', 'annullato'];

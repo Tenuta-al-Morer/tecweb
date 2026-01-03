@@ -71,26 +71,184 @@
             </div>
         </header>
 
-        <main id="content"> 
-       
-        </main>
-
-        <footer>
-            <div class="footer-content">
-                <small>
-                    &copy; 2025 Tenuta al Morer - <abbr title="Partita">P.</abbr> <abbr title="Imposta sul Valore Aggiunto">IVA</abbr> 00000000000 <br>
-                    <a href="policy.php">Note legali</a> | 
-                    <a href="policy.php#privacy-policy"><span lang="en">Privacy Policy</span></a> | 
-                    <a href="policy.php#accessibility">Accessibilità</a>
-                </small>
+        <main id="content-admin" class="admin-wrapper"> 
+        <div class="admin-header-row">
+            <div>
+                <h1>Gestione Catalogo Vini</h1>
+                <p>Operatore: <strong>[nome_utente]</strong></p>
             </div>
-        </footer>
+            <button class="btn-primary" onclick="apriModalNuovo()" aria-label="Aggiungi nuovo vino">
+                <i class="fas fa-plus" aria-hidden="true"></i> Nuovo Vino
+            </button>
+        </div>
 
-        <button id="backToTopBtn" aria-label="Torna all'inizio della pagina">
-            <svg viewBox="0 0 24 24" class="arrow-icon" aria-hidden="true">
-                <path d="M12 5 L12 19 M5 12 L12 5 L19 12" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
-        <script src="../javascript/script.js"></script>
-    </body>
+        <div class="table-responsive">
+            <table class="compact-table">
+                <caption>Elenco vini nel database</caption>
+                <thead>
+                    <tr>
+                        <th scope="col" style="width: 50px;">ID</th>
+                        <th scope="col" style="width: 80px;">Img</th>
+                        <th scope="col">Dettagli Vino</th>
+                        <th scope="col">Prezzo</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Stato</th>
+                        <th scope="col" style="width: 120px;">Azioni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    [riga_vini]
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <div id="modalVino" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-box">
+            <button class="close-modal" onclick="chiudiModal()" aria-label="Chiudi">&times;</button>
+            <h2 id="modalTitle" style="margin-bottom: 20px;">Gestione Vino</h2>
+            
+            <form action="admin.php" method="POST">
+                <input type="hidden" name="azione" value="salva_vino">
+                <input type="hidden" name="id_vino" id="id_vino" value="">
+
+                <div class="form-grid">
+                    <div class="admin-form-group">
+                        <label for="nome">Nome Vino *</label>
+                        <input type="text" name="nome" id="nome" class="admin-input" required>
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="categoria">Categoria *</label>
+                        <select name="categoria" id="categoria" class="admin-input">
+                            <option value="rossi">Rossi</option>
+                            <option value="bianchi">Bianchi</option>
+                            <option value="selezione">Selezione</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="admin-form-group">
+                        <label for="prezzo">Prezzo (€) *</label>
+                        <input type="number" step="0.01" name="prezzo" id="prezzo" class="admin-input" required>
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="quantita_stock">Quantità Stock *</label>
+                        <input type="number" name="quantita_stock" id="quantita_stock" class="admin-input" required>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="admin-form-group">
+                        <label for="stato">Visibilità *</label>
+                        <select name="stato" id="stato" class="admin-input">
+                            <option value="attivo">Attivo</option>
+                            <option value="nascosto">Nascosto</option>
+                        </select>
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="img">Percorso Immagine</label>
+                        <input type="text" name="img" id="img" value="../../images/tr/" class="admin-input">
+                    </div>
+                </div>
+
+                <div class="admin-form-group">
+                    <label for="descrizione_breve">Descrizione Breve</label>
+                    <input type="text" name="descrizione_breve" id="descrizione_breve" class="admin-input">
+                </div>
+
+                <div class="admin-form-group">
+                    <label for="descrizione_estesa">Descrizione Estesa</label>
+                    <textarea name="descrizione_estesa" id="descrizione_estesa" rows="3" class="admin-input"></textarea>
+                </div>
+
+                <fieldset style="margin-top: 15px; border: 1px solid var(--bordercolor); padding: 15px; border-radius:4px;">
+                    <legend style="padding: 0 10px; font-weight:bold; color:var(--gold-color);">Scheda Tecnica</legend>
+                    <div class="form-grid">
+                        <div class="admin-form-group"><label for="vitigno">Vitigno</label><input type="text" name="vitigno" id="vitigno" class="admin-input"></div>
+                        <div class="admin-form-group"><label for="annata">Annata</label><input type="text" name="annata" id="annata" class="admin-input"></div>
+                        <div class="admin-form-group"><label for="gradazione">Gradazione</label><input type="text" name="gradazione" id="gradazione" class="admin-input"></div>
+                        <div class="admin-form-group"><label for="temperatura">Temperatura</label><input type="text" name="temperatura" id="temperatura" class="admin-input"></div>
+                    </div>
+                    <div class="admin-form-group"><label for="abbinamenti">Abbinamenti</label><input type="text" name="abbinamenti" id="abbinamenti" class="admin-input"></div>
+                </fieldset>
+
+                <div style="margin-top: 20px; text-align: right;">
+                    <button type="button" class="btn-secondary" onclick="chiudiModal()">Annulla</button>
+                    <button type="submit" class="btn-primary">Salva Vino</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <small>
+                &copy; 2025 Tenuta al Morer - <abbr title="Partita">P.</abbr> <abbr title="Imposta sul Valore Aggiunto">IVA</abbr> 00000000000 <br>
+                <a href="policy.php">Note legali</a> | 
+                <a href="policy.php#privacy-policy"><span lang="en">Privacy Policy</span></a> | 
+                <a href="policy.php#accessibility">Accessibilità</a>
+            </small>
+        </div>
+    </footer>
+
+    <button id="backToTopBtn" aria-label="Torna all'inizio della pagina">
+        <svg viewBox="0 0 24 24" class="arrow-icon" aria-hidden="true">
+            <path d="M12 5 L12 19 M5 12 L12 5 L19 12" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+    
+    <script src="../javascript/script.js"></script>
+
+    <script>
+        const modal = document.getElementById('modalVino');
+        const modalTitle = document.getElementById('modalTitle');
+        const firstInput = document.getElementById('nome');
+
+        function apriModalNuovo() {
+            modalTitle.innerText = "Aggiungi Nuovo Vino";
+            document.getElementById('id_vino').value = ""; 
+            document.querySelector('#modalVino form').reset();
+            modal.style.display = "flex";
+            firstInput.focus();
+        }
+
+        function apriModalModifica(vino) {
+            modalTitle.innerText = "Modifica: " + vino.nome;
+            document.getElementById('id_vino').value = vino.id;
+            
+            document.getElementById('nome').value = vino.nome;
+            document.getElementById('prezzo').value = vino.prezzo;
+            document.getElementById('quantita_stock').value = vino.quantita_stock;
+            document.getElementById('stato').value = vino.stato;
+            document.getElementById('categoria').value = vino.categoria;
+            document.getElementById('img').value = vino.img;
+            document.getElementById('descrizione_breve').value = vino.descrizione_breve;
+            document.getElementById('descrizione_estesa').value = vino.descrizione_estesa;
+            
+            document.getElementById('vitigno').value = vino.vitigno || "";
+            document.getElementById('annata').value = vino.annata || "";
+            document.getElementById('gradazione').value = vino.gradazione || "";
+            document.getElementById('temperatura').value = vino.temperatura || "";
+            document.getElementById('abbinamenti').value = vino.abbinamenti || "";
+
+            modal.style.display = "flex";
+            firstInput.focus();
+        }
+
+        function chiudiModal() {
+            modal.style.display = "none";
+        }
+        
+        window.onclick = function(event) {
+            if (event.target == modal) chiudiModal();
+        }
+        
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape" && modal.style.display === "flex") {
+                chiudiModal();
+            }
+        });
+    </script>
+</body>
 </html>
