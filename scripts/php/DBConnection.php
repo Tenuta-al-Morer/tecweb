@@ -94,7 +94,7 @@ class DBConnection {
 
 
     // FUNZIONE ARCHIVIA MESSAGGIO (Lato STAFF) - Da sistemare
-    public function archiviaMessaggio($id, $messaggioRisposta) {
+    public function salvaMessaggio($id, $messaggioRisposta) {
         $sql = "UPDATE contatto_archivio
                 SET risposta = ?, stato = 'risposto'
                 WHERE id = ?";
