@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Area Admin - Tenuta al Morer</title>
+    <title>Area Gestionale - Tenuta al Morer</title>
     <link rel="icon" href="../../images/logo.ico" type="image/x-icon">
 
     <meta name="description" content="Gestisci l'area gestionale dell'azienda; ordinazioni, prenotazioni ed eventuali richieste da parte dei clienti.">
@@ -119,6 +119,15 @@
             modificare lo stato della richiesta.
         </p>
 
+        <p id="descrizione-tab-ordini-archivio" class="visually-hidden">
+            La tabella riassume le richieste di acquisto dei vini effettuate dagli utenti, già gestite dallo staff.
+            Ogni riga rappresenta un singolo ordine, mentre le colonne riportano,
+            da sinistra a destra: l’identificativo dell’ordine, l’identificativo
+            dell’utente, il costo dei prodotti, il costo della spedizione,
+            il totale finale, l’indirizzo di spedizione, il metodo di pagamento,
+            la data di creazione dell’ordine e lo stato della richiesta.
+        </p>
+
         <section id="section-vini">
             <div class="admin-table-head">
             <h2>Richieste vini</h2>
@@ -174,9 +183,25 @@
         </section>
 
         <!-- SEZIONE: richieste degustazioni (prenotazioni) -->
-        <p id="descrizione-tab-esperienze" class="visually-hidden">
-            La tabella riassume la prenotazione delle esperienze e permette di gestire le richieste: DA COMPLETARE
+        <p id="descrizione-tab-degustazioni" class="visually-hidden">
+            La tabella riassume le richieste di prenotazione delle degustazioni.
+            Ogni riga rappresenta una singola prenotazione, mentre le colonne riportano,
+            da sinistra a destra: l’identificativo della prenotazione, il nome e il cognome
+            del richiedente, l’indirizzo email, il tipo di degustazione richiesta,
+            il numero di telefono, la data della visita, il numero di partecipanti,
+            la data di invio della richiesta e l’area di gestione per gestire
+            lo stato della prenotazione.
         </p>
+
+        <p id="descrizione-tab-degustazioni-archivio" class="visually-hidden">
+            La tabella riassume le richieste di prenotazione delle degustazioni, già gestite dallo staff.
+            Ogni riga rappresenta una singola prenotazione, mentre le colonne riportano,
+            da sinistra a destra: l’identificativo della prenotazione, il nome e il cognome
+            del richiedente, l’indirizzo email, il tipo di degustazione richiesta,
+            il numero di telefono, la data della visita, il numero di partecipanti,
+            la data di invio della richiesta e lo stato della prenotazione.
+        </p>
+
         <section id="section-esperienze">
             <div class="admin-table-head">
             <h2>Richieste esperienze</h2>
@@ -209,7 +234,7 @@
                 </table>
             </div>
             <div class="table-container">
-                <table class="table-data table-early-break" id="tab-degustazioni-archivio" aria-describedby="descrizione-tab-degustazioni">
+                <table class="table-data table-early-break" id="tab-degustazioni-archivio" aria-describedby="descrizione-tab-degustazioni-archivio">
                     <thead>
                         <tr>
                             <th scope="col" abbr="ID">ID prenotazione</th>
@@ -233,8 +258,22 @@
 
         <!-- SEZIONE: messaggi clienti -->
         <p id="descrizione-tab-messaggi" class="visually-hidden">
-            La tabella riassume le richieste dei clienti da gestire: DA COMPLETARE
+            La tabella riassume le richieste di assistenza inviate dai clienti.
+            Ogni riga rappresenta una singola richiesta, mentre le colonne riportano,
+            da sinistra a destra: l’identificativo della richiesta, il nome e il cognome
+            del cliente, l’indirizzo email, il tipo di supporto richiesto, il numero
+            di telefono, il contenuto del messaggio, la data di invio e l’area di gestione
+            per rispondere alla richiesta.
         </p>
+
+        <p id="descrizione-tab-messaggi-archivio" class="visually-hidden">
+            La tabella riassume le richieste di assistenza inviate dai clienti, già gestite dallo staff.
+            Ogni riga rappresenta una singola richiesta, mentre le colonne riportano,
+            da sinistra a destra: l’identificativo della richiesta, il nome e il cognome
+            del cliente, l’indirizzo email, il tipo di supporto richiesto, il numero
+            di telefono, il contenuto del messaggio, la data di invio e la risposta effettuata dall'operatore.
+        </p>
+
         <section id="section-messaggi">
             <div class="admin-table-head">
                 <h2>Richieste da parte dei clienti</h2>
@@ -266,7 +305,7 @@
             </div>
 
             <div class="table-container archive-table">
-                <table class="table-data table-early-break" id="tab-info-archivio" aria-describedby="descrizione-tab-messaggi">
+                <table class="table-data table-early-break" id="tab-info-archivio" aria-describedby="descrizione-tab-messaggi-archivio">
                     <thead>
                         <tr>
                             <th scope="col" abbr="ID">ID richiesta</th>
@@ -286,12 +325,6 @@
                 </table>
             </div>
         </section>
-
-
-
-
-
-
 
     </main>
 
