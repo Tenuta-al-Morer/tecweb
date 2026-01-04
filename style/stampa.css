@@ -1,0 +1,13 @@
+html{
+	font-family: "Times New Roman", Times, serif;
+	font-size: 12pt; /*non hanno senso le unità di misura relative, la pagina
+	non si ridimensione come un viewport*/
+}
+
+.menu-toggle, .primary-navigation, .mobile-icons, .hero-actions>a{
+    display:none;
+}
+
+.hero-section {
+    height: 520px; /*Non si può di meno (su stile min-height: 520px;)*/
+}
