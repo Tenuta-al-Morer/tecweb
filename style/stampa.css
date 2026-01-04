@@ -26,3 +26,62 @@ html{
 .slider-section {
 	padding: 0 10px;
 }
+
+  /* 1) la sezione non deve avere altezze da viewport */
+  .slider-section {
+    padding: 0;
+    margin: 1em 0;
+    background: none;
+  }
+
+  /* 2) wrapper: niente “finestra” da slider */
+  .slider-wrapper {
+    height: auto;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    background: none;
+    box-shadow: none;
+  }
+
+  /* 3) container: diventa griglia */
+  .slider-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 3 per riga */
+    gap: 10px;
+
+    /* importantissimo per eliminare “effetto carosello” */
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    align-items: start;
+    justify-items: stretch;
+  }
+
+  /* 4) slide: nessuna dimensione fissa */
+  .slide {
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    break-inside: avoid; /* evita che una foto si spezzi tra pagine */
+  }
+
+  .slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* 5) cloni slider (se presenti) non stampare */
+  .clone-slide {
+    display: none;
+  }
+
+  /* 6) pulsanti già li nascondi, ma includo anche pause per sicurezza */
+  .slider-wrapper > button,
+  #pauseBtn {
+    display: none;
+  }

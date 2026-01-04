@@ -462,6 +462,59 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
+
+            // ===== PRINT FIX (safe, non influenza la pausa in modalità normale) =====
+            let _printSaved = null;
+
+            const enterPrintMode = () => {
+                if (_printSaved) return;
+
+                // salva stato corrente
+                _printSaved = {
+                    transform: sliderContainer.style.transform,
+                    transition: sliderContainer.style.transition,
+                    currentIndex: currentIndex,
+                    isTransitioning: isTransitioning
+                };
+
+                // ferma autoplay mentre si stampa
+                stopTimer();
+
+                // togli solo ciò che blocca la stampa (inline style)
+                sliderContainer.style.transition = 'none';
+                sliderContainer.style.transform = 'none';
+            };
+
+            const exitPrintMode = () => {
+                if (!_printSaved) return;
+
+                // ripristina inline styles
+                sliderContainer.style.transition = _printSaved.transition;
+                sliderContainer.style.transform = _printSaved.transform;
+
+                // ripristina stato (senza cambiare userPaused)
+                currentIndex = _printSaved.currentIndex;
+                isTransitioning = _printSaved.isTransitioning;
+
+                // riallinea correttamente la posizione del carosello
+                updateInitialPosition();
+
+                _printSaved = null;
+
+                // riparti solo se era previsto (rispetta userPaused)
+                if (!mediaQuery.matches && !userPaused) startTimer();
+            };
+
+            // eventi stampa (Chrome/Firefox)
+            window.addEventListener('beforeprint', enterPrintMode);
+            window.addEventListener('afterprint', exitPrintMode);
+
+            const mqlPrint = window.matchMedia('print');
+            mqlPrint.addEventListener('change', (e) => {
+                if (e.matches) enterPrintMode();
+                else exitPrintMode();
+            });
+
             // Avvio iniziale
             startTimer();
         }
