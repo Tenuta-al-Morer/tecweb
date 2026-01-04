@@ -1057,3 +1057,52 @@ body.light-mode .table-data td::before {
     min-width: 44px;
     min-height: 44px;
 }
+
+/* =========================================
+   OVERRIDES VINI MOBILE ( < 940px )
+   ========================================= */
+
+.sezione {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 30px;
+    padding: 0 10px;
+}
+
+.wine-article {
+    width: 100%;
+    max-width: 360px; /* Larghezza controllata su mobile */
+    margin: 0 auto;   /* Centratura */
+}
+
+/* Popup Mobile */
+.popup-content {
+    padding: 1.5em;
+    width: 95%;
+    max-height: 95vh;
+}
+
+.popup-grid {
+    grid-template-columns: 1fr; 
+    gap: 20px;
+}
+
+.main-img-box img {
+    max-height: 250px; 
+}
+
+.nav-arrow {
+    width: 35px; height: 35px;
+}
+.prev { left: 5px; }
+.next { right: 5px; }
+
+.popup-info h2 {
+    font-size: 1.8em; 
+}
+
+.wine-table th, .wine-table td {
+    padding: 5px 0;
+    font-size: 0.95em;
+}
