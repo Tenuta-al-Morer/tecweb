@@ -4,7 +4,8 @@ html{
 	non si ridimensione come un viewport*/
 }
 
-.menu-toggle, .primary-navigation, .mobile-icons, .hero-actions>a, .feature-card>.link-arrow, .slider-wrapper>button{
+.menu-toggle, .primary-navigation, .mobile-icons, .hero-actions>a, .feature-card>.link-arrow,
+ .slider-wrapper>button, #pauseBtn, #backToTopBtn, footer a{
     display:none;
 }
 
@@ -23,65 +24,72 @@ html{
 	width: 150px;
 }
 
+
+/*====================================================
+GESTIONE SLIDER
+=====================================================*/
+/* 1) la sezione non deve avere altezze da viewport */
 .slider-section {
-	padding: 0 10px;
+	padding: 0;
+	margin: 10px 0;
+	background: none;
 }
 
-  /* 1) la sezione non deve avere altezze da viewport */
-  .slider-section {
-    padding: 0;
-    margin: 1em 0;
-    background: none;
-  }
+/* 2) wrapper: niente “finestra” da slider */
+.slider-wrapper {
+	height: auto;
+	min-height: 0;
+	padding: 0;
+	margin: 0;
+	overflow: visible;
+	background: none;
+	box-shadow: none;
+}
 
-  /* 2) wrapper: niente “finestra” da slider */
-  .slider-wrapper {
-    height: auto;
-    min-height: 0;
-    padding: 0;
-    margin: 0;
-    overflow: visible;
-    background: none;
-    box-shadow: none;
-  }
+/* 3) container: diventa griglia */
+.slider-container {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr); /* tutti in una riga */
+	gap: 10px;
+	width: 100%;
+	height: auto;
+	min-height: 0;
+	align-items: start;
+	justify-items: stretch;
+}
 
-  /* 3) container: diventa griglia */
-  .slider-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 3 per riga */
-    gap: 10px;
+/* 4) slide: nessuna dimensione fissa */
+.slide {
+	width: auto;
+	height: auto;
+	margin: 0;
+	padding: 0;
+}
 
-    /* importantissimo per eliminare “effetto carosello” */
-    width: 100%;
-    height: auto;
-    min-height: 0;
-    align-items: start;
-    justify-items: stretch;
-  }
+.slide img {
+	width: 100%;
+	height: auto;
+	display: block;
+	object-fit: cover;
+}
 
-  /* 4) slide: nessuna dimensione fissa */
-  .slide {
-    width: auto;
-    height: auto;
-    margin: 0;
-    padding: 0;
-    break-inside: avoid; /* evita che una foto si spezzi tra pagine */
-  }
+/* 5) cloni slider (se presenti) non stampare */
+.clone-slide {
+	display: none;
+}
 
-  .slide img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-  }
+/*====================================================
+FINE GESTIONE SLIDER
+=====================================================*/
 
-  /* 5) cloni slider (se presenti) non stampare */
-  .clone-slide {
-    display: none;
-  }
+/*====================================================
+GESTIONE FOOTER
+=====================================================*/
 
-  /* 6) pulsanti già li nascondi, ma includo anche pause per sicurezza */
-  .slider-wrapper > button,
-  #pauseBtn {
-    display: none;
-  }
+footer small a + a::before {
+    content: "";
+}
+
+/*====================================================
+FINE GESTIONE FOOTER
+=====================================================*/	

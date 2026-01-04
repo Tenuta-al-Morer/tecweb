@@ -1482,6 +1482,12 @@ footer a {
     font-size: 1.1rem;
 }
 
+footer small a + a::before {
+  content: "|";
+  padding: 0 0.5em;
+}
+
+
 footer a:visited { 
     color: var(--gold-color); 
 }
