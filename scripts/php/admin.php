@@ -81,6 +81,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $db->eliminaUtenteAdmin($idUtente);
         }
     }
+
+    // Ripristino vino
+    if ($azione === 'ripristina_vino') {
+        $db->ripristinaVino($_POST['id']);
+    }
     
     $db->closeConnection();
     header("Location: admin.php?view=" . $view); 
@@ -102,22 +107,72 @@ foreach ($viniArray as $v) {
     // JSON sicuro per attributi HTML
     $json = json_encode($v, JSON_HEX_APOS | JSON_HEX_QUOT);
     
-    // Badge
-    $badgeClass = ($v['stato'] == 'attivo') ? 'badge-active' : 'badge-hidden';
-    $txtStato = ucfirst($v['stato']);
+    // Controlliamo se è eliminato
+    $isDeleted = ($v['stato'] === 'eliminato');
+    
+    // Classi e Stili per la riga
+    // Se è eliminato, aggiungiamo una classe specifica e lo nascondiamo con CSS inline
+    $rowClass = $isDeleted ? 'row-deleted' : '';
+    $rowStyle = $isDeleted ? 'style="display:none"' : '';
+
+    // Gestione Badge
+    if ($isDeleted) {
+        $badgeClass = 'badge-hidden'; // Usiamo grigio/scuro
+        $txtStato = 'Eliminato';
+    } else {
+        $badgeClass = ($v['stato'] == 'attivo') ? 'badge-active' : 'badge-hidden';
+        $txtStato = ucfirst($v['stato']);
+    }
     $badge = "<span class='badge $badgeClass'>$txtStato</span>";
     
     // Alert Stock
-    $colorStock = ($v['quantita_stock'] < 10) ? 'color:var(--red-errors); font-weight:bold;' : '';
-
+    $colorStock = ($v['quantita_stock'] < 10 && !$isDeleted) ? 'color:var(--red-errors); font-weight:bold;' : '';
     $nomeSafe = htmlspecialchars($v['nome'], ENT_QUOTES);
     
-    // Icona visibilita
+    // Icona visibilita (Disabilitata se eliminato)
     $iconaVisibilita = ($v['stato'] == 'attivo') 
         ? '<i class="fas fa-eye" aria-hidden="true"></i>' 
         : '<i class="fas fa-eye-slash" aria-hidden="true" style="color:var(--gray-text);"></i>';
+    
+    // Se eliminato, non mostriamo i pulsanti di azione standard o li disabilitiamo
+    $actions = "";
+    if (!$isDeleted) {
+        $actions = "
+            <button type='button' class='btn-icon' onclick='apriModalModifica($json)' aria-label='Modifica $nomeSafe'>
+                <i class='fas fa-edit'></i>
+            </button>
+            
+            <form method='POST'>
+                <input type='hidden' name='azione' value='toggle_vino'>
+                <input type='hidden' name='view' value='{$view}'>
+                <input type='hidden' name='id' value='{$v['id']}'>
+                <input type='hidden' name='current_status' value='{$v['stato']}'>
+                <button type='submit' class='btn-icon' aria-label='Visibilita $nomeSafe'>
+                    $iconaVisibilita
+                </button>
+            </form>
 
-    $rigaVini .= "<tr>
+            <form method='POST' onsubmit=\"return confirm('Sei sicuro di voler eliminare $nomeSafe?');\">
+                <input type='hidden' name='azione' value='elimina_vino'>
+                <input type='hidden' name='view' value='{$view}'>
+                <input type='hidden' name='id' value='{$v['id']}'>
+                <button type='submit' class='btn-icon btn-icon-delete' aria-label='Elimina $nomeSafe'>
+                    <i class='fas fa-trash'></i>
+                </button>
+            </form>";
+    } else {
+        $actions = "
+        <form method='POST' onsubmit=\"return confirm('Vuoi ripristinare $nomeSafe? Tornerà tra i vini nascosti.');\">
+            <input type='hidden' name='azione' value='ripristina_vino'> <input type='hidden' name='view' value='{$view}'>
+            <input type='hidden' name='id' value='{$v['id']}'>
+            
+            <button type='submit' class='btn-icon' style='color: var(--accent-color);' aria-label='Ripristina $nomeSafe' title='Ripristina Vino'>
+                <i class='fas fa-trash-restore'></i> 
+            </button>
+        </form>";
+    }
+
+    $rigaVini .= "<tr class='{$rowClass}' {$rowStyle}>
         <td data-title='ID'><b>{$v['id']}</b></td>
         
         <td data-title='Anteprima'><img src='" . htmlspecialchars($v['img']) . "' class='admin-thumb' alt=''></td>
@@ -134,28 +189,7 @@ foreach ($viniArray as $v) {
         
         <td data-title='Azioni'>
             <div class='action-group'>
-                <button type='button' class='btn-icon' onclick='apriModalModifica($json)' aria-label='Modifica $nomeSafe'>
-                    <i class='fas fa-edit'></i>
-                </button>
-                
-                <form method='POST'>
-                    <input type='hidden' name='azione' value='toggle_vino'>
-                    <input type='hidden' name='view' value='{$view}'>
-                    <input type='hidden' name='id' value='{$v['id']}'>
-                    <input type='hidden' name='current_status' value='{$v['stato']}'>
-                    <button type='submit' class='btn-icon' aria-label='Visibilita $nomeSafe'>
-                        $iconaVisibilita
-                    </button>
-                </form>
-
-                <form method='POST' onsubmit=\"return confirm('Sei sicuro di voler eliminare $nomeSafe? Questa azione non si puo annullare.');\">
-                    <input type='hidden' name='azione' value='elimina_vino'>
-                    <input type='hidden' name='view' value='{$view}'>
-                    <input type='hidden' name='id' value='{$v['id']}'>
-                    <button type='submit' class='btn-icon btn-icon-delete' aria-label='Elimina $nomeSafe'>
-                        <i class='fas fa-trash'></i>
-                    </button>
-                </form>
+                $actions
             </div>
         </td>
     </tr>";

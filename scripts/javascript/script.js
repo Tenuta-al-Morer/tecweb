@@ -554,6 +554,20 @@ document.addEventListener('DOMContentLoaded', () => {
             apply(); // stato iniziale
             toggle.addEventListener("change", apply);
         }
+        
+        // 6ter: Utility specifica per toggle righe vini eliminati
+        const toggleVini = document.getElementById('toggleViniEliminati');
+        if (toggleVini) {
+            toggleVini.addEventListener('change', function() {
+                // Seleziona tutte le righe con classe 'row-deleted'
+                const deletedRows = document.querySelectorAll('.row-deleted');
+                
+                deletedRows.forEach(row => {
+                    // Se checkbox è checked -> table-row, altrimenti none
+                    row.style.display = this.checked ? 'table-row' : 'none';
+                });
+            });
+        }
 
         // Messaggi (già ok, ma ora con funzione unica)
         bindArchiveToggle("toggleArchivioMessaggi", "tab-info-archivio", "table");

@@ -276,7 +276,7 @@ CREATE TABLE `vino` (
   `nome` varchar(255) NOT NULL,
   `prezzo` decimal(10,2) NOT NULL,
   `quantita_stock` int(11) NOT NULL DEFAULT 0,
-  `stato` enum('attivo','nascosto') DEFAULT 'attivo',
+  `stato` enum('attivo','nascosto','eliminato') DEFAULT 'attivo',
   `img` varchar(255) NOT NULL,
   `categoria` enum('rossi','bianchi','selezione') NOT NULL,
   `descrizione_breve` varchar(255) NOT NULL,

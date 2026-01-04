@@ -407,10 +407,19 @@ class DBConnection {
 
     // 5. ELIMINA VINO
     public function eliminaVino($id) {
-        $stmt = $this->connection->prepare("DELETE FROM vino WHERE id = ?");
+        // Invece di DELETE FROM, facciamo un UPDATE
+        $stmt = $this->connection->prepare("UPDATE vino SET stato = 'eliminato' WHERE id = ?");
         $stmt->bind_param("i", $id);
         return $stmt->execute();
     }
+
+    // RIPRISTINA VINO (Da eliminato a nascosto)
+    public function ripristinaVino($id) {
+        $stmt = $this->connection->prepare("UPDATE vino SET stato = 'nascosto' WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        return $stmt->execute();
+    }
+
 
     // 6. RECUPERA TUTTI GLI UTENTI (Admin)
     public function getUtentiAdmin() {
