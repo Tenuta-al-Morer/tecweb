@@ -5,6 +5,32 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+require_once __DIR__ . '/DBConnection.php';
+use DB\DBConnection;
+
+
+if (isset($_SESSION['utente_id'])) {
+    
+    $db = new DBConnection();
+    
+    $userFresco = $db->checkUserStatus($_SESSION['utente_id']);
+    $db->closeConnection();
+
+    if ($userFresco) {
+        $_SESSION['ruolo'] = $userFresco['ruolo'];
+        $_SESSION['nome'] = $userFresco['nome'];
+        $_SESSION['cognome'] = $userFresco['cognome'];
+        
+    } else {
+        session_unset();
+        session_destroy();
+        
+        header("Location: login.php?error=session_expired");
+        exit();
+    }
+}
+
+
 function caricaPagina($nomeFileHTML) {
     
     // Controllo esistenza file

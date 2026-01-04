@@ -92,6 +92,22 @@ class DBConnection {
         return $result->fetch_assoc();
     }
 
+    // AGGIORNAMENTO SESSIONE
+    public function checkUserStatus($id_utente) {
+        $query = "SELECT id, nome, cognome, ruolo, email FROM utente WHERE id = ?";
+        
+        $stmt = $this->connection->prepare($query);
+        if (!$stmt) return null;
+        
+        $stmt->bind_param("i", $id_utente);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $user = $result->fetch_assoc();
+        $stmt->close();
+        
+        return $user; 
+    }
+
 
     public function salvaMessaggio($nome, $cognome, $email, $tipo_supporto, $prefisso, $telefono, $messaggio) {
         
@@ -497,16 +513,24 @@ class DBConnection {
 
     // SVUOTA COMPLETAMENTE IL CARRELLO (Per Admin/Staff)
     public function svuotaCarrelloUtente($id_utente) {
-        $id_carrello = $this->getCarrelloId($id_utente);
-        
-        $stmt = $this->connection->prepare("DELETE FROM carrello_elemento WHERE id_carrello = ?");
-        if (!$stmt) return false;
-        
-        $stmt->bind_param("i", $id_carrello);
-        $result = $stmt->execute();
-        $stmt->close();
-        
-        return $result;
+        $stmtCheck = $this->connection->prepare("SELECT id FROM carrello WHERE id_utente = ?");
+        $stmtCheck->bind_param("i", $id_utente);
+        $stmtCheck->execute();
+        $res = $stmtCheck->get_result();
+
+        if ($row = $res->fetch_assoc()) {
+            $id_carrello = $row['id'];
+            
+            $stmt = $this->connection->prepare("DELETE FROM carrello_elemento WHERE id_carrello = ?");
+            if (!$stmt) return false;
+            
+            $stmt->bind_param("i", $id_carrello);
+            $result = $stmt->execute();
+            $stmt->close();
+            return $result;
+        }
+
+        return true;
     }
 
     // RECUPERO ORDINI UTENTE
