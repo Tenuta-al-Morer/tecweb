@@ -93,12 +93,20 @@
 /* Titoli dentro la card */
 .content-wine-article h2 {
     font-family: "Playfair Display", serif;
-    color: var(--color-bg-dark); /* Nero su sfondo chiaro */
+    color: var(--text-on-light); /* Titolo più scuro per contrasto */
     font-size: 1.4em;
     margin: 15px 0 5px 0;
     font-weight: 700;
     border-top: none; /* Rimuove righe ereditate */
     padding: 0;
+}
+
+.content-wine-article h3 {
+    font-family: "Playfair Display", serif;
+    color: var(--text-on-light);
+    font-size: 1.4em;
+    margin: 15px 0 5px 0;
+    font-weight: 700;
 }
 
 .content-wine-article p {
@@ -328,6 +336,24 @@ body.light-mode .wine-article {
     background: var(--pure-white);
     border: 1px solid var(--gray-border);
     box-shadow: none;
+}
+
+body.light-mode .content-wine-article h2 {
+    color: var(--text-on-light);
+}
+
+body.light-mode .content-wine-article p {
+    color: var(--text-muted);
+}
+
+body.light-mode .selettore-quantita button {
+    background-color: var(--surface-light-strong);
+    border-color: var(--border-strong);
+    color: var(--text-strong);
+}
+
+body.light-mode .selettore-quantita button:hover {
+    background-color: var(--surface-light-alt);
 }
 
 /* Input quantità editabile */
