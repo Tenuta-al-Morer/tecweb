@@ -191,56 +191,5 @@
     </button>
     
     <script src="../javascript/script.js"></script>
-
-    <script>
-        const modal = document.getElementById('modalVino');
-        const modalTitle = document.getElementById('modalTitle');
-        const firstInput = document.getElementById('nome');
-
-        function apriModalNuovo() {
-            modalTitle.innerText = "Aggiungi Nuovo Vino";
-            document.getElementById('id_vino').value = ""; 
-            document.querySelector('#modalVino form').reset();
-            modal.style.display = "flex";
-            firstInput.focus();
-        }
-
-        function apriModalModifica(vino) {
-            modalTitle.innerText = "Modifica: " + vino.nome;
-            document.getElementById('id_vino').value = vino.id;
-            
-            document.getElementById('nome').value = vino.nome;
-            document.getElementById('prezzo').value = vino.prezzo;
-            document.getElementById('quantita_stock').value = vino.quantita_stock;
-            document.getElementById('stato').value = vino.stato;
-            document.getElementById('categoria').value = vino.categoria;
-            document.getElementById('img').value = vino.img;
-            document.getElementById('descrizione_breve').value = vino.descrizione_breve;
-            document.getElementById('descrizione_estesa').value = vino.descrizione_estesa;
-            
-            document.getElementById('vitigno').value = vino.vitigno || "";
-            document.getElementById('annata').value = vino.annata || "";
-            document.getElementById('gradazione').value = vino.gradazione || "";
-            document.getElementById('temperatura').value = vino.temperatura || "";
-            document.getElementById('abbinamenti').value = vino.abbinamenti || "";
-
-            modal.style.display = "flex";
-            firstInput.focus();
-        }
-
-        function chiudiModal() {
-            modal.style.display = "none";
-        }
-        
-        window.onclick = function(event) {
-            if (event.target == modal) chiudiModal();
-        }
-        
-        document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape" && modal.style.display === "flex") {
-                chiudiModal();
-            }
-        });
-    </script>
 </body>
 </html>

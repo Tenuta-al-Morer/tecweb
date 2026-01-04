@@ -1209,4 +1209,291 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+    /* ==========================================
+     * 11. LOGICA PAGINA VINI
+     * ========================================== */
+    safeExecute('Pagina Vini', () => {
+        // Controllo preventivo: Se non c'è la griglia vini, non caricare nulla di questo blocco
+        // Se non trovo il contenitore principale della pagina vini, esco (così non rompo le altre pagine)
+        if (!document.querySelector('.vini-main')) return;
+
+        // VARIABILI DI STATO
+        let currentSlideIndex = 0;
+        let slideImages = [];
+        let lastFocusedElement;
+        let scrollPosition = 0;
+        let currentOpenWineId = 0; 
+
+        // --- FUNZIONI INTERNE ---
+        function inviaAlCarrello(id, qty) {
+            const url = `carrello.php?action=aggiungi&id_vino=${id}&quantita=${qty}`;
+            window.location.href = url;
+        }
+
+        function updateGalleryView() {
+            const mainImg = document.getElementById('pop-img');
+            if(mainImg && slideImages[currentSlideIndex]) mainImg.src = slideImages[currentSlideIndex];
+            
+            // Aggiorna thumbnails se esistono
+            const t0 = document.getElementById('thumb-0');
+            const t1 = document.getElementById('thumb-1');
+            const t2 = document.getElementById('thumb-2');
+            
+            if(t0 && slideImages[0]) t0.src = slideImages[0];
+            if(t1 && slideImages[1]) t1.src = slideImages[1];
+            if(t2 && slideImages[2]) t2.src = slideImages[2];
+
+            document.querySelectorAll('.thumbnails-row img').forEach(img => img.classList.remove('active-thumb'));
+            const activeThumb = document.getElementById('thumb-' + currentSlideIndex);
+            if(activeThumb) activeThumb.classList.add('active-thumb');
+        }
+
+        // --- FUNZIONI ESPORTE (GLOBAL) ---
+        window.aggiungiDaCard = function(idVino) {
+            const inputQty = document.getElementById('qty-' + idVino);
+            const quantita = inputQty ? inputQty.value : 1;
+            inviaAlCarrello(idVino, quantita);
+        };
+
+        window.gestisciCarrelloPopup = function() {
+            const qtyInput = document.querySelector('.shop-ov .input-qty');
+            const quantita = qtyInput ? qtyInput.value : 1;
+            
+            if(currentOpenWineId > 0) {
+                inviaAlCarrello(currentOpenWineId, quantita);
+                window.chiudiDettagli();
+            } else {
+                console.error("ID Vino non trovato nel popup");
+            }
+        };
+
+        window.apriDettagli = function(bottone) {
+            scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            lastFocusedElement = bottone;
+
+            const articolo = bottone.closest('.wine-article');
+            if (!articolo) return;
+
+            // RECUPERO DATI
+            currentOpenWineId = articolo.dataset.id; 
+            const nome = articolo.dataset.nome;
+            const desc = articolo.dataset.descrizione;
+            const img = articolo.dataset.img;
+            const prezzo = articolo.dataset.prezzo;
+            const stock = parseInt(articolo.dataset.stock);
+
+            // Sync Quantità dalla card
+            const inputCard = document.getElementById('qty-' + currentOpenWineId);
+            const quantitaAttuale = inputCard ? parseInt(inputCard.value) : 1;
+
+            // Recupero dati nascosti
+            const hiddenData = articolo.querySelector('.hidden-data');
+            // helper per evitare errori se manca un campo
+            const getHidden = (key) => {
+                const el = hiddenData ? hiddenData.querySelector(`[data-key="${key}"]`) : null;
+                return el ? el.innerText : '';
+            };
+
+            // POPOLAMENTO DOM
+            const setText = (id, val) => { const el = document.getElementById(id); if(el) el.innerText = val; };
+            
+            setText('pop-titolo', nome);
+            setText('pop-descrizione', desc);
+            setText('pop-prezzo', prezzo);
+            setText('tab-vitigno', getHidden('vitigno'));
+            setText('tab-annata', getHidden('annata'));
+            setText('tab-grado', getHidden('gradazione'));
+            setText('tab-temp', getHidden('temperatura'));
+            setText('tab-abbinamenti', getHidden('abbinamenti'));
+
+            // GESTIONE STOCK E UI
+            const popStock = document.getElementById('pop-stock');
+            const inputQtyPopup = document.querySelector('.shop-ov .input-qty');
+            const btnAcquistaPopup = document.querySelector('.shop-ov .buy-button');
+            const btnsQtyPopup = document.querySelectorAll('.shop-ov .selettore-quantita button');
+
+            // Reset classi
+            if (popStock) {
+                popStock.className = 'stock-info'; 
+                popStock.style.justifyContent = 'flex-start';
+            }
+
+            if(inputQtyPopup) {
+                inputQtyPopup.value = quantitaAttuale;
+                inputQtyPopup.max = stock;
+                inputQtyPopup.disabled = false;
+                inputQtyPopup.readOnly = false;
+                
+                const clone = inputQtyPopup.cloneNode(true);
+                inputQtyPopup.parentNode.replaceChild(clone, inputQtyPopup);
+
+                const newInput = document.querySelector('.shop-ov .input-qty');
+                newInput.onchange = function() { window.validaInputVino(this); };
+            }
+
+            // Logica visuale stock
+            if (popStock) {
+                if (stock <= 0) {
+                    popStock.innerHTML = '<i class="fas fa-times-circle"></i> Esaurito';
+                    popStock.classList.add('stock-error');
+                    
+                    if(btnAcquistaPopup) { btnAcquistaPopup.disabled = true; btnAcquistaPopup.style.opacity = "0.5"; }
+                    if(document.querySelector('.shop-ov .input-qty')) document.querySelector('.shop-ov .input-qty').disabled = true;
+                    btnsQtyPopup.forEach(btn => btn.disabled = true);
+                } else {
+                    if (stock < 20) {
+                        popStock.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Ultimi ' + stock + ' pezzi!';
+                        popStock.classList.add('stock-warning');
+                    } else {
+                        popStock.innerHTML = '<i class="fas fa-check-circle"></i> Disponibilità: ' + stock + ' bottiglie';
+                        popStock.classList.add('stock-ok');
+                    }
+
+                    if(btnAcquistaPopup) { btnAcquistaPopup.disabled = false; btnAcquistaPopup.style.opacity = "1"; }
+                    btnsQtyPopup.forEach(btn => btn.disabled = false);
+                }
+            }
+
+            // Galleria Immagini
+            slideImages = [img, img, img];
+            currentSlideIndex = 0;
+            updateGalleryView();
+
+            // Mostra Overlay
+            const overlay = document.getElementById('overlay-dettagli');
+            if (overlay) {
+                overlay.style.display = 'flex';
+                document.body.classList.add('no-scroll');
+                document.body.style.top = `-${scrollPosition}px`;
+                setTimeout(() => {
+                    const closeBtn = overlay.querySelector('.close-btn');
+                    if (closeBtn) closeBtn.focus();
+                }, 100);
+            }
+        };
+
+        window.chiudiDettagli = function() {
+            const overlay = document.getElementById('overlay-dettagli');
+            if (overlay) {
+                overlay.style.display = 'none';
+                document.body.classList.remove('no-scroll');
+                document.body.style.top = '';
+                window.scrollTo(0, scrollPosition);
+                if (lastFocusedElement) lastFocusedElement.focus();
+            }
+        };
+
+        window.cambiaSlide = function(direzione) {
+            currentSlideIndex += direzione;
+            if (currentSlideIndex >= slideImages.length) currentSlideIndex = 0;
+            else if (currentSlideIndex < 0) currentSlideIndex = slideImages.length - 1;
+            updateGalleryView();
+        };
+
+        window.vaiAllaSlide = function(index) {
+            currentSlideIndex = index;
+            updateGalleryView();
+        };
+
+        window.gestisciQuantitaVino = function(btn, delta) {
+            const container = btn.parentElement;
+            const input = container.querySelector('.input-qty');
+            
+            if (!input || input.disabled) return;
+
+            let currentValue = parseInt(input.value) || 0;
+            let maxStock = parseInt(input.max) || 999;
+            let newValue = currentValue + delta;
+
+            if (newValue >= 1 && newValue <= maxStock) {
+                input.value = newValue;
+            } else if (newValue > maxStock) {
+                input.value = maxStock;
+            } else {
+                input.value = 1;
+            }
+        };
+
+        window.validaInputVino = function(input) {
+            let value = parseInt(input.value);
+            let maxStock = parseInt(input.max);
+
+            if (isNaN(value) || input.value === "" || value < 1) {
+                input.value = 1; // Corretto da 0 a 1 per UX migliore
+                return; 
+            } 
+            if (value > maxStock) {
+                input.value = maxStock;
+            }
+        };
+    });
+
+    /* ==========================================
+     * 12. LOGICA PAGINA ADMIN (Gestione Modal)
+     * ========================================== */
+    safeExecute('Pagina Admin', () => {
+        // Controllo esistenza elementi chiave
+        const modal = document.getElementById('modalVino');
+        if (!modal) return; // Esce se non siamo in admin
+
+        const modalTitle = document.getElementById('modalTitle');
+        const firstInput = document.getElementById('nome');
+
+        // ESPORTAZIONE GLOBALE FUNZIONI
+        window.apriModalNuovo = function() {
+            if(modalTitle) modalTitle.innerText = "Aggiungi Nuovo Vino";
+            const idCampo = document.getElementById('id_vino');
+            if(idCampo) idCampo.value = ""; 
+            
+            const form = document.querySelector('#modalVino form');
+            if(form) form.reset();
+            
+            modal.style.display = "flex";
+            if(firstInput) firstInput.focus();
+        };
+
+        window.apriModalModifica = function(vino) {
+            if(modalTitle) modalTitle.innerText = "Modifica: " + vino.nome;
+            
+            // Helper per settare valori in sicurezza
+            const setVal = (id, val) => {
+                const el = document.getElementById(id);
+                if(el) el.value = val;
+            };
+
+            setVal('id_vino', vino.id);
+            setVal('nome', vino.nome);
+            setVal('prezzo', vino.prezzo);
+            setVal('quantita_stock', vino.quantita_stock);
+            setVal('stato', vino.stato);
+            setVal('categoria', vino.categoria);
+            setVal('img', vino.img);
+            setVal('descrizione_breve', vino.descrizione_breve);
+            setVal('descrizione_estesa', vino.descrizione_estesa);
+            
+            setVal('vitigno', vino.vitigno || "");
+            setVal('annata', vino.annata || "");
+            setVal('gradazione', vino.gradazione || "");
+            setVal('temperatura', vino.temperatura || "");
+            setVal('abbinamenti', vino.abbinamenti || "");
+
+            modal.style.display = "flex";
+            if(firstInput) firstInput.focus();
+        };
+
+        window.chiudiModal = function() {
+            modal.style.display = "none";
+        };
+        
+        // Event Listeners Admin (non servono onclick nell'HTML per questi)
+        window.onclick = function(event) {
+            if (event.target == modal) window.chiudiModal();
+        };
+        
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape" && modal.style.display === "flex") {
+                window.chiudiModal();
+            }
+        });
+    });
 });
