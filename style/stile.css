@@ -4211,5 +4211,8 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin
     user-select: none; 
 }
 
-
-
+@media print {
+  #theme-toggle {
+    display: none;
+  }
+}
