@@ -3223,8 +3223,8 @@ a.feature-card.card-link {
 /* Contenitore principale */
 .admin-wrapper {
     width: 100%;
-    max-width: 1400px;
-    margin: 0rem auto;
+    max-width: none;
+    margin: 0;
     padding: 2rem;
     background-color: var(--card-bg);
 }
