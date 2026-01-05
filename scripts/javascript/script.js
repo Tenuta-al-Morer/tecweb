@@ -187,8 +187,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================
- * 3. UTILITIES (Scroll top, Links)
- * ========================================== */
+     * 3. UTILITIES (Scroll top, Links)
+     * ========================================== */
 
     safeExecute('Utilities', () => {
         const backToTopBtn = document.getElementById('backToTopBtn');
@@ -209,43 +209,28 @@ document.addEventListener('DOMContentLoaded', () => {
             backToTopBtn.addEventListener('click', smoothScrollToTop);
             toggleBackToTopButton();
         }
-
-        // Tracking visite: IDENTICO A PRIMA, ma con sessionStorage
+        
         const trackVisits = (selector) => {
             document.querySelectorAll(selector).forEach(link => {
-
+                
                 if (!link.href) return;
 
-                let href;
-                try {
-                    href = new URL(link.href).pathname;
-                } catch (e) {
-                    // se è un link "strano" (#, mailto, javascript, ecc) lo ignoriamo
-                    return;
-                }
+                const href = new URL(link.href).pathname;
 
-                const key = 'visited_' + href;
-
-                // prima era: SafeStorage.getItem(...)
-                if (sessionStorage.getItem(key)) {
+                if (SafeStorage.getItem('visited_' + href)) {
                     link.classList.add('is-visited');
                 }
 
                 link.addEventListener('click', () => {
-                    try {
-                        // prima era: SafeStorage.setItem(...)
-                        sessionStorage.setItem(key, 'true');
-                    } catch (e) {
-                        console.warn('sessionStorage unavailable');
-                    }
+                    SafeStorage.setItem('visited_' + href, 'true');
                 });
             });
         };
 
+        
         trackVisits('.primary-navigation a[href]');
         trackVisits('.mobile-icons a[href]');
     });
-
 
     /* ==========================================
     * 4. GESTIONE PASSWORD (Mostra/Nascondi)
