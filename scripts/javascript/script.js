@@ -1110,7 +1110,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (newVal > maxStock) {
                     input.value = maxStock;
                     newVal = maxStock;
-                    alert("Quantità adattata alla disponibilità massima: " + maxStock);
                 }
 
                 // --- CONTROLLO LIMITE MINIMO (Input manuale) ---

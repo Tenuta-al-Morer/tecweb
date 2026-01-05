@@ -1,14 +1,13 @@
 Lista todo per tecweb:
 - mettere le scritte sotto le icone di admin e gestionale
 - testare sito senza JavaScript
-- togliere !important -> michele
+- togliere !important -> michele (manca fare mini.css)
 - mettere in session storage le pagine già visitate -> contarini
 - sistemare prenotazioni esperienze (quando admin/staff accetta la richiesta come fa a sapere il cliente che gli è stata approvata) -> Luca
 - sistemare messaggistica (stesso cosa delle esperienze, non so come volevate gestire le messaggistiche verso il cliente) -> Luca
 - unire css dei vini al css generale -> vise
 - sistemare font (bisogna decidere insieme quali addottare) 
 - preparare il css per stampa -> contarini e ?
-- controllare che il tasto "-" del carrello funzioni correttamente -> michele
 - togliere spazio (è lo spazio di quando si clicca "Mostra") tra i vari ordini in sezione gestionale (COMPARE SOLO IN FORMATO TABLET)
 - sistemare tic di admin e gestionale (renderle grandi quanto le altre)
 - fare mappa del sito

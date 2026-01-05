@@ -877,165 +877,163 @@ body.light-mode .table-data td::before {
    Pagina carrello
    ========================================= */
 
-@media (max-width: 620px) {
-
-    /* --- Layout Principale --- */
-    #content.container {
-        padding: 1rem; 
-    }
-
-    /* --- SCHEDA PRODOTTO --- */
-    .cart-item {
-        display: flex;
-        flex-wrap: wrap; 
-        padding: 1.5rem 0;
-        align-items: flex-start; 
-        gap: 0; 
-    }
-
-    /* FOTO */
-    .cart-item-img {
-        width: 90px;
-        margin-right: 1rem;
-        flex-shrink: 0; 
-        display: block;
-    }
-
-    .cart-item-img img {
-        width: 100%;
-        max-height: 120px;
-        object-fit: contain;
-    }
-
-    /* TESTO */
-    .cart-item-details {
-        flex: 1; 
-        min-width: 0; 
-        display: flex;
-        flex-direction: column;
-    }
-
-    .cart-item-details h3 {
-        font-size: 1.1rem;
-        margin-bottom: 0.25rem;
-        line-height: 1.3;
-    }
-
-    /* Prezzo mobile */
-    .price-mobile {
-        font-size: 1.1rem;
-        font-weight: bold;
-        color: var(--gold-color);
-        margin-bottom: 0.5rem;
-        display: block;
-    }
-
-    .cart-item-price-col {
-        display: none;
-    }
-
-    /* RIGA AZIONI */
-    .item-actions-row {
-        width: 100%;    
-        order: 3;      
-        margin-top: 1.2rem;
-        padding-top: 1rem;
-        border-top: 1px dashed var(--bordercolor); 
-        display: flex;
-        flex-wrap: wrap; 
-        gap: 0.8rem;
-        align-items: center;
-    }
-
-    .item-actions-row .separator {
-        display: none;
-    }
-
-    /* --- BOTTONI E QUANTITÀ --- */
-    /* Selettore Quantità */
-    .qty-selector {
-        height: 44px; 
-        display: flex;
-        border-radius: 4px;
-        border: 1px solid var(--bordercolor);
-        background-color: var(--card-bg);
-        flex: 0 0 auto; 
-    }
-
-    .qty-btn {
-        min-width: 44px;
-        width: 44px;    
-        height: 100%;
-        font-size: 1.2rem;
-    }
-    
-    .qty-input {
-        min-width: 44px; 
-        width: 44px;
-        height: 100%;
-        font-size: 1rem;
-    }
-
-    /* Stile base pulsanti azione */
-    .action-btn-text {
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid var(--bordercolor);
-        border-radius: 4px;
-        background-color: var(--transparent);
-        color: var(--txtcolor);
-        font-size: 0.9rem;
-        font-weight: 600;
-        text-decoration: none;
-        flex: 1 1 auto; 
-        min-width: 90px; 
-        padding: 0 0.5rem;
-        transition: all 0.2s ease;
-    }
-
-    /* Stile Eliminazione (Rosso) */
-    .action-btn-text.btn-delete {
-        border-color: var(--red-errors);
-        color: var(--red-errors);
-    }
-
-    .action-btn-text.btn-delete:active,
-    .action-btn-text.btn-delete:hover,
-    .action-btn-text.btn-delete:focus,
-    .action-btn-text.btn-delete:focus-visible {
-        background-color: var(--btn-red-bg);
-        color: var(--pure-white);
-    }
-
-    /* Stile Salva/Sposta (Oro) */
-    .action-btn-text.btn-save,
-    .action-btn-text.btn-move {
-        border-color: var(--gold-color);
-        color: var(--gold-color);
-    }
-
-    .action-btn-text.btn-save:active,
-    .action-btn-text.btn-save:hover,
-    .action-btn-text.btn-move:active,
-    .action-btn-text.btn-move:hover,
-    .action-btn-text.btn-save:focus,
-    .action-btn-text.btn-save:focus-visible,
-    .action-btn-text.btn-move:focus,
-    .action-btn-text.btn-move:focus-visible {
-        background-color: var(--gold-color);
-        color: var(--bodybgcolor);
-    }
-
-    /* Stile Disabilitato */
-    .action-btn-text.disabled-btn {
-        border-color: var(--bordercolor);
-        color: var(--diversity-color);
-        opacity: 0.5;
-        pointer-events: none;
-    }
+/* --- Layout Principale --- */
+#content.container {
+    padding: 1rem; 
 }
+
+/* --- SCHEDA PRODOTTO --- */
+.cart-item {
+    display: flex;
+    flex-wrap: wrap; 
+    padding: 1.5rem 0;
+    align-items: flex-start; 
+    gap: 0; 
+}
+
+/* FOTO */
+.cart-item-img {
+    width: 90px;
+    margin-right: 1rem;
+    flex-shrink: 0; 
+    display: block;
+}
+
+.cart-item-img img {
+    width: 100%;
+    max-height: 120px;
+    object-fit: contain;
+}
+
+/* TESTO */
+.cart-item-details {
+    flex: 1; 
+    min-width: 0; 
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item-details h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+    line-height: 1.3;
+}
+
+/* Prezzo mobile */
+.price-mobile {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--gold-color);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.cart-item-price-col {
+    display: none;
+}
+
+/* RIGA AZIONI */
+.item-actions-row {
+    width: 100%;    
+    order: 3;      
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--bordercolor); 
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 0.8rem;
+    align-items: center;
+}
+
+.item-actions-row .separator {
+    display: none;
+}
+
+/* --- BOTTONI E QUANTITÀ --- */
+/* Selettore Quantità */
+.qty-selector {
+    height: 44px; 
+    display: flex;
+    border-radius: 4px;
+    border: 1px solid var(--bordercolor);
+    background-color: var(--card-bg);
+    flex: 0 0 auto; 
+}
+
+.qty-btn {
+    min-width: 44px;
+    width: 44px;    
+    height: 100%;
+    font-size: 1.2rem;
+}
+
+.qty-input {
+    min-width: 44px; 
+    width: 44px;
+    height: 100%;
+    font-size: 1rem;
+}
+
+/* Stile base pulsanti azione */
+.action-btn-text {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--bordercolor);
+    border-radius: 4px;
+    background-color: var(--transparent);
+    color: var(--txtcolor);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    flex: 1 1 auto; 
+    min-width: 90px; 
+    padding: 0 0.5rem;
+    transition: all 0.2s ease;
+}
+
+/* Stile Eliminazione (Rosso) */
+.action-btn-text.btn-delete {
+    border-color: var(--red-errors);
+    color: var(--red-errors);
+}
+
+.action-btn-text.btn-delete:active,
+.action-btn-text.btn-delete:hover,
+.action-btn-text.btn-delete:focus,
+.action-btn-text.btn-delete:focus-visible {
+    background-color: var(--btn-red-bg);
+    color: var(--pure-white);
+}
+
+/* Stile Salva/Sposta (Oro) */
+.action-btn-text.btn-save,
+.action-btn-text.btn-move {
+    border-color: var(--gold-color);
+    color: var(--gold-color);
+}
+
+.action-btn-text.btn-save:active,
+.action-btn-text.btn-save:hover,
+.action-btn-text.btn-move:active,
+.action-btn-text.btn-move:hover,
+.action-btn-text.btn-save:focus,
+.action-btn-text.btn-save:focus-visible,
+.action-btn-text.btn-move:focus,
+.action-btn-text.btn-move:focus-visible {
+    background-color: var(--gold-color);
+    color: var(--bodybgcolor);
+}
+
+/* Stile Disabilitato */
+.action-btn-text.disabled-btn {
+    border-color: var(--bordercolor);
+    color: var(--diversity-color);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
 
 /* Admin Tabs Gestionale */
 .admin-tabs {
@@ -1091,14 +1089,6 @@ body.light-mode .table-data td::before {
 .main-img-box img {
     max-height: 250px; 
 }
-
-.nav-arrow {
-    /* DEPRECATED: dimensione frecce per popup mobile (galleria a singola immagine)
-    width: 35px; height: 35px;
-    */
-}
-.prev { /* left: 5px; */ }
-.next { /* right: 5px; */ }
 
 .popup-info h2 {
     font-size: 1.8em; 

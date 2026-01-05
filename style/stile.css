@@ -265,14 +265,23 @@ body.light-mode select:focus {
     background-color: var(--pure-white);
 }
 
-.visually-hidden,
 .navigationHelp {
     position: absolute;
     text-indent: -999em;
     color: var(--pure-white);
     min-width: 44px;
     min-height: 44px;
-    padding: 10px !important;
+    padding: 10px;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    border: 0;
 }
 
 .navigationHelp:focus {
@@ -1009,7 +1018,7 @@ a.logo-link:hover img, a.logo-link:focus img { transform: scale(1.05); }
 .mobile-icons a,
 .mobile-icons span.current-page-icon {
     justify-content: center;
-    padding: 0 !important;  
+    padding: 0 mstevani;  
     width: 44px;            
 }
 
@@ -1580,7 +1589,8 @@ footer a:visited {
     line-height: 0;       
 }
 
-.login-header-logo a:hover img {
+.login-header-logo a:hover img,
+.login-header-logo a:focus img {
     transform: scale(1.05);
 }
 
@@ -1688,7 +1698,7 @@ footer a:visited {
 
 .password-wrapper input {
     padding-right: 2.5rem; 
-    padding-right: 50px !important; 
+    padding-right: 50px mstevani; 
 }
 
 .auth-form input:not([type="checkbox"]):not([type="radio"]):focus {
@@ -1708,16 +1718,16 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px var(--bodybgcolor) inset !important;
-    -webkit-text-fill-color: var(--txtcolor) !important;
-    border: 1px solid var(--bordercolor) !important;
+    -webkit-box-shadow: 0 0 0 30px var(--bodybgcolor) inset mstevani;
+    -webkit-text-fill-color: var(--txtcolor) mstevani;
+    border: 1px solid var(--bordercolor) mstevani;
     border-radius: 4px;
     transition: background-color 5000s ease-in-out 0s;
 }
 
 input:-webkit-autofill:focus {
-    border-color: var(--gold-color) !important;
-    -webkit-box-shadow: 0 0 0 30px var(--bodybgcolor) inset, 0 0 5px var(--focus-gold) !important;
+    border-color: var(--gold-color) mstevani;
+    -webkit-box-shadow: 0 0 0 30px var(--bodybgcolor) inset, 0 0 5px var(--focus-gold) mstevani;
 }
 
 .toggle-password {
@@ -1928,8 +1938,8 @@ input:-webkit-autofill:focus {
     display: flex;
     flex-direction: column;
     gap: 6rem;
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
+    padding-bottom: 0 mstevani;
+    margin-bottom: 0 mstevani;
 }
 
 .tenuta-hero {
@@ -1996,8 +2006,8 @@ input:-webkit-autofill:focus {
 .tenuta-card-text h2,
 .tenuta-philosophy-title,
 .tenuta-main h2 {
-    border-top: none !important;
-    padding-top: 0 !important;
+    border-top: none mstevani;
+    padding-top: 0 mstevani;
 }
 
 .tenuta-section-title {
@@ -2061,7 +2071,7 @@ input:-webkit-autofill:focus {
 }
 
 footer {
-    margin-top: 0 !important
+    margin-top: 0 mstevani
 }
 
 
@@ -2087,11 +2097,11 @@ footer {
 }
 
 .dashboard-sidebar h2.visually-hidden {
-    border: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    min-width: 0 !important;
-    min-height: 0 !important;
+    border: none mstevani;
+    margin: 0 mstevani;
+    padding: 0 mstevani;
+    min-width: 0 mstevani;
+    min-height: 0 mstevani;
     width: 1px;
     height: 1px;
 }
@@ -2246,7 +2256,7 @@ TABELLE ORDINI E DETTAGLI
 
 .order-details-cell {
     padding: 1rem;
-    border-top: none !important;
+    border-top: none mstevani;
 }
 
 .details-content {
@@ -2331,7 +2341,7 @@ a.feature-card.card-link {
 
 /* Forza il bordo dorato */
 .border-gold {
-    border-color: var(--gold-color) !important;
+    border-color: var(--gold-color) mstevani;
 }
 
 /* Testo "Nessun ordine recente" */
@@ -2785,7 +2795,13 @@ a.feature-card.card-link {
 .btn-delete { 
     color: var(--red-errors);
     text-decoration: underline;
+    min-width: 24px;
+    min-height: 24px;
+    display: inline-flex;
+    align-items: center;    
+    justify-content: center; 
 }
+
 
 .btn-move { 
     color: var(--gold-color); 
@@ -2795,6 +2811,11 @@ a.feature-card.card-link {
 .btn-save { 
     color: var(--gold-color); 
     text-decoration: underline;
+    min-width: 24px;
+    min-height: 24px;
+    display: inline-flex;
+    align-items: center;    
+    justify-content: center; 
 }
 
 .disabled-btn { 
@@ -2853,10 +2874,10 @@ a.feature-card.card-link {
 }
 
 .btn-disabled {
-    background-color: var(--gray-medium) !important; 
-    color: var(--gray-border) !important; 
+    background-color: var(--gray-medium) mstevani; 
+    color: var(--gray-border) mstevani; 
     cursor: not-allowed;
-    border-color: var(--gray-medium) !important;
+    border-color: var(--gray-medium) mstevani;
     box-shadow: none;
 }
 
@@ -3479,7 +3500,8 @@ body.light-mode .admin-search-input::placeholder {
     vertical-align: middle;
 }
 
-.compact-table tr:hover {
+.compact-table tr:hover,
+.compact-table tr:focus-within {
     background-color: var(--table-stripe);
 }
 
@@ -3661,7 +3683,8 @@ body.light-mode .compact-table td {
     color: var(--text-emphasis);
 }
 
-body.light-mode .compact-table tr:hover {
+body.light-mode .compact-table tr:hover,
+body.light-mode .compact-table tr:focus-within {
     background-color: var(--surface-light-alt); /* Hover chiarissimo */
 }
 
@@ -3703,7 +3726,8 @@ body.light-mode .close-modal {
     color: var(--text-muted);
 }
 
-body.light-mode .close-modal:hover {
+body.light-mode .close-modal:hover,
+body.light-mode .close-modal:focus {
     color: var(--pure-black);
 }
 
@@ -3783,7 +3807,8 @@ body.light-mode .close-modal:hover {
     text-align: center;
 }
 
-.wine-article:hover {
+.wine-article:hover,
+.wine-article:focus-within {
     transform: translateY(-5px);
     /* Ombra dorata per ridare vita */
     box-shadow: 0 10px 20px rgba(197, 165, 81, 0.25); 
@@ -3848,7 +3873,8 @@ body.light-mode .close-modal:hover {
     transition: all 0.2s;
 }
 
-.selettore-quantita button:hover {
+.selettore-quantita button:hover,
+.selettore-quantita button:focus {
     background-color: var(--gold-color);
     color: var(--pure-white);
     border-color: var(--gold-color);
@@ -3877,7 +3903,7 @@ body.light-mode .close-modal:hover {
     font-size: 0.85rem;
     text-transform: uppercase;
 }
-.buy-button:hover { background-color: var(--color-gold-hover); }
+.buy-button:hover, .buy-button:focus { background-color: var(--color-gold-hover); }
 
 .details-button {
     background-color: transparent;
@@ -3891,7 +3917,7 @@ body.light-mode .close-modal:hover {
     font-size: 0.85rem;
     text-transform: uppercase;
 }
-.details-button:hover {
+.details-button:hover, .details-button:focus {
     background-color: #333;
     color: var(--pure-white);
 }
@@ -3937,35 +3963,6 @@ body.light-mode .close-modal:hover {
 }
 .main-img-box img { max-height: 400px; object-fit: contain; }
 
-.nav-arrow {
-    /* DEPRECATED: regole frecce galleria commentate perché la galleria usa una sola immagine
-    background: var(--pure-white);
-    border: 1px solid #ccc;
-    color: #333;
-    width: 40px; height: 40px; border-radius: 50%;
-    display: flex; justify-content: center; align-items: center;
-    cursor: pointer; position: absolute; z-index: 10; top: 50%; transform: translateY(-50%);
-    transition: all 0.2s;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    */
-}
-.nav-arrow:hover { /* background: var(--gold-color); color: var(--pure-white); border-color: var(--gold-color); */ }
-.prev { /* left: -20px; */ }
-.next { /* right: -20px; */ }
-
-.thumbnails-row {
-    /* DEPRECATED: miniature rimosse
-    display: flex; justify-content: center; gap: 10px; margin-top: 15px;
-    */
-}
-.thumbnails-row img {
-    /* width: 60px; height: 60px; object-fit: contain;
-    border: 1px solid #ddd; border-radius: 4px; background: var(--pure-white); cursor: pointer;
-    opacity: 0.6; transition: opacity 0.2s;
-    */
-}
-.thumbnails-row img:hover, .active-thumb { /* opacity: 1; border-color: var(--gold-color) !important; */ }
-
 .popup-info h2 {
     font-family: "Playfair Display", serif;
     color: #222;
@@ -3991,7 +3988,7 @@ body.light-mode .close-modal:hover {
     font-size: 2.5rem; color: #aaa; background: none; border: none; cursor: pointer;
     line-height: 1; transition: color 0.2s;
 }
-.close-btn:hover { color: var(--gold-color); }
+.close-btn:hover, .close-btn:focus { color: var(--gold-color); }
 
 body.no-scroll { overflow: hidden; }
 input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
