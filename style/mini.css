@@ -1093,10 +1093,12 @@ body.light-mode .table-data td::before {
 }
 
 .nav-arrow {
+    /* DEPRECATED: dimensione frecce per popup mobile (galleria a singola immagine)
     width: 35px; height: 35px;
+    */
 }
-.prev { left: 5px; }
-.next { right: 5px; }
+.prev { /* left: 5px; */ }
+.next { /* right: 5px; */ }
 
 .popup-info h2 {
     font-size: 1.8em; 

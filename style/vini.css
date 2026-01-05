@@ -250,8 +250,9 @@ input[type=number] {
     background-color: var(--pure-white);
     border: 1px solid var(--gray-border);
     border-radius: 8px;
-    padding: 10px;
-    display: flex; justify-content: center;
+    padding: 10px 10px 10px 10px;
+    padding-top: 18px; /* spinge leggermente verso il basso l'immagine */
+    display: flex; justify-content: center; align-items: flex-start;
     position: relative;
 }
 .main-img-box img { max-height: 400px; width: auto; object-fit: contain; }
@@ -264,34 +265,24 @@ input[type=number] {
     width: 100%; /* Occupa tutta la larghezza disponibile */
 }
 
-/* Frecce Navigazione */
+/* DEPRECATED: regole per navigazione galleria (miniature/righe) 
+   Commentate perché la galleria ora usa una sola immagine.
+   Se in futuro si ripristina la galleria con più immagini,
+   rimuovere i commenti qui e nelle altre regole correlate.
+
 .nav-arrow {
     background: var(--overlay-white-90);
     border: 1px solid var(--gray-border);
     color: var(--color-bg-dark);
     width: 40px; height: 40px; border-radius: 50%;
-    
     display: flex; justify-content: center; align-items: center;
-    cursor: pointer; 
-    
-    /* POSIZIONAMENTO ASSOLUTO RISPETTO A .gallery-container */
-    position: absolute; 
-    z-index: 10;
-    top: 50%; 
-    transform: translateY(-50%); /* Centra perfettamente in verticale */
-    
-    transition: all 0.2s;
+    cursor: pointer; position: absolute; z-index: 10;
+    top: 50%; transform: translateY(-50%); transition: all 0.2s;
 }
 
-.nav-arrow:hover { 
-    background: var(--gold-color); 
-    color: var(--pure-white); 
-    border-color: var(--gold-color); 
-}
-
-/* Posizione orizzontale */
-.prev { left: 0; }  /* Attaccata a sinistra dell'immagine */
-.next { right: 0; } /* Attaccata a destra dell'immagine */
+.nav-arrow:hover { background: var(--gold-color); color: var(--pure-white); border-color: var(--gold-color); }
+.prev { left: 0; } .next { right: 0; }
+*/
 
 /* BLOCCO SCROLL "A PROVA DI BOMBA" */
 body.no-scroll {
@@ -303,14 +294,16 @@ body.no-scroll {
 
 /* Miniature */
 .thumbnails-row {
+    /* DEPRECATED: miniature rimosse (lasciato commentato per sicurezza)
     display: flex; justify-content: center; gap: 10px; margin-top: 15px;
+    */
 }
 .thumbnails-row img {
-    width: 60px; height: 60px; object-fit: contain;
+    /* width: 60px; height: 60px; object-fit: contain;
     border: 1px solid var(--gray-border); border-radius: 4px;
-    background: var(--pure-white); cursor: pointer;
+    background: var(--pure-white); cursor: pointer; */
 }
-.active-thumb { border-color: var(--gold-color) !important; transform: scale(1.1); }
+.active-thumb { /* border-color: var(--gold-color) !important; transform: scale(1.1); */ }
 
 /* Tabella Tecnica */
 .tech-wrapper { margin: 1.5em 0; overflow-x: auto; }

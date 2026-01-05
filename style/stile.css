@@ -3931,13 +3931,15 @@ body.light-mode .close-modal:hover {
     background-color: var(--pure-white);
     border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 20px;
+    padding: 20px 20px 20px 20px;
+    padding-top: 28px; /* sposta l'immagine un po' più in basso nel popup */
     width: 100%;
-    display: flex; justify-content: center;
+    display: flex; justify-content: center; align-items: flex-start;
 }
 .main-img-box img { max-height: 400px; object-fit: contain; }
 
 .nav-arrow {
+    /* DEPRECATED: regole frecce galleria commentate perché la galleria usa una sola immagine
     background: var(--pure-white);
     border: 1px solid #ccc;
     color: #333;
@@ -3946,20 +3948,24 @@ body.light-mode .close-modal:hover {
     cursor: pointer; position: absolute; z-index: 10; top: 50%; transform: translateY(-50%);
     transition: all 0.2s;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    */
 }
-.nav-arrow:hover { background: var(--gold-color); color: var(--pure-white); border-color: var(--gold-color); }
-.prev { left: -20px; }
-.next { right: -20px; }
+.nav-arrow:hover { /* background: var(--gold-color); color: var(--pure-white); border-color: var(--gold-color); */ }
+.prev { /* left: -20px; */ }
+.next { /* right: -20px; */ }
 
 .thumbnails-row {
+    /* DEPRECATED: miniature rimosse
     display: flex; justify-content: center; gap: 10px; margin-top: 15px;
+    */
 }
 .thumbnails-row img {
-    width: 60px; height: 60px; object-fit: contain;
+    /* width: 60px; height: 60px; object-fit: contain;
     border: 1px solid #ddd; border-radius: 4px; background: var(--pure-white); cursor: pointer;
     opacity: 0.6; transition: opacity 0.2s;
+    */
 }
-.thumbnails-row img:hover, .active-thumb { opacity: 1; border-color: var(--gold-color) !important; }
+.thumbnails-row img:hover, .active-thumb { /* opacity: 1; border-color: var(--gold-color) !important; */ }
 
 .popup-info h2 {
     font-family: "Playfair Display", serif;

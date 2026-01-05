@@ -1291,7 +1291,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     // B. Aggiorna il contatore nel carrello (Header)
                     // Cerca l'elemento che contiene il numero. 
                     // Se nel tuo HTML hai un ID specifico per il contatore (es. #header-cart-count), usalo qui.
-                    // Esempio generico che cerca un badge dentro il link del carrello:
                     const cartCounters = document.querySelectorAll('.cart-count, .badge-count, #header-cart-count'); 
                     cartCounters.forEach(el => {
                         el.innerText = data.cart_count;
@@ -1313,20 +1312,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function updateGalleryView() {
             const mainImg = document.getElementById('pop-img');
-            if(mainImg && slideImages[currentSlideIndex]) mainImg.src = slideImages[currentSlideIndex];
-            
-            // Aggiorna thumbnails se esistono
-            const t0 = document.getElementById('thumb-0');
-            const t1 = document.getElementById('thumb-1');
-            const t2 = document.getElementById('thumb-2');
-            
-            if(t0 && slideImages[0]) t0.src = slideImages[0];
-            if(t1 && slideImages[1]) t1.src = slideImages[1];
-            if(t2 && slideImages[2]) t2.src = slideImages[2];
-
-            document.querySelectorAll('.thumbnails-row img').forEach(img => img.classList.remove('active-thumb'));
-            const activeThumb = document.getElementById('thumb-' + currentSlideIndex);
-            if(activeThumb) activeThumb.classList.add('active-thumb');
+            if (mainImg && slideImages[0]) mainImg.src = slideImages[0];
         }
 
         // --- FUNZIONI ESPORTE (GLOBAL) ---
@@ -1435,8 +1421,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // Galleria Immagini
-            slideImages = [img, img, img];
+            // Galleria Immagini: singola immagine
+            slideImages = [img];
             currentSlideIndex = 0;
             updateGalleryView();
 
@@ -1464,17 +1450,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        window.cambiaSlide = function(direzione) {
-            currentSlideIndex += direzione;
-            if (currentSlideIndex >= slideImages.length) currentSlideIndex = 0;
-            else if (currentSlideIndex < 0) currentSlideIndex = slideImages.length - 1;
-            updateGalleryView();
-        };
-
-        window.vaiAllaSlide = function(index) {
-            currentSlideIndex = index;
-            updateGalleryView();
-        };
+        // Rimosse le funzioni di cambio slide: galleria usa una sola immagine
 
         window.gestisciQuantitaVino = function(btn, delta) {
             const container = btn.parentElement;
