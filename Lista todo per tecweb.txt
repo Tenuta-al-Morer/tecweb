@@ -1,0 +1,24 @@
+Lista todo per tecweb:
+- sistemare prenotazioni esperienze (quando admin/staff accetta la richiesta come fa a sapere il cliente che gli è stata approvata)
+- sistemare messaggistica (stesso cosa delle esperienze, non so come volevate gestire le messaggistiche verso il cliente)
+- unire css dei vini al css generale
+- sistemare font (bisogna decidere insieme quali addottare)
+- preparare il css per stampa
+- controllare che il tasto "-" del carrello funzioni correttamente
+- togliere spazio (è lo spazio di quando si clicca "Mostra") tra i vari ordini in sezione gestionale (COMPARE SOLO IN FORMATO TABLET)
+- sistemare tic di admin e gestionale (renderle grandi quanto le altre)
+- fare mappa del sito
+- controlla nella lezione 20 se rispettiamo le convenzioni esterne
+- converti in formato .jpeg le foto
+- controlla animazioni (parentesi lez20)
+- cambia i nomi delle variabili (questo l'ho preso dal notion, non so se si intendono i colori o altro, se sono i colori dovrei aver fatto)
+- controlla l’accessibilità di tutte le pagine, quindi verificare con nvda che tutto funzioni per i ciechi
+- sistemare db (sistemare perché il metodo di pagamento è stato tolto quindi anche determinate colonne andranno modificate)
+- riorganizzare tutti i form correttamente (Lez23)
+- cambiare colori allo stato dei vini in admin (verde e rosso non passano i contrasti minimi)
+- verificare velocemente tutto il codice accertandosi di seguire tutti i requisiti obbligatori della prof
+- preparare la relazione
+
+DOMANDE
+- decidere se mantenere le icone per admin e gestionale, oppure mettere i nomi delle pagine (dico perché non vorrei mai facesse storie la gaggi)
+- nel gestionale ho colorato di verde e rosso i pulsanti accetta e rifiuta degli ordini, se vi piace la struttura in generale, con il pulsante che si espande e mostra i dettagli, allora faccio la stessa cosa per le esperienze e forse anche per i messaggi, anche se non so bene come farlo in quel caso
