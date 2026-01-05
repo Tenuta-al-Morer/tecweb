@@ -9,8 +9,8 @@
 
 :root {
     /* PALETTE BASE */
-    --pure-white:  #ffffff;
-    --pure-black:  #000000;
+    --pure-white:  #fff;
+    --pure-black:  #000;
     --transparent: transparent;
 
     /* Brand Colors */
