@@ -1209,6 +1209,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+    
     /* ==========================================
      * 11. LOGICA PAGINA VINI
      * ========================================== */
@@ -1225,9 +1226,74 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentOpenWineId = 0; 
 
         // --- FUNZIONI INTERNE ---
+        // 1. Crea il Toast se non esiste
+        function getToastElement() {
+            let toast = document.getElementById('cart-toast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'cart-toast';
+                document.body.appendChild(toast);
+            }
+            return toast;
+        }
+
+        // 2. Mostra il Toast
+        function showToast(message) {
+            const toast = getToastElement();
+            toast.innerHTML = `<i class="fas fa-check-circle"></i> <span>${message}</span>`;
+            toast.className = "show";
+            
+            // Nascondi dopo 3 secondi
+            setTimeout(function(){ 
+                toast.className = toast.className.replace("show", ""); 
+            }, 3000);
+        }
+
+        // 3. Funzione AJAX per il carrello
         function inviaAlCarrello(id, qty) {
-            const url = `carrello.php?action=aggiungi&id_vino=${id}&quantita=${qty}`;
-            window.location.href = url;
+            // Prepariamo i dati
+            const formData = new FormData();
+            formData.append('action', 'aggiungi');
+            formData.append('id_vino', id);
+            formData.append('quantita', qty);
+            formData.append('ajax_mode', '1');
+
+            // Disabilita UI temporaneamente
+            document.body.style.cursor = 'wait';
+
+            fetch('carrello.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.body.style.cursor = 'default';
+                
+                if (data.success) {
+                    // A. Mostra notifica
+                    showToast("Prodotto aggiunto al carrello!");
+                    
+                    // B. Aggiorna il contatore nel carrello (Header)
+                    // Cerca l'elemento che contiene il numero. 
+                    // Se nel tuo HTML hai un ID specifico per il contatore (es. #header-cart-count), usalo qui.
+                    // Esempio generico che cerca un badge dentro il link del carrello:
+                    const cartCounters = document.querySelectorAll('.cart-count, .badge-count, #header-cart-count'); 
+                    cartCounters.forEach(el => {
+                        el.innerText = data.cart_count;
+                        el.style.display = data.cart_count > 0 ? 'inline-block' : 'none';
+                    });
+
+                } else {
+                    alert("Errore: " + (data.error || "Impossibile aggiungere al carrello"));
+                }
+            })
+            .catch(error => {
+                console.error('Errore:', error);
+                document.body.style.cursor = 'default';
+                // se fallisce AJAX, facciamo il redirect classico
+                // window.location.href = `carrello.php?action=aggiungi&id_vino=${id}&quantita=${qty}`;
+                showToast("Errore di connessione");
+            });
         }
 
         function updateGalleryView() {

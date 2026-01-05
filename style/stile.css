@@ -3991,6 +3991,50 @@ body.light-mode .close-modal:hover {
 body.no-scroll { overflow: hidden; }
 input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 
+/* --- TOAST NOTIFICATION --- */
+#cart-toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: var(--color-bg-dark);
+    color: var(--pure-white);
+    text-align: center;
+    border: 1px solid var(--color-green);
+    border-radius: 4px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    opacity: 0;
+    transition: opacity 0.3s, bottom 0.3s;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#cart-toast.show {
+    visibility: visible;
+    opacity: 1;
+    bottom: 50px;
+}
+
+#cart-toast i {
+    color: var(--color-green);
+    font-size: 1.2em;
+}
+
+/* --- LIGHT MODE --- */
+body.light-mode #cart-toast {
+    background-color: var(--pure-white);
+    color: var(--txtcolor);
+    border-color: var(--color-green);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
 /* =========================================
    CHECKOUT MOBILE (< 940px)
    ========================================= */
