@@ -242,7 +242,7 @@ footer {
 .table-container {
     width: 100%;
     overflow: visible;
-    border: none !important;
+    border: none;
 }
 
 .table-data, .table-data thead, .table-data tbody,
@@ -327,7 +327,7 @@ body.light-mode .table-data td::before {
 }
 
 .table-data tr.order-details-row.is-hidden {
-    display: none !important;
+    display: none;
 }
 
 .table-data td.td_richiesta_degustazione::before {
@@ -481,9 +481,9 @@ body.light-mode .table-data td::before {
     gap: 1rem;
 }
 
-.order-details-cell {
-    padding: 0 !important;
-    border: none !important;
+.order-summary-table .order-details-cell {
+    padding: 0;
+    border: none;
 }
 
 .info-value {
@@ -617,20 +617,20 @@ body.light-mode .table-data td::before {
 }
 
 .order-summary-table tr.card-is-open {
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-    border-bottom: none !important;
-    margin-bottom: 0 !important;   
-    box-shadow: none !important;   
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: none;
+    margin-bottom: 0;   
+    box-shadow: none;   
     position: relative;
     z-index: 10; 
 }
 
 .order-summary-table tr.order-details-row {
-    border-top-left-radius: 0 !important;
-    border-top-right-radius: 0 !important;
-    border-top: none !important; 
-    margin-top: 0 !important;    
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: none; 
+    margin-top: 0;    
     
     border-top: 1px solid var(--subheader-border-color); 
 }
@@ -706,6 +706,18 @@ body.light-mode .table-data td::before {
     }
 
     /* --- 2. TABELLA COMPATTA (Card View) --- */
+
+    main table.compact-table {
+        border: none;
+        background: transparent; 
+        box-shadow: none;
+    }
+    
+    main .table-responsive {
+        border: none;
+        border-radius: 0; 
+    }
+
     .compact-table thead {
         display: none;
     }

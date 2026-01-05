@@ -29,7 +29,6 @@ Lista todo per tecweb:
     - stile.css
     - stampa.css
     - mini.css
-- sistemare db (sistemare perché il metodo di pagamento è stato tolto quindi anche determinate colonne andranno modificate) -> michele
 - riorganizzare tutti i form correttamente (Lez23) (FATTO MA DA VERIFICARE)
 - cambiare colori allo stato dei vini in admin (verde e rosso non passano i contrasti minimi), sistemare anche i pulsanti sulla destra
 - verificare velocemente tutto il codice accertandosi di seguire tutti i requisiti obbligatori della prof
