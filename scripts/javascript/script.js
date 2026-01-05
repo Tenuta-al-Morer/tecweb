@@ -187,8 +187,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================
-     * 3. UTILITIES (Scroll top, Links)
-     * ========================================== */
+    * 3. UTILITIES (Scroll top, Links)
+    * ========================================== */
 
     safeExecute('Utilities', () => {
         const backToTopBtn = document.getElementById('backToTopBtn');
@@ -209,25 +209,36 @@ document.addEventListener('DOMContentLoaded', () => {
             backToTopBtn.addEventListener('click', smoothScrollToTop);
             toggleBackToTopButton();
         }
-        
+
+        // === TRACK PAGINE VISITATE (sessionStorage) ===
         const trackVisits = (selector) => {
             document.querySelectorAll(selector).forEach(link => {
-                
+
                 if (!link.href) return;
 
-                const href = new URL(link.href).pathname;
+                const url = new URL(link.href, window.location.origin);
 
-                if (SafeStorage.getItem('visited_' + href)) {
+                // opzionale ma consigliato: solo link interni
+                if (url.origin !== window.location.origin) return;
+
+                const key = 'visited_' + url.pathname;
+
+                // LETTURA da sessionStorage
+                if (sessionStorage.getItem(key)) {
                     link.classList.add('is-visited');
                 }
 
+                // SCRITTURA su sessionStorage
                 link.addEventListener('click', () => {
-                    SafeStorage.setItem('visited_' + href, 'true');
+                    try {
+                        sessionStorage.setItem(key, 'true');
+                    } catch (e) {
+                        console.warn('sessionStorage unavailable');
+                    }
                 });
             });
         };
 
-        
         trackVisits('.primary-navigation a[href]');
         trackVisits('.mobile-icons a[href]');
     });
