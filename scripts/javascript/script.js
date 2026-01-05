@@ -187,8 +187,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================
-    * 3. UTILITIES (Scroll top, Links)
-    * ========================================== */
+ * 3. UTILITIES (Scroll top, Links)
+ * ========================================== */
 
     safeExecute('Utilities', () => {
         const backToTopBtn = document.getElementById('backToTopBtn');
@@ -210,27 +210,30 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleBackToTopButton();
         }
 
-        // === TRACK PAGINE VISITATE (sessionStorage) ===
+        // Tracking visite: IDENTICO A PRIMA, ma con sessionStorage
         const trackVisits = (selector) => {
             document.querySelectorAll(selector).forEach(link => {
 
                 if (!link.href) return;
 
-                const url = new URL(link.href, window.location.origin);
+                let href;
+                try {
+                    href = new URL(link.href).pathname;
+                } catch (e) {
+                    // se è un link "strano" (#, mailto, javascript, ecc) lo ignoriamo
+                    return;
+                }
 
-                // opzionale ma consigliato: solo link interni
-                if (url.origin !== window.location.origin) return;
+                const key = 'visited_' + href;
 
-                const key = 'visited_' + url.pathname;
-
-                // LETTURA da sessionStorage
+                // prima era: SafeStorage.getItem(...)
                 if (sessionStorage.getItem(key)) {
                     link.classList.add('is-visited');
                 }
 
-                // SCRITTURA su sessionStorage
                 link.addEventListener('click', () => {
                     try {
+                        // prima era: SafeStorage.setItem(...)
                         sessionStorage.setItem(key, 'true');
                     } catch (e) {
                         console.warn('sessionStorage unavailable');
@@ -242,6 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
         trackVisits('.primary-navigation a[href]');
         trackVisits('.mobile-icons a[href]');
     });
+
 
     /* ==========================================
     * 4. GESTIONE PASSWORD (Mostra/Nascondi)
