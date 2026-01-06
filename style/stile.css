@@ -2220,6 +2220,12 @@ TABELLE ORDINI E DETTAGLI
     background-color: var(--table-stripe); 
 }
 
+.order-details-row.is-hidden{
+    background-color: var(--table-stripe); 
+    display: none;
+}
+
+
 .order-details-cell {
     padding: 1rem;
     border-top: none ;
