@@ -3,16 +3,14 @@ Lista todo per tecweb:
 - testare sito senza JavaScript
 - mettere in session storage le pagine già visitate -> contarini
 - sistemare prenotazioni esperienze (quando admin/staff accetta la richiesta come fa a sapere il cliente che gli è stata approvata) -> Luca
+    - risposta: si scrive nella relazione che alla conferma viene inviata automaticamente una mail ma che ovviamente noi non la gestiamo come cosa
 - sistemare messaggistica (stesso cosa delle esperienze, non so come volevate gestire le messaggistiche verso il cliente) -> Luca
-- unire css dei vini al css generale -> vise
 - sistemare font (bisogna decidere insieme quali addottare) 
 - preparare il css per stampa -> contarini e ?
-- togliere spazio (è lo spazio di quando si clicca "Mostra") tra i vari ordini in sezione gestionale (COMPARE SOLO IN FORMATO TABLET)
 - sistemare tic di admin e gestionale (renderle grandi quanto le altre)
 - fare mappa del sito
 - controlla nella lezione 20 se rispettiamo le convenzioni esterne
 - converti in formato .jpeg le foto e togliere foto non utilizzate -> vise
-- controlla animazioni (parentesi lez20)
 - controlla l’accessibilità di tutte le pagine e verificare con nvda che tutto funzioni per i ciechi:
     - home
     - tenuta -> Luca
