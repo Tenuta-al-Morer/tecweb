@@ -37,3 +37,4 @@ DOMANDE
 - colore header e footer tra modalità light e night
 - variabili colori
 - dimensione fogli css
+- iscrizione per consegna del progetto: accattivante accessibile
