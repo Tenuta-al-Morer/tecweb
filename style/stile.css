@@ -1018,7 +1018,7 @@ a.logo-link:hover img, a.logo-link:focus img { transform: scale(1.05); }
 .mobile-icons a,
 .mobile-icons span.current-page-icon {
     justify-content: center;
-    padding: 0 mstevani;  
+    padding: 0 ;  
     width: 44px;            
 }
 
@@ -1479,7 +1479,7 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
 footer {
     position: relative;
     text-align: center;
-    margin-top: 2em;
+    /* margin-top: 2em; */
     background-color: var(--navbgcolor);
     color: var(--pure-white);
     padding: 1.5em 0;
@@ -1698,7 +1698,7 @@ footer a:visited {
 
 .password-wrapper input {
     padding-right: 2.5rem; 
-    padding-right: 50px mstevani; 
+    padding-right: 50px ; 
 }
 
 .auth-form input:not([type="checkbox"]):not([type="radio"]):focus {
@@ -1718,16 +1718,16 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px var(--bodybgcolor) inset mstevani;
-    -webkit-text-fill-color: var(--txtcolor) mstevani;
-    border: 1px solid var(--bordercolor) mstevani;
+    -webkit-box-shadow: 0 0 0 30px var(--bodybgcolor) inset ;
+    -webkit-text-fill-color: var(--txtcolor) ;
+    border: 1px solid var(--bordercolor) ;
     border-radius: 4px;
     transition: background-color 5000s ease-in-out 0s;
 }
 
 input:-webkit-autofill:focus {
-    border-color: var(--gold-color) mstevani;
-    -webkit-box-shadow: 0 0 0 30px var(--bodybgcolor) inset, 0 0 5px var(--focus-gold) mstevani;
+    border-color: var(--gold-color) ;
+    -webkit-box-shadow: 0 0 0 30px var(--bodybgcolor) inset, 0 0 5px var(--focus-gold) ;
 }
 
 .toggle-password {
@@ -1938,8 +1938,8 @@ input:-webkit-autofill:focus {
     display: flex;
     flex-direction: column;
     gap: 6rem;
-    padding-bottom: 0 mstevani;
-    margin-bottom: 0 mstevani;
+    padding-bottom: 0 ;
+    margin-bottom: 0 ;
 }
 
 .tenuta-hero {
@@ -2006,8 +2006,8 @@ input:-webkit-autofill:focus {
 .tenuta-card-text h2,
 .tenuta-philosophy-title,
 .tenuta-main h2 {
-    border-top: none mstevani;
-    padding-top: 0 mstevani;
+    border-top: none;
+    padding-top: 0;
 }
 
 .tenuta-section-title {
@@ -2070,13 +2070,6 @@ input:-webkit-autofill:focus {
     opacity: 0.35;
 }
 
-footer {
-    margin-top: 0 mstevani
-}
-
-
-
-
 /* =========================================
    AREA RISERVATA User 
    ========================================= */
@@ -2097,11 +2090,11 @@ footer {
 }
 
 .dashboard-sidebar h2.visually-hidden {
-    border: none mstevani;
-    margin: 0 mstevani;
-    padding: 0 mstevani;
-    min-width: 0 mstevani;
-    min-height: 0 mstevani;
+    border: none ;
+    margin: 0 ;
+    padding: 0 ;
+    min-width: 0 ;
+    min-height: 0 ;
     width: 1px;
     height: 1px;
 }
@@ -2256,7 +2249,7 @@ TABELLE ORDINI E DETTAGLI
 
 .order-details-cell {
     padding: 1rem;
-    border-top: none mstevani;
+    border-top: none ;
 }
 
 .details-content {
@@ -2341,7 +2334,7 @@ a.feature-card.card-link {
 
 /* Forza il bordo dorato */
 .border-gold {
-    border-color: var(--gold-color) mstevani;
+    border-color: var(--gold-color) ;
 }
 
 /* Testo "Nessun ordine recente" */
@@ -2874,10 +2867,10 @@ a.feature-card.card-link {
 }
 
 .btn-disabled {
-    background-color: var(--gray-medium) mstevani; 
-    color: var(--gray-border) mstevani; 
+    background-color: var(--gray-medium) ; 
+    color: var(--gray-border) ; 
     cursor: not-allowed;
-    border-color: var(--gray-medium) mstevani;
+    border-color: var(--gray-medium) ;
     box-shadow: none;
 }
 
