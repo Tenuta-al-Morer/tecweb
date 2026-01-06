@@ -3892,18 +3892,35 @@ body.light-mode .close-modal:focus {
 
 /* Pulsanti */
 .buy-button {
-    background-color: var(--gold-color);
-    color: var(--pure-white); /* Bianco su oro è più leggibile */
+    background-color: var(--color-gold);
+    color: var(--pure-black);
     font-weight: 600;
     border: none;
     padding: 0.7em;
     cursor: pointer;
     border-radius: 4px;
-    transition: background 0.3s;
+    transition: background 0.3s, opacity 0.3s;
     font-size: 0.85rem;
     text-transform: uppercase;
 }
-.buy-button:hover, .buy-button:focus { background-color: var(--color-gold-hover); }
+.buy-button:hover { background-color: var(--color-gold-hover); }
+.buy-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Buy Button in Light Mode: bianco su oro scuro */
+body.light-mode .buy-button {
+    background-color: var(--color-gold-dark);
+    color: var(--pure-white);
+}
+body.light-mode .buy-button:hover {
+    background-color: var(--color-gold-dark-hover);
+}
+body.light-mode .buy-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 
 .details-button {
     background-color: transparent;
