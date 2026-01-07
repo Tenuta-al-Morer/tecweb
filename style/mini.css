@@ -5,7 +5,7 @@
     position: relative;
     padding: 0 0.8em;
     min-height: 4.5em;
-    background-color: var(--navbgcolor);
+    background-color: var(--always-dark-bg);
     flex-wrap: nowrap;
 }
 
@@ -21,7 +21,7 @@
     transform: none;
     z-index: 1000;
     font-size: 1.7rem;
-    color: var(--pure-white);
+    color: var(--white);
     transition: color 0.3s ease;
 }
 
@@ -32,7 +32,7 @@
 .menu-toggle:hover,
 .menu-toggle:focus,
 .menu-toggle[aria-expanded="true"] {
-    color: var(--gold-color);
+    color: var(--always-bright);
 }
 
 .logo-link {
@@ -74,13 +74,13 @@
 .mobile-icons a {
     font-size: 1.5rem;
     text-decoration: none;
-    color: var(--pure-white);
+    color: var(--white);
     display: flex;
 }
 
 .mobile-icons a:hover,
 .mobile-icons a:focus {
-    color: var(--gold-color);
+    color: var(--always-bright);
 }
 
 .primary-navigation {
@@ -89,9 +89,9 @@
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: var(--navbgcolor);
-    border-top: 1px solid var(--gold-color);
-    box-shadow: 0 5px 10px var(--pure-black);
+    background-color: var(--always-dark-bg);
+    border-top: 1px solid var(--always-bright);
+    box-shadow: 0 5px 10px var(--black);
     z-index: 999;
 }
 
@@ -117,7 +117,7 @@
 .primary-navigation li {
     width: 100%;
     padding: 0;
-    border-bottom: 1px solid var(--subheader-border-color);
+    border-bottom: 1px solid var(--border-color);
     border-left: none;
     justify-content: center;
 }
@@ -132,20 +132,20 @@
     display: block;
     padding: 1.2em;
     font-size: 1.1em;
-    color: var(--pure-white);
+    color: var(--white);
     cursor: default;
     text-align: center;
     width: 100%;
 }
 
 .primary-navigation span[aria-current="page"] {
-    color: var(--gold-color-nav);
+    color: var(--always-bright);
     text-decoration: none;
 }
 
 .primary-navigation a:hover,
 .primary-navigation a:focus {
-    background-color: var(--hover-faded);
+    background-color: rgba(41, 38, 33, 0.8);
 }
 
 main {
@@ -182,6 +182,7 @@ footer {
 
 #theme-toggle:hover, #theme-toggle:focus {
     transform: scale(1.2);
+    color: var(--always-bright);
 }
 
 .header-policy .sub-header {
@@ -263,32 +264,32 @@ footer {
 }
 
 .table-data tr {
-    border: 1px solid var(--bordercolor);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     margin-bottom: 2em;
-    background-color: var(--card-bg);
-    box-shadow: 0 4px 8px var(--pure-black);
+    background-color: var(--background);
+    box-shadow: 0 4px 8px var(--black);
     overflow: hidden;
 }
 
 .table-data tr:first-child {
     margin-top: 0;
-    border-top: 1px solid var(--bordercolor);
+    border-top: 1px solid var(--border-color);
 }
 
 .table-data tbody th {
-    background-color: var(--table-stripe);
-    color: var(--gold-color);
+    background-color: var(--background);
+    color: var(--secondary-color);
     font-weight: 700;
     text-align: center;
     padding: 1em;
-    border-bottom: 1px solid var(--bordercolor);
+    border-bottom: 1px solid var(--border-color);
     font-size: 1.1em;
 }
 
 .table-data td {
     border: none;
-    border-bottom: 1px solid var(--subheader-border-color);
+    border-bottom: 1px solid var(--border-color);
     position: relative;
     padding: 0.8em 1em;
     text-align: left;
@@ -300,30 +301,30 @@ footer {
 
 .table-data td::before {
     content: attr(data-title) ": ";
-    color: var(--gold-color);
+    color: var(--secondary-color);
     font-weight: 700;
     display: inline;
     margin-right: 0.3em;
 }
 
 body.light-mode .table-data tr {
-    background-color: var(--pure-white);
-    border-color: var(--bordercolor);
-    box-shadow: 0 2px 5px var(--shadow-subtle);
+    background-color: var(--white);
+    border-color: var(--border-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 body.light-mode .table-data tbody th {
-    background-color: var(--table-stripe);
-    color: var(--gold-color);
-    border-bottom-color: var(--bordercolor);
+    background-color: var(--light-bg);
+    color: var(--secondary-color);
+    border-bottom-color: var(--border-color);
 }
 
 body.light-mode .table-data td {
-    border-bottom-color: var(--bordercolor);
+    border-bottom-color: var(--border-color);
 }
 
 body.light-mode .table-data td::before {
-    color: var(--pure-black);
+    color: var(--black);
 }
 
 .table-data tr.order-details-row.is-hidden {
@@ -439,19 +440,20 @@ body.light-mode .table-data td::before {
     justify-content: center;
     text-align: center;
     min-height: 50px;
-    background-color: var(--card-bg);
-    border: 1px solid var(--bordercolor);
+    background-color: var(--background);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 0.5rem;
     font-size: 0.85rem;
     line-height: 1.2;
-    box-shadow: 0 2px 4px var(--shadow-black-05);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    color: var(--text-color);
 }
 
 .user-nav-link.is-active {
-    background-color: var(--gold-color);
-    color: var(--bodybgcolor);
-    border-color: var(--gold-color);
+    background-color: var(--secondary-color);
+    color: var(--background);
+    border-color: var(--secondary-color);
     font-weight: 700;
 }
 
@@ -467,8 +469,8 @@ body.light-mode .table-data td::before {
     min-height: 45px;
     border-radius: 8px;
     font-size: 0.9rem;
-    background-color: var(--btn-red-bg); 
-    color: var(--pure-white);
+    background-color: var(--errors); 
+    color: var(--white);
     justify-content: center;
 }
 
@@ -528,8 +530,8 @@ body.light-mode .table-data td::before {
     flex-direction: column;
     gap: 0;
     padding: 1rem;
-    background-color: var(--table-stripe);
-    border-top: 1px solid var(--bordercolor);
+    background-color: var(--background);
+    border-top: 1px solid var(--border-color);
 }
 
 .details-section {
@@ -544,7 +546,7 @@ body.light-mode .table-data td::before {
 
 .details-summary {
     text-align: left;
-    border: 1px solid var(--bordercolor);
+    border: 1px solid var(--border-color);
     padding: 1rem;
     border-radius: 4px;
 }
@@ -577,10 +579,10 @@ body.light-mode .table-data td::before {
 
 .order-summary-table tr {
     margin-bottom: 1.5rem;
-    border: 1px solid var(--bordercolor);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
-    background-color: var(--card-bg);
-    box-shadow: 0 2px 5px var(--shadow-black-05);
+    background-color: var(--background);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     overflow: hidden;
 }
 
@@ -589,7 +591,7 @@ body.light-mode .table-data td::before {
     justify-content: space-between;
     align-items: center;
     padding: 0.8rem 1rem;
-    border-bottom: 1px solid var(--bordercolor);
+    border-bottom: 1px solid var(--border-color);
     text-align: right;
     font-size: 0.95rem;
 }
@@ -597,7 +599,7 @@ body.light-mode .table-data td::before {
 .order-summary-table td::before {
     content: attr(data-title);
     font-weight: 700;
-    color: var(--gold-color);
+    color: var(--secondary-color);
     text-transform: uppercase;
     font-size: 0.8rem;
     margin-right: 1rem;
@@ -608,7 +610,7 @@ body.light-mode .table-data td::before {
     border-bottom: none;
     justify-content: center;
     padding: 1rem;
-    background-color: var(--navbgcolor);
+    background-color: var(--background);
 }
 
 .order-summary-table td:last-child::before {
@@ -632,7 +634,7 @@ body.light-mode .table-data td::before {
     border-top: none; 
     margin-top: 0;    
     
-    border-top: 1px solid var(--subheader-border-color); 
+    border-top: 1px solid var(--border-color); 
 }
 
 .order-summary-table tr.order-details-row {
@@ -736,19 +738,19 @@ body.light-mode .table-data td::before {
         margin-bottom: 1.5rem;
         font-family: 'Lexend', sans-serif;
         font-weight: 700;
-        color: var(--gold-color);
+        color: var(--secondary-color);
         font-size: 1.3rem;
-        border-bottom: 2px solid var(--bordercolor);
+        border-bottom: 2px solid var(--border-color);
         padding-bottom: 0.5rem;
     }
 
     /* CARD (Riga Tabella) */
     .compact-table tr {
         margin-bottom: 2rem;
-        background-color: var(--card-bg);
-        border: 1px solid var(--bordercolor);
+        background-color: var(--background);
+        border: 1px solid var(--border-color);
         border-radius: 12px;
-        box-shadow: 0 4px 15px var(--shadow-black-10); /* Ombra più marcata per stacco */
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         padding: 1.5rem;
         position: relative;
     }
@@ -759,9 +761,9 @@ body.light-mode .table-data td::before {
         justify-content: space-between;
         align-items: center;
         padding: 0.8rem 0;
-        border-bottom: 1px dashed var(--bordercolor); /* Linea tratteggiata più leggera */
+        border-bottom: 1px dashed var(--border-color);
         text-align: right;
-        gap: 1rem; /* Spazio vitale tra etichetta e valore */
+        gap: 1rem;
     }
 
     .compact-table td:last-child {
@@ -774,12 +776,12 @@ body.light-mode .table-data td::before {
     .compact-table td::before {
         content: attr(data-title);
         font-weight: 700;
-        color: var(--gold-color);
+        color: var(--secondary-color);
         text-transform: uppercase;
         font-size: 0.8rem;
         letter-spacing: 0.05em;
         text-align: left;
-        flex-shrink: 0; /* Impedisce all'etichetta di schiacciarsi */
+        flex-shrink: 0;
     }
 
     /* --- ECCEZIONI DI LAYOUT --- */
@@ -793,7 +795,7 @@ body.light-mode .table-data td::before {
         padding: 0;
         width: auto;
         font-size: 0.85rem;
-        color: var(--diversity-color);
+        color: var(--text-color);
     }
     .compact-table td[data-title="ID"]::before { display: none; }
 
@@ -809,8 +811,8 @@ body.light-mode .table-data td::before {
         width: 120px;
         height: 120px;
         border-radius: 8px;
-        background-color: var(--pure-white);
-        border: 1px solid var(--bordercolor);
+        background-color: var(--white);
+        border: 1px solid var(--border-color);
     }
 
     /* DETTAGLI: Testo centrato sotto la foto */
@@ -819,7 +821,7 @@ body.light-mode .table-data td::before {
         align-items: center;
         text-align: center;
         gap: 0.5rem;
-        border-bottom: 1px solid var(--bordercolor); /* Linea solida per separare header */
+        border-bottom: 1px solid var(--border-color);
         padding-bottom: 1.2rem;
     }
     .compact-table td[data-title="Dettagli"]::before { display: none; }
@@ -827,7 +829,7 @@ body.light-mode .table-data td::before {
     .wine-title { 
         font-size: 1.4rem; 
         margin-bottom: 0;
-        color: var(--card-title-color); 
+        color: var(--text-color); 
     }
     
     .truncate { 
@@ -835,7 +837,7 @@ body.light-mode .table-data td::before {
         text-align: center;
         font-size: 0.95rem;
         line-height: 1.4;
-        color: var(--txtcolor);
+        color: var(--text-color);
     }
 
     /* AZIONI: Bottoni grandi affiancati */
@@ -846,11 +848,13 @@ body.light-mode .table-data td::before {
         gap: 10px;
     }
     .btn-icon {
-        flex: 1; /* Si allargano per riempire lo spazio */
+        flex: 1;
         height: 48px;
         font-size: 1.2rem;
         border-radius: 6px;
-        background-color: var(--navbgcolor); /* Sfondo per contrasto */
+        background-color: var(--background);
+        color: var(--text-color);
+        border: 1px solid var(--border-color);
     }
     .admin-wrapper {
         margin: 0rem 4rem;
@@ -858,30 +862,37 @@ body.light-mode .table-data td::before {
         box-sizing: border-box;
         border: none;
         box-shadow: none;
-        background: var(--transparent);
+        background: transparent;
         align-self: center;
     }
 
     body.light-mode .compact-table tr {
-        background-color: var(--pure-white);
-        border: 1px solid var(--border-light);
-        box-shadow: 0 2px 8px var(--shadow-black-05);
+        background-color: var(--white);
+        border: 1px solid var(--border-color);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
 
     body.light-mode .compact-table td {
-        border-bottom-color: var(--surface-light-strong);
+        border-bottom-color: var(--light-bg);
     }
 
     body.light-mode .wine-title {
-        color: var(--text-strong);
+        color: var(--black);
     }
     
     body.light-mode .compact-table caption {
-        color: var(--color-gold-dark); /* Oro scuro */
+        color: var(--secondary-color);
     }
 
     body.light-mode .btn-icon {
-        color: var(--pure-white)
+        color: var(--text-color);
+        background-color: var(--white);
+    }
+    
+    body.light-mode .btn-icon:hover,
+    body.light-mode .btn-icon:focus {
+        background-color: var(--light-bg);
+        color: var(--secondary-color);
     }
 }
 
@@ -929,13 +940,14 @@ body.light-mode .table-data td::before {
     font-size: 1.1rem;
     margin-bottom: 0.25rem;
     line-height: 1.3;
+    color: var(--white);
 }
 
 /* Prezzo mobile */
 .price-mobile {
     font-size: 1.1rem;
     font-weight: bold;
-    color: var(--gold-color);
+    color: var(--secondary-color);
     margin-bottom: 0.5rem;
     display: block;
 }
@@ -950,7 +962,7 @@ body.light-mode .table-data td::before {
     order: 3;      
     margin-top: 1.2rem;
     padding-top: 1rem;
-    border-top: 1px dashed var(--bordercolor); 
+    border-top: 1px dashed var(--border-color); 
     display: flex;
     flex-wrap: wrap; 
     gap: 0.8rem;
@@ -967,8 +979,8 @@ body.light-mode .table-data td::before {
     height: 44px; 
     display: flex;
     border-radius: 4px;
-    border: 1px solid var(--bordercolor);
-    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    background-color: var(--background);
     flex: 0 0 auto; 
 }
 
@@ -977,6 +989,13 @@ body.light-mode .table-data td::before {
     width: 44px;    
     height: 100%;
     font-size: 1.2rem;
+    background-color: var(--background);
+    color: var(--text-color);
+}
+
+.qty-btn:hover, .qty-btn:focus {
+    background-color: var(--secondary-color);
+    color: var(--background);
 }
 
 .qty-input {
@@ -984,6 +1003,10 @@ body.light-mode .table-data td::before {
     width: 44px;
     height: 100%;
     font-size: 1rem;
+    background: transparent;
+    color: var(--text-color);
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
 }
 
 /* Stile base pulsanti azione */
@@ -992,10 +1015,10 @@ body.light-mode .table-data td::before {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--bordercolor);
+    border: 1px solid var(--border-color);
     border-radius: 4px;
-    background-color: var(--transparent);
-    color: var(--txtcolor);
+    background-color: transparent;
+    color: var(--text-color);
     font-size: 0.9rem;
     font-weight: 600;
     text-decoration: none;
@@ -1007,23 +1030,23 @@ body.light-mode .table-data td::before {
 
 /* Stile Eliminazione (Rosso) */
 .action-btn-text.btn-delete {
-    border-color: var(--red-errors);
-    color: var(--red-errors);
+    border-color: var(--errors);
+    color: var(--errors);
 }
 
 .action-btn-text.btn-delete:active,
 .action-btn-text.btn-delete:hover,
 .action-btn-text.btn-delete:focus,
 .action-btn-text.btn-delete:focus-visible {
-    background-color: var(--btn-red-bg);
-    color: var(--pure-white);
+    background-color: var(--errors);
+    color: var(--white);
 }
 
 /* Stile Salva/Sposta (Oro) */
 .action-btn-text.btn-save,
 .action-btn-text.btn-move {
-    border-color: var(--gold-color);
-    color: var(--gold-color);
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
 }
 
 .action-btn-text.btn-save:active,
@@ -1034,14 +1057,14 @@ body.light-mode .table-data td::before {
 .action-btn-text.btn-save:focus-visible,
 .action-btn-text.btn-move:focus,
 .action-btn-text.btn-move:focus-visible {
-    background-color: var(--gold-color);
-    color: var(--bodybgcolor);
+    background-color: var(--secondary-color);
+    color: var(--background);
 }
 
 /* Stile Disabilitato */
 .action-btn-text.disabled-btn {
-    border-color: var(--bordercolor);
-    color: var(--diversity-color);
+    border-color: var(--border-color);
+    color: var(--text-color);
     opacity: 0.5;
     pointer-events: none;
 }
@@ -1082,8 +1105,25 @@ body.light-mode .table-data td::before {
 
 .wine-article {
     width: 100%;
-    max-width: 360px; /* Larghezza controllata su mobile */
-    margin: 0 auto;   /* Centratura */
+    max-width: 360px;
+    margin: 0 auto;
+    background: linear-gradient(180deg, var(--white) 0%, #f7f2e9 100%);
+    border: 1px solid var(--border-color);
+}
+
+.wine-article:hover,
+.wine-article:focus-within {
+    border-color: var(--secondary-color);
+    box-shadow: 0 10px 20px rgba(197, 165, 81, 0.25);
+}
+
+.content-wine-article h2,
+.content-wine-article h3 {
+    color: #222;
+}
+
+.content-wine-article p {
+    color: #555;
 }
 
 /* Popup Mobile */
@@ -1091,6 +1131,8 @@ body.light-mode .table-data td::before {
     padding: 1.5em;
     width: 95%;
     max-height: 95vh;
+    background: #f7f2e9;
+    border: 1px solid var(--secondary-color);
 }
 
 .popup-grid {
@@ -1103,23 +1145,22 @@ body.light-mode .table-data td::before {
 }
 
 .popup-info h2 {
-    font-size: 1.8em; 
+    font-size: 1.8em;
+    color: #222;
 }
 
 .wine-table th, .wine-table td {
     padding: 5px 0;
     font-size: 0.95em;
+    color: #333;
 }
 
+.btn-primary { width: auto; }
 
-/*Spostati da stile.css*/
-
-@media (min-width: 940px) {
-    .btn-primary { width: auto; }
-    .grid-layout {
-        grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: start;
-    }
+.grid-layout {
+    grid-template-columns: 1fr; gap: 4rem; align-items: start;
 }
+
 
 @media (max-width: 768px) {
     .hero-section {
@@ -1163,18 +1204,21 @@ body.light-mode .table-data td::before {
     margin-bottom: 1.5rem;
     text-align: center;
     border-bottom: none; 
+    color: var(--text-color);
 }
 
 /* --- Form e Input --- */
 .checkout-section {
     padding: 1.5rem;
-    border: 1px solid var(--bordercolor);
-    box-shadow: none; 
+    border: 1px solid var(--border-color);
+    box-shadow: none;
+    background-color: var(--background);
 }
 
 .checkout-section h2 {
     font-size: 1.3rem;
     margin-bottom: 1.2rem;
+    color: var(--secondary-color);
 }
 
 input[type="text"],
@@ -1182,7 +1226,18 @@ input[type="tel"],
 input[type="email"],
 select {
     font-size: 16px; 
-    min-height: 48px; 
+    min-height: 48px;
+    background-color: var(--background);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+select:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 2px rgba(197, 165, 81, 0.2);
 }
 
 .form-group.row-three {
@@ -1226,42 +1281,40 @@ select {
     padding: 1rem;
     min-height: auto;
     gap: 1rem;
-    /* Utilizzo var(--card-bg) per supporto Light/Dark automatico */
-    background-color: var(--card-bg); 
-    border: 1px solid var(--bordercolor);
-    color: var(--txtcolor);
+    background-color: var(--background);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
 }
 
 .payment-card input[type="radio"]:checked + .payment-content {
-    background-color: var(--gold-glow-05);
-    border-color: var(--gold-color);
-    box-shadow: none;
+    background-color: rgba(197, 165, 81, 0.1);
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 15px rgba(197, 165, 81, 0.3);
 }
 
 .icon-large {
     font-size: 1.6rem;
-    margin-bottom: 0; 
-    /* Usa txtcolor di base, diventa var(--color-gold) quando selezionato (vedi regola desktop) */
-    color: var(--txtcolor); 
-    width: 30px; 
+    margin-bottom: 0;
+    color: var(--text-color);
+    width: 30px;
     text-align: center;
 }
 
 .payment-card input[type="radio"]:checked + .payment-content .icon-large {
-    color: var(--gold-color);
+    color: var(--secondary-color);
 }
 
 .payment-title {
     font-size: 1rem;
     display: block;
-    color: var(--txtcolor);
+    color: var(--text-color);
 }
 
 .payment-desc {
     font-size: 0.8rem;
     display: block;
     margin-top: 2px;
-    color: var(--diversity-color);
+    color: var(--text-color);
 }
 
 .payment-icons {
@@ -1274,22 +1327,23 @@ select {
 }
 
 .summary-box {
-    position: static; 
-    border: 1px solid var(--bordercolor);
+    position: static;
+    border: 1px solid var(--border-color);
     padding: 1.5rem;
+    background-color: var(--background);
 }
 
 .summary-box h3 {
-    color: var(--gold-color);
-    border-bottom: 1px solid var(--bordercolor);
+    color: var(--secondary-color);
+    border-bottom: 1px solid var(--border-color);
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
 }
 
 .summary-items-list {
     max-height: 300px;
-    background-color: var(--bodybgcolor); 
-    border: 1px solid var(--bordercolor);
+    background-color: var(--background);
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     padding: 0.5rem;
 }
@@ -1305,13 +1359,13 @@ select {
 
 .summary-totals .row {
     font-size: 1rem;
-    color: var(--txtcolor);
+    color: var(--text-color);
 }
 
 .summary-totals .total {
     font-size: 1.3rem;
-    color: var(--gold-color);
-    border-top: 2px solid var(--bordercolor);
+    color: var(--secondary-color);
+    border-top: 2px solid var(--border-color);
     padding-top: 1rem;
 }
 
@@ -1320,13 +1374,14 @@ select {
     padding: 1.2rem;
     font-size: 1.1rem;
     margin-top: 1.5rem;
-    box-shadow: 0 4px 6px var(--shadow-black-20);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 
 .secure-info {
     margin-top: 1.5rem;
     padding-top: 1rem;
-    border-top: 1px dashed var(--bordercolor);
+    border-top: 1px dashed var(--border-color);
+    color: var(--text-color);
 }
 
 @media screen and (max-width: 400px) {
