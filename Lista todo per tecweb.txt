@@ -1,7 +1,6 @@
 Lista todo per tecweb:
 - mettere le scritte sotto le icone di admin e gestionale
 - testare sito senza JavaScript
-- mettere in session storage le pagine già visitate -> contarini
 - sistemare prenotazioni esperienze (quando admin/staff accetta la richiesta come fa a sapere il cliente che gli è stata approvata) -> Luca
     - risposta: si scrive nella relazione che alla conferma viene inviata automaticamente una mail ma che ovviamente noi non la gestiamo come cosa
 - sistemare messaggistica (stesso cosa delle esperienze, non so come volevate gestire le messaggistiche verso il cliente) -> Luca

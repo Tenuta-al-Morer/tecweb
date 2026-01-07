@@ -13,10 +13,7 @@
     --pure-black:  #000;
 
     /* Brand Colors */
-    --color-gold:        #C5A551;
-    --color-gold-hover:  #D2B360;
-    --color-gold-active: #A9883A;
-    --color-gold-dark:   #8a6b1e;
+    --secondary-color:      #C5A551; /* Un solo colore, da gestire con le proprietà css e non altre variabili nuove. Come hanno fatto quelli degli anni scorsi :( */
     --color-bg-dark:     #1D1D1D; 
 
     /* Rossi (base + derivazioni) */
@@ -109,8 +106,6 @@
     --card-hover-shadow:      var(--pure-black); 
 
     /* Logica Gold */
-    --gold-color:             var(--color-gold);
-    --gold-color-nav:         var(--color-gold);
     --shadow-gold:            #5c4d26;
     --focus-gold:             #3e3827;
     --hover-faded:            var(--surface-warm-dark);
@@ -125,12 +120,7 @@
     --btn-red-text:   var(--pure-white);
 
     /* Bottoni ORO */
-    --btn-gold-bg:     var(--color-gold);
-    --btn-gold-hover:  var(--color-gold-hover);
-    --btn-hover-bg:    var(--color-gold); 
-    --btn-gold-active: var(--color-gold-active);
     --btn-gold-text:   var(--color-bg-dark);
-    --btn-gold-border: var(--color-gold-active);
 
     /* Overlay e Shadow */
     --shadow-black-05: rgba(0,0,0,0.05);
@@ -158,8 +148,6 @@
 
 
 body.light-mode {
-    --gold-color:       var(--color-gold-dark);
-    --gold-color-nav:   var(--color-gold);
     --txtcolor:         var(--text-on-light);
     --card-title-color: var(--text-strong); 
     --card-desc-color:  var(--text-muted);
@@ -170,7 +158,6 @@ body.light-mode {
     --bordercolor:      var(--border-strong);
     --card-border:      var(--border-light-strong);
     --diversity-color:  var(--text-medium);
-    --btn-hover-bg:     var(--color-gold-hover);
     --navbgcolor:       var(--color-bg-dark);
     --nav-separator-color: var(--border-separator);
     --subheader-border-color: var(--border-subheader);
@@ -311,8 +298,8 @@ body.light-mode .navigationHelp:focus {
 
 .btn-outline-white:hover, .btn-outline-white:focus {
     background-color: var(--navbgcolor); 
-    color: var(--gold-color);
-    border-color: var(--gold-color);
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);    
 }
 
 
@@ -320,7 +307,7 @@ body.light-mode .navigationHelp:focus {
     display: inline-block;
     margin-top: 2rem;
     padding: 1rem 2.5rem;
-    background-color: var(--gold-color);
+    background-color: var(--secondary-color);
     color: var(--bodybgcolor); 
     border: none;
     font-family: 'Lexend', sans-serif;
@@ -334,17 +321,18 @@ body.light-mode .navigationHelp:focus {
 }
 
 .btn-primary:hover, .btn-primary:focus {
-    background-color: var(--btn-hover-bg); 
+    background-color: var(--secondary-color); 
     color: var(--pure-black);
     box-shadow: 0 0 15px var(--shadow-gold);
     transform: translateY(-2px);
+    filter: brightness(1.2);
 }
 
 .btn-secondary {
     display: inline-block;
     margin-top: 0.5rem;
     padding: 0.5rem 1rem;
-    background-color: var(--gold-color);
+    background-color: var(--secondary-color);
     color: var(--bodybgcolor); 
     border: none;
     font-family: 'Lexend', sans-serif;
@@ -372,10 +360,10 @@ body.light-mode .navigationHelp:focus {
 .admin-tab {
     padding: 0.5rem 1rem;
     background: var(transparent);
-    color: var(--gold-color);
+    color: var(--secondary-color);
     text-decoration: none;
     font-family: 'Lexend', sans-serif;
-    border: 1px solid var(--gold-color);
+    border: 1px solid var(--secondary-color);
     border-radius: 6px;
     text-transform: uppercase;
     font-size: .8rem;
@@ -387,14 +375,14 @@ body.light-mode .navigationHelp:focus {
 }
 
 .admin-tab:hover, .admin-tab:focus {
-    background: var(--gold-color);
+    background: var(--secondary-color);
     color: var(--bodybgcolor);
 }
 
 .admin-tab.is-active {
-  background-color: var(--color-gold);
+  background-color: var(--secondary-color);
   color: var(--pure-black);
-  border-color: var(--btn-gold-border);
+  border-color: var(--secondary-color);
 }
 
 
@@ -520,7 +508,7 @@ body.light-mode .navigationHelp:focus {
 
     .table-early-break tbody th {
         background-color: var(--table-stripe);
-        color: var(--gold-color);
+        color: var(--secondary-color);
         font-weight: 700;
         text-align: center; 
         padding: 1em;
@@ -542,7 +530,7 @@ body.light-mode .navigationHelp:focus {
 
     .table-early-break td::before {
         content: attr(data-title) ": "; 
-        color: var(--gold-color);
+        color: var(--secondary-color);
         font-weight: 700;
         
         display: inline;
@@ -628,7 +616,7 @@ body.light-mode .navigationHelp:focus {
 }
 
 .admin-table-head label.switch > input[type="checkbox"]:checked + span.slider {
-  background-color: var(--gold-color);
+  background-color: var(--secondary-color);
 }
 
 .admin-table-head label.switch > input[type="checkbox"]:checked + span.slider::before {
@@ -636,7 +624,7 @@ body.light-mode .navigationHelp:focus {
 }
 
 .admin-table-head label.switch > input[type="checkbox"]:focus-visible + span.slider {
-  outline: 2px solid var(--gold-color);
+  outline: 2px solid var(--secondary-color);
   outline-offset: 3px;
 }
 
@@ -650,7 +638,7 @@ body.light-mode .navigationHelp:focus {
 
 .section-title {
     text-align: center;
-    color: var(--gold-color);
+    color: var(--secondary-color);
     font-family: 'Lexend', sans-serif;
     font-size: 2.5rem;
     margin-bottom: 0.5em;
@@ -661,7 +649,7 @@ body.light-mode .navigationHelp:focus {
 
 .alert-box {
     background-color: var(--table-stripe); 
-    border-left: 4px solid var(--gold-color); 
+    border-left: 4px solid var(--secondary-color); 
     padding: 1.5rem;
     margin-bottom: 3rem;
     border-radius: 4px;
@@ -674,11 +662,11 @@ body.light-mode .navigationHelp:focus {
     margin-bottom: 0.5em;
 }
 
-.alert-box i { color: var(--gold-color); margin-right: 0.5rem; font-size: 1.2rem; }
+.alert-box i { color: var(--secondary-color); margin-right: 0.5rem; font-size: 1.2rem; }
 
 .alert-box a {
-    color: var(--gold-color); text-decoration: none; font-weight: 700;
-    border-bottom: 1px solid; border-bottom-color: var(--gold-color);
+    color: var(--secondary-color); text-decoration: none; font-weight: 700;
+    border-bottom: 1px solid; border-bottom-color: var(--secondary-color);
     transition: border-bottom-color 0.3s;
 }
 
@@ -700,11 +688,11 @@ body.light-mode .navigationHelp:focus {
 
 .btn-text-link {
     display: inline-block; margin-top: 0.8rem; font-weight: 700;
-    color: var(--gold-color); text-decoration: none;
+    color: var(--secondary-color); text-decoration: none;
     border-bottom: 2px solid var(transparent); transition: border-color 0.3s ease;
 }
 
-.btn-text-link:hover, .btn-text-link:focus { border-bottom-color: var(--gold-color); }
+.btn-text-link:hover, .btn-text-link:focus { border-bottom-color: var(--secondary-color); }
 
 .grid-layout {
     display: grid; grid-template-columns: 1fr; gap: 3rem;
@@ -732,7 +720,7 @@ select {
 .form-group textarea:focus,
 select:focus {
     outline: none;
-    border-color: var(--gold-color);
+    border-color: var(--secondary-color);
     box-shadow: 0 0 0 2px var(--focus-gold);
     background-color: var(--navbgcolor);
 }
@@ -753,14 +741,14 @@ body.light-mode ::-webkit-calendar-picker-indicator {
 
 .checkbox-group input[type="checkbox"] {
     margin-top: 0.2rem; width: 20px; height: 20px;
-    accent-color: var(--gold-color); cursor: pointer;
+    accent-color: var(--secondary-color); cursor: pointer;
 }
 
 .checkbox-group label {
     display: inline-block; margin-bottom: 0;
 }
 
-.checkbox-group label a { color: var(--gold-color); text-decoration: underline; }
+.checkbox-group label a { color: var(--secondary-color); text-decoration: underline; }
 .checkbox-group label a:hover, .checkbox-group label a:focus { color: var(--txtcolor); }
 
 .form-group.row-two {
@@ -781,7 +769,7 @@ body.light-mode ::-webkit-calendar-picker-indicator {
 .info-list p { margin-bottom: 1rem; display: flex; align-items: center; font-size: 1.1rem; }
 
 .info-list i {
-    width: 35px; color: var(--gold-color); font-size: 1.1rem;
+    width: 35px; color: var(--secondary-color); font-size: 1.1rem;
     text-align: center; margin-right: 10px;
 }
 
@@ -796,11 +784,11 @@ body.light-mode ::-webkit-calendar-picker-indicator {
 }
 
 .info-list a:hover .link-text, .info-list a:focus .link-text {
-    border-bottom-color: var(--gold-color);
+    border-bottom-color: var(--secondary-color);
 }
 
 .info-list a:hover, .info-list a:focus {
-    color: var(--gold-color);
+    color: var(--secondary-color);
 }
 
 .hours-list li {
@@ -810,7 +798,7 @@ body.light-mode ::-webkit-calendar-picker-indicator {
 
 .deg-card { 
     background-color: var(--table-stripe); 
-    border-left: 4px solid var(--gold-color); 
+    border-left: 4px solid var(--secondary-color); 
     padding: 1.5rem;
     margin-top: 1em;
     margin-bottom: 1rem;
@@ -820,7 +808,7 @@ body.light-mode ::-webkit-calendar-picker-indicator {
 
 .deg-card h3 { margin-bottom: 0.8em; font-size: 1.25em; }
 .deg-card .deg-desc { margin-bottom: 0.5em; font-size: 1em; }
-.deg-card .deg-price { font-weight: 600; font-size: 14px; color: var(--gold-color); }
+.deg-card .deg-price { font-weight: 600; font-size: 14px; color: var(--secondary-color); }
 
 .map-container {
     width: 100%; border-radius: 4px; overflow: hidden;
@@ -919,7 +907,7 @@ a.logo-link:hover img, a.logo-link:focus img { transform: scale(1.05); }
 }
 
 .primary-navigation a:hover, .primary-navigation a:focus {
-    color: var(--gold-color-nav);
+    color: var(--secondary-color);
     text-decoration: underline;
     text-underline-offset: 0.25em;
     text-decoration-thickness: 2px;
@@ -983,7 +971,7 @@ a.logo-link:hover img, a.logo-link:focus img { transform: scale(1.05); }
 }
 
 .mobile-icons a:hover, .mobile-icons a:focus {
-    color: var(--gold-color-nav);
+    color: var(--secondary-color);
     transform: scale(1.1);
     text-decoration: underline;
     text-underline-offset: 0.35em;
@@ -1044,8 +1032,8 @@ a.logo-link:hover img, a.logo-link:focus img { transform: scale(1.05); }
 }
 
 .breadcrumb-container { display: flex; align-items: center; gap: 0.6em; color: var(--pure-white); opacity: 0.9; }
-.breadcrumb-container a { color: var(--gold-color-nav); text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 2px; }
-.breadcrumb-container a:hover, .breadcrumb-container a:focus { color: var(--color-gold-hover); }
+.breadcrumb-container a { color: var(--secondary-color); text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 2px; }
+.breadcrumb-container a:hover, .breadcrumb-container a:focus { color: var(--secondary-color); }
 #breadcrumb img { height: 3em; }
 .separator { color: var(--nav-separator-color); font-size: 0.9em; }
 
@@ -1053,7 +1041,7 @@ a.logo-link:hover img, a.logo-link:focus img { transform: scale(1.05); }
     font-weight: 400; color: var(--pure-white); text-transform: none; letter-spacing: 0;
 }
 
-.breadcrumb-container a i { color: var(--gold-color-nav); transition: all 0.3s ease; min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; }
+.breadcrumb-container a i { color: var(--secondary-color); transition: all 0.3s ease; min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; }
 .breadcrumb-container a:hover i, .breadcrumb-container a:focus i { transform: scale(1.3); }
 .breadcrumb-container ol { list-style: none; padding: 0; margin: 0; display: flex; align-items: center; }
 .breadcrumb-container li { display: inline-block; }
@@ -1065,7 +1053,7 @@ a.logo-link:hover img, a.logo-link:focus img { transform: scale(1.05); }
     display: inline-flex; align-items: center; justify-content: center; transition: all 0.3s ease;
 }
 
-#theme-toggle:hover, #theme-toggle:focus { color: var(--gold-color-nav); opacity: 1; transform: scale(1.1); }
+#theme-toggle:hover, #theme-toggle:focus { color: var(--secondary-color); opacity: 1; transform: scale(1.1); }
 #theme-toggle i { pointer-events: none; }
 
 #theme-toggle svg {
@@ -1112,7 +1100,7 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
 .sidebar-info section { margin-bottom: 2.5rem; }
 
 .sidebar-info h2, .form-container h2 {
-    color: var(--gold-color); font-size: 1.5rem;
+    color: var(--secondary-color); font-size: 1.5rem;
     border-top: 1px solid var(--bordercolor); padding-top: 1rem;
 }
 
@@ -1123,7 +1111,7 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
 .page-intro { background-color: var(--bodybgcolor); }
 
 .page-intro h1, .page-intro h2 {
-    font-size: 2.5rem; color: var(--gold-color); font-family: 'Lexend', sans-serif;
+    font-size: 2.5rem; color: var(--secondary-color); font-family: 'Lexend', sans-serif;
     line-height: 1.2; margin-bottom: 0.5em; margin-top: 1em;
 }
 
@@ -1132,15 +1120,15 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
     line-height: 1.6; max-width: 800px; margin-bottom: 0.5em;
 }
 
-#personal{ color:var(--gold-color)}
+#personal{ color:var(--secondary-color)}
 
 .article-block h2 {
-    color: var(--gold-color); border-top: none; margin-top: 1.5rem;
+    color: var(--secondary-color); border-top: none; margin-top: 1.5rem;
     font-size: 2rem; line-height: 1.3; margin-bottom: 0.2rem; padding: 0;
 }
 
 .article-block h3 {
-    margin-top: 0; margin-bottom: 0.5rem; font-size: 1.3rem; color: var(--gold-color);
+    margin-top: 0; margin-bottom: 0.5rem; font-size: 1.3rem; color: var(--secondary-color);
 }
 
 .article-block p { margin-bottom: 1rem; text-align: justify; }
@@ -1175,7 +1163,7 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
 
 .table-data thead th {
     background-color: var(--bodybgcolor);
-    color: var(--gold-color);
+    color: var(--secondary-color);
     font-weight: 700;
     text-transform: uppercase;
     font-size: 0.9rem;
@@ -1195,14 +1183,14 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
 }
 
 .table-data th[scope="row"] a:hover, .table-data th[scope="row"] a:focus {
-    border-color: var(--gold-color);
-    color: var(--gold-color);
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
 }
 
 .table-data caption {
     caption-side: top; text-align: center; font-weight: 700;
-    padding: 1rem; font-size: 1.5rem; color: var(--gold-color);
-    border-bottom: 1px solid var(--bordercolor); padding-bottom: 0.8rem;  margin-bottom: 0.8rem;  
+    padding: 1rem; font-size: 1.5rem; color: var(--secondary-color);
+    border-bottom: 1px solid var(--bordercolor); padding-bottom: 0.8rem; 
 }
 
 main h1 { margin-bottom: 0.3em; }
@@ -1284,7 +1272,7 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
 }
 
 .container h1 {
-    font-size: 2.5rem; line-height: 1.2; color: var(--gold-color);
+    font-size: 2.5rem; line-height: 1.2; color: var(--secondary-color);
 }
 
 .hero-actions {
@@ -1334,7 +1322,7 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
 .hero-actions .btn-outline-second {
     background-color: var(transparent);
     color: var(--btn-red-text);
-    border-color: var(--btn-gold-bg);
+    border-color: var(--secondary-color);
     box-shadow: none;
     transition: 
         background-color 0.2s ease,
@@ -1345,13 +1333,13 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
 .hero-actions .btn-outline-second:hover,
 .hero-actions .btn-outline-second:focus {
     background-color: var(--overlay-white-08);
-    border-color: var(--btn-gold-hover);
+    border-color: var(--secondary-color);
     transform: translateY(-1px);
 }
 
 .hero-actions .btn-outline-second:active {
     background-color: var(--overlay-white-04);
-    border-color: var(--btn-gold-active);
+    border-color: var(--secondary-color);
     transform: translateY(0);
 }
 
@@ -1381,16 +1369,16 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
 }
 
 .feature-card:hover, .feature-card:focus {
-    transform: translateY(-10px); border-color: var(--gold-color);
+    transform: translateY(-10px); border-color: var(--secondary-color);
     box-shadow: 0 5px 15px var(--card-hover-shadow);
 }
 
-.card-icon { font-size: 3rem; color: var(--gold-color); margin-bottom: 0.5em; }
+.card-icon { font-size: 3rem; color: var(--secondary-color); margin-bottom: 0.5em; }
 .feature-card h3 { margin-bottom: 0.5em; color: var(--card-title-color); font-size: 1.3rem; }
 .feature-card p { font-size: 0.95rem; opacity: 0.8; margin-bottom: 1.5em; color: var(--card-desc-color); }
 
 .link-arrow {
-    margin-top: auto; color: var(--gold-color); font-weight: bold;
+    margin-top: auto; color: var(--secondary-color); font-weight: bold;
     font-size: 0.9rem; text-transform: uppercase;
 }
 
@@ -1428,7 +1416,7 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--txtcolo
     justify-content: center;
 }
 
-.slider-btn:hover, .slider-btn:focus { background-color: var(--gold-color); color: var(--pure-black); border-color: var(--gold-color); }
+.slider-btn:hover, .slider-btn:focus { background-color: var(--secondary-color); color: var(--pure-black); border-color: var(--secondary-color); }
 .prev-btn { left: 10px; }
 .next-btn { right: 10px; }
 
@@ -1485,12 +1473,12 @@ footer a {
 footer small a + a::before {
   content: "| ";
   padding: 0.5em;
-  color: var(--txtcolor);
+  color: var(--pure-white);
 }
 
 
 footer a:visited { 
-    color: var(--gold-color); 
+    color: var(--secondary-color); 
 }
 
 /* =========================================
@@ -1521,7 +1509,7 @@ footer a:visited {
 
     cursor: pointer;
     z-index: 200;
-    color: var(--gold-color); 
+    color: var(--secondary-color); 
 }
 
 #backToTopBtn.show {
@@ -1586,7 +1574,7 @@ footer a:visited {
 
 .auth-container h1 {
     font-size: 2rem;
-    color: var(--gold-color);
+    color: var(--secondary-color);
     margin-bottom: 0.5rem;
 }
 
@@ -1676,15 +1664,18 @@ footer a:visited {
     padding-right: 50px ; 
 }
 
+
+.auth-form input:not([type="checkbox"]):not([type="radio"]):hover, 
 .auth-form input:not([type="checkbox"]):not([type="radio"]):focus {
     outline: none;
-    border-color: var(--gold-color);
+    border-color: var(--secondary-color);
     box-shadow: 0 0 5px var(--focus-gold);
 }
 
 .checkbox-container input[type="checkbox"]:focus,
-.checkbox-container input[type="checkbox"]:focus-visible {
-    outline: 3px solid var(--gold-color);
+.checkbox-container input[type="checkbox"]:focus-visible,
+.checkbox-container input[type="checkbox"]:hover {
+    outline: 3px solid var(--secondary-color);
     outline-offset: 3px;
 }
 
@@ -1704,7 +1695,7 @@ footer a:visited {
 
 .toggle-password:hover, .toggle-password:focus {
     opacity: 1;
-    color: var(--gold-color);
+    color: var(--secondary-color);
 }
 
 .toggle-password {
@@ -1752,19 +1743,19 @@ footer a:visited {
     width: 1.1em;       
     height: 1.1em;
     cursor: pointer;
-    accent-color: var(--gold-color); 
+    accent-color: var(--secondary-color); 
 }
 
 .checkbox-container input[type="checkbox"]:focus,
 .checkbox-container input[type="checkbox"]:focus-visible {
-    outline: 3px solid var(--gold-color);
+    outline: 3px solid var(--secondary-color);
     outline-offset: 3px;
 }
 
 .forgot-password,
 .auth-footer a,
 .checkbox-container a {
-    color: var(--gold-color); 
+    color: var(--secondary-color); 
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s;
@@ -1792,7 +1783,7 @@ footer a:visited {
 .forgot-password:focus,
 .auth-footer a:focus, 
 .checkbox-container a:focus {
-    color: var(--gold-color);
+    color: var(--secondary-color);
     text-decoration: underline;
 }
 
@@ -2003,7 +1994,7 @@ footer a:visited {
     width: 60%;
     max-width: 900px;
     height: 1px;
-    background-color: var(--gold-color);
+    background-color: var(--secondary-color);
     opacity: 0.35;
 }
 
@@ -2064,9 +2055,9 @@ footer a:visited {
 
 .user-nav-link.is-active {
     background-color: var(--card-border);
-    color: var(--gold-color);
+    color: var(--secondary-color);
     font-weight: 700;
-    border-left-color: var(--gold-color);
+    border-left-color: var(--secondary-color);
 }
 
 body.light-mode .user-nav-link:hover,
@@ -2077,8 +2068,8 @@ body.light-mode .user-nav-link:focus {
 
 body.light-mode .user-nav-link.is-active {
     background-color: var(--surface-cream-stronger);
-    color: var(--gold-color);
-    border-left-color: var(--gold-color);
+    color: var(--secondary-color);
+    border-left-color: var(--secondary-color);
 }
 
 .dashboard-content {
@@ -2088,7 +2079,7 @@ body.light-mode .user-nav-link.is-active {
 
 .dashboard-content h1 {
     font-size: 2.5rem;
-    color: var(--gold-color);
+    color: var(--secondary-color);
     margin-bottom: 0.5rem;
     line-height: 1.2; 
 }
@@ -2154,7 +2145,7 @@ TABELLE ORDINI E DETTAGLI
 }
 
 .order-summary-table thead th {
-    color: var(--gold-color);
+    color: var(--secondary-color);
     padding: 1rem;
     text-align: left;
 }
@@ -2207,7 +2198,7 @@ TABELLE ORDINI E DETTAGLI
 }
 
 .details-section h4 {
-    color: var(--gold-color);
+    color: var(--secondary-color);
     font-size: 1.1rem;
     margin-bottom: 0.8rem;
 }
@@ -2241,7 +2232,7 @@ TABELLE ORDINI E DETTAGLI
 }
 
 .details-summary strong {
-    color: var(--gold-color);
+    color: var(--secondary-color);
 }
 
 /* DASHBOARD GRID */
@@ -2257,7 +2248,7 @@ TABELLE ORDINI E DETTAGLI
 .stat-number {
     font-size: 2.2rem;
     font-weight: 700;
-    color: var(--gold-color);
+    color: var(--secondary-color);
     margin: 0;
     line-height: 1.2;
 }
@@ -2277,7 +2268,7 @@ a.feature-card.card-link {
 
 /* Forza il bordo dorato */
 .border-gold {
-    border-color: var(--gold-color) ;
+    border-color: var(--secondary-color) ;
 }
 
 /* Testo "Nessun ordine recente" */
@@ -2362,7 +2353,7 @@ a.feature-card.card-link {
 .profile-avatar {
     width: 80px;
     height: 80px;
-    background-color: var(--gold-color);
+    background-color: var(--secondary-color);
     color: var(--pure-white);
     border-radius: 50%;
     display: flex;
@@ -2418,7 +2409,7 @@ a.feature-card.card-link {
 }
 
 .info-label i {
-    color: var(--gold-color);
+    color: var(--secondary-color);
 }
 
 .info-value {
@@ -2597,7 +2588,7 @@ a.feature-card.card-link {
 }
 
 .cart-item-details h3 a:hover, .cart-item-details h3 a:focus { 
-    color: var(--gold-color); 
+    color: var(--secondary-color); 
     text-decoration: underline; 
 }
 
@@ -2687,7 +2678,7 @@ a.feature-card.card-link {
 }
 
 .qty-btn:hover, .qty-btn:focus { 
-    background-color: var(--gold-color); 
+    background-color: var(--secondary-color); 
     color: var(--color-bg-dark); 
 }
 
@@ -2740,12 +2731,12 @@ a.feature-card.card-link {
 
 
 .btn-move { 
-    color: var(--gold-color); 
+    color: var(--secondary-color); 
     font-weight: bold; 
 }
 
 .btn-save { 
-    color: var(--gold-color); 
+    color: var(--secondary-color); 
     text-decoration: underline;
     min-width: 24px;
     min-height: 24px;
@@ -2794,7 +2785,7 @@ a.feature-card.card-link {
     border-top: 1px solid var(--bordercolor); 
     font-size: 1.3rem; 
     font-weight: bold; 
-    color: var(--gold-color);
+    color: var(--secondary-color);
 }
 
 .btn-full { 
@@ -2840,7 +2831,7 @@ a.feature-card.card-link {
 
 .saved-items-section h3 { 
     margin-bottom: 1rem; 
-    color: var(--gold-color); 
+    color: var(--secondary-color); 
     line-height: 1.4;
 }
 
@@ -2852,7 +2843,7 @@ a.feature-card.card-link {
     padding: 1rem; 
     border-radius: 8px; 
     margin-bottom: 1rem; 
-    border: 1px solid var(--gold-color); 
+    border: 1px solid var(--secondary-color); 
     display: flex; 
     align-items: center; 
     gap: 0.5rem;
@@ -2914,7 +2905,7 @@ a.feature-card.card-link {
     .price-mobile { 
         display: block; 
         font-weight: bold; 
-        color: var(--gold-color); 
+        color: var(--secondary-color); 
         margin-bottom: 0.5rem; 
     }
     
@@ -2954,11 +2945,11 @@ a.feature-card.card-link {
     transition: color 0.3s;
 }
 
-.checkout-steps a:hover, .checkout-steps a:focus { color: var(--gold-color); }
+.checkout-steps a:hover, .checkout-steps a:focus { color: var(--secondary-color); }
 
 .checkout-steps .step-active {
-    color: var(--gold-color);
-    border-bottom: 2px solid var(--gold-color);
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
     padding-bottom: 2px;
 }
 
@@ -2974,9 +2965,9 @@ a.feature-card.card-link {
     align-items: center;
     gap: 0.5rem;
     padding: 0.6rem 1.2rem;
-    border: 1px solid var(--gold-color);
+    border: 1px solid var(--secondary-color);
     border-radius: 4px;
-    color: var(--gold-color);
+    color: var(--secondary-color);
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -2986,7 +2977,7 @@ a.feature-card.card-link {
 }
 
 .btn-back-outline:hover, .btn-back-outline:focus {
-    background-color: var(--gold-color);
+    background-color: var(--secondary-color);
     color: var(--bodybgcolor);
     transform: translateX(-3px);
     box-shadow: 0 0 10px var(--shadow-gold);
@@ -3026,7 +3017,7 @@ a.feature-card.card-link {
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    color: var(--gold-color);
+    color: var(--secondary-color);
 }
 
 .grid-layout-form { display: flex; flex-direction: column; gap: 0; }
@@ -3083,7 +3074,7 @@ a.feature-card.card-link {
 }
 
 .payment-card input[type="radio"]:checked + .payment-content {
-    border-color: var(--gold-color);
+    border-color: var(--secondary-color);
     background-color: var(--gold-glow-10);
     box-shadow: 0 0 15px var(--gold-glow-30);
     transform: translateY(-2px);
@@ -3095,7 +3086,7 @@ a.feature-card.card-link {
 }
 
 .icon-large { font-size: 2rem; margin-bottom: 0.5rem; color: var(--txtcolor); transition: color 0.3s; }
-.payment-card input[type="radio"]:checked + .payment-content .icon-large { color: var(--gold-color); }
+.payment-card input[type="radio"]:checked + .payment-content .icon-large { color: var(--secondary-color); }
 .payment-title { font-weight: bold; display: block; margin-bottom: 0.3rem; }
 .payment-desc { font-size: 0.8rem; color: var(--diversity-color); }
 
@@ -3119,7 +3110,7 @@ a.feature-card.card-link {
 }
 
 .summary-items-list::-webkit-scrollbar { width: 5px; }
-.summary-items-list::-webkit-scrollbar-thumb { background-color: var(--gold-color); border-radius: 3px; }
+.summary-items-list::-webkit-scrollbar-thumb { background-color: var(--secondary-color); border-radius: 3px; }
 
 .summary-item-rich {
     display: grid;
@@ -3173,7 +3164,7 @@ a.feature-card.card-link {
 .rich-price {
     font-weight: 700;
     font-size: 0.95rem;
-    color: var(--gold-color);
+    color: var(--secondary-color);
 }
 
 .summary-totals .row {
@@ -3186,7 +3177,7 @@ a.feature-card.card-link {
     margin-top: 1rem;
     font-size: 1.4rem;
     font-weight: bold;
-    color: var(--gold-color);
+    color: var(--secondary-color);
 }
 
 .secure-info {
@@ -3284,7 +3275,7 @@ a.feature-card.card-link {
 
 .admin-search-input:focus {
     outline: none;
-    border-color: var(--gold-color);
+    border-color: var(--secondary-color);
     box-shadow: 0 0 0 2px var(--focus-gold);
 }
 
@@ -3364,7 +3355,7 @@ body.light-mode .admin-search-input::placeholder {
 }
 
 .admin-switch .btn-primary {
-    background-color: var(--gold-color);
+    background-color: var(--secondary-color);
     color: var(--bodybgcolor);
     box-shadow: 0 6px 14px var(--shadow-black-25);
     margin-top: 0;
@@ -3411,7 +3402,7 @@ body.light-mode .admin-search-input::placeholder {
     text-align: left;
     font-family: 'Lexend', sans-serif;
     font-weight: 700;
-    color: var(--gold-color);
+    color: var(--secondary-color);
     font-size: 1.3rem;
     margin-bottom: 1rem;
     padding: 0.5rem;
@@ -3421,7 +3412,7 @@ body.light-mode .admin-search-input::placeholder {
 
 .compact-table th {
     background-color: var(--navbgcolor);
-    color: var(--gold-color);
+    color: var(--secondary-color);
     padding: 1rem;
     text-transform: uppercase;
     font-size: 0.85rem;
@@ -3520,8 +3511,8 @@ body.light-mode .admin-search-input::placeholder {
 }
 
 .btn-icon:hover, .btn-icon:focus {
-    border-color: var(--gold-color);
-    color: var(--gold-color);
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
     background-color: var(--hover-faded);
 }
 
@@ -3544,7 +3535,7 @@ body.light-mode .admin-search-input::placeholder {
 .modal-box {
     background-color: var(--card-bg);
     color: var(--txtcolor);
-    border: 1px solid var(--gold-color);
+    border: 1px solid var(--secondary-color);
     padding: 2rem;
     border-radius: 8px;
     width: 90%; max-width: 800px; max-height: 85vh;
@@ -3574,12 +3565,12 @@ body.light-mode .admin-search-input::placeholder {
     font-size: 1rem;
 }
 .admin-input:focus {
-    border-color: var(--gold-color);
+    border-color: var(--secondary-color);
     box-shadow: 0 0 0 2px var(--focus-gold);
     outline: none;
 }
 .admin-form-group label {
-    display: block; margin-bottom: 0.5rem; font-weight: 700; color: var(--gold-color);
+    display: block; margin-bottom: 0.5rem; font-weight: 700; color: var(--secondary-color);
 }
 body.light-mode .admin-wrapper {
     background-color: var(--pure-white); /* Bianco puro */
@@ -3609,7 +3600,7 @@ body.light-mode .compact-table {
 
 body.light-mode .compact-table th {
     background-color: var(--surface-light); /* Grigio chiaro per header */
-    color: var(--color-gold-dark); /* Oro scuro leggibile */
+    color: var(--secondary-color); /* Oro scuro leggibile */
     border-bottom: 2px solid var(--border-light-muted);
     font-weight: 800;
 }
@@ -3640,7 +3631,7 @@ body.light-mode .admin-input {
 }
 
 body.light-mode .admin-input:focus {
-    border-color: var(--gold-color);
+    border-color: var(--secondary-color);
     background-color: var(--pure-white);
     box-shadow: 0 0 0 3px var(--gold-glow-dark-20);
 }
@@ -3686,7 +3677,7 @@ body.light-mode .close-modal:focus {
 /* Titoli */
 .wine-section h2 {
     font-size: 2.5em;
-    color: var(--gold-color);
+    color: var(--secondary-color);
     text-align: center;
     margin-bottom: 0.5em;
     border-top: none;
@@ -3704,7 +3695,7 @@ body.light-mode .close-modal:focus {
     transform: translateX(-50%);
     width: 80px;
     height: 3px;
-    background-color: var(--gold-color);
+    background-color: var(--secondary-color);
 }
 
 .presentazione p {
@@ -3748,7 +3739,7 @@ body.light-mode .close-modal:focus {
     transform: translateY(-5px);
     /* Ombra dorata per ridare vita */
     box-shadow: 0 10px 20px rgba(197, 165, 81, 0.25); 
-    border-color: var(--gold-color);
+    border-color: var(--secondary-color);
 }
 
 .wine-article img {
@@ -3811,9 +3802,9 @@ body.light-mode .close-modal:focus {
 
 .selettore-quantita button:hover,
 .selettore-quantita button:focus {
-    background-color: var(--gold-color);
+    background-color: var(--secondary-color);
     color: var(--pure-white);
-    border-color: var(--gold-color);
+    border-color: var(--secondary-color);
 }
 
 .selettore-quantita input {
@@ -3828,7 +3819,7 @@ body.light-mode .close-modal:focus {
 
 /* Pulsanti */
 .buy-button {
-    background-color: var(--color-gold-dark);
+    background-color: var(--secondary-color);
     color: var(--pure-white);
     font-weight: 600;
     border: none;
@@ -3839,9 +3830,9 @@ body.light-mode .close-modal:focus {
     font-size: 0.85rem;
     text-transform: uppercase;
 }
-.buy-button:hover { 
-    background-color: var(--color-gold-hover); 
+.buy-button:hover, .buy-button:focus { 
     color: var(--pure-black);
+    filter: brightness(1.3);
 }
 .buy-button:disabled {
     opacity: 0.5;
@@ -3935,7 +3926,7 @@ body.light-mode .buy-button:disabled {
     width: 90%; max-width: 1000px;
     border-radius: 8px;
     position: relative;
-    border: 1px solid var(--gold-color);
+    border: 1px solid var(--secondary-color);
     max-height: 90vh; overflow-y: auto;
     color: #333;
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
@@ -4009,12 +4000,12 @@ body.light-mode .buy-button:disabled {
 }
 
 .pop-prezzo {
-    font-size: 1.8em; color: var(--gold-color); font-weight: 700; margin: 0.5em 0;
+    font-size: 1.8em; color: var(--secondary-color); font-weight: 700; margin: 0.5em 0;
 }
 
 .wine-table { width: 100%; border-collapse: collapse; margin: 1.5em 0; }
 .wine-table caption {
-    text-align: left; font-weight: 700; color: var(--gold-color);
+    text-align: left; font-weight: 700; color: var(--secondary-color);
     text-transform: uppercase; margin-bottom: 5px; font-family: "Lexend", sans-serif;
 }
 .wine-table th { color: #666; text-align: left; padding: 8px 0; width: 35%; }
@@ -4025,7 +4016,7 @@ body.light-mode .buy-button:disabled {
     font-size: 2.5rem; color: #aaa; background: none; border: none; cursor: pointer;
     line-height: 1; transition: color 0.2s;
 }
-.close-btn:hover, .close-btn:focus { color: var(--gold-color); }
+.close-btn:hover, .close-btn:focus { color: var(--secondary-color); }
 
 body.no-scroll { overflow: hidden; }
 input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
