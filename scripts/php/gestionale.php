@@ -17,6 +17,19 @@ if ($ruoloUtente !== 'admin' && $ruoloUtente !== 'staff') {
     exit();
 }
 
+// LOGICA SEZIONE ATTIVA
+$sezioneAttiva = $_GET['sezione'] ?? 'ordini';
+
+// Classi CSS per le sezioni
+$ordiniClass = ($sezioneAttiva === 'ordini') ? 'content-section is-visible' : 'content-section is-hidden';
+$esperienzeClass = ($sezioneAttiva === 'esperienze') ? 'content-section is-visible' : 'content-section is-hidden';
+$messaggiClass = ($sezioneAttiva === 'messaggi') ? 'content-section is-visible' : 'content-section is-hidden';
+
+// Classi CSS per la Navigazione
+$navOrdiniActive = ($sezioneAttiva === 'ordini') ? 'is-active' : '';
+$navEsperienzeActive = ($sezioneAttiva === 'esperienze') ? 'is-active' : '';
+$navMessaggiActive = ($sezioneAttiva === 'messaggi') ? 'is-active' : '';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $azione = $_POST['azione'] ?? '';
@@ -31,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $ok = $db->archiviaMessaggio($messaggioId, $risposta);
             $db->closeConnection();
 
-            header("Location: " . $_SERVER['PHP_SELF']);
+            header("Location: " . $_SERVER['PHP_SELF'] . "?sezione=messaggi");
             exit;
         }
 
@@ -48,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $ok = $db->aggiornaStatoOrdine($ordineId, $stato);
         $db->closeConnection();
 
-        header("Location: " . $_SERVER['PHP_SELF']);
+        header("Location: " . $_SERVER['PHP_SELF'] . "?sezione=ordini");
         exit;
     }
 
@@ -61,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $ok = $db->aggiornaStatoPrenotazione($prenotazioneId, $stato);
         $db->closeConnection();
 
-        header("Location: " . $_SERVER['PHP_SELF']);
+        header("Location: " . $_SERVER['PHP_SELF'] . "?sezione=esperienze");
         exit;
     }
 
@@ -97,11 +110,15 @@ foreach ($ordiniArray as $ordine) {
     $ordini .= '<td data-title="ID Utente">' . (int)$ordine['id_utente'] . '</td>';
     $ordini .= '<td data-title="Totale Finale">' . number_format($ordine['totale_finale'], 2) . ' EUR</td>';
     $ordini .= '<td data-title="Data Creazione">' . htmlspecialchars($ordine['data_creazione']) . '</td>';
+    
+    // MODIFICA QUI: Rimosso <noscript>, aggiunto doppio bottone gestito via CSS
     $ordini .= '<td class="td_richiesta_degustazione" data-title="Dettagli">
+                    <a href="?sezione=ordini#details-row-' . $ordineId . '" class="btn-secondary btn-fallback">Mostra Dettagli</a>
                     <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $ordineId . '" aria-expanded="false" aria-controls="details-row-' . $ordineId . '">
                         Mostra <i class="fas fa-chevron-down" aria-hidden="true"></i>
                     </button>
                 </td>';
+                
     $ordini .= '<td class="td_richiesta_degustazione" data-title="Gestione richiesta"> 
                     <form action="" method="POST" class="standard-form">
                         <input type="hidden" name="ordine_id" value="' . $ordineId . '">
@@ -135,7 +152,10 @@ foreach ($ordiniArchivioArray as $ordine) {
     $ordiniArchivio .= '<td data-title="Totale Finale">' . number_format($ordine['totale_finale'], 2) . ' EUR</td>';
     $ordiniArchivio .= '<td data-title="Data Creazione">' . htmlspecialchars($ordine['data_creazione']) . '</td>';
     $ordiniArchivio .= '<td data-title="Stato">' . htmlspecialchars($ordine['stato_ordine']) . '</td>';
+    
+    // MODIFICA QUI
     $ordiniArchivio .= '<td class="td_richiesta_degustazione" data-title="Dettagli">
+                            <a href="?sezione=ordini#details-row-' . $ordineId . '" class="btn-secondary btn-fallback">Mostra Dettagli</a>
                             <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $ordineId . '" aria-expanded="false" aria-controls="details-row-' . $ordineId . '">
                                 Mostra <i class="fas fa-chevron-down" aria-hidden="true"></i>
                             </button>
@@ -245,6 +265,18 @@ foreach ($messaggiArchivioArray as $messaggio) {
 $htmlContent = str_replace("[nome_utente]", $nomeUtente, $htmlContent);
 $htmlContent = str_replace("[email_utente]", $emailUtente, $htmlContent);
 $htmlContent = str_replace("[riferimento]", $ruoloUtente, $htmlContent);
+
+// Nav Active
+$htmlContent = str_replace("[NAV_ACTIVE_ORDINI]", $navOrdiniActive, $htmlContent);
+$htmlContent = str_replace("[NAV_ACTIVE_ESPERIENZE]", $navEsperienzeActive, $htmlContent);
+$htmlContent = str_replace("[NAV_ACTIVE_MESSAGGI]", $navMessaggiActive, $htmlContent);
+
+// Section Visibility
+$htmlContent = str_replace("[ORDINI_CLASS]", $ordiniClass, $htmlContent);
+$htmlContent = str_replace("[ESPERIENZE_CLASS]", $esperienzeClass, $htmlContent);
+$htmlContent = str_replace("[MESSAGGI_CLASS]", $messaggiClass, $htmlContent);
+
+// Rows
 $htmlContent = str_replace("[riga_ordini]", $ordini, $htmlContent);
 $htmlContent = str_replace("[riga_ordini_archivio]", $ordiniArchivio, $htmlContent);
 $htmlContent = str_replace("[riga_prenotazioni]", $prenotazioni, $htmlContent);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" class="no-js">
 
 <head>
     <meta charset="utf-8">
@@ -77,9 +77,9 @@
                 <h2 class="visually-hidden">Menu area gestionale</h2>
                 <nav>
                     <ul class="user-nav-list">
-                        <li><a href="#ordini" class="user-nav-link is-active" data-section="ordini">Ordini</a></li>
-                        <li><a href="#esperienze" class="user-nav-link" data-section="esperienze">Richieste esperienze</a></li>
-                        <li><a href="#messaggi" class="user-nav-link" data-section="messaggi">Messaggi clienti</a></li>
+                        <li><a href="?sezione=ordini" class="user-nav-link [NAV_ACTIVE_ORDINI]" data-section="ordini">Ordini</a></li>
+                        <li><a href="?sezione=esperienze" class="user-nav-link [NAV_ACTIVE_ESPERIENZE]" data-section="esperienze">Richieste esperienze</a></li>
+                        <li><a href="?sezione=messaggi" class="user-nav-link [NAV_ACTIVE_MESSAGGI]" data-section="messaggi">Messaggi clienti</a></li>
                         <li>
                             <form action="logout.php" method="POST" class="logout-form">
                                 <button type="submit" class="btn-secondary logout-btn">
@@ -98,7 +98,7 @@
                     Usa il menu a sinistra per navigare.
                 </p>
 
-                <section id="ordini" class="content-section is-visible">
+                <section id="ordini" class="[ORDINI_CLASS]">
                     <h2>Ordini</h2>
                     <p id="descrizione-tab-ordini" class="visually-hidden">
                         La tabella riassume le richieste "in_attesa" di acquisto dei vini effettuate dagli utenti.
@@ -160,7 +160,7 @@
                     </section>
                 </section>
 
-                <section id="esperienze" class="content-section is-hidden">
+                <section id="esperienze" class="[ESPERIENZE_CLASS]">
                     <h2>Richieste esperienze</h2>
                     <p id="descrizione-tab-degustazioni" class="visually-hidden">
                         La tabella riassume le richieste di prenotazione delle degustazioni.
@@ -228,7 +228,7 @@
                     </section>
                 </section>
 
-                <section id="messaggi" class="content-section is-hidden">
+                <section id="messaggi" class="[MESSAGGI_CLASS]">
                     <h2>Messaggi clienti</h2>
                     <p id="descrizione-tab-messaggi" class="visually-hidden">
                         La tabella riassume le richieste di assistenza inviate dai clienti.
@@ -314,7 +314,5 @@
         </svg>
     </button>
     
-    
-
 </body>
 </html>
