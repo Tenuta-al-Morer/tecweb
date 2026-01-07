@@ -1392,16 +1392,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if(popStock) popStock.innerHTML = ''; 
 
-                // NASCONDI Shop
-                if(badgeEsaurito) badgeEsaurito.style.display = 'flex';
-                if(shopOverlay) shopOverlay.style.display = 'none';
+                // mostra badge esaurito e nascondi shop usando classi
+                if (badgeEsaurito) badgeEsaurito.classList.add('is-visible');
+                if (shopOverlay) shopOverlay.classList.add('is-hidden');
 
             } else {
                 // CASO DISPONIBILE
                 
                 if(popStock) {
                     popStock.className = 'stock-info';
-                    popStock.style.justifyContent = 'flex-start';
+                    popStock.classList.add('justify-start');
                     
                     if (stock < 20) {
                         popStock.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Ultimi ' + stock + ' pezzi!';
@@ -1413,8 +1413,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 // 2. NASCONDI Badge Esaurito
-                if(badgeEsaurito) badgeEsaurito.style.display = 'none';
-                if(shopOverlay) shopOverlay.style.display = 'block'; 
+                if (badgeEsaurito) badgeEsaurito.classList.remove('is-visible');
+                if (shopOverlay) shopOverlay.classList.remove('is-hidden'); 
             }
 
             // Galleria Immagini
@@ -1425,7 +1425,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Mostra Overlay
             const overlay = document.getElementById('overlay-dettagli');
             if (overlay) {
-                overlay.style.display = 'flex';
+                overlay.classList.add('is-open');
                 document.body.classList.add('no-scroll');
                 document.body.style.top = `-${scrollPosition}px`;
                 setTimeout(() => {
@@ -1438,7 +1438,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.chiudiDettagli = function() {
             const overlay = document.getElementById('overlay-dettagli');
             if (overlay) {
-                overlay.style.display = 'none';
+                overlay.classList.remove('is-open');
                 document.body.classList.remove('no-scroll');
                 document.body.style.top = '';
                 window.scrollTo(0, scrollPosition);

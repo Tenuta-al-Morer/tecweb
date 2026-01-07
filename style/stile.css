@@ -3971,7 +3971,9 @@ body.light-mode .buy-button:disabled {
     display: none;
 }
 #overlay-dettagli.overlay.is-open {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .stock-info {
@@ -3983,8 +3985,22 @@ body.light-mode .buy-button:disabled {
     display: none; /* use .is-visible to show */
 }
 .badge-esaurito.is-visible {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
+
+/* Shop overlay helper */
+.shop-ov.is-hidden {
+    display: none !important;
+}
+
+/* Utility: apply visible/hidden states */
+.is-hidden { display: none !important; }
+.is-visible { display: block !important; }
+
+/* stock alignment helper used by JS */
+.stock-info.justify-start { justify-content: flex-start; }
 
 .hidden-data {
     display: none;
