@@ -1,33 +1,8 @@
 :root, body {
-    --gold-color:       var(--color-gold-dark);
-    --gold-color-nav:   var(--color-gold);
-    --txtcolor:         var(--text-on-light);
-    --card-title-color: var(--text-strong); 
-    --card-desc-color:  var(--text-muted);
-    --bodybgcolor:      var(--surface-light); 
-    --code-bg:          var(--surface-light); 
-    --card-bg:          var(--surface-light);
-    --table-stripe:     var(--surface-light);
-    --bordercolor:      var(--border-strong);
-    --card-border:      var(--border-light-strong);
-    --diversity-color:  var(--text-medium);
-    --btn-hover-bg:     var(--color-gold-hover);
-    --navbgcolor:       var(--color-bg-dark);
-    --nav-separator-color: var(--border-separator);
-    --subheader-border-color: var(--border-subheader);
-    --card-shadow:       var(--border-light);
-    --card-hover-shadow: var(--border-light);
-    --color-yellow:     var(--color-yellow-dark);
-    --color-green:      #0b501b;
-    --color-green-hover:#0b501b;
-    --color-green-active:#0b501b;
-    --red-errors:       var(--color-red-strong);
-    --gray-dark:   var(--surface-light-strong);
-    --gray-medium: var(--border-strong);
-    --gray-light:  var(--border-nav-separator-light);
-    --gray-text:   var(--text-on-light);
-    --gray-border: var(--border-strong);
-	--navbgcolor:  var(--surface-light);
+    --text-color: #121212;
+    --background: #f4f4f4;
+    --border-color: #4b4b4b;
+    --secondary-color: #8a6b1e;
 }
 html{
 	font-family: "Times New Roman", Times, serif;
