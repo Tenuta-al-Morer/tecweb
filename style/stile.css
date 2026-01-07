@@ -3969,3 +3969,30 @@ body.light-mode #cart-toast {
     display: none;
   }
 }
+
+/* =========================================
+   STILI PER UTENTI SENZA JS
+   ========================================= */
+   
+.no-js .user-nav-link[data-section] {
+    color: var(--secondary-color);
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.no-js .toggle-details-btn {
+    display: none;
+}
+
+.no-js .order-details-row {
+    display: table-row !important;
+}
+
+.user-nav-link[href^="?sezione="] {
+    text-decoration: none;
+}
+
+.user-nav-link[href^="?sezione="]:hover,
+.user-nav-link[href^="?sezione="]:focus {
+    text-decoration: underline;
+}

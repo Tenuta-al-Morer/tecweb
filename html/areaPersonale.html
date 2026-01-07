@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" class="no-js">
 
 <head>
     <meta charset="utf-8">
@@ -75,10 +75,10 @@
                 <h2 class="visually-hidden">Menu Area Personale</h2>
                 <nav>
                     <ul class="user-nav-list">
-                        <li><a href="#dashboard" class="user-nav-link is-active" data-section="dashboard">Dashboard/Riepilogo</a></li>
-                        <li><a href="#ordini" class="user-nav-link" data-section="ordini">I Miei Ordini</a></li>
-                        <li><a href="#dati" class="user-nav-link" data-section="dati">Dati Personali</a></li>
-                        <li><a href="#sicurezza" class="user-nav-link" data-section="sicurezza">Sicurezza/Accesso</a></li>
+                        <li><a href="?sezione=dashboard" class="user-nav-link [NAV_ACTIVE_DASHBOARD]" data-section="dashboard">Dashboard/Riepilogo</a></li>
+                        <li><a href="?sezione=ordini" class="user-nav-link [NAV_ACTIVE_ORDINI]" data-section="ordini">I Miei Ordini</a></li>
+                        <li><a href="?sezione=dati" class="user-nav-link [NAV_ACTIVE_DATI]" data-section="dati">Dati Personali</a></li>
+                        <li><a href="?sezione=sicurezza" class="user-nav-link [NAV_ACTIVE_SICUREZZA]" data-section="sicurezza">Sicurezza/Accesso</a></li>
                         <li>
                             <form action="logout.php" method="POST" class="logout-form">
                                 <button type="submit" class="btn-secondary logout-btn">
@@ -97,21 +97,21 @@
                     Sei loggato come: <strong>[email_utente]</strong>. Usa il menu a sinistra per navigare.
                 </p>
 
-                <section id="dashboard" class="content-section is-visible">
+                <section id="dashboard" class="[DASHBOARD_CLASS]">
                     [DASHBOARD_CONTENT]
                 </section>
 
-                <section id="ordini" class="content-section is-hidden">
+                <section id="ordini" class="[ORDINI_CLASS]">
                     <h2>I Miei Ordini</h2>
                     [TABELLA_ORDINI]
                 </section>
 
-                <section id="dati" class="content-section is-hidden">
+                <section id="dati" class="[DATI_CLASS]">
                     <h2>Dati Personali</h2>
                     [DATI_PERSONALI]
                 </section>
 
-                <section id="sicurezza" class="content-section is-hidden">
+                <section id="sicurezza" class="[SICUREZZA_CLASS]">
                     <h2>Modifica Password</h2>
                     [FORM_PASSWORD]
                 </section>

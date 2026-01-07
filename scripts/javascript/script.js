@@ -32,6 +32,8 @@ const safeExecute = (moduleName, moduleFunction) => {
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    document.documentElement.classList.remove('no-js');
+
     /* ==========================================
      * 1. THEME MANAGEMENT (Default Dark)
      * ========================================== */

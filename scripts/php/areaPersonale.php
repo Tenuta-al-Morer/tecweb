@@ -4,7 +4,6 @@ require_once 'common.php';
 require_once 'DBConnection.php'; 
 use DB\DBConnection;
 
-// Controllo accesso
 if (!isset($_SESSION['utente_id'])) { 
     header("location: login.php");
     exit();
@@ -15,7 +14,6 @@ $ruoloUtente = $_SESSION['ruolo'];
 $nomeUtenteSessione = isset($_SESSION['nome']) ? $_SESSION['nome'] : 'Utente';
 $emailUtenteSessione = isset($_SESSION['utente']) ? $_SESSION['utente'] : '';
 
-// Controllo ruolo
 if ($ruoloUtente !== 'user' && $ruoloUtente !== 'admin' && $ruoloUtente !== 'staff') {
     header("location: 403.php");
     exit();
@@ -23,7 +21,6 @@ if ($ruoloUtente !== 'user' && $ruoloUtente !== 'admin' && $ruoloUtente !== 'sta
 
 $db = new DBConnection();
 
-// --- LOGICA ELIMINAZIONE ACCOUNT ---
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['azione_delete']) && $_POST['azione_delete'] == 'elimina_definitivamente') {
     if (isset($_POST['conferma_irreversibile'])) {
         if ($db->eliminaAccount($idUtente)) {
@@ -37,7 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['azione_delete']) && $_
     }
 }
 
-// --- LOGICA CAMBIO PASSWORD ---
 $msgPassword = ''; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['azione_pw']) && $_POST['azione_pw'] == 'cambia') {
@@ -57,7 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['azione_pw']) && $_POST
         }
     }
 
-    // JS per riaprire la tab sicurezza in caso di errore/successo
     if (!empty($msgPassword)) {
         $msgPassword .= "
         <script>
@@ -71,14 +66,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['azione_pw']) && $_POST
     }
 }
 
-// Recupero Dati
+// LOGICA SEZIONE ATTIVA (GET parameter)
+$sezioneAttiva = $_GET['sezione'] ?? 'dashboard';
+
+// Classi CSS per le sezioni
+$dashboardClass = ($sezioneAttiva === 'dashboard') ? 'content-section is-visible' : 'content-section is-hidden';
+$ordiniClass = ($sezioneAttiva === 'ordini') ? 'content-section is-visible' : 'content-section is-hidden';
+$datiClass = ($sezioneAttiva === 'dati') ? 'content-section is-visible' : 'content-section is-hidden';
+$sicurezzaClass = ($sezioneAttiva === 'sicurezza') ? 'content-section is-visible' : 'content-section is-hidden';
+
+// Classi CSS per la Navigazione
+$navDashActive = ($sezioneAttiva === 'dashboard') ? 'is-active' : '';
+$navOrdiniActive = ($sezioneAttiva === 'ordini') ? 'is-active' : '';
+$navDatiActive = ($sezioneAttiva === 'dati') ? 'is-active' : '';
+$navSicurezzaActive = ($sezioneAttiva === 'sicurezza') ? 'is-active' : '';
+
 $ordini = $db->getOrdiniUtente($idUtente);
 $stats = $db->getUserStats($idUtente);
 $infoUtente = $db->getUserInfo($idUtente);
 
 $db->closeConnection();
 
-// --- HELPERS ---
 function formatDate($dateString) {
     return (new DateTime($dateString))->format('d/m/Y H:i');
 }
@@ -93,8 +101,6 @@ function getStatusBadge($stato) {
     return '<span class="order-status-badge status-' . $stato . '">' . htmlspecialchars($testo) . '</span>';
 }
 
-// --- DASHBOARD ---
-// Costruzione ultimo ordine
 $ultimoOrdineHTML = '<p class="text-muted">Nessun ordine recente.</p>';
 if (!empty($ordini)) {
     $last = $ordini[0];
@@ -116,7 +122,7 @@ $dashboardHTML = '
 
 <ul class="dashboard-grid">
     <li>
-        <a href="#ordini" onclick="document.querySelector(\'[data-section=ordini]\').click()" class="feature-card card-link border-gold">
+        <a href="?sezione=ordini" class="feature-card card-link border-gold">
             <div class="card-icon"><i class="fas fa-wallet" aria-hidden="true"></i></div>
             <h3>Il Tuo Valore</h3>
             <p class="stat-number">€ ' . number_format($stats['totale_speso'], 2, ',', '.') . '</p>
@@ -124,14 +130,14 @@ $dashboardHTML = '
         </a>
     </li>
     <li>
-        <a href="#ordini" onclick="document.querySelector(\'[data-section=ordini]\').click()" class="feature-card card-link border-gold">
+        <a href="?sezione=ordini" class="feature-card card-link border-gold">
             <div class="card-icon"><i class="fas fa-shipping-fast" aria-hidden="true"></i></div>
             <h3>Ultimo Ordine</h3>
             ' . $ultimoOrdineHTML . '
         </a>
     </li>
     <li>
-        <a href="#dati" onclick="document.querySelector(\'[data-section=dati]\').click()" class="feature-card card-link border-gold">
+        <a href="?sezione=dati" class="feature-card card-link border-gold">
             <div class="card-icon"><i class="fas fa-user-circle" aria-hidden="true"></i></div>
             <h3>Il Tuo Profilo</h3>
             <p class="stat-number text-md">' . htmlspecialchars($infoUtente['nome'] ?? $nomeUtenteSessione) . '</p>
@@ -141,7 +147,6 @@ $dashboardHTML = '
 </ul>
 ';
 
-// --- TABELLA ORDINI  ---
 $tabellaOrdini = '';
 if (empty($ordini)) {
     $tabellaOrdini = '<div class="alert-box"><p><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Non hai ancora effettuato ordini. Visita la sezione <a href="vini.php">Vini!</a></p></div>';
@@ -167,7 +172,17 @@ if (empty($ordini)) {
         $tabellaOrdini .= '<td data-title="Data">' . formatDate($ordine['data_creazione']) . '</td>';
         $tabellaOrdini .= '<td data-title="Stato">' . getStatusBadge($ordine['stato_ordine']) . '</td>';
         $tabellaOrdini .= '<td data-title="Totale" class="td_richiesta_degustazione">€ ' . number_format($ordine['totale_finale'], 2, ',', '.') . '</td>';
-        $tabellaOrdini .= '<td class="td_richiesta_degustazione"><button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $id_ordine . '" aria-expanded="false" aria-controls="details-row-' . $id_ordine . '">Mostra <i class="fas fa-chevron-down" aria-hidden="true"></i></button></td></tr>';
+        
+        // MODIFICA QUI: Bottone con fallback NOSCRIPT
+        $tabellaOrdini .= '<td class="td_richiesta_degustazione">
+            <noscript>
+                <form method="get" action="#details-row-' . $id_ordine . '">
+                    <input type="hidden" name="sezione" value="ordini">
+                    <button type="submit" class="btn-secondary">Mostra Dettagli</button>
+                </form>
+            </noscript>
+            <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $id_ordine . '" aria-expanded="false" aria-controls="details-row-' . $id_ordine . '">Mostra <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+        </td></tr>';
         
         $tabellaOrdini .= '<tr class="order-details-row is-hidden" id="details-row-' . $id_ordine . '"><td colspan="5" class="order-details-cell"><div class="details-content">';
         $tabellaOrdini .= '<div class="details-section"><h4>Prodotti Ordinati:</h4><ul class="details-products-list">';
@@ -180,7 +195,6 @@ if (empty($ordini)) {
     $tabellaOrdini .= '</tbody></table></div>';
 }
 
-// --- DATI PERSONALI ---
 $inizialeNome = strtoupper(substr($infoUtente['nome'], 0, 1));
 $inizialeCognome = strtoupper(substr($infoUtente['cognome'], 0, 1));
 
@@ -225,12 +239,11 @@ $datiPersonaliHTML = '
     </div>
 </div>';
 
-// --- FORM PASSWORD ---
 $formPasswordHTML = '
 <div class="password-form-container">
     ' . $msgPassword . '
     
-    <form action="areaPersonale.php#sicurezza" method="POST" class="auth-form">
+    <form action="areaPersonale.php?sezione=sicurezza" method="POST" class="auth-form">
         <input type="hidden" name="azione_pw" value="cambia">
         
         <div class="form-group">
@@ -270,14 +283,23 @@ $formPasswordHTML = '
     </form>
 </div>';
 
-// --- OUTPUT FINALE ---
 $htmlContent = caricaPagina('../../html/areaPersonale.html'); 
 
-// Sostituzioni
 $htmlContent = str_replace("[email_utente]", htmlspecialchars($infoUtente['email']), $htmlContent);
 $htmlContent = str_replace("[riferimento]", $ruoloUtente, $htmlContent);
 
-// Sostituzione Blocchi Dinamici
+// Sostituzione Classi Navigazione
+$htmlContent = str_replace("[NAV_ACTIVE_DASHBOARD]", $navDashActive, $htmlContent);
+$htmlContent = str_replace("[NAV_ACTIVE_ORDINI]", $navOrdiniActive, $htmlContent);
+$htmlContent = str_replace("[NAV_ACTIVE_DATI]", $navDatiActive, $htmlContent);
+$htmlContent = str_replace("[NAV_ACTIVE_SICUREZZA]", $navSicurezzaActive, $htmlContent);
+
+// Sostituzione Classi Sezioni (Visibilità)
+$htmlContent = str_replace("[DASHBOARD_CLASS]", $dashboardClass, $htmlContent);
+$htmlContent = str_replace("[ORDINI_CLASS]", $ordiniClass, $htmlContent);
+$htmlContent = str_replace("[DATI_CLASS]", $datiClass, $htmlContent);
+$htmlContent = str_replace("[SICUREZZA_CLASS]", $sicurezzaClass, $htmlContent);
+
 $htmlContent = str_replace("[DASHBOARD_CONTENT]", $dashboardHTML, $htmlContent);
 $htmlContent = str_replace("[TABELLA_ORDINI]", $tabellaOrdini, $htmlContent); 
 $htmlContent = str_replace("[DATI_PERSONALI]", $datiPersonaliHTML, $htmlContent); 
