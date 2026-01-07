@@ -3847,8 +3847,8 @@ body.light-mode .close-modal:focus {
 
 /* Pulsanti */
 .buy-button {
-    background-color: var(--color-gold);
-    color: var(--pure-black);
+    background-color: var(--color-gold-dark);
+    color: var(--pure-white);
     font-weight: 600;
     border: none;
     padding: 0.7em;
@@ -3858,19 +3858,13 @@ body.light-mode .close-modal:focus {
     font-size: 0.85rem;
     text-transform: uppercase;
 }
-.buy-button:hover { background-color: var(--color-gold-hover); }
+.buy-button:hover { 
+    background-color: var(--color-gold-hover); 
+    color: var(--pure-black);
+}
 .buy-button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
-}
-
-/* Buy Button in Light Mode: bianco su oro scuro */
-body.light-mode .buy-button {
-    background-color: var(--color-gold-dark);
-    color: var(--pure-white);
-}
-body.light-mode .buy-button:hover {
-    background-color: var(--color-gold-dark-hover);
 }
 body.light-mode .buy-button:disabled {
     opacity: 0.5;
@@ -3892,6 +3886,57 @@ body.light-mode .buy-button:disabled {
 .details-button:hover, .details-button:focus {
     background-color: #333;
     color: var(--pure-white);
+}
+/* =========================================
+   STILI CARD VINI
+   ========================================= */
+
+.stock-spacer {
+    height: 24px;
+    margin-bottom: 10px;
+}
+
+.actions-esaurito-wrapper {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1em;
+    width: 100%;
+    margin-top: -1.2em;
+}
+
+.badge-esaurito {
+    width: 100%;
+    padding: 1em 0; /* Più alto del bottone Info */
+    background-color: var(--color-red-strong);
+    color: var(--pure-white);
+    font-weight: 800;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.7rem;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    cursor: not-allowed;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border: 1px solid transparent;
+}
+
+.badge-esaurito i {
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
+.btn-info-esaurito {
+    align-self: center;
+    width: 50%;
+    margin: 0;
+    padding: 8px 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+    flex: auto;
 }
 
 /* --- OVERLAY / POPUP --- */

@@ -1285,8 +1285,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     showToast("Prodotto aggiunto al carrello!");
                     
                     // B. Aggiorna il contatore nel carrello (Header)
-                    // Cerca l'elemento che contiene il numero. 
-                    // Se nel tuo HTML hai un ID specifico per il contatore (es. #header-cart-count), usalo qui.
+                    // id specifico del contatore carrello
                     const cartCounters = document.querySelectorAll('.cart-count, .badge-count, #header-cart-count'); 
                     cartCounters.forEach(el => {
                         el.innerText = data.cart_count;
@@ -1337,7 +1336,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const articolo = bottone.closest('.wine-article');
             if (!articolo) return;
 
-            // RECUPERO DATI
+            // 1. RECUPERO DATI
             currentOpenWineId = articolo.dataset.id; 
             const nome = articolo.dataset.nome;
             const desc = articolo.dataset.descrizione;
@@ -1357,7 +1356,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return el ? el.innerText : '';
             };
 
-            // POPOLAMENTO DOM
+            // 2. POPOLAMENTO TESTI
             const setText = (id, val) => { const el = document.getElementById(id); if(el) el.innerText = val; };
             
             setText('pop-titolo', nome);
@@ -1369,17 +1368,11 @@ document.addEventListener('DOMContentLoaded', () => {
             setText('tab-temp', getHidden('temperatura'));
             setText('tab-abbinamenti', getHidden('abbinamenti'));
 
-            // GESTIONE STOCK E UI
+            // 3. GESTIONE STOCK E UI
             const popStock = document.getElementById('pop-stock');
+            const shopOverlay = document.querySelector('.shop-ov');        // Blocco acquisto
+            const badgeEsaurito = document.getElementById('pop-esaurito'); // Badge rosso
             const inputQtyPopup = document.querySelector('.shop-ov .input-qty');
-            const btnAcquistaPopup = document.querySelector('.shop-ov .buy-button');
-            const btnsQtyPopup = document.querySelectorAll('.shop-ov .selettore-quantita button');
-
-            // Reset classi
-            if (popStock) {
-                popStock.className = 'stock-info'; 
-                popStock.style.justifyContent = 'flex-start';
-            }
 
             if(inputQtyPopup) {
                 inputQtyPopup.value = quantitaAttuale;
@@ -1394,16 +1387,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 newInput.onchange = function() { window.validaInputVino(this); };
             }
 
-            // Logica visuale stock
-            if (popStock) {
-                if (stock <= 0) {
-                    popStock.innerHTML = '<i class="fas fa-times-circle"></i> Esaurito';
-                    popStock.classList.add('stock-error');
+            if (stock <= 0) {
+                // CASO ESAURITO
+
+                if(popStock) popStock.innerHTML = ''; 
+
+                // NASCONDI Shop
+                if(badgeEsaurito) badgeEsaurito.style.display = 'flex';
+                if(shopOverlay) shopOverlay.style.display = 'none';
+
+            } else {
+                // CASO DISPONIBILE
+                
+                if(popStock) {
+                    popStock.className = 'stock-info';
+                    popStock.style.justifyContent = 'flex-start';
                     
-                    if(btnAcquistaPopup) { btnAcquistaPopup.disabled = true; btnAcquistaPopup.style.opacity = "0.5"; }
-                    if(document.querySelector('.shop-ov .input-qty')) document.querySelector('.shop-ov .input-qty').disabled = true;
-                    btnsQtyPopup.forEach(btn => btn.disabled = true);
-                } else {
                     if (stock < 20) {
                         popStock.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Ultimi ' + stock + ' pezzi!';
                         popStock.classList.add('stock-warning');
@@ -1411,14 +1410,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         popStock.innerHTML = '<i class="fas fa-check-circle"></i> Disponibilità: ' + stock + ' bottiglie';
                         popStock.classList.add('stock-ok');
                     }
-
-                    if(btnAcquistaPopup) { btnAcquistaPopup.disabled = false; btnAcquistaPopup.style.opacity = "1"; }
-                    btnsQtyPopup.forEach(btn => btn.disabled = false);
                 }
+
+                // 2. NASCONDI Badge Esaurito
+                if(badgeEsaurito) badgeEsaurito.style.display = 'none';
+                if(shopOverlay) shopOverlay.style.display = 'block'; 
             }
 
-            // Galleria Immagini: singola immagine
-            slideImages = [img];
+            // Galleria Immagini
+            slideImages = [img, img, img]; // Simulazione galleria
             currentSlideIndex = 0;
             updateGalleryView();
 
