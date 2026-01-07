@@ -6,7 +6,7 @@ Lista todo per tecweb:
 - sistemare messaggistica (stesso cosa delle esperienze, non so come volevate gestire le messaggistiche verso il cliente) -> Luca
 - sistemare font (bisogna decidere insieme quali addottare) 
 - preparare il css per stampa -> contarini e ?
-- sistemare tic di admin e gestionale (renderle grandi quanto le altre)
+- sistemare tic per mobile, diminuire gap presente tra icone
 - fare mappa del sito
 - controlla nella lezione 20 se rispettiamo le convenzioni esterne
 - converti in formato .jpeg le foto e togliere foto non utilizzate -> vise
