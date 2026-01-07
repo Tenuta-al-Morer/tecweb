@@ -141,7 +141,7 @@ function costruisciCardVino($vino) {
             ' . $actionsHTML . '
         </div>
         
-        <div style="display:none;" class="hidden-data">
+        <div class="hidden-data">
             <span data-key="vitigno">' . $vitigno . '</span>
             <span data-key="annata">' . $annata . '</span>
             <span data-key="gradazione">' . $gradazione . '</span>

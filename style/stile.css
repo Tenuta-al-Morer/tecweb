@@ -3967,6 +3967,29 @@ body.light-mode .buy-button:disabled {
     align-items: start;
 }
 
+#overlay-dettagli.overlay {
+    display: none;
+}
+#overlay-dettagli.overlay.is-open {
+    display: block;
+}
+
+.stock-info {
+    margin-bottom: 1rem;
+}
+
+.badge-esaurito {
+    margin-top: 1rem;
+    display: none; /* use .is-visible to show */
+}
+.badge-esaurito.is-visible {
+    display: inline-block;
+}
+
+.hidden-data {
+    display: none;
+}
+
 .gallery-container { position: relative; display: flex; align-items: center; justify-content: center; }
 
 .main-img-box {
