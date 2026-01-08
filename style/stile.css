@@ -872,6 +872,8 @@ a.logo-link:hover img, a.logo-link:focus img { transform: scale(1.05); }
     padding: 0.4em 1.5em; display: flex; justify-content: space-between; 
     align-items: center; transition: background-color 0.3s ease, border-color 0.3s ease;
     min-height: 54px; 
+    border-bottom: 1px solid rgba(197, 165, 81, 0.33);
+    border-top: 1px solid rgba(197, 165, 81, 0.33);
 }
 
 .breadcrumb-container a i,
@@ -1693,12 +1695,6 @@ footer a:visited {
 /* =========================================
    PAGINA TENUTA 
    ========================================= */
-
-.sub-header {
-    border-bottom: 1px solid rgba(197, 165, 81, 0.33);
-    border-top: 1px solid rgba(197, 165, 81, 0.33);
-}
-
 .tenuta-body {
     background-color: var(--background); 
     color: #f5f2eb;
