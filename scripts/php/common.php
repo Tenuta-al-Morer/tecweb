@@ -58,14 +58,14 @@ function caricaPagina($nomeFileHTML) {
             // Icona statica se sono già in modifica
             $cartIconHTML = '
             <span class="current-page-icon" aria-current="page" title="Sei in Modifica Vini">
-                <i class="fas fa-cogs" aria-hidden="true"></i>
+                <i class="fas fa-sliders-h" aria-hidden="true"></i>
                 <span class="visually-hidden">Modifica Vini (Pagina corrente)</span>
             </span>';
         } else {
             // Link a Modifica
             $cartIconHTML = '
             <a href="admin.php" title="Modifica Vini">
-                <i class="fas fa-cogs" aria-hidden="true"></i>
+                <i class="fas fa-sliders-h" aria-hidden="true"></i>
                 <span class="visually-hidden">Modifica Vini</span>
             </a>';
         }
@@ -122,13 +122,13 @@ function caricaPagina($nomeFileHTML) {
             if ($paginaCorrente === 'areaPersonale.php') {
                 $userIconHTML = '
                 <span class="current-page-icon" aria-current="page" title="Sei nella tua Area Riservata">
-                    <i class="fas fa-user-circle" aria-hidden="true"></i>
+                    <i class="fas fa-user" aria-hidden="true"></i>
                     <span class="visually-hidden">Area Riservata (Pagina corrente)</span>
                 </span>';
             } else {
                 $userIconHTML = '
                 <a href="utente.php" title="Vai alla tua Area Riservata">
-                    <i class="fas fa-user-circle" aria-hidden="true"></i>
+                    <i class="fas fa-user" aria-hidden="true"></i>
                     <span class="visually-hidden">Area Riservata</span>
                 </a>';
             }
@@ -139,13 +139,13 @@ function caricaPagina($nomeFileHTML) {
         if ($paginaCorrente === 'carrello.php') {
             $userIconHTML = '
             <a href="login.php?return=carrello.php" title="Accedi per completare l\'ordine">
-                <i class="fas fa-key" aria-hidden="true"></i>
+                <i class="fas fa-user-alt-slash" aria-hidden="true"></i>
                 <span class="visually-hidden">Accedi</span>
             </a>';
         } else {
             $userIconHTML = '
             <a href="login.php" title="Accedi">
-                <i class="fas fa-key" aria-hidden="true"></i>
+                <i class="fas fa-user-alt-slash" aria-hidden="true"></i>
                 <span class="visually-hidden">Accedi</span>
             </a>';
         }
