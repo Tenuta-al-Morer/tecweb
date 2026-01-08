@@ -1405,7 +1405,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     popStock.className = 'stock-info';
                     popStock.classList.add('justify-start');
                     
-                    if (stock < 20) {
+                    if (stock <= 20) {
                         popStock.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Ultimi ' + stock + ' pezzi!';
                         popStock.classList.add('stock-warning');
                     } else {
