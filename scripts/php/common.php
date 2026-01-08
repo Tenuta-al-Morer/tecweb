@@ -151,10 +151,34 @@ function caricaPagina($nomeFileHTML) {
         }
     }
 
+
+    $footer = '
+        <footer>
+            <div class="footer-content">
+                <small>
+                    &copy; 2025 Tenuta al Morer - <abbr title="Partita">P.</abbr> <abbr title="Imposta sul Valore Aggiunto">IVA</abbr> 00000000000 <br>
+                    <a href="policy.php">Note legali</a>  
+                    <a href="policy.php#privacy-policy"><span lang="en">  Privacy Policy</span></a>  
+                    <a href="policy.php#accessibility">  Accessibilità</a>
+                </small>
+            </div>
+        </footer>';
+
+    $backToTopBtn = '<button id="backToTopBtn" aria-label="Torna all\'inizio della pagina">
+            <svg viewBox="0 0 24 24" class="arrow-icon" aria-hidden="true">
+                <path d="M12 5 L12 19 M5 12 L12 5 L19 12"/>
+            </svg>
+        </button>';
+
+
     // Sostituisco il segnaposto del carrello/matita
     $htmlContent = str_replace("[cart_icon_link]", $cartIconHTML, $htmlContent);
     // Sostituisco il segnaposto utente/tabella
     $htmlContent = str_replace("[user_area_link]", $userIconHTML, $htmlContent);
+    // Sostituisco footer
+    $htmlContent = str_replace("[footer]", $footer, $htmlContent);
+    // Sostituisco back to top button
+    $htmlContent = str_replace("[back_to_top_button]", $backToTopBtn, $htmlContent);
 
     return $htmlContent;
 }
