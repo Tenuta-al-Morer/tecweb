@@ -792,16 +792,22 @@ a.logo-link:hover img, a.logo-link:focus img { transform: scale(1.05); }
     filter: none;
 }
 
-.primary-navigation a.is-visited::before,
-.mobile-icons a.is-visited::before {
-    content: ""; display: inline-block; width: 0.9em; height: 0.9em;
-    vertical-align: middle; margin-bottom: 0.2em; 
-    background-image: url('../images/tic.webp'); background-size: contain;
-    background-repeat: no-repeat; background-position: center; border: none; transform: none;
+.primary-navigation a.is-visited,
+.mobile-icons a.is-visited {
+    color: var(--always-bright);
 }
 
-.primary-navigation a.is-visited::before { margin-right: 0em; }
-.mobile-icons a.is-visited::before { margin-right: 0.1em; }
+.primary-navigation a.is-visited::before,
+.mobile-icons a.is-visited::before {
+    content: none;
+}
+
+.primary-navigation a.is-visited:hover,
+.primary-navigation a.is-visited:focus,
+.mobile-icons a.is-visited:hover,
+.mobile-icons a.is-visited:focus {
+    filter: brightness(1.2);
+}
 
 .mobile-icons {
     align-items: center; 
