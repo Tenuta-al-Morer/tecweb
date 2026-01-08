@@ -1,20 +1,19 @@
 Lista todo per tecweb:
 - sistemare print css, deve operare da zero
-- mettere conferma operazione su admin utenti
-- aggiungere creazione utente 
-- cambiare percorso immagine in admin vini con "carica immagine"
-- mettere uno fianco all'altro i bottoni di admin coi vini
-- abbassare a 20 la quota di "ultimi rimasti" nei vini
+- mettere conferma operazione su admin utenti -> Luca
+- aggiungere creazione utente -> Luca
+- cambiare percorso immagine in admin vini con "carica immagine" -> Luca
+- mettere uno fianco all'altro i bottoni di admin coi vini -> Luca
+- abbassare a 20 la quota di "ultimi rimasti" nei vini -> Luca
 - sistemare spedizione gratuita 
-- sistemare bottone elimina e salva per dopo carrello
+- sistemare bottone elimina e salva per dopo carrello -> Luca
 - sistemare colori carrello (arancio-verde)
-- mettere popup che indica il numero di articoli nel carrello
-- mettere le scritte sotto le icone di admin e gestionale
+- mettere popup che indica il numero di articoli nel carrello -> Luca
+- mettere le scritte sotto le icone di admin e gestionale -> Luca
 - correggere comportamento sito senza javascript in vini, carrello, gestione vini (modifica e aggiunta) (il resto è già stato verificato) -> Michele
 - sistemare prenotazioni esperienze (quando admin/staff accetta la richiesta come fa a sapere il cliente che gli è stata approvata) -> Luca
     - risposta: si scrive nella relazione che alla conferma viene inviata automaticamente una mail ma che ovviamente noi non la gestiamo come cosa
 - sistemare messaggistica (stesso cosa delle esperienze, non so come volevate gestire le messaggistiche verso il cliente) -> Luca
-- sistemare font (bisogna decidere insieme quali addottare) 
 - preparare il css per stampa -> contarini e ?
 - fare mappa del sito
 - controlla nella lezione 20 se rispettiamo le convenzioni esterne
