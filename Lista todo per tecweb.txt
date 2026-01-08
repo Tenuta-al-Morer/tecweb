@@ -1,5 +1,4 @@
 Lista todo per tecweb:
-- scroll orizzontale in gestione utenti mini
 - mettere conferma operazione su admin utenti
 - aggiungere creazione utente 
 - cambiare percorso immagine in admin vini con "carica immagine"
