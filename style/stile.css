@@ -9,7 +9,6 @@
 
 :root {
     /* COLORI PRINCIPALI */
-    --gray: #666666;  /*da rinominare!*/
     --secondary-color: #C5A551;
     --always-bright: #C5A551;
     --errors: #c51e26;
@@ -456,7 +455,7 @@ body.light-mode .navigationHelp:focus {
   width: 56px;
   height: 30px;
   cursor: pointer;
-  background-color: var(--gray);
+  background-color: var(#666);
   transition: background-color .25s ease, box-shadow .25s ease;
   border-radius: 999px;
   display: block;
@@ -2024,7 +2023,7 @@ TABELLE ORDINI E DETTAGLI
     text-align: center;
 }
 
-.status-in_attesa { background-color: var(--gray); color: #fff; }
+.status-in_attesa { background-color: var(#666); color: #fff; }
 .status-approvato { background-color: var(--right); color: #fff; } 
 .status-annullato { background-color: var(--errors); color: #fff; } 
 
@@ -2797,7 +2796,7 @@ a.feature-card.card-link {
 .checkout-steps li {
     display: flex;
     align-items: center;
-    color: var(--gray);
+    color: var(#666);
 }
 
 .checkout-steps a {
