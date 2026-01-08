@@ -3880,6 +3880,8 @@ body.light-mode .buy-button:disabled {
 
 .close-btn {
     position: absolute; top: 15px; right: 20px;
+    padding: 0.5rem;
+    z-index: 10;
     font-size: 2.5rem; color: #aaa; background: none; border: none; cursor: pointer;
     line-height: 1; transition: color 0.2s;
 }

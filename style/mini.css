@@ -1107,7 +1107,7 @@ body.light-mode .table-data td::before {
     width: 100%;
     max-width: 360px;
     margin: 0 auto;
-    background: linear-gradient(180deg, var(--white) 0%, #f7f2e9 100%);
+    background: linear-gradient(180deg, #fff 0%, #f7f2e9 100%);
     border: 1px solid var(--border-color);
 }
 
