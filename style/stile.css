@@ -4061,3 +4061,23 @@ body.light-mode #cart-toast {
 .no-js #theme-toggle {
     display: none;
 }
+
+/* FIX NO-JS CARRELLO */
+form.qty-selector {
+    margin: 0;
+}
+
+a.action-btn-text {
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+a.action-btn-text:hover,
+a.action-btn-text:focus {
+    text-decoration: underline;
+}
+
+a.btn-delete { color: var(--errors); }
+a.btn-save, a.btn-move { color: var(--secondary-color); }

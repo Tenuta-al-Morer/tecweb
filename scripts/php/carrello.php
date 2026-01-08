@@ -19,7 +19,7 @@ if (isset($_SESSION['utente']) && isset($_SESSION['ruolo'])) {
         $db->svuotaCarrelloUtente($_SESSION['utente_id']);
         $db->closeConnection();
         
-        // Reindirizza alla dashboard gestionale (o dove preferisci)
+        // Reindirizza alla dashboard gestionale
         header("Location: gestionale.php");
         exit();
     }
@@ -38,13 +38,21 @@ if (isset($_REQUEST['action'])) {
 
     $db = new DBConnection();
 
-    // 1. Calcolo la quantità DESIDERATA (prima dei controlli)
+    // 1. Calcolo la quantità DESIDERATA
     $new_qty = $current_qty;
     $qty_to_add = 1; 
 
     if ($action === 'piu') {
+        // Se arriva da POST/GET standard, potrebbe non avere current_qty aggiornato
+        // Recuperiamo la qty dal DB o dall'input 'quantita' se presente
+        if (isset($_REQUEST['quantita'])) {
+            $current_qty = (int)$_REQUEST['quantita'];
+        }
         $new_qty = $current_qty + 1;
     } elseif ($action === 'meno') {
+        if (isset($_REQUEST['quantita'])) {
+            $current_qty = (int)$_REQUEST['quantita'];
+        }
         $new_qty = $current_qty - 1;
     } elseif ($action === 'aggiorna_quantita') {
         $new_qty = isset($_REQUEST['quantita']) ? (int)$_REQUEST['quantita'] : 1;
@@ -53,15 +61,12 @@ if (isset($_REQUEST['action'])) {
     }
 
     // ------------------------------------------------------------
-    // INIZIO NUOVO CONTROLLO STOCK LATO SERVER
+    // CONTROLLO STOCK LATO SERVER
     // ------------------------------------------------------------
     
-    // A. Recuperiamo lo stock reale dal DB
-    // Usiamo getVinoPerCarrello per trovare anche vini non attivi/nascosti
     $vinoInfo = $db->getVinoPerCarrello($id_vino); 
     
     if (!$vinoInfo) {
-         // Se il vino non esiste nel DB, ricarica ed esci
          if (isset($_REQUEST['ajax_mode'])) {
              echo json_encode(['success' => false, 'error' => 'Vino non trovato']);
              exit();
@@ -69,26 +74,17 @@ if (isset($_REQUEST['action'])) {
          header("Location: carrello.php"); exit();
     }
 
-    // B. Calcolo il limite massimo: lo stock reale
     $realStock = (int)$vinoInfo['quantita_stock'];
 
-    // C. Applico il limite alla quantità desiderata
     if ($new_qty > $realStock) {
         $new_qty = $realStock;
     }
     
-    // D. Controllo specifico per l'azione "Aggiungi" (dalla pagina vini)
     if ($action === 'aggiungi') {
-        // Se provo ad aggiungere più di quanto c'è in stock, limito l'aggiunta
         if ($qty_to_add > $realStock) $qty_to_add = $realStock;
     }
 
-    // ------------------------------------------------------------
-    // FINE CONTROLLO STOCK
-    // ------------------------------------------------------------
-
-
-    // --- LOGICA DB (Salvataggio effettivo) ---
+    // --- LOGICA DB ---
     if (isset($_SESSION['utente'])) {
         $id_utente = $_SESSION['utente_id'];
 
@@ -110,7 +106,7 @@ if (isset($_REQUEST['action'])) {
         }
     } 
     else {
-        // GESTIONE GUEST (SESSIONE)
+        // GESTIONE GUEST
         if (!isset($_SESSION['guest_cart'])) {
             $_SESSION['guest_cart'] = [];
         }
@@ -121,7 +117,6 @@ if (isset($_REQUEST['action'])) {
             } else {
                 $_SESSION['guest_cart'][$id_vino] = $qty_to_add;
             }
-            // Ricontrollo che la somma totale nel carrello guest non superi lo stock
             if ($_SESSION['guest_cart'][$id_vino] > $realStock) {
                 $_SESSION['guest_cart'][$id_vino] = $realStock;
             }
@@ -139,9 +134,7 @@ if (isset($_REQUEST['action'])) {
     // --- CALCOLO TOTALI PER RISPOSTA AJAX ---
     $newTotalProd = 0;
     $newCount = 0;
-    $finalTotal = 0;
-    $shipMsg = "";
-
+    
     if (isset($_SESSION['utente'])) {
         $cartData = $db->getCarrelloUtente($_SESSION['utente_id']);
         foreach($cartData as $c) {
@@ -186,7 +179,7 @@ if (isset($_REQUEST['action'])) {
         exit();
     }
     
-    // Fallback standard
+    // Fallback standard (No JS)
     header("Location: carrello.php");
     exit();
 }
@@ -212,7 +205,7 @@ $totaleProdotti = 0;
 $numArticoli = 0;
 $isLogged = isset($_SESSION['utente']);
 $alertMsgHTML = ""; 
-$quantitaRidottaMsg = []; // Array per raccogliere i nomi dei vini ridotti
+$quantitaRidottaMsg = []; 
 
 if ($isLogged) {
     $allItems = $db->getCarrelloUtente($_SESSION['utente_id']);
@@ -225,22 +218,16 @@ if ($isLogged) {
         $statoCarrello = $item['stato']; 
         $statoVino = isset($item['stato_vino']) ? $item['stato_vino'] : 'attivo';
 
-        // Se il vino è attivo e c'è stock, MA la quantità nel carrello supera lo stock
+        // Controllo stock e aggiornamento automatico
         if (($statoCarrello === 'active' || $statoCarrello === 'attivo') && $stock > 0 && $qty > $stock) {
-            
-            // A. Aggiorno il DB con la quantità massima disponibile (stock)
             $db->aggiornaQuantitaCarrello($_SESSION['utente_id'], $idV, $stock);
-            
-            // B. Aggiorno le variabili locali per visualizzare i dati corretti SUBITO
             $item['quantita'] = $stock;
-            $qty = $stock; // Aggiorno anche la variabile d'appoggio
-            $item['totale_riga'] = $item['prezzo'] * $stock; // Ricalcolo il totale riga
-
-            // C. Segno il nome del vino per l'avviso
+            $qty = $stock; 
+            $item['totale_riga'] = $item['prezzo'] * $stock; 
             $quantitaRidottaMsg[] = htmlspecialchars($item['nome']);
         }
 
-        // LOGICA ESISTENTE: Se stock è 0 o vino non attivo -> Sposta in salvati
+        // Spostamento in salvati se esaurito
         if ($statoCarrello === 'active' || $statoCarrello === 'attivo') {
             if ($stock <= 0 || $statoVino !== 'attivo') {
                 $db->cambiaStatoElemento($idR, 'salvato');
@@ -259,7 +246,7 @@ if ($isLogged) {
     }
     unset($item); 
 } else {
-    // CARRELLO OSPITI (SESSIONE)
+    // CARRELLO OSPITI
     if (isset($_SESSION['guest_cart']) && !empty($_SESSION['guest_cart'])) {
         foreach ($_SESSION['guest_cart'] as $idVino => $qty) {
             $vino = $db->getVinoPerCarrello($idVino);
@@ -274,7 +261,6 @@ if ($isLogged) {
                     $quantitaRidottaMsg[] = htmlspecialchars($vino['nome']);
                 }
 
-                // Se stock 0 O stato diverso da attivo -> Salvato
                 if ($stock <= 0 || $statoVino !== 'attivo') {
                     $savedItems[] = array_merge($vino, [
                         'id_riga' => 0, 
@@ -303,7 +289,6 @@ if ($isLogged) {
 }
 $db->closeConnection();
 
-// Se ci sono prodotti ridotti, costruiamo il messaggio
 if (!empty($quantitaRidottaMsg)) {
     $listaVini = implode(", ", $quantitaRidottaMsg);
     $alertMsgHTML .= '
@@ -313,7 +298,6 @@ if (!empty($quantitaRidottaMsg)) {
     </div>';
 }
 
-// Calcolo Spedizione
 $sogliaGratuita = 49.00;
 $costoSpedizioneStandard = 10.00;
 
@@ -339,14 +323,13 @@ if ($totaleProdotti == 0) {
     $progressHTML = '<p class="shipping-info warning"><i class="fas fa-info-circle"></i> Aggiungi altri <strong>€ ' . $mancante . '</strong> per la spedizione GRATIS.</p>';
 }
 
-// Funzione Render Singola Riga
+// Funzione Render Singola Riga (Supporto No-JS)
 function renderCartItem($item, $isLogged, $type = 'active') {
     $idR = isset($item['id_riga']) ? $item['id_riga'] : 0;
     $idV = isset($item['id_vino']) ? $item['id_vino'] : $item['id'];
     $qty = $item['quantita'];
     $stock = (int)$item['quantita_stock']; 
     
-    // Recupero lo stato del vino (default attivo se non c'è)
     $statoVino = isset($item['stato_vino']) ? $item['stato_vino'] : (isset($item['stato']) ? $item['stato'] : 'attivo');
 
     $imgSrc = htmlspecialchars($item['img']);
@@ -357,7 +340,6 @@ function renderCartItem($item, $isLogged, $type = 'active') {
     $availText = "";
     $availClass = "availability"; 
     
-    // --- LOGICA DISPONIBILITÀ ---
     if ($statoVino === 'nascosto' || $statoVino !== 'attivo') {
         $availText = "Non disponibile";
         $availClass .= " text-red";
@@ -373,27 +355,36 @@ function renderCartItem($item, $isLogged, $type = 'active') {
     }
 
     $actionsHTML = "";
-    $btnElimina = "<button type='button' class='action-btn-text btn-delete ajax-cmd' data-action='rimuovi' data-id-riga='$idR' data-id-vino='$idV'>Elimina</button>";
+    
+    // Link Eliminazione (GET) - Funziona senza JS
+    $linkDelete = "carrello.php?action=rimuovi&id_riga=$idR&id_vino=$idV";
+    $btnElimina = "<a href='$linkDelete' class='action-btn-text btn-delete ajax-cmd' data-action='rimuovi' data-id-riga='$idR' data-id-vino='$idV'>Elimina</a>";
 
     if ($type === 'active') {
         $btnSalva = "";
         if ($isLogged) {
-            $btnSalva = "<span class='separator'>|</span> <button type='button' class='action-btn-text btn-save ajax-cmd' data-action='salva_per_dopo' data-id-riga='$idR' data-id-vino='$idV'>Salva per dopo</button>";
+            $linkSave = "carrello.php?action=salva_per_dopo&id_riga=$idR&id_vino=$idV";
+            $btnSalva = "<span class='separator'>|</span> <a href='$linkSave' class='action-btn-text btn-save ajax-cmd' data-action='salva_per_dopo' data-id-riga='$idR' data-id-vino='$idV'>Salva per dopo</a>";
         }
 
-        // Il limite massimo è esattamente lo stock disponibile
         $limitMax = $stock; 
 
+        // FORM QUANTITÀ (POST) - Funziona senza JS
         $actionsHTML = "
-            <div class='qty-selector'>
-                <button type='button' class='qty-btn ajax-cmd' data-action='meno' data-id-riga='$idR' data-id-vino='$idV'>-</button>
+            <form class='qty-selector' action='carrello.php' method='POST'>
+                <input type='hidden' name='id_riga' value='$idR'>
+                <input type='hidden' name='id_vino' value='$idV'>
+                
+                <button type='submit' name='action' value='aggiorna_quantita' style='display:none;' aria-hidden='true'></button>
+
+                <button type='submit' name='action' value='meno' class='qty-btn ajax-cmd' data-action='meno' data-id-riga='$idR' data-id-vino='$idV'>-</button>
                 
                 <label for='qty_v_$idV' class='visually-hidden'>Quantità per $nome</label>
 
-                <input type='number' id='qty_v_$idV' value='$qty' class='qty-input' min='1' max='$limitMax' data-stock='$stock' data-id-riga='$idR' data-id-vino='$idV'>
+                <input type='number' name='quantita' id='qty_v_$idV' value='$qty' class='qty-input' min='1' max='$limitMax' data-stock='$stock' data-id-riga='$idR' data-id-vino='$idV'>
                 
-                <button type='button' class='qty-btn ajax-cmd' data-action='piu' data-id-riga='$idR' data-id-vino='$idV'>+</button>
-            </div>
+                <button type='submit' name='action' value='piu' class='qty-btn ajax-cmd' data-action='piu' data-id-riga='$idR' data-id-vino='$idV'>+</button>
+            </form>
             <span class='separator'>|</span>
             $btnElimina
             $btnSalva
@@ -402,7 +393,8 @@ function renderCartItem($item, $isLogged, $type = 'active') {
         // Sezione Salvati
         $btnSposta = "";
         if ($stock > 0 && $statoVino === 'attivo') {
-            $btnSposta = "<button type='button' class='action-btn-text btn-move ajax-cmd' data-action='sposta_in_carrello' data-id-riga='$idR' data-id-vino='$idV'>Sposta nel carrello</button>";
+            $linkMove = "carrello.php?action=sposta_in_carrello&id_riga=$idR&id_vino=$idV";
+            $btnSposta = "<a href='$linkMove' class='action-btn-text btn-move ajax-cmd' data-action='sposta_in_carrello' data-id-riga='$idR' data-id-vino='$idV'>Sposta nel carrello</a>";
         } else {
             $btnSposta = "<span class='disabled-btn'>Non acquistabile</span>";
         }
