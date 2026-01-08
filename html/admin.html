@@ -195,32 +195,37 @@
                 <div class="form-grid">
                     <div class="admin-form-group">
                         <label for="utente_nome">Nome *</label>
-                        <input type="text" name="utente_nome" id="utente_nome" class="admin-input" required>
+                        <input type="text" name="utente_nome" id="utente_nome" class="admin-input" required aria-describedby="utente_nome-hint">
+                        <small id="utente_nome-hint" class="input-help">Es: Mario</small>
                     </div>
                     <div class="admin-form-group">
                         <label for="utente_cognome">Cognome *</label>
-                        <input type="text" name="utente_cognome" id="utente_cognome" class="admin-input" required>
+                        <input type="text" name="utente_cognome" id="utente_cognome" class="admin-input" required aria-describedby="utente_cognome-hint">
+                        <small id="utente_cognome-hint" class="input-help">Es: Rossi</small>
                     </div>
                 </div>
 
                 <div class="form-grid">
                     <div class="admin-form-group">
                         <label for="utente_email">Email *</label>
-                        <input type="email" name="utente_email" id="utente_email" class="admin-input" required>
+                        <input type="email" name="utente_email" id="utente_email" class="admin-input" required aria-describedby="utente_email-hint">
+                        <small id="utente_email-hint" class="input-help">Es: mario.rossi@email.com</small>
                     </div>
                     <div class="admin-form-group">
                         <label for="utente_password">Password *</label>
-                        <input type="password" name="utente_password" id="utente_password" class="admin-input" required minlength="8">
+                        <input type="password" name="utente_password" id="utente_password" class="admin-input" required minlength="8" aria-describedby="utente_password-hint">
+                        <small id="utente_password-hint" class="input-help">Minimo 8 caratteri.</small>
                     </div>
                 </div>
 
                 <div class="admin-form-group">
                     <label for="utente_ruolo">Ruolo *</label>
-                    <select name="utente_ruolo" id="utente_ruolo" class="admin-input" required>
+                    <select name="utente_ruolo" id="utente_ruolo" class="admin-input" required aria-describedby="utente_ruolo-hint">
                         <option value="user">user</option>
                         <option value="staff">staff</option>
                         <option value="admin">admin</option>
                     </select>
+                    <small id="utente_ruolo-hint" class="input-help">Seleziona il ruolo dell'utente.</small>
                 </div>
 
                 <div class="admin-form-actions">
