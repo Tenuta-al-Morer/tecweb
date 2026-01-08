@@ -88,6 +88,7 @@
             <div class="admin-section-actions">
                 [user_search_form]
                 [btn_nuovo_vino]
+                [btn_nuovo_utente]
             </div>
         </div>
 
@@ -177,6 +178,54 @@
                 <div class="admin-form-actions">
                     <button type="button" class="btn-secondary" onclick="chiudiModal()">Annulla</button>
                     <button type="submit" class="btn-primary">Salva Vino</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="modalUtente" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalUserTitle">
+        <div class="modal-box">
+            <button class="close-modal" onclick="chiudiModalUtente()" aria-label="Chiudi">&times;</button>
+            <h2 id="modalUserTitle" style="margin-bottom: 20px;">Gestione Utente</h2>
+
+            <form action="admin.php" method="POST">
+                <input type="hidden" name="azione" value="salva_utente">
+                <input type="hidden" name="view" value="utenti">
+
+                <div class="form-grid">
+                    <div class="admin-form-group">
+                        <label for="utente_nome">Nome *</label>
+                        <input type="text" name="utente_nome" id="utente_nome" class="admin-input" required>
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="utente_cognome">Cognome *</label>
+                        <input type="text" name="utente_cognome" id="utente_cognome" class="admin-input" required>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="admin-form-group">
+                        <label for="utente_email">Email *</label>
+                        <input type="email" name="utente_email" id="utente_email" class="admin-input" required>
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="utente_password">Password *</label>
+                        <input type="password" name="utente_password" id="utente_password" class="admin-input" required minlength="8">
+                    </div>
+                </div>
+
+                <div class="admin-form-group">
+                    <label for="utente_ruolo">Ruolo *</label>
+                    <select name="utente_ruolo" id="utente_ruolo" class="admin-input" required>
+                        <option value="user">user</option>
+                        <option value="staff">staff</option>
+                        <option value="admin">admin</option>
+                    </select>
+                </div>
+
+                <div class="admin-form-actions">
+                    <button type="button" class="btn-secondary" onclick="chiudiModalUtente()">Annulla</button>
+                    <button type="submit" class="btn-primary">Crea Utente</button>
                 </div>
             </form>
         </div>

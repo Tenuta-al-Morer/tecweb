@@ -1,11 +1,11 @@
 Lista todo per tecweb:
-- sistemare print css, deve operare da zero
+- sistemare print css, deve operare da zero -> contarini
 - mettere conferma operazione su admin utenti -> Luca
 - aggiungere creazione utente -> Luca
 - sistemare spedizione gratuita 
 - sistemare bottone elimina e salva per dopo carrello, inoltre ci 
-- sistemare colori carrello (arancio-verde)
-- mettere popup che indica il numero di articoli nel carrello -> Luca
+- sistemare colori carrello (arancio-verde) -> Michele
+- mettere popup che indica il numero di articoli nel carrello -> Michele
 - mettere le scritte sotto le icone di admin e gestionale -> Luca
 - correggere comportamento sito senza javascript in vini, gestione vini (modifica e aggiunta) (il resto è già stato verificato)
 - sistemare prenotazioni esperienze (quando admin/staff accetta la richiesta come fa a sapere il cliente che gli è stata approvata) -> Luca

@@ -13,7 +13,7 @@ html{
 
 /*Elementi da nascondere*/
 #help, button.menu-toggle, #main-navigation, .mobile-icons, #theme-toggle, .hero-actions, .hero-bg, span.link-arrow, section.slider-section, footer a,
-#backToTopBtn{
+#backToTopBtn, .tenuta-card-image img{
 	display:none;
 }
 
@@ -67,3 +67,7 @@ span.current-page{
 .feature-card p { font-size: 0.95rem; opacity: 0.8; margin-bottom: 1.5em; color: var(--text-color); }
 
 /*--------------------*/
+
+.breadcrumb-container a {
+    color: var(--text-color); text-decoration: none; 
+}
