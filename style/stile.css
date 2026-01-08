@@ -3340,14 +3340,14 @@ body.light-mode .admin-search-input::placeholder {
     text-transform: uppercase;
 }
 .badge-active {
-    background-color: rgba(40,167,69,0.2);
+    background-color: #000;
     color: var(--right);
     border: 1px solid var(--right);
 }
 .badge-hidden {
-    background-color: rgba(91,24,27,0.2);
-    color: var(--errors);
-    border: 1px solid var(--errors);
+    background-color: #000;
+    color: color-mix(in srgb, var(--errors), white 20%); /*srgb = standard RGB, color-mix per miscelare colori, pare buona per non creare mille variabili*/
+    border: 1px solid color-mix(in srgb, var(--errors), white 20%);
 }
 
 /* Bottoni Azioni */
