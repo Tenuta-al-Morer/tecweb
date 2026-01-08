@@ -3807,6 +3807,10 @@ body.light-mode .buy-button:disabled {
     align-items: start;
 }
 
+#pop-esaurito{
+    width: 100%;
+}
+
 #overlay-dettagli.overlay {
     display: none;
 }
@@ -3827,15 +3831,16 @@ body.light-mode .buy-button:disabled {
 .badge-esaurito.is-visible {
     display: flex;
     align-items: center;
+    align-self: center;
     gap: 0.5rem;
+    width: 75%;
 }
-
 /* Shop overlay helper */
 .shop-ov.is-hidden {
     display: none ;
 }
 
-/* Utility: apply visible/hidden states */
+/* Utility: apply visible/hidden states */ /*già create, DELETE?*/
 .is-hidden { display: none ; }
 .is-visible { display: block ; }
 

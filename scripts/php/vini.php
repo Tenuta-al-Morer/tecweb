@@ -65,7 +65,7 @@ function costruisciCardVino($vino) {
 
         $actionsHTML = '
             <div class="actions-esaurito-wrapper">
-                <span class="badge-esaurito">
+                <span class="badge-esaurito is-visible">
                     <i class="fas fa-times-circle" aria-hidden="true"></i> Esaurito
                 </span>
                 
