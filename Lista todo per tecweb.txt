@@ -2,7 +2,6 @@ Lista todo per tecweb:
 - sistemare print css, deve operare da zero
 - mettere conferma operazione su admin utenti -> Luca
 - aggiungere creazione utente -> Luca
-- cambiare percorso immagine in admin vini con "carica immagine" -> Luca
 - mettere uno fianco all'altro i bottoni di admin coi vini -> Luca
 - abbassare a 20 la quota di "ultimi rimasti" nei vini -> Luca
 - sistemare spedizione gratuita 
