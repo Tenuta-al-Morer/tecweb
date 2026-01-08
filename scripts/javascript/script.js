@@ -1291,13 +1291,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     // A. Mostra notifica
                     showToast("Prodotto aggiunto al carrello!");
                     
-                    // B. Aggiorna il contatore nel carrello (Header)
-                    // id specifico del contatore carrello
-                    const cartCounters = document.querySelectorAll('.cart-count, .badge-count, #header-cart-count'); 
-                    cartCounters.forEach(el => {
-                        el.innerText = data.cart_count;
-                        el.style.display = data.cart_count > 0 ? 'inline-block' : 'none';
-                    });
+                    // B. AGGIORNAMENTO BADGE 
+                    const badge = document.getElementById('global-cart-badge');
+                    
+                    if (badge) {
+                        // Se il badge esiste già, aggiorniamo il numero
+                        if (data.cart_count > 0) {
+                            badge.innerText = data.cart_count > 99 ? '99+' : data.cart_count;
+                            badge.style.display = 'flex'; 
+                        } else {
+                            badge.style.display = 'none';
+                        }
+                    } else if (data.cart_count > 0) {
+                        window.location.reload();
+                    }
 
                 } else {
                     alert("Errore: " + (data.error || "Impossibile aggiungere al carrello"));
@@ -1306,8 +1313,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => {
                 console.error('Errore:', error);
                 document.body.style.cursor = 'default';
-                // se fallisce AJAX, facciamo il redirect classico
-                // window.location.href = `carrello.php?action=aggiungi&id_vino=${id}&quantita=${qty}`;
                 showToast("Errore di connessione");
             });
         }
