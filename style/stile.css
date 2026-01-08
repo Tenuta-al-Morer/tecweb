@@ -3338,16 +3338,22 @@ body.light-mode .admin-search-input::placeholder {
     font-weight: bold;
     font-size: 0.8em;
     text-transform: uppercase;
+    background-color: var(--always-dark-bg);
+    color: var(--light-bg);
+    border: 1px solid var(--border-color);
 }
 .badge-active {
-    background-color: #000;
-    color: var(--right);
-    border: 1px solid var(--right);
+    border-color: var(--right);
+    box-shadow: inset 2px 0 0 var(--right);
 }
 .badge-hidden {
-    background-color: #000;
-    color: color-mix(in srgb, var(--errors), white 20%); /*srgb = standard RGB, color-mix per miscelare colori, pare buona per non creare mille variabili*/
-    border: 1px solid color-mix(in srgb, var(--errors), white 20%);
+    border-color: var(--errors);
+    box-shadow: inset 2px 0 0 var(--errors);
+}
+
+body.light-mode .badge {
+    background-color: var(--background);
+    color: var(--always-dark-bg);
 }
 
 /* Bottoni Azioni */
