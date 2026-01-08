@@ -70,7 +70,7 @@ function costruisciCardVino($vino) {
         $iconaStock = "";
         $testoStock = "";
 
-        if ($stock < 100) { 
+        if ($stock <= 20) { 
             $classeStock = "stock-warning";
             $iconaStock = "fa-exclamation-triangle";
             $testoStock = "Ultimi " . $stock . " pezzi!";
