@@ -58,14 +58,14 @@ function caricaPagina($nomeFileHTML) {
             // Icona statica se sono già in modifica
             $cartIconHTML = '
             <span class="current-page-icon" aria-current="page" title="Sei in Modifica Vini">
-                <i class="fas fa-sliders-h" aria-hidden="true"></i>
+                <i class="fas fa-edit" aria-hidden="true"></i>
                 <span class="visually-hidden">Modifica Vini (Pagina corrente)</span>
             </span>';
         } else {
             // Link a Modifica
             $cartIconHTML = '
             <a href="admin.php" title="Modifica Vini">
-                <i class="fas fa-sliders-h" aria-hidden="true"></i>
+                <i class="fas fa-edit" aria-hidden="true"></i>
                 <span class="visually-hidden">Modifica Vini</span>
             </a>';
         }
@@ -106,13 +106,13 @@ function caricaPagina($nomeFileHTML) {
             if ($paginaCorrente === 'gestionale.php' || $paginaCorrente === 'staff.php') {
                 $userIconHTML = '
                 <span class="current-page-icon" aria-current="page" title="Sei nella Dashboard">
-                    <i class="fas fa-table" aria-hidden="true"></i>
+                    <i class="fas fa-sliders-h" aria-hidden="true"></i>
                     <span class="visually-hidden">Dashboard (Pagina corrente)</span>
                 </span>';
             } else {
                 $userIconHTML = '
                 <a href="utente.php" title="Vai alla Dashboard">
-                    <i class="fas fa-table" aria-hidden="true"></i>
+                    <i class="fas fa-sliders-h" aria-hidden="true"></i>
                     <span class="visually-hidden">Dashboard</span>
                 </a>';
             }
