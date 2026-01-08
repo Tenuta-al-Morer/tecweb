@@ -51,7 +51,7 @@ function caricaPagina($nomeFileHTML) {
     // ---------------------------------------------------
     $cartIconHTML = "";
 
-    // 1. CASO ADMIN: Vede la Matita
+    // 1. CASO ADMIN: ingranaggio (Modifica Vini)
     if ($isLogged && $ruolo === 'admin') {
         
         if ($paginaCorrente === 'admin.php') {

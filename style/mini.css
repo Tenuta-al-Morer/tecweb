@@ -369,14 +369,14 @@ body.light-mode .table-data td::before {
     .row-two { flex-direction: column; gap: 0; }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
     .logo-link img {
         content: url('../images/logoCorto.webp');
         max-height: 4em;
     }
 }
 
-@media screen and (max-width: 330px) {
+@media screen and (max-width: 400px) {
     .logo-link img {
         content: url('../images/logoAlbero.webp');
         max-height: 4em;
@@ -524,8 +524,6 @@ body.light-mode .table-data td::before {
     display: block;
 }
 
-
-
 .details-content {
     flex-direction: column;
     gap: 0;
@@ -549,73 +547,6 @@ body.light-mode .table-data td::before {
     border: 1px solid var(--border-color);
     padding: 1rem;
     border-radius: 4px;
-}
-
-@media (max-width: 340px) {
-    .user-nav-list {
-        grid-template-columns: 1fr;
-    }
-
-    .user-nav-link {
-        word-break: break-word;
-        overflow-wrap: anywhere;
-        hyphens: auto;
-        font-size: 0.8rem;
-    }
-
-
-    
-.order-summary-table, 
-.order-summary-table tbody, 
-.order-summary-table tr, 
-.order-summary-table td {
-    display: block;
-    width: 100%;
-}
-
-.order-summary-table thead {
-    display: none;
-}
-
-.order-summary-table tr {
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    background-color: var(--background);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    overflow: hidden;
-}
-
-.order-summary-table td {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.8rem 1rem;
-    border-bottom: 1px solid var(--border-color);
-    text-align: right;
-    font-size: 0.95rem;
-}
-
-.order-summary-table td::before {
-    content: attr(data-title);
-    font-weight: 700;
-    color: var(--secondary-color);
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    margin-right: 1rem;
-    text-align: left;
-}
-
-.order-summary-table td:last-child {
-    border-bottom: none;
-    justify-content: center;
-    padding: 1rem;
-    background-color: var(--background);
-}
-
-.order-summary-table td:last-child::before {
-    display: none;
-}
 }
 
 .order-summary-table tr.card-is-open {
