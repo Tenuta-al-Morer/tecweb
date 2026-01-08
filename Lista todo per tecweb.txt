@@ -1,7 +1,6 @@
 Lista todo per tecweb:
 - sistemare print css, deve operare da zero -> contarini
 - mettere conferma operazione su admin utenti -> Luca
-- mettere popup che indica il numero di articoli nel carrello -> Michele
 - correggere comportamento sito senza javascript in vini, gestione vini (modifica e aggiunta) (il resto è già stato verificato)
 - sistemare prenotazioni esperienze (quando admin/staff accetta la richiesta come fa a sapere il cliente che gli è stata approvata) -> Luca
     - risposta: si scrive nella relazione che alla conferma viene inviata automaticamente una mail ma che ovviamente noi non la gestiamo come cosa

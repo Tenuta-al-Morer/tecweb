@@ -8,31 +8,52 @@ if (session_status() === PHP_SESSION_NONE) {
 require_once __DIR__ . '/DBConnection.php';
 use DB\DBConnection;
 
+// Variabile per il conteggio carrello
+$cartQty = 0;
+
+$db = new DBConnection();
 
 if (isset($_SESSION['utente_id'])) {
     
-    $db = new DBConnection();
-    
+    // Controllo stato utente
     $userFresco = $db->checkUserStatus($_SESSION['utente_id']);
-    $db->closeConnection();
 
     if ($userFresco) {
         $_SESSION['ruolo'] = $userFresco['ruolo'];
         $_SESSION['nome'] = $userFresco['nome'];
         $_SESSION['cognome'] = $userFresco['cognome'];
+
+        // --- CALCOLO QUANTITÀ CARRELLO (LOGGATO) ---
+        if ($_SESSION['ruolo'] !== 'staff') {
+            $carrelloItems = $db->getCarrelloUtente($_SESSION['utente_id']);
+            foreach ($carrelloItems as $item) {
+                if ($item['stato'] === 'attivo' || $item['stato'] === 'active') {
+                    $cartQty += (int)$item['quantita'];
+                }
+            }
+        }
         
     } else {
+        $db->closeConnection(); // Chiudo prima di redirect
         session_unset();
         session_destroy();
-        
         header("Location: login.php?error=session_expired");
         exit();
     }
+} else {
+    // --- CALCOLO QUANTITÀ CARRELLO (OSPITE) ---
+    if (isset($_SESSION['guest_cart']) && is_array($_SESSION['guest_cart'])) {
+        $cartQty = array_sum($_SESSION['guest_cart']);
+    }
 }
+
+$db->closeConnection();
 
 
 function caricaPagina($nomeFileHTML) {
-    
+    // Uso global per accedere alla variabile calcolata sopra
+    global $cartQty;
+
     // Controllo esistenza file
     if (!file_exists($nomeFileHTML)) {
         return "Errore: Il template $nomeFileHTML non esiste.";
@@ -46,23 +67,27 @@ function caricaPagina($nomeFileHTML) {
     $isLogged = isset($_SESSION['utente']);
     $ruolo = isset($_SESSION['ruolo']) ? $_SESSION['ruolo'] : null;
 
+    $badgeHTML = "";
+    if ($cartQty > 0) {
+        // Se il numero è > 99 mostra "99+" per non rompere il layout
+        $displayQty = ($cartQty > 99) ? '99+' : $cartQty;
+        $badgeHTML = '<span class="cart-badge" id="global-cart-badge">' . $displayQty . '</span>';
+    }
+
     // ---------------------------------------------------
     // A. LOGICA ICONA PRIMARIA (CARRELLO o MATITA)
     // ---------------------------------------------------
     $cartIconHTML = "";
 
-    // 1. CASO ADMIN: ingranaggio (Modifica Vini)
+    // 1. CASO ADMIN (Modifica Vini)
     if ($isLogged && $ruolo === 'admin') {
-        
         if ($paginaCorrente === 'admin.php') {
-            // Icona statica se sono già in modifica
             $cartIconHTML = '
             <span class="current-page-icon" aria-current="page" title="Sei in Modifica Vini">
                 <i class="fas fa-edit" aria-hidden="true"></i>
                 <span class="visually-hidden">Modifica Vini (Pagina corrente)</span>
             </span>';
         } else {
-            // Link a Modifica
             $cartIconHTML = '
             <a href="admin.php" title="Modifica Vini">
                 <i class="fas fa-edit" aria-hidden="true"></i>
@@ -70,28 +95,29 @@ function caricaPagina($nomeFileHTML) {
             </a>';
         }
     } 
-    // 2. CASO staff: NON vede la Matita (né il carrello)
+    // 2. CASO STAFF: Non vede niente
     elseif ($isLogged && $ruolo === 'staff') {
-        $cartIconHTML = ""; // Vuoto intenzionale
+        $cartIconHTML = ""; 
     }
-    // 3. CASO UTENTE STANDARD o OSPITE: Vede il Carrello
+    // 3. CASO UTENTE STANDARD o OSPITE: Vede il Carrello CON BADGE
     else {
-        
         if ($paginaCorrente === 'carrello.php' || $paginaCorrente === 'checkout.php' ) {
             $cartIconHTML = '
-            <span class="current-page-icon" aria-current="page" title="Sei nel Carrello">
+            <span class="current-page-icon cart-icon-container" aria-current="page" title="Sei nel Carrello">
                 <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                ' . $badgeHTML . '
                 <span class="visually-hidden" lang="en">Shop (Pagina corrente)</span>
             </span>';
         } else {
             $cartIconHTML = '
-            <a href="carrello.php" title="Vai al carrello">
+            <a href="carrello.php" title="Vai al carrello" class="cart-icon-container">
                 <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                ' . $badgeHTML . '
                 <span class="visually-hidden" lang="en">Shop</span>
             </a>';
         }
     }
-
+    
     // ---------------------------------------------------
     // B. LOGICA ICONA SECONDARIA (UTENTE o TABELLA)
     // ---------------------------------------------------
@@ -99,7 +125,7 @@ function caricaPagina($nomeFileHTML) {
 
     if ($isLogged) {
         
-        // --- ADMIN o staff (Vedono la Tabella) ---
+        // --- ADMIN o staff (Vedono gestionale) ---
         if ($ruolo === 'admin' || $ruolo === 'staff') {
             
             // Entrambi mandano a utente.php 

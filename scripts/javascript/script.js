@@ -1149,6 +1149,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         updateText('cart-list-total', data.total_products);
                         updateText('cart-count-display', data.cart_count);
                         updateText('shipping-message-container', data.shipping_progress, true);
+
+                        const badge = document.getElementById('global-cart-badge');
+                        
+                        if (badge) {
+                            if (data.cart_count > 0) {
+                                badge.innerText = data.cart_count > 99 ? '99+' : data.cart_count;
+                                badge.style.display = 'flex'; 
+                            } else {
+                                badge.style.display = 'none'; // Nascondi se 0
+                            }
+                        } else if (data.cart_count > 0) {
+                            window.location.reload();
+                        }
                     }
                 } else {
                     window.location.reload();

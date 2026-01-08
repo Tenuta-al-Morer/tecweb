@@ -874,6 +874,33 @@ span.current-page{
     gap: 5px;
 }
 
+.cart-icon-container {
+    position: relative; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-badge {
+    position: absolute;
+    top: 0px;     
+    right: 0px;    
+    background-color: var(--enhance); 
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: bold;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 50%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
+    z-index: 10;
+    pointer-events: none; 
+}
+
 .sub-header {
     width: 100%;
     border-top: 1px solid var(--border-color);
