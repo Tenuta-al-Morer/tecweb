@@ -5,18 +5,6 @@ require_once 'DBConnection.php';
 
 use DB\DBConnection;
 
-// 1. Gestione Link Utente (Header)
-// In base alla sessione, decidiamo se mostrare l'icona Login o l'icona Utente/Admin
-$userLinkHTML = '';
-if (isset($_SESSION['utente'])) {
-    // Utente loggato: Link alla dashboard corretta
-    $targetPage = ($_SESSION['ruolo'] === 'admin') ? 'gestionale.php' : 'areaPersonale.php'; // o utente.php
-    $userLinkHTML = '<a href="' . $targetPage . '" aria-label="Area Personale"><i class="fas fa-user-check"></i></a>';
-} else {
-    // Ospite: Link al login
-    $userLinkHTML = '<a href="login.php" aria-label="Accedi o Registrati"><i class="fas fa-user"></i></a>';
-}
-
 // 2. Recupero Dati dal DB
 $db = new DBConnection();
 try {
@@ -182,7 +170,6 @@ if (empty($htmlSelezione)) $htmlSelezione = $msgVuoto;
 $htmlContent = caricaPagina('../../html/vini.html');
 
 // Sostituzione Placeholders
-$htmlContent = str_replace("[user_area_link]", $userLinkHTML, $htmlContent);
 $htmlContent = str_replace("[vini_rossi]", $htmlRossi, $htmlContent);
 $htmlContent = str_replace("[vini_bianchi]", $htmlBianchi, $htmlContent);
 $htmlContent = str_replace("[vini_selezione]", $htmlSelezione, $htmlContent);
