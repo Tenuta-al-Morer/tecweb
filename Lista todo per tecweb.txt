@@ -1,4 +1,5 @@
 Lista todo per tecweb:
+- sistemare print css, deve operare da zero
 - mettere conferma operazione su admin utenti
 - aggiungere creazione utente 
 - cambiare percorso immagine in admin vini con "carica immagine"
