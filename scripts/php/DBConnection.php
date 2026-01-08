@@ -59,6 +59,35 @@ class DBConnection {
         }
     }
 
+    // CREAZIONE UTENTE (Admin)
+    public function creaUtenteAdmin($nome, $cognome, $email, $password, $ruolo) {
+        $ruoli_permessi = ['user', 'staff', 'admin'];
+        if (!in_array($ruolo, $ruoli_permessi, true)) {
+            return 0;
+        }
+
+        $queryControllo = "SELECT id FROM utente WHERE email = ?"; 
+        $stmt = $this->connection->prepare($queryControllo);
+        if (!$stmt) { return 0; }
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            $stmt->close();
+            return -1;
+        }
+        $stmt->close();
+
+        $query = "INSERT INTO utente (nome, cognome, email, password, ruolo) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $this->connection->prepare($query);
+        if (!$stmt) { return 0; }
+        $stmt->bind_param("sssss", $nome, $cognome, $email, $password, $ruolo);
+        $result = $stmt->execute();
+        $stmt->close();
+
+        return $result ? 1 : 0;
+    }
+
     // FUNZIONE DI LOGIN
     public function loginUser($email, $password) {
         $query = "SELECT * FROM utente WHERE email = ?"; 

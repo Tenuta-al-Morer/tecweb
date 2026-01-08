@@ -1493,6 +1493,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const modalTitle = document.getElementById('modalTitle');
         const firstInput = document.getElementById('nome');
+        const modalUtente = document.getElementById('modalUtente');
+        const modalUserTitle = document.getElementById('modalUserTitle');
+        const firstUserInput = document.getElementById('utente_nome');
 
         // ESPORTAZIONE GLOBALE FUNZIONI
         window.apriModalNuovo = function() {
@@ -1505,6 +1508,18 @@ document.addEventListener('DOMContentLoaded', () => {
             
             modal.style.display = "flex";
             if(firstInput) firstInput.focus();
+        };
+
+        window.apriModalNuovoUtente = function() {
+            if(modalUserTitle) modalUserTitle.innerText = "Aggiungi Nuovo Utente";
+
+            const form = document.querySelector('#modalUtente form');
+            if(form) form.reset();
+
+            if (modalUtente) {
+                modalUtente.style.display = "flex";
+                if(firstUserInput) firstUserInput.focus();
+            }
         };
 
         window.apriModalModifica = function(vino) {
@@ -1539,15 +1554,21 @@ document.addEventListener('DOMContentLoaded', () => {
         window.chiudiModal = function() {
             modal.style.display = "none";
         };
+
+        window.chiudiModalUtente = function() {
+            if (modalUtente) modalUtente.style.display = "none";
+        };
         
         // Event Listeners Admin (non servono onclick nell'HTML per questi)
         window.onclick = function(event) {
             if (event.target == modal) window.chiudiModal();
+            if (modalUtente && event.target == modalUtente) window.chiudiModalUtente();
         };
         
         document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape" && modal.style.display === "flex") {
-                window.chiudiModal();
+            if (event.key === "Escape") {
+                if (modal.style.display === "flex") window.chiudiModal();
+                if (modalUtente && modalUtente.style.display === "flex") window.chiudiModalUtente();
             }
         });
     });

@@ -52,6 +52,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
+    // Creazione utente
+    if ($azione === 'salva_utente') {
+        $nome = trim($_POST['utente_nome'] ?? '');
+        $cognome = trim($_POST['utente_cognome'] ?? '');
+        $email = trim($_POST['utente_email'] ?? '');
+        $password = $_POST['utente_password'] ?? '';
+        $ruolo = $_POST['utente_ruolo'] ?? 'user';
+
+        if ($nome !== '' && $cognome !== '' && filter_var($email, FILTER_VALIDATE_EMAIL) && strlen($password) >= 8) {
+            $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+            $db->creaUtenteAdmin($nome, $cognome, $email, $passwordHash, $ruolo);
+        }
+    }
+
     // Toggle Stato
     if ($azione === 'toggle_vino') {
         $nuovoStato = ($_POST['current_status'] == 'attivo') ? 'nascosto' : 'attivo';
@@ -304,6 +318,10 @@ $btnNuovoVino = ($view === 'vini')
     ? "<button class=\"btn-primary\" onclick=\"apriModalNuovo()\" aria-label=\"Aggiungi nuovo vino\">\n            <i class=\"fas fa-plus\" aria-hidden=\"true\"></i> Nuovo Vino\n       </button>"
     : "";
 
+$btnNuovoUtente = ($view === 'utenti')
+    ? "<button class=\"btn-primary\" onclick=\"apriModalNuovoUtente()\" aria-label=\"Aggiungi nuovo utente\">\n            <i class=\"fas fa-plus\" aria-hidden=\"true\"></i> Nuovo Utente\n       </button>"
+    : "";
+
 $userSearchForm = "";
 if ($view === 'utenti') {
     $safeQuery = htmlspecialchars($query, ENT_QUOTES);
@@ -321,6 +339,7 @@ $htmlContent = str_replace("[tab_vini_class]", $tabViniClass, $htmlContent);
 $htmlContent = str_replace("[tab_utenti_class]", $tabUtentiClass, $htmlContent);
 $htmlContent = str_replace("[user_search_form]", $userSearchForm, $htmlContent);
 $htmlContent = str_replace("[btn_nuovo_vino]", $btnNuovoVino, $htmlContent);
+$htmlContent = str_replace("[btn_nuovo_utente]", $btnNuovoUtente, $htmlContent);
 $htmlContent = str_replace("[sezione_vini]", ($view === 'vini') ? $sezioneVini : "", $htmlContent);
 $htmlContent = str_replace("[sezione_utenti]", ($view === 'utenti') ? $sezioneUtenti : "", $htmlContent);
 // Pulizia placeholder menu
