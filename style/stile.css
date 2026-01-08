@@ -1397,7 +1397,7 @@ footer a:visited {
    ========================================= */
 
 .login-header-logo {
-    background-color: var(--background);
+    background-color: var(--always-dark-bg);
     text-align: center;
     padding: 0.5em 0 0 0;
     display: block;
