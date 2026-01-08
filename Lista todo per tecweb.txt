@@ -1,4 +1,14 @@
 Lista todo per tecweb:
+- scroll orizzontale in gestione utenti mini
+- mettere conferma operazione su admin utenti
+- aggiungere creazione utente 
+- cambiare percorso immagine in admin vini con "carica immagine"
+- mettere uno fianco all'altro i bottoni di admin coi vini
+- abbassare a 20 la quota di "ultimi rimasti" nei vini
+- sistemare spedizione gratuita 
+- sistemare bottone elimina e salva per dopo carrello
+- sistemare colori carrello (arancio-verde)
+- mettere popup che indica il numero di articoli nel carrello
 - mettere le scritte sotto le icone di admin e gestionale
 - correggere comportamento sito senza javascript in vini, carrello, gestione vini (modifica e aggiunta) (il resto è già stato verificato) -> Michele
 - sistemare prenotazioni esperienze (quando admin/staff accetta la richiesta come fa a sapere il cliente che gli è stata approvata) -> Luca
