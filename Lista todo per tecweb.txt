@@ -14,7 +14,8 @@ Lista todo per tecweb:
 - sistemare prenotazioni esperienze (quando admin/staff accetta la richiesta come fa a sapere il cliente che gli è stata approvata) -> Luca
     - risposta: si scrive nella relazione che alla conferma viene inviata automaticamente una mail ma che ovviamente noi non la gestiamo come cosa
 - sistemare messaggistica (stesso cosa delle esperienze, non so come volevate gestire le messaggistiche verso il cliente) -> Luca
-- preparare il css per stampa -> contarini e ?
+- preparare il css per stampa -> contarini e Michele
+- sistemare campi db
 - fare mappa del sito
 - controlla nella lezione 20 se rispettiamo le convenzioni esterne
 - controlla l’accessibilità di tutte le pagine e verificare con nvda che tutto funzioni per i ciechi:
