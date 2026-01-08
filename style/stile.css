@@ -11,7 +11,7 @@
     /* COLORI PRINCIPALI */
     --secondary-color: #C5A551;
     --always-bright: #C5A551;
-    --errors: #c51e26;
+    --errors: #ff4800;
     --right: #28a745;
     --background: #1D1D1D;
     --always-dark-bg: #1D1D1D;
@@ -4032,7 +4032,7 @@ body.light-mode #cart-toast {
 .error-message {
     color: var(--errors);
     font-size: 0.85rem;
-    font-weight: 700;
+    font-weight: 500;
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
     display: block;
@@ -4042,7 +4042,7 @@ body.light-mode #cart-toast {
 /* Lo spacer deve essere identico all'errore ma invisibile */
 .error-spacer {
     font-size: 0.85rem;
-    font-weight: 700;
+    font-weight: 500;
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
     display: block;
