@@ -3426,6 +3426,30 @@ body.light-mode .admin-search-input::placeholder {
     border-radius: 4px;
     font-size: 1rem;
 }
+
+.admin-input[type="file"] {
+    padding: 0.6rem;
+    border-style: dashed;
+    background-color: var(--background);
+}
+
+.admin-input[type="file"]::file-selector-button {
+    margin-right: 0.75rem;
+    padding: 0.55rem 0.9rem;
+    border: 0;
+    border-radius: 6px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.admin-input[type="file"]::file-selector-button:hover,
+.admin-input[type="file"]::file-selector-button:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px var(--border-color);
+}
 .admin-input:focus {
     border-color: var(--secondary-color);
     box-shadow: 0 0 0 2px rgba(197, 165, 81, 0.2);
