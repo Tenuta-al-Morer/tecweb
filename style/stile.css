@@ -3534,6 +3534,13 @@ body.light-mode .close-modal:focus {
     padding: 2em;
 }
 
+.wine-section-title {
+    font-family: "Playfair Display", serif;
+    font-size: 2.6rem;
+    margin-bottom: 18px;
+}
+
+
 .vini-hero-inner {
     margin-top: 4rem;
 }
