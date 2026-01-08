@@ -100,7 +100,7 @@
             <button class="close-modal" onclick="chiudiModal()" aria-label="Chiudi">&times;</button>
             <h2 id="modalTitle" style="margin-bottom: 20px;">Gestione Vino</h2>
             
-            <form action="admin.php" method="POST">
+            <form action="admin.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="azione" value="salva_vino">
                 <input type="hidden" name="id_vino" id="id_vino" value="">
                 <input type="hidden" name="view" value="vini">
@@ -140,8 +140,8 @@
                         </select>
                     </div>
                     <div class="admin-form-group">
-                        <label for="img">Percorso Immagine</label>
-                        <input type="text" name="img" id="img" value="../../images/tr/" class="admin-input">
+                        <label for="img">Carica Immagine</label>
+                        <input type="file" name="img" id="img" class="admin-input" accept="image/*">
                     </div>
                 </div>
 
