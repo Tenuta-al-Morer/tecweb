@@ -9,7 +9,6 @@
 
 :root {
     /* COLORI PRINCIPALI */
-    --gray: #666666;  /*da rinominare!*/
     --secondary-color: #C5A551;
     --always-bright: #C5A551;
     --errors: #c51e26;
@@ -456,7 +455,7 @@ body.light-mode .navigationHelp:focus {
   width: 56px;
   height: 30px;
   cursor: pointer;
-  background-color: var(--gray);
+  background-color: var(#666);
   transition: background-color .25s ease, box-shadow .25s ease;
   border-radius: 999px;
   display: block;
@@ -486,10 +485,6 @@ body.light-mode .navigationHelp:focus {
   outline: 2px solid var(--secondary-color);
   outline-offset: 3px;
 }
-
-
-
-
 
 /* =========================================
    TITOLI E COMPONENTI 
@@ -716,7 +711,6 @@ a.navigationHelp:visited {
     color: #fff;
     padding: 0 2.5em;
     display: flex;
-    gap: 1.5rem;
     flex-wrap: nowrap;
     transition: background-color 0.3s ease, color 0.3s ease;
     min-height: 72px; 
@@ -726,7 +720,7 @@ a.navigationHelp:visited {
     display: flex;
     align-items: center;
     flex: 0 1 auto; flex-shrink: 100; min-width: 0; order: 1; 
-    margin-right: auto; padding-right: 0.5em; 
+    margin-right: auto;
 }
 
 .logo-link img {
@@ -821,9 +815,10 @@ a.logo-link:hover img, a.logo-link:focus img { transform: scale(1.05); }
     content: "";
     width: 1px;
     height: 26px; 
-    background-color: var(--border-color);
+    background-color: #fff;
     display: block;
     margin-right: 0.4em;
+    margin-left: 1em;
 }
 
 .mobile-icons a {
@@ -968,6 +963,7 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
 .sidebar-info h2, .form-container h2 {
     color: var(--secondary-color); font-size: 1.5rem;
     border-top: 1px solid var(--border-color); padding-top: 1rem;
+    line-height: 1.5em;
 }
 
 #content.container-policy {
@@ -1796,6 +1792,7 @@ footer a:visited {
 .tenuta-main h2 {
     border-top: none;
     padding-top: 0;
+    line-height: 1.2;
 }
 
 .tenuta-section-title {
@@ -2026,7 +2023,7 @@ TABELLE ORDINI E DETTAGLI
     text-align: center;
 }
 
-.status-in_attesa { background-color: var(--gray); color: #fff; }
+.status-in_attesa { background-color: var(#666); color: #fff; }
 .status-approvato { background-color: var(--right); color: #fff; } 
 .status-annullato { background-color: var(--errors); color: #fff; } 
 
@@ -2284,12 +2281,14 @@ a.feature-card.card-link {
     margin-top: 2rem;
 }
 
+
 .danger-zone h3 {
     color: var(--text-color);
     margin-top: 0;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    margin-bottom: 0.5em;
 }
 
 .danger-zone p {
@@ -2797,7 +2796,7 @@ a.feature-card.card-link {
 .checkout-steps li {
     display: flex;
     align-items: center;
-    color: var(--gray);
+    color: var(#666);
 }
 
 .checkout-steps a {
