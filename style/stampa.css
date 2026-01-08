@@ -37,11 +37,13 @@ html{
     border-top: 1px solid var(--border-color);
     padding: 0.4em 1.5em; display: flex; justify-content: space-between; 
     align-items: center; transition: background-color 0.3s ease, border-color 0.3s ease;
-    min-height: 54px; 
+    min-height: 44px; 
     border-bottom: 1px solid rgba(197, 165, 81, 0.33);
     border-top: 1px solid rgba(197, 165, 81, 0.33);
 }
-
+span.current-page{
+    font-weight: 650;
+}
 
 /*Gestione card (sezione Home)*/
 .grid-features {

@@ -854,6 +854,10 @@ a.logo-link:hover img, a.logo-link:focus img { transform: scale(1.05); }
     width: 44px;            
 }
 
+span.current-page{
+    font-weight: 650;
+}
+
 .mobile-icons span[aria-current="page"] {
     padding: 0; 
     display: inline-flex;
