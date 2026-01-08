@@ -1040,7 +1040,6 @@ document.addEventListener('DOMContentLoaded', () => {
     * 9. GESTIONE CARRELLO (AJAX + LIMITI)
     * ========================================== */
     safeExecute('Cart Logic', () => {    
-        // A. GESTIONE DEI PULSANTI (+, -, ELIMINA, ETC.)
         document.body.addEventListener('click', function(e) {
             
             const btn = e.target.closest('.ajax-cmd');
@@ -1056,24 +1055,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!inputQty) inputQty = document.getElementById('qty_' + idRiga);
 
                 let currentQty = 1;
-                let maxStock = 9999; // Valore di default alto se non trova lo stock
+                let maxStock = 9999; 
 
                 if (inputQty) {
                     currentQty = parseInt(inputQty.value);
-                    // Recuperiamo lo stock reale dall'attributo HTML
                     let stockAttr = inputQty.getAttribute('data-stock');
                     if (stockAttr) {
                         maxStock = parseInt(stockAttr);
                     }
                 }
 
-                // --- CONTROLLO LIMITE MASSIMO (Button +) ---
                 if (action === 'piu' && currentQty >= maxStock) {
                     alert("Quantità massima disponibile raggiunta.");
-                    return; // Non fa nulla
+                    return;
                 }
 
-                // --- CONTROLLO LIMITE MINIMO (Button -) ---
                 if (action === 'meno' && currentQty === 1) {
                     action = 'rimuovi'; 
                 }
@@ -1091,7 +1087,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // B. GESTIONE INPUT MANUALE
         document.body.addEventListener('change', function(e) {
             if (e.target.classList.contains('qty-input')) {
                 const input = e.target;
@@ -1099,7 +1094,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const idRiga = input.getAttribute('data-id-riga');
                 const idVino = input.getAttribute('data-id-vino');
                 
-                // Recuperiamo lo stock dall'attributo
                 let maxStock = 9999;
                 let stockAttr = input.getAttribute('data-stock');
                 if (stockAttr) {
@@ -1108,13 +1102,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 let action = 'aggiorna_quantita';
                 
-                // --- CONTROLLO LIMITE MASSIMO (Input manuale) ---
                 if (newVal > maxStock) {
                     input.value = maxStock;
                     newVal = maxStock;
                 }
 
-                // --- CONTROLLO LIMITE MINIMO (Input manuale) ---
                 if (newVal <= 0) {
                     if(confirm("Vuoi rimuovere questo vino dal carrello?")) {
                         action = 'rimuovi';
@@ -1137,7 +1129,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // C. FUNZIONE UNICA 
         function inviaRichiestaCarrello(formData, triggerElement, inputQty, actionUsed) {
             fetch('carrello.php', {
                 method: 'POST',
@@ -1157,6 +1148,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         updateText('summary-total', data.total_final);
                         updateText('cart-list-total', data.total_products);
                         updateText('cart-count-display', data.cart_count);
+                        updateText('shipping-message-container', data.shipping_progress, true);
                     }
                 } else {
                     window.location.reload();
