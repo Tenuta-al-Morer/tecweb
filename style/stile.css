@@ -3458,6 +3458,35 @@ body.light-mode .admin-search-input::placeholder {
 .admin-form-group label {
     display: block; margin-bottom: 0.5rem; font-weight: 700; color: var(--secondary-color);
 }
+
+.admin-form-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 1rem;
+}
+
+.admin-form-actions .btn-primary,
+.admin-form-actions .btn-secondary {
+    margin-top: 0;
+    width: 100%;
+}
+
+.admin-form-actions .btn-secondary {
+    background-color: var(--always-dark-bg);
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+}
+
+.admin-form-actions .btn-secondary:hover,
+.admin-form-actions .btn-secondary:focus {
+    filter: brightness(1.1);
+}
+
+body.light-mode .admin-form-actions .btn-secondary {
+    background-color: var(--background);
+    color: var(--always-dark-bg);
+    border-color: var(--always-dark-bg);
+}
 body.light-mode .admin-wrapper {
     background-color: #fff; /* Bianco puro */
     border-color: #e0e0e0;
