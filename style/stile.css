@@ -3530,12 +3530,14 @@ body.light-mode .close-modal:focus {
     max-width: 1600px;
     margin: 0 auto;
     padding: 2em;
+    padding-bottom: 0;
 }
 
 .wine-section-title {
-    font-family: "Playfair Display", serif;
     font-size: 2.6rem;
     margin-bottom: 18px;
+    margin-top: 0;
+    padding-top: 0;
 }
 
 
