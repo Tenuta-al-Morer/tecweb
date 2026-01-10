@@ -1,7 +1,7 @@
 Lista todo per tecweb:
 - sistemare print css, deve operare da zero -> contarini
 - mettere conferma operazione su admin utenti -> Luca
-- correggere comportamento sito senza javascript in vini, gestione vini (modifica e aggiunta) (il resto è già stato verificato)
+- correggere comportamento sito senza javascript in vini, gestione vini, gestione utenti (pagina vini e admin in generale) (il resto è già stato verificato)
 - sistemare prenotazioni esperienze (quando admin/staff accetta la richiesta come fa a sapere il cliente che gli è stata approvata) -> Luca
     - risposta: si scrive nella relazione che alla conferma viene inviata automaticamente una mail ma che ovviamente noi non la gestiamo come cosa
 - sistemare messaggistica (stesso cosa delle esperienze, non so come volevate gestire le messaggistiche verso il cliente) -> Luca
@@ -24,6 +24,7 @@ Lista todo per tecweb:
     - mini.css
 - verificare velocemente tutto il codice accertandosi di seguire tutti i requisiti obbligatori della prof
 - preparare la relazione
+- stile css con l'autocompilazione
 
 DOMANDE
 - colore header e footer tra modalità light e night
