@@ -1,7 +1,7 @@
 Lista todo per tecweb:
 - sistemare hover bottoni in gestionale, controllare anche il resto -> Michele         
 - sistemare print css, deve operare da zero -> contarini
-- mettere conferma operazione su admin utenti -> Luca
+- mettere conferma operazione su admin utenti
 - correggere comportamento sito senza javascript in vini, gestione vini, gestione utenti (pagina vini e admin in generale) (il resto è già stato verificato)
 - fare mappa del sito
 - controlla nella lezione 20 se rispettiamo le convenzioni esterne

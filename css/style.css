@@ -1251,6 +1251,15 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--text-co
     padding: 4em 2em; max-width: 800px; margin: 0 auto; text-align: center;
 }
 
+.wine-section .section-intro {
+    padding-top: 2.5em;
+    padding-bottom: 2.5em;
+}
+
+#red-wines .section-intro {
+    padding-top: 1.25em;
+}
+
 .section-intro .lead { font-size: 1.25rem; font-weight: 300; }
 
 .grid-features {
@@ -3669,6 +3678,37 @@ body.light-mode .close-modal:focus {
     padding-top: 0;
 }
 
+.wine-search-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.8rem;
+}
+
+.wine-search-form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.wine-search-form input[type="search"] {
+    min-width: 220px;
+    max-width: 320px;
+    padding: 0.55rem 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+}
+
+.wine-search-form input[type="search"]::placeholder {
+    color: #555;
+}
+
+.wine-search-form .btn-secondary {
+    width: auto;
+    margin-top: 0;
+}
+
 
 .vini-hero-inner {
     margin-top: 4rem;
@@ -4236,3 +4276,4 @@ body .auth-container .auth-form .form-group input:-webkit-autofill:active {
     font-family: inherit;
     font-size: inherit;
 }
+

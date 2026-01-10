@@ -1238,6 +1238,30 @@ document.addEventListener('DOMContentLoaded', () => {
         // Se non c'è la griglia vini, non caricare nulla
         if (!document.querySelector('.vini-main')) return;
 
+        // Ricerca vini per nome (scroll alla card)
+        const searchForm = document.getElementById('wine-search-form');
+        const searchInput = document.getElementById('wine-search-input');
+
+        if (searchForm && searchInput) {
+            searchForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const query = searchInput.value.trim().toLowerCase();
+                if (!query) return;
+
+                const items = Array.from(document.querySelectorAll('.wine-article[data-nome]'));
+                const match = items.find((item) => {
+                    const name = (item.dataset.nome || '').toLowerCase();
+                    return name.includes(query);
+                });
+
+                if (match) {
+                    match.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    alert('Nessun vino trovato con quel nome.');
+                }
+            });
+        }
+
         // VARIABILI DI STATO
         let currentSlideIndex = 0;
         let slideImages = [];
