@@ -1,5 +1,4 @@
-Lista todo per tecweb: 
-- modificare nomi icone
+Lista todo per tecweb:
 - sistemare hover bottoni in gestionale, controllare anche il resto -> Michele         
 - sistemare print css, deve operare da zero -> contarini
 - mettere conferma operazione su admin utenti -> Luca

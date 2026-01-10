@@ -79,19 +79,19 @@ function caricaPagina($nomeFileHTML) {
     // ---------------------------------------------------
     $cartIconHTML = "";
 
-    // 1. CASO ADMIN (Modifica Vini)
+    // 1. CASO ADMIN (Amministrazione)
     if ($isLogged && $ruolo === 'admin') {
         if ($paginaCorrente === 'admin.php') {
             $cartIconHTML = '
-            <span class="current-page-icon" aria-current="page" title="Sei in Modifica Vini">
+            <span class="current-page-icon" aria-current="page" title="Sei in Amministrazione">
                 <i class="fas fa-edit" aria-hidden="true"></i>
-                <span class="visually-hidden">Modifica Vini (Pagina corrente)</span>
+                <span class="visually-hidden">Amministrazione (Pagina corrente)</span>
             </span>';
         } else {
             $cartIconHTML = '
-            <a href="admin.php" title="Modifica Vini">
+            <a href="admin.php" title="Vai a Amministrazione">
                 <i class="fas fa-edit" aria-hidden="true"></i>
-                <span class="visually-hidden">Modifica Vini</span>
+                <span class="visually-hidden">Amministrazione</span>
             </a>';
         }
     } 
