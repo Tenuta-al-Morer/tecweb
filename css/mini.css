@@ -549,6 +549,10 @@ body.light-mode .table-data td::before {
     border-radius: 4px;
 }
 
+.details-summary-left {
+    text-align: left;
+}
+
 .order-summary-table tr.card-is-open {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;

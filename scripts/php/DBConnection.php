@@ -607,7 +607,11 @@ class DBConnection {
     public function getOrdini() {
         $ordini = [];
         
-        $queryOrdini = "SELECT * FROM ordine WHERE stato_ordine='in_attesa' ORDER BY data_creazione DESC";
+        $queryOrdini = "SELECT ordine.*, utente.nome, utente.cognome
+                        FROM ordine
+                        LEFT JOIN utente ON ordine.id_utente = utente.id
+                        WHERE ordine.stato_ordine='in_attesa'
+                        ORDER BY ordine.data_creazione DESC";
         $stmtOrd = $this->connection->prepare($queryOrdini);
         if (!$stmtOrd) { return []; }
 
@@ -626,7 +630,11 @@ class DBConnection {
     public function getOrdiniArchivio() {
         $ordini = [];
         
-        $queryOrdini = "SELECT * FROM ordine WHERE stato_ordine!='in_attesa' ORDER BY data_creazione DESC";
+        $queryOrdini = "SELECT ordine.*, utente.nome, utente.cognome
+                        FROM ordine
+                        LEFT JOIN utente ON ordine.id_utente = utente.id
+                        WHERE ordine.stato_ordine!='in_attesa'
+                        ORDER BY ordine.data_creazione DESC";
         $stmtOrd = $this->connection->prepare($queryOrdini);
         if (!$stmtOrd) { return []; }
 

@@ -2117,13 +2117,15 @@ TABELLE ORDINI E DETTAGLI
     color: var(--text-color);
 }
 
+.details-summary-left {
+    text-align: left;
+}
+
 .details-summary p {
     margin: 0.3rem 0;
 }
 
-.details-summary strong {
-    color: var(--secondary-color);
-}
+
 
 /* DASHBOARD GRID */
 .dashboard-grid {

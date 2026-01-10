@@ -104,10 +104,14 @@ $ordini = "";
 
 foreach ($ordiniArray as $ordine) {
     $ordineId = (int)$ordine['id'];
+    $nomeCliente = trim(($ordine['cognome'] ?? '') . ' ' . ($ordine['nome'] ?? ''));
+    if ($nomeCliente === '') {
+        $nomeCliente = 'Utente #' . (int)$ordine['id_utente'];
+    }
 
     $ordini .= '<tr data-order-id="' . $ordineId . '">';
     $ordini .= '<th scope="row">' . $ordineId . '</th>';
-    $ordini .= '<td data-title="ID Utente">' . (int)$ordine['id_utente'] . '</td>';
+    $ordini .= '<td data-title="Cliente">' . htmlspecialchars($nomeCliente) . '</td>';
     $ordini .= '<td data-title="Totale Finale">' . number_format($ordine['totale_finale'], 2) . ' EUR</td>';
     $ordini .= '<td data-title="Data Creazione">' . htmlspecialchars($ordine['data_creazione']) . '</td>';
     
@@ -138,17 +142,21 @@ foreach ($ordiniArray as $ordine) {
         $ordini .= '<li><span>Nessun prodotto associato.</span><span>0.00 EUR</span></li>';
     }
     $ordini .= '</ul></div>';
-    $ordini .= '<div class="details-section"><h4>Riepilogo e Spedizione:</h4><p><strong>Indirizzo Spedizione:</strong> ' . nl2br(htmlspecialchars($ordine['indirizzo_spedizione'])) . '</p><div class="details-summary"><p>Totale Prodotti: ' . number_format($ordine['totale_prodotti'], 2) . ' EUR</p><p>Costo Spedizione: ' . number_format($ordine['costo_spedizione'], 2) . ' EUR</p><p><strong>Totale Finale: <span>' . number_format($ordine['totale_finale'], 2) . ' EUR</span></strong></p></div></div></div></td></tr>';
+    $ordini .= '<div class="details-section"><h4>Riepilogo e Spedizione:</h4><p><strong>ID Utente:</strong> #' . (int)$ordine['id_utente'] . '</p><p><strong>Indirizzo Spedizione:</strong> ' . nl2br(htmlspecialchars($ordine['indirizzo_spedizione'])) . '</p><div class="details-summary details-summary-left"><h4>Prezzi:</h4><p>Prezzo Prodotti: ' . number_format($ordine['totale_prodotti'], 2) . ' EUR</p><p>Costo Spedizione: ' . number_format($ordine['costo_spedizione'], 2) . ' EUR</p><p><strong>Totale Finale:</strong> <span>' . number_format($ordine['totale_finale'], 2) . ' EUR</span></p></div></div></div></td></tr>';
 }
 
 $ordiniArchivio = "";
 
 foreach ($ordiniArchivioArray as $ordine) {
     $ordineId = (int)$ordine['id'];
+    $nomeCliente = trim(($ordine['cognome'] ?? '') . ' ' . ($ordine['nome'] ?? ''));
+    if ($nomeCliente === '') {
+        $nomeCliente = 'Utente #' . (int)$ordine['id_utente'];
+    }
 
     $ordiniArchivio .= '<tr data-order-id="' . $ordineId . '">';
     $ordiniArchivio .= '<th scope="row">' . $ordineId . '</th>';
-    $ordiniArchivio .= '<td data-title="ID Utente">' . (int)$ordine['id_utente'] . '</td>';
+    $ordiniArchivio .= '<td data-title="Cliente">' . htmlspecialchars($nomeCliente) . '</td>';
     $ordiniArchivio .= '<td data-title="Totale Finale">' . number_format($ordine['totale_finale'], 2) . ' EUR</td>';
     $ordiniArchivio .= '<td data-title="Data Creazione">' . htmlspecialchars($ordine['data_creazione']) . '</td>';
     $ordiniArchivio .= '<td data-title="Stato">' . htmlspecialchars($ordine['stato_ordine']) . '</td>';
@@ -172,7 +180,7 @@ foreach ($ordiniArchivioArray as $ordine) {
         $ordiniArchivio .= '<li><span>Nessun prodotto associato.</span><span>0.00 EUR</span></li>';
     }
     $ordiniArchivio .= '</ul></div>';
-    $ordiniArchivio .= '<div class="details-section"><h4>Riepilogo e Spedizione:</h4><p><strong>Indirizzo Spedizione:</strong> ' . nl2br(htmlspecialchars($ordine['indirizzo_spedizione'])) . '</p><div class="details-summary"><p>Totale Prodotti: ' . number_format($ordine['totale_prodotti'], 2) . ' EUR</p><p>Costo Spedizione: ' . number_format($ordine['costo_spedizione'], 2) . ' EUR</p><p><strong>Totale Finale: <span>' . number_format($ordine['totale_finale'], 2) . ' EUR</span></strong></p></div></div></div></td></tr>';
+    $ordiniArchivio .= '<div class="details-section"><h4>Riepilogo e Spedizione:</h4><p><strong>ID Utente:</strong> #' . (int)$ordine['id_utente'] . '</p><p><strong>Indirizzo Spedizione:</strong> ' . nl2br(htmlspecialchars($ordine['indirizzo_spedizione'])) . '</p><div class="details-summary details-summary-left"><h4>Prezzi:</h4><p>Prezzo Prodotti: ' . number_format($ordine['totale_prodotti'], 2) . ' EUR</p><p>Costo Spedizione: ' . number_format($ordine['costo_spedizione'], 2) . ' EUR</p><p><strong>Totale Finale:</strong> <span>' . number_format($ordine['totale_finale'], 2) . ' EUR</span></p></div></div></div></td></tr>';
 }
 
 
