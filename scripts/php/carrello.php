@@ -5,6 +5,7 @@ require_once 'DBConnection.php';
 
 use DB\DBConnection;
 
+// 1. GESTIONE ACCESSO ADMIN/STAFF
 if (isset($_SESSION['utente']) && isset($_SESSION['ruolo'])) {
     $ruolo = $_SESSION['ruolo']; 
     
@@ -17,6 +18,7 @@ if (isset($_SESSION['utente']) && isset($_SESSION['ruolo'])) {
     }
 }
 
+// 2. GESTIONE RICHIESTE (POST/GET)
 if (isset($_REQUEST['action'])) {
     
     $action = $_REQUEST['action'];
@@ -29,6 +31,7 @@ if (isset($_REQUEST['action'])) {
     $new_qty = $current_qty;
     $qty_to_add = 1; 
 
+    // Calcolo nuove quantità in base all'azione
     if ($action === 'piu') {
         if (isset($_REQUEST['quantita'])) {
             $current_qty = (int)$_REQUEST['quantita'];
@@ -47,8 +50,9 @@ if (isset($_REQUEST['action'])) {
 
     $vinoInfo = $db->getVinoPerCarrello($id_vino); 
     
+    // Controllo esistenza vino
     if (!$vinoInfo) {
-         if (isset($_REQUEST['ajax_mode'])) {
+         if (isset($_REQUEST['req_source'])) {
              echo json_encode(['success' => false, 'error' => 'Vino non trovato']);
              exit();
          }
@@ -57,6 +61,7 @@ if (isset($_REQUEST['action'])) {
 
     $realStock = (int)$vinoInfo['quantita_stock'];
 
+    // Validazione Stock
     if ($new_qty > $realStock) {
         $new_qty = $realStock;
     }
@@ -65,6 +70,7 @@ if (isset($_REQUEST['action'])) {
         if ($qty_to_add > $realStock) $qty_to_add = $realStock;
     }
 
+    // Esecuzione modifiche DB o Sessione
     if (isset($_SESSION['utente'])) {
         $id_utente = $_SESSION['utente_id'];
 
@@ -86,6 +92,7 @@ if (isset($_REQUEST['action'])) {
         }
     } 
     else {
+        // Logica Guest (Sessione)
         if (!isset($_SESSION['guest_cart'])) {
             $_SESSION['guest_cart'] = [];
         }
@@ -110,6 +117,7 @@ if (isset($_REQUEST['action'])) {
         }
     }
 
+    // Ricalcolo Totali per risposta JSON
     $newTotalProd = 0;
     $newCount = 0;
     
@@ -135,6 +143,7 @@ if (isset($_REQUEST['action'])) {
     
     $db->closeConnection();
 
+    // Logica Spedizione
     $soglia = 49.00;
     $costoStd = 10.00;
     $shipCost = ($newTotalProd == 0) ? 0 : (($newTotalProd >= $soglia) ? 0 : $costoStd);
@@ -152,7 +161,7 @@ if (isset($_REQUEST['action'])) {
         $progressHTML = '<p class="shipping-info warning"><i class="fas fa-info-circle"></i> Aggiungi altri <strong>€ ' . $mancante . '</strong> per la spedizione GRATIS.</p>';
     }
 
-    if (isset($_REQUEST['ajax_mode']) && $_REQUEST['ajax_mode'] == '1') {
+    if (isset($_REQUEST['req_source'])) {
         header('Content-Type: application/json');
         echo json_encode([
             'success' => true,
@@ -167,10 +176,12 @@ if (isset($_REQUEST['action'])) {
         exit();
     }
     
+    // Fallback standard (ricarica pagina)
     header("Location: carrello.php");
     exit();
 }
 
+// 3. GENERAZIONE PAGINA HTML
 $userLinkHTML = '';
 if (isset($_SESSION['utente'])) {
     $targetPage = ($_SESSION['ruolo'] === 'admin') ? 'gestionale.php' : 'areaPersonale.php';
@@ -190,6 +201,7 @@ $isLogged = isset($_SESSION['utente']);
 $alertMsgHTML = ""; 
 $quantitaRidottaMsg = []; 
 
+// Recupero e pulizia carrello
 if ($isLogged) {
     $allItems = $db->getCarrelloUtente($_SESSION['utente_id']);
     
@@ -201,6 +213,7 @@ if ($isLogged) {
         $statoCarrello = $item['stato']; 
         $statoVino = isset($item['stato_vino']) ? $item['stato_vino'] : 'attivo';
 
+        // Check Stock vs Quantità
         if (($statoCarrello === 'active' || $statoCarrello === 'attivo') && $stock > 0 && $qty > $stock) {
             $db->aggiornaQuantitaCarrello($_SESSION['utente_id'], $idV, $stock);
             $item['quantita'] = $stock;
@@ -209,6 +222,7 @@ if ($isLogged) {
             $quantitaRidottaMsg[] = htmlspecialchars($item['nome']);
         }
 
+        // Check Disponibilità
         if (($statoCarrello === 'active' || $statoCarrello === 'attivo')) {
             if ($stock <= 0 || $statoVino !== 'attivo') {
                 $db->cambiaStatoElemento($idR, 'salvato');
@@ -227,6 +241,7 @@ if ($isLogged) {
     }
     unset($item); 
 } else {
+    // Gestione Guest
     if (isset($_SESSION['guest_cart']) && !empty($_SESSION['guest_cart'])) {
         foreach ($_SESSION['guest_cart'] as $idVino => $qty) {
             $vino = $db->getVinoPerCarrello($idVino);
@@ -269,6 +284,7 @@ if ($isLogged) {
 }
 $db->closeConnection();
 
+// Alert quantità ridotte
 if (!empty($quantitaRidottaMsg)) {
     $listaVini = implode(", ", $quantitaRidottaMsg);
     $alertMsgHTML .= '
@@ -278,6 +294,7 @@ if (!empty($quantitaRidottaMsg)) {
     </div>';
 }
 
+// Calcolo Spedizione UI
 $sogliaGratuita = 49.00;
 $costoSpedizioneStandard = 10.00;
 
@@ -303,6 +320,7 @@ if ($totaleProdotti == 0) {
     $progressHTML = '<p class="shipping-info warning"><i class="fas fa-info-circle"></i> Aggiungi altri <strong>€ ' . $mancante . '</strong> per la spedizione GRATIS.</p>';
 }
 
+// 4. FUNZIONE RENDER ITEM 
 function renderCartItem($item, $isLogged, $type = 'active') {
     $idR = isset($item['id_riga']) ? $item['id_riga'] : 0;
     $idV = isset($item['id_vino']) ? $item['id_vino'] : $item['id'];
@@ -336,13 +354,13 @@ function renderCartItem($item, $isLogged, $type = 'active') {
     $actionsHTML = "";
     
     $linkDelete = "carrello.php?action=rimuovi&id_riga=$idR&id_vino=$idV";
-    $btnElimina = "<a href='$linkDelete' class='action-btn-text btn-delete ajax-cmd' data-action='rimuovi' data-id-riga='$idR' data-id-vino='$idV'>Elimina</a>";
+    $btnElimina = "<a href='$linkDelete' class='action-btn-text btn-delete cart-action-btn' data-action='rimuovi' data-id-riga='$idR' data-id-vino='$idV'>Elimina</a>";
 
     if ($type === 'active') {
         $btnSalva = "";
         if ($isLogged) {
             $linkSave = "carrello.php?action=salva_per_dopo&id_riga=$idR&id_vino=$idV";
-            $btnSalva = "<span class='separator'>|</span> <a href='$linkSave' class='action-btn-text btn-save ajax-cmd' data-action='salva_per_dopo' data-id-riga='$idR' data-id-vino='$idV'>Salva per dopo</a>";
+            $btnSalva = "<span class='separator'>|</span> <a href='$linkSave' class='action-btn-text btn-save cart-action-btn' data-action='salva_per_dopo' data-id-riga='$idR' data-id-vino='$idV'>Salva per dopo</a>";
         }
 
         $limitMax = $stock; 
@@ -354,13 +372,13 @@ function renderCartItem($item, $isLogged, $type = 'active') {
                 
                 <button type='submit' name='action' value='aggiorna_quantita' class='hidden-submit' tabindex='-1' aria-hidden='true'>Aggiorna quantità</button>
 
-                <button type='submit' name='action' value='meno' class='qty-btn ajax-cmd' data-action='meno' data-id-riga='$idR' data-id-vino='$idV'>-</button>
+                <button type='submit' name='action' value='meno' class='qty-btn cart-action-btn' data-action='meno' data-id-riga='$idR' data-id-vino='$idV'>-</button>
                 
                 <label for='qty_v_$idV' class='visually-hidden'>Quantità per $nome</label>
 
                 <input type='number' name='quantita' id='qty_v_$idV' value='$qty' class='qty-input' min='1' max='$limitMax' data-stock='$stock' data-id-riga='$idR' data-id-vino='$idV'>
                 
-                <button type='submit' name='action' value='piu' class='qty-btn ajax-cmd' data-action='piu' data-id-riga='$idR' data-id-vino='$idV'>+</button>
+                <button type='submit' name='action' value='piu' class='qty-btn cart-action-btn' data-action='piu' data-id-riga='$idR' data-id-vino='$idV'>+</button>
             </form>
             <span class='separator'>|</span>
             $btnElimina
@@ -370,7 +388,7 @@ function renderCartItem($item, $isLogged, $type = 'active') {
         $btnSposta = "";
         if ($stock > 0 && $statoVino === 'attivo') {
             $linkMove = "carrello.php?action=sposta_in_carrello&id_riga=$idR&id_vino=$idV";
-            $btnSposta = "<a href='$linkMove' class='action-btn-text btn-move ajax-cmd' data-action='sposta_in_carrello' data-id-riga='$idR' data-id-vino='$idV'>Sposta nel carrello</a>";
+            $btnSposta = "<a href='$linkMove' class='action-btn-text btn-move cart-action-btn' data-action='sposta_in_carrello' data-id-riga='$idR' data-id-vino='$idV'>Sposta nel carrello</a>";
         } else {
             $btnSposta = "<span class='disabled-btn'>Non acquistabile</span>";
         }
