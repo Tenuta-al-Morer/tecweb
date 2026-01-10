@@ -14,7 +14,7 @@ html{
 /*Elementi da nascondere*/
 #help, button.menu-toggle, #main-navigation, .mobile-icons, #theme-toggle, .hero-actions, .hero-bg, span.link-arrow, section.slider-section, footer a,
 #backToTopBtn, .tenuta-card-image img, section.form-container, section.map-section, aside.alert-box, .empty-cart-message i, .btn-shop-empty,
-div#shipping-message-container, .btn-full, .item-actions-row{
+div#shipping-message-container, .btn-full, .item-actions-row, .cart-item-price-col, .dashboard-sidebar{
 	display:none;
 }
 
@@ -100,6 +100,7 @@ span.current-page{
     gap: 2rem; 
     align-items: start;
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .cart-list-container {
@@ -114,4 +115,17 @@ span.current-page{
     margin-top: 1.5rem;
     font-size: 1.2rem;
     color: var(--text-color);
+}
+
+/*Area user*/
+.dashboard-grid {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 2rem;
+    list-style: none;
+    padding: 0;
+}
+
+.is-hidden {
+    display: none;
 }
