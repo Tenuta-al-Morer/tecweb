@@ -72,18 +72,21 @@ $sezioneAttiva = $_GET['sezione'] ?? 'dashboard';
 // Classi CSS per le sezioni
 $dashboardClass = ($sezioneAttiva === 'dashboard') ? 'content-section is-visible' : 'content-section is-hidden';
 $ordiniClass = ($sezioneAttiva === 'ordini') ? 'content-section is-visible' : 'content-section is-hidden';
+$esperienzeClass = ($sezioneAttiva === 'esperienze') ? 'content-section is-visible' : 'content-section is-hidden';
 $datiClass = ($sezioneAttiva === 'dati') ? 'content-section is-visible' : 'content-section is-hidden';
 $sicurezzaClass = ($sezioneAttiva === 'sicurezza') ? 'content-section is-visible' : 'content-section is-hidden';
 
 // Classi CSS per la Navigazione
 $navDashActive = ($sezioneAttiva === 'dashboard') ? 'is-active' : '';
 $navOrdiniActive = ($sezioneAttiva === 'ordini') ? 'is-active' : '';
+$navEsperienzeActive = ($sezioneAttiva === 'esperienze') ? 'is-active' : '';
 $navDatiActive = ($sezioneAttiva === 'dati') ? 'is-active' : '';
 $navSicurezzaActive = ($sezioneAttiva === 'sicurezza') ? 'is-active' : '';
 
 $ordini = $db->getOrdiniUtente($idUtente);
 $stats = $db->getUserStats($idUtente);
 $infoUtente = $db->getUserInfo($idUtente);
+$prenotazioni = !empty($emailUtenteSessione) ? $db->getPrenotazioniUtente($emailUtenteSessione) : [];
 
 $db->closeConnection();
 
@@ -91,11 +94,25 @@ function formatDate($dateString) {
     return (new DateTime($dateString))->format('d/m/Y H:i');
 }
 
+function formatDateOnly($dateString) {
+    return (new DateTime($dateString))->format('d/m/Y');
+}
+
 function getStatusBadge($stato) {
     $mappatura = [
         'in_attesa' => 'In attesa', 
         'approvato' => 'Ordine Approvato',
         'annullato' => 'Ordine Annullato'
+    ];
+    $testo = $mappatura[$stato] ?? $stato;
+    return '<span class="order-status-badge status-' . $stato . '">' . htmlspecialchars($testo) . '</span>';
+}
+
+function getRequestStatusBadge($stato) {
+    $mappatura = [
+        'in_attesa' => 'In attesa',
+        'approvato' => 'Richiesta approvata',
+        'annullato' => 'Richiesta annullata'
     ];
     $testo = $mappatura[$stato] ?? $stato;
     return '<span class="order-status-badge status-' . $stato . '">' . htmlspecialchars($testo) . '</span>';
@@ -109,6 +126,29 @@ if (!empty($ordini)) {
             ' . getStatusBadge($last['stato_ordine']) . '
             <p class="text-muted">
                 del ' . (new DateTime($last['data_creazione']))->format('d/m/Y') . '
+            </p>
+        </div>
+    ';
+}
+
+$totalePrenotazioni = is_array($prenotazioni) ? count($prenotazioni) : 0;
+$prenotazioniInAttesa = 0;
+if (!empty($prenotazioni)) {
+    foreach ($prenotazioni as $prenotazione) {
+        if (($prenotazione['stato'] ?? '') === 'in_attesa') {
+            $prenotazioniInAttesa++;
+        }
+    }
+}
+
+$statoPrenotazioniHTML = '<p class="text-muted">Nessuna richiesta inviata.</p>';
+if (!empty($prenotazioni)) {
+    $lastPrenotazione = $prenotazioni[0];
+    $statoPrenotazioniHTML = '
+        <div class="last-order-info">
+            ' . getRequestStatusBadge($lastPrenotazione['stato']) . '
+            <p class="text-muted">
+                visita del ' . formatDateOnly($lastPrenotazione['data_visita']) . '
             </p>
         </div>
     ';
@@ -137,11 +177,10 @@ $dashboardHTML = '
         </a>
     </li>
     <li>
-        <a href="?sezione=dati" class="feature-card card-link border-gold">
-            <div class="card-icon"><i class="fas fa-user-circle" aria-hidden="true"></i></div>
-            <h3>Il Tuo Profilo</h3>
-            <p class="stat-number text-md">' . htmlspecialchars($infoUtente['nome'] ?? $nomeUtenteSessione) . '</p>
-            <p class="profile-email">' . htmlspecialchars($infoUtente['email'] ?? $emailUtenteSessione) . '</p>
+        <a href="?sezione=esperienze" class="feature-card card-link border-gold">
+            <div class="card-icon"><i class="fas fa-glass-cheers" aria-hidden="true"></i></div>
+            <h3>Le Tue Esperienze</h3>
+            ' . $statoPrenotazioniHTML . '
         </a>
     </li>
 </ul>
@@ -193,6 +232,54 @@ if (empty($ordini)) {
         $tabellaOrdini .= '<div class="details-section"><h4>Riepilogo e Spedizione:</h4><p><strong>Indirizzo Spedizione:</strong> ' . nl2br(htmlspecialchars($ordine['indirizzo_spedizione'])) . '</p><div class="details-summary"><p>Totale Prodotti: € ' . number_format($ordine['totale_prodotti'], 2, ',', '.') . '</p><p>Costo Spedizione: € ' . number_format($ordine['costo_spedizione'], 2, ',', '.') . '</p><p><strong>Totale Finale: <span>€ ' . number_format($ordine['totale_finale'], 2, ',', '.') . '</span></strong></p></div></div></div></td></tr>';
     }
     $tabellaOrdini .= '</tbody></table></div>';
+}
+
+$tabellaPrenotazioni = '';
+if (empty($prenotazioni)) {
+    $tabellaPrenotazioni = '<div class="alert-box"><p><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Non hai ancora inviato richieste di prenotazione. Visita la sezione <a href="esperienze.php">Esperienze!</a></p></div>';
+} else {
+    $tabellaPrenotazioni .= '<div class="table-container">
+        <table class="table-data order-summary-table">
+            <caption>Storico delle tue richieste esperienze</caption>
+            <thead>
+                <tr>
+                    <th scope="col">N. Richiesta</th>
+                    <th scope="col">Data Invio</th>
+                    <th scope="col">Data Visita</th>
+                    <th scope="col">Persone</th>
+                    <th scope="col">Stato</th>
+                    <th scope="col" class="td_richiesta_degustazione">Dettagli</th>
+                </tr>
+            </thead>
+            <tbody>' ;
+
+    foreach ($prenotazioni as $prenotazione) {
+        $id_prenotazione = htmlspecialchars($prenotazione['id']);
+        $details_key = 'exp-' . $id_prenotazione;
+        $tabellaPrenotazioni .= '<tr data-order-id="' . $details_key . '">';
+        $tabellaPrenotazioni .= '<td data-title="N. Richiesta">#' . $id_prenotazione . '</td>';
+        $tabellaPrenotazioni .= '<td data-title="Data Invio">' . formatDate($prenotazione['data_invio']) . '</td>';
+        $tabellaPrenotazioni .= '<td data-title="Data Visita">' . formatDateOnly($prenotazione['data_visita']) . '</td>';
+        $tabellaPrenotazioni .= '<td data-title="Persone">' . (int)$prenotazione['n_persone'] . '</td>';
+        $tabellaPrenotazioni .= '<td data-title="Stato">' . getRequestStatusBadge($prenotazione['stato']) . '</td>';
+        $tabellaPrenotazioni .= '<td class="td_richiesta_degustazione">
+            <noscript>
+                <form method="get" action="#details-row-' . $details_key . '">
+                    <input type="hidden" name="sezione" value="esperienze">
+                    <button type="submit" class="btn-secondary">Mostra Dettagli</button>
+                </form>
+            </noscript>
+            <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $details_key . '" aria-expanded="false" aria-controls="details-row-' . $details_key . '">Mostra <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+        </td></tr>';
+
+        $tabellaPrenotazioni .= '<tr class="order-details-row is-hidden" id="details-row-' . $details_key . '"><td colspan="6" class="order-details-cell"><div class="details-content">';
+        $tabellaPrenotazioni .= '<div class="details-section"><h4>Dettagli Richiesta:</h4><ul class="details-products-list">';
+        $tabellaPrenotazioni .= '<li><span>Tipo esperienza</span><span>' . htmlspecialchars($prenotazione['tipo_degustazione']) . '</span></li>';
+        $tabellaPrenotazioni .= '<li><span>Email</span><span>' . htmlspecialchars($prenotazione['email']) . '</span></li>';
+        $tabellaPrenotazioni .= '<li><span>Telefono</span><span>' . htmlspecialchars($prenotazione['prefisso']) . ' ' . htmlspecialchars($prenotazione['telefono']) . '</span></li>';
+        $tabellaPrenotazioni .= '</ul></div></div></td></tr>';
+    }
+    $tabellaPrenotazioni .= '</tbody></table></div>';
 }
 
 $inizialeNome = strtoupper(substr($infoUtente['nome'], 0, 1));
@@ -291,17 +378,20 @@ $htmlContent = str_replace("[riferimento]", $ruoloUtente, $htmlContent);
 // Sostituzione Classi Navigazione
 $htmlContent = str_replace("[NAV_ACTIVE_DASHBOARD]", $navDashActive, $htmlContent);
 $htmlContent = str_replace("[NAV_ACTIVE_ORDINI]", $navOrdiniActive, $htmlContent);
+$htmlContent = str_replace("[NAV_ACTIVE_ESPERIENZE]", $navEsperienzeActive, $htmlContent);
 $htmlContent = str_replace("[NAV_ACTIVE_DATI]", $navDatiActive, $htmlContent);
 $htmlContent = str_replace("[NAV_ACTIVE_SICUREZZA]", $navSicurezzaActive, $htmlContent);
 
 // Sostituzione Classi Sezioni (Visibilità)
 $htmlContent = str_replace("[DASHBOARD_CLASS]", $dashboardClass, $htmlContent);
 $htmlContent = str_replace("[ORDINI_CLASS]", $ordiniClass, $htmlContent);
+$htmlContent = str_replace("[ESPERIENZE_CLASS]", $esperienzeClass, $htmlContent);
 $htmlContent = str_replace("[DATI_CLASS]", $datiClass, $htmlContent);
 $htmlContent = str_replace("[SICUREZZA_CLASS]", $sicurezzaClass, $htmlContent);
 
 $htmlContent = str_replace("[DASHBOARD_CONTENT]", $dashboardHTML, $htmlContent);
 $htmlContent = str_replace("[TABELLA_ORDINI]", $tabellaOrdini, $htmlContent); 
+$htmlContent = str_replace("[TABELLA_ESPERIENZE]", $tabellaPrenotazioni, $htmlContent);
 $htmlContent = str_replace("[DATI_PERSONALI]", $datiPersonaliHTML, $htmlContent); 
 $htmlContent = str_replace("[FORM_PASSWORD]", $formPasswordHTML, $htmlContent);
 

@@ -583,6 +583,26 @@ class DBConnection {
         return $ordini;
     }
 
+    // RECUPERO PRENOTAZIONI UTENTE
+    public function getPrenotazioniUtente($email) {
+        $prenotazioni = [];
+
+        $queryPrenotazioni = "SELECT * FROM prenotazione_archivio WHERE email = ? ORDER BY data_invio DESC";
+        $stmtPren = $this->connection->prepare($queryPrenotazioni);
+        if (!$stmtPren) { return []; }
+
+        $stmtPren->bind_param("s", $email);
+        $stmtPren->execute();
+        $resultPren = $stmtPren->get_result();
+
+        while ($prenotazione = $resultPren->fetch_assoc()) {
+            $prenotazioni[] = $prenotazione;
+        }
+
+        $stmtPren->close();
+        return $prenotazioni;
+    }
+
     // RECUPERO TUTTI GLI ORDINI (GESTIONALE)
     public function getOrdini() {
         $ordini = [];
