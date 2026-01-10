@@ -536,6 +536,27 @@ body.light-mode .table-data td::before {
     margin-bottom: 1.5rem;
 }
 
+.details-section form {
+    width: 100%;
+}
+
+.details-section textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.details-section .standard-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+}
+
+.details-section label {
+    display: block;
+    margin: 0;
+}
+
 .details-products-list li {
     flex-direction: column;
     align-items: flex-start;

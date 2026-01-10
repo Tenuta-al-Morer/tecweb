@@ -226,14 +226,14 @@
                     <h2>Messaggi clienti</h2>
                     <p id="descrizione-tab-messaggi" class="visually-hidden">
                         La tabella riassume le richieste di assistenza inviate dai clienti.
-                        Le colonne riportano: ID richiesta, nome, cognome, email, tipo supporto,
-                        telefono, messaggio, data invio e gestione richiesta.
+                        Le colonne riportano: ID messaggio, cliente, tipologia, data invio, messaggio
+                        e un comando per aprire i dettagli.
                     </p>
 
                     <p id="descrizione-tab-messaggi-archivio" class="visually-hidden">
                         La tabella riassume le richieste di assistenza gia gestite dallo staff.
-                        Le colonne riportano: ID richiesta, nome, cognome, email, tipo supporto,
-                        telefono, messaggio, data invio e risposta dell'operatore.
+                        Le colonne riportano: ID messaggio, cliente, tipologia, data invio, messaggio
+                        e un comando per aprire i dettagli.
                     </p>
 
                     <section id="section-messaggi">
@@ -245,18 +245,15 @@
                             </label>
                             </div>
                         <div class="table-container">
-                            <table class="table-data table-early-break" id="tab-info" aria-describedby="descrizione-tab-messaggi">
+                            <table class="table-data table-early-break order-summary-table" id="tab-info" aria-describedby="descrizione-tab-messaggi">
                                 <thead>
                                     <tr>
-                                        <th scope="col" abbr="ID">ID richiesta</th>
-                                        <th scope="col">Nome</th>
-                                        <th scope="col">Cognome</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col" abbr="Tipo">Tipo supporto</th>
-                                        <th scope="col">Telefono</th>
-                                        <th scope="col">Messaggio</th>
+                                        <th scope="col" abbr="ID">ID mes.</th>
+                                        <th scope="col" abbr="Cliente">Cliente</th>
+                                        <th scope="col" abbr="Tipologia">Tipologia</th>
                                         <th scope="col" abbr="Data">Data invio</th>
-                                        <th scope="col" abbr="Gestione">Gestione richiesta</th>
+                                        <th scope="col">Messaggio</th>
+                                        <th scope="col" abbr="Gestisci">Gestisci</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -266,18 +263,15 @@
                         </div>
 
                         <div class="table-container archive-table">
-                            <table class="table-data table-early-break" id="tab-info-archivio" aria-describedby="descrizione-tab-messaggi-archivio">
+                            <table class="table-data table-early-break order-summary-table" id="tab-info-archivio" aria-describedby="descrizione-tab-messaggi-archivio">
                                 <thead>
                                     <tr>
-                                        <th scope="col" abbr="ID">ID richiesta</th>
-                                        <th scope="col">Nome</th>
-                                        <th scope="col">Cognome</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col" abbr="Tipo">Tipo supporto</th>
-                                        <th scope="col">Telefono</th>
-                                        <th scope="col">Messaggio</th>
+                                        <th scope="col" abbr="ID">ID mes.</th>
+                                        <th scope="col" abbr="Cliente">Cliente</th>
+                                        <th scope="col" abbr="Tipologia">Tipologia</th>
                                         <th scope="col" abbr="Data">Data invio</th>
-                                        <th scope="col">Risposta</th>
+                                        <th scope="col">Messaggio</th>
+                                        <th scope="col" abbr="Dettagli">Dettagli</th>
                                     </tr>
                                 </thead>
                                 <tbody>

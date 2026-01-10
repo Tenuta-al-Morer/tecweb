@@ -252,46 +252,66 @@ foreach ($prenotazioniArchivioArray as $prenotazione) {
 $messaggi = "";
 foreach ($messaggiArray as $messaggio) {
     $idMsg = (int)$messaggio['id'];
+    $detailsKey = 'msg-' . $idMsg;
+    $cliente = trim($messaggio['cognome'] . ' ' . $messaggio['nome']);
 
-    $messaggi .= "<tr>";
+    $messaggi .= '<tr data-order-id="' . $detailsKey . '">';
     $messaggi .= '<th scope="row">' . $idMsg . '</th>';
-    $messaggi .= '<td data-title="Nome">' . htmlspecialchars($messaggio['nome']) . '</td>';
-    $messaggi .= '<td data-title="Cognome">' . htmlspecialchars($messaggio['cognome']) . '</td>';
-    $messaggi .= '<td data-title="Email">' . htmlspecialchars($messaggio['email']) . '</td>';
-    $messaggi .= '<td data-title="Tipo supporto">' . htmlspecialchars($messaggio['tipo_supporto']) . '</td>';
-    $messaggi .= '<td data-title="Telefono">' . htmlspecialchars($messaggio['prefisso']) . ' ' . htmlspecialchars($messaggio['telefono']) . '</td>';
-    $messaggi .= '<td data-title="Messaggio">' . htmlspecialchars($messaggio['messaggio']) . '</td>';
+    $messaggi .= '<td data-title="Cliente">' . htmlspecialchars($cliente) . '</td>';
+    $messaggi .= '<td data-title="Tipologia">' . htmlspecialchars($messaggio['tipo_supporto']) . '</td>';
     $messaggi .= '<td data-title="Data invio">' . htmlspecialchars($messaggio['data_invio']) . '</td>';
+    $messaggi .= '<td data-title="Messaggio">' . htmlspecialchars($messaggio['messaggio']) . '</td>';
+    $messaggi .= '<td class="td_richiesta_degustazione" data-title="Gestisci">
+                    <a href="?sezione=messaggi#details-row-' . $detailsKey . '" class="btn-secondary btn-fallback">Mostra Dettagli</a>
+                    <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $detailsKey . '" aria-expanded="false" aria-controls="details-row-' . $detailsKey . '">
+                        Mostra <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                </td>';
+    $messaggi .= '</tr>';
 
-    $messaggi .= '<td class="td_richiesta_msg" data-title="Gestione richiesta">
+    $messaggi .= '<tr class="order-details-row is-hidden" id="details-row-' . $detailsKey . '"><td colspan="6" class="order-details-cell"><div class="details-content">';
+    $messaggi .= '<div class="details-section"><h4>Dettagli Messaggio:</h4><ul class="details-products-list">';
+    $messaggi .= '<li><span>Email</span><span>' . htmlspecialchars($messaggio['email']) . '</span></li>';
+    $messaggi .= '<li><span>Telefono</span><span>' . htmlspecialchars($messaggio['prefisso']) . ' ' . htmlspecialchars($messaggio['telefono']) . '</span></li>';
+    $messaggi .= '</ul></div>';
+    $messaggi .= '<div class="details-section"><h4>Risposta:</h4>
                     <form id="form_msg_' . $idMsg . '" action="" method="POST" class="standard-form">
                         <input type="hidden" name="messaggio_id" value="' . $idMsg . '">
                         <input type="hidden" name="azione" value="msg_risposta">
-
                         <label for="richiesta1_' . $idMsg . '">Risposta<span aria-hidden="true">*</span></label>
-                        <input type="text" id="richiesta1_' . $idMsg . '" name="richiesta1" required
-                            placeholder="Rispondi alle necessita del cliente">
+                        <textarea id="richiesta1_' . $idMsg . '" name="richiesta1" required rows="6"
+                            placeholder="Rispondi alle necessita del cliente"></textarea>
+                        <button type="submit" form="form_msg_' . $idMsg . '" class="btn-secondary">Invia</button>
                     </form>
-                    
-                    <button type="submit" form="form_msg_' . $idMsg . '" class="btn-secondary">Invia</button>
-                </td>';
-    $messaggi .= "</tr>";
+                </div></div></td></tr>';
 }
 
 $messaggiArchivio = "";
 foreach ($messaggiArchivioArray as $messaggio) {
     $idMsg = (int)$messaggio['id'];
-    $messaggiArchivio .= "<tr>";
+    $detailsKey = 'msg-' . $idMsg;
+    $cliente = trim($messaggio['cognome'] . ' ' . $messaggio['nome']);
+
+    $messaggiArchivio .= '<tr data-order-id="' . $detailsKey . '">';
     $messaggiArchivio .= '<th scope="row">' . $idMsg . '</th>';
-    $messaggiArchivio .= '<td data-title="Nome">' . htmlspecialchars($messaggio['nome']) . '</td>';
-    $messaggiArchivio .= '<td data-title="Cognome">' . htmlspecialchars($messaggio['cognome']) . '</td>';
-    $messaggiArchivio .= '<td data-title="Email">' . htmlspecialchars($messaggio['email']) . '</td>';
-    $messaggiArchivio .= '<td data-title="Tipo supporto">' . htmlspecialchars($messaggio['tipo_supporto']) . '</td>';
-    $messaggiArchivio .= '<td data-title="Telefono">' . htmlspecialchars($messaggio['prefisso']) . ' ' . htmlspecialchars($messaggio['telefono']) . '</td>';
-    $messaggiArchivio .= '<td data-title="Messaggio">' . htmlspecialchars($messaggio['messaggio']) . '</td>';
+    $messaggiArchivio .= '<td data-title="Cliente">' . htmlspecialchars($cliente) . '</td>';
+    $messaggiArchivio .= '<td data-title="Tipologia">' . htmlspecialchars($messaggio['tipo_supporto']) . '</td>';
     $messaggiArchivio .= '<td data-title="Data invio">' . htmlspecialchars($messaggio['data_invio']) . '</td>';
-    $messaggiArchivio .= '<td data-title="Risposta">' . htmlspecialchars($messaggio['risposta']) . '</td>';
-    $messaggiArchivio .= "</tr>";
+    $messaggiArchivio .= '<td data-title="Messaggio">' . htmlspecialchars($messaggio['messaggio']) . '</td>';
+    $messaggiArchivio .= '<td class="td_richiesta_degustazione" data-title="Gestisci">
+                            <a href="?sezione=messaggi#details-row-' . $detailsKey . '" class="btn-secondary btn-fallback">Mostra Dettagli</a>
+                            <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $detailsKey . '" aria-expanded="false" aria-controls="details-row-' . $detailsKey . '">
+                                Mostra <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                        </td>';
+    $messaggiArchivio .= '</tr>';
+
+    $messaggiArchivio .= '<tr class="order-details-row is-hidden" id="details-row-' . $detailsKey . '"><td colspan="6" class="order-details-cell"><div class="details-content">';
+    $messaggiArchivio .= '<div class="details-section"><h4>Dettagli Messaggio:</h4><ul class="details-products-list">';
+    $messaggiArchivio .= '<li><span>Email</span><span>' . htmlspecialchars($messaggio['email']) . '</span></li>';
+    $messaggiArchivio .= '<li><span>Telefono</span><span>' . htmlspecialchars($messaggio['prefisso']) . ' ' . htmlspecialchars($messaggio['telefono']) . '</span></li>';
+    $messaggiArchivio .= '<li><span>Risposta</span><span>' . htmlspecialchars($messaggio['risposta']) . '</span></li>';
+    $messaggiArchivio .= '</ul></div></div></td></tr>';
 }
 
 
