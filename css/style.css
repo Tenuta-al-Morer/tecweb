@@ -1262,6 +1262,52 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--text-co
 
 .section-intro .lead { font-size: 1.25rem; font-weight: 300; }
 
+.sitemap-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2em 0 4em;
+}
+
+.sitemap-intro {
+    padding-bottom: 1em;
+}
+
+.sitemap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2em;
+    padding: 0 2em;
+}
+
+.sitemap-group h2 {
+    font-size: 1.3rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.75em;
+}
+
+.sitemap-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sitemap-group li + li {
+    margin-top: 0.5em;
+}
+
+.sitemap-group a {
+    color: var(--text-color);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-bottom-color 0.2s ease;
+}
+
+.sitemap-group a:hover,
+.sitemap-group a:focus {
+    color: var(--secondary-color);
+    border-bottom-color: var(--secondary-color);
+}
+
 .grid-features {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 2em;
     padding: 2em 4em 5em 4em; max-width: 1400px; margin: 0 auto;

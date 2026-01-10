@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="it">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Mappa del sito - Tenuta al Morer</title>
+        <link rel="icon" href="../../images/logo.ico" type="image/x-icon">
+
+        <meta name="description" content="Mappa del sito di Tenuta al Morer con i principali collegamenti per la navigazione.">
+        <meta name="keywords" content="Mappa del sito, Tenuta al Morer, navigazione, collegamenti, vini, esperienze">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="../../css/style.css" media="screen">
+        <link rel="stylesheet" href="../../css/mini.css" media="screen and (max-width:1024px)">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="../javascript/script.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <nav id="help">
+                <h2 class="visually-hidden">Aiuti alla navigazione</h2>
+                <a class="navigationHelp" href="#content-sitemap">Vai al contenuto</a>
+            </nav>
+
+            <div class="main-nav-bar">
+                <button class="menu-toggle" aria-controls="main-navigation" aria-expanded="false">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                    <span class="visually-hidden">Apri il menu di navigazione</span>
+                </button>
+
+                <a href="home.php" class="logo-link">
+                    <img src="../../images/logo.webp" alt="Home - Tenuta al Morer">
+                </a>
+
+                <nav id="main-navigation" class="primary-navigation">
+                    <ul>
+                        <li><a href="home.php"><span lang="en">Home</span></a></li>
+                        <li><a href="tenuta.php">Tenuta</a></li>
+                        <li><a href="vini.php">Vini</a></li>
+                        <li><a href="esperienze.php">Esperienze</a></li>
+                        <li><a href="contatti.php">Contatti</a></li>
+                    </ul>
+                </nav>
+
+                <div class="mobile-icons">
+                    [cart_icon_link]
+                    [user_area_link]
+                </div>
+            </div>
+
+            <div class="sub-header">
+                <nav id="breadcrumb">
+                    <div class="breadcrumb-container">
+                        <span>Ti trovi in: </span>
+                        <a href="home.php"><span lang="en">Home</span></a><span aria-hidden="true"> &gt; </span>
+                        <span class="current-page">Mappa del sito</span>
+                    </div>
+                </nav>
+
+                <button id="theme-toggle" aria-label="Cambia tema">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+            </div>
+        </header>
+
+        <main id="content-sitemap" class="sitemap-main" aria-labelledby="sitemap-title">
+            <section class="section-intro sitemap-intro">
+                <h1 id="sitemap-title" class="section-title">Mappa del sito</h1>
+                <p class="lead">Tutti i collegamenti utili per orientarti e trovare rapidamente le pagine principali.</p>
+            </section>
+
+            <div class="sitemap-grid" aria-label="Sezioni della mappa del sito">
+                <section class="sitemap-group">
+                    <h2>Pagine principali</h2>
+                    <ul>
+                        <li><a href="home.php"><span lang="en">Home</span></a></li>
+                        <li><a href="tenuta.php">Tenuta</a></li>
+                        <li><a href="vini.php">Vini</a></li>
+                        <li><a href="esperienze.php">Esperienze</a></li>
+                        <li><a href="contatti.php">Contatti</a></li>
+                    </ul>
+                </section>
+
+                <section class="sitemap-group">
+                    <h2>Shop e account</h2>
+                    <ul>
+                        <li><a href="vini.php">Catalogo vini</a></li>
+                        <li><a href="carrello.php">Carrello</a></li>
+                        <li><a href="checkout.php"><span lang="en">Checkout</span></a></li>
+                        <li><a href="login.php"><span lang="en">Login</span></a></li>
+                        <li><a href="registrazione.php">Registrazione</a></li>
+                        <li><a href="utente.php">Area riservata</a></li>
+                    </ul>
+                </section>
+
+                <section class="sitemap-group">
+                    <h2>Informazioni</h2>
+                    <ul>
+                        <li><a href="policy.php">Note legali</a></li>
+                        <li><a href="policy.php#privacy-policy"><span lang="en">Privacy Policy</span></a></li>
+                        <li><a href="policy.php#accessibility">Accessibilita</a></li>
+                        <li><a href="mappa.php">Mappa del sito</a></li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+
+        [footer]
+
+        [back_to_top_button]
+    </body>
+</html>
