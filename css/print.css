@@ -14,7 +14,7 @@ html{
 /*Elementi da nascondere*/
 #help, button.menu-toggle, #main-navigation, .mobile-icons, #theme-toggle, .hero-actions, .hero-bg, span.link-arrow, section.slider-section, footer a,
 #backToTopBtn, .tenuta-card-image img, section.form-container, section.map-section, aside.alert-box, .empty-cart-message i, .btn-shop-empty,
-div#shipping-message-container, .btn-full, .item-actions-row, .cart-item-price-col, .dashboard-sidebar{
+div#shipping-message-container, .btn-full, .item-actions-row, .cart-item-price-col, .dashboard-sidebar, .td_richiesta_degustazione{
 	display:none;
 }
 
@@ -129,3 +129,43 @@ span.current-page{
 .is-hidden {
     display: none;
 }
+
+/*Gestione tabelle*/
+.table-container {
+    width: 100%;
+    
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.table-data caption {
+    caption-side: top; text-align: center; font-weight: 700;
+    padding: 1rem; font-size: 1.5rem; color: var(--secondary-color);
+    border-bottom: 1px solid var(--border-color); padding-bottom: 0.8rem;
+}
+
+.table-data {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.order-summary-table {
+    width: 100%;
+    border-collapse: collapse;
+        
+}
+
+.order-summary-table thead th {
+    color: var(--secondary-color);
+    padding: 1rem;
+    text-align: left;
+}
+
+.order-summary-table tbody td {
+    vertical-align: middle;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
