@@ -186,40 +186,66 @@ foreach ($ordiniArchivioArray as $ordine) {
 
 $prenotazioni = "";
 foreach ($prenotazioniArray as $prenotazione) {
-    $prenotazioni .= "<tr>";
-    $prenotazioni .= '<th scope="row">' . (int)$prenotazione['id'] . '</th>';
-    $prenotazioni .= '<td data-title="Nome">' . htmlspecialchars($prenotazione['nome']) . '</td>';
-    $prenotazioni .= '<td data-title="Cognome">' . htmlspecialchars($prenotazione['cognome']) . '</td>';
-    $prenotazioni .= '<td data-title="Email">' . htmlspecialchars($prenotazione['email']) . '</td>';
-    $prenotazioni .= '<td data-title="Tipo Degustazione">' . htmlspecialchars($prenotazione['tipo_degustazione']) . '</td>';
-    $prenotazioni .= '<td data-title="Telefono">' . htmlspecialchars($prenotazione['prefisso']) . ' ' . htmlspecialchars($prenotazione['telefono']) . '</td>';
+    $prenotazioneId = (int)$prenotazione['id'];
+    $detailsKey = 'booking-' . $prenotazioneId;
+    $cliente = trim($prenotazione['cognome'] . ' ' . $prenotazione['nome']);
+
+    $prenotazioni .= '<tr data-order-id="' . $detailsKey . '">';
+    $prenotazioni .= '<th scope="row">' . $prenotazioneId . '</th>';
+    $prenotazioni .= '<td data-title="Cliente">' . htmlspecialchars($cliente) . '</td>';
+    $prenotazioni .= '<td data-title="Tipo degustazione">' . htmlspecialchars($prenotazione['tipo_degustazione']) . '</td>';
     $prenotazioni .= '<td data-title="Data visita">' . htmlspecialchars($prenotazione['data_visita']) . '</td>';
-    $prenotazioni .= '<td data-title="Numero persone">' . (int)$prenotazione['n_persone'] . '</td>';
-    $prenotazioni .= '<td data-title="Data Invio">' . htmlspecialchars($prenotazione['data_invio']) . '</td>';
+    $prenotazioni .= '<td data-title="N. persone">' . (int)$prenotazione['n_persone'] . '</td>';
+    $prenotazioni .= '<td class="td_richiesta_degustazione" data-title="Dettagli">
+                        <a href="?sezione=esperienze#details-row-' . $detailsKey . '" class="btn-secondary btn-fallback">Mostra Dettagli</a>
+                        <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $detailsKey . '" aria-expanded="false" aria-controls="details-row-' . $detailsKey . '">
+                            Mostra <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                    </td>';
     $prenotazioni .= '<td class="td_richiesta_degustazione" data-title="Gestione richiesta"> 
                         <form action="" method="POST" class="standard-form">
-                            <input type="hidden" name="prenotazione_id" value="' . (int)$prenotazione['id'] . '">
-                            <button type="submit" name="azione" value="accetta" class="btn-secondary">Accetta</button>
-                            <button type="submit" name="azione" value="rifiuta" class="btn-secondary">Rifiuta</button>
+                            <input type="hidden" name="prenotazione_id" value="' . $prenotazioneId . '">
+                            <button type="submit" name="azione" value="accetta" class="btn-secondary btn-accept">Accetta</button>
+                            <button type="submit" name="azione" value="rifiuta" class="btn-secondary btn-reject">Rifiuta</button>
                         </form>
                     </td>';
-    $prenotazioni .= "</tr>";
+    $prenotazioni .= '</tr>';
+
+    $prenotazioni .= '<tr class="order-details-row is-hidden" id="details-row-' . $detailsKey . '"><td colspan="7" class="order-details-cell"><div class="details-content">';
+    $prenotazioni .= '<div class="details-section"><h4>Dettagli Prenotazione:</h4><ul class="details-products-list">';
+    $prenotazioni .= '<li><span>Email</span><span>' . htmlspecialchars($prenotazione['email']) . '</span></li>';
+    $prenotazioni .= '<li><span>Telefono</span><span>' . htmlspecialchars($prenotazione['prefisso']) . ' ' . htmlspecialchars($prenotazione['telefono']) . '</span></li>';
+    $prenotazioni .= '<li><span>Data Invio</span><span>' . htmlspecialchars($prenotazione['data_invio']) . '</span></li>';
+    $prenotazioni .= '</ul></div></div></td></tr>';
 }
 
 $prenotazioniArchivio = "";
 foreach ($prenotazioniArchivioArray as $prenotazione) {
-    $prenotazioniArchivio .= "<tr>";
-    $prenotazioniArchivio .= '<th scope="row">' . (int)$prenotazione['id'] . '</th>';
-    $prenotazioniArchivio .= '<td data-title="Nome">' . htmlspecialchars($prenotazione['nome']) . '</td>';
-    $prenotazioniArchivio .= '<td data-title="Cognome">' . htmlspecialchars($prenotazione['cognome']) . '</td>';
-    $prenotazioniArchivio .= '<td data-title="Email">' . htmlspecialchars($prenotazione['email']) . '</td>';
-    $prenotazioniArchivio .= '<td data-title="Tipo Degustazione">' . htmlspecialchars($prenotazione['tipo_degustazione']) . '</td>';
-    $prenotazioniArchivio .= '<td data-title="Telefono">' . htmlspecialchars($prenotazione['prefisso']) . ' ' . htmlspecialchars($prenotazione['telefono']) . '</td>';
+    $prenotazioneId = (int)$prenotazione['id'];
+    $detailsKey = 'booking-' . $prenotazioneId;
+    $cliente = trim($prenotazione['cognome'] . ' ' . $prenotazione['nome']);
+
+    $prenotazioniArchivio .= '<tr data-order-id="' . $detailsKey . '">';
+    $prenotazioniArchivio .= '<th scope="row">' . $prenotazioneId . '</th>';
+    $prenotazioniArchivio .= '<td data-title="Cliente">' . htmlspecialchars($cliente) . '</td>';
+    $prenotazioniArchivio .= '<td data-title="Tipo degustazione">' . htmlspecialchars($prenotazione['tipo_degustazione']) . '</td>';
     $prenotazioniArchivio .= '<td data-title="Data visita">' . htmlspecialchars($prenotazione['data_visita']) . '</td>';
-    $prenotazioniArchivio .= '<td data-title="Numero persone">' . (int)$prenotazione['n_persone'] . '</td>';
-    $prenotazioniArchivio .= '<td data-title="Data Invio">' . htmlspecialchars($prenotazione['data_invio']) . '</td>';
+    $prenotazioniArchivio .= '<td data-title="N. persone">' . (int)$prenotazione['n_persone'] . '</td>';
     $prenotazioniArchivio .= '<td data-title="Stato">' . htmlspecialchars($prenotazione['stato']) . '</td>';
-    $prenotazioniArchivio .= "</tr>";
+    $prenotazioniArchivio .= '<td class="td_richiesta_degustazione" data-title="Dettagli">
+                                <a href="?sezione=esperienze#details-row-' . $detailsKey . '" class="btn-secondary btn-fallback">Mostra Dettagli</a>
+                                <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $detailsKey . '" aria-expanded="false" aria-controls="details-row-' . $detailsKey . '">
+                                    Mostra <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                                </button>
+                            </td>';
+    $prenotazioniArchivio .= '</tr>';
+
+    $prenotazioniArchivio .= '<tr class="order-details-row is-hidden" id="details-row-' . $detailsKey . '"><td colspan="7" class="order-details-cell"><div class="details-content">';
+    $prenotazioniArchivio .= '<div class="details-section"><h4>Dettagli Prenotazione:</h4><ul class="details-products-list">';
+    $prenotazioniArchivio .= '<li><span>Email</span><span>' . htmlspecialchars($prenotazione['email']) . '</span></li>';
+    $prenotazioniArchivio .= '<li><span>Telefono</span><span>' . htmlspecialchars($prenotazione['prefisso']) . ' ' . htmlspecialchars($prenotazione['telefono']) . '</span></li>';
+    $prenotazioniArchivio .= '<li><span>Data Invio</span><span>' . htmlspecialchars($prenotazione['data_invio']) . '</span></li>';
+    $prenotazioniArchivio .= '</ul></div></div></td></tr>';
 }
 
 

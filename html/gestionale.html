@@ -164,14 +164,14 @@
                     <h2>Richieste esperienze</h2>
                     <p id="descrizione-tab-degustazioni" class="visually-hidden">
                         La tabella riassume le richieste di prenotazione delle degustazioni.
-                        Le colonne riportano: ID prenotazione, nome, cognome, email, tipo degustazione,
-                        telefono, data visita, numero persone, data invio e gestione richiesta.
+                        Le colonne riportano: ID prenotazione, cliente, tipo degustazione, data visita,
+                        numero persone, gestione richiesta e un comando per aprire i dettagli.
                     </p>
 
                     <p id="descrizione-tab-degustazioni-archivio" class="visually-hidden">
                         La tabella riassume le richieste di prenotazione gia gestite dallo staff.
-                        Le colonne riportano: ID prenotazione, nome, cognome, email, tipo degustazione,
-                        telefono, data visita, numero persone, data invio e stato richiesta.
+                        Le colonne riportano: ID prenotazione, cliente, tipo degustazione, data visita,
+                        numero persone, stato richiesta e un comando per aprire i dettagli.
                     </p>
 
                     <section id="section-esperienze">
@@ -184,18 +184,15 @@
                         </div>
 
                         <div class="table-container">
-                            <table class="table-data table-early-break" id="tab-degustazioni" aria-describedby="descrizione-tab-degustazioni">
+                            <table class="table-data table-early-break order-summary-table" id="tab-degustazioni" aria-describedby="descrizione-tab-degustazioni">
                                 <thead>
                                     <tr>
-                                        <th scope="col" abbr="ID">ID prenotazione</th>
-                                        <th scope="col">Nome</th>
-                                        <th scope="col">Cognome</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col" abbr="Tipo">Tipo Degustazione</th>
-                                        <th scope="col">Telefono</th>
+                                        <th scope="col" abbr="ID">ID esp.</th>
+                                        <th scope="col" abbr="Cliente">Cliente</th>
+                                        <th scope="col" abbr="Tipologia">Tipologia</th>
                                         <th scope="col" abbr="Data">Data visita</th>                            
-                                        <th scope="col" abbr="Persone">Numero persone</th>
-                                        <th scope="col">Data Invio</th>
+                                        <th scope="col" abbr="Persone">N&deg; persone</th>
+                                        <th scope="col" abbr="Dettagli">Dettagli</th>
                                         <th scope="col" abbr="Gestione">Gestione richiesta</th>
                                     </tr>
                                 </thead>
@@ -205,19 +202,16 @@
                             </table>
                         </div>
                         <div class="table-container">
-                            <table class="table-data table-early-break" id="tab-degustazioni-archivio" aria-describedby="descrizione-tab-degustazioni-archivio">
+                            <table class="table-data table-early-break order-summary-table" id="tab-degustazioni-archivio" aria-describedby="descrizione-tab-degustazioni-archivio">
                                 <thead>
                                     <tr>
-                                        <th scope="col" abbr="ID">ID prenotazione</th>
-                                        <th scope="col">Nome</th>
-                                        <th scope="col">Cognome</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col" abbr="Tipo">Tipo Degustazione</th>
-                                        <th scope="col">Telefono</th> 
+                                        <th scope="col" abbr="ID">ID esp.</th>
+                                        <th scope="col" abbr="Cliente">Cliente</th>
+                                        <th scope="col" abbr="Tipologia">Tipologia</th>
                                         <th scope="col" abbr="Data">Data visita</th>                            
-                                        <th scope="col" abbr="Persone">Numero persone</th>
-                                        <th scope="col">Data Invio</th>
+                                        <th scope="col" abbr="Persone">N&deg; persone</th>
                                         <th scope="col" abbr="Stato">Stato richiesta</th>
+                                        <th scope="col" abbr="Dettagli">Dettagli</th>
                                     </tr>
                                 </thead>
                                 <tbody>
