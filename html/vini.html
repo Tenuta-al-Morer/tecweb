@@ -188,13 +188,13 @@
                         
                         <div class="shop-ov">
                             <div class="selettore-quantita">
-                                    <button type="button" onclick="gestisciQuantitaVino(this, -1)" aria-label="Diminuisci quantità">-</button>
-                                    
-                                    <input type="number" class="input-qty" value="1" min="1" aria-label="Quantità da acquistare" onchange="validaInputVino(this)">
-                                    
-                                    <button type="button" onclick="gestisciQuantitaVino(this, 1)" aria-label="Aumenta quantità">+</button>
+                                <button type="button" class="js-btn-meno" aria-label="Diminuisci quantità">-</button>
+                                
+                                <input type="number" class="input-qty" value="1" min="1" aria-label="Quantità da acquistare">
+                                
+                                <button type="button" class="js-btn-piu" aria-label="Aumenta quantità">+</button>
                             </div>
-                            <button class="buy-button" onclick="gestisciCarrelloPopup()">Aggiungi al Carrello</button>
+                            <button type="button" class="buy-button js-btn-add">Aggiungi al Carrello</button>
                         </div>
                     </div>
                 </div>
