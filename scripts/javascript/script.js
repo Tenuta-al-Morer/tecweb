@@ -1268,6 +1268,38 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 3000);
         }
 
+        // ---  ASSEGNAZIONE EVENTI (LISTENERS) ---
+    
+        const shopOverlay = document.querySelector('.shop-ov');
+
+        if (shopOverlay) {
+            const btnMeno = shopOverlay.querySelector('.js-btn-meno');
+            const btnPiu = shopOverlay.querySelector('.js-btn-piu');
+            const btnAdd = shopOverlay.querySelector('.js-btn-add');
+
+            // 2. Assegniamo gli eventi click
+            if (btnMeno) {
+                btnMeno.addEventListener('click', function() {
+                    // 'this' è il bottone stesso
+                    window.gestisciQuantitaVino(this, -1);
+                });
+            }
+
+            if (btnPiu) {
+                btnPiu.addEventListener('click', function() {
+                    window.gestisciQuantitaVino(this, 1);
+                });
+            }
+
+            if (btnAdd) {
+                btnAdd.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.gestisciCarrelloPopup();
+                });
+            }
+
+        }
+
         // 3. Gestione invio dati al server
         function inviaAlCarrello(id, qty) {
             const formData = new FormData();
@@ -1392,7 +1424,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 inputQtyPopup.parentNode.replaceChild(clone, inputQtyPopup);
 
                 const newInput = document.querySelector('.shop-ov .input-qty');
-                newInput.onchange = function() { window.validaInputVino(this); };
+
+                newInput.addEventListener('change', function() {
+                    window.validaInputVino(this);
+                });
             }
 
             if (stock <= 0) {
