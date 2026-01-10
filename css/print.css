@@ -13,7 +13,8 @@ html{
 
 /*Elementi da nascondere*/
 #help, button.menu-toggle, #main-navigation, .mobile-icons, #theme-toggle, .hero-actions, .hero-bg, span.link-arrow, section.slider-section, footer a,
-#backToTopBtn, .tenuta-card-image img, section.form-container, section.map-section, aside.alert-box, .empty-cart-message i, .btn-shop-empty{
+#backToTopBtn, .tenuta-card-image img, section.form-container, section.map-section, aside.alert-box, .empty-cart-message i, .btn-shop-empty,
+div#shipping-message-container, .btn-full, .item-actions-row{
 	display:none;
 }
 
@@ -68,7 +69,49 @@ span.current-page{
 
 /*Gestione link*/
 
-.breadcrumb-container a, .info-list a {
+.breadcrumb-container a, .info-list a, .cart-item-details h3 a {
     color: var(--text-color); text-decoration: none; 
 }
 
+/*Gestione vini*/
+.cart-item-img img { 
+    max-width: 100%; 
+    height: auto; 
+    max-height: 160px; 
+    object-fit: contain; 
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    grid-template-areas: 
+        "image details price"
+        "image actions price";
+    gap: 0 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+    align-items: start; 
+    transition: background-color 0.3s ease;
+}
+
+.cart-layout {
+    display: grid; 
+    grid-template-columns: 1fr 320px; 
+    gap: 2rem; 
+    align-items: start;
+    margin-bottom: 10px;
+}
+
+.cart-list-container {
+    background-color: var(--background); 
+    border: 1px solid var(--border-color);
+    padding: 1.5rem; 
+    border-radius: 8px;
+}
+
+.cart-list-total-row {
+    text-align: right;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
