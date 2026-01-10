@@ -24,7 +24,6 @@ Lista todo per tecweb:
     - mini.css
 - verificare velocemente tutto il codice accertandosi di seguire tutti i requisiti obbligatori della prof
 - preparare la relazione
-- stile css con l'autocompilazione
 
 DOMANDE
 - colore header e footer tra modalità light e night

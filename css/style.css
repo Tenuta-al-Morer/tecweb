@@ -4189,3 +4189,21 @@ a.action-btn-text:focus {
     border: 0;
     white-space: nowrap;
 }
+
+
+/* =========================================
+   FIX AUTOCOMPLETE  
+   ========================================= */
+
+body .auth-container .auth-form .form-group input:-webkit-autofill,
+body .auth-container .auth-form .form-group input:-webkit-autofill:hover, 
+body .auth-container .auth-form .form-group input:-webkit-autofill:focus, 
+body .auth-container .auth-form .form-group input:-webkit-autofill:active {
+    
+    -webkit-box-shadow: 0 0 0 1000px var(--background) inset;
+    -webkit-text-fill-color: var(--text-color);
+    caret-color: var(--text-color);
+    transition: background-color 5000s ease-in-out 0s;
+    font-family: inherit;
+    font-size: inherit;
+}
