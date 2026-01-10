@@ -3879,7 +3879,7 @@ body.light-mode .buy-button:disabled {
 
 .badge-esaurito {
     width: 100%;
-    padding: 1em 0; /* Più alto del bottone Info */
+    padding: 0.7em 0;
     background-color: var(--enhance);
     color: #fff;
     font-weight: 800;
@@ -3887,8 +3887,8 @@ body.light-mode .buy-button:disabled {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 0.7rem;
-    font-size: 1.1rem;
+    border-radius: 0.5rem;
+    font-size: 0.95rem;
     letter-spacing: 1px;
     cursor: not-allowed;
     box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
@@ -3897,7 +3897,7 @@ body.light-mode .buy-button:disabled {
 
 .badge-esaurito i {
     margin-right: 8px;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .btn-info-esaurito {
