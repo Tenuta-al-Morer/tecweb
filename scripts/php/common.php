@@ -184,9 +184,9 @@ function caricaPagina($nomeFileHTML) {
                 <small>
                     &copy; 2025 Tenuta al Morer - <abbr title="Partita">P.</abbr> <abbr title="Imposta sul Valore Aggiunto">IVA</abbr> 00000000000 <br>
                     <a href="policy.php">Note legali</a>  
-                    <a href="mappa.php">Mappa del sito</a>  
                     <a href="policy.php#privacy-policy"><span lang="en">  Privacy Policy</span></a>  
-                    <a href="policy.php#accessibility">  Accessibilità</a>
+                    <a href="policy.php#accessibility">  Accessibilità</a> <br>
+                    <a href="mappa.php">Mappa del sito</a>  
                 </small>
             </div>
         </footer>';
