@@ -4103,6 +4103,19 @@ body:has(.modal-toggle-checkbox:checked) {
     }
 }
 
+admin-fieldset {
+    margin-top: 15px; 
+    border: 1px solid var(--bordercolor); 
+    padding: 15px; 
+    border-radius:4px;
+}
+admin-fieldset legend {
+    font-weight: bold; 
+    padding: 0 10px; 
+    color: var(--secondary-color);
+    padding: 0 10px;
+}
+
 /* --- TOAST NOTIFICATION --- */
 #cart-toast {
     visibility: hidden;
