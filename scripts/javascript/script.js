@@ -1232,13 +1232,123 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     /* ==========================================
-    * 11. LOGICA PAGINA VINI 
+    * 11. LOGICA PAGINA VINI (AGGIORNATA)
     * ========================================== */
     safeExecute('Pagina Vini', () => {
-        // Se non c'è la griglia vini, non caricare nulla
-        if (!document.querySelector('.vini-main')) return;
+        
+        // --- GESTIONE QUANTITÀ (+ E -) ---
 
-        // Ricerca vini per nome (scroll alla card)
+        document.body.addEventListener('click', function(e) {
+            
+            // Cliccato bottone PIÙ
+            if (e.target.matches('.btn-plus')) {
+                updateQuantity(e.target, 1);
+            }
+            
+            // Cliccato bottone MENO
+            if (e.target.matches('.btn-minus')) {
+                updateQuantity(e.target, -1);
+            }
+        });
+
+        // Funzione logica per aggiornare i numeri
+        function updateQuantity(btn, change) {
+            const wrapper = btn.closest('.selettore-quantita');
+            if (!wrapper) return;
+
+            const displayInput = wrapper.querySelector('.display-qty'); // Input visibile (solo lettura)
+            const hiddenInput = wrapper.querySelector('.qty-hidden');   // Input nascosto (da inviare)
+            
+            // Leggiamo i valori attuali
+            let currentVal = parseInt(displayInput.value) || 1;
+            
+            let max = 999;
+            if (btn.hasAttribute('data-max')) {
+                max = parseInt(btn.dataset.max);
+            } else {
+                const btnPlus = wrapper.querySelector('.btn-plus');
+                if (btnPlus) max = parseInt(btnPlus.dataset.max);
+            }
+
+            let newVal = currentVal + change;
+
+            if (newVal >= 1 && newVal <= max) {
+                displayInput.value = newVal;
+                if (hiddenInput) hiddenInput.value = newVal;
+            } else if (newVal > max) {
+            }
+        }
+
+
+        // --- GESTIONE AJAX FORM (Toast Notification) ---
+        const toast = document.getElementById('cart-toast');
+
+        document.body.addEventListener('submit', function(e) {
+            // Controlla se il form ha la classe giusta
+            if (e.target.matches('.js-ajax-form') || e.target.matches('.modal-wine-form')) {
+                e.preventDefault(); // BLOCCA il ricaricamento della pagina
+
+                const form = e.target;
+                const submitBtn = form.querySelector('button[type="submit"]');
+                
+                document.body.style.cursor = 'wait';
+                if(submitBtn) submitBtn.disabled = true;
+
+                // Raccogli i dati
+                const formData = new FormData(form);
+                formData.append('is_ajax', '1');
+
+                fetch('carrello.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.body.style.cursor = 'default';
+                    if(submitBtn) submitBtn.disabled = false;
+
+                    if (data.success) {
+                        showToast("Prodotto aggiunto al carrello!");
+                        
+                        // Reset quantità a 1 dopo l'acquisto
+                        resetFormQty(form);
+                        
+                        // Se hai un badge del carrello nell'header, aggiornalo qui
+                        // updateCartBadge(data.cart_count); 
+                    } else {
+                        alert("Attenzione: " + (data.message || "Errore sconosciuto"));
+                    }
+                })
+                .catch(error => {
+                    console.error('Errore:', error);
+                    document.body.style.cursor = 'default';
+                    if(submitBtn) submitBtn.disabled = false;
+                });
+            }
+        });
+
+        // Funzione helper per resettare la quantità a 1
+        function resetFormQty(form) {
+            const display = form.querySelector('.display-qty');
+            const hidden = form.querySelector('.qty-hidden');
+            if(display) display.value = 1;
+            if(hidden) hidden.value = 1;
+        }
+
+        // Funzione per mostrare il Toast
+        function showToast(message) {
+            if (!toast) return;
+            
+            toast.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+            
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // --- RICERCA VINI ---
         const searchForm = document.getElementById('wine-search-form');
         const searchInput = document.getElementById('wine-search-input');
 
@@ -1248,297 +1358,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 const query = searchInput.value.trim().toLowerCase();
                 if (!query) return;
 
-                const items = Array.from(document.querySelectorAll('.wine-article[data-nome]'));
+                const items = Array.from(document.querySelectorAll('.wine-article'));
+                // Cerchiamo nel titolo h3 dentro la card
                 const match = items.find((item) => {
-                    const name = (item.dataset.nome || '').toLowerCase();
-                    return name.includes(query);
+                    const title = item.querySelector('h3');
+                    return title && title.innerText.toLowerCase().includes(query);
                 });
 
                 if (match) {
-                    match.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // Scorrimento
+                match.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Aggiungi la classe CSS (attiva l'effetto)
+                match.classList.add('is-highlighted');
+                
+                // Rimuovi la classe dopo 2 secondi (sfuma via l'effetto)
+                setTimeout(() => {
+                    match.classList.remove('is-highlighted');
+                }, 1500);
+                    
                 } else {
                     alert('Nessun vino trovato con quel nome.');
                 }
             });
         }
 
-        // VARIABILI DI STATO
-        let currentSlideIndex = 0;
-        let slideImages = [];
-        let lastFocusedElement;
-        let scrollPosition = 0;
-        let currentOpenWineId = 0; 
-
-        // 1. Crea il Toast (Notifica) se non esiste
-        function getToastElement() {
-            let toast = document.getElementById('cart-toast');
-            if (!toast) {
-                toast = document.createElement('div');
-                toast.id = 'cart-toast';
-                document.body.appendChild(toast);
-            }
-            return toast;
-        }
-
-        // 2. Mostra la notifica a schermo
-        function showToast(message) {
-            const toast = getToastElement();
-            toast.innerHTML = `<i class="fas fa-check-circle"></i> <span>${message}</span>`;
-            toast.className = "show";
-            
-            // Nascondi dopo 3 secondi
-            setTimeout(function(){ 
-                toast.className = toast.className.replace("show", ""); 
-            }, 3000);
-        }
-
-        // ---  ASSEGNAZIONE EVENTI (LISTENERS) ---
-    
-        const shopOverlay = document.querySelector('.shop-ov');
-
-        if (shopOverlay) {
-            const btnMeno = shopOverlay.querySelector('.js-btn-meno');
-            const btnPiu = shopOverlay.querySelector('.js-btn-piu');
-            const btnAdd = shopOverlay.querySelector('.js-btn-add');
-
-            // 2. Assegniamo gli eventi click
-            if (btnMeno) {
-                btnMeno.addEventListener('click', function() {
-                    // 'this' è il bottone stesso
-                    window.gestisciQuantitaVino(this, -1);
-                });
-            }
-
-            if (btnPiu) {
-                btnPiu.addEventListener('click', function() {
-                    window.gestisciQuantitaVino(this, 1);
-                });
-            }
-
-            if (btnAdd) {
-                btnAdd.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    window.gestisciCarrelloPopup();
-                });
-            }
-
-        }
-
-        // 3. Gestione invio dati al server
-        function inviaAlCarrello(id, qty) {
-            const formData = new FormData();
-            formData.append('action', 'aggiungi');
-            formData.append('id_vino', id);
-            formData.append('quantita', qty);
-            formData.append('req_source', 'shop_page'); 
-
-            // Feedback visivo cursore
-            document.body.style.cursor = 'wait';
-
-            fetch('carrello.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.body.style.cursor = 'default';
-                
-                if (data.success) {
-                    // A. Mostra notifica conferma
-                    showToast("Prodotto aggiunto al carrello!");
-                    
-                    // B. Aggiorna indicatore globale carrello
-                    const badge = document.getElementById('global-cart-badge');
-                    
-                    if (badge) {
-                        if (data.cart_count > 0) {
-                            badge.innerText = data.cart_count > 99 ? '99+' : data.cart_count;
-                            badge.style.display = 'flex'; 
-                        } else {
-                            badge.style.display = 'none';
-                        }
-                    } else if (data.cart_count > 0) {
-                        // Fallback se il badge non è nel DOM
-                        window.location.reload();
-                    }
-
-                } else {
-                    alert("Attenzione: " + (data.error || "Operazione non completata"));
-                }
-            })
-            .catch(error => {
-                document.body.style.cursor = 'default';
-                showToast("Servizio momentaneamente non disponibile");
-            });
-        }
-
-        function updateGalleryView() {
-            const mainImg = document.getElementById('pop-img');
-            if (mainImg && slideImages[0]) mainImg.src = slideImages[0];
-        }
-
-        window.aggiungiDaCard = function(idVino) {
-            const inputQty = document.getElementById('qty-' + idVino);
-            const quantita = inputQty ? inputQty.value : 1;
-            inviaAlCarrello(idVino, quantita);
-        };
-
-        window.gestisciCarrelloPopup = function() {
-            const qtyInput = document.querySelector('.shop-ov .input-qty');
-            const quantita = qtyInput ? qtyInput.value : 1;
-            
-            if(currentOpenWineId > 0) {
-                inviaAlCarrello(currentOpenWineId, quantita);
-                window.chiudiDettagli();
-            }
-        };
-
-        window.apriDettagli = function(bottone) {
-            scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-            lastFocusedElement = bottone;
-
-            const articolo = bottone.closest('.wine-article');
-            if (!articolo) return;
-
-            // 1. RECUPERO DATI DAL DOM
-            currentOpenWineId = articolo.dataset.id; 
-            const nome = articolo.dataset.nome;
-            const desc = articolo.dataset.descrizione;
-            const img = articolo.dataset.img;
-            const prezzo = articolo.dataset.prezzo;
-            const stock = parseInt(articolo.dataset.stock);
-
-            // Sync Quantità dalla card principale al popup
-            const inputCard = document.getElementById('qty-' + currentOpenWineId);
-            const quantitaAttuale = inputCard ? parseInt(inputCard.value) : 1;
-
-            // Recupero dati nascosti (specifiche tecniche)
-            const hiddenData = articolo.querySelector('.hidden-data');
-            const getHidden = (key) => {
-                const el = hiddenData ? hiddenData.querySelector(`[data-key="${key}"]`) : null;
-                return el ? el.innerText : '';
-            };
-
-            // 2. POPOLAMENTO INTERFACCIA
-            const setText = (id, val) => { const el = document.getElementById(id); if(el) el.innerText = val; };
-            
-            setText('pop-titolo', nome);
-            setText('pop-descrizione', desc);
-            setText('pop-prezzo', prezzo);
-            setText('tab-vitigno', getHidden('vitigno'));
-            setText('tab-annata', getHidden('annata'));
-            setText('tab-grado', getHidden('gradazione'));
-            setText('tab-temp', getHidden('temperatura'));
-            setText('tab-abbinamenti', getHidden('abbinamenti'));
-
-            // 3. GESTIONE LOGICA STOCK
-            const popStock = document.getElementById('pop-stock');
-            const shopOverlay = document.querySelector('.shop-ov');        
-            const badgeEsaurito = document.getElementById('pop-esaurito'); 
-            const inputQtyPopup = document.querySelector('.shop-ov .input-qty');
-
-            if(inputQtyPopup) {
-                inputQtyPopup.value = quantitaAttuale;
-                inputQtyPopup.max = stock;
-                inputQtyPopup.disabled = false;
-                inputQtyPopup.readOnly = false;
-                
-                // Clone per rimuovere vecchi event listener
-                const clone = inputQtyPopup.cloneNode(true);
-                inputQtyPopup.parentNode.replaceChild(clone, inputQtyPopup);
-
-                const newInput = document.querySelector('.shop-ov .input-qty');
-
-                newInput.addEventListener('change', function() {
-                    window.validaInputVino(this);
-                });
-            }
-
-            if (stock <= 0) {
-                // CASO: ESAURITO
-                if(popStock) popStock.innerHTML = ''; 
-                if (badgeEsaurito) badgeEsaurito.classList.add('is-visible');
-                if (shopOverlay) shopOverlay.classList.add('is-hidden');
-
-            } else {
-                // CASO: DISPONIBILE
-                if(popStock) {
-                    popStock.className = 'stock-info';
-                    popStock.classList.add('justify-start');
-                    
-                    if (stock <= 20) {
-                        popStock.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Ultimi ' + stock + ' pezzi!';
-                        popStock.classList.add('stock-warning');
-                    } else {
-                        popStock.innerHTML = '<i class="fas fa-check-circle"></i> Disponibilità: ' + stock + ' bottiglie';
-                        popStock.classList.add('stock-ok');
-                    }
-                }
-
-                if (badgeEsaurito) badgeEsaurito.classList.remove('is-visible');
-                if (shopOverlay) shopOverlay.classList.remove('is-hidden'); 
-            }
-
-            // Setup immagine
-            slideImages = [img]; 
-            currentSlideIndex = 0;
-            updateGalleryView();
-
-            // Apertura Modale
-            const overlay = document.getElementById('overlay-dettagli');
-            if (overlay) {
-                overlay.classList.add('is-open');
-                document.body.classList.add('no-scroll');
-                document.body.style.top = `-${scrollPosition}px`;
-                setTimeout(() => {
-                    const closeBtn = overlay.querySelector('.close-btn');
-                    if (closeBtn) closeBtn.focus();
-                }, 100);
-            }
-        };
-
-        window.chiudiDettagli = function() {
-            const overlay = document.getElementById('overlay-dettagli');
-            if (overlay) {
-                overlay.classList.remove('is-open');
-                document.body.classList.remove('no-scroll');
-                document.body.style.top = '';
-                window.scrollTo(0, scrollPosition);
-                if (lastFocusedElement) lastFocusedElement.focus();
-            }
-        };
-
-        window.gestisciQuantitaVino = function(btn, delta) {
-            const container = btn.parentElement;
-            const input = container.querySelector('.input-qty');
-            
-            if (!input || input.disabled) return;
-
-            let currentValue = parseInt(input.value) || 0;
-            let maxStock = parseInt(input.max) || 999;
-            let newValue = currentValue + delta;
-
-            if (newValue >= 1 && newValue <= maxStock) {
-                input.value = newValue;
-            } else if (newValue > maxStock) {
-                input.value = maxStock;
-            } else {
-                input.value = 1;
-            }
-        };
-
-        window.validaInputVino = function(input) {
-            let value = parseInt(input.value);
-            let maxStock = parseInt(input.max);
-
-            if (isNaN(value) || input.value === "" || value < 1) {
-                input.value = 1; 
-                return; 
-            } 
-            if (value > maxStock) {
-                input.value = maxStock;
-            }
-        };
     });
 
     /* ==========================================

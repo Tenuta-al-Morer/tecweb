@@ -3816,7 +3816,7 @@ body.light-mode .close-modal:focus {
 .wine-article:hover,
 .wine-article:focus-within {
     /*transform: translateY(-5px); crea problemi con l'overlay */ 
-    box-shadow: 0 0 2rem 1rem rgba(197, 165, 81, 0.25); 
+    box-shadow: 0 0 1rem var(--secondary-color); 
     border-color: var(--secondary-color);
 }
 
@@ -3826,6 +3826,10 @@ body.light-mode .close-modal:focus {
     margin: 0 auto 1rem auto;
     object-fit: contain;
     filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.2));
+}
+
+.wine-article.is-highlighted {
+    box-shadow: 0 0 1rem var(--secondary-color);
 }
 
 /* Testi Card */
