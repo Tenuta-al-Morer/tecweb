@@ -4133,11 +4133,6 @@ body:has(.modal-toggle-checkbox:checked) {
 
 /* --- STATO DI DEFAULT (NO-JS) --- */
 
-/* Nascondiamo il widget complesso */
-.selettore-js {
-    display: none;
-}
-
 /* Mostriamo l'input nativo */
 .selettore-nojs {
     display: flex;
@@ -4156,10 +4151,11 @@ html:not(.no-js) .selettore-js {
 html:not(.no-js) .selettore-nojs {
     display: none;
 }
+/* --- STILING SELETTORE QUANTITÀ (UNIFICATO) --- */
 
-/* --- STILING DEL WIDGET JS --- */
-
-.selettore-js {
+/* Contenitore principale */
+.selettore-quantita {
+    display: flex;
     align-items: center;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -4169,7 +4165,8 @@ html:not(.no-js) .selettore-nojs {
     justify-content: space-between;
 }
 
-.selettore-js button {
+/* Stile dei pulsanti + e - */
+.selettore-quantita button {
     background: none;
     border: none;
     padding: 0.2em 0.5em;
@@ -4179,26 +4176,22 @@ html:not(.no-js) .selettore-nojs {
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.selettore-js input.display-qty {
+.selettore-quantita button:hover {
+    background-color: #f0f0f0; 
+}
+
+.selettore-quantita input.display-qty {
     width: 2em;
     text-align: center;
     border: none;
     font-weight: bold;
     font-size: 1rem;
-    pointer-events: none;
     color: #333;
     background: transparent;
-}
-
-.modal-selettore-js{
-    width: 10em;
-    height: 3em;
-}
-
-.modal-selettore-nojs{
-    width: 20%;
+    outline: none; 
 }
 
 /* Mobile responsive */

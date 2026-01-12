@@ -5,10 +5,44 @@ require_once 'DBConnection.php';
 
 use DB\DBConnection;
 
-// Recupero Dati dal DB
+if (!isset($_SESSION['vini_qty'])) {
+    $_SESSION['vini_qty'] = [];
+}
+
+$referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+$isPostUpdate = ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_temp_qty']));
+
+if (!$isPostUpdate && strpos($referer, 'vini.php') === false) {
+    $_SESSION['vini_qty'] = [];
+}
+
+if ($isPostUpdate) {
+    $id = (int)$_POST['id_vino'];
+    $dir = $_POST['direction'];
+    $stock = (int)$_POST['stock_max'];
+    
+    $valoreInserito = isset($_POST['quantita']) ? (int)$_POST['quantita'] : 1;
+    if ($valoreInserito < 1) $valoreInserito = 1;
+    
+    if ($dir === 'minus') {
+        $current = $valoreInserito - 1;
+    } elseif ($dir === 'plus') {
+        $current = $valoreInserito + 1;
+    } else {
+        $current = $valoreInserito;
+    }
+
+    if ($current < 1) $current = 1;
+    if ($stock > 0 && $current > $stock) $current = $stock;
+    
+    $_SESSION['vini_qty'][$id] = $current;
+    
+    header("Location: vini.php#vino-$id");
+    exit();
+}
+
 $db = new DBConnection();
 try {
-    // (Restituisce tutti i vini con stato='attivo')
     $tuttiIVini = $db->getVini();
 } catch (Exception $e) {
     error_log("Errore recupero vini: " . $e->getMessage());
@@ -16,14 +50,11 @@ try {
 }
 $db->closeConnection();
 
-// Generazione HTML delle Card
 $htmlRossi = "";
 $htmlBianchi = "";
 $htmlSelezione = "";
 
-// Funzione helper locale per generare la singola card
 function costruisciCardVino($vino) {
-    // --- RECUPERO DATI ---
     $id = (int)$vino['id'];
     $nome = htmlspecialchars($vino['nome']);
     $prezzo = number_format($vino['prezzo'], 2, ',', '.');
@@ -32,7 +63,6 @@ function costruisciCardVino($vino) {
     $descEstesa = htmlspecialchars($vino['descrizione_estesa']);
     $stock = (int)$vino['quantita_stock'];
     
-    // Dati tecnici
     $vitigno = htmlspecialchars($vino['vitigno'] ?? '-');
     $annata = htmlspecialchars($vino['annata'] ?? '-');
     $gradazione = htmlspecialchars($vino['gradazione'] ?? '-');
@@ -40,75 +70,54 @@ function costruisciCardVino($vino) {
     $abbinamenti = htmlspecialchars($vino['abbinamenti'] ?? '-');
 
     $modalId = "modal-vino-" . $id;
+    $anchorId = "vino-" . $id;
 
-    // --- LOGICA VISIVA ---
+    $qtySession = isset($_SESSION['vini_qty'][$id]) ? $_SESSION['vini_qty'][$id] : 1;
+    if ($qtySession > $stock && $stock > 0) $qtySession = $stock;
+
     $htmlStock = "";
-    $cardActionHTML = "";  // HTML per la card esterna
-    $modalActionHTML = ""; // HTML per il popup interno
+    $cardActionHTML = "";
+    $modalActionHTML = "";
     $altText = "Bottiglia di " . $nome;
 
     if ($stock <= 0) {
-        // --- CASO ESAURITO ---
         $altText .= " - Esaurito";
         
-        // Esterno voglio solo bottone Info
-        $cardActionHTML = '<div class=" card-actions actions-esaurito-wrapper">
-                             <button class="badge-esaurito" disabled>Esaurito</button>
-                             <label for="' . $modalId . '" class="details-button" aria-label="Maggiori informazioni su ' . $nome . '">Info</label>
-                           </div>';
+        $cardActionHTML = '
+        <div class="card-actions card-actions-wrapper">
+             <div class="card-buy-block">
+                <button class="badge-esaurito" disabled>Esaurito</button>
+             </div>
+             <label for="' . $modalId . '" class="details-button" aria-label="Maggiori informazioni su ' . $nome . '">Info</label>
+        </div>';
         
-        // Interno voglio Badge Esaurito
-        $modalActionHTML = '<div class="modal-actions-wrapper">
-                              <span class="badge-esaurito" >Esaurito</span>
-                            </div>';
+        $modalActionHTML = '
+        <div class="modal-buy-block">
+              <span class="badge-esaurito">Esaurito</span>
+        </div>';
 
     } else {
-        // --- CASO DISPONIBILE ---
         $testoStock = ($stock <= 20) ? "Ultimi " . $stock . " pezzi!" : "Disponibile";
         $classeStock = ($stock <= 20) ? "stock-warning" : "stock-ok";
         $htmlStock = '<p class="stock-info ' . $classeStock . '"><i class="fas fa-check-circle"></i> ' . $testoStock . '</p>';
 
-        // Versione NO-JS
-        $qtyNoJS = '
-        <div class="selettore-quantita selettore-nojs">
-            <label for="qty-nojs-' . $id . '" class="visually-hidden">Quantità</label>
-            <input type="number" id="qty-nojs-' . $id . '" name="quantita_nojs" value="1" min="1" max="' . $stock . '" class="input-qty-native">
-        </div>';
-
-        $qtyNoJSmodal = '
-        <div class="selettore-quantita selettore-nojs modal-selettore-nojs">
-            <label for="qty-nojs-' . $id . '" class="visually-hidden">Quantità</label>
-            <input type="number" id="qty-nojs-' . $id . '" name="quantita_nojs" value="1" min="1" max="' . $stock . '" class="input-qty-native">
-        </div>';
-
-        // Versione JS
-        $qtyJS = '
-        <div class="selettore-quantita selettore-js">
-            <button type="button" class="btn-minus" aria-label="Riduci quantità">-</button>
-            <input type="text" value="1" readonly class="display-qty" aria-label="Quantità">
-            <button type="button" class="btn-plus" data-max="' . $stock . '" aria-label="Aumenta quantità">+</button>
-            
-            <input type="hidden" name="quantita" value="1" class="qty-hidden">
-        </div>';
-
-        $qtyJSmodal = '
-        <div class="selettore-quantita selettore-js modal-selettore-js">
-            <button type="button" class="btn-minus" aria-label="Riduci quantità">-</button>
-            <input type="text" value="1" readonly class="display-qty" aria-label="Quantità">
-            <button type="button" class="btn-plus" data-max="' . $stock . '" aria-label="Aumenta quantità">+</button>
-            
-            <input type="hidden" name="quantita" value="1" class="qty-hidden">
+        $selectorHTML = '
+        <div class="selettore-quantita">
+            <button type="submit" name="direction" value="minus" formaction="vini.php" class="btn-minus" aria-label="Riduci quantità">-</button>
+            <input type="number" name="quantita" value="' . $qtySession . '" class="display-qty" min="1" max="' . $stock . '" aria-label="Quantità">
+            <button type="submit" name="direction" value="plus" formaction="vini.php" class="btn-plus" aria-label="Aumenta quantità">+</button>
         </div>';
 
         $cardActionHTML = '
-        <form action="carrello.php" method="POST" class="wine-form">
+        <form action="vini.php" method="POST" class="wine-form">
             <input type="hidden" name="action" value="aggiungi">
             <input type="hidden" name="id_vino" value="' . $id . '">
+            <input type="hidden" name="stock_max" value="' . $stock . '">
+            <input type="hidden" name="update_temp_qty" value="1">
 
             <div class="card-actions">
                 <div class="card-buy-block">
-                    ' . $qtyNoJS . '
-                    ' . $qtyJS . '
+                    ' . $selectorHTML . '
                     <button type="submit" class="buy-button">Acquista</button>
                 </div>
                 <label for="' . $modalId . '" class="details-button" aria-label="Maggiori informazioni su ' . $nome . '">Info</label>
@@ -116,25 +125,21 @@ function costruisciCardVino($vino) {
         </form>';
 
         $modalActionHTML = '
-        <form action="carrello.php" method="POST" class="modal-wine-form">
+        <form action="vini.php" method="POST" class="modal-wine-form">
             <input type="hidden" name="action" value="aggiungi">
             <input type="hidden" name="id_vino" value="' . $id . '">
+            <input type="hidden" name="stock_max" value="' . $stock . '">
+            <input type="hidden" name="update_temp_qty" value="1">
             
             <div class="modal-buy-block">
-                ' . $qtyNoJSmodal . '
-                ' . $qtyJSmodal . '
+                ' . $selectorHTML . '
                 <button type="submit" class="buy-button modal-btn-large">Aggiungi al Carrello</button>
             </div>
         </form>';
     }
 
-    // --- OUTPUT HTML ---
-    // da notare che uso tabindex="0" e role="button" per rendere le label accessibili via tastiera (serve JS apposito).
-    // non l'ho usato per Info, che è label e deve esserlo per forza, perché apre il modal via checkbox hack.
-    // dentro il modal invece non posso usare una checkbox hack per chiuderlo, quindi uso il role="button" e tabindex="0"
-    
     return '
-    <article class="wine-article">
+    <article class="wine-article" id="' . $anchorId . '">
         <div class="wine-item">
             <img src="' . $img . '" alt="' . $altText . '" class="wine-image" loading="lazy">
             <div class="content-wine-article">
@@ -180,9 +185,7 @@ function costruisciCardVino($vino) {
 }
 
 foreach ($tuttiIVini as $vino) {
-    // genera l'HTML per questo specifico vino
     $card = costruisciCardVino($vino);
-    
     switch ($vino['categoria']) {
         case 'rossi':
             $htmlRossi .= $card;
@@ -196,20 +199,15 @@ foreach ($tuttiIVini as $vino) {
     }
 }
 
-// Gestione categorie vuote
 $msgVuoto = '<p class="no-wines">Al momento non ci sono vini disponibili in questa categoria.</p>';
 if (empty($htmlRossi)) $htmlRossi = $msgVuoto;
 if (empty($htmlBianchi)) $htmlBianchi = $msgVuoto;
 if (empty($htmlSelezione)) $htmlSelezione = $msgVuoto;
 
-// Caricamento e Parsing Template
 $htmlContent = caricaPagina('../../html/vini.html');
-
-// Sostituzione Placeholders
 $htmlContent = str_replace("[vini_rossi]", $htmlRossi, $htmlContent);
 $htmlContent = str_replace("[vini_bianchi]", $htmlBianchi, $htmlContent);
 $htmlContent = str_replace("[vini_selezione]", $htmlSelezione, $htmlContent);
 
-// Output
 echo $htmlContent;
 ?>
