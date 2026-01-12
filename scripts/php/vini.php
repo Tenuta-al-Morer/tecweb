@@ -54,7 +54,7 @@ function costruisciCardVino($vino) {
         // Esterno voglio solo bottone Info
         $cardActionHTML = '<div class=" card-actions actions-esaurito-wrapper">
                              <button class="badge-esaurito" disabled>Esaurito</button>
-                             <label for="' . $modalId . '" class="details-button">Info</label>
+                             <label for="' . $modalId . '" class="details-button" aria-label="Maggiori informazioni su ' . $nome . '">Info</label>
                            </div>';
         
         // Interno voglio Badge Esaurito
@@ -68,19 +68,50 @@ function costruisciCardVino($vino) {
         $classeStock = ($stock <= 20) ? "stock-warning" : "stock-ok";
         $htmlStock = '<p class="stock-info ' . $classeStock . '"><i class="fas fa-check-circle"></i> ' . $testoStock . '</p>';
 
+        // Versione NO-JS
+        $qtyNoJS = '
+        <div class="selettore-quantita selettore-nojs">
+            <label for="qty-nojs-' . $id . '" class="visually-hidden">Quantità</label>
+            <input type="number" id="qty-nojs-' . $id . '" name="quantita_nojs" value="1" min="1" max="' . $stock . '" class="input-qty-native">
+        </div>';
+
+        $qtyNoJSmodal = '
+        <div class="selettore-quantita selettore-nojs modal-selettore-nojs">
+            <label for="qty-nojs-' . $id . '" class="visually-hidden">Quantità</label>
+            <input type="number" id="qty-nojs-' . $id . '" name="quantita_nojs" value="1" min="1" max="' . $stock . '" class="input-qty-native">
+        </div>';
+
+        // Versione JS
+        $qtyJS = '
+        <div class="selettore-quantita selettore-js">
+            <button type="button" class="btn-minus" aria-label="Riduci quantità">-</button>
+            <input type="text" value="1" readonly class="display-qty" aria-label="Quantità">
+            <button type="button" class="btn-plus" data-max="' . $stock . '" aria-label="Aumenta quantità">+</button>
+            
+            <input type="hidden" name="quantita" value="1" class="qty-hidden">
+        </div>';
+
+        $qtyJSmodal = '
+        <div class="selettore-quantita selettore-js modal-selettore-js">
+            <button type="button" class="btn-minus" aria-label="Riduci quantità">-</button>
+            <input type="text" value="1" readonly class="display-qty" aria-label="Quantità">
+            <button type="button" class="btn-plus" data-max="' . $stock . '" aria-label="Aumenta quantità">+</button>
+            
+            <input type="hidden" name="quantita" value="1" class="qty-hidden">
+        </div>';
+
         $cardActionHTML = '
         <form action="carrello.php" method="POST" class="wine-form">
             <input type="hidden" name="action" value="aggiungi">
             <input type="hidden" name="id_vino" value="' . $id . '">
+
             <div class="card-actions">
                 <div class="card-buy-block">
-                    <div class="selettore-quantita-nativo"> 
-                        <label for="qty-' . $id . '" class="visually-hidden">Quantità</label>
-                        <input type="number" id="qty-' . $id . '" name="quantita" value="1" min="1" max="' . $stock . '" class="input-qty-native">
-                    </div>
+                    ' . $qtyNoJS . '
+                    ' . $qtyJS . '
                     <button type="submit" class="buy-button">Acquista</button>
                 </div>
-                <label for="' . $modalId . '" class="details-button">Info</label>
+                <label for="' . $modalId . '" class="details-button" aria-label="Maggiori informazioni su ' . $nome . '">Info</label>
             </div>
         </form>';
 
@@ -90,16 +121,18 @@ function costruisciCardVino($vino) {
             <input type="hidden" name="id_vino" value="' . $id . '">
             
             <div class="modal-buy-block">
-                <div class="selettore-quantita-nativo">
-                    <label for="qty-modal-' . $id . '" class="visually-hidden">Quantità</label>
-                    <input type="number" id="qty-modal-' . $id . '" name="quantita" value="1" min="1" max="' . $stock . '" class="input-qty-native">
-                </div>
+                ' . $qtyNoJSmodal . '
+                ' . $qtyJSmodal . '
                 <button type="submit" class="buy-button modal-btn-large">Aggiungi al Carrello</button>
             </div>
         </form>';
     }
 
     // --- OUTPUT HTML ---
+    // da notare che uso tabindex="0" e role="button" per rendere le label accessibili via tastiera (serve JS apposito).
+    // non l'ho usato per Info, che è label e deve esserlo per forza, perché apre il modal via checkbox hack.
+    // dentro il modal invece non posso usare una checkbox hack per chiuderlo, quindi uso il role="button" e tabindex="0"
+    
     return '
     <article class="wine-article">
         <div class="wine-item">
@@ -113,11 +146,11 @@ function costruisciCardVino($vino) {
         
         ' . $cardActionHTML . '
 
-        <input type="checkbox" id="' . $modalId . '" class="modal-toggle-checkbox" hidden>
-
+        <input type="checkbox" id="' . $modalId . '" class="modal-toggle-checkbox sr-only">
+        
         <div class="modal-overlay">
             <div class="modal-content">
-                <label for="' . $modalId . '" class="modal-close-btn">&times;</label>
+                <label for="' . $modalId . '" class="modal-close-btn" tabindex="0" role="button" aria-label="Chiudere informazioni di ' . $nome . '">&times;</label>
                 
                 <div class="modal-grid">
                     <div class="modal-img-col">
