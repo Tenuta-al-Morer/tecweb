@@ -133,7 +133,7 @@ function costruisciCardVino($vino) {
             
             <div class="modal-buy-block">
                 ' . $selectorHTML . '
-                <button type="submit" class="buy-button modal-btn-large">Aggiungi al Carrello</button>
+                <button type="submit" class="buy-button modal-btn-large">Aquista</button>
             </div>
         </form>';
     }

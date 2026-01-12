@@ -1,8 +1,6 @@
 Lista todo per tecweb:
 - mettere classe no-js nelle componenti che senza js non funzionano e quindi non ha senso tenerle
-- sistemare bottone acquista nel caso si sia loggati con admin o staff, non è possibile acquistare e finire nel gestionale. Magari rendere "spenti" i bottoni se si è loggati con admin e staff
-- sistemare cerca vino in vini
-- aggiungere i bottoni in vini
+- sistemare cerca vino in vini (manca da fare la ricerca nella pagina vini. Il resto è apposto)
 - sistemare tabelle del gestionale, hanno la riga sotto più spessa
 - sistemare "mostra dettagli" nel gestionale nel caso senza JS
 - sistemare hover bottoni in gestionale, controllare anche il resto -> Michele         

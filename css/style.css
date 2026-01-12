@@ -3811,6 +3811,7 @@ body.light-mode .close-modal:focus {
     border: 1px solid var(--border-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     text-align: center;
+    scroll-margin-top: 160px;
 }
 
 .wine-article:hover,
@@ -4064,7 +4065,7 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin
     display: flex;
     flex-direction: row;
     gap: 1rem;
-    align-items: center;
+    align-items: stretch;
 }
 
 .modal-buy-block{
@@ -4072,7 +4073,7 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin
     flex-direction: row ;
     gap: 1rem;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
 }
 
 .modal-price {
@@ -4160,9 +4161,6 @@ html:not(.no-js) .selettore-nojs {
     border: 1px solid #ccc;
     border-radius: 4px;
     background: #fff;
-    height: 100%;
-    width: 100%;
-    justify-content: space-between;
 }
 
 /* Stile dei pulsanti + e - */

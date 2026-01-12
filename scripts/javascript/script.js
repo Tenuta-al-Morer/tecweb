@@ -1231,9 +1231,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
-    
     /* ==========================================
-     * 11. LOGICA PAGINA VINI
+     * 11. LOGICA PAGINA VINI (AGGIORNATA)
      * ========================================== */
     safeExecute('Pagina Vini', () => {
 
@@ -1297,13 +1296,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 if(finalSubmitBtn) finalSubmitBtn.disabled = true;
 
                 const formData = new FormData(form);
-                formData.append('is_ajax', '1');
+                
+                formData.append('req_source', 'vini_page'); 
 
                 fetch('carrello.php', {
                     method: 'POST',
                     body: formData
                 })
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) throw new Error("Network response was not ok");
+                    return response.json();
+                })
                 .then(data => {
                     document.body.style.cursor = 'default';
                     if(finalSubmitBtn) finalSubmitBtn.disabled = false;
@@ -1311,8 +1314,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (data.success) {
                         showToast("Prodotto aggiunto al carrello!");
                         resetFormQty(form);
+
+                        const badge = document.getElementById('global-cart-badge');
+                        
+                        if (badge) {
+                            badge.innerText = data.cart_count > 99 ? '99+' : data.cart_count;
+                            badge.style.display = 'flex';
+                        } else {
+                            if (data.cart_count > 0) location.reload();
+                        }
+
                     } else {
-                        alert("Attenzione: " + (data.message || "Errore sconosciuto"));
+                        alert("Attenzione: " + (data.message || data.error || "Errore sconosciuto"));
                     }
                 })
                 .catch(error => {
