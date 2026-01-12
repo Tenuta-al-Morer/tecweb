@@ -68,16 +68,47 @@ function costruisciCardVino($vino) {
         $classeStock = ($stock <= 20) ? "stock-warning" : "stock-ok";
         $htmlStock = '<p class="stock-info ' . $classeStock . '"><i class="fas fa-check-circle"></i> ' . $testoStock . '</p>';
 
+        // Versione NO-JS
+        $qtyNoJS = '
+        <div class="selettore-quantita selettore-nojs">
+            <label for="qty-nojs-' . $id . '" class="visually-hidden">Quantità</label>
+            <input type="number" id="qty-nojs-' . $id . '" name="quantita_nojs" value="1" min="1" max="' . $stock . '" class="input-qty-native">
+        </div>';
+
+        $qtyNoJSmodal = '
+        <div class="selettore-quantita selettore-nojs modal-selettore-nojs">
+            <label for="qty-nojs-' . $id . '" class="visually-hidden">Quantità</label>
+            <input type="number" id="qty-nojs-' . $id . '" name="quantita_nojs" value="1" min="1" max="' . $stock . '" class="input-qty-native">
+        </div>';
+
+        // Versione JS
+        $qtyJS = '
+        <div class="selettore-quantita selettore-js">
+            <button type="button" class="btn-minus" aria-label="Riduci quantità">-</button>
+            <input type="text" value="1" readonly class="display-qty" aria-label="Quantità">
+            <button type="button" class="btn-plus" data-max="' . $stock . '" aria-label="Aumenta quantità">+</button>
+            
+            <input type="hidden" name="quantita" value="1" class="qty-hidden">
+        </div>';
+
+        $qtyJSmodal = '
+        <div class="selettore-quantita selettore-js modal-selettore-js">
+            <button type="button" class="btn-minus" aria-label="Riduci quantità">-</button>
+            <input type="text" value="1" readonly class="display-qty" aria-label="Quantità">
+            <button type="button" class="btn-plus" data-max="' . $stock . '" aria-label="Aumenta quantità">+</button>
+            
+            <input type="hidden" name="quantita" value="1" class="qty-hidden">
+        </div>';
+
         $cardActionHTML = '
         <form action="carrello.php" method="POST" class="wine-form">
             <input type="hidden" name="action" value="aggiungi">
             <input type="hidden" name="id_vino" value="' . $id . '">
+
             <div class="card-actions">
                 <div class="card-buy-block">
-                    <div class="selettore-quantita-nativo"> 
-                        <label for="qty-' . $id . '" class="visually-hidden">Quantità</label>
-                        <input type="number" id="qty-' . $id . '" name="quantita" value="1" min="1" max="' . $stock . '" class="input-qty-native">
-                    </div>
+                    ' . $qtyNoJS . '
+                    ' . $qtyJS . '
                     <button type="submit" class="buy-button">Acquista</button>
                 </div>
                 <label for="' . $modalId . '" class="details-button">Info</label>
@@ -90,10 +121,8 @@ function costruisciCardVino($vino) {
             <input type="hidden" name="id_vino" value="' . $id . '">
             
             <div class="modal-buy-block">
-                <div class="selettore-quantita-nativo">
-                    <label for="qty-modal-' . $id . '" class="visually-hidden">Quantità</label>
-                    <input type="number" id="qty-modal-' . $id . '" name="quantita" value="1" min="1" max="' . $stock . '" class="input-qty-native">
-                </div>
+                ' . $qtyNoJSmodal . '
+                ' . $qtyJSmodal . '
                 <button type="submit" class="buy-button modal-btn-large">Aggiungi al Carrello</button>
             </div>
         </form>';

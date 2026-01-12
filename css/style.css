@@ -4095,6 +4095,80 @@ body:has(.modal-toggle-checkbox:checked) {
     padding-right: 15px;
 }
 
+/* =========================================
+   WIDGET QUANTITÀ PERSONALIZZATO
+   ========================================= */
+
+/* --- STATO DI DEFAULT (NO-JS) --- */
+
+/* Nascondiamo il widget complesso */
+.selettore-js {
+    display: none;
+}
+
+/* Mostriamo l'input nativo */
+.selettore-nojs {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+}
+
+/* --- STATO JS ATTIVO (SWITCH) --- */
+
+/* Quando .no-js viene rimossa, MOSTRA il widget JS */
+html:not(.no-js) .selettore-js {
+    display: flex;
+}
+
+/* Quando .no-js viene rimossa, NASCONDI l'input nativo */
+html:not(.no-js) .selettore-nojs {
+    display: none;
+}
+
+/* --- STILING DEL WIDGET JS --- */
+
+.selettore-js {
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.selettore-js button {
+    background: none;
+    border: none;
+    padding: 0.2em 0.5em;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: var(--secondary-color);
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.selettore-js input.display-qty {
+    width: 2em;
+    text-align: center;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    pointer-events: none;
+    color: #333;
+    background: transparent;
+}
+
+.modal-selettore-js{
+    width: 10em;
+    height: 3em;
+}
+
+.modal-selettore-nojs{
+    width: 20%;
+}
+
 /* Mobile responsive */
 @media (max-width: 768px) {
     .modal-img-col img {
