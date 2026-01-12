@@ -5,7 +5,7 @@ require_once 'DBConnection.php';
 
 use DB\DBConnection;
 
-// 2. Recupero Dati dal DB
+// Recupero Dati dal DB
 $db = new DBConnection();
 try {
     // (Restituisce tutti i vini con stato='attivo')
@@ -16,14 +16,14 @@ try {
 }
 $db->closeConnection();
 
-// 3. Generazione HTML delle Card
+// Generazione HTML delle Card
 $htmlRossi = "";
 $htmlBianchi = "";
 $htmlSelezione = "";
 
 // Funzione helper locale per generare la singola card
 function costruisciCardVino($vino) {
-    // Sanificazione
+    // --- RECUPERO DATI ---
     $id = (int)$vino['id'];
     $nome = htmlspecialchars($vino['nome']);
     $prezzo = number_format($vino['prezzo'], 2, ',', '.');
@@ -31,7 +31,7 @@ function costruisciCardVino($vino) {
     $descBreve = htmlspecialchars($vino['descrizione_breve']);
     $descEstesa = htmlspecialchars($vino['descrizione_estesa']);
     $stock = (int)$vino['quantita_stock'];
-
+    
     // Dati tecnici
     $vitigno = htmlspecialchars($vino['vitigno'] ?? '-');
     $annata = htmlspecialchars($vino['annata'] ?? '-');
@@ -39,83 +39,69 @@ function costruisciCardVino($vino) {
     $temperatura = htmlspecialchars($vino['temperatura'] ?? '-');
     $abbinamenti = htmlspecialchars($vino['abbinamenti'] ?? '-');
 
+    $modalId = "modal-vino-" . $id;
+
     // --- LOGICA VISIVA ---
     $htmlStock = "";
-    $actionsHTML = "";
+    $cardActionHTML = "";  // HTML per la card esterna
+    $modalActionHTML = ""; // HTML per il popup interno
     $altText = "Bottiglia di " . $nome;
 
     if ($stock <= 0) {
         // --- CASO ESAURITO ---
-        $altText .= " - Esaurito"; 
+        $altText .= " - Esaurito";
         
-        // aria-hidden="true" perché è decorativo, non deve essere letto
-        $htmlStock = '<div class="stock-spacer" aria-hidden="true"></div>';
-
-        $actionsHTML = '
-            <div class="actions-esaurito-wrapper">
-                <span class="badge-esaurito is-visible">
-                    <i class="fas fa-times-circle" aria-hidden="true"></i> Esaurito
-                </span>
-                
-                <button type="button" class="details-button btn-info-esaurito" onclick="apriDettagli(this)" aria-label="Vedi dettagli di ' . $nome . '">
-                    Info
-                </button>
-            </div>
-        ';
+        // Esterno voglio solo bottone Info
+        $cardActionHTML = '<div class="actions-esaurito-wrapper">
+                             <button class="badge-esaurito" disabled>Esaurito</button>
+                             <label for="' . $modalId . '" class="details-button">Info</label>
+                           </div>';
+        
+        // Interno voglio Badge Esaurito
+        $modalActionHTML = '<div class="modal-actions-wrapper">
+                              <span class="badge-esaurito" >Esaurito</span>
+                            </div>';
 
     } else {
         // --- CASO DISPONIBILE ---
-        // Logica scritta piccola (Stock info)
-        $classeStock = "";
-        $iconaStock = "";
-        $testoStock = "";
+        $testoStock = ($stock <= 20) ? "Ultimi " . $stock . " pezzi!" : "Disponibile";
+        $classeStock = ($stock <= 20) ? "stock-warning" : "stock-ok";
+        $htmlStock = '<p class="stock-info ' . $classeStock . '"><i class="fas fa-check-circle"></i> ' . $testoStock . '</p>';
 
-        if ($stock <= 20) { 
-            $classeStock = "stock-warning";
-            $iconaStock = "fa-exclamation-triangle";
-            $testoStock = "Ultimi " . $stock . " pezzi!";
-        } else {
-            $classeStock = "stock-ok";
-            $iconaStock = "fa-check-circle";
-            $testoStock = "Disponibile";
-        }
-        
-        $htmlStock = '<p class="stock-info ' . $classeStock . '">
-                        <i class="fas ' . $iconaStock . '" aria-hidden="true"></i> ' . $testoStock . '
-                      </p>';
-
-        // type="button" è fondamentale per evitare submit involontari
-        $actionsHTML = '
-            <div class="selettore-quantita">
-                <button type="button" onclick="gestisciQuantitaVino(this, -1)" aria-label="Diminuisci quantità">-</button>
-                
-                <label for="qty-' . $id . '" class="visually-hidden">Quantità per ' . $nome . '</label>
-                <input type="number" 
-                       id="qty-' . $id . '" 
-                       class="input-qty" 
-                       name="quantita" 
-                       value="1" 
-                       min="1" 
-                       max="' . $stock . '" 
-                       onchange="validaInputVino(this)">
-                
-                <button type="button" onclick="gestisciQuantitaVino(this, 1)" aria-label="Aumenta quantità">+</button>
+        $cardActionHTML = '
+        <form action="carrello.php" method="POST" class="wine-form">
+            <input type="hidden" name="action" value="aggiungi">
+            <input type="hidden" name="id_vino" value="' . $id . '">
+            <div class="card-actions">
+                <div class="card-buy-block">
+                    <div class="selettore-quantita-nativo"> 
+                        <label for="qty-' . $id . '" class="visually-hidden">Quantità</label>
+                        <input type="number" id="qty-' . $id . '" name="quantita" value="1" min="1" max="' . $stock . '" class="input-qty-native">
+                    </div>
+                    <button type="submit" class="buy-button">Acquista</button>
+                </div>
+                <label for="' . $modalId . '" class="details-button">Info</label>
             </div>
+        </form>';
+
+        $modalActionHTML = '
+        <form action="carrello.php" method="POST" class="modal-wine-form">
+            <input type="hidden" name="action" value="aggiungi">
+            <input type="hidden" name="id_vino" value="' . $id . '">
             
-            <button type="button" class="buy-button" onclick="aggiungiDaCard(' . $id . ')" aria-label="Aggiungi ' . $nome . ' al carrello">Acquista</button>
-            <button type="button" class="details-button" onclick="apriDettagli(this)" aria-label="Vedi dettagli di ' . $nome . '">Info</button>
-        ';
+            <div class="modal-buy-block">
+                <div class="selettore-quantita-nativo">
+                    <label for="qty-modal-' . $id . '" class="visually-hidden">Quantità</label>
+                    <input type="number" id="qty-modal-' . $id . '" name="quantita" value="1" min="1" max="' . $stock . '" class="input-qty-native">
+                </div>
+                <button type="submit" class="buy-button modal-btn-large">Aggiungi al Carrello</button>
+            </div>
+        </form>';
     }
 
+    // --- OUTPUT HTML ---
     return '
-    <article class="wine-article" 
-            data-id="' . $id . '"
-            data-nome="' . $nome . '" 
-            data-descrizione="' . $descEstesa . '" 
-            data-img="' . $img . '"
-            data-prezzo="' . $prezzo . '"
-            data-stock="' . $stock . '">
-        
+    <article class="wine-article">
         <div class="wine-item">
             <img src="' . $img . '" alt="' . $altText . '" class="wine-image" loading="lazy">
             <div class="content-wine-article">
@@ -125,38 +111,55 @@ function costruisciCardVino($vino) {
             </div>
         </div>
         
-        <div class="actions">
-            ' . $actionsHTML . '
-        </div>
-        
-        <div class="hidden-data">
-            <span data-key="vitigno">' . $vitigno . '</span>
-            <span data-key="annata">' . $annata . '</span>
-            <span data-key="gradazione">' . $gradazione . '</span>
-            <span data-key="temperatura">' . $temperatura . '</span>
-            <span data-key="abbinamenti">' . $abbinamenti . '</span>
+        ' . $cardActionHTML . '
+
+        <input type="checkbox" id="' . $modalId . '" class="modal-toggle-checkbox" hidden>
+
+        <div class="modal-overlay">
+            <div class="modal-content">
+                <label for="' . $modalId . '" class="modal-close-btn">&times;</label>
+                
+                <div class="modal-grid">
+                    <div class="modal-img-col">
+                        <img src="' . $img . '" alt="' . $altText . '">
+                    </div>
+                    <div class="modal-info-col">
+                        <h2>' . $nome . '</h2>
+                        <p class="modal-price">€ ' . $prezzo . '</p>
+                        
+                        <p class="modal-desc">' . $descEstesa . '</p>
+                        
+                        <div class="modal-specs">
+                            <p><strong>Vitigno:</strong> ' . $vitigno . '</p>
+                            <p><strong>Annata:</strong> ' . $annata . '</p>
+                            <p><strong>Gradi:</strong> ' . $gradazione . '</p>
+                            <p><strong>Temperatura:</strong> ' . $temperatura . '</p>
+                            <p><strong>Abbinamenti:</strong> ' . $abbinamenti . '</p>
+                        </div>
+                        
+                        ' . $modalActionHTML . '
+                    </div>
+                </div>
+            </div>
+            <label for="' . $modalId . '" class="modal-backdrop-close"></label>
         </div>
     </article>';
 }
 
-// Ciclo di smistamento
-if (!empty($tuttiIVini)) {
-    foreach ($tuttiIVini as $vino) {
-        $card = costruisciCardVino($vino);
-        
-        switch (strtolower($vino['categoria'])) {
-            case 'rossi':
-                $htmlRossi .= $card;
-                break;
-            case 'bianchi':
-                $htmlBianchi .= $card;
-                break;
-            case 'selezione':
-                $htmlSelezione .= $card;
-                break;
-            default:
-                break;
-        }
+foreach ($tuttiIVini as $vino) {
+    // genera l'HTML per questo specifico vino
+    $card = costruisciCardVino($vino);
+    
+    switch ($vino['categoria']) {
+        case 'rossi':
+            $htmlRossi .= $card;
+            break;
+        case 'bianchi':
+            $htmlBianchi .= $card;
+            break;
+        case 'selezione':
+            $htmlSelezione .= $card;
+            break;
     }
 }
 
@@ -166,7 +169,7 @@ if (empty($htmlRossi)) $htmlRossi = $msgVuoto;
 if (empty($htmlBianchi)) $htmlBianchi = $msgVuoto;
 if (empty($htmlSelezione)) $htmlSelezione = $msgVuoto;
 
-// 4. Caricamento e Parsing Template
+// Caricamento e Parsing Template
 $htmlContent = caricaPagina('../../html/vini.html');
 
 // Sostituzione Placeholders
@@ -174,6 +177,6 @@ $htmlContent = str_replace("[vini_rossi]", $htmlRossi, $htmlContent);
 $htmlContent = str_replace("[vini_bianchi]", $htmlBianchi, $htmlContent);
 $htmlContent = str_replace("[vini_selezione]", $htmlSelezione, $htmlContent);
 
-// 5. Output
+// Output
 echo $htmlContent;
 ?>
