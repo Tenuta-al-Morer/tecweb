@@ -54,7 +54,7 @@ function costruisciCardVino($vino) {
         // Esterno voglio solo bottone Info
         $cardActionHTML = '<div class=" card-actions actions-esaurito-wrapper">
                              <button class="badge-esaurito" disabled>Esaurito</button>
-                             <label for="' . $modalId . '" class="details-button">Info</label>
+                             <label for="' . $modalId . '" class="details-button" aria-label="Maggiori informazioni su ' . $nome . '">Info</label>
                            </div>';
         
         // Interno voglio Badge Esaurito
@@ -111,7 +111,7 @@ function costruisciCardVino($vino) {
                     ' . $qtyJS . '
                     <button type="submit" class="buy-button">Acquista</button>
                 </div>
-                <label for="' . $modalId . '" class="details-button">Info</label>
+                <label for="' . $modalId . '" class="details-button" aria-label="Maggiori informazioni su ' . $nome . '">Info</label>
             </div>
         </form>';
 
@@ -129,6 +129,10 @@ function costruisciCardVino($vino) {
     }
 
     // --- OUTPUT HTML ---
+    // da notare che uso tabindex="0" e role="button" per rendere le label accessibili via tastiera (serve JS apposito).
+    // non l'ho usato per Info, che è label e deve esserlo per forza, perché apre il modal via checkbox hack.
+    // dentro il modal invece non posso usare una checkbox hack per chiuderlo, quindi uso il role="button" e tabindex="0"
+    
     return '
     <article class="wine-article">
         <div class="wine-item">
@@ -142,11 +146,11 @@ function costruisciCardVino($vino) {
         
         ' . $cardActionHTML . '
 
-        <input type="checkbox" id="' . $modalId . '" class="modal-toggle-checkbox" hidden>
-
+        <input type="checkbox" id="' . $modalId . '" class="modal-toggle-checkbox sr-only">
+        
         <div class="modal-overlay">
             <div class="modal-content">
-                <label for="' . $modalId . '" class="modal-close-btn">&times;</label>
+                <label for="' . $modalId . '" class="modal-close-btn" tabindex="0" role="button" aria-label="Chiudere informazioni di ' . $nome . '">&times;</label>
                 
                 <div class="modal-grid">
                     <div class="modal-img-col">

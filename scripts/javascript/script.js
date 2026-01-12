@@ -1278,7 +1278,15 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (newVal > max) {
             }
         }
-
+        
+        document.body.addEventListener('keydown', function(e) {
+            if (e.target.getAttribute('role') === 'button' && e.target.tagName === 'LABEL') {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault(); // Evita lo scroll della pagina con lo spazio
+                    e.target.click();   // Simula il click del mouse
+                }
+            }
+        });
 
         // --- GESTIONE AJAX FORM (Toast Notification) ---
         const toast = document.getElementById('cart-toast');
