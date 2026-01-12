@@ -24,6 +24,7 @@ const SafeStorage = {
 // Esegue i moduli in isolamento: se uno fallisce, gli altri continuano
 const safeExecute = (moduleName, moduleFunction) => {
     try {
+        document.querySelectorAll('.no-js').forEach(el => el.classList.remove('no-js'));
         moduleFunction();
     } catch (error) {
         console.error(`Error in module [${moduleName}]:`, error);
@@ -32,7 +33,7 @@ const safeExecute = (moduleName, moduleFunction) => {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    document.documentElement.classList.remove('no-js');
+    document.querySelectorAll('.no-js').forEach(el => el.classList.remove('no-js'));
 
     /* ==========================================
      * 1. THEME MANAGEMENT (Default Dark)

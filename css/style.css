@@ -4210,7 +4210,8 @@ body.light-mode #cart-toast {
 }
 
 .no-js .toggle-details-btn,
-.no-js .switch {
+.no-js .switch,
+.admin-table-head.no-js {
     display: none;
 }
 
