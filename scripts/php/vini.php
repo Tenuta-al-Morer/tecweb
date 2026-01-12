@@ -52,7 +52,7 @@ function costruisciCardVino($vino) {
         $altText .= " - Esaurito";
         
         // Esterno voglio solo bottone Info
-        $cardActionHTML = '<div class="actions-esaurito-wrapper">
+        $cardActionHTML = '<div class=" card-actions actions-esaurito-wrapper">
                              <button class="badge-esaurito" disabled>Esaurito</button>
                              <label for="' . $modalId . '" class="details-button">Info</label>
                            </div>';
