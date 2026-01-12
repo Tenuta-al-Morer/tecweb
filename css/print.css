@@ -15,7 +15,7 @@ html{
 #help, button.menu-toggle, #main-navigation, .mobile-icons, #theme-toggle, .hero-actions, .hero-bg, span.link-arrow, section.slider-section, footer a,
 #backToTopBtn, .tenuta-card-image img, section.form-container, section.map-section, aside.alert-box, .empty-cart-message i, .btn-shop-empty,
 div#shipping-message-container, .btn-full, .item-actions-row, .cart-item-price-col, .dashboard-sidebar, .td_richiesta_degustazione, .danger-zone,
-#sicurezza, .Richieste_gestionale, .admin-table-head{
+#sicurezza, .Richieste_gestionale, .admin-table-head, #descrizione-tab-ordini, #descrizione-tab-ordini-archivio{
 	display:none;
 }
 
@@ -134,7 +134,7 @@ span.current-page{
 /*Gestione tabelle*/
 .table-container {
     width: 100%;
-    
+    margin-bottom: 15px;
     border: 1px solid var(--border-color);
     border-radius: 5px;
     overflow: hidden;
