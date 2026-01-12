@@ -5,6 +5,8 @@ Lista todo per tecweb:
 - correggere comportamento sito senza javascript in vini, gestione vini, gestione utenti (pagina vini e admin in generale) (il resto è già stato verificato)
 - fare mappa del sito
 - controlla nella lezione 20 se rispettiamo le convenzioni esterne
+- sistemare in style.css tutte le misure assolute (devono diventare relative ad eccezione di border-radius se non erro)
+- sistemare in print.css tutte le misure relative (devono diventare assolute, perchè quello che viene stampato è sempre identico)
 - controlla l’accessibilità di tutte le pagine e verificare con nvda che tutto funzioni per i ciechi:
     - home
     - tenuta -> Luca
