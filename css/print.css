@@ -14,7 +14,8 @@ html{
 /*Elementi da nascondere*/
 #help, button.menu-toggle, #main-navigation, .mobile-icons, #theme-toggle, .hero-actions, .hero-bg, span.link-arrow, section.slider-section, footer a,
 #backToTopBtn, .tenuta-card-image img, section.form-container, section.map-section, aside.alert-box, .empty-cart-message i, .btn-shop-empty,
-div#shipping-message-container, .btn-full, .item-actions-row, .cart-item-price-col, .dashboard-sidebar, .td_richiesta_degustazione{
+div#shipping-message-container, .btn-full, .item-actions-row, .cart-item-price-col, .dashboard-sidebar, .td_richiesta_degustazione, .danger-zone,
+#sicurezza{
 	display:none;
 }
 
@@ -169,3 +170,34 @@ span.current-page{
     color: var(--text-color);
 }
 
+/*Gestione Area Personale (i miei dati)*/
+.profile-card {
+    background-color: var(--background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px #000;
+    margin-bottom: 15px;
+    width: 250px;
+}
+
+.profile-header{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    background-color: var(--secondary-color);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    box-shadow: none;
+}
