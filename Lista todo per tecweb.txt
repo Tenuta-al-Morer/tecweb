@@ -1,4 +1,6 @@
 Lista todo per tecweb:
+- sistemare tabelle del gestionale, hanno la riga sotto più spessa
+- sistemare "mostra dettagli" nel gestionale nel caso senza JS
 - sistemare hover bottoni in gestionale, controllare anche il resto -> Michele         
 - sistemare print css, deve operare da zero -> contarini
 - mettere conferma operazione su admin utenti
