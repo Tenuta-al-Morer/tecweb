@@ -162,15 +162,16 @@
                 </section>
 
                 <section id="esperienze" class="[ESPERIENZE_CLASS]">
-                    <h2>Richieste esperienze</h2>
+                    <h2>Esperienze</h2>
                     <p id="descrizione-tab-degustazioni" class="sum">
-                        La tabella riassume le richieste di prenotazione delle degustazioni.
+                        La tabella riassume le richieste di prenotazione attive di degustazioni.
+                        Ogni riga rappresenta una singola prenotazione.
                         Le colonne riportano: ID prenotazione, cliente, tipo degustazione, data visita,
-                        numero persone, gestione richiesta e un comando per aprire i dettagli.
+                        numero persone, un comando per aprire i dettagli e la sezione di gestione richiesta.
                     </p>
 
                     <p id="descrizione-tab-degustazioni-archivio" class="sum">
-                        La tabella riassume le richieste di prenotazione gia gestite dallo staff.
+                        La tabella riassume le richieste di prenotazione già gestite dallo staff.
                         Le colonne riportano: ID prenotazione, cliente, tipo degustazione, data visita,
                         numero persone, stato richiesta e un comando per aprire i dettagli.
                     </p>
@@ -205,6 +206,7 @@
                         </div>
                         <div class="table-container">
                             <table class="table-data table-early-break order-summary-table" id="tab-degustazioni-archivio" aria-describedby="descrizione-tab-degustazioni-archivio">
+                                <caption>Archivio Degustazioni</caption>
                                 <thead>
                                     <tr>
                                         <th scope="col" abbr="ID">ID esp.</th>
@@ -226,14 +228,16 @@
 
                 <section id="messaggi" class="[MESSAGGI_CLASS]">
                     <h2>Messaggi clienti</h2>
-                    <p id="descrizione-tab-messaggi" class="visually-hidden">
-                        La tabella riassume le richieste di assistenza inviate dai clienti.
-                        Le colonne riportano: ID messaggio, cliente, tipologia, data invio, messaggio
-                        e un comando per aprire i dettagli.
+                    <p id="descrizione-tab-messaggi" class="sum">
+                        La tabella riassume le richieste di assistenza attive inviate dai clienti.
+                        Ogni riga rappresenta una singola richiesta mandata dal cliente.
+                        Le colonne riportano: ID messaggio, cliente, tipologia, data invio, 
+                        un comando per aprire i dettagli e la sezione di gestione richiesta.
                     </p>
 
-                    <p id="descrizione-tab-messaggi-archivio" class="visually-hidden">
-                        La tabella riassume le richieste di assistenza gia gestite dallo staff.
+                    <p id="descrizione-tab-messaggi-archivio" class="sum">
+                        La tabella riassume le richieste di assistenza già gestite dallo staff.
+                        Ogni riga rappresenta una singola richiesta mandata dal cliente.
                         Le colonne riportano: ID messaggio, cliente, tipologia, data invio, messaggio
                         e un comando per aprire i dettagli.
                     </p>
@@ -248,6 +252,7 @@
                             </div>
                         <div class="table-container">
                             <table class="table-data table-early-break order-summary-table" id="tab-info" aria-describedby="descrizione-tab-messaggi">
+                                <caption>Gestione messaggi</caption>
                                 <thead>
                                     <tr>
                                         <th scope="col" abbr="ID">ID mes.</th>
@@ -266,6 +271,7 @@
 
                         <div class="table-container archive-table">
                             <table class="table-data table-early-break order-summary-table" id="tab-info-archivio" aria-describedby="descrizione-tab-messaggi-archivio">
+                                <caption>Archivio messaggi</caption>
                                 <thead>
                                     <tr>
                                         <th scope="col" abbr="ID">ID mes.</th>
