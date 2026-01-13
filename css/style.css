@@ -1040,7 +1040,9 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
 .table-container {
     width: 100%;
     margin-bottom: 2rem;
-    border: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
     border-radius: 5px;
     overflow: hidden;
 }
@@ -1076,7 +1078,7 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
     color: var(--text-color);
     font-weight: 700;
     text-decoration: none;
-    border-bottom: 1px solid;
+    /*border-bottom: 1px solid;*/
     transition: border-color 0.3s;
 }
 
@@ -1088,7 +1090,7 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
 .table-data caption {
     caption-side: top; text-align: center; font-weight: 700;
     padding: 1rem; font-size: 1.5rem; color: var(--secondary-color);
-    border-bottom: 1px solid var(--border-color); padding-bottom: 0.8rem;
+    /*border-bottom: 1px solid var(--border-color); */padding-bottom: 0.8rem;
 }
 
 main h1 { margin-bottom: 0.3em; }
