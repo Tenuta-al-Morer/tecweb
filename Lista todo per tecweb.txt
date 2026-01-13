@@ -26,11 +26,4 @@ Lista todo per tecweb:
     - stile.css
     - stampa.css
     - mini.css
-- verificare velocemente tutto il codice accertandosi di seguire tutti i requisiti obbligatori della prof
-- preparare la relazione
-
-DOMANDE
-- colore header e footer tra modalità light e night
-- variabili colori
-- dimensione fogli css
-- iscrizione per consegna del progetto: accattivante accessibile
+- preparare la relazione -> Michele
