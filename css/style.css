@@ -99,6 +99,8 @@ body.light-mode select:focus {
     padding: 10px;
 }
 
+
+
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -1047,6 +1049,10 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
     overflow: hidden;
 }
 
+.table-container caption{
+    border-bottom: 1px solid var(--border-color);
+}
+
 .table-data {
     width: 100%;
     border-collapse: collapse;
@@ -1791,6 +1797,10 @@ footer a:visited {
 
 .is-hidden {
   display: none;
+}
+
+.sum{
+    text-indent: -999em;
 }
 
 

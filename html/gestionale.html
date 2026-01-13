@@ -95,20 +95,19 @@
                 <h1>Area Gestionale</h1>
                 <p>
                     Sei loggato come: <strong>[email_utente]</strong>. Ruolo: <strong>[riferimento]</strong>.
-                    Usa il menu a sinistra per navigare.
                 </p>
 
                 <section id="ordini" class="[ORDINI_CLASS]">
                     <h2>Ordini</h2>
-                    <p id="descrizione-tab-ordini" class="visually-hidden">
+                    <p id="descrizione-tab-ordini" class="sum">
                         La tabella riassume le richieste "in_attesa" di acquisto dei vini effettuate dagli utenti.
                         Ogni riga rappresenta un singolo ordine. Le colonne riportano: ID ordine, cliente,
-                        totale finale, data di creazione, gestione richiesta e un comando per aprire i dettagli.
+                        totale finale, data di creazione, un comando per aprire i dettagli e la sezione di gestione richiesta.
                     </p>
 
-                    <p id="descrizione-tab-ordini-archivio" class="visually-hidden">
-                        La tabella riassume le richieste di acquisto dei vini gia gestite dallo staff.
-                        Le colonne riportano: ID ordine, cliente, totale finale, data di creazione,
+                    <p id="descrizione-tab-ordini-archivio" class="sum">
+                        La tabella riassume le richieste di acquisto dei vini già gestite dallo staff.
+                        Ogni riga rappresenta un singolo ordine. Le colonne riportano: ID ordine, cliente, totale finale, data di creazione,
                         stato richiesta e un comando per aprire i dettagli.
                     </p>
 
@@ -123,6 +122,7 @@
 
                         <div class="table-container">
                             <table class="table-data table-early-break order-summary-table" id="tab-ordini" aria-describedby="descrizione-tab-ordini">
+                                <caption>Gestione ordini</caption>
                                 <thead>
                                     <tr>
                                         <th scope="col" abbr="ID">ID Ordine</th>
@@ -141,6 +141,7 @@
                         </div>
                         <div class="table-container">
                             <table class="table-data table-early-break order-summary-table" id="tab-ordini-archivio" aria-describedby="descrizione-tab-ordini-archivio">
+                                <caption>Archivio ordini</caption>
                                 <thead>
                                     <tr>
                                         <th scope="col" abbr="ID">ID Ordine</th>
@@ -162,13 +163,13 @@
 
                 <section id="esperienze" class="[ESPERIENZE_CLASS]">
                     <h2>Richieste esperienze</h2>
-                    <p id="descrizione-tab-degustazioni" class="visually-hidden">
+                    <p id="descrizione-tab-degustazioni" class="sum">
                         La tabella riassume le richieste di prenotazione delle degustazioni.
                         Le colonne riportano: ID prenotazione, cliente, tipo degustazione, data visita,
                         numero persone, gestione richiesta e un comando per aprire i dettagli.
                     </p>
 
-                    <p id="descrizione-tab-degustazioni-archivio" class="visually-hidden">
+                    <p id="descrizione-tab-degustazioni-archivio" class="sum">
                         La tabella riassume le richieste di prenotazione gia gestite dallo staff.
                         Le colonne riportano: ID prenotazione, cliente, tipo degustazione, data visita,
                         numero persone, stato richiesta e un comando per aprire i dettagli.
@@ -185,6 +186,7 @@
 
                         <div class="table-container">
                             <table class="table-data table-early-break order-summary-table" id="tab-degustazioni" aria-describedby="descrizione-tab-degustazioni">
+                                <caption>Gestione degustazioni</caption>
                                 <thead>
                                     <tr>
                                         <th scope="col" abbr="ID">ID esp.</th>
