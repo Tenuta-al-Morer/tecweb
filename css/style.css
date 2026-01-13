@@ -4371,7 +4371,6 @@ body.light-mode #cart-toast {
     display: none;
 }
 
-/* FIX NO-JS CARRELLO */
 form.qty-selector {
     margin: 0;
 }
