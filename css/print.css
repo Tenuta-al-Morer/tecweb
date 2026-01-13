@@ -2,7 +2,7 @@
     --text-color: #121212;
     --background: #f4f4f4;
     --border-color: #4b4b4b;
-    --secondary-color: #8a6b1e;
+    /*--secondary-color: #8a6b1e;  tutto in bianco e nero*/ 
 }
 
 html{
@@ -15,7 +15,7 @@ html{
 #help, button.menu-toggle, #main-navigation, .mobile-icons, #theme-toggle, .hero-actions, .hero-bg, span.link-arrow, section.slider-section, footer a,
 #backToTopBtn, .tenuta-card-image img, section.form-container, section.map-section, aside.alert-box, .empty-cart-message i, .btn-shop-empty,
 div#shipping-message-container, .btn-full, .item-actions-row, .cart-item-price-col, .dashboard-sidebar, .td_richiesta_degustazione, .danger-zone,
-#sicurezza, .Richieste_gestionale, .admin-table-head, #descrizione-tab-ordini, #descrizione-tab-ordini-archivio{
+#sicurezza, .Richieste_gestionale, .admin-table-head, p.sum{
 	display:none;
 }
 
@@ -64,7 +64,7 @@ span.current-page{
 	width: 110px;
 }
 
-.card-icon { font-size: 3rem; color: var(--secondary-color); margin-bottom: 0.5em; }
+.card-icon { font-size: 3rem; color: var(--text-color); margin-bottom: 0.5em; }
 .feature-card h3 { margin-bottom: 0.5em; color: var(--text-color); font-size: 1.3rem; }
 .feature-card p { font-size: 0.95rem; opacity: 0.8; margin-bottom: 1.5em; color: var(--text-color); }
 
@@ -142,7 +142,7 @@ span.current-page{
 
 .table-data caption {
     caption-side: top; text-align: center; font-weight: 700;
-    padding: 1rem; font-size: 1.5rem; color: var(--secondary-color);
+    padding: 1rem; font-size: 1.5rem; color: var(--text-color);
     border-bottom: 1px solid var(--border-color); padding-bottom: 0.8rem;
 }
 
@@ -154,16 +154,15 @@ span.current-page{
 .order-summary-table {
     width: 100%;
     border-collapse: collapse;
-        
 }
 
 .order-summary-table thead th {
-    color: var(--secondary-color);
+    color: var(--text-color);
     padding: 1rem;
     text-align: left;
 }
 
-.order-summary-table tbody td {
+.order-summary-table tbody td, th {
     vertical-align: middle;
     padding: 1rem;
     border-bottom: 1px solid var(--border-color);
@@ -191,7 +190,7 @@ span.current-page{
 .profile-avatar {
     width: 80px;
     height: 80px;
-    background-color: var(--secondary-color);
+    background-color: var(--text-color);
     color: #fff;
     border-radius: 50%;
     display: flex;
@@ -201,3 +200,5 @@ span.current-page{
     font-weight: 700;
     box-shadow: none;
 }
+
+footer{ margin-top:10px; }
