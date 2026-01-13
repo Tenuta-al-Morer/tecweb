@@ -1081,6 +1081,34 @@ body.light-mode .table-data td::before {
    OVERRIDES VINI MOBILE
    ========================================= */
 
+.modal-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-info-col {
+    display: contents; 
+}
+
+.modal-info-col h2 {
+    order: -1; 
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.modal-price {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.modal-img-col img {
+    width: 100%;
+    max-height: 300px;
+    min-height: 200px;
+    object-fit: contain;
+}
+
 .sezione {
     display: flex;
     flex-direction: row;

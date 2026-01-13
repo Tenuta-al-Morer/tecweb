@@ -4205,15 +4205,6 @@ html:not(.no-js) .selettore-nojs {
     outline: none; 
 }
 
-/* Mobile responsive */
-@media (max-width: 768px) {
-    .modal-img-col img {
-        max-height: 250px;
-        margin: 0 auto;
-        display: block;
-    }
-}
-
 admin-fieldset {
     margin-top: 15px; 
     border: 1px solid var(--bordercolor); 
@@ -4411,6 +4402,9 @@ a.action-btn-text:focus {
     white-space: nowrap;
 }
 
+.no-js .wine-search-bar{
+    display: none;
+}
 
 /* =========================================
    FIX AUTOCOMPLETE  
