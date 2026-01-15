@@ -1000,11 +1000,13 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
     letter-spacing: 0.05em;
 }
 
-.table-data tbody tr:last-child td {
+.table-data tbody tr:last-child td,
+.table-data tbody tr:last-child th {
     border-bottom: 0;
 }
 
-.table-data tbody tr:not(.order-details-row):has(+ tr.order-details-row.is-hidden:last-child) td {
+.table-data tbody tr:not(.order-details-row):has(+ tr.order-details-row.is-hidden:last-child) td,
+.table-data tbody tr:not(.order-details-row):has(+ tr.order-details-row.is-hidden:last-child) th {
     border-bottom: 0;
 }
 
