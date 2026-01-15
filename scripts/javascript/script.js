@@ -704,7 +704,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // B. Gestione Espansione Ordini (Mostra/Nascondi Dettagli)
-        const orderTables = document.querySelectorAll('.order-summary-table');
+        const orderTables = document.querySelectorAll('.user-dashboard-container .table-data');
         
         if (orderTables.length > 0) {
             orderTables.forEach((orderTable) => {
