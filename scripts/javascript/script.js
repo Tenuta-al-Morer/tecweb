@@ -207,7 +207,6 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleBackToTopButton();
         }
 
-        // === TRACK PAGINE VISITATE (sessionStorage) ===
         const trackVisits = (selector) => {
             document.querySelectorAll(selector).forEach(link => {
 
@@ -215,17 +214,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const url = new URL(link.href, window.location.origin);
 
-                // opzionale ma consigliato: solo link interni
                 if (url.origin !== window.location.origin) return;
 
                 const key = 'visited_' + url.pathname;
 
-                // LETTURA da sessionStorage
                 if (sessionStorage.getItem(key)) {
                     link.classList.add('is-visited');
                 }
 
-                // SCRITTURA su sessionStorage
                 link.addEventListener('click', () => {
                     try {
                         sessionStorage.setItem(key, 'true');
@@ -288,7 +284,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (sliderContainer && slides.length > 0) {
 
-            // Rilevamento preferenza Reduced Motion
             const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
             const clonesCount = 4;
@@ -298,7 +293,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const intervalTime = 5000;
             let userPaused = false;
 
-            // Creazione Cloni 
             for (let i = 0; i < clonesCount; i++) {
                 const slideToClone = slides[slides.length - 1 - i];
                 const clone = slideToClone.cloneNode(true);
@@ -326,15 +320,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const moveSlide = () => {
                 const slideWidth = allSlides[0].offsetWidth;
                 
-                // toglie anche l'effetto "scorrimento" sui pulsanti quando le animazioni sono disattivate
                 if (mediaQuery.matches) {
                     sliderContainer.style.transition = 'none';
                 } else {
                     sliderContainer.style.transition = 'transform 0.5s ease-in-out';
                 }
                 
-                
-                // Manteniamo l'animazione solo per i click manuali:
                 sliderContainer.style.transition = 'transform 0.5s ease-in-out';
                 sliderContainer.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
             };
@@ -372,11 +363,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Pulsanti 
             if (nextBtn) {
                 nextBtn.addEventListener('click', () => {
                     nextSlide();
-                    // Resetta il timer solo se non è disabilitato per ridotto movimento
                     resetTimer(); 
                 });
             }
@@ -388,7 +377,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            // controlla la preferenza 
             const startTimer = () => {
                 if (mediaQuery.matches || userPaused) return;
                 slideInterval = setInterval(nextSlide, intervalTime);
@@ -400,10 +388,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const resetTimer = () => {
                 stopTimer();
-                startTimer(); // Questo controllerà di nuovo la preferenza e non ripartirà se necessario
+                startTimer();
             };
 
-            // Event Listeners Pulsanti Navigazione
             if (nextBtn) {
                 nextBtn.addEventListener('click', () => {
                     nextSlide();
@@ -431,18 +418,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 </svg>
             `;
 
-            // Logica pulsante Play/Pausa
             if (pauseBtn) {
                 pauseBtn.addEventListener('click', () => {
-                    userPaused = !userPaused; // Inverte lo stato
+                    userPaused = !userPaused;
 
                     if (userPaused) {
-                        // Se PAUSA ATTIVA: ferma timer e cambia icona in PLAY
                         stopTimer();
                         pauseBtn.innerHTML = playIcon;
                         pauseBtn.setAttribute('aria-label', 'Riprendi lo scorrimento automatico');
                     } else {
-                        // Se PAUSA DISATTIVA: riavvia timer e cambia icona in PAUSA
                         startTimer();
                         pauseBtn.innerHTML = pauseIcon;
                         pauseBtn.setAttribute('aria-label', 'Metti in pausa lo scorrimento automatico');
@@ -450,7 +434,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            // Hover logic
             sliderContainer.addEventListener('mouseenter', stopTimer);
             sliderContainer.addEventListener('mouseleave', () => {
                 startTimer(); 
@@ -466,19 +449,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (mediaQuery.matches) {
                     stopTimer();
                 } else {
-                    // Riavvia solo se l'utente non ha messo pausa manualmente
                     if (!userPaused) startTimer(); 
                 }
             });
 
-
-            // ===== PRINT FIX (safe, non influenza la pausa in modalità normale) =====
             let _printSaved = null;
 
             const enterPrintMode = () => {
                 if (_printSaved) return;
 
-                // salva stato corrente
                 _printSaved = {
                     transform: sliderContainer.style.transform,
                     transition: sliderContainer.style.transition,
@@ -486,10 +465,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     isTransitioning: isTransitioning
                 };
 
-                // ferma autoplay mentre si stampa
                 stopTimer();
 
-                // togli solo ciò che blocca la stampa (inline style)
                 sliderContainer.style.transition = 'none';
                 sliderContainer.style.transform = 'none';
             };
@@ -497,24 +474,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const exitPrintMode = () => {
                 if (!_printSaved) return;
 
-                // ripristina inline styles
                 sliderContainer.style.transition = _printSaved.transition;
                 sliderContainer.style.transform = _printSaved.transform;
 
-                // ripristina stato (senza cambiare userPaused)
                 currentIndex = _printSaved.currentIndex;
                 isTransitioning = _printSaved.isTransitioning;
 
-                // riallinea correttamente la posizione del carosello
                 updateInitialPosition();
 
                 _printSaved = null;
 
-                // riparti solo se era previsto (rispetta userPaused)
                 if (!mediaQuery.matches && !userPaused) startTimer();
             };
 
-            // eventi stampa (Chrome/Firefox)
             window.addEventListener('beforeprint', enterPrintMode);
             window.addEventListener('afterprint', exitPrintMode);
 
@@ -524,14 +496,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 else exitPrintMode();
             });
 
-            // Avvio iniziale
             startTimer();
         }
     });
    
 
     /* ==========================================
-     * 6. ADMIN TABS (mostra una tabella alla volta)
+     * 6. ADMIN TABS 
      * ========================================== */
     safeExecute('Admin Tabs', () => {
         const map = {
@@ -542,11 +513,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const tabs = document.querySelectorAll(".admin-tabs .admin-tab");
 
-        // Se non siamo in admin, non fare nulla (così non rompe le altre pagine)
         if (tabs.length > 0) {
             const sections = Object.values(map).map(sel => document.querySelector(sel));
 
-            // stato: null = vista collettiva, altrimenti una delle chiavi "#tab-..."
             let active = null;
 
             function showAll() {
@@ -579,7 +548,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     e.preventDefault();
                     const hash = tab.getAttribute("href");
 
-                    // se riclicco la tab già attiva -> torna alla vista collettiva
                     if (active === hash) {
                         showAll();
                     } else {
@@ -588,7 +556,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
 
-            // Se apro la pagina con un hash valido, parto filtrato
             if (map[window.location.hash]) {
                 showOnly(window.location.hash);
             } else {
@@ -596,7 +563,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        //6bis: Utility: collega uno switch a una tabella archivio (show/hide)
         function bindArchiveToggle(toggleId, tableId, displayMode = "table") {
             const toggle = document.getElementById(toggleId);
             const table = document.getElementById(tableId);
@@ -613,51 +579,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             };
 
-            apply(); // stato iniziale
+            apply();
             toggle.addEventListener("change", apply);
         }
         
-        // 6ter: Utility specifica per toggle righe vini eliminati
         const toggleVini = document.getElementById('toggleViniEliminati');
         if (toggleVini) {
             toggleVini.addEventListener('change', function() {
-                // Seleziona tutte le righe con classe 'row-deleted'
                 const deletedRows = document.querySelectorAll('.row-deleted');
                 
                 deletedRows.forEach(row => {
-                    // Se checkbox è checked -> table-row, altrimenti none
                     row.style.display = this.checked ? 'table-row' : 'none';
                 });
             });
         }
 
-        // Messaggi (già ok, ma ora con funzione unica)
         bindArchiveToggle("toggleArchivioMessaggi", "tab-info-archivio", "table");
-
-        // Prenotazioni archivio
         bindArchiveToggle("toggleArchivioPrenotazioni", "tab-degustazioni-archivio", "table");
-
-        // Ordini archivio (se hai creato tab-ordini-archivio e lo switch con id)
         bindArchiveToggle("toggleArchivioVini", "tab-ordini-archivio", "table");
     });
 
     /* ==========================================
-     * 7. USER DASHBOARD (Area Riservata)
+     * 7. USER DASHBOARD 
      * ========================================== */
     safeExecute('User Dashboard', () => {    
-        // A. Gestione Navigazione Sidebar (Schede)
         const userNavLinks = document.querySelectorAll('.user-nav-link');
         const userSections = document.querySelectorAll('.content-section');
 
-        // Funzione per mostrare la sezione corretta
         const showUserSection = (sectionId) => {
-            // 1. Nascondi tutte le sezioni
             userSections.forEach(section => {
                 section.classList.remove('is-visible');
                 section.classList.add('is-hidden');
             });
 
-            // 2. Mostra la sezione target
             const targetSection = document.getElementById(sectionId);
             if (targetSection) {
                 targetSection.classList.remove('is-hidden');
@@ -672,24 +626,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     const targetId = link.getAttribute('data-section');
                     
-                    // Aggiorna classi menu attivo
                     userNavLinks.forEach(nav => nav.classList.remove('is-active'));
                     link.classList.add('is-active');
 
-                    // Cambia URL senza ricaricare (utile se l'utente aggiorna la pagina)
                     history.pushState(null, '', '#' + targetId);
 
-                    // Mostra il contenuto
                     showUserSection(targetId);
                 });
             });
 
-            // Gestione Reload pagina: se c'è un #hash nell'URL (es. areaPersonale.php#ordini), apri quella tab
             const currentHash = window.location.hash.replace('#', '');
             if (currentHash) {
                 const activeLink = document.querySelector(`.user-nav-link[data-section="${currentHash}"]`);
                 if (activeLink) {
-                    // Simula il click o attiva manualmente
                     userNavLinks.forEach(nav => nav.classList.remove('is-active'));
                     activeLink.classList.add('is-active');
                     showUserSection(currentHash);
@@ -697,50 +646,38 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // B. Gestione Espansione Ordini (Mostra/Nascondi Dettagli)
         const orderTables = document.querySelectorAll('.user-dashboard-container .table-data');
         
         if (orderTables.length > 0) {
             orderTables.forEach((orderTable) => {
                 orderTable.addEventListener('click', (e) => {
-                    // Cerchiamo se il click è avvenuto dentro un bottone toggle
                     const toggleButton = e.target.closest('.toggle-details-btn');
                     
                     if (toggleButton) {
                         e.preventDefault();
                         
-                        // Recuperiamo l'ID dell'ordine dal bottone
                         const orderId = toggleButton.getAttribute('data-order-id');
-                        // Troviamo la riga dei dettagli corrispondente
                         const detailRow = document.getElementById('details-row-' + orderId);
-                        // Troviamo la riga "padre" (la card superiore)
                         const summaryRow = toggleButton.closest('tr');
-
                         const icon = toggleButton.querySelector('i');
                         
                         if (detailRow) {
-                            // Toggle visibilità
                             const isHidden = detailRow.classList.contains('is-hidden');
                             
                             if (isHidden) {
-                                // APRI
                                 detailRow.classList.remove('is-hidden');
-                                // AGGIUNTA: Aggiungiamo classe per lo stile unito
                                 if (summaryRow) summaryRow.classList.add('card-is-open'); 
 
                                 toggleButton.setAttribute('aria-expanded', 'true');
-                                // Cambia icona
                                 if (icon) {
                                     icon.classList.remove('fa-chevron-down');
                                     icon.classList.add('fa-chevron-up');
                                 }
                             } else {
-                                // CHIUDI
                                 detailRow.classList.add('is-hidden');
                                 if (summaryRow) summaryRow.classList.remove('card-is-open');
 
                                 toggleButton.setAttribute('aria-expanded', 'false');
-                                // Cambia icona
                                 if (icon) {
                                     icon.classList.remove('fa-chevron-up');
                                     icon.classList.add('fa-chevron-down');
@@ -759,7 +696,6 @@ document.addEventListener('DOMContentLoaded', () => {
     safeExecute('Form Validation', () => {
         const forms = document.querySelectorAll('form');
 
-        // Trova il contenitore padre corretto
         const getErrorContainer = (input) => {
             const parent = input.parentElement;
 
@@ -778,7 +714,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return parent; 
         };
 
-        // Crea elemento errore o spacer
         const createErrorElement = (message, isSpacer = false) => {
         const div = document.createElement('div');
         
@@ -795,7 +730,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return div;
     };
 
-        // Bilancia le altezze nelle righe a due colonne
         const syncRowAlignment = (input) => {
             const container = getErrorContainer(input);
             const rowParent = container.closest('.row-two, .form-row');
@@ -812,7 +746,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const siblingSpacer = sibling.querySelector('.error-spacer');
             const mySpacer = container.querySelector('.error-spacer');
 
-            // Aggiungi spacer al fratello se necessario
             if (myError && !siblingError && !siblingSpacer) {
                 const label = sibling.querySelector('label');
                 const spacer = createErrorElement('', true);
@@ -821,12 +754,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 else sibling.prepend(spacer);
             }
 
-            // Rimuovi spacer locale se ora c'è un errore vero
             if (myError && mySpacer) {
                 mySpacer.remove();
             }
 
-            // Aggiungi spacer a me se il fratello ha errore
             if (siblingError && !myError && !mySpacer) {
                 const label = container.querySelector('label');
                 const spacer = createErrorElement('', true);
@@ -835,13 +766,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 else container.prepend(spacer);
             }
 
-            // Pulisci tutto se nessuno ha errori
             if (!myError && !siblingError) {
                 if (mySpacer) mySpacer.remove();
                 if (siblingSpacer) siblingSpacer.remove();
             }
             
-            // Pulisci spacer residui se entrambi hanno errori
             if (myError && siblingError) {
                 if (mySpacer) mySpacer.remove();
                 if (siblingSpacer) siblingSpacer.remove();
@@ -871,7 +800,6 @@ document.addEventListener('DOMContentLoaded', () => {
             input.classList.add('input-error');
             input.setAttribute('aria-invalid', 'true');
 
-            // Gestione aria-describedby
             const currentDescribedBy = input.getAttribute('aria-describedby') || '';
             const ids = currentDescribedBy.split(' ').filter(id => id !== errorId && id !== '');
             ids.push(errorId);
@@ -924,19 +852,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const validateField = (input) => {
             const value = input.value.trim();
 
-            // Checkbox
             if (input.type === 'checkbox' && input.hasAttribute('required') && !input.checked) {
                 showError(input, 'Devi accettare per proseguire');
                 return false;
             }
 
-            // Required generico
             if (input.type !== 'checkbox' && input.hasAttribute('required') && value === '') {
                 showError(input, 'Campo obbligatorio');
                 return false;
             }
 
-            // Email
             if (input.type === 'email' && value !== '') {
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(value)) {
@@ -945,7 +870,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // Pattern
             if (input.hasAttribute('pattern') && value !== '') {
                 const regex = new RegExp('^' + input.getAttribute('pattern') + '$');
                 const msg = input.getAttribute('title') || 'Formato errato';
@@ -956,7 +880,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // MinLength
             if (input.hasAttribute('minlength') && value !== '') {
                 const min = input.getAttribute('minlength');
                 if (value.length < min) {
@@ -965,7 +888,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // Conferma Password
             const passwordMap = {
                 'confirm-password': 'password',
                 'ripeti_password': 'nuova_password'
@@ -986,7 +908,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return true;
         };
 
-        // Inizializzazione Listener
         forms.forEach(form => {
             form.setAttribute('novalidate', true);
             const inputs = form.querySelectorAll('input, select, textarea');
@@ -1035,7 +956,6 @@ document.addEventListener('DOMContentLoaded', () => {
     * 9. GESTIONE CARRELLO 
     * ========================================== */
     safeExecute('Cart Logic', () => {    
-        // Listener per i click sui pulsanti di azione
         document.body.addEventListener('click', function(e) {
             
             const btn = e.target.closest('.cart-action-btn');
@@ -1083,7 +1003,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Listener per il cambio manuale dell'input
         document.body.addEventListener('change', function(e) {
             if (e.target.classList.contains('qty-input')) {
                 const input = e.target;
@@ -1140,7 +1059,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         window.location.reload();
                     } else {
                         if (inputQty) inputQty.value = data.qty;
-                        // Aggiornamento UI
                         updateText('summary-subtotal', data.total_products);
                         updateText('summary-shipping', data.shipping, true);
                         updateText('summary-total', data.total_final);
@@ -1204,7 +1122,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Prevenzione Doppio Invio Ordine
             checkoutForm.addEventListener('submit', function(e) {
                 const btn = this.querySelector('button[type="submit"]');
                 
@@ -1214,7 +1131,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         const originalText = btn.innerText;
                         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Elaborazione...';
                         
-                        // Timeout di sicurezza nel caso il server non risponda (riabilita dopo 10s)
                         setTimeout(() => {
                             btn.disabled = false;
                             btn.innerText = originalText;
@@ -1378,9 +1294,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     /* ==========================================
-    * GESTIONE MODALE IBRIDA (JS + NO-JS)
+    * GESTIONE MODALE 
     * ========================================== */
-    safeExecute('Hybrid Modal', () => { /* separa e crea "parti" che quindi coprano assieme tutti gli utenti */
+    safeExecute('Hybrid Modal', () => { 
 
         document.documentElement.classList.remove('no-js');
         
@@ -1389,7 +1305,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         let lastFocusedElement = null;
 
-        // --- Simula il click sulla checkbox ma gestisce il focus ---
         function openModal(btn) {
             const checkboxId = btn.getAttribute('data-checkbox-id');
             const checkbox = document.getElementById(checkboxId);
@@ -1402,8 +1317,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 document.body.style.overflow = 'hidden';
 
-                // FOCUS MANAGEMENT
-                // Spostiamo il focus sul contenitore o sul titolo
                 const title = dialog.querySelector('h2');
                 if (title) {
                     title.setAttribute('tabindex', '-1');
@@ -1412,15 +1325,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     dialog.focus();
                 }
 
-                // Attiva Focus Trap
                 dialog.addEventListener('keydown', trapFocus);
                 document.addEventListener('keydown', handleEsc);
             }
         }
 
-        // --- FUNZIONE CHIUSURA ---
         function closeModal(btn) {
-            // Trova la checkbox risalendo dal bottone chiudi
             const overlay = btn.closest('.modal-overlay');
             const checkbox = overlay.previousElementSibling; 
             
@@ -1432,12 +1342,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 dialog.removeEventListener('keydown', trapFocus);
                 document.removeEventListener('keydown', handleEsc);
 
-                // Ritorna il focus al bottone che aveva aperto
                 if (lastFocusedElement) lastFocusedElement.focus();
             }
         }
 
-        // --- LOGICA FOCUS TRAP ---
         function trapFocus(e) {
             if (e.key !== 'Tab') return;
             const dialog = e.currentTarget;
@@ -1445,7 +1353,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const first = focusables[0];
             const last = focusables[focusables.length - 1];
 
-            if (e.shiftKey) { // Shift + Tab, per andare indietro
+            if (e.shiftKey) {
                 if (document.activeElement === first) {
                     e.preventDefault();
                     last.focus();
@@ -1462,7 +1370,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'Escape') {
                 const checked = document.querySelector('.modal-toggle-checkbox:checked');
                 if (checked) {
-                    // Simula click sul pulsante di chiusura del modale aperto
                     const overlay = checked.nextElementSibling;
                     const closeBtn = overlay.querySelector('.js-close-modal');
                     if (closeBtn) closeModal(closeBtn);
@@ -1470,7 +1377,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // --- EVENT LISTENERS ---
         openButtons.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -1487,12 +1393,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================
-     * 12. LOGICA PAGINA ADMIN (Gestione Modal)
+     * 12. LOGICA PAGINA ADMIN 
      * ========================================== */
     safeExecute('Pagina Admin', () => {
         // Controllo esistenza elementi chiave
         const modal = document.getElementById('modalVino');
-        if (!modal) return; // Esce se non siamo in admin
+        if (!modal) return; 
 
         const modalTitle = document.getElementById('modalTitle');
         const firstInput = document.getElementById('nome');
@@ -1500,7 +1406,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const modalUserTitle = document.getElementById('modalUserTitle');
         const firstUserInput = document.getElementById('utente_nome');
 
-        // ESPORTAZIONE GLOBALE FUNZIONI
         window.apriModalNuovo = function() {
             if(modalTitle) modalTitle.innerText = "Aggiungi Nuovo Vino";
             const idCampo = document.getElementById('id_vino');
@@ -1528,7 +1433,6 @@ document.addEventListener('DOMContentLoaded', () => {
         window.apriModalModifica = function(vino) {
             if(modalTitle) modalTitle.innerText = "Modifica: " + vino.nome;
             
-            // Helper per settare valori in sicurezza
             const setVal = (id, val) => {
                 const el = document.getElementById(id);
                 if(el) el.value = val;
@@ -1562,7 +1466,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (modalUtente) modalUtente.style.display = "none";
         };
         
-        // Event Listeners Admin (non servono onclick nell'HTML per questi)
         window.onclick = function(event) {
             if (event.target == modal) window.chiudiModal();
             if (modalUtente && event.target == modalUtente) window.chiudiModalUtente();

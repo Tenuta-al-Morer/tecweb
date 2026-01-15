@@ -377,7 +377,6 @@ body.light-mode .table-data td::before {
     content: none;
 }
 
-/* DOPO */
 .td_richiesta_msg .btn-secondary{
   width: auto;
   margin-top: .5rem;
@@ -427,8 +426,6 @@ body.light-mode .table-data td::before {
         flex-direction: column;
     }
 }
-
-/* User Dashboard Mini CSS */
 
 .dashboard-content > h1, 
 .dashboard-content > p {
@@ -548,7 +545,6 @@ body.light-mode .table-data td::before {
     font-size: 0.9rem;
     line-height: 1.4;
 }
-
 
 .toggle-details-btn {
     width: 100%;
@@ -674,12 +670,9 @@ body.light-mode .table-data td::before {
 
 
 /* =========================================
-   RESPONSIVE ADMIN (Mobile Card View - Ottimizzata)
+   RESPONSIVE ADMIN 
    ========================================= */
 @media screen and (max-width: 900px) {
-    
-    /* --- 1. HEADER ADMIN MOBILE --- */
-
     .admin-header-row {
         flex-direction: column;
         align-items: stretch;
@@ -710,8 +703,6 @@ body.light-mode .table-data td::before {
         margin-top: 0.5rem;
     }
 
-    /* --- 2. TABELLA COMPATTA (Card View) --- */
-
     main table.compact-table {
         border: none;
         background: transparent; 
@@ -732,7 +723,6 @@ body.light-mode .table-data td::before {
         width: 100%;
     }
 
-    /* CAPTION: Centrata e stilizzata */
     .compact-table caption {
         display: block;
         position: static;
@@ -747,7 +737,6 @@ body.light-mode .table-data td::before {
         padding-bottom: 0.5rem;
     }
 
-    /* CARD (Riga Tabella) */
     .compact-table tr {
         margin-bottom: 2rem;
         background-color: var(--background);
@@ -758,7 +747,6 @@ body.light-mode .table-data td::before {
         position: relative;
     }
 
-    /* CELLE (Righe interne) */
     .compact-table td {
         display: flex;
         justify-content: space-between;
@@ -775,7 +763,6 @@ body.light-mode .table-data td::before {
         justify-content: center;
     }
 
-    /* ETICHETTE (Sinistra) */
     .compact-table td::before {
         content: attr(data-title);
         font-weight: 700;
@@ -787,9 +774,6 @@ body.light-mode .table-data td::before {
         flex-shrink: 0;
     }
 
-    /* --- ECCEZIONI DI LAYOUT --- */
-
-    /* ID: Discreto in alto a destra */
     .compact-table td[data-title="ID"] {
         position: absolute;
         top: 1rem;
@@ -802,7 +786,6 @@ body.light-mode .table-data td::before {
     }
     .compact-table td[data-title="ID"]::before { display: none; }
 
-    /* FOTO: Grande e centrata */
     .compact-table td[data-title="Anteprima"] {
         justify-content: center;
         border-bottom: none;
@@ -818,7 +801,6 @@ body.light-mode .table-data td::before {
         border: 1px solid var(--border-color);
     }
 
-    /* DETTAGLI: Testo centrato sotto la foto */
     .compact-table td[data-title="Dettagli"] {
         flex-direction: column;
         align-items: center;
@@ -843,7 +825,6 @@ body.light-mode .table-data td::before {
         color: var(--text-color);
     }
 
-    /* AZIONI: Bottoni grandi affiancati */
     .action-group {
         width: 100%;
         display: flex;
@@ -903,12 +884,10 @@ body.light-mode .table-data td::before {
    Pagina carrello
    ========================================= */
 
-/* --- Layout Principale --- */
 #content.container {
     padding: 1rem; 
 }
 
-/* --- SCHEDA PRODOTTO --- */
 .cart-item {
     display: flex;
     flex-wrap: wrap; 
@@ -917,7 +896,6 @@ body.light-mode .table-data td::before {
     gap: 0; 
 }
 
-/* FOTO */
 .cart-item-img {
     width: 90px;
     margin-right: 1rem;
@@ -931,7 +909,6 @@ body.light-mode .table-data td::before {
     object-fit: contain;
 }
 
-/* TESTO */
 .cart-item-details {
     flex: 1; 
     min-width: 0; 
@@ -946,7 +923,6 @@ body.light-mode .table-data td::before {
     color: var(--white);
 }
 
-/* Prezzo mobile */
 .price-mobile {
     font-size: 1.1rem;
     font-weight: bold;
@@ -959,7 +935,6 @@ body.light-mode .table-data td::before {
     display: none;
 }
 
-/* RIGA AZIONI */
 .item-actions-row {
     width: 100%;    
     order: 3;      
@@ -976,8 +951,6 @@ body.light-mode .table-data td::before {
     display: none;
 }
 
-/* --- BOTTONI E QUANTITÀ --- */
-/* Selettore Quantità */
 .qty-selector {
     height: 44px; 
     display: flex;
@@ -1012,7 +985,6 @@ body.light-mode .table-data td::before {
     border-right: 1px solid var(--border-color);
 }
 
-/* Stile base pulsanti azione */
 .action-btn-text {
     min-height: 44px;
     display: flex;
@@ -1032,7 +1004,6 @@ body.light-mode .table-data td::before {
     max-width: 300px;
 }
 
-/* Stile Eliminazione (Rosso) */
 .action-btn-text.btn-delete {
     border-color: var(--errors);
     color: var(--errors);
@@ -1048,7 +1019,6 @@ body.light-mode .table-data td::before {
     color: var(--background);
 }
 
-/* Stile Salva/Sposta (Oro) */
 .action-btn-text.btn-save,
 .action-btn-text.btn-move {
     border-color: var(--secondary-color);
@@ -1069,7 +1039,6 @@ body.light-mode .table-data td::before {
     color: var(--background);
 }
 
-/* Stile Disabilitato */
 .action-btn-text.disabled-btn {
     border-color: var(--border-color);
     color: var(--text-color);
@@ -1077,8 +1046,6 @@ body.light-mode .table-data td::before {
     pointer-events: none;
 }
 
-
-/* Admin Tabs Gestionale */
 .admin-tabs {
     flex-direction: column;
     align-items: center;
@@ -1089,11 +1056,6 @@ body.light-mode .table-data td::before {
     width: 60%;    
 }
 
-
-/* =========================================
-   ACCESSIBILITÀ (mini.css): touch target >= 44x44px
-   Esclusi radio/checkbox
-   ========================================= */
 .admin-tab, table button{
     min-width: 44px;
     min-height: 44px;
@@ -1167,7 +1129,6 @@ body.light-mode .table-data td::before {
     color: #555;
 }
 
-/* Popup Mobile */
 .popup-content {
     padding: 1.5em;
     width: 95%;
@@ -1202,7 +1163,6 @@ body.light-mode .table-data td::before {
     grid-template-columns: 1fr; gap: 4rem; align-items: start;
 }
 
-
 @media (max-width: 768px) {
     .hero-section {
         height: 70vh;
@@ -1228,7 +1188,6 @@ body.light-mode .table-data td::before {
    CHECKOUT MOBILE 
    ========================================= */
 
-/* --- Layout Generale --- */
 .checkout-layout {
     display: flex;
     flex-direction: column;
@@ -1248,7 +1207,6 @@ body.light-mode .table-data td::before {
     color: var(--text-color);
 }
 
-/* --- Form e Input --- */
 .checkout-section {
     padding: 1.5rem;
     border: 1px solid var(--border-color);
@@ -1303,7 +1261,6 @@ select:focus {
     width: 80px; 
 }
 
-/* --- Payment Cards --- */
 .payment-grid {
     display: flex;
     flex-direction: column;
@@ -1362,7 +1319,6 @@ select:focus {
     display: none; 
 }
 
-/* --- Riepilogo Ordine --- */
 .checkout-sidebar {
     margin-top: 0;
 }
