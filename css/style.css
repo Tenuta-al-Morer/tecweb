@@ -3267,7 +3267,6 @@ body.light-mode .admin-search-input::placeholder {
     padding: 0.6rem 1.4rem;
     border-radius: 999px;
     text-decoration: none;
-    /* font-family: 'Lexend', sans-serif; */
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -3303,7 +3302,6 @@ body.light-mode .admin-search-input::placeholder {
     color: var(--text-color);
 }
 
-/* --- TABELLA --- */
 .table-responsive {
     overflow-x: auto;
     border-radius: 4px;
@@ -3317,11 +3315,9 @@ body.light-mode .admin-search-input::placeholder {
     color: var(--text-color);
 }
 
-/* Titolo tabella in ORO */
 .compact-table caption {
     caption-side: top;
     text-align: left;
-    /* font-family: 'Lexend', sans-serif; */
     font-weight: 700;
     color: var(--secondary-color);
     font-size: 1.3rem;
@@ -3353,7 +3349,6 @@ body.light-mode .admin-search-input::placeholder {
     background-color: var(--background);
 }
 
-/* Dettagli Vino */
 .admin-thumb {
     width: 60px;
     height: 60px;
@@ -3390,7 +3385,6 @@ body.light-mode .admin-search-input::placeholder {
     opacity: 0.9;
 }
 
-/* Badge Stato */
 .badge {
     padding: 4px 8px;
     border-radius: 4px;
@@ -3415,7 +3409,6 @@ body.light-mode .badge {
     color: var(--always-dark-bg);
 }
 
-/* Bottoni Azioni */
 .action-group {
     display: flex;
     gap: 0.8rem;
@@ -3448,7 +3441,6 @@ body.light-mode .badge {
     color: var(--enhance);
 }
 
-/* Modale Scuro */
 .modal-overlay {
     display: none;
     position: fixed;
@@ -3479,7 +3471,6 @@ body.light-mode .badge {
     line-height: 1;
 }
 
-/* Form Grid Admin */
 .form-grid {
     display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
 }
@@ -3553,7 +3544,7 @@ body.light-mode .admin-form-actions .btn-secondary {
     border-color: var(--always-dark-bg);
 }
 body.light-mode .admin-wrapper {
-    background-color: #fff; /* Bianco puro */
+    background-color: #fff;
     border-color: #e0e0e0;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
@@ -3579,8 +3570,8 @@ body.light-mode .compact-table {
 }
 
 body.light-mode .compact-table th {
-    background-color: #f4f4f4; /* Grigio chiaro per header */
-    color: var(--secondary-color); /* Oro scuro leggibile */
+    background-color: #f4f4f4; 
+    color: var(--secondary-color);
     border-bottom: 2px solid #dddddd;
     font-weight: 800;
 }
@@ -3592,18 +3583,17 @@ body.light-mode .compact-table td {
 
 body.light-mode .compact-table tr:hover,
 body.light-mode .compact-table tr:focus-within {
-    background-color: #f9f9f9; /* Hover chiarissimo */
+    background-color: #f9f9f9; 
 }
 
 body.light-mode .wine-title {
-    color: #222222; /* Nero per il titolo vino */
+    color: #222222; 
 }
 
 body.light-mode .truncate {
-    color: #666666; /* Grigio scuro per descrizioni */
+    color: #666666; 
 }
 
-/* Input Form in Light Mode */
 body.light-mode .admin-input {
     background-color: #fff;
     border: 1px solid #cccccc;
@@ -3616,7 +3606,6 @@ body.light-mode .admin-input:focus {
     box-shadow: 0 0 0 3px rgba(138,107,30,0.2);
 }
 
-/* Modale in Light Mode */
 body.light-mode .modal-box {
     background-color: #fff;
     color: #333333;
@@ -3625,7 +3614,7 @@ body.light-mode .modal-box {
 }
 
 body.light-mode .modal-overlay {
-    background-color: rgba(255,255,255,0.7); /* Sfondo sfuocato chiaro */
+    background-color: rgba(255,255,255,0.7); 
     backdrop-filter: blur(4px);
 }
 
@@ -3694,7 +3683,6 @@ body.light-mode .close-modal:focus {
     margin-top: 4rem;
 }
 
-/* Titoli */
 .wine-section h2 {
     font-size: 2.5em;
     color: var(--secondary-color);
@@ -3718,7 +3706,6 @@ body.light-mode .close-modal:focus {
     background-color: var(--secondary-color);
 }
 
-/* Griglia Prodotti*/
 .sezione {
     display: flex;
     flex-wrap: wrap;
@@ -3730,7 +3717,6 @@ body.light-mode .close-modal:focus {
     padding: 0 10px;
 }
 
-/* Card Vino */
 .wine-article {
     display: flex;
     flex-direction: column;
@@ -3750,7 +3736,6 @@ body.light-mode .close-modal:focus {
 
 .wine-article:hover,
 .wine-article:focus-within {
-    /*transform: translateY(-5px); crea problemi con l'overlay */ 
     box-shadow: 0 0 1rem var(--secondary-color); 
     border-color: var(--secondary-color);
 }
@@ -3767,7 +3752,6 @@ body.light-mode .close-modal:focus {
     box-shadow: 0 0 1rem var(--secondary-color);
 }
 
-/* Testi Card */
 .content-wine-article h2,
 .content-wine-article h3 {
     color: #222;
@@ -3784,8 +3768,6 @@ body.light-mode .close-modal:focus {
     font-size: 0.9em;
     margin-bottom: 0.5rem;
 }
-
-/* Azioni Card */
 
 .buy-button {
     background-color: #8a6b1e;
@@ -3850,7 +3832,7 @@ body.light-mode .buy-button:disabled {
     font-size: 1rem;
 }
 
-.btn-info-esaurito { /*old*/
+.btn-info-esaurito {
     align-self: center;
     width: 50%;
     margin: 0;
@@ -3880,7 +3862,6 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin
     opacity: 0;
 }
 
-/* L'overlay scuro (inizialmente nascosto) */
 .modal-overlay {
     position: fixed;
     top: 0; 
@@ -3895,7 +3876,6 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin
     padding: 20px;
 }
 
-/* se la checkbox è :checked, mostra l'overlay */
 .modal-toggle-checkbox:checked ~ .modal-overlay {
     display: flex;
 }
@@ -3933,10 +3913,7 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin
 /* =========================================
    CHIUSURA MODALE
    ========================================= */
-/*
-   - .modal-close-btn  => La Label (usata quando c'è JS)
-   - .modal-toggle-checkbox:checked => La Checkbox (usata quando NO-JS)
-*/
+
 .modal-close-btn,
 html.no-js .modal-toggle-checkbox:checked {
     position: fixed;
@@ -3957,7 +3934,6 @@ html.no-js .modal-toggle-checkbox:checked {
     font-size: 0;
 }
 
-/* disegno la x con CSS */
 .modal-close-btn::before, .modal-close-btn::after,
 html.no-js .modal-toggle-checkbox:checked::before,
 html.no-js .modal-toggle-checkbox:checked::after {
@@ -3993,30 +3969,24 @@ html.no-js .modal-toggle-checkbox:checked:focus {
 }
 
 /* ---------------------------------------------------------
-   GESTIONE VISIBILITÀ tra no-js e js
+   GESTIONE VISIBILITÀ 
 --------------------------------------------------------- */
 
-/* Se siamo SENZA JS: */
-/* Nascondi la label (perché non è accessibile da tastiera) */
 html.no-js .modal-close-btn {
-    display: none !important;
+    display: none;
 }
-/* Mostra la checkbox e resetta le proprietà che la nascondevano */
+
 html.no-js .modal-toggle-checkbox:checked {
     appearance: none;
     -webkit-appearance: none;
     display: block;
-    clip: auto;               /* Annulla .sr-only vecchio */
-    clip-path: none;          /* Annulla .sr-only nuovo */
+    clip: auto;              
+    clip-path: none;         
     overflow: visible;
 }
-/* se siamo con JS lo script toglie gli elementi con classe no-js
-
-/* --- GRID MODALE --- */
-
 .modal-grid {
     display: grid;
-    grid-template-columns: 1fr 1.8fr; /* immagine più piccola del testo */
+    grid-template-columns: 1fr 1.8fr; 
 }
 
 .modal-img-col {
@@ -4036,7 +4006,6 @@ html.no-js .modal-toggle-checkbox:checked {
     margin: 0;
 }
 
-/* contenitore delle azioni di una card */
 .card-actions{
     margin-top: 1rem;
     display: flex;
@@ -4050,7 +4019,6 @@ html.no-js .modal-toggle-checkbox:checked {
     width: 100%;
 }
 
-/* singola linea di azioni di una card */
 .card-action{
     height: 3rem;
     display: flex;
@@ -4094,7 +4062,6 @@ html.no-js .modal-toggle-checkbox:checked {
     padding-bottom: 5px;
 }
 
-/* Backdrop Close: Un label invisibile che copre tutto lo sfondo */
 .modal-backdrop-close {
     position: absolute;
     top: 0; left: 0;
@@ -4117,29 +4084,20 @@ body:has(.modal-toggle-checkbox:checked) {
    WIDGET QUANTITÀ
    ========================================= */
 
-/* --- STATO DI DEFAULT (NO-JS) --- */
-
-/* Mostriamo l'input nativo */
 .selettore-nojs {
     display: flex;
     width: 50%;
     justify-content: center;
 }
 
-/* --- STATO JS ATTIVO (SWITCH) --- */
-
-/* Quando .no-js viene rimossa, MOSTRA il widget JS */
 html:not(.no-js) .selettore-js {
     display: flex;
 }
 
-/* Quando .no-js viene rimossa, NASCONDI l'input nativo */
 html:not(.no-js) .selettore-nojs {
     display: none;
 }
-/* --- STILING SELETTORE QUANTITÀ (UNIFICATO) --- */
 
-/* Contenitore principale */
 .selettore-quantita {
     display: flex;
     align-items: center;
@@ -4148,7 +4106,6 @@ html:not(.no-js) .selettore-nojs {
     background: #fff;
 }
 
-/* Stile dei pulsanti + e - */
 .selettore-quantita button {
     background: none;
     border: none;
@@ -4190,7 +4147,6 @@ admin-fieldset legend {
     padding: 0 10px;
 }
 
-/* --- TOAST NOTIFICATION --- */
 #cart-toast {
     visibility: hidden;
     min-width: 250px;
@@ -4226,7 +4182,6 @@ admin-fieldset legend {
     font-size: 1.2em;
 }
 
-/* --- LIGHT MODE --- */
 body.light-mode #cart-toast {
     background-color: #fff;
     color: var(--text-color);
@@ -4257,7 +4212,6 @@ body.light-mode #cart-toast {
     line-height: 1.4; 
 }
 
-/* Lo spacer deve essere identico all'errore ma invisibile */
 .error-spacer {
     font-size: 0.85rem;
     font-weight: 500;
@@ -4267,12 +4221,6 @@ body.light-mode #cart-toast {
     line-height: 1.4;
     visibility: hidden; 
     user-select: none; 
-}
-
-@media print {
-  #theme-toggle {
-    display: none;
-  }
 }
 
 /* =========================================
