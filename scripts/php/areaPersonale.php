@@ -190,8 +190,8 @@ $tabellaOrdini = '';
 if (empty($ordini)) {
     $tabellaOrdini = '<div class="alert-box"><p><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Non hai ancora effettuato ordini. Visita la sezione <a href="vini.php">Vini!</a></p></div>';
 } else {
-    $tabellaOrdini .= '<div class="table-container">
-        <table class="table-data order-summary-table">
+    $tabellaOrdini .= '
+        <table class="table-data">
             <caption>Storico dei tuoi ordini</caption>
             <thead>
                 <tr>
@@ -231,15 +231,14 @@ if (empty($ordini)) {
         $tabellaOrdini .= '</ul></div>'; 
         $tabellaOrdini .= '<div class="details-section"><h4>Riepilogo e Spedizione:</h4><p><strong>Indirizzo Spedizione:</strong> ' . nl2br(htmlspecialchars($ordine['indirizzo_spedizione'])) . '</p><div class="details-summary"><p>Totale Prodotti: € ' . number_format($ordine['totale_prodotti'], 2, ',', '.') . '</p><p>Costo Spedizione: € ' . number_format($ordine['costo_spedizione'], 2, ',', '.') . '</p><p><strong>Totale Finale: <span>€ ' . number_format($ordine['totale_finale'], 2, ',', '.') . '</span></strong></p></div></div></div></td></tr>';
     }
-    $tabellaOrdini .= '</tbody></table></div>';
+    $tabellaOrdini .= '</tbody></table>';
 }
 
 $tabellaPrenotazioni = '';
 if (empty($prenotazioni)) {
     $tabellaPrenotazioni = '<div class="alert-box"><p><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Non hai ancora inviato richieste di prenotazione. Visita la sezione <a href="esperienze.php">Esperienze!</a></p></div>';
 } else {
-    $tabellaPrenotazioni .= '<div class="table-container">
-        <table class="table-data order-summary-table">
+    $tabellaPrenotazioni .= '<table class="table-data">
             <caption>Storico delle tue richieste esperienze</caption>
             <thead>
                 <tr>
@@ -279,7 +278,7 @@ if (empty($prenotazioni)) {
         $tabellaPrenotazioni .= '<li><span>Telefono</span><span>' . htmlspecialchars($prenotazione['prefisso']) . ' ' . htmlspecialchars($prenotazione['telefono']) . '</span></li>';
         $tabellaPrenotazioni .= '</ul></div></div></td></tr>';
     }
-    $tabellaPrenotazioni .= '</tbody></table></div>';
+    $tabellaPrenotazioni .= '</tbody></table>';
 }
 
 $inizialeNome = strtoupper(substr($infoUtente['nome'], 0, 1));
