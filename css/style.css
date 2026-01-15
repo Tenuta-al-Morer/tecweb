@@ -4306,13 +4306,14 @@ body.light-mode #cart-toast {
 
 .no-js .btn-fallback {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    cursor: pointer;
-    font-size: 0.8rem;
+    width: auto;
+    padding: 0.4rem 1rem;
+    font-size: 0.75rem;
     font-weight: 500;
-    line-height: 1;
+}
+
+.no-js .btn-secondary.toggle-details-btn {
+    display: none;
 }
 
 .no-js .order-details-row {
