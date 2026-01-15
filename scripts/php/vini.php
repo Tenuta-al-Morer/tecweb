@@ -84,11 +84,9 @@ function costruisciCardVino($vino) {
         $altText .= " - Esaurito";
         
         $cardActionHTML = '
-        <div class="card-actions card-actions-wrapper">
-             <div class="card-buy-block">
-                <button class="badge-esaurito" disabled>Esaurito</button>
-             </div>
-             <label for="' . $modalId . '" class="details-button" aria-label="Maggiori informazioni su ' . $nome . '">Info</label>
+        <div class="card-actions esaurito-wrapper">
+             <span class="badge-esaurito card-action">Esaurito</span>
+             <label for="' . $modalId . '" class="details-button card-action" aria-label="Maggiori informazioni su ' . $nome . '">Info</label>
         </div>';
         
         $modalActionHTML = '
@@ -102,7 +100,7 @@ function costruisciCardVino($vino) {
         $htmlStock = '<p class="stock-info ' . $classeStock . '"><i class="fas fa-check-circle"></i> ' . $testoStock . '</p>';
 
         $selectorHTML = '
-        <div class="selettore-quantita">
+        <div class="selettore-quantita card-action">
             <button type="submit" name="direction" value="minus" formaction="vini.php" class="btn-minus" aria-label="Riduci quantità">-</button>
             <input type="number" name="quantita" value="' . $qtySession . '" class="display-qty" min="1" max="' . $stock . '" aria-label="Quantità">
             <button type="submit" name="direction" value="plus" formaction="vini.php" class="btn-plus" aria-label="Aumenta quantità">+</button>
@@ -118,9 +116,9 @@ function costruisciCardVino($vino) {
             <div class="card-actions">
                 <div class="card-buy-block">
                     ' . $selectorHTML . '
-                    <button type="submit" class="buy-button">Acquista</button>
+                    <button type="submit" class="buy-button card-action">Acquista</button>
                 </div>
-                <label for="' . $modalId . '" class="details-button" aria-label="Maggiori informazioni su ' . $nome . '">Info</label>
+                <label for="' . $modalId . '" class="details-button card-action" aria-label="Maggiori informazioni su ' . $nome . '">Info</label>
             </div>
         </form>';
 

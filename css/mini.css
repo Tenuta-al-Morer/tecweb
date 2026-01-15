@@ -1132,6 +1132,10 @@ body.light-mode .table-data td::before {
     box-shadow: 0 10px 20px rgba(197, 165, 81, 0.25);
 }
 
+.card-buy-block{
+    flex-wrap: wrap;
+}
+
 .content-wine-article h2,
 .content-wine-article h3 {
     color: #222;
