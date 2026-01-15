@@ -4300,9 +4300,7 @@ body.light-mode #cart-toast {
     display: none;
 }
 
-.no-js .toggle-details-btn,
-.no-js .switch,
-.admin-table-head.no-js {
+.no-js .admin-table-head {
     display: none;
 }
 
@@ -4351,6 +4349,10 @@ body.light-mode #cart-toast {
 }
 
 .no-js #theme-toggle {
+    display: none;
+}
+
+.no-js .map-section {
     display: none;
 }
 
