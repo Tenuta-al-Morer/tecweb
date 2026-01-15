@@ -15,7 +15,7 @@ html{
 #help, label.menu-toggle, #main-navigation, .mobile-icons, #theme-toggle, .hero-actions, .hero-bg, span.link-arrow, section.slider-section, footer a,
 #backToTopBtn, .tenuta-card-image img, section.form-container, section.map-section, aside.alert-box, .empty-cart-message i, .btn-shop-empty,
 div#shipping-message-container, .btn-full, .item-actions-row, .cart-item-price-col, .dashboard-sidebar, .td_richiesta_degustazione, .danger-zone,
-#sicurezza, .Richieste_gestionale, .admin-table-head, p.sum, #menu-checkbox{
+#sicurezza, .admin-table-head, p.sum, #menu-checkbox, .details-content .details-section:not(:first-child), .Richieste_gestionale{
 	display:none;
 }
 
@@ -201,3 +201,13 @@ footer{ margin-top:10px; }
     padding: 1rem; font-size: 1.5rem; color: var(--secondary-color);
     padding-bottom: 0.8rem;
 }
+
+
+/*Gestione dettagli prodotto*/
+
+
+.details-products-list li span:first-child {
+    margin-right: 5px;
+}
+
+
