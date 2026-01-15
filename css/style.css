@@ -13,7 +13,7 @@
     --always-bright: #C5A551;
     --enhance: #c51e26;
     --errors: #FF2934;
-    --right: #28a745;
+    --right: #02771d;
     --attention: #ffc107;
     --background: #1D1D1D;
     --always-dark-bg: #1D1D1D;
@@ -26,7 +26,7 @@ body.light-mode {
     --text-color: #121212;
     --background: #f4f4f4;
     --border-color: #4b4b4b;
-    --secondary-color: #8a6b1e;
+    --secondary-color: #7A5F1A;
     --errors: #990109;
     --right: #02771d;
     --attention: #856404;
@@ -1005,11 +1005,6 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
     border-bottom: 0;
 }
 
-.table-data tbody tr:not(.order-details-row):has(+ tr.order-details-row.is-hidden:last-child) td,
-.table-data tbody tr:not(.order-details-row):has(+ tr.order-details-row.is-hidden:last-child) th {
-    border-bottom: 0;
-}
-
 .table-data tbody tr:hover, .table-data tbody tr:focus-within {
     background-color: var(--background);
 }
@@ -1966,7 +1961,7 @@ footer a:visited {
 }
 
 .user-nav-link.is-active {
-    background-color: rgba(197, 165, 81, 0.15);
+    background-color: rgba(196, 176, 126, 0.15);
     color: var(--secondary-color);
     font-weight: 700;
     border-left-color: var(--border-color);
@@ -1979,7 +1974,7 @@ body.light-mode .user-nav-link:focus {
 }
 
 body.light-mode .user-nav-link.is-active {
-    background-color: #e1d8c2;
+    background-color: #E0E0E0;
     color: var(--secondary-color);
     border-left-color: var(--secondary-color);
 }
@@ -4386,7 +4381,6 @@ body.light-mode #cart-toast {
 }
 
 .no-js .user-nav-link[data-section] {
-    color: var(--secondary-color);
     font-weight: 700;
 }
 
@@ -4459,3 +4453,19 @@ body .auth-container .auth-form .form-group input:-webkit-autofill:active {
     font-size: inherit;
 }
 
+.standard-form .form-group input:-webkit-autofill,
+.standard-form .form-group input:-webkit-autofill:hover, 
+.standard-form .form-group input:-webkit-autofill:focus, 
+.standard-form .form-group input:-webkit-autofill:active,
+.standard-form .form-group select:-webkit-autofill,
+.standard-form .form-group select:-webkit-autofill:hover, 
+.standard-form .form-group select:-webkit-autofill:focus, 
+.standard-form .form-group select:-webkit-autofill:active {
+
+    -webkit-box-shadow: 0 0 0 1000px var(--background) inset;
+    -webkit-text-fill-color: var(--text-color);
+    caret-color: var(--text-color);
+    transition: background-color 5000s ease-in-out 0s;
+    font-family: inherit;
+    font-size: inherit;
+}

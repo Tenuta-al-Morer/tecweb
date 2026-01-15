@@ -35,6 +35,21 @@
     color: var(--always-bright);
 }
 
+.menu-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#menu-checkbox:checked ~ .primary-navigation {
+    display: block;
+    animation: slideDown 0.3s ease-out; 
+}
+
+#menu-checkbox:checked ~ .menu-toggle {
+    color: var(--always-bright);
+}
+
 .logo-link {
     flex: 1 1 auto;
     display: flex;
@@ -271,6 +286,10 @@ footer {
     border: none;
 }
 
+.table-data{
+    border: none;
+}
+
 .table-data, .table-data thead, .table-data tbody,
 .table-data th, .table-data td, .table-data tr {
     display: block;
@@ -317,10 +336,6 @@ footer {
     position: relative;
     padding: 0.8em 1em;
     text-align: left;
-}
-
-.table-data td:last-child {
-    border-bottom: 0;
 }
 
 .table-data td::before {
@@ -547,11 +562,11 @@ body.light-mode .table-data td::before {
     display: block;
 }
 
-.no-js .order-details-row:target {
+.no-js .table-data tr.order-details-row:target {
     display: block;
 }
 
-.no-js .order-details-row:target td {
+.no-js .table-data tr.order-details-row:target td {
     display: block;
     border-bottom: none;
 }
@@ -1423,3 +1438,6 @@ select:focus {
         font-size: 0.95rem;
     }
 }
+
+
+

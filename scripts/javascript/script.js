@@ -139,53 +139,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================
-     * 2. MENU DI NAVIGAZIONE
+     * 2. MENU DI NAVIGAZIONE 
      * ========================================== */
     safeExecute('Navigation Menu', () => {
-        const menuButton = document.querySelector('.menu-toggle');
+        const menuCheckbox = document.getElementById('menu-checkbox'); 
         const navMenu = document.querySelector('#main-navigation');
+        const menuLabel = document.querySelector('.menu-toggle');
 
-        if (menuButton && navMenu) {
+        if (menuCheckbox && navMenu && menuLabel) {
             
-            const apriMenu = () => {
-                navMenu.classList.add('is-open');
-                menuButton.setAttribute('aria-expanded', 'true');
-            };
-
             const chiudiMenu = () => {
-                navMenu.classList.remove('is-open');
-                menuButton.setAttribute('aria-expanded', 'false');
+                menuCheckbox.checked = false; 
+                menuLabel.setAttribute('aria-expanded', 'false'); 
+                navMenu.classList.remove('is-open'); 
             };
 
-            
-            document.addEventListener('click', (e) => {
-                const clickTarget = e.target;
-                const isMenuOpen = navMenu.classList.contains('is-open');
-
+            menuCheckbox.addEventListener('change', () => {
+                const isOpen = menuCheckbox.checked;
+                menuLabel.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
                 
-                if (clickTarget.closest('.menu-toggle')) {
-                    e.preventDefault(); 
-                    if (isMenuOpen) {
-                        chiudiMenu();
-                    } else {
-                        apriMenu();
-                    }
-                    return; 
-                }
-
-                
-                if (isMenuOpen && !clickTarget.closest('#main-navigation')) {
-                    chiudiMenu();
+                if(isOpen) {
+                    navMenu.classList.add('is-open');
+                } else {
+                    navMenu.classList.remove('is-open');
                 }
             });
 
-            
-            window.addEventListener('scroll', () => {
+            document.addEventListener('click', (e) => {
                 
-                if (navMenu.classList.contains('is-open')) {
+                if (menuCheckbox.checked && 
+                    !e.target.closest('#main-navigation') && 
+                    !e.target.closest('.menu-toggle') &&
+                    e.target !== menuCheckbox) {
+                    
                     chiudiMenu();
                 }
-            }, { passive: true }); 
+            });
+            window.addEventListener('scroll', () => {
+                if (menuCheckbox.checked) {
+                    chiudiMenu();
+                }
+            }, { passive: true });
         }
     });
 
@@ -1068,7 +1062,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 if (action === 'piu' && currentQty >= maxStock) {
-                    alert("Quantità massima disponibile raggiunta.");
                     return;
                 }
 
@@ -1325,7 +1318,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
 
                     } else {
-                        alert("Attenzione: " + (data.message || data.error || "Errore sconosciuto"));
                     }
                 })
                 .catch(error => {
@@ -1380,7 +1372,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         match.classList.remove('is-highlighted');
                     }, 1500);
                 } else {
-                    alert('Nessun vino trovato con quel nome.');
                 }
             });
         }
