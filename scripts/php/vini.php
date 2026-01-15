@@ -77,7 +77,6 @@ function costruisciCardVino($vino) {
     $descId = "modal-desc-" . $id;
     $specsCaptionId = "modal-specs-cap-" . $id;
 
-    // Logica Quantità Sessione
     $qtySession = isset($_SESSION['vini_qty'][$id]) ? $_SESSION['vini_qty'][$id] : 1;
     if ($qtySession > $stock && $stock > 0) $qtySession = $stock;
 
@@ -86,29 +85,17 @@ function costruisciCardVino($vino) {
     $modalActionHTML = "";
     $altText = "Bottiglia di " . $nome;
 
-    // --- COSTRUZIONE TRIGGER, usato per differenziare uso con JS e senza JS ---
-
-    // 1. Label per No-JS: Controlla la checkbox via CSS.
-    // La classe 'no-js-visible' la nasconderà se c'è JS.
-    $triggerNoJs = '
-    <label for="' . $modalId . '" class="details-button no-js-visible" aria-hidden="true">
+    $triggerHTML = '
+    <label for="' . $modalId . '" class="details-button" tabindex="0" role="button">
         Info
     </label>';
 
-    // 2. Button per JS: Controllato da script.js.
-    // La classe 'js-visible' lo mostrerà solo se JS è attivo.
-    $triggerJs = '
-    <button type="button" 
-            class="details-button js-visible"
-            aria-haspopup="dialog" 
-            aria-controls="' . $dialogId . '"
-            data-checkbox-id="' . $modalId . '">
-        Info
-    </button>';
+    $closeButtonsHTML = '
+        <label for="' . $modalId . '" class="modal-close-btn" aria-label="Chiudi scheda ' . $nome . '" tabindex="0" role="button">
+            &times;
+        </label>
+    ';
 
-    $triggerHTML = $triggerNoJs . $triggerJs;
-
-    // --- LOGICA STOCK E BOTTONI ACQUISTO ---
     if ($stock <= 0) {
         $altText .= " - Esaurito";
         
@@ -187,14 +174,6 @@ function costruisciCardVino($vino) {
                  aria-describedby="' . $priceId . ' '. $descBreve . '"
                  tabindex="0">
 
-                <button type="button" class="modal-close-btn js-visible js-close-modal" aria-label="Chiudi scheda ' . $nome . '">
-                    &times;
-                </button>
-                
-                <label for="' . $modalId . '" class="modal-close-btn no-js-visible" aria-label="Chiudi scheda ' . $nome . '">
-                    &times;
-                </label>
-
                 <div class="modal-grid">
                     <div class="modal-img-col">
                         <img src="' . $img . '" alt="' . $altText . '">
@@ -223,6 +202,7 @@ function costruisciCardVino($vino) {
                         ' . $modalActionHTML . '
                     </div>
                 </div>
+                ' . $closeButtonsHTML . '
             </div>
             
             <label for="' . $modalId . '" class="modal-backdrop-close" aria-hidden="true"></label>

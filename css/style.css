@@ -3866,12 +3866,12 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin
 }
 
 /* =========================================
-   CHIUSURA MODALE
+   CHIUSURA MODALE QUI
    ========================================= */
 
 .modal-close-btn,
-html.no-js .modal-toggle-checkbox:checked {
-    position: fixed;
+html.no-js .modal-toggle-checkbox:checked { 
+    position: absolute;
     top: 20px;
     right: 20px;
     width: 44px;

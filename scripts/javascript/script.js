@@ -1291,6 +1291,109 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
+
+        const modalCheckboxes = document.querySelectorAll('.modal-toggle-checkbox');
+        
+        if (modalCheckboxes.length > 0) {
+            let ultimoElementoFocusato = null;
+
+            modalCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const modalOverlay = this.nextElementSibling;
+                    const modalContent = modalOverlay ? modalOverlay.querySelector('.modal-content') : null;
+
+                    if (!modalContent) return;
+
+                    if (this.checked) {
+                        ultimoElementoFocusato = document.activeElement;
+                        attivaFocusTrap(modalContent, this);
+                    } else {
+                        if (ultimoElementoFocusato) {
+                            ultimoElementoFocusato.focus();
+                            ultimoElementoFocusato = null;
+                        }
+                    }
+                });
+            });
+
+            function attivaFocusTrap(modal, checkboxController) {
+                const focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
+                
+                const getFocusables = () => {
+                     let elements = Array.from(modal.querySelectorAll(focusableElementsString));
+                     return elements.filter(el => el.offsetParent !== null);
+                };
+
+                let focusables = getFocusables();
+                if (focusables.length === 0) return;
+
+                let firstTabStop = focusables[0];
+                let lastTabStop = focusables[focusables.length - 1];
+
+                modal.focus();
+                if (document.activeElement !== modal) {
+                    firstTabStop.focus();
+                }
+
+                const keyHandler = function(e) {
+                    if (e.key === 'Escape') {
+                        checkboxController.checked = false;
+                        checkboxController.dispatchEvent(new Event('change'));
+                        return;
+                    }
+
+                    if (e.key === 'Tab') {
+                        focusables = getFocusables();
+                        firstTabStop = focusables[0];
+                        lastTabStop = focusables[focusables.length - 1];
+
+                        if (e.shiftKey) { 
+                            if (document.activeElement === firstTabStop || document.activeElement === modal) {
+                                e.preventDefault();
+                                lastTabStop.focus();
+                            }
+                        } else { 
+                            if (document.activeElement === lastTabStop) {
+                                e.preventDefault();
+                                firstTabStop.focus();
+                            }
+                        }
+                    }
+                };
+
+                const globalFocusHandler = function(e) {
+                    if (!checkboxController.checked) return;
+
+                    if (!modal.contains(e.target)) {
+                        e.stopPropagation();
+                        e.preventDefault(); 
+                        firstTabStop.focus(); 
+                    }
+                };
+
+                const windowFocusHandler = function() {
+                    if (checkboxController.checked && !modal.contains(document.activeElement)) {
+                        firstTabStop.focus();
+                    }
+                };
+
+                modal.addEventListener('keydown', keyHandler);
+                
+                document.addEventListener('focus', globalFocusHandler, true); 
+                
+                window.addEventListener('focus', windowFocusHandler);
+
+                const cleanupListener = function() {
+                    if (!checkboxController.checked) {
+                        modal.removeEventListener('keydown', keyHandler);
+                        document.removeEventListener('focus', globalFocusHandler, true);
+                        window.removeEventListener('focus', windowFocusHandler);
+                        checkboxController.removeEventListener('change', cleanupListener);
+                    }
+                };
+                checkboxController.addEventListener('change', cleanupListener);
+            }
+        }
     });
     
     /* ==========================================
