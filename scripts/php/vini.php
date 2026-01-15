@@ -69,9 +69,15 @@ function costruisciCardVino($vino) {
     $temperatura = htmlspecialchars($vino['temperatura'] ?? '-');
     $abbinamenti = htmlspecialchars($vino['abbinamenti'] ?? '-');
 
-    $modalId = "modal-vino-" . $id;
     $anchorId = "vino-" . $id;
+    $modalId = "modal-vino-" . $id;
+    $dialogId = "dialog-" . $id;
+    $titleId = "modal-title-" . $id;
+    $priceId = "modal-price-" . $id; 
+    $descId = "modal-desc-" . $id;
+    $specsCaptionId = "modal-specs-cap-" . $id;
 
+    // Logica Quantità Sessione
     $qtySession = isset($_SESSION['vini_qty'][$id]) ? $_SESSION['vini_qty'][$id] : 1;
     if ($qtySession > $stock && $stock > 0) $qtySession = $stock;
 
@@ -80,19 +86,39 @@ function costruisciCardVino($vino) {
     $modalActionHTML = "";
     $altText = "Bottiglia di " . $nome;
 
+    // --- COSTRUZIONE TRIGGER, usato per differenziare uso con JS e senza JS ---
+
+    // 1. Label per No-JS: Controlla la checkbox via CSS.
+    // La classe 'no-js-visible' la nasconderà se c'è JS.
+    $triggerNoJs = '
+    <label for="' . $modalId . '" class="details-button no-js-visible" aria-hidden="true">
+        Info
+    </label>';
+
+    // 2. Button per JS: Controllato da script.js.
+    // La classe 'js-visible' lo mostrerà solo se JS è attivo.
+    $triggerJs = '
+    <button type="button" 
+            class="details-button js-visible"
+            aria-haspopup="dialog" 
+            aria-controls="' . $dialogId . '"
+            data-checkbox-id="' . $modalId . '">
+        Info
+    </button>';
+
+    $triggerHTML = $triggerNoJs . $triggerJs;
+
+    // --- LOGICA STOCK E BOTTONI ACQUISTO ---
     if ($stock <= 0) {
         $altText .= " - Esaurito";
         
         $cardActionHTML = '
         <div class="card-actions esaurito-wrapper">
              <span class="badge-esaurito card-action">Esaurito</span>
-             <label for="' . $modalId . '" class="details-button card-action" aria-label="Maggiori informazioni su ' . $nome . '">Info</label>
+             ' . $triggerHTML . '
         </div>';
         
-        $modalActionHTML = '
-        <div class="modal-buy-block">
-              <span class="badge-esaurito">Esaurito</span>
-        </div>';
+        $modalActionHTML = '<div class="modal-buy-block"><span class="badge-esaurito">Esaurito</span></div>';
 
     } else {
         $testoStock = ($stock <= 20) ? "Ultimi " . $stock . " pezzi!" : "Disponibile";
@@ -101,9 +127,9 @@ function costruisciCardVino($vino) {
 
         $selectorHTML = '
         <div class="selettore-quantita card-action">
-            <button type="submit" name="direction" value="minus" formaction="vini.php" class="btn-minus" aria-label="Riduci quantità">-</button>
-            <input type="number" name="quantita" value="' . $qtySession . '" class="display-qty" min="1" max="' . $stock . '" aria-label="Quantità">
-            <button type="submit" name="direction" value="plus" formaction="vini.php" class="btn-plus" aria-label="Aumenta quantità">+</button>
+            <button type="submit" name="direction" value="minus" formaction="vini.php" class="btn-minus" aria-label="Riduci quantità di ' . $nome . '">-</button>
+            <input type="number" name="quantita" value="' . $qtySession . '" class="display-qty" min="1" max="' . $stock . '" aria-label="Quantità da acquistare">
+            <button type="submit" name="direction" value="plus" formaction="vini.php" class="btn-plus" aria-label="Aumenta quantità di ' . $nome . '">+</button>
         </div>';
 
         $cardActionHTML = '
@@ -116,9 +142,9 @@ function costruisciCardVino($vino) {
             <div class="card-actions">
                 <div class="card-buy-block">
                     ' . $selectorHTML . '
-                    <button type="submit" class="buy-button card-action">Acquista</button>
+                    <button type="submit" class="buy-button card-action">Acquista <span class="sr-only">' . $nome . '</span></button>
                 </div>
-                <label for="' . $modalId . '" class="details-button card-action" aria-label="Maggiori informazioni su ' . $nome . '">Info</label>
+                ' . $triggerHTML . '
             </div>
         </form>';
 
@@ -131,7 +157,7 @@ function costruisciCardVino($vino) {
             
             <div class="modal-buy-block">
                 ' . $selectorHTML . '
-                <button type="submit" class="buy-button modal-btn-large">Aquista</button>
+                <button type="submit" class="buy-button modal-btn-large">Acquista <span class="sr-only">' . $nome . '</span></button>
             </div>
         </form>';
     }
@@ -152,32 +178,54 @@ function costruisciCardVino($vino) {
         <input type="checkbox" id="' . $modalId . '" class="modal-toggle-checkbox sr-only">
         
         <div class="modal-overlay">
-            <div class="modal-content">
-                <label for="' . $modalId . '" class="modal-close-btn" tabindex="0" role="button" aria-label="Chiudere informazioni di ' . $nome . '">&times;</label>
+            
+            <div id="' . $dialogId . '" 
+                 class="modal-content"
+                 role="dialog"
+                 aria-modal="true"
+                 aria-labelledby="' . $titleId . '"
+                 aria-describedby="' . $priceId . ' '. $descBreve . '"
+                 tabindex="0">
+
+                <button type="button" class="modal-close-btn js-visible js-close-modal" aria-label="Chiudi scheda ' . $nome . '">
+                    &times;
+                </button>
                 
+                <label for="' . $modalId . '" class="modal-close-btn no-js-visible" aria-label="Chiudi scheda ' . $nome . '">
+                    &times;
+                </label>
+
                 <div class="modal-grid">
                     <div class="modal-img-col">
                         <img src="' . $img . '" alt="' . $altText . '">
                     </div>
+
                     <div class="modal-info-col">
-                        <h2>' . $nome . '</h2>
-                        <p class="modal-price">€ ' . $prezzo . '</p>
-                        
-                        <p class="modal-desc">' . $descEstesa . '</p>
-                        
+                        <h2 id="' . $titleId . '">' . $nome . '</h2>
+
+                        <p class="modal-price" id="' . $priceId . '">Prezzo: € ' . $prezzo . '</p>
+
+                        <p class="modal-desc" id="' . $descId . '">' . $descEstesa . '</p>
+
                         <div class="modal-specs">
-                            <p><strong>Vitigno:</strong> ' . $vitigno . '</p>
-                            <p><strong>Annata:</strong> ' . $annata . '</p>
-                            <p><strong>Gradi:</strong> ' . $gradazione . '</p>
-                            <p><strong>Temperatura:</strong> ' . $temperatura . '</p>
-                            <p><strong>Abbinamenti:</strong> ' . $abbinamenti . '</p>
+                            <table class="modal-specs-table">
+                                <caption class="sr-only" id="' . $specsCaptionId . '">Specifiche tecniche di ' . $nome . '</caption>
+                                <tbody>
+                                    <tr><th scope="row">Vitigno</th><td>' . $vitigno . '</td></tr>
+                                    <tr><th scope="row">Annata</th><td>' . $annata . '</td></tr>
+                                    <tr><th scope="row">Gradi</th><td>' . $gradazione . '</td></tr>
+                                    <tr><th scope="row">Temperatura</th><td>' . $temperatura . '</td></tr>
+                                    <tr><th scope="row">Abbinamenti</th><td>' . $abbinamenti . '</td></tr>
+                                </tbody>
+                            </table>
                         </div>
-                        
+
                         ' . $modalActionHTML . '
                     </div>
                 </div>
             </div>
-            <label for="' . $modalId . '" class="modal-backdrop-close"></label>
+            
+            <label for="' . $modalId . '" class="modal-backdrop-close" aria-hidden="true"></label>
         </div>
     </article>';
 }
