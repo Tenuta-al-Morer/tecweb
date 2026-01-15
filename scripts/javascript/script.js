@@ -1225,7 +1225,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     /* ==========================================
-     * 11. LOGICA PAGINA VINI (AGGIORNATA)
+     * 11. LOGICA PAGINA VINI
      * ========================================== */
     safeExecute('Pagina Vini', () => {
 
@@ -1375,6 +1375,115 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
+    });
+    
+    /* ==========================================
+    * GESTIONE MODALE IBRIDA (JS + NO-JS)
+    * ========================================== */
+    safeExecute('Hybrid Modal', () => { /* separa e crea "parti" che quindi coprano assieme tutti gli utenti */
+
+        document.documentElement.classList.remove('no-js');
+        
+        const openButtons = document.querySelectorAll('button.js-visible[data-checkbox-id]');
+        const closeButtons = document.querySelectorAll('button.js-close-modal');
+        
+        let lastFocusedElement = null;
+
+        // --- Simula il click sulla checkbox ma gestisce il focus ---
+        function openModal(btn) {
+            const checkboxId = btn.getAttribute('data-checkbox-id');
+            const checkbox = document.getElementById(checkboxId);
+            const dialogId = btn.getAttribute('aria-controls');
+            const dialog = document.getElementById(dialogId);
+
+            if (checkbox && dialog) {
+                lastFocusedElement = btn;
+                checkbox.checked = true;
+                
+                document.body.style.overflow = 'hidden';
+
+                // FOCUS MANAGEMENT
+                // Spostiamo il focus sul contenitore o sul titolo
+                const title = dialog.querySelector('h2');
+                if (title) {
+                    title.setAttribute('tabindex', '-1');
+                    title.focus();
+                } else {
+                    dialog.focus();
+                }
+
+                // Attiva Focus Trap
+                dialog.addEventListener('keydown', trapFocus);
+                document.addEventListener('keydown', handleEsc);
+            }
+        }
+
+        // --- FUNZIONE CHIUSURA ---
+        function closeModal(btn) {
+            // Trova la checkbox risalendo dal bottone chiudi
+            const overlay = btn.closest('.modal-overlay');
+            const checkbox = overlay.previousElementSibling; 
+            
+            if (checkbox) {
+                checkbox.checked = false;
+                document.body.style.overflow = '';
+                
+                const dialog = overlay.querySelector('.modal-content');
+                dialog.removeEventListener('keydown', trapFocus);
+                document.removeEventListener('keydown', handleEsc);
+
+                // Ritorna il focus al bottone che aveva aperto
+                if (lastFocusedElement) lastFocusedElement.focus();
+            }
+        }
+
+        // --- LOGICA FOCUS TRAP ---
+        function trapFocus(e) {
+            if (e.key !== 'Tab') return;
+            const dialog = e.currentTarget;
+            const focusables = dialog.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            const first = focusables[0];
+            const last = focusables[focusables.length - 1];
+
+            if (e.shiftKey) { // Shift + Tab, per andare indietro
+                if (document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                }
+            } else { // Tab
+                if (document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            }
+        }
+
+        function handleEsc(e) {
+            if (e.key === 'Escape') {
+                const checked = document.querySelector('.modal-toggle-checkbox:checked');
+                if (checked) {
+                    // Simula click sul pulsante di chiusura del modale aperto
+                    const overlay = checked.nextElementSibling;
+                    const closeBtn = overlay.querySelector('.js-close-modal');
+                    if (closeBtn) closeModal(closeBtn);
+                }
+            }
+        }
+
+        // --- EVENT LISTENERS ---
+        openButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal(btn);
+            });
+        });
+
+        closeButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                closeModal(btn);
+            });
+        });
     });
 
     /* ==========================================

@@ -4062,6 +4062,76 @@ html.no-js .modal-toggle-checkbox:checked {
     padding-bottom: 5px;
 }
 
+/* Stile per la tabella specifiche nel modale */
+.modal-specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-specs-table th, 
+.modal-specs-table td {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+    font-size: 1rem;
+}
+
+.modal-specs-table th {
+    font-weight: 700;
+    color: var(--secondary-color);
+    width: 40%;
+}
+
+.modal-specs-table td {
+    color: #000;
+    text-align: right;
+}
+
+/* Rimuovi bordo ultima riga */
+.modal-specs-table tr:last-child th,
+.modal-specs-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* =========================================
+   VISIBILITÀ IBRIDA (NO-JS e JS)
+   ========================================= */
+
+/* 1. STATO DEFAULT (JS Attivo)
+   Assumiamo che JS rimuova la classe .no-js.
+   Nascondiamo gli elementi destinati solo a chi non ha JS. */
+.no-js-visible {
+    display: none;
+}
+.js-visible {
+    display: inline-block; /* Mostra il bottone JS */
+}
+/* 2. STATO NO-JS (Fallback)
+   Si attiva quando <html class="no-js"> è presente.
+   Usiamo il selettore discendente "html.no-js ..." che ha specificità più alta
+   rispetto alle classi base, sovrascrivendo il display: none. */
+
+/* Mostra i trigger NO-JS (Label Info e Label Chiudi) */
+html.no-js .no-js-visible {
+    display: inline-block; /* Mostra la Label */
+}
+
+/* In No-JS, la X di chiusura deve essere visibile (è una label) */
+html.no-js label.modal-close-btn.no-js-visible {
+    display: flex;
+}
+
+/* In No-JS, nascondi il bottone che richiede script */
+html.no-js .js-visible {
+    display: none;
+}
+html:not(.no-js) .modal-toggle-checkbox {
+    display: none;
+}
+
+/* Backdrop Close: Un label invisibile che copre tutto lo sfondo */
 .modal-backdrop-close {
     position: absolute;
     top: 0; left: 0;
