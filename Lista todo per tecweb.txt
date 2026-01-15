@@ -1,5 +1,5 @@
 Lista todo per tecweb:
-- mettere classe no-js nelle componenti che senza js non funzionano e quindi non ha senso tenerle
+- mettere classe no-js nelle componenti che senza js non funzionano e quindi non ha senso tenerle -> Michele
 - sistemare cerca vino in vini (manca da fare la ricerca nella pagina vini. Il resto è apposto)
 - sistemare tabelle del gestionale, hanno la riga sotto più spessa. Correggere modalità mini del gestionale
 - sistemare "mostra dettagli" nel gestionale nel caso senza JS in modalità mini
