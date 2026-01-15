@@ -197,6 +197,13 @@ function caricaPagina($nomeFileHTML) {
             </svg>
         </button>';
 
+    $menuTogle = '<input type="checkbox" id="menu-checkbox" class="menu-checkbox visually-hidden">
+
+            <label for="menu-checkbox" class="menu-toggle" aria-controls="main-navigation" aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+                <span class="visually-hidden">Apri il menu di navigazione</span>
+            </label>';
+
 
     // Sostituisco il segnaposto del carrello/matita
     $htmlContent = str_replace("[cart_icon_link]", $cartIconHTML, $htmlContent);
@@ -206,6 +213,8 @@ function caricaPagina($nomeFileHTML) {
     $htmlContent = str_replace("[footer]", $footer, $htmlContent);
     // Sostituisco back to top button
     $htmlContent = str_replace("[back_to_top_button]", $backToTopBtn, $htmlContent);
+
+    $htmlContent = str_replace("[menu_toggle]", $menuTogle, $htmlContent);
 
     return $htmlContent;
 }

@@ -35,6 +35,21 @@
     color: var(--always-bright);
 }
 
+.menu-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#menu-checkbox:checked ~ .primary-navigation {
+    display: block;
+    animation: slideDown 0.3s ease-out; 
+}
+
+#menu-checkbox:checked ~ .menu-toggle {
+    color: var(--always-bright);
+}
+
 .logo-link {
     flex: 1 1 auto;
     display: flex;
@@ -1423,3 +1438,6 @@ select:focus {
         font-size: 0.95rem;
     }
 }
+
+
+
