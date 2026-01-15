@@ -341,74 +341,6 @@ body.light-mode .navigationHelp:focus {
     justify-content: flex-end;  
 }
 
-/* Tabelle responsive area admin */
-@media screen and (max-width: 1300px) {
-    .table-container:has(.table-early-break) {
-        border: none;
-    }
-
-    .table-early-break caption {
-        position: absolute;
-        text-indent: -999em;
-        border-bottom: none;
-    }
-    
-    .table-early-break {
-        border: none; 
-    }
-
-    .table-early-break, .table-early-break thead, .table-early-break tbody,
-    .table-early-break th, .table-early-break td, .table-early-break tr {
-        display: block;
-    }
-
-    .table-early-break thead tr {
-        position: absolute; 
-        top: -9999px; 
-        left: -9999px;
-    }
-
-    .table-early-break tr {
-        border: 1px solid var(--border-color); 
-        border-radius: 8px; 
-        margin-bottom: 2em;
-        background-color: var(--background); 
-        box-shadow: 0 4px 8px #000; 
-        overflow: hidden;
-    }
-
-    .table-early-break tbody th {
-        background-color: var(--background);
-        color: var(--secondary-color);
-        font-weight: 700;
-        text-align: center; 
-        padding: 1em;
-        border-bottom: 1px solid var(--border-color);
-        font-size: 1.1em;
-    }
-
-    .table-early-break td {
-        border: none; 
-        border-bottom: 1px solid var(--border-color); 
-        position: relative;
-        padding: 0.8em 1em;
-        text-align: left; 
-    }
-
-    .table-early-break td:last-child { 
-        border-bottom: 0; 
-    }
-
-    .table-early-break td::before {
-        content: attr(data-title) ": "; 
-        color: var(--secondary-color);
-        font-weight: 700;
-        
-        display: inline;
-        margin-right: 0.3em;
-    }
-}
-
 /* = = = = = = = = = = = = 
    SWITCH ADMIN TABLE HEAD
    = = = = = = = = = = = =  */
@@ -1039,36 +971,28 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
    TABELLE 
    ========================================= */
 
-.table-container {
-    width: 100%;
-    margin-bottom: 2rem;
-    border-top: 1px solid var(--border-color);
-    border-left: 1px solid var(--border-color);
-    border-right: 1px solid var(--border-color);
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.table-container caption{
-    border-bottom: 1px solid var(--border-color);
-}
-
 .table-data {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: var(--background);
 }
 
 .table-data th, .table-data td {
     padding: 1rem;
     text-align: left;
-    border-bottom: 1px solid var(--border-color);
     word-wrap: break-word;
     overflow-wrap: anywhere;
     word-break: break-word; 
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--background);
 }
 
 .table-data thead th {
-    background-color: var(--background);
     color: var(--secondary-color);
     font-weight: 700;
     text-transform: uppercase;
@@ -1076,8 +1000,32 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
     letter-spacing: 0.05em;
 }
 
+.table-data tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.table-data tbody tr:not(.order-details-row):has(+ tr.order-details-row.is-hidden:last-child) td {
+    border-bottom: 0;
+}
+
 .table-data tbody tr:hover, .table-data tbody tr:focus-within {
     background-color: var(--background);
+}
+
+.table-data thead th:first-child {
+    border-top-left-radius: 6px;
+}
+
+.table-data thead th:last-child {
+    border-top-right-radius: 6px;
+}
+
+.table-data tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 6px;
+}
+
+.table-data tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 6px;
 }
 
 .table-data th[scope="row"] a {
@@ -1096,7 +1044,7 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
 .table-data caption {
     caption-side: top; text-align: center; font-weight: 700;
     padding: 1rem; font-size: 1.5rem; color: var(--secondary-color);
-    /*border-bottom: 1px solid var(--border-color); */padding-bottom: 0.8rem;
+    padding-bottom: 0.8rem;
 }
 
 main h1 { margin-bottom: 0.3em; }
@@ -2095,29 +2043,6 @@ body.light-mode .user-nav-link.is-active {
     background-color: var(--enhance);
     color: #fff;
     filter: brightness(0.9);
-}
-
-/* =========================================
-TABELLE ORDINI E DETTAGLI
-============================================
-*/
-
-.order-summary-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.order-summary-table thead th {
-    color: var(--secondary-color);
-    padding: 1rem;
-    text-align: left;
-}
-
-.order-summary-table tbody td {
-    vertical-align: middle;
-    padding: 1rem;
-    border-bottom: 1px solid var(--border-color);
-    color: var(--text-color);
 }
 
 .order-status-badge {
@@ -4339,16 +4264,6 @@ body.light-mode #cart-toast {
     opacity: 1;
     visibility: visible;
     background-color: rgba(197, 165, 81, 0.05);
-}
-
-@media screen and (max-width: 1300px) {
-    .no-js .table-early-break .order-details-row:target {
-        display: block;
-    }
-    .no-js .table-early-break .order-details-row:target td {
-        display: block;
-        border-bottom: none;
-    }
 }
 
 .no-js .user-nav-link[data-section] {

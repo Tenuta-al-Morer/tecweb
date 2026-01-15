@@ -293,7 +293,6 @@ footer {
     border-radius: 8px;
     margin-bottom: 2em;
     background-color: var(--background);
-    box-shadow: 0 4px 8px var(--black);
     overflow: hidden;
 }
 
@@ -335,7 +334,6 @@ footer {
 body.light-mode .table-data tr {
     background-color: var(--white);
     border-color: var(--border-color);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 body.light-mode .table-data tbody th {
@@ -508,7 +506,7 @@ body.light-mode .table-data td::before {
     gap: 1rem;
 }
 
-.order-summary-table .order-details-cell {
+.table-data .order-details-cell {
     padding: 0;
     border: none;
 }
@@ -547,6 +545,15 @@ body.light-mode .table-data td::before {
 
 .order-details-row.is-visible {
     display: block;
+}
+
+.no-js .order-details-row:target {
+    display: block;
+}
+
+.no-js .order-details-row:target td {
+    display: block;
+    border-bottom: none;
 }
 
 .details-content {
@@ -599,7 +606,7 @@ body.light-mode .table-data td::before {
     text-align: left;
 }
 
-.order-summary-table tr.card-is-open {
+.table-data tr.card-is-open {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     border-bottom: none;
@@ -609,7 +616,7 @@ body.light-mode .table-data td::before {
     z-index: 10; 
 }
 
-.order-summary-table tr.order-details-row {
+.table-data tr.order-details-row {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-top: none; 
@@ -618,7 +625,7 @@ body.light-mode .table-data td::before {
     border-top: 1px solid var(--border-color); 
 }
 
-.order-summary-table tr.order-details-row {
+.table-data tr.order-details-row {
     transition: all 0.3s ease;
 }
 

@@ -120,44 +120,39 @@
                         </label>
                         </div>
 
-                        <div class="table-container">
-                            <table class="table-data table-early-break order-summary-table" id="tab-ordini" aria-describedby="descrizione-tab-ordini">
-                                <caption>Gestione ordini</caption>
-                                <thead>
-                                    <tr>
-                                        <th scope="col" abbr="ID">ID Ordine</th>
-                                        <th scope="col" abbr="Cliente">Cliente</th>
-                                        <th scope="col" abbr="Totale">Totale Finale</th>
-                                        <th scope="col" abbr="Data">Data Creazione</th>
-                                        <th scope="col" abbr="Dettagli" class="Richieste_gestionale">Dettagli</th>
-                                        <th scope="col" abbr="Gestione" class="Richieste_gestionale">Gestione richiesta</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    [riga_ordini]
-                                </tbody>
-                            </table>
+                        <table class="table-data" id="tab-ordini" aria-describedby="descrizione-tab-ordini">
+                            <caption>Gestione ordini</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col" abbr="ID">ID Ordine</th>
+                                    <th scope="col" abbr="Cliente">Cliente</th>
+                                    <th scope="col" abbr="Totale">Totale Finale</th>
+                                    <th scope="col" abbr="Data">Data Creazione</th>
+                                    <th scope="col" abbr="Dettagli" class="Richieste_gestionale">Dettagli</th>
+                                    <th scope="col" abbr="Gestione" class="Richieste_gestionale">Gestione richiesta</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                [riga_ordini]
+                            </tbody>
+                        </table>
 
-                        </div>
-                        <div class="table-container">
-                            <table class="table-data table-early-break order-summary-table" id="tab-ordini-archivio" aria-describedby="descrizione-tab-ordini-archivio">
-                                <caption>Archivio ordini</caption>
-                                <thead>
-                                    <tr>
-                                        <th scope="col" abbr="ID">ID Ordine</th>
-                                        <th scope="col" abbr="Cliente">Cliente</th>
-                                        <th scope="col" abbr="Totale">Totale Finale</th>
-                                        <th scope="col" abbr="Data">Data Creazione</th>
-                                        <th scope="col" abbr="Stato">Stato richiesta</th>
-                                        <th scope="col" abbr="Dettagli" class="Richieste_gestionale">Dettagli</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    [riga_ordini_archivio]
-                                </tbody>
-                            </table>
-
-                        </div>
+                        <table class="table-data" id="tab-ordini-archivio" aria-describedby="descrizione-tab-ordini-archivio">
+                            <caption>Archivio ordini</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col" abbr="ID">ID Ordine</th>
+                                    <th scope="col" abbr="Cliente">Cliente</th>
+                                    <th scope="col" abbr="Totale">Totale Finale</th>
+                                    <th scope="col" abbr="Data">Data Creazione</th>
+                                    <th scope="col" abbr="Stato">Stato richiesta</th>
+                                    <th scope="col" abbr="Dettagli" class="Richieste_gestionale">Dettagli</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                [riga_ordini_archivio]
+                            </tbody>
+                        </table>
                     </section>
                 </section>
 
@@ -185,44 +180,41 @@
                         </label>
                         </div>
 
-                        <div class="table-container">
-                            <table class="table-data table-early-break order-summary-table" id="tab-degustazioni" aria-describedby="descrizione-tab-degustazioni">
-                                <caption>Gestione degustazioni</caption>
-                                <thead>
-                                    <tr>
-                                        <th scope="col" abbr="ID">ID esp.</th>
-                                        <th scope="col" abbr="Cliente">Cliente</th>
-                                        <th scope="col" abbr="Tipologia">Tipologia</th>
-                                        <th scope="col" abbr="Data">Data visita</th>                            
-                                        <th scope="col" abbr="Persone">N&deg; persone</th>
-                                        <th scope="col" abbr="Dettagli">Dettagli</th>
-                                        <th scope="col" abbr="Gestione" class="Richieste_gestionale">Gestione richiesta</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    [riga_prenotazioni]
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="table-container">
-                            <table class="table-data table-early-break order-summary-table" id="tab-degustazioni-archivio" aria-describedby="descrizione-tab-degustazioni-archivio">
-                                <caption>Archivio Degustazioni</caption>
-                                <thead>
-                                    <tr>
-                                        <th scope="col" abbr="ID">ID esp.</th>
-                                        <th scope="col" abbr="Cliente">Cliente</th>
-                                        <th scope="col" abbr="Tipologia">Tipologia</th>
-                                        <th scope="col" abbr="Data">Data visita</th>                            
-                                        <th scope="col" abbr="Persone">N&deg; persone</th>
-                                        <th scope="col" abbr="Stato">Stato richiesta</th>
-                                        <th scope="col" abbr="Dettagli">Dettagli</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    [riga_prenotazioni_archivio]
-                                </tbody>
-                            </table>
-                        </div>
+                        <table class="table-data" id="tab-degustazioni" aria-describedby="descrizione-tab-degustazioni">
+                            <caption>Gestione degustazioni</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col" abbr="ID">ID esp.</th>
+                                    <th scope="col" abbr="Cliente">Cliente</th>
+                                    <th scope="col" abbr="Tipologia">Tipologia</th>
+                                    <th scope="col" abbr="Data">Data visita</th>                            
+                                    <th scope="col" abbr="Persone">N&deg; persone</th>
+                                    <th scope="col" abbr="Dettagli">Dettagli</th>
+                                    <th scope="col" abbr="Gestione" class="Richieste_gestionale">Gestione richiesta</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                [riga_prenotazioni]
+                            </tbody>
+                        </table>
+
+                        <table class="table-data" id="tab-degustazioni-archivio" aria-describedby="descrizione-tab-degustazioni-archivio">
+                            <caption>Archivio Degustazioni</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col" abbr="ID">ID esp.</th>
+                                    <th scope="col" abbr="Cliente">Cliente</th>
+                                    <th scope="col" abbr="Tipologia">Tipologia</th>
+                                    <th scope="col" abbr="Data">Data visita</th>                            
+                                    <th scope="col" abbr="Persone">N&deg; persone</th>
+                                    <th scope="col" abbr="Stato">Stato richiesta</th>
+                                    <th scope="col" abbr="Dettagli">Dettagli</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                [riga_prenotazioni_archivio]
+                            </tbody>
+                        </table>
                     </section>
                 </section>
 
@@ -250,43 +242,39 @@
                                 <span class="switch-text">Visualizza archivio richieste</span>
                             </label>
                             </div>
-                        <div class="table-container">
-                            <table class="table-data table-early-break order-summary-table" id="tab-info" aria-describedby="descrizione-tab-messaggi">
-                                <caption>Gestione messaggi</caption>
-                                <thead>
-                                    <tr>
-                                        <th scope="col" abbr="ID">ID mes.</th>
-                                        <th scope="col" abbr="Cliente">Cliente</th>
-                                        <th scope="col" abbr="Tipologia">Tipologia</th>
-                                        <th scope="col" abbr="Data">Data invio</th>
-                                        <th scope="col">Messaggio</th>
-                                        <th scope="col" abbr="Gestisci" class="Richieste_gestionale">Gestisci</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    [riga_messaggi]
-                                </tbody>
-                            </table>
-                        </div>
+                        <table class="table-data" id="tab-info" aria-describedby="descrizione-tab-messaggi">
+                            <caption>Gestione messaggi</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col" abbr="ID">ID mes.</th>
+                                    <th scope="col" abbr="Cliente">Cliente</th>
+                                    <th scope="col" abbr="Tipologia">Tipologia</th>
+                                    <th scope="col" abbr="Data">Data invio</th>
+                                    <th scope="col">Messaggio</th>
+                                    <th scope="col" abbr="Gestisci" class="Richieste_gestionale">Gestisci</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                [riga_messaggi]
+                            </tbody>
+                        </table>
 
-                        <div class="table-container archive-table">
-                            <table class="table-data table-early-break order-summary-table" id="tab-info-archivio" aria-describedby="descrizione-tab-messaggi-archivio">
-                                <caption>Archivio messaggi</caption>
-                                <thead>
-                                    <tr>
-                                        <th scope="col" abbr="ID">ID mes.</th>
-                                        <th scope="col" abbr="Cliente">Cliente</th>
-                                        <th scope="col" abbr="Tipologia">Tipologia</th>
-                                        <th scope="col" abbr="Data">Data invio</th>
-                                        <th scope="col">Messaggio</th>
-                                        <th scope="col" abbr="Dettagli">Dettagli</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    [riga_messaggi_archivio]
-                                </tbody>
-                            </table>
-                        </div>
+                        <table class="table-data" id="tab-info-archivio" aria-describedby="descrizione-tab-messaggi-archivio">
+                            <caption>Archivio messaggi</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col" abbr="ID">ID mes.</th>
+                                    <th scope="col" abbr="Cliente">Cliente</th>
+                                    <th scope="col" abbr="Tipologia">Tipologia</th>
+                                    <th scope="col" abbr="Data">Data invio</th>
+                                    <th scope="col">Messaggio</th>
+                                    <th scope="col" abbr="Dettagli">Dettagli</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                [riga_messaggi_archivio]
+                            </tbody>
+                        </table>
                     </section>
                 </section>
             </div>
