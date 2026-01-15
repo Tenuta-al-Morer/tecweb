@@ -1062,7 +1062,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 if (action === 'piu' && currentQty >= maxStock) {
-                    alert("Quantità massima disponibile raggiunta.");
                     return;
                 }
 
@@ -1319,7 +1318,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
 
                     } else {
-                        alert("Attenzione: " + (data.message || data.error || "Errore sconosciuto"));
                     }
                 })
                 .catch(error => {
@@ -1374,7 +1372,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         match.classList.remove('is-highlighted');
                     }, 1500);
                 } else {
-                    alert('Nessun vino trovato con quel nome.');
                 }
             });
         }
