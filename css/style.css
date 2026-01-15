@@ -129,7 +129,7 @@ body.light-mode .navigationHelp:focus {
 .sr-only {
     position: absolute;
     width: 1px; height: 1px; padding: 0; margin: -1px;
-    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; /*deprecato clip*/
 }
 
 /* =========================================
@@ -3935,18 +3935,87 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin
     padding: 1rem 4rem;
 }
 
-/* Tasto chiudi (X) */
-.modal-close-btn {
-    position: absolute;
-    top: 15px;
+/* =========================================
+   CHIUSURA MODALE
+   ========================================= */
+/*
+   - .modal-close-btn  => La Label (usata quando c'è JS)
+   - .modal-toggle-checkbox:checked => La Checkbox (usata quando NO-JS)
+*/
+.modal-close-btn,
+html.no-js .modal-toggle-checkbox:checked {
+    position: fixed;
+    top: 20px;
     right: 20px;
-    font-size: 2rem;
-    cursor: pointer;
-    line-height: 1;
-    color: #666;
-    padding: 1rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
     z-index: 10001;
+    background-color: #fff;
+    border: 2px solid var(--secondary-color);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    opacity: 1;
+    visibility: visible;
+    
+    color: transparent; 
+    font-size: 0;
 }
+
+/* disegno la x con CSS */
+.modal-close-btn::before, .modal-close-btn::after,
+html.no-js .modal-toggle-checkbox:checked::before,
+html.no-js .modal-toggle-checkbox:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    height: 3px;
+    background-color: #333;
+    border-radius: 2px;
+}
+.modal-close-btn::before,
+html.no-js .modal-toggle-checkbox:checked::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.modal-close-btn::after,
+html.no-js .modal-toggle-checkbox:checked::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.modal-close-btn:hover,
+html.no-js .modal-toggle-checkbox:checked:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.1);
+    transition: transform 0.2s;
+}
+
+.modal-close-btn:focus,
+html.no-js .modal-toggle-checkbox:checked:focus {
+    outline: 4px solid var(--secondary-color);
+    outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------
+   GESTIONE VISIBILITÀ tra no-js e js
+--------------------------------------------------------- */
+
+/* Se siamo SENZA JS: */
+/* Nascondi la label (perché non è accessibile da tastiera) */
+html.no-js .modal-close-btn {
+    display: none !important;
+}
+/* Mostra la checkbox e resetta le proprietà che la nascondevano */
+html.no-js .modal-toggle-checkbox:checked {
+    appearance: none;
+    -webkit-appearance: none;
+    display: block;
+    clip: auto;               /* Annulla .sr-only vecchio */
+    clip-path: none;          /* Annulla .sr-only nuovo */
+    overflow: visible;
+}
+/* se siamo con JS lo script toglie gli elementi con classe no-js
 
 /* --- GRID MODALE --- */
 
@@ -4042,19 +4111,6 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin
 body:has(.modal-toggle-checkbox:checked) {
     overflow: hidden;
     padding-right: 15px;
-}
-
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-    opacity: 0;
 }
 
 .wine-article:has(.modal-toggle-checkbox:focus) .details-button {
