@@ -767,7 +767,7 @@ a.logo-link:hover img, a.logo-link:focus img { transform: scale(1.05); }
     text-underline-offset: 0.35em;
     text-decoration-thickness: 2px;
 }
-.menu-toggle { display: none; }
+.menu-toggle, .menu-checkbox { display: none; }
 
 .mobile-icons a,
 .mobile-icons span.current-page-icon, 

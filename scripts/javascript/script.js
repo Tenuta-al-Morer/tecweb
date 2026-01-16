@@ -1140,6 +1140,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+    
     /* ==========================================
      * 11. LOGICA PAGINA VINI
      * ========================================== */
@@ -1147,9 +1148,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.body.addEventListener('click', function(e) {
             const btn = e.target.closest('.btn-plus, .btn-minus');
-            
+
             if (btn) {
-                e.preventDefault(); 
+                e.preventDefault();
 
                 const wrapper = btn.closest('.selettore-quantita');
                 if (!wrapper) return;
@@ -1159,7 +1160,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 let currentVal = parseInt(input.value) || 1;
                 let max = 9999;
-                
+
                 if (input.hasAttribute('max')) {
                     max = parseInt(input.getAttribute('max'));
                 }
@@ -1174,12 +1175,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 input.value = newVal;
             }
         });
-        
+
         document.body.addEventListener('keydown', function(e) {
             if (e.target.getAttribute('role') === 'button' && e.target.tagName === 'LABEL') {
                 if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault(); 
-                    e.target.click();   
+                    e.preventDefault();
+                    e.target.click();
                 }
             }
         });
@@ -1188,65 +1189,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.body.addEventListener('submit', function(e) {
             if (e.target.matches('.wine-form') || e.target.matches('.modal-wine-form')) {
-                
-                const submitBtn = e.submitter; 
-                
+
+                const submitBtn = e.submitter;
+
                 if (submitBtn && (submitBtn.value === 'minus' || submitBtn.value === 'plus')) {
-                     e.preventDefault();
-                     return;
+                    e.preventDefault();
+                    return;
                 }
 
-                e.preventDefault(); 
+                e.preventDefault();
 
                 const form = e.target;
                 const finalSubmitBtn = form.querySelector('button.buy-button');
-                
+
                 document.body.style.cursor = 'wait';
-                if(finalSubmitBtn) finalSubmitBtn.disabled = true;
+                if (finalSubmitBtn) finalSubmitBtn.disabled = true;
 
                 const formData = new FormData(form);
-                
-                formData.append('req_source', 'vini_page'); 
+
+                formData.append('req_source', 'vini_page');
 
                 fetch('carrello.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => {
-                    if (!response.ok) throw new Error("Network response was not ok");
-                    return response.json();
-                })
-                .then(data => {
-                    document.body.style.cursor = 'default';
-                    if(finalSubmitBtn) finalSubmitBtn.disabled = false;
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => {
+                        if (!response.ok) throw new Error("Network response was not ok");
+                        return response.json();
+                    })
+                    .then(data => {
+                        document.body.style.cursor = 'default';
+                        if (finalSubmitBtn) finalSubmitBtn.disabled = false;
 
-                    if (data.success) {
-                        showToast("Prodotto aggiunto al carrello!");
-                        resetFormQty(form);
+                        if (data.success) {
+                            showToast("Prodotto aggiunto al carrello!");
+                            resetFormQty(form);
 
-                        const badge = document.getElementById('global-cart-badge');
-                        
-                        if (badge) {
-                            badge.innerText = data.cart_count > 99 ? '99+' : data.cart_count;
-                            badge.style.display = 'flex';
-                        } else {
-                            if (data.cart_count > 0) location.reload();
-                        }
+                            const badge = document.getElementById('global-cart-badge');
 
-                    } else {
-                    }
-                })
-                .catch(error => {
-                    console.error('Errore:', error);
-                    document.body.style.cursor = 'default';
-                    if(finalSubmitBtn) finalSubmitBtn.disabled = false;
-                });
+                            if (badge) {
+                                badge.innerText = data.cart_count > 99 ? '99+' : data.cart_count;
+                                badge.style.display = 'flex';
+                            } else {
+                                if (data.cart_count > 0) location.reload();
+                            }
+
+                        } else {}
+                    })
+                    .catch(error => {
+                        console.error('Errore:', error);
+                        document.body.style.cursor = 'default';
+                        if (finalSubmitBtn) finalSubmitBtn.disabled = false;
+                    });
             }
         });
 
         function resetFormQty(form) {
             const input = form.querySelector('input[type="number"]');
-            if(input) input.value = 1;
+            if (input) input.value = 1;
         }
 
         function showToast(message) {
@@ -1254,13 +1254,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!localToast) {
                 localToast = document.createElement('div');
                 localToast.id = 'cart-toast';
-                localToast.className = 'toast'; 
+                localToast.className = 'toast';
                 document.body.appendChild(localToast);
             }
-            
+
             localToast.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
             localToast.classList.add('show');
-            
+
             setTimeout(() => {
                 localToast.classList.remove('show');
             }, 3000);
@@ -1270,30 +1270,72 @@ document.addEventListener('DOMContentLoaded', () => {
         const searchInput = document.getElementById('wine-search-input');
 
         if (searchForm && searchInput) {
+            
+            let sogliaDistanza = 3;
+
+            const levenshtein = (a, b) => {
+                const matrix = [];
+                for (let i = 0; i <= b.length; i++) matrix[i] = [i];
+                for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+
+                for (let i = 1; i <= b.length; i++) {
+                    for (let j = 1; j <= a.length; j++) {
+                        if (b.charAt(i - 1) === a.charAt(j - 1)) {
+                            matrix[i][j] = matrix[i - 1][j - 1];
+                        } else {
+                            matrix[i][j] = Math.min(
+                                matrix[i - 1][j - 1] + 1,
+                                matrix[i][j - 1] + 1,
+                                matrix[i - 1][j] + 1
+                            );
+                        }
+                    }
+                }
+                return matrix[b.length][a.length];
+            };
+
             searchForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const query = searchInput.value.trim().toLowerCase();
                 if (!query) return;
 
                 const items = Array.from(document.querySelectorAll('.wine-article'));
-                const match = items.find((item) => {
-                    const title = item.querySelector('h3');
-                    return title && title.innerText.toLowerCase().includes(query);
+                let bestMatch = null;
+                let lowestDistance = Infinity;
+
+                items.forEach((item) => {
+                    const titleEl = item.querySelector('h3');
+                    if (titleEl) {
+                        const title = titleEl.innerText.toLowerCase();
+                        
+                        if (title.includes(query)) {
+                            bestMatch = item;
+                            lowestDistance = 0;
+                        } else {
+                            const dist = levenshtein(query, title);
+                            if (dist < lowestDistance && dist <= sogliaDistanza) {
+                                lowestDistance = dist;
+                                bestMatch = item;
+                            }
+                        }
+                    }
                 });
 
-                if (match) {
-                    match.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    match.classList.add('is-highlighted');
+                if (bestMatch) {
+                    bestMatch.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                    bestMatch.classList.add('is-highlighted');
                     setTimeout(() => {
-                        match.classList.remove('is-highlighted');
+                        bestMatch.classList.remove('is-highlighted');
                     }, 3000);
-                } else {
                 }
             });
         }
 
         const modalCheckboxes = document.querySelectorAll('.modal-toggle-checkbox');
-        
+
         if (modalCheckboxes.length > 0) {
             let ultimoElementoFocusato = null;
 
@@ -1318,10 +1360,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             function attivaFocusTrap(modal, checkboxController) {
                 const focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
-                
+
                 const getFocusables = () => {
-                     let elements = Array.from(modal.querySelectorAll(focusableElementsString));
-                     return elements.filter(el => el.offsetParent !== null);
+                    let elements = Array.from(modal.querySelectorAll(focusableElementsString));
+                    return elements.filter(el => el.offsetParent !== null);
                 };
 
                 let focusables = getFocusables();
@@ -1347,12 +1389,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         firstTabStop = focusables[0];
                         lastTabStop = focusables[focusables.length - 1];
 
-                        if (e.shiftKey) { 
+                        if (e.shiftKey) {
                             if (document.activeElement === firstTabStop || document.activeElement === modal) {
                                 e.preventDefault();
                                 lastTabStop.focus();
                             }
-                        } else { 
+                        } else {
                             if (document.activeElement === lastTabStop) {
                                 e.preventDefault();
                                 firstTabStop.focus();
@@ -1366,8 +1408,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     if (!modal.contains(e.target)) {
                         e.stopPropagation();
-                        e.preventDefault(); 
-                        firstTabStop.focus(); 
+                        e.preventDefault();
+                        firstTabStop.focus();
                     }
                 };
 
@@ -1378,9 +1420,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
 
                 modal.addEventListener('keydown', keyHandler);
-                
-                document.addEventListener('focus', globalFocusHandler, true); 
-                
+
+                document.addEventListener('focus', globalFocusHandler, true);
+
                 window.addEventListener('focus', windowFocusHandler);
 
                 const cleanupListener = function() {
