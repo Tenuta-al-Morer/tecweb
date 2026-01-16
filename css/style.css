@@ -4251,7 +4251,7 @@ html:not(.no-js) .selettore-nojs {
 .selettore-quantita button {
     background: none;
     border: none;
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     cursor: pointer;
     color: var(--secondary-color);
     height: 100%;
