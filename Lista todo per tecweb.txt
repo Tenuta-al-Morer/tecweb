@@ -7,8 +7,6 @@ Lista todo per tecweb:
 - sistemare in style.css tutte le misure assolute (devono diventare relative ad eccezione di border-radius se non erro)
 - sistemare in print.css tutte le misure relative (devono diventare assolute, perchè quello che viene stampato è sempre identico)
 - controlla l’accessibilità di tutte le pagine e verificare con nvda che tutto funzioni per i ciechi:
-    - home
-    - tenuta -> Luca
     - vini
     - esperienze
     - contatti
