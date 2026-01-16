@@ -16,7 +16,7 @@ $view = $_GET['view'] ?? ($_POST['view'] ?? 'vini');
 if (!in_array($view, ['vini', 'utenti'], true)) {
     $view = 'vini';
 }
-// Ricerca utenti (solo view=utenti)
+
 $query = '';
 if ($view === 'utenti') {
     $query = trim($_GET['q'] ?? '');
@@ -27,7 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $azione = $_POST['azione'] ?? '';
     $db = new DBConnection();
 
-    // Salva/Modifica
     if ($azione === 'salva_vino') {
         $dati = [
             'nome' => $_POST['nome'],
@@ -52,7 +51,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Creazione utente
+    if ($azione === 'toggle_vino') {
+        $nuovoStato = ($_POST['current_status'] == 'attivo') ? 'nascosto' : 'attivo';
+        $db->toggleStatoVino($_POST['id'], $nuovoStato);
+    }
+
+    if ($azione === 'elimina_vino') {
+        $db->eliminaVino($_POST['id']);
+    }
+
+    if ($azione === 'ripristina_vino') {
+        $db->ripristinaVino($_POST['id']);
+    }
+
+    // --- AZIONI UTENTI (ORIGINALI - NON TOCCATE) ---
     if ($azione === 'salva_utente') {
         $nome = trim($_POST['utente_nome'] ?? '');
         $cognome = trim($_POST['utente_cognome'] ?? '');
@@ -66,18 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Toggle Stato
-    if ($azione === 'toggle_vino') {
-        $nuovoStato = ($_POST['current_status'] == 'attivo') ? 'nascosto' : 'attivo';
-        $db->toggleStatoVino($_POST['id'], $nuovoStato);
-    }
-
-    // Eliminazione
-    if ($azione === 'elimina_vino') {
-        $db->eliminaVino($_POST['id']);
-    }
-
-    // Cambio ruolo utente
     if ($azione === 'cambia_ruolo') {
         $idUtente = isset($_POST['id']) ? (int)$_POST['id'] : 0;
         $ruolo = $_POST['ruolo'] ?? '';
@@ -87,7 +87,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Eliminazione utente
     if ($azione === 'elimina_utente') {
         $idUtente = isset($_POST['id']) ? (int)$_POST['id'] : 0;
 
@@ -95,77 +94,166 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $db->eliminaUtenteAdmin($idUtente);
         }
     }
-
-    // Ripristino vino
-    if ($azione === 'ripristina_vino') {
-        $db->ripristinaVino($_POST['id']);
-    }
     
     $db->closeConnection();
-    header("Location: admin.php?view=" . $view); 
+    // Redirect per pulire il POST
+    if ($view === 'utenti' && $query !== '') {
+         header("Location: admin.php?view=" . $view . "&q=" . urlencode($query));
+    } else {
+         header("Location: admin.php?view=" . $view); 
+    }
     exit;
 }
 
-// 4. View
+// 4. Caricamento Dati
 $htmlContent = caricaPagina('../../html/admin.html');
 $nomeUtente = htmlspecialchars($_SESSION['nome']);
 
 $db = new DBConnection();
+// Vini: prendiamo tutto per gestire il filtro eliminati via CSS
 $viniArray = ($view === 'vini') ? $db->getTuttiViniAdmin() : [];
 $utentiArray = ($view === 'utenti') ? $db->getUtentiAdmin() : [];
 $db->closeConnection();
 
-// 5. Generazione Righe
-$rigaVini = "";
-foreach ($viniArray as $v) {
-    // JSON sicuro per attributi HTML
-    $json = json_encode($v, JSON_HEX_APOS | JSON_HEX_QUOT);
+function getFormVinoHTML($v = null) {
+    $isEdit = ($v !== null);
+    $id = $isEdit ? $v['id'] : '';
+    $nome = $isEdit ? htmlspecialchars($v['nome']) : '';
+    $prezzo = $isEdit ? $v['prezzo'] : '';
+    $stock = $isEdit ? $v['quantita_stock'] : '0';
+    $img = $isEdit ? htmlspecialchars($v['img']) : '../../images/tr/placeholder.webp';
+    $descBreve = $isEdit ? htmlspecialchars($v['descrizione_breve']) : '';
+    $descEstesa = $isEdit ? htmlspecialchars($v['descrizione_estesa']) : '';
+    $vitigno = $isEdit ? htmlspecialchars($v['vitigno']) : '';
+    $annata = $isEdit ? htmlspecialchars($v['annata']) : '';
+    $gradazione = $isEdit ? htmlspecialchars($v['gradazione']) : '';
+    $temperatura = $isEdit ? htmlspecialchars($v['temperatura']) : '';
+    $abbinamenti = $isEdit ? htmlspecialchars($v['abbinamenti']) : '';
     
-    // Controlliamo se è eliminato
-    $isDeleted = ($v['stato'] === 'eliminato');
-    
-    // Classi e Stili per la riga
-    // Se è eliminato, aggiungiamo una classe specifica e lo nascondiamo con CSS inline
-    $rowClass = $isDeleted ? 'row-deleted' : '';
-    $rowStyle = $isDeleted ? 'style="display:none"' : '';
-
-    // Gestione Badge
-    if ($isDeleted) {
-        $badgeClass = 'badge-hidden'; // Usiamo grigio/scuro
-        $txtStato = 'Eliminato';
-    } else {
-        $badgeClass = ($v['stato'] == 'attivo') ? 'badge-active' : 'badge-hidden';
-        $txtStato = ucfirst($v['stato']);
+    // Select Categoria
+    $cats = ['rossi', 'bianchi', 'selezione'];
+    $catOptions = "";
+    $currentCat = $isEdit ? $v['categoria'] : 'rossi';
+    foreach($cats as $c) {
+        $sel = ($currentCat == $c) ? 'selected' : '';
+        $catOptions .= "<option value='$c' $sel>" . ucfirst($c) . "</option>";
     }
-    $badge = "<span class='badge $badgeClass'>$txtStato</span>";
-    
-    // Alert Stock
-    $colorStock = ($v['quantita_stock'] < 10 && !$isDeleted) ? 'color:var(--red-errors); font-weight:bold;' : '';
-    $nomeSafe = htmlspecialchars($v['nome'], ENT_QUOTES);
-    
-    // Icona visibilita (Disabilitata se eliminato)
-    $iconaVisibilita = ($v['stato'] == 'attivo') 
-        ? '<i class="fas fa-eye" aria-hidden="true"></i>' 
-        : '<i class="fas fa-eye-slash" aria-hidden="true" style="color:var(--gray-text);"></i>';
-    
-    // Se eliminato, non mostriamo i pulsanti di azione standard o li disabilitiamo
-    $actions = "";
-    if (!$isDeleted) {
-        $actions = "
-            <button type='button' class='btn-icon' onclick='apriModalModifica($json)' aria-label='Modifica $nomeSafe'>
+
+    // Select Stato
+    $stati = ['attivo', 'nascosto']; 
+    $statoOptions = "";
+    $currentStato = $isEdit ? $v['stato'] : 'attivo';
+    // Se è eliminato, aggiungiamolo alle opzioni per completezza
+    if ($currentStato === 'eliminato') $stati[] = 'eliminato'; 
+    foreach($stati as $s) {
+        $sel = ($currentStato == $s) ? 'selected' : '';
+        $statoOptions .= "<option value='$s' $sel>" . ucfirst($s) . "</option>";
+    }
+
+    return "
+    <form method='POST' enctype='multipart/form-data'>
+        <input type='hidden' name='azione' value='salva_vino'>
+        <input type='hidden' name='id_vino' value='$id'>
+        
+        <div class='form-grid'>
+            <div class='admin-form-group'>
+                <label>Nome Vino *</label>
+                <input type='text' name='nome' class='admin-input' required value='$nome'>
+            </div>
+            <div class='admin-form-group'>
+                <label>Categoria *</label>
+                <select name='categoria' class='admin-input'>$catOptions</select>
+            </div>
+            <div class='admin-form-group'>
+                <label>Prezzo (€) *</label>
+                <input type='number' step='0.01' name='prezzo' class='admin-input' required value='$prezzo'>
+            </div>
+            <div class='admin-form-group'>
+                <label>Stock *</label>
+                <input type='number' name='quantita_stock' class='admin-input' required value='$stock'>
+            </div>
+            <div class='admin-form-group'>
+                <label>Stato</label>
+                <select name='stato' class='admin-input'>$statoOptions</select>
+            </div>
+            <div class='admin-form-group'>
+                <label>Percorso Immagine</label>
+                <input type='text' name='img' class='admin-input' value='$img'>
+            </div>
+        </div>
+
+        <div class='admin-form-group'>
+            <label>Descrizione Breve (Card)</label>
+            <input type='text' name='descrizione_breve' class='admin-input' maxlength='100' value='$descBreve'>
+        </div>
+
+        <div class='admin-form-group'>
+            <label>Descrizione Estesa (Modale)</label>
+            <textarea name='descrizione_estesa' class='admin-input' rows='3'>$descEstesa</textarea>
+        </div>
+
+        <fieldset class='admin-fieldset'>
+            <legend>Scheda Tecnica</legend>
+            <div class='form-grid'>
+                <div class='admin-form-group'><label>Vitigno</label><input type='text' name='vitigno' class='admin-input' value='$vitigno'></div>
+                <div class='admin-form-group'><label>Annata</label><input type='text' name='annata' class='admin-input' value='$annata'></div>
+                <div class='admin-form-group'><label>Gradazione</label><input type='text' name='gradazione' class='admin-input' value='$gradazione'></div>
+                <div class='admin-form-group'><label>Temperatura</label><input type='text' name='temperatura' class='admin-input' value='$temperatura'></div>
+                <div class='admin-form-group'><label>Abbinamenti</label><input type='text' name='abbinamenti' class='admin-input' value='$abbinamenti'></div>
+            </div>
+        </fieldset>
+
+        <div class='admin-form-actions'>
+            <button type='submit' class='btn-primary'>" . ($isEdit ? 'Salva Modifiche' : 'Crea Vino') . "</button>
+        </div>
+    </form>";
+}
+
+$rigaVini = "";
+$modaliViniHTML = "";
+
+if ($view === 'vini') {
+    foreach ($viniArray as $v) {
+        $isDeleted = ($v['stato'] === 'eliminato');
+        $rowClass = $isDeleted ? 'row-deleted' : '';
+        // Il CSS gestirà la visibilità di row-deleted basandosi sul checkbox #toggle-deleted-visibility
+        
+        $badgeClass = $isDeleted ? 'badge-hidden' : (($v['stato'] == 'attivo') ? 'badge-active' : 'badge-hidden');
+        $txtStato = ucfirst($v['stato']);
+        $badge = "<span class='badge $badgeClass'>$txtStato</span>";
+        
+        $colorStock = ($v['quantita_stock'] < 10 && !$isDeleted) ? 'color:var(--errors); font-weight:bold;' : '';
+        $nomeSafe = htmlspecialchars($v['nome'], ENT_QUOTES);
+        
+        // Icona Visibilità
+        $iconaVisibilita = ($v['stato'] == 'attivo') 
+            ? '<i class="fas fa-eye" aria-hidden="true"></i>' 
+            : '<i class="fas fa-eye-slash" aria-hidden="true" style="color:var(--text-color); opacity:0.5;"></i>';
+        
+        $actions = "";
+        $modalToggleId = "modal-edit-" . $v['id'];
+
+        if (!$isDeleted) {
+            // 1. Modifica (LABEL per checkbox)
+            $actions .= "
+            <label for='$modalToggleId' class='btn-icon' aria-label='Modifica $nomeSafe' role='button' tabindex='0' style='cursor:pointer'>
                 <i class='fas fa-edit'></i>
-            </button>
+            </label>";
             
+            // 2. Toggle Visibilità (Form)
+            $actions .= "
             <form method='POST'>
                 <input type='hidden' name='azione' value='toggle_vino'>
                 <input type='hidden' name='view' value='{$view}'>
                 <input type='hidden' name='id' value='{$v['id']}'>
                 <input type='hidden' name='current_status' value='{$v['stato']}'>
-                <button type='submit' class='btn-icon' aria-label='Visibilita $nomeSafe'>
+                <button type='submit' class='btn-icon' aria-label='Cambia visibilità $nomeSafe'>
                     $iconaVisibilita
                 </button>
-            </form>
+            </form>";
 
+            // 3. Elimina (Form)
+            $actions .= "
             <form method='POST' onsubmit=\"return confirm('Sei sicuro di voler eliminare $nomeSafe?');\">
                 <input type='hidden' name='azione' value='elimina_vino'>
                 <input type='hidden' name='view' value='{$view}'>
@@ -174,105 +262,143 @@ foreach ($viniArray as $v) {
                     <i class='fas fa-trash'></i>
                 </button>
             </form>";
-    } else {
-        $actions = "
-        <form method='POST' onsubmit=\"return confirm('Vuoi ripristinare $nomeSafe? Tornerà tra i vini nascosti.');\">
-            <input type='hidden' name='azione' value='ripristina_vino'> <input type='hidden' name='view' value='{$view}'>
-            <input type='hidden' name='id' value='{$v['id']}'>
             
-            <button type='submit' class='btn-icon' style='color: var(--accent-color);' aria-label='Ripristina $nomeSafe' title='Ripristina Vino'>
-                <i class='fas fa-trash-restore'></i> 
-            </button>
-        </form>";
-    }
+            // Genero la modale specifica per questo vino (se non eliminato)
+            $formHTML = getFormVinoHTML($v);
+            $modaliViniHTML .= "
+            <input type='checkbox' id='$modalToggleId' class='state-toggle'>
+            <div class='modal-wrapper-css'>
+                <label for='$modalToggleId' class='modal-overlay-close' aria-label='Chiudi'></label>
+                <div class='modal-box-css'>
+                    <label for='$modalToggleId' class='modal-close-x' aria-label='Chiudi'>&times;</label>
+                    <h2 style='margin-top:0'>Modifica Vino: $nomeSafe</h2>
+                    $formHTML
+                </div>
+            </div>";
 
-    $rigaVini .= "<tr class='{$rowClass}' {$rowStyle}>
-        <td data-title='ID'><b>{$v['id']}</b></td>
-        
-        <td data-title='Anteprima'><img src='" . htmlspecialchars($v['img']) . "' class='admin-thumb' alt=''></td>
-        
-        <td data-title='Dettagli'>
-            <div class='wine-title'>" . htmlspecialchars($v['nome']) . "</div>
-            <div class='wine-cat'>" . ucfirst($v['categoria']) . "</div>
-            <div class='truncate'>{$v['descrizione_breve']}</div>
-        </td>
-        
-        <td data-title='Prezzo'>EUR " . number_format($v['prezzo'], 2) . "</td>
-        <td data-title='Stock' style='$colorStock'>{$v['quantita_stock']}</td>
-        <td data-title='Stato'>$badge</td>
-        
-        <td data-title='Azioni'>
-            <div class='action-group'>
-                $actions
-            </div>
-        </td>
-    </tr>";
+        } else {
+            // Azioni per vini eliminati (solo ripristino)
+            $actions = "
+            <form method='POST' onsubmit=\"return confirm('Vuoi ripristinare $nomeSafe? Tornerà tra i vini nascosti.');\">
+                <input type='hidden' name='azione' value='ripristina_vino'>
+                <input type='hidden' name='view' value='{$view}'>
+                <input type='hidden' name='id' value='{$v['id']}'>
+                <button type='submit' class='btn-icon' style='color: var(--secondary-color);' aria-label='Ripristina $nomeSafe' title='Ripristina Vino'>
+                    <i class='fas fa-trash-restore'></i> 
+                </button>
+            </form>";
+        }
+
+        $rigaVini .= "<tr class='{$rowClass}'>
+            <td data-title='ID'><b>{$v['id']}</b></td>
+            <td data-title='Anteprima'><img src='" . htmlspecialchars($v['img']) . "' class='admin-thumb' alt=''></td>
+            <td data-title='Dettagli'>
+                <div class='wine-title'>" . htmlspecialchars($v['nome']) . "</div>
+                <div class='wine-cat'>" . ucfirst($v['categoria']) . "</div>
+                <div class='truncate'>{$v['descrizione_breve']}</div>
+            </td>
+            <td data-title='Prezzo'>€ " . number_format($v['prezzo'], 2) . "</td>
+            <td data-title='Stock' style='$colorStock'>{$v['quantita_stock']}</td>
+            <td data-title='Stato'>$badge</td>
+            <td data-title='Azioni'><div class='action-group'>$actions</div></td>
+        </tr>";
+    }
+}
+
+// Modale Nuovo Vino (No-JS)
+$modalNuovoVinoHTML = "";
+if ($view === 'vini') {
+    $formNuovo = getFormVinoHTML(null);
+    $modalNuovoVinoHTML = "
+    <input type='checkbox' id='toggle-modal-nuovo' class='state-toggle'>
+    <div class='modal-wrapper-css'>
+        <label for='toggle-modal-nuovo' class='modal-overlay-close' aria-label='Chiudi'></label>
+        <div class='modal-box-css'>
+            <label for='toggle-modal-nuovo' class='modal-close-x' aria-label='Chiudi'>&times;</label>
+            <h2 style='margin-top:0'>Aggiungi Nuovo Vino</h2>
+            $formNuovo
+        </div>
+    </div>";
 }
 
 $rigaUtenti = "";
-if ($view === 'utenti' && $query !== '') {
-    $utentiArray = array_filter($utentiArray, function ($u) use ($query) {
-        $q = strtolower($query);
-        return (stripos($u['nome'], $q) !== false)
-            || (stripos($u['cognome'], $q) !== false)
-            || (stripos($u['email'], $q) !== false)
-            || (stripos($u['ruolo'], $q) !== false)
-            || (stripos((string)$u['id'], $q) !== false);
-    });
-}
-foreach ($utentiArray as $u) {
-    $idUtente = (int)$u['id'];
-    $isSelf = ($idUtente === (int)$_SESSION['utente_id']);
-    $nome = htmlspecialchars($u['nome']);
-    $cognome = htmlspecialchars($u['cognome']);
-    $email = htmlspecialchars($u['email']);
-    $ruolo = htmlspecialchars($u['ruolo']);
-    $dataReg = htmlspecialchars($u['data_registrazione']);
-
-    $ruoloOptions = "";
-    foreach (['user', 'staff', 'admin'] as $r) {
-        $selected = ($u['ruolo'] === $r) ? "selected" : "";
-        $ruoloOptions .= "<option value='{$r}' {$selected}>{$r}</option>";
+if ($view === 'utenti') {
+    // Logica filtro ricerca utenti
+    if ($query !== '') {
+        $utentiArray = array_filter($utentiArray, function ($u) use ($query) {
+            $q = strtolower($query);
+            return (stripos($u['nome'], $q) !== false)
+                || (stripos($u['cognome'], $q) !== false)
+                || (stripos($u['email'], $q) !== false)
+                || (stripos($u['ruolo'], $q) !== false)
+                || (stripos((string)$u['id'], $q) !== false);
+        });
     }
 
-    $azioni = $isSelf
-        ? "<span>Impossibile modificare</span>"
-        : "<div class='action-group'>
-                <form method='POST'>
-                    <input type='hidden' name='azione' value='cambia_ruolo'>
-                    <input type='hidden' name='view' value='{$view}'>
-                    <input type='hidden' name='id' value='{$idUtente}'>
-                    <select name='ruolo' class='admin-input' aria-label='Ruolo per {$nome} {$cognome}'>
-                        {$ruoloOptions}
-                    </select>
-                    <button type='submit' class='btn-secondary'>Aggiorna</button>
-                </form>
-                <form method='POST' onsubmit=\"return confirm('Eliminare l\\'utente {$nome} {$cognome}? Questa azione non si puo annullare.');\">
-                    <input type='hidden' name='azione' value='elimina_utente'>
-                    <input type='hidden' name='view' value='{$view}'>
-                    <input type='hidden' name='id' value='{$idUtente}'>
-                    <button type='submit' class='btn-icon btn-icon-delete' aria-label='Elimina {$nome} {$cognome}'>
-                        <i class='fas fa-trash'></i>
-                    </button>
-                </form>
-            </div>";
+    foreach ($utentiArray as $u) {
+        $idUtente = (int)$u['id'];
+        $isSelf = ($idUtente === (int)$_SESSION['utente_id']);
+        $nome = htmlspecialchars($u['nome']);
+        $cognome = htmlspecialchars($u['cognome']);
+        $email = htmlspecialchars($u['email']);
+        $ruolo = htmlspecialchars($u['ruolo']);
+        $dataReg = htmlspecialchars($u['data_registrazione']);
 
-    $rigaUtenti .= "<tr>
-        <td data-title='ID'><b>{$idUtente}</b></td>
-        <td data-title='Nome'>{$nome}</td>
-        <td data-title='Cognome'>{$cognome}</td>
-        <td data-title='Email'>{$email}</td>
-        <td data-title='Ruolo'>{$ruolo}</td>
-        <td data-title='Registrazione'>{$dataReg}</td>
-        <td data-title='Azioni'>{$azioni}</td>
-    </tr>";
+        $ruoloOptions = "";
+        foreach (['user', 'staff', 'admin'] as $r) {
+            $selected = ($u['ruolo'] === $r) ? "selected" : "";
+            $ruoloOptions .= "<option value='{$r}' {$selected}>{$r}</option>";
+        }
+
+        $azioni = $isSelf
+            ? "<span>Impossibile modificare</span>"
+            : "<div class='action-group'>
+                    <form method='POST'>
+                        <input type='hidden' name='azione' value='cambia_ruolo'>
+                        <input type='hidden' name='view' value='{$view}'>
+                        <input type='hidden' name='id' value='{$idUtente}'>
+                        <select name='ruolo' class='admin-input' aria-label='Ruolo per {$nome} {$cognome}'>
+                            {$ruoloOptions}
+                        </select>
+                        <button type='submit' class='btn-secondary'>Aggiorna</button>
+                    </form>
+                    <form method='POST' onsubmit=\"return confirm('Eliminare l\\'utente {$nome} {$cognome}? Questa azione non si puo annullare.');\">
+                        <input type='hidden' name='azione' value='elimina_utente'>
+                        <input type='hidden' name='view' value='{$view}'>
+                        <input type='hidden' name='id' value='{$idUtente}'>
+                        <button type='submit' class='btn-icon btn-icon-delete' aria-label='Elimina {$nome} {$cognome}'>
+                            <i class='fas fa-trash'></i>
+                        </button>
+                    </form>
+                </div>";
+
+        $rigaUtenti .= "<tr>
+            <td data-title='ID'><b>{$idUtente}</b></td>
+            <td data-title='Nome'>{$nome}</td>
+            <td data-title='Cognome'>{$cognome}</td>
+            <td data-title='Email'>{$email}</td>
+            <td data-title='Ruolo'>{$ruolo}</td>
+            <td data-title='Registrazione'>{$dataReg}</td>
+            <td data-title='Azioni'>{$azioni}</td>
+        </tr>";
+    }
 }
 
 $titoloAdmin = ($view === 'utenti') ? "Gestione Utenti" : "Gestione Catalogo Vini";
 $tabViniClass = ($view === 'vini') ? "btn-primary" : "btn-secondary";
 $tabUtentiClass = ($view === 'utenti') ? "btn-primary" : "btn-secondary";
 
+// Checkbox per mostrare eliminati (solo vista vini)
+$toggleDeletedHTML = "
+<input type='checkbox' id='toggle-deleted-visibility' class='state-toggle'>
+<label for='toggle-deleted-visibility' class='toggle-label-wrapper'>
+    <div class='toggle-switch-graphic'></div>
+    <span>Mostra vini eliminati</span>
+</label>";
+
+// Sezione Vini HTML
 $sezioneVini = "
+        $toggleDeletedHTML
         <div class='table-responsive'>
             <table class='compact-table'>
                 <caption>Elenco vini nel database</caption>
@@ -291,8 +417,12 @@ $sezioneVini = "
                     {$rigaVini}
                 </tbody>
             </table>
-        </div>";
+        </div>
+        $modalNuovoVinoHTML
+        $modaliViniHTML
+        ";
 
+// Sezione Utenti HTML (Codice Originale)
 $sezioneUtenti = "
         <div class='table-responsive'>
             <table class='compact-table'>
@@ -314,14 +444,22 @@ $sezioneUtenti = "
             </table>
         </div>";
 
+// Pulsanti Nuovi Elementi
+// Vini: usa label per checkbox (No-JS)
 $btnNuovoVino = ($view === 'vini')
-    ? "<button class=\"btn-primary\" onclick=\"apriModalNuovo()\" aria-label=\"Aggiungi nuovo vino\">\n            <i class=\"fas fa-plus\" aria-hidden=\"true\"></i> Nuovo Vino\n       </button>"
+    ? "<label for='toggle-modal-nuovo' class=\"btn-primary\" style=\"display:inline-block; text-align:center; padding: 0.8rem 1.5rem; width:auto; cursor:pointer;\">
+            <i class=\"fas fa-plus\" aria-hidden=\"true\"></i> Nuovo Vino
+       </label>"
     : "";
 
+// Utenti: usa button onclick (JS originale) - NON TOCCATO
 $btnNuovoUtente = ($view === 'utenti')
-    ? "<button class=\"btn-primary\" onclick=\"apriModalNuovoUtente()\" aria-label=\"Aggiungi nuovo utente\">\n            <i class=\"fas fa-plus\" aria-hidden=\"true\"></i> Nuovo Utente\n       </button>"
+    ? "<button class=\"btn-primary\" onclick=\"apriModalNuovoUtente()\" aria-label=\"Aggiungi nuovo utente\">
+            <i class=\"fas fa-plus\" aria-hidden=\"true\"></i> Nuovo Utente
+       </button>"
     : "";
 
+// Form Ricerca Utenti (Originale)
 $userSearchForm = "";
 if ($view === 'utenti') {
     $safeQuery = htmlspecialchars($query, ENT_QUOTES);
@@ -333,6 +471,7 @@ if ($view === 'utenti') {
         </form>";
 }
 
+// Replace
 $htmlContent = str_replace("[nome_utente]", $nomeUtente, $htmlContent);
 $htmlContent = str_replace("[titolo_admin]", $titoloAdmin, $htmlContent);
 $htmlContent = str_replace("[tab_vini_class]", $tabViniClass, $htmlContent);
@@ -342,7 +481,8 @@ $htmlContent = str_replace("[btn_nuovo_vino]", $btnNuovoVino, $htmlContent);
 $htmlContent = str_replace("[btn_nuovo_utente]", $btnNuovoUtente, $htmlContent);
 $htmlContent = str_replace("[sezione_vini]", ($view === 'vini') ? $sezioneVini : "", $htmlContent);
 $htmlContent = str_replace("[sezione_utenti]", ($view === 'utenti') ? $sezioneUtenti : "", $htmlContent);
-// Pulizia placeholder menu
+
+// Pulizia menu
 $htmlContent = str_replace("[cart_icon_link]", "", $htmlContent); 
 $htmlContent = str_replace("[user_area_link]", "", $htmlContent);
 
