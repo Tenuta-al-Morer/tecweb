@@ -1286,7 +1286,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     match.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     match.classList.add('is-highlighted');
                     setTimeout(() => {
-                        bestMatch.classList.remove('is-highlighted');
+                        match.classList.remove('is-highlighted');
                     }, 3000);
                 } else {
                     mostraErroreSearch("Nessun vino trovato con questo nome.");
