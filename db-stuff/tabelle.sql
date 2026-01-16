@@ -68,10 +68,10 @@ INSERT INTO `carrello_elemento` (`id`, `id_carrello`, `id_vino`, `quantita`, `da
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `contatto_archivio`
+-- Struttura della tabella `contatto`
 --
 
-CREATE TABLE `contatto_archivio` (
+CREATE TABLE `contatto` (
   `id` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `cognome` varchar(50) NOT NULL,
@@ -86,10 +86,10 @@ CREATE TABLE `contatto_archivio` (
 ) ;
 
 --
--- Dump dei dati per la tabella `contatto_archivio`
+-- Dump dei dati per la tabella `contatto`
 --
 
-INSERT INTO `contatto_archivio` (`id`, `nome`, `cognome`, `email`, `tipo_supporto`, `prefisso`, `telefono`, `messaggio`, `risposta`, `data_invio`, `stato`) VALUES
+INSERT INTO `contatto` (`id`, `nome`, `cognome`, `email`, `tipo_supporto`, `prefisso`, `telefono`, `messaggio`, `risposta`, `data_invio`, `stato`) VALUES
 (1, 'Test', 'User', 'user@test.com', 'Informazioni', '+39', '3331234567', 'Ho bisogno di informazioni sulle degustazioni.', ' - ', '2025-12-22 22:39:38', 'risposto'),
 (2, 'Test', 'User', 'user@test.com', 'Ordine', '+39', '3331234567', 'Buongiorno, vorrei sapere quando verrà spedito il mio ordine.', '', '2025-12-22 22:39:38', 'aperto'),
 (3, 'Michele', 'Stevanin', 'michele.stevanin@gmail.com', 'assistenza', '+39', '3510408301', 'vediamo se funziona tutto questo', '', '2025-12-27 00:58:06', 'aperto'),
@@ -180,10 +180,10 @@ INSERT INTO `ordine_elemento` (`id`, `id_ordine`, `id_vino`, `nome_vino_storico`
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `prenotazione_archivio`
+-- Struttura della tabella `prenotazione`
 --
 
-CREATE TABLE `prenotazione_archivio` (
+CREATE TABLE `prenotazione` (
   `id` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `cognome` varchar(50) NOT NULL,
@@ -198,10 +198,10 @@ CREATE TABLE `prenotazione_archivio` (
 ) ;
 
 --
--- Dump dei dati per la tabella `prenotazione_archivio`
+-- Dump dei dati per la tabella `prenotazione`
 --
 
-INSERT INTO `prenotazione_archivio` (`id`, `nome`, `cognome`, `email`, `tipo_degustazione`, `prefisso`, `telefono`, `data_visita`, `n_persone`, `data_invio`, `stato`) VALUES
+INSERT INTO `prenotazione` (`id`, `nome`, `cognome`, `email`, `tipo_degustazione`, `prefisso`, `telefono`, `data_visita`, `n_persone`, `data_invio`, `stato`) VALUES
 (1, 'Test', 'User', 'user@test.com', 'Degustazione Premium', '+39', '3331234567', '2025-10-10', 4, '2025-12-22 22:39:38', 'approvato'),
 (3, 'Test', 'User', 'user@test.com', 'Degustazione Classica', '+39', '3331234567', '2026-01-15', 2, '2025-12-22 22:39:38', 'approvato'),
 (5, 'Mario', 'Rossi', 'mario.rossi@fake.com', 'Linea Oro', '+39', '3331112223', '2026-02-14', 2, '2025-12-27 01:23:25', 'in_attesa'),
@@ -304,9 +304,9 @@ ALTER TABLE `carrello_elemento`
   ADD KEY `fk_elemento_carrello_vino` (`id_vino`);
 
 --
--- Indici per le tabelle `contatto_archivio`
+-- Indici per le tabelle `contatto`
 --
-ALTER TABLE `contatto_archivio`
+ALTER TABLE `contatto`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -325,9 +325,9 @@ ALTER TABLE `ordine_elemento`
   ADD KEY `fk_dettaglio_ordine_vino` (`id_vino`);
 
 --
--- Indici per le tabelle `prenotazione_archivio`
+-- Indici per le tabelle `prenotazione`
 --
-ALTER TABLE `prenotazione_archivio`
+ALTER TABLE `prenotazione`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -360,9 +360,9 @@ ALTER TABLE `carrello_elemento`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT per la tabella `contatto_archivio`
+-- AUTO_INCREMENT per la tabella `contatto`
 --
-ALTER TABLE `contatto_archivio`
+ALTER TABLE `contatto`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
@@ -378,9 +378,9 @@ ALTER TABLE `ordine_elemento`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- AUTO_INCREMENT per la tabella `prenotazione_archivio`
+-- AUTO_INCREMENT per la tabella `prenotazione`
 --
-ALTER TABLE `prenotazione_archivio`
+ALTER TABLE `prenotazione`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
