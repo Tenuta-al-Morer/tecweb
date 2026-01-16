@@ -1,5 +1,3 @@
-# Rinomina questo file in config.php e inserisci i tuoi dati reali
-
 # Attivazione Rewrite Engine
 <IfModule mod_rewrite.c>
     RewriteEngine On
