@@ -53,6 +53,16 @@
     color: var(--always-bright);
 }
 
+.navigationHelp {
+    left: -9999px; 
+    display: inline-block;
+    border: 2px solid var(--always-bright); 
+}
+
+.navigationHelp:focus {
+    outline: none;
+}
+
 .logo-link {
     flex: 1 1 auto;
     display: flex;
@@ -1397,6 +1407,3 @@ select:focus {
         font-size: 0.95rem;
     }
 }
-
-
-

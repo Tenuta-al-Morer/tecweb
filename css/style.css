@@ -631,7 +631,11 @@ header {
 }
 
 a.navigationHelp:visited {
-    color: var(--text-color);
+    color: #fff;
+}
+
+.navigationHelp:hover {
+    color: var(--always-bright);
 }
 
 .main-nav-bar {
