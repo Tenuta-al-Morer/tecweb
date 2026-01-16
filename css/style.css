@@ -3704,7 +3704,7 @@ body.light-mode .close-modal:focus {
 }
 
 .wine-article.is-highlighted {
-    box-shadow: 0 0 1rem var(--secondary-color);
+    box-shadow: 0 0 5rem var(--secondary-color);
 }
 
 .content-wine-article h2,

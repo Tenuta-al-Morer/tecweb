@@ -235,5 +235,14 @@ $htmlContent = str_replace("[vini_rossi]", $htmlRossi, $htmlContent);
 $htmlContent = str_replace("[vini_bianchi]", $htmlBianchi, $htmlContent);
 $htmlContent = str_replace("[vini_selezione]", $htmlSelezione, $htmlContent);
 
+$htmlDatalist = '<datalist id="suggerimenti-vini">';
+foreach ($tuttiIVini as $vino) {
+    $nomeVino = htmlspecialchars($vino['nome']); 
+    $htmlDatalist .= '<option value="' . $nomeVino . '">';
+}
+$htmlDatalist .= '</datalist>';
+// Se hai un placeholder specifico nel HTML è meglio, altrimenti lo "incolliamo" in fondo al body
+$htmlContent = str_replace("</body>", $htmlDatalist . "</body>", $htmlContent);
+
 echo $htmlContent;
 ?>
