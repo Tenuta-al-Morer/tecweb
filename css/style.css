@@ -4325,6 +4325,17 @@ a.action-btn-text:focus {
     display: none;
 }
 
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
 /* =========================================
    FIX AUTOCOMPLETE  
    ========================================= */

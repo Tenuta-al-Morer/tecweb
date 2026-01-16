@@ -1270,25 +1270,60 @@ document.addEventListener('DOMContentLoaded', () => {
         const searchInput = document.getElementById('wine-search-input');
 
         if (searchForm && searchInput) {
+            const mostraErroreSearch = (msg) => {
+                const container = searchInput.parentElement;
+                let errorDiv = container.querySelector('.search-error-message');
+                
+                if (!errorDiv) {
+                    errorDiv = document.createElement('div');
+                    errorDiv.className = 'search-error-message error-message';
+                    errorDiv.setAttribute('role', 'alert');
+                    container.insertBefore(errorDiv, searchInput);
+                }                
+                errorDiv.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${msg}`;
+                searchInput.classList.add('input-error');
+                searchInput.setAttribute('aria-invalid', 'true');
+            };
+
+            const rimuoviErroreSearch = () => {
+                const container = searchInput.parentElement;
+                const errorDiv = container.querySelector('.search-error-message');
+                if (errorDiv) errorDiv.remove();
+                
+                searchInput.classList.remove('input-error');
+                searchInput.removeAttribute('aria-invalid');
+            };
+
             searchForm.addEventListener('submit', (e) => {
                 e.preventDefault();
+
                 const query = searchInput.value.trim().toLowerCase();
-                if (!query) return;
+    
+                if (query.length < 3) {
+                    mostraErroreSearch("Inserisci almeno 3 caratteri per la ricerca.");
+                    return;
+                }
 
                 const items = Array.from(document.querySelectorAll('.wine-article'));
+                
                 const match = items.find((item) => {
                     const title = item.querySelector('h3');
                     return title && title.innerText.toLowerCase().includes(query);
                 });
 
                 if (match) {
+                    rimuoviErroreSearch();
                     match.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     match.classList.add('is-highlighted');
                     setTimeout(() => {
                         match.classList.remove('is-highlighted');
                     }, 3000);
                 } else {
+                    mostraErroreSearch("Nessun vino trovato con questo nome.");
                 }
+            });
+            searchInput.addEventListener('input', () => {
+                rimuoviErroreSearch();
             });
         }
 
