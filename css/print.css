@@ -16,7 +16,8 @@ html{
 #backToTopBtn, .tenuta-card-image img, section.form-container, section.map-section, aside.alert-box, .empty-cart-message i, .btn-shop-empty,
 div#shipping-message-container, .btn-full, .item-actions-row, .cart-item-price-col, .dashboard-sidebar, .td_richiesta_degustazione, .danger-zone,
 #sicurezza, .admin-table-head, p.sum, #menu-checkbox, .details-content .details-section:not(:first-child), .Richieste_gestionale, .wine-search-bar,
-.wine-item, .details-button, .selettore-quantita, .modal-buy-block, .modal-close-btn, .buy-button, .badge-esaurito{
+.wine-item, .details-button, .selettore-quantita, .modal-buy-block, .modal-close-btn, .buy-button, .badge-esaurito, .admin-switch, 
+.admin-section-actions{
 	display:none;
 }
 
@@ -179,25 +180,34 @@ span.current-page{
 footer{ margin-top:10px; }
 
 /*Gestione tabelle*/
-.table-data {
+.compact-table{ 
+  border-collapse: collapse;
+}
+
+.table-data, .table-responsive {
   border-collapse: collapse;
   width: 100%;
   border: 1px solid var(--border-color);
 }
 
 .table-data th,
-.table-data td {
+.table-data td,
+.table-responsive th,
+.table-responsive td {
   padding: 0.75rem 1rem;
   border: 0; /* reset */
 }
 
 .table-data tbody tr:not(:last-child) td,
 .table-data tbody tr:not(:last-child) th[scope="row"],
-.table-data thead tr th {
+.table-data thead tr th,
+.table-responsive tbody tr:not(:last-child) td,
+.table-responsive tbody tr:not(:last-child) th[scope="row"],
+.table-responsive thead tr th {
   border-bottom: 1px solid var(--text-color);
 }
 
-.table-data caption {
+.table-data caption, .table-responsive caption {
     caption-side: top; text-align: center; font-weight: 700;
     padding: 1rem; font-size: 1.5rem; color: var(--text-color);
     padding-bottom: 0.8rem;
@@ -277,4 +287,15 @@ footer{ margin-top:10px; }
     align-items: center;
     padding: 0;
     justify-content: center;
+}
+
+/*Gestione amministrat*/
+.admin-thumb {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    padding: 2px;
 }
