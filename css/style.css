@@ -1369,7 +1369,7 @@ footer small a + a::before {
   color: #fff;
 }
 
-footer a:visited { 
+footer a:visited, .main-nav-bar a:visited { 
     color: var(--always-bright); 
 }
 

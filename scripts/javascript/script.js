@@ -109,7 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        
         if (themeToggleBtn) {
             
             const currentIsLight = document.body.classList.contains('light-mode');
@@ -121,7 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        
         const savedTheme = SafeStorage.getItem('theme');
         const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
 
@@ -206,34 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
             backToTopBtn.addEventListener('click', smoothScrollToTop);
             toggleBackToTopButton();
         }
-
-        const trackVisits = (selector) => {
-            document.querySelectorAll(selector).forEach(link => {
-
-                if (!link.href) return;
-
-                const url = new URL(link.href, window.location.origin);
-
-                if (url.origin !== window.location.origin) return;
-
-                const key = 'visited_' + url.pathname;
-
-                if (sessionStorage.getItem(key)) {
-                    link.classList.add('is-visited');
-                }
-
-                link.addEventListener('click', () => {
-                    try {
-                        sessionStorage.setItem(key, 'true');
-                    } catch (e) {
-                        console.warn('sessionStorage unavailable');
-                    }
-                });
-            });
-        };
-
-        trackVisits('.primary-navigation a[href]');
-        trackVisits('.mobile-icons a[href]');
     });
 
 
