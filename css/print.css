@@ -15,7 +15,8 @@ html{
 #help, label.menu-toggle, #main-navigation, .mobile-icons, #theme-toggle, .hero-actions, .hero-bg, span.link-arrow, section.slider-section, footer a,
 #backToTopBtn, .tenuta-card-image img, section.form-container, section.map-section, aside.alert-box, .empty-cart-message i, .btn-shop-empty,
 div#shipping-message-container, .btn-full, .item-actions-row, .cart-item-price-col, .dashboard-sidebar, .td_richiesta_degustazione, .danger-zone,
-#sicurezza, .admin-table-head, p.sum, #menu-checkbox, .details-content .details-section:not(:first-child), .Richieste_gestionale{
+#sicurezza, .admin-table-head, p.sum, #menu-checkbox, .details-content .details-section:not(:first-child), .Richieste_gestionale, .wine-search-bar,
+.wine-item, .details-button, .selettore-quantita, .modal-buy-block, .modal-close-btn, .buy-button, .badge-esaurito{
 	display:none;
 }
 
@@ -204,10 +205,63 @@ footer{ margin-top:10px; }
 
 
 /*Gestione dettagli prodotto*/
-
-
 .details-products-list li span:first-child {
     margin-right: 5px;
 }
 
 
+/*Gestione vini*/
+.sezione {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:1.2rem;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto 4em auto;
+    padding: 0 10px;
+}
+
+.wine-article {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    align-items: center;
+    flex: 0 0 calc(25% - 30px);
+    min-width: 180px;
+    max-width: 640px;
+    background: linear-gradient(180deg, #fff 0%, #f7f2e9 100%);
+    box-shadow: 0px 0px 2rem rgba(255, 255, 255, 0.1);
+    padding: 1.2rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    text-align: center;
+    scroll-margin-top: 160px;
+}
+
+.wine-article{
+    flex: 0 0 100%;
+    max-width: auto;
+    margin: 0 auto;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+.wine-article img {
+    width: 100%;
+    height: 160px;
+    margin: 0 auto 1rem auto;
+    object-fit: contain;
+    filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.2));
+}
+
+
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.8fr; 
+}
