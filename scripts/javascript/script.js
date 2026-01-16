@@ -109,7 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        
         if (themeToggleBtn) {
             
             const currentIsLight = document.body.classList.contains('light-mode');
@@ -121,7 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        
         const savedTheme = SafeStorage.getItem('theme');
         const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
 
@@ -206,34 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
             backToTopBtn.addEventListener('click', smoothScrollToTop);
             toggleBackToTopButton();
         }
-
-        const trackVisits = (selector) => {
-            document.querySelectorAll(selector).forEach(link => {
-
-                if (!link.href) return;
-
-                const url = new URL(link.href, window.location.origin);
-
-                if (url.origin !== window.location.origin) return;
-
-                const key = 'visited_' + url.pathname;
-
-                if (sessionStorage.getItem(key)) {
-                    link.classList.add('is-visited');
-                }
-
-                link.addEventListener('click', () => {
-                    try {
-                        sessionStorage.setItem(key, 'true');
-                    } catch (e) {
-                        console.warn('sessionStorage unavailable');
-                    }
-                });
-            });
-        };
-
-        trackVisits('.primary-navigation a[href]');
-        trackVisits('.mobile-icons a[href]');
     });
 
 
@@ -1140,6 +1110,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+    
     /* ==========================================
      * 11. LOGICA PAGINA VINI
      * ========================================== */
@@ -1147,9 +1118,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.body.addEventListener('click', function(e) {
             const btn = e.target.closest('.btn-plus, .btn-minus');
-            
+
             if (btn) {
-                e.preventDefault(); 
+                e.preventDefault();
 
                 const wrapper = btn.closest('.selettore-quantita');
                 if (!wrapper) return;
@@ -1159,7 +1130,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 let currentVal = parseInt(input.value) || 1;
                 let max = 9999;
-                
+
                 if (input.hasAttribute('max')) {
                     max = parseInt(input.getAttribute('max'));
                 }
@@ -1174,12 +1145,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 input.value = newVal;
             }
         });
-        
+
         document.body.addEventListener('keydown', function(e) {
             if (e.target.getAttribute('role') === 'button' && e.target.tagName === 'LABEL') {
                 if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault(); 
-                    e.target.click();   
+                    e.preventDefault();
+                    e.target.click();
                 }
             }
         });
@@ -1188,65 +1159,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.body.addEventListener('submit', function(e) {
             if (e.target.matches('.wine-form') || e.target.matches('.modal-wine-form')) {
-                
-                const submitBtn = e.submitter; 
-                
+
+                const submitBtn = e.submitter;
+
                 if (submitBtn && (submitBtn.value === 'minus' || submitBtn.value === 'plus')) {
-                     e.preventDefault();
-                     return;
+                    e.preventDefault();
+                    return;
                 }
 
-                e.preventDefault(); 
+                e.preventDefault();
 
                 const form = e.target;
                 const finalSubmitBtn = form.querySelector('button.buy-button');
-                
+
                 document.body.style.cursor = 'wait';
-                if(finalSubmitBtn) finalSubmitBtn.disabled = true;
+                if (finalSubmitBtn) finalSubmitBtn.disabled = true;
 
                 const formData = new FormData(form);
-                
-                formData.append('req_source', 'vini_page'); 
+
+                formData.append('req_source', 'vini_page');
 
                 fetch('carrello.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => {
-                    if (!response.ok) throw new Error("Network response was not ok");
-                    return response.json();
-                })
-                .then(data => {
-                    document.body.style.cursor = 'default';
-                    if(finalSubmitBtn) finalSubmitBtn.disabled = false;
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => {
+                        if (!response.ok) throw new Error("Network response was not ok");
+                        return response.json();
+                    })
+                    .then(data => {
+                        document.body.style.cursor = 'default';
+                        if (finalSubmitBtn) finalSubmitBtn.disabled = false;
 
-                    if (data.success) {
-                        showToast("Prodotto aggiunto al carrello!");
-                        resetFormQty(form);
+                        if (data.success) {
+                            showToast("Prodotto aggiunto al carrello!");
+                            resetFormQty(form);
 
-                        const badge = document.getElementById('global-cart-badge');
-                        
-                        if (badge) {
-                            badge.innerText = data.cart_count > 99 ? '99+' : data.cart_count;
-                            badge.style.display = 'flex';
-                        } else {
-                            if (data.cart_count > 0) location.reload();
-                        }
+                            const badge = document.getElementById('global-cart-badge');
 
-                    } else {
-                    }
-                })
-                .catch(error => {
-                    console.error('Errore:', error);
-                    document.body.style.cursor = 'default';
-                    if(finalSubmitBtn) finalSubmitBtn.disabled = false;
-                });
+                            if (badge) {
+                                badge.innerText = data.cart_count > 99 ? '99+' : data.cart_count;
+                                badge.style.display = 'flex';
+                            } else {
+                                if (data.cart_count > 0) location.reload();
+                            }
+
+                        } else {}
+                    })
+                    .catch(error => {
+                        console.error('Errore:', error);
+                        document.body.style.cursor = 'default';
+                        if (finalSubmitBtn) finalSubmitBtn.disabled = false;
+                    });
             }
         });
 
         function resetFormQty(form) {
             const input = form.querySelector('input[type="number"]');
-            if(input) input.value = 1;
+            if (input) input.value = 1;
         }
 
         function showToast(message) {
@@ -1254,13 +1224,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!localToast) {
                 localToast = document.createElement('div');
                 localToast.id = 'cart-toast';
-                localToast.className = 'toast'; 
+                localToast.className = 'toast';
                 document.body.appendChild(localToast);
             }
-            
+
             localToast.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
             localToast.classList.add('show');
-            
+
             setTimeout(() => {
                 localToast.classList.remove('show');
             }, 3000);
@@ -1316,7 +1286,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     match.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     match.classList.add('is-highlighted');
                     setTimeout(() => {
-                        match.classList.remove('is-highlighted');
+                        bestMatch.classList.remove('is-highlighted');
                     }, 3000);
                 } else {
                     mostraErroreSearch("Nessun vino trovato con questo nome.");
@@ -1328,7 +1298,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const modalCheckboxes = document.querySelectorAll('.modal-toggle-checkbox');
-        
+
         if (modalCheckboxes.length > 0) {
             let ultimoElementoFocusato = null;
 
@@ -1353,10 +1323,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             function attivaFocusTrap(modal, checkboxController) {
                 const focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
-                
+
                 const getFocusables = () => {
-                     let elements = Array.from(modal.querySelectorAll(focusableElementsString));
-                     return elements.filter(el => el.offsetParent !== null);
+                    let elements = Array.from(modal.querySelectorAll(focusableElementsString));
+                    return elements.filter(el => el.offsetParent !== null);
                 };
 
                 let focusables = getFocusables();
@@ -1382,12 +1352,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         firstTabStop = focusables[0];
                         lastTabStop = focusables[focusables.length - 1];
 
-                        if (e.shiftKey) { 
+                        if (e.shiftKey) {
                             if (document.activeElement === firstTabStop || document.activeElement === modal) {
                                 e.preventDefault();
                                 lastTabStop.focus();
                             }
-                        } else { 
+                        } else {
                             if (document.activeElement === lastTabStop) {
                                 e.preventDefault();
                                 firstTabStop.focus();
@@ -1401,8 +1371,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     if (!modal.contains(e.target)) {
                         e.stopPropagation();
-                        e.preventDefault(); 
-                        firstTabStop.focus(); 
+                        e.preventDefault();
+                        firstTabStop.focus();
                     }
                 };
 
@@ -1413,9 +1383,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
 
                 modal.addEventListener('keydown', keyHandler);
-                
-                document.addEventListener('focus', globalFocusHandler, true); 
-                
+
+                document.addEventListener('focus', globalFocusHandler, true);
+
                 window.addEventListener('focus', windowFocusHandler);
 
                 const cleanupListener = function() {

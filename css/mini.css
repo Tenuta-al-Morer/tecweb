@@ -25,10 +25,6 @@
     transition: color 0.3s ease;
 }
 
-.menu-toggle:focus {
-    outline: none;
-}
-
 .menu-toggle:hover,
 .menu-toggle:focus,
 .menu-toggle[aria-expanded="true"] {
@@ -39,6 +35,14 @@
     position: absolute;
     opacity: 0;
     pointer-events: none;
+    display: block;
+}
+
+.menu-checkbox:focus + .menu-toggle {
+    outline: 1px solid #fff; 
+    outline-offset: 4px;
+    color: var(--always-bright); 
+    border-radius: 2px
 }
 
 #menu-checkbox:checked ~ .primary-navigation {
@@ -48,6 +52,16 @@
 
 #menu-checkbox:checked ~ .menu-toggle {
     color: var(--always-bright);
+}
+
+.navigationHelp {
+    left: -9999px; 
+    display: inline-block;
+    border: 2px solid var(--always-bright); 
+}
+
+.navigationHelp:focus {
+    outline: none;
 }
 
 .logo-link {
@@ -1394,6 +1408,3 @@ select:focus {
         font-size: 0.95rem;
     }
 }
-
-
-
