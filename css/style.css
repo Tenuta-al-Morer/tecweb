@@ -113,7 +113,7 @@ body.light-mode select:focus {
     position: static;
     text-indent: 0;
     color: #fff;
-    background-color: var(--background); 
+    background-color: var(--always-dark-bg); 
     padding: 0.5em 0.3em;
     border-radius: 3px;
 }
