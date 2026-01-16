@@ -1286,7 +1286,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     match.classList.add('is-highlighted');
                     setTimeout(() => {
                         match.classList.remove('is-highlighted');
-                    }, 1500);
+                    }, 3000);
                 } else {
                 }
             });
