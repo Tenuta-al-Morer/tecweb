@@ -25,10 +25,6 @@
     transition: color 0.3s ease;
 }
 
-.menu-toggle:focus {
-    outline: none;
-}
-
 .menu-toggle:hover,
 .menu-toggle:focus,
 .menu-toggle[aria-expanded="true"] {
@@ -40,6 +36,12 @@
     opacity: 0;
     pointer-events: none;
     display: block;
+}
+
+.menu-checkbox:focus + .menu-toggle {
+    outline: 1px solid #fff; 
+    outline-offset: 4px;
+    color: var(--always-bright); 
 }
 
 #menu-checkbox:checked ~ .primary-navigation {
