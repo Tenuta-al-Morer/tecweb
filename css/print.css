@@ -253,15 +253,28 @@ footer{ margin-top:10px; }
 
 .wine-article img {
     width: 100%;
-    height: 160px;
+    height: 180px;
     margin: 0 auto 1rem auto;
     object-fit: contain;
     filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.2));
 }
 
+.modal-specs-table th {
+    text-align: left;
+    padding-right: 25px;
+}
 
+.modal-specs-table td {
+    text-align: left;
+}
 
 .modal-grid {
     display: grid;
     grid-template-columns: 1fr 1.8fr; 
+}
+
+.modal-img-col {
+    align-items: center;
+    padding: 0;
+    justify-content: center;
 }
