@@ -69,29 +69,30 @@
             </div>
         </header>
 
-        <main id="content-admin" class="admin-wrapper"> 
-        <div class="admin-page-title">
-            <h1>Amministrazione</h1>
-            <p>Operatore: <strong>[nome_utente]</strong></p>
-        </div>
-
-        <div class="admin-switch admin-switch-full">
-            <a href="admin.php?view=vini" class="[tab_vini_class]">Gestione Vini</a>
-            <a href="admin.php?view=utenti" class="[tab_utenti_class]">Gestione Utenti</a>
-        </div>
-
-        <div class="admin-section-head">
-            <h2>[titolo_admin]</h2>
-            <div class="admin-section-actions">
-                [user_search_form]
-                [btn_nuovo_vino]
-                [btn_nuovo_utente]
+        <main id="content-admin" class="admin-wrapper" aria-labelledby="sum">
+            <p class="visually-hidden" id="sum">Pannello di amministrazione della Tenuta al Morer per la gestione di vini e utenti.</p> 
+            <div class="admin-page-title">
+                <h1>Amministrazione</h1>
+                <p>Operatore: <strong>[nome_utente]</strong></p>
             </div>
-        </div>
 
-        [sezione_vini]
-        [sezione_utenti]
-    </main>
+            <div class="admin-switch admin-switch-full">
+                <a href="admin.php?view=vini" class="[tab_vini_class]">Gestione Vini</a>
+                <a href="admin.php?view=utenti" class="[tab_utenti_class]">Gestione Utenti</a>
+            </div>
+
+            <div class="admin-section-head">
+                <h2>[titolo_admin]</h2>
+                <div class="admin-section-actions">
+                    [user_search_form]
+                    [btn_nuovo_vino]
+                    [btn_nuovo_utente]
+                </div>
+            </div>
+
+            [sezione_vini]
+            [sezione_utenti]
+        </main>
 
     <div id="modalVino" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal-box">
