@@ -8,8 +8,6 @@ Lista todo per tecweb:
 - sistemare in print.css tutte le misure relative (devono diventare assolute, perchè quello che viene stampato è sempre identico)
 - controlla l’accessibilità di tutte le pagine e verificare con nvda che tutto funzioni per i ciechi:
     - vini
-    - esperienze
-    - contatti
     - carrello
     - area cliente
     - area gestionale
