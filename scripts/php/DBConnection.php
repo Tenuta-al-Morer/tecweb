@@ -141,7 +141,7 @@ class DBConnection {
     public function salvaMessaggio($nome, $cognome, $email, $tipo_supporto, $prefisso, $telefono, $messaggio) {
         
         // Query di inserimento nella nuova tabella
-        $query = "INSERT INTO contatto_archivio 
+        $query = "INSERT INTO contatto 
                  (nome, cognome, email, tipo_supporto, prefisso, telefono, messaggio, data_invio, stato) 
                  VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), 'aperto')";
 
@@ -171,7 +171,7 @@ class DBConnection {
 
     // FUNZIONE PER SALVARE UNA PRENOTAZIONE
     public function salvaPrenotazione($nome, $cognome, $email, $tipo_degustazione, $prefisso, $telefono, $data_visita, $n_persone) {
-        $query = "INSERT INTO prenotazione_archivio (nome, cognome, email, tipo_degustazione, prefisso, telefono, data_visita, n_persone, data_invio, stato) 
+        $query = "INSERT INTO prenotazione (nome, cognome, email, tipo_degustazione, prefisso, telefono, data_visita, n_persone, data_invio, stato) 
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), 'in_attesa')";
         
         $stmt = $this->connection->prepare($query);
@@ -187,9 +187,9 @@ class DBConnection {
 
     // FUNZIONE ARCHIVIA PRENOTAZIONE
     public function archiviaPrenotazione($id) {
-        $queryCopia = "INSERT INTO prenotazione_archivio (id, nome, cognome, email, tipo_degustazione, prefisso, telefono, data_visita, n_persone, data_invio, stato)
+        $queryCopia = "INSERT INTO prenotazione (id, nome, cognome, email, tipo_degustazione, prefisso, telefono, data_visita, n_persone, data_invio, stato)
                        SELECT id, nome, cognome, email, tipo_degustazione, prefisso, telefono, data_visita, n_persone, data_invio, 'Completato'
-                       FROM prenotazione_archivio WHERE id = ?";
+                       FROM prenotazione WHERE id = ?";
         
         $stmt = $this->connection->prepare($queryCopia);
         if (!$stmt) return false;
@@ -210,7 +210,7 @@ class DBConnection {
 
     // FUNZIONE ARCHIVIA MESSAGGIO
     public function archiviaMessaggio($id, $risposta) {
-        $sql = "UPDATE contatto_archivio
+        $sql = "UPDATE contatto
                 SET risposta = ?, stato = 'risposto'
                 WHERE id = ?";
 
@@ -515,7 +515,7 @@ class DBConnection {
         if (!in_array($nuovo_stato, $stati_permessi)) {
             return false;
         }
-        $stmt = $this->connection->prepare("UPDATE prenotazione_archivio SET stato = ? WHERE id = ?");
+        $stmt = $this->connection->prepare("UPDATE prenotazione SET stato = ? WHERE id = ?");
         $stmt->bind_param("si", $nuovo_stato, $id_prenotazione);
         $result = $stmt->execute();
         $stmt->close();
@@ -587,7 +587,7 @@ class DBConnection {
     public function getPrenotazioniUtente($email) {
         $prenotazioni = [];
 
-        $queryPrenotazioni = "SELECT * FROM prenotazione_archivio WHERE email = ? ORDER BY data_invio DESC";
+        $queryPrenotazioni = "SELECT * FROM prenotazione WHERE email = ? ORDER BY data_invio DESC";
         $stmtPren = $this->connection->prepare($queryPrenotazioni);
         if (!$stmtPren) { return []; }
 
@@ -655,7 +655,7 @@ class DBConnection {
     public function getPrenotazioni() {
         $prenotazioni = [];
         
-        $queryPrenotazioni = "SELECT * FROM prenotazione_archivio WHERE stato='in_attesa' ORDER BY data_invio DESC";
+        $queryPrenotazioni = "SELECT * FROM prenotazione WHERE stato='in_attesa' ORDER BY data_invio DESC";
         $stmtPren = $this->connection->prepare($queryPrenotazioni);
         if (!$stmtPren) { return []; }
 
@@ -673,7 +673,7 @@ class DBConnection {
     public function getPrenotazioniArchivio() {
         $prenotazioni = [];
         
-        $queryPrenotazioni = "SELECT * FROM prenotazione_archivio WHERE stato!='in_attesa' ORDER BY data_invio DESC";
+        $queryPrenotazioni = "SELECT * FROM prenotazione WHERE stato!='in_attesa' ORDER BY data_invio DESC";
         $stmtPren = $this->connection->prepare($queryPrenotazioni);
         if (!$stmtPren) { return []; }
 
@@ -691,7 +691,7 @@ class DBConnection {
     // RECUPERO MESSAGGI (GESTIONALE)
     public function getMessaggi() {
         $messaggi = [];
-        $queryMessaggi = "SELECT * FROM contatto_archivio WHERE stato = 'aperto' ORDER BY data_invio DESC";
+        $queryMessaggi = "SELECT * FROM contatto WHERE stato = 'aperto' ORDER BY data_invio DESC";
         $stmtMess = $this->connection->prepare($queryMessaggi);
         if (!$stmtMess) { return []; } 
         
@@ -708,7 +708,7 @@ class DBConnection {
     // RECUPERO MESSAGGI ARCHIVIO (GESTIONALE)
     public function getMessaggiArchivio() {
         $messaggi = [];
-        $queryMessaggi = "SELECT * FROM contatto_archivio WHERE stato != 'aperto' ORDER BY data_invio DESC";
+        $queryMessaggi = "SELECT * FROM contatto WHERE stato != 'aperto' ORDER BY data_invio DESC";
         $stmtMess = $this->connection->prepare($queryMessaggi);
         if (!$stmtMess) { return []; } 
         
