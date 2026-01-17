@@ -24,8 +24,6 @@ function ripristinoInput($htmlContent){
 $loginHTML = caricaPagina('../../html/login.html');
 $err = "";
 
-session_start();
-
 if (isset($_SESSION["utente"])) {
     
     if(isset($_SESSION["ruolo"]) && $_SESSION["ruolo"] === 'admin') {

@@ -17,8 +17,6 @@ function ripristinoInput($htmlContent){
 $registrazioneHTML = caricaPagina('../../html/registrazione.html');
 $err = "";
 
-session_start();
-
 if (isset($_SESSION["utente"])) {
     header("location: utente.php"); 
     exit();

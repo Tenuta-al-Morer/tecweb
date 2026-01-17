@@ -1,5 +1,4 @@
 Lista todo per tecweb:   
-- sistemare tabelle amministratore (stessa convenzione di gestionale) -> luca
 - sistemare cerca vino in vini (manca da fare la ricerca nella pagina vini. Il resto è apposto)
 - sistemare print css, deve operare da zero -> contarini
 - mettere conferma operazione su admin utenti
