@@ -230,13 +230,13 @@ if ($view === 'vini') {
         $txtStato = ucfirst($v['stato']);
         $badge = "<span class='badge $badgeClass'>$txtStato</span>";
         
-        $colorStock = ($v['quantita_stock'] < 10 && !$isDeleted) ? 'color:var(--errors); font-weight:bold;' : '';
+        $stockClass = ($v['quantita_stock'] < 10 && !$isDeleted) ? 'stock-low' : '';
         $nomeSafe = htmlspecialchars($v['nome'], ENT_QUOTES);
         
         // Icona Visibilità
         $iconaVisibilita = ($v['stato'] == 'attivo') 
             ? '<i class="fas fa-eye" aria-hidden="true"></i>' 
-            : '<i class="fas fa-eye-slash" aria-hidden="true" style="color:var(--text-color); opacity:0.5;"></i>';
+            : '<i class="fas fa-eye-slash icon-muted" aria-hidden="true"></i>';
         
         $actions = "";
         $modalToggleId = "modal-edit-" . $v['id'];
@@ -244,7 +244,7 @@ if ($view === 'vini') {
         if (!$isDeleted) {
             // 1. Modifica (LABEL per checkbox)
             $actions .= "
-            <label for='$modalToggleId' class='btn-icon' aria-label='Modifica $nomeSafe' role='button' tabindex='0' style='cursor:pointer'>
+            <label for='$modalToggleId' class='btn-icon' aria-label='Modifica $nomeSafe' role='button' tabindex='0'>
                 <i class='fas fa-edit'></i>
             </label>";
             
@@ -279,7 +279,7 @@ if ($view === 'vini') {
                 <label for='$modalToggleId' class='modal-overlay-close' aria-label='Chiudi'></label>
                 <div class='modal-box-css'>
                     <label for='$modalToggleId' class='modal-close-x' aria-label='Chiudi'>&times;</label>
-                    <h2 style='margin-top:0'>Modifica Vino: $nomeSafe</h2>
+                    <h2 class='modal-title'>Modifica Vino: $nomeSafe</h2>
                     $formHTML
                 </div>
             </div>";
@@ -291,7 +291,7 @@ if ($view === 'vini') {
                 <input type='hidden' name='azione' value='ripristina_vino'>
                 <input type='hidden' name='view' value='{$view}'>
                 <input type='hidden' name='id' value='{$v['id']}'>
-                <button type='submit' class='btn-icon' style='color: var(--secondary-color);' aria-label='Ripristina $nomeSafe' title='Ripristina Vino'>
+                <button type='submit' class='btn-icon btn-icon-restore' aria-label='Ripristina $nomeSafe' title='Ripristina Vino'>
                     <i class='fas fa-trash-restore'></i> 
                 </button>
             </form>";
@@ -306,7 +306,7 @@ if ($view === 'vini') {
                 <div class='truncate'>{$v['descrizione_breve']}</div>
             </td>
             <td data-title='Prezzo'>€ " . number_format($v['prezzo'], 2) . "</td>
-            <td data-title='Stock' style='$colorStock'>{$v['quantita_stock']}</td>
+            <td data-title='Stock' class='$stockClass'>{$v['quantita_stock']}</td>
             <td data-title='Stato'>$badge</td>
             <td data-title='Azioni'><div class='action-group'>$actions</div></td>
         </tr>";
@@ -323,7 +323,7 @@ if ($view === 'vini') {
         <label for='toggle-modal-nuovo' class='modal-overlay-close' aria-label='Chiudi'></label>
         <div class='modal-box-css'>
             <label for='toggle-modal-nuovo' class='modal-close-x' aria-label='Chiudi'>&times;</label>
-            <h2 style='margin-top:0'>Aggiungi Nuovo Vino</h2>
+            <h2 class='modal-title'>Aggiungi Nuovo Vino</h2>
             $formNuovo
         </div>
     </div>";
@@ -416,13 +416,13 @@ $sezioneVini = "
                 <caption>Elenco vini nel database</caption>
                 <thead>
                     <tr>
-                        <th scope='col' abbr='ID' style='width: 50px;'>ID</th>
-                        <th scope='col' abbr='Immagine' style='width: 80px;'>Img</th>
+                        <th scope='col' abbr='ID' class='admin-col-id'>ID</th>
+                        <th scope='col' abbr='Immagine' class='admin-col-img'>Img</th>
                         <th scope='col' abbr='Dettagli'>Dettagli Vino</th>
                         <th scope='col' abbr='Prezzo'>Prezzo</th>
                         <th scope='col' abbr='Stock'>Stock</th>
                         <th scope='col' abbr='Stato'>Stato</th>
-                        <th scope='col' abbr='Azioni' style='width: 120px;' class='Richieste_gestionale'>Azioni</th>
+                        <th scope='col' abbr='Azioni' class='Richieste_gestionale admin-col-actions'>Azioni</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -445,13 +445,13 @@ $sezioneUtenti = "
                 <caption>Elenco utenti registrati</caption>
                 <thead>
                     <tr>
-                        <th scope='col' abbr='ID' style='width: 60px;'>ID</th>
+                        <th scope='col' abbr='ID' class='admin-user-col-id'>ID</th>
                         <th scope='col' abbr='Nome'>Nome</th>
                         <th scope='col' abbr='Cognome'>Cognome</th>
                         <th scope='col' abbr='Email'>Email</th>
-                        <th scope='col' abbr='Ruolo' style='width: 120px;'>Ruolo</th>
-                        <th scope='col' abbr='Registrazione' style='width: 140px;'>Registrazione</th>
-                        <th scope='col' abbr='Azioni' style='width: 180px;'>Azioni</th>
+                        <th scope='col' abbr='Ruolo' class='admin-user-col-role'>Ruolo</th>
+                        <th scope='col' abbr='Registrazione' class='admin-user-col-registered'>Registrazione</th>
+                        <th scope='col' abbr='Azioni' class='admin-user-col-actions'>Azioni</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -463,8 +463,8 @@ $sezioneUtenti = "
 // Pulsanti Nuovi Elementi
 // Vini: usa label per checkbox (No-JS)
 $btnNuovoVino = ($view === 'vini')
-    ? "<label for='toggle-modal-nuovo' class=\"btn-primary\" style=\"display:inline-block; text-align:center; padding: 0.8rem 1.5rem; width:auto; cursor:pointer;\">
-            <i class=\"fas fa-plus\" aria-hidden=\"true\"></i> Nuovo Vino
+    ? "<label for='toggle-modal-nuovo' class=\"btn-primary admin-btn-inline\">
+            <i class=\"fas fa-plus\" aria-hidden=\"true\"></i>&nbsp;Nuovo Vino
        </label>"
     : "";
 

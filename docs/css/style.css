@@ -3361,6 +3361,12 @@ a.feature-card.card-link {
     width: auto;
     text-decoration: none;
 }
+.admin-btn-inline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
 
 .admin-search-form {
     display: flex;
@@ -3528,6 +3534,13 @@ body.light-mode .admin-search-input::placeholder {
     text-align: left;
     border-bottom: 1px solid var(--border-color);
 }
+.admin-col-id { width: 50px; }
+.admin-col-img { width: 80px; }
+.admin-col-actions { width: 120px; }
+.admin-user-col-id { width: 60px; }
+.admin-user-col-role { width: 120px; }
+.admin-user-col-registered { width: 140px; }
+.admin-user-col-actions { width: 180px; }
 
 .compact-table tbody th {
     background-color: transparent;
@@ -3541,6 +3554,10 @@ body.light-mode .admin-search-input::placeholder {
     padding: 1rem;
     border-bottom: 1px solid var(--border-color);
     vertical-align: middle;
+}
+.stock-low {
+    color: var(--errors);
+    font-weight: bold;
 }
 
 .compact-table tr:hover,
@@ -3628,6 +3645,13 @@ body.light-mode .badge {
     transition: all 0.3s;
     font-size: 1.1rem;
 }
+.btn-icon-restore {
+    color: var(--secondary-color);
+}
+.icon-muted {
+    color: var(--text-color);
+    opacity: 0.5;
+}
 
 .btn-icon:hover, .btn-icon:focus {
     border-color: var(--secondary-color);
@@ -3660,6 +3684,9 @@ body.light-mode .badge {
     overflow-y: auto;
     position: relative;
     box-shadow: 0 10px 30px #000;
+}
+.modal-title {
+    margin-top: 0;
 }
 
 .close-modal {
