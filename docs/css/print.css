@@ -17,7 +17,7 @@ html{
 div#shipping-message-container, .btn-full, .item-actions-row, .cart-item-price-col, .dashboard-sidebar, .td_richiesta_degustazione, .danger-zone,
 #sicurezza, .admin-table-head, p.sum, #menu-checkbox, .details-content .details-section:not(:first-child), .Richieste_gestionale, .wine-search-bar,
 .wine-item, .details-button, .selettore-quantita, .modal-buy-block, .modal-close-btn, .buy-button, .badge-esaurito, .admin-switch, 
-.admin-section-actions, .auth-container{
+.admin-section-actions, .auth-container, .toggle-label-wrapper, #toggle-deleted-visibility, .action-group, .state-toggle{
 	display:none;
 }
 
