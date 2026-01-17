@@ -18,4 +18,4 @@ Lista todo per tecweb:
     - stampa.css
     - mini.css
     
-- preparare la relazione (completare sezione 5.2 e mettere valori finali delle palette css) -> Michele
+- preparare la relazione (completare sezione 5.2 e mettere valori finali delle palette css, spiegare classe no-js) -> Michele
