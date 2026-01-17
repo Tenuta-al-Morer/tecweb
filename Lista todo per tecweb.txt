@@ -1,4 +1,6 @@
 Lista todo per tecweb:
+- sistemare creazione utente senza js
+- sistemare form in admin, mettere le label di aiuti per la compilazione (Es: ...)
 - sistemare cerca vino in vini (manca da fare la ricerca nella pagina vini. Il resto è apposto)
 - sistemare print css, deve operare da zero -> contarini
 - mettere conferma operazione su admin utenti

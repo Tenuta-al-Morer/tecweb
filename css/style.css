@@ -3236,7 +3236,6 @@ a.feature-card.card-link {
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    margin: 1.5rem 0;
     flex-wrap: wrap;
 }
 
@@ -3411,7 +3410,6 @@ body.light-mode .admin-search-input::placeholder {
     font-weight: 700;
     color: var(--secondary-color);
     font-size: 1.3rem;
-    margin-bottom: 1rem;
     padding: 0.5rem;
     border-bottom: 2px solid var(--border-color);
     letter-spacing: 0.05em;
@@ -3426,6 +3424,14 @@ body.light-mode .admin-search-input::placeholder {
     letter-spacing: 0.05em;
     text-align: left;
     border-bottom: 1px solid var(--border-color);
+}
+
+.compact-table tbody th {
+    background-color: transparent;
+    color: var(--text-color);
+    text-transform: none;
+    font-size: 1rem;
+    letter-spacing: normal;
 }
 
 .compact-table td {
@@ -3664,6 +3670,13 @@ body.light-mode .compact-table th {
     color: var(--secondary-color);
     border-bottom: 2px solid #dddddd;
     font-weight: 800;
+}
+
+body.light-mode .compact-table tbody th {
+    background-color: transparent;
+    color: #444444;
+    border-bottom: 1px solid #eeeeee;
+    font-weight: 600;
 }
 
 body.light-mode .compact-table td {

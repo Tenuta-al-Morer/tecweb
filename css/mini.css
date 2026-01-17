@@ -737,6 +737,16 @@ body.light-mode .table-data td::before {
         width: 100%;
     }
 
+    .compact-table th {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.8rem 0;
+        border-bottom: 1px dashed var(--border-color);
+        text-align: right;
+        gap: 1rem;
+    }
+
     .compact-table caption {
         display: block;
         position: static;
@@ -788,6 +798,17 @@ body.light-mode .table-data td::before {
         flex-shrink: 0;
     }
 
+    .compact-table th::before {
+        content: attr(data-title);
+        font-weight: 700;
+        color: var(--secondary-color);
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 0.05em;
+        text-align: left;
+        flex-shrink: 0;
+    }
+
     .compact-table td[data-title="ID"] {
         position: absolute;
         top: 1rem;
@@ -799,6 +820,18 @@ body.light-mode .table-data td::before {
         color: var(--text-color);
     }
     .compact-table td[data-title="ID"]::before { display: none; }
+
+    .compact-table th[data-title="ID"] {
+        position: absolute;
+        top: 1rem;
+        right: 1.5rem;
+        border: none;
+        padding: 0;
+        width: auto;
+        font-size: 0.85rem;
+        color: var(--text-color);
+    }
+    .compact-table th[data-title="ID"]::before { display: none; }
 
     .compact-table td[data-title="Anteprima"] {
         justify-content: center;

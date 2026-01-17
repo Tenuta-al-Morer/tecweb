@@ -290,7 +290,7 @@ if ($view === 'vini') {
         }
 
         $rigaVini .= "<tr class='{$rowClass}'>
-            <td data-title='ID'><b>{$v['id']}</b></td>
+            <th scope='row' data-title='ID'><b>{$v['id']}</b></th>
             <td data-title='Anteprima'><img src='" . htmlspecialchars($v['img']) . "' class='admin-thumb' alt=''></td>
             <td data-title='Dettagli'>
                 <div class='wine-title'>" . htmlspecialchars($v['nome']) . "</div>
@@ -373,7 +373,7 @@ if ($view === 'utenti') {
                 </div>";
 
         $rigaUtenti .= "<tr>
-            <td data-title='ID'><b>{$idUtente}</b></td>
+            <th scope='row' data-title='ID'><b>{$idUtente}</b></th>
             <td data-title='Nome'>{$nome}</td>
             <td data-title='Cognome'>{$cognome}</td>
             <td data-title='Email'>{$email}</td>
@@ -398,19 +398,23 @@ $toggleDeletedHTML = "
 
 // Sezione Vini HTML
 $sezioneVini = "
+        <p id='descrizione-tab-vini' class='sum'>
+            La tabella riassume i vini presenti nel catalogo. Ogni riga rappresenta un vino.
+            Le colonne riportano: ID, immagine, dettagli, prezzo, stock, stato e azioni disponibili.
+        </p>
         $toggleDeletedHTML
         <div class='table-responsive'>
-            <table class='compact-table'>
+            <table class='compact-table' aria-describedby='descrizione-tab-vini'>
                 <caption>Elenco vini nel database</caption>
                 <thead>
                     <tr>
-                        <th scope='col' style='width: 50px;'>ID</th>
-                        <th scope='col' style='width: 80px;'>Img</th>
-                        <th scope='col'>Dettagli Vino</th>
-                        <th scope='col'>Prezzo</th>
-                        <th scope='col'>Stock</th>
-                        <th scope='col'>Stato</th>
-                        <th scope='col' style='width: 120px;'>Azioni</th>
+                        <th scope='col' abbr='ID' style='width: 50px;'>ID</th>
+                        <th scope='col' abbr='Immagine' style='width: 80px;'>Img</th>
+                        <th scope='col' abbr='Dettagli'>Dettagli Vino</th>
+                        <th scope='col' abbr='Prezzo'>Prezzo</th>
+                        <th scope='col' abbr='Stock'>Stock</th>
+                        <th scope='col' abbr='Stato'>Stato</th>
+                        <th scope='col' abbr='Azioni' style='width: 120px;'>Azioni</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -424,18 +428,22 @@ $sezioneVini = "
 
 // Sezione Utenti HTML (Codice Originale)
 $sezioneUtenti = "
+        <p id='descrizione-tab-utenti' class='sum'>
+            La tabella riassume gli utenti registrati. Ogni riga rappresenta un utente.
+            Le colonne riportano: ID, nome, cognome, email, ruolo, data registrazione e azioni disponibili.
+        </p>
         <div class='table-responsive'>
-            <table class='compact-table'>
+            <table class='compact-table' aria-describedby='descrizione-tab-utenti'>
                 <caption>Elenco utenti registrati</caption>
                 <thead>
                     <tr>
-                        <th scope='col' style='width: 60px;'>ID</th>
-                        <th scope='col'>Nome</th>
-                        <th scope='col'>Cognome</th>
-                        <th scope='col'>Email</th>
-                        <th scope='col' style='width: 120px;'>Ruolo</th>
-                        <th scope='col' style='width: 140px;'>Registrazione</th>
-                        <th scope='col' style='width: 180px;'>Azioni</th>
+                        <th scope='col' abbr='ID' style='width: 60px;'>ID</th>
+                        <th scope='col' abbr='Nome'>Nome</th>
+                        <th scope='col' abbr='Cognome'>Cognome</th>
+                        <th scope='col' abbr='Email'>Email</th>
+                        <th scope='col' abbr='Ruolo' style='width: 120px;'>Ruolo</th>
+                        <th scope='col' abbr='Registrazione' style='width: 140px;'>Registrazione</th>
+                        <th scope='col' abbr='Azioni' style='width: 180px;'>Azioni</th>
                     </tr>
                 </thead>
                 <tbody>
