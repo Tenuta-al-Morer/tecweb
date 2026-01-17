@@ -187,9 +187,8 @@ main {
 }
 
 .wine-search-form {
-    width: 100%;
+    margin-left: auto;
     justify-content: center;
-    flex-wrap: wrap;
 }
 
 .wine-search-form input[type="search"] {
