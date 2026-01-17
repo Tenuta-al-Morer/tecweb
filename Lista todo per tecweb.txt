@@ -17,4 +17,5 @@ Lista todo per tecweb:
     - stile.css
     - stampa.css
     - mini.css
+    
 - preparare la relazione (completare sezione 5.2 e mettere valori finali delle palette css) -> Michele
