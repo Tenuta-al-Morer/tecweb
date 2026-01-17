@@ -17,7 +17,7 @@ html{
 div#shipping-message-container, .btn-full, .item-actions-row, .cart-item-price-col, .dashboard-sidebar, .td_richiesta_degustazione, .danger-zone,
 #sicurezza, .admin-table-head, p.sum, #menu-checkbox, .details-content .details-section:not(:first-child), .Richieste_gestionale, .wine-search-bar,
 .wine-item, .details-button, .selettore-quantita, .modal-buy-block, .modal-close-btn, .buy-button, .badge-esaurito, .admin-switch, 
-.admin-section-actions{
+.admin-section-actions, .auth-container{
 	display:none;
 }
 
@@ -289,7 +289,7 @@ footer{ margin-top:10px; }
     justify-content: center;
 }
 
-/*Gestione amministrat*/
+/*Gestione amministratore*/
 .admin-thumb {
     width: 60px;
     height: 60px;
@@ -298,4 +298,19 @@ footer{ margin-top:10px; }
     border-radius: 4px;
     border: 1px solid var(--border-color);
     padding: 2px;
+}
+
+/*Gestione login*/
+.login-header-logo {
+    background-color: var(--always-dark-bg);
+    text-align: center;
+    padding: 0.5em 0 0 0;
+    display: block;
+}
+
+.login-header-logo img {
+    height: 5em;
+    width: auto;
+    display: inline-block;
+    transition: transform 0.3s ease;
 }
