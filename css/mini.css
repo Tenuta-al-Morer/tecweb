@@ -690,262 +690,276 @@ body.light-mode .table-data td::before {
 /* =========================================
    RESPONSIVE ADMIN 
    ========================================= */
-    .admin-header-row {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 2rem;
-        text-align: center;
-        margin-bottom: 2.5rem;
-        padding-bottom: 1rem;
-    }
+.admin-header-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1rem;
+}
 
-    .admin-header-row > div {
-        width: 100%;
-    }
+.admin-header-row > div {
+    width: 100%;
+}
 
-    .admin-header-row h1 {
-        font-size: 2rem;
-        line-height: 1.2em;
-        margin-bottom: 0.8rem;
-    }
+.admin-header-row h1 {
+    font-size: 2rem;
+    line-height: 1.2em;
+    margin-bottom: 0.8rem;
+}
 
-    .admin-header-row p {
-        margin-bottom: 0;
-    }
+.admin-header-row p {
+    margin-bottom: 0;
+}
 
-    .admin-header-row button.btn-primary {
-        width: 100%;
-        justify-content: center;
-        padding: 1.2rem;
-        margin-top: 0.5rem;
-    }
+.admin-header-row button.btn-primary {
+    width: 100%;
+    justify-content: center;
+    padding: 1.2rem;
+    margin-top: 0.5rem;
+}
 
-    main table.compact-table {
-        border: none;
-        background: transparent; 
-        box-shadow: none;
-    }
-    
-    main .table-responsive {
-        border: none;
-        border-radius: 0; 
-    }
+main table.compact-table {
+    border: none;
+    background: transparent; 
+    box-shadow: none;
+}
 
-    .compact-table thead {
-        display: none;
-    }
+main .table-responsive {
+    border: none;
+    border-radius: 0; 
+}
 
-    .compact-table, .compact-table tbody, .compact-table tr, .compact-table td {
-        display: block;
-        width: 100%;
-    }
+.compact-table thead {
+    display: none;
+}
 
-    .compact-table th {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.8rem 0;
-        border-bottom: 1px dashed var(--border-color);
-        text-align: right;
-        gap: 1rem;
-    }
+.compact-table, .compact-table tbody, .compact-table tr, .compact-table td {
+    display: block;
+    width: 100%;
+}
 
-    .compact-table caption {
-        display: block;
-        position: static;
-        text-indent: 0;
-        text-align: center;
-        margin-bottom: 1.5rem;
-        font-family: 'Lexend', sans-serif;
-        font-weight: 700;
-        color: var(--secondary-color);
-        font-size: 1.3rem;
-        border-bottom: 2px solid var(--border-color);
-        padding-bottom: 0.5rem;
-    }
+.compact-table th {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px dashed var(--border-color);
+    text-align: right;
+    gap: 1rem;
+}
 
-    .compact-table tr {
-        margin-bottom: 2rem;
-        background-color: var(--background);
-        border: 1px solid var(--border-color);
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        padding: 1.5rem;
-        position: relative;
-    }
+.compact-table caption {
+    display: block;
+    position: static;
+    text-indent: 0;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 700;
+    color: var(--secondary-color);
+    font-size: 1.3rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
 
-    .compact-table td {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.8rem 0;
-        border-bottom: 1px dashed var(--border-color);
-        text-align: right;
-        gap: 1rem;
-    }
+.compact-table tr {
+    margin-bottom: 2rem;
+    background-color: var(--background);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    position: relative;
+}
 
-    .compact-table td:last-child {
-        border-bottom: none;
-        padding-top: 1.5rem;
-        justify-content: center;
-    }
+.compact-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px dashed var(--border-color);
+    text-align: right;
+    gap: 1rem;
+}
 
-    .compact-table td::before {
-        content: attr(data-title);
-        font-weight: 700;
-        color: var(--secondary-color);
-        text-transform: uppercase;
-        font-size: 0.8rem;
-        letter-spacing: 0.05em;
-        text-align: left;
-        flex-shrink: 0;
-    }
+.compact-table td:last-child {
+    border-bottom: none;
+    padding-top: 1.5rem;
+    justify-content: center;
+}
 
-    .compact-table th::before {
-        content: attr(data-title);
-        font-weight: 700;
-        color: var(--secondary-color);
-        text-transform: uppercase;
-        font-size: 0.8rem;
-        letter-spacing: 0.05em;
-        text-align: left;
-        flex-shrink: 0;
-    }
+.compact-table td::before {
+    content: attr(data-title);
+    font-weight: 700;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    text-align: left;
+    flex-shrink: 0;
+}
 
-    .compact-table td[data-title="ID"] {
-        position: static;
-        top: auto;
-        right: auto;
-        border: none;
-        padding: 0.8rem 0;
-        width: 100%;
-        font-size: 1rem;
-        color: var(--text-color);
-    }
-    .compact-table td[data-title="ID"]::before {
-        display: inline;
-        content: "ID";
-        font-weight: 700;
-        color: var(--secondary-color);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        margin-right: 0.35rem;
-    }
+.compact-table th::before {
+    content: attr(data-title);
+    font-weight: 700;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    text-align: left;
+    flex-shrink: 0;
+}
 
-    .compact-table th[data-title="ID"] {
-        position: static;
-        top: auto;
-        right: auto;
-        border: none;
-        padding: 0;
-        width: 100%;
-        font-size: 1rem;
-        color: var(--text-color);
-    }
-    .compact-table th[data-title="ID"]::before {
-        display: inline;
-        content: "ID";
-        font-weight: 700;
-        color: var(--secondary-color);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        margin-right: 0.35rem;
-    }
+.compact-table td[data-title="ID"] {
+    position: static;
+    top: auto;
+    right: auto;
+    border: none;
+    padding: 0.8rem 0;
+    width: 100%;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+.compact-table td[data-title="ID"]::before {
+    display: inline;
+    content: "ID";
+    font-weight: 700;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-right: 0.35rem;
+}
 
-    .compact-table td[data-title="Anteprima"] {
-        justify-content: center;
-        border-bottom: none;
-        padding-bottom: 1rem;
-    }
-    .compact-table td[data-title="Anteprima"]::before { display: none; }
-    
-    .admin-thumb {
-        width: 120px;
-        height: 120px;
-        border-radius: 8px;
-        background-color: var(--white);
-        border: 1px solid var(--border-color);
-    }
+.compact-table th[data-title="ID"] {
+    position: static;
+    top: auto;
+    right: auto;
+    border: none;
+    padding: 0;
+    width: 100%;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+.compact-table th[data-title="ID"]::before {
+    display: inline;
+    content: "ID";
+    font-weight: 700;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-right: 0.35rem;
+}
 
-    .compact-table td[data-title="Dettagli"] {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 0.5rem;
-        border-bottom: 1px solid var(--border-color);
-        padding-bottom: 1.2rem;
-    }
-    .compact-table td[data-title="Dettagli"]::before { display: none; }
-    
-    .wine-title { 
-        font-size: 1.4rem; 
-        margin-bottom: 0;
-        color: var(--text-color); 
-    }
-    
-    .truncate { 
-        white-space: normal;
-        text-align: center;
-        font-size: 0.95rem;
-        line-height: 1.4;
-        color: var(--text-color);
-    }
+.compact-table td[data-title="Anteprima"] {
+    justify-content: center;
+    border-bottom: none;
+    padding-bottom: 1rem;
+}
+.compact-table td[data-title="Anteprima"]::before { display: none; }
 
-    .action-group {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-        gap: 10px;
-    }
-    .btn-icon {
-        flex: 0 0 48px;
-        width: 48px;
-        height: 48px;
-        font-size: 1.2rem;
-        border-radius: 6px;
-        background-color: var(--background);
-        color: var(--text-color);
-        border: 1px solid var(--border-color);
-    }
-    .admin-wrapper {
-        margin: 0rem 4rem;
-        width: 100%;
-        box-sizing: border-box;
-        border: none;
-        box-shadow: none;
-        background: transparent;
-        align-self: center;
-    }
+.admin-thumb {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+}
 
-    body.light-mode .compact-table tr {
-        background-color: var(--white);
-        border: 1px solid var(--border-color);
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
+.compact-table td[data-title="Dettagli"] {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.2rem;
+}
+.compact-table td[data-title="Dettagli"]::before { display: none; }
 
-    body.light-mode .compact-table td {
-        border-bottom-color: var(--light-bg);
-    }
+.wine-title { 
+    font-size: 1.4rem; 
+    margin-bottom: 0;
+    color: var(--text-color); 
+}
 
-    body.light-mode .wine-title {
-        color: var(--black);
-    }
-    
-    body.light-mode .compact-table caption {
-        color: var(--secondary-color);
-    }
+.truncate { 
+    white-space: normal;
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: var(--text-color);
+}
 
-    body.light-mode .btn-icon {
-        color: var(--text-color);
-        background-color: var(--white);
-    }
-    
-    body.light-mode .btn-icon:hover,
-    body.light-mode .btn-icon:focus {
-        background-color: var(--light-bg);
-        color: var(--secondary-color);
-    }
+.action-group {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+.btn-icon {
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+    border-radius: 6px;
+    background-color: var(--background);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+.admin-wrapper {
+    margin: 0rem 4rem;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    align-self: center;
+}
 
+body.light-mode .compact-table tr {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+body.light-mode .compact-table td {
+    border-bottom-color: var(--light-bg);
+}
+
+body.light-mode .wine-title {
+    color: var(--black);
+}
+
+body.light-mode .compact-table caption {
+    color: var(--secondary-color);
+}
+
+body.light-mode .btn-icon {
+    color: var(--text-color);
+    background-color: var(--white);
+}
+
+body.light-mode .btn-icon:hover,
+body.light-mode .btn-icon:focus {
+    background-color: var(--light-bg);
+    color: var(--secondary-color);
+}
+
+#sicurezza.content-section.is-visible {
+    justify-items: center;
+}
+
+    /* Assicura che il contenitore del form occupi spazio */
+#sicurezza .password-form-container {
+    width: 100%;
+    max-width: 500px; /* Impedisce che diventi troppo largo su tablet */
+}
+
+/* Assicura che i campi di input riempiano il contenitore */
+#sicurezza form {
+    width: 100%;
+}
 /* =========================================
    Pagina carrello
    ========================================= */

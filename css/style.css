@@ -341,6 +341,7 @@ body.light-mode select:focus {
 .dashboard-content > h2,
 .dashboard-content .content-section > h2 {
     margin-bottom: 0.1rem;
+    padding-bottom: 0;
 }
 
 .admin-table-head > h2 {
