@@ -444,13 +444,17 @@ body.light-mode .row-deleted td {
 }
 
 .toggle-label-wrapper {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 10px;
     cursor: pointer;
     user-select: none;
-    padding: 0.8rem 0;
-    width: 15rem;
+    padding: 0;
+    width: auto;
+    float: right;
+}
+.toggle-label-wrapper + .table-responsive {
+    clear: both;
 }
 .toggle-switch-graphic {
     position: relative;
@@ -3502,26 +3506,27 @@ body.light-mode .admin-search-input::placeholder {
 
 .table-responsive {
     overflow-x: auto;
-    border-radius: 4px;
-    border: 1px solid var(--border-color);
 }
 
 .compact-table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     background-color: var(--background); 
     color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
 }
 
 .compact-table caption {
     caption-side: top;
-    text-align: left;
+    text-align: center;
     font-weight: 700;
     color: var(--secondary-color);
-    font-size: 1.3rem;
-    padding: 0.5rem;
-    border-bottom: 2px solid var(--border-color);
-    letter-spacing: 0.05em;
+    font-size: 1.5rem;
+    padding: 1rem;
+    padding-bottom: 0.8rem;
 }
 
 .compact-table th {
@@ -3533,6 +3538,12 @@ body.light-mode .admin-search-input::placeholder {
     letter-spacing: 0.05em;
     text-align: left;
     border-bottom: 1px solid var(--border-color);
+}
+.compact-table thead th:first-child {
+    border-top-left-radius: 6px;
+}
+.compact-table thead th:last-child {
+    border-top-right-radius: 6px;
 }
 .admin-col-id { width: 50px; }
 .admin-col-img { width: 80px; }
@@ -3554,6 +3565,16 @@ body.light-mode .admin-search-input::placeholder {
     padding: 1rem;
     border-bottom: 1px solid var(--border-color);
     vertical-align: middle;
+}
+.compact-table tbody tr:last-child td,
+.compact-table tbody tr:last-child th {
+    border-bottom: 0;
+}
+.compact-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 6px;
+}
+.compact-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 6px;
 }
 .stock-low {
     color: var(--errors);
