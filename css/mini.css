@@ -810,28 +810,44 @@ body.light-mode .table-data td::before {
     }
 
     .compact-table td[data-title="ID"] {
-        position: absolute;
-        top: 1rem;
-        right: 1.5rem;
+        position: static;
+        top: auto;
+        right: auto;
         border: none;
-        padding: 0;
-        width: auto;
-        font-size: 0.85rem;
+        padding: 0.8rem 0;
+        width: 100%;
+        font-size: 1rem;
         color: var(--text-color);
     }
-    .compact-table td[data-title="ID"]::before { display: none; }
+    .compact-table td[data-title="ID"]::before {
+        display: inline;
+        content: "ID";
+        font-weight: 700;
+        color: var(--secondary-color);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-right: 0.35rem;
+    }
 
     .compact-table th[data-title="ID"] {
-        position: absolute;
-        top: 1rem;
-        right: 1.5rem;
+        position: static;
+        top: auto;
+        right: auto;
         border: none;
         padding: 0;
-        width: auto;
-        font-size: 0.85rem;
+        width: 100%;
+        font-size: 1rem;
         color: var(--text-color);
     }
-    .compact-table th[data-title="ID"]::before { display: none; }
+    .compact-table th[data-title="ID"]::before {
+        display: inline;
+        content: "ID";
+        font-weight: 700;
+        color: var(--secondary-color);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-right: 0.35rem;
+    }
 
     .compact-table td[data-title="Anteprima"] {
         justify-content: center;
@@ -875,11 +891,12 @@ body.light-mode .table-data td::before {
     .action-group {
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
         gap: 10px;
     }
     .btn-icon {
-        flex: 1;
+        flex: 0 0 48px;
+        width: 48px;
         height: 48px;
         font-size: 1.2rem;
         border-radius: 6px;

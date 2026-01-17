@@ -531,6 +531,11 @@ body.light-mode .row-deleted td {
     box-shadow: 0 10px 30px #000;
 }
 
+.modal-box-css h2 {
+    border-top: none;
+    padding-top: 0;
+}
+
 body.light-mode .modal-box-css {
     background-color: #fff;
     color: #333;
