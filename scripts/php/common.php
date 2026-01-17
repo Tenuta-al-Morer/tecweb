@@ -50,7 +50,7 @@ if (isset($_SESSION['utente_id'])) {
 $db->closeConnection();
 
 
-function caricaPagina($nomeFileHTML) {
+function caricaPagina($nomeFileHTML, $extraReplacements = []) {
     // Uso global per accedere alla variabile calcolata sopra
     global $cartQty;
 
@@ -215,6 +215,12 @@ function caricaPagina($nomeFileHTML) {
     $htmlContent = str_replace("[back_to_top_button]", $backToTopBtn, $htmlContent);
 
     $htmlContent = str_replace("[menu_toggle]", $menuTogle, $htmlContent);
+
+    if (!empty($extraReplacements)) {
+        foreach ($extraReplacements as $placeholder => $replacement) {
+            $htmlContent = str_replace($placeholder, $replacement, $htmlContent);
+        }
+    }
 
     return $htmlContent;
 }

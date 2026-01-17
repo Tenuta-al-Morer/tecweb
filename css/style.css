@@ -1359,6 +1359,90 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--text-co
     padding: 0 2em;
 }
 
+.sitemap-tree {
+    padding: 0 2em;
+}
+
+.sitemap-tree ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 1.6em;
+    border-left: 2px solid rgba(197, 165, 81, 0.35);
+}
+
+.sitemap-tree > ul {
+    border-left: none;
+    padding-left: 0;
+}
+
+.sitemap-tree li {
+    position: relative;
+    padding: 0.45em 0 0.45em 1.1em;
+}
+
+.sitemap-tree > ul > li {
+    padding-left: 0;
+}
+
+.sitemap-tree li::before {
+    content: "";
+    position: absolute;
+    left: -0.15em;
+    top: 1.05em;
+    width: 0.9em;
+    border-top: 2px solid rgba(197, 165, 81, 0.35);
+}
+
+.sitemap-tree > ul > li::before {
+    display: none;
+}
+
+.sitemap-tree li::after {
+    content: "";
+    position: absolute;
+    left: -0.3em;
+    top: 0.95em;
+    width: 0.45em;
+    height: 0.45em;
+    border-radius: 50%;
+    background: var(--secondary-color);
+    box-shadow: 0 0 0 4px rgba(197, 165, 81, 0.15);
+}
+
+.sitemap-tree > ul > li::after {
+    display: none;
+}
+
+.sitemap-node {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+.sitemap-tree-root > li > a {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+.sitemap-tree-root > li > ul a {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.sitemap-tree a {
+    color: var(--text-color);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-bottom-color 0.2s ease;
+}
+
+.sitemap-tree a:hover,
+.sitemap-tree a:focus {
+    color: var(--secondary-color);
+    border-bottom-color: var(--secondary-color);
+}
+
 .sitemap-group h2 {
     font-size: 1.3rem;
     color: var(--secondary-color);

@@ -1,19 +1,22 @@
 Lista todo per tecweb:
+- ci sono problemi nel mostrare il back_to_top_button in login e registrazione          
 - sistemare cerca vino in vini (manca da fare la ricerca nella pagina vini. Il resto è apposto)
 - sistemare print css, deve operare da zero -> contarini
 - mettere conferma operazione su admin utenti
 - gestione vini in admin, gestione utenti in admin (pagina admin in generale) (il resto è già stato verificato)
-- fare mappa del sito
+- fare mappa del sito (provate a vedere se può andare bene)
 - sistemare in style.css tutte le misure assolute (devono diventare relative ad eccezione di border-radius se non erro)
 - sistemare in print.css tutte le misure relative (devono diventare assolute, perchè quello che viene stampato è sempre identico)
 - controlla l’accessibilità di tutte le pagine e verificare con nvda che tutto funzioni per i ciechi:
     - vini
-    - carrello
+    - carrello (ho verificato e non si capisce con nvda che mi trovi nei pulsanti più o meno per la quantità, inoltre non si capisce benissimo il numero presente nell'icona del carrello a cosa si riferisce)
     - area cliente
     - area gestionale
     - area admin
     - registrazione
     - login
+    - mappa del sito
+    - policy
     - stile.css
     - stampa.css
     - mini.css
