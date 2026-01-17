@@ -3262,6 +3262,7 @@ a.feature-card.card-link {
     font-size: 0.9rem;
     border-radius: 8px;
     width: auto;
+    text-decoration: none;
 }
 
 .admin-search-form {
@@ -3565,11 +3566,17 @@ body.light-mode .badge {
 }
 
 .close-modal {
-    position: absolute; top: 1.5rem; right: 1.5rem;
+    position: absolute; top: 1rem; right: 1.5rem;
     font-size: 2rem; cursor: pointer;
     color: var(--text-color);
+    text-decoration: none;
     background: none; border: none;
     line-height: 1;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: var(--enhance);
 }
 
 .form-grid {
@@ -3632,6 +3639,20 @@ body.light-mode .badge {
     background-color: var(--always-dark-bg);
     color: var(--secondary-color);
     border: 1px solid var(--secondary-color);
+}
+
+.admin-form-actions a.btn-secondary {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-form-actions label.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .admin-form-actions .btn-secondary:hover,

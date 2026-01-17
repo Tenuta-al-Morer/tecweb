@@ -470,9 +470,9 @@ $btnNuovoVino = ($view === 'vini')
 
 // Utenti: usa button onclick (JS originale) - NON TOCCATO
 $btnNuovoUtente = ($view === 'utenti')
-    ? "<button class=\"btn-primary\" onclick=\"apriModalNuovoUtente()\" aria-label=\"Aggiungi nuovo utente\">
+    ? "<label for=\"toggle-modal-utente\" class=\"btn-primary\" role=\"button\" aria-label=\"Aggiungi nuovo utente\">
             <i class=\"fas fa-plus\" aria-hidden=\"true\"></i> Nuovo Utente
-       </button>"
+       </label>"
     : "";
 
 // Form Ricerca Utenti (Originale)
