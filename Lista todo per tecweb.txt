@@ -1,10 +1,8 @@
 Lista todo per tecweb:
-- sistemare creazione utente senza js
-- sistemare form in admin, mettere le label di aiuti per la compilazione (Es: ...)
 - sistemare cerca vino in vini (manca da fare la ricerca nella pagina vini. Il resto è apposto)
 - sistemare print css, deve operare da zero -> contarini
 - mettere conferma operazione su admin utenti
--  gestione vini in admin, gestione utenti in admin (pagina admin in generale) (il resto è già stato verificato)
+- gestione vini in admin, gestione utenti in admin (pagina admin in generale) (il resto è già stato verificato)
 - fare mappa del sito
 - sistemare in style.css tutte le misure assolute (devono diventare relative ad eccezione di border-radius se non erro)
 - sistemare in print.css tutte le misure relative (devono diventare assolute, perchè quello che viene stampato è sempre identico)
