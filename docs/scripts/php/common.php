@@ -170,7 +170,7 @@ function caricaPagina($nomeFileHTML, $extraReplacements = []) {
             </a>';
         } else {
             $userIconHTML = '
-            <a href="login.php" title="Accedi">
+            <a href="login.php" title="Vai alla pagina di login">
                 <i class="fas fa-user-alt-slash" aria-hidden="true"></i>
                 <span class="visually-hidden">Accedi</span>
             </a>';

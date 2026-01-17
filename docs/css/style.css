@@ -13,7 +13,7 @@
     --always-bright: #C5A551;
     --enhance: #c51e26;
     --errors: #FF2934;
-    --right: #02771d;
+    --right: #176F3A;
     --attention: #ffc107;
     --background: #1D1D1D;
     --always-dark-bg: #1D1D1D;
@@ -2479,7 +2479,7 @@ a.feature-card.card-link {
 .profile-avatar {
     width: 80px;
     height: 80px;
-    background-color: var(--secondary-color);
+    background-color: #7A5F1A;
     color: #fff;
     border-radius: 50%;
     display: flex;
@@ -2746,7 +2746,7 @@ a.feature-card.card-link {
 .text-green, 
 .shipping-info.success,
 .free-shipping-text { 
-    color: var(--right); 
+    color: #2ECC71; 
 }
 
 .text-orange,

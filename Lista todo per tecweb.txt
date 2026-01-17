@@ -4,6 +4,7 @@ Lista todo per tecweb:
 - mettere conferma operazione su admin utenti
 - gestione vini in admin, gestione utenti in admin (pagina admin in generale) (il resto è già stato verificato)
 - fare mappa del sito (provate a vedere se può andare bene)
+- controllare label in pagina vini e admin tramite WAVE o silktide
 - controlla l’accessibilità di tutte le pagine e verificare con nvda che tutto funzioni per i ciechi:
     - vini
     - carrello (ho verificato e non si capisce con nvda che mi trovi nei pulsanti più o meno per la quantità, inoltre non si capisce benissimo il numero presente nell'icona del carrello a cosa si riferisce)
@@ -18,4 +19,4 @@ Lista todo per tecweb:
     - stampa.css
     - mini.css
     
-- preparare la relazione (completare sezione 5.2 e mettere valori finali delle palette css, spiegare classe no-js) -> Michele
+- preparare la relazione (mettere valori finali della palette chiara css, spiegare classe no-js) -> Michele
