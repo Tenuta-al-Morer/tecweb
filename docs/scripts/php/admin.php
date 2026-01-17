@@ -422,7 +422,7 @@ $sezioneVini = "
                         <th scope='col' abbr='Prezzo'>Prezzo</th>
                         <th scope='col' abbr='Stock'>Stock</th>
                         <th scope='col' abbr='Stato'>Stato</th>
-                        <th scope='col' abbr='Azioni' style='width: 120px;'>Azioni</th>
+                        <th scope='col' abbr='Azioni' style='width: 120px;' class='Richieste_gestionale'>Azioni</th>
                     </tr>
                 </thead>
                 <tbody>
