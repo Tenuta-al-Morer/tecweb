@@ -1,0 +1,41 @@
+name: Documentazione PDF & README
+
+on:
+  push:
+    paths:
+      - 'relazione.ltx'
+      - 'assets_relazione/readme.lua'
+
+permissions:
+  contents: write
+
+jobs:
+  build_and_update:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout del codice
+        uses: actions/checkout@v4
+
+      - name: Setup Pandoc
+        uses: pandoc/actions/setup@v1
+
+      - name: Genera README.md da LaTeX
+        run: |
+          pandoc relazione.ltx \
+            -f latex \
+            -t gfm \
+            --lua-filter=assets_relazione/readme.lua \
+            --wrap=none \
+            -o README.md
+
+      - name: Compila PDF con LaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: relazione.ltx
+
+      - name: Commit e Push dei cambiamenti
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs: aggiornamento relazione"
+          file_pattern: 'README.md relazione.pdf'
