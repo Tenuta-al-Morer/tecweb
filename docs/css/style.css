@@ -765,6 +765,14 @@ header {
     padding-bottom: 0; 
 }
 
+a.policy-link {
+    color: var(--text-color);
+}
+
+a.policy-link:hover, a.policy-link:focus, a.policy-link:visited {
+    color: var(--secondary-color);
+}
+
 .header-policy > nav:first-of-type {
     padding-left: 1.25em; padding-right: 1.25em; margin-bottom: 1.5em; 
 }
