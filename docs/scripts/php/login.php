@@ -1,5 +1,5 @@
 <?php
-
+require_once 'common.php';
 require_once 'DBConnection.php';
 use DB\DBConnection;
 
