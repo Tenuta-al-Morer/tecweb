@@ -120,8 +120,9 @@ function costruisciCardVino($vino) {
         </div>';
 
         $cardActionHTML = '
-        <form action="vini.php" method="POST" class="wine-form">
+        <form action="carrello.php" method="POST" class="wine-form">
             <input type="hidden" name="action" value="aggiungi">
+            <input type="hidden" name="return_url" value="vini.php"> 
             <input type="hidden" name="id_vino" value="' . $id . '">
             <input type="hidden" name="stock_max" value="' . $stock . '">
             <input type="hidden" name="update_temp_qty" value="1">
@@ -136,8 +137,9 @@ function costruisciCardVino($vino) {
         </form>';
 
         $modalActionHTML = '
-        <form action="vini.php" method="POST" class="modal-wine-form">
+        <form action="carrello.php" method="POST" class="modal-wine-form">
             <input type="hidden" name="action" value="aggiungi">
+            <input type="hidden" name="return_url" value="vini.php">
             <input type="hidden" name="id_vino" value="' . $id . '">
             <input type="hidden" name="stock_max" value="' . $stock . '">
             <input type="hidden" name="update_temp_qty" value="1">

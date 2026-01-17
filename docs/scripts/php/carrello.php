@@ -176,8 +176,9 @@ if (isset($_REQUEST['action'])) {
         exit();
     }
     
-    // Fallback standard (ricarica pagina)
-    header("Location: carrello.php");
+    $redirectTarget = isset($_REQUEST['return_url']) ? $_REQUEST['return_url'] : 'carrello.php';
+    
+    header("Location: " . $redirectTarget);
     exit();
 }
 
