@@ -22,12 +22,7 @@ jobs:
 
       - name: Genera README.md da LaTeX
         run: |
-          pandoc relazione.ltx \
-            -f latex \
-            -t gfm \
-            --lua-filter=assets_relazione/readme.lua \
-            --wrap=none \
-            -o README.md
+          pandoc relazione.ltx -f latex -t gfm --lua-filter=assets_relazione/readme.lua --wrap=none -o README.md
 
       - name: Compila PDF con LaTeX
         uses: xu-cheng/latex-action@v3
