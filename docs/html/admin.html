@@ -97,7 +97,7 @@
     <div id="modalVino" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal-box">
             <button class="close-modal" onclick="chiudiModal()" aria-label="Chiudi">&times;</button>
-            <h2 id="modalTitle" style="margin-bottom: 20px;">Gestione Vino</h2>
+            <h2 id="modalTitle">Gestione Vino</h2>
             
             <form action="admin.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="azione" value="salva_vino">
@@ -186,7 +186,7 @@
         <label for="toggle-modal-utente" class="modal-overlay-close" aria-label="Chiudi"></label>
         <div class="modal-box-css">
             <label class="modal-close-x" for="toggle-modal-utente" aria-label="Chiudi">&times;</label>
-            <h2 id="modalUserTitle" style="margin-bottom: 20px;">Gestione Utente</h2>
+            <h2 id="modalUserTitle">Gestione Utente</h2>
 
             <form action="admin.php" method="POST">
                 <input type="hidden" name="azione" value="salva_utente">

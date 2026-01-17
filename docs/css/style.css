@@ -1966,6 +1966,10 @@ footer a:visited, .main-nav-bar a:visited {
     text-indent: -999em;
 }
 
+#modalTitle, #modalUserTitle{
+    margin-bottom: 20px;
+}
+
 
 /* =========================================
    PAGINA TENUTA 
