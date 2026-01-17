@@ -225,25 +225,25 @@ Dopo diversi tentativi di ottimizzazione dei colori, abbiamo definito e adottato
 
 | **Colore**         | **Codice HEX** |
 |:-------------------|:--------------:|
-| Testo principale   |       \#       |
-| Sfondo principale  |       \#       |
-| Accento secondario |       \#       |
-| Colore errori      |       \#       |
-| Colore successo    |       \#       |
-| Colore attenzione  |       \#       |
-| Bordo              |       \#       |
+| Testo principale   |    \#E0E0E0    |
+| Sfondo principale  |    \#1D1D1D    |
+| Accento secondario |    \#C5A551    |
+| Colore errori      |    \#FF2934    |
+| Colore successo    |    \#176F3A    |
+| Colore attenzione  |    \#FFC107    |
+| Bordo              |    \#B6B6B6    |
 
 Palette colori principale (modalità scura)
 
 | **Colore**         | **Codice HEX** |
 |:-------------------|:--------------:|
-| Testo principale   |       \#       |
-| Sfondo principale  |       \#       |
-| Accento secondario |       \#       |
-| Colore errori      |       \#       |
-| Colore successo    |       \#       |
-| Colore attenzione  |       \#       |
-| Bordo              |       \#       |
+| Testo principale   |    \#121212    |
+| Sfondo principale  |    \#F4F4F4    |
+| Accento secondario |    \#7A5F1A    |
+| Colore errori      |    \#990109    |
+| Colore successo    |    \#02771D    |
+| Colore attenzione  |    \#856404    |
+| Bordo              |    \#4B4B4B    |
 
 Palette colori modalità chiara
 
@@ -343,17 +343,15 @@ Abbiamo utilizzato i seguenti strumenti per effettuare test manuali:
 
 - modalità Internet Explorer 11 di Microsoft Edge: le pagine caricate in modalità IE11 sono navigabili e accessibili dallo screen reader (form inclusi), seppur non vengano applicati correttamente tutti gli stili CSS. Si nota che tale modalità disabilita anche l’esecuzione di script JavaScript.
 
-### Ancora da completare e fare!!!! Falsi positivi 
+### Analisi dei Falsi Positivi
 
-Vengono riportati dei falsi positivi segnalati da Total Validator:
+Di seguito vengono analizzate le segnalazioni rilevate da Total Validator classificate come falsi positivi, in quanto derivanti da scelte progettuali deliberate o interpretazioni errate del validatore:
 
-- in tutte le pagine vengono erroneamente segnalati errori di ortografia;
+- **Redundant link:** La segnalazione, presente in tutte le pagine, è causata dalla presenza adiacente del logo e della voce "Home" nella barra di navigazione. Sebbene entrambi puntino alla stessa destinazione, la ridondanza è mantenuta per favorire l’usabilità.
 
-- nella pagina vini:
+- **Skipped heading level:** Nella pagina *Carrello*, la gerarchia dei titoli presenta dei salti (omissione di alcuni livelli intermedi) per adattarsi alla struttura logica delle sezioni secondarie, pur mantenendo la semantica di pagina.
 
-  - Ci sono pareri discordanti tra validatori per innestare un tag input dentro un tag label;
-
-  - Sono presenti warning dovuti agli alt delle immagini oltre i 75 caratteri. Sono comunque tutti sotto i 100 caratteri. Questo è dovuto alla necessità di avere alternative testuali più complesse;
+- **Possible heading:** Sempre nella pagina *Carrello*, il validatore segnala erroneamente il dato numerico relativo al "Costo del vino" come un possibile titolo, probabilmente a causa della sua formattazione visiva, sebbene si tratti di un semplice contenuto testuale.
 
 ### Screen reader
 
