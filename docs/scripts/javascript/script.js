@@ -1195,7 +1195,18 @@ document.addEventListener('DOMContentLoaded', () => {
                             showToast("Prodotto aggiunto al carrello!");
                             resetFormQty(form);
 
-                            const badge = document.getElementById('global-cart-badge');
+                            let badge = document.getElementById('global-cart-badge');
+
+                            if (!badge && data.cart_count > 0) {
+                                const cartIconContainer = document.querySelector('.cart-icon-container') || document.querySelector('a[href="carrello.php"]');
+                                
+                                if (cartIconContainer) {
+                                    badge = document.createElement('span');
+                                    badge.id = 'global-cart-badge';
+                                    badge.className = 'cart-badge';
+                                    cartIconContainer.appendChild(badge);
+                                }
+                            }
 
                             if (badge) {
                                 badge.innerText = data.cart_count > 99 ? '99+' : data.cart_count;
@@ -1204,7 +1215,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                 if (data.cart_count > 0) location.reload();
                             }
 
-                        } else {}
+                        } else {
+                        }
                     })
                     .catch(error => {
                         console.error('Errore:', error);
