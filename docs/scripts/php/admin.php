@@ -308,7 +308,7 @@ if ($view === 'vini') {
             <td data-title='Prezzo'>€ " . number_format($v['prezzo'], 2) . "</td>
             <td data-title='Stock' class='$stockClass'>{$v['quantita_stock']}</td>
             <td data-title='Stato'>$badge</td>
-            <td data-title='Azioni'><div class='action-group'>$actions</div></td>
+            <td data-title='Azioni' class='admin-col-actions'><div class='action-group'>$actions</div></td>
         </tr>";
     }
 }
@@ -422,7 +422,7 @@ $sezioneVini = "
                         <th scope='col' abbr='Prezzo'>Prezzo</th>
                         <th scope='col' abbr='Stock'>Stock</th>
                         <th scope='col' abbr='Stato'>Stato</th>
-                        <th scope='col' abbr='Azioni' class='Richieste_gestionale admin-col-actions'>Azioni</th>
+                        <th scope='col' abbr='Azioni' class='admin-col-actions'>Azioni</th>
                     </tr>
                 </thead>
                 <tbody>
