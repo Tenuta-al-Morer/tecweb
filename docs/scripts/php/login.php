@@ -21,7 +21,7 @@ function ripristinoInput($htmlContent){
     return $htmlContent;
 }
 
-$loginHTML = file_get_contents('../../html/login.html');
+$loginHTML = caricaPagina('../../html/login.html');
 $err = "";
 
 session_start();
