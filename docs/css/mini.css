@@ -21,7 +21,7 @@
     transform: none;
     z-index: 1000;
     font-size: 1.7rem;
-    color: var(--white);
+    color: #FFF;
     transition: color 0.3s ease;
 }
 
@@ -103,7 +103,7 @@
 .mobile-icons a {
     font-size: 1.5rem;
     text-decoration: none;
-    color: var(--white);
+    color: #FFF;
     display: flex;
 }
 
@@ -161,7 +161,7 @@
     display: block;
     padding: 1.2em;
     font-size: 1.1em;
-    color: var(--white);
+    color: #FFF;
     cursor: default;
     text-align: center;
     width: 100%;
@@ -364,7 +364,7 @@ footer {
 }
 
 body.light-mode .table-data tr {
-    background-color: var(--white);
+    background-color: #FFF;
     border-color: var(--border-color);
 }
 
@@ -522,7 +522,7 @@ body.light-mode .table-data td::before {
     border-radius: 8px;
     font-size: 0.9rem;
     background-color: var(--errors); 
-    color: var(--white);
+    color: #FFF;
     justify-content: center;
 }
 
@@ -862,7 +862,7 @@ main .table-responsive {
     width: 120px;
     height: 120px;
     border-radius: 8px;
-    background-color: var(--white);
+    background-color: #FFF;
     border: 1px solid var(--border-color);
 }
 
@@ -917,7 +917,7 @@ main .table-responsive {
 }
 
 body.light-mode .compact-table tr {
-    background-color: var(--white);
+    background-color: #FFF;
     border: 1px solid var(--border-color);
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
@@ -936,7 +936,7 @@ body.light-mode .compact-table caption {
 
 body.light-mode .btn-icon {
     color: var(--text-color);
-    background-color: var(--white);
+    background-color: #FFF;
 }
 
 body.light-mode .btn-icon:hover,
@@ -999,7 +999,7 @@ body.light-mode .btn-icon:focus {
     font-size: 1.1rem;
     margin-bottom: 0.25rem;
     line-height: 1.3;
-    color: var(--white);
+    color: #FFF;
 }
 
 .price-mobile {

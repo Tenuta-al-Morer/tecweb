@@ -2749,6 +2749,12 @@ a.feature-card.card-link {
     color: #2ECC71; 
 }
 
+body.light-mode .text-green,
+body.light-mode .shipping-info.success,
+body.light-mode .free-shipping-text {
+    color: #095a0f; 
+}
+
 .text-orange,
 .shipping-info.warning { 
     color: var(--attention); 
