@@ -359,7 +359,7 @@ if ($view === 'utenti') {
         }
 
         $azioni = $isSelf
-            ? "<span>Impossibile modificare</span>"
+            ? "<span>Impossibile sei tu;)</span>"
             : "<div class='action-group'>
                     <form method='POST'>
                         <input type='hidden' name='azione' value='cambia_ruolo'>

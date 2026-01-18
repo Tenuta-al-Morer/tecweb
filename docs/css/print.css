@@ -14,11 +14,11 @@ html{
 /*Elementi da nascondere*/
 #help, label.menu-toggle, #main-navigation, .mobile-icons, #theme-toggle, .hero-actions, .hero-bg, span.link-arrow, section.slider-section, footer a,
 #backToTopBtn, .tenuta-card-image img, section.form-container, section.map-section, aside.alert-box, .empty-cart-message i, .btn-shop-empty,
-div#shipping-message-container, .btn-full, .item-actions-row, .cart-item-price-col, .dashboard-sidebar, .td_richiesta_degustazione, .danger-zone,
+div#shipping-message-container, .btn-full, .item-actions-row, .cart-item-price-col, .dashboard-sidebar, .danger-zone,
 #sicurezza, .admin-table-head, p.sum, #menu-checkbox, .details-content .details-section:not(:first-child), .Richieste_gestionale, .wine-search-bar,
 .wine-item, .details-button, .selettore-quantita, .modal-buy-block, .modal-close-btn, .buy-button, .badge-esaurito, .admin-switch, 
 .admin-section-actions, .auth-container, .toggle-label-wrapper, #toggle-deleted-visibility, .state-toggle, .action-group,
-.modal-wrapper-css, .modal-box-css, #modalVino {
+.modal-wrapper-css, .modal-box-css, #modalVino{
 	display:none;
 }
 
@@ -145,6 +145,7 @@ span.current-page{
     overflow: hidden;
 }
 
+
 .admin-col-actions{
     color: transparent;
 }
@@ -184,15 +185,41 @@ span.current-page{
 footer{ margin-top:10px; }
 
 /*Gestione tabelle*/
-.compact-table{ 
-  border-collapse: collapse;
+
+table.compact-table, table.table-data, table.table-responsive {
+    width: 100%;
+    table-layout: auto;
+    border-collapse: collapse;
+    border: 1px solid var(--border-color);
+}
+
+  /* COLONNA AZIONI: collassa + azzera spazio */
+  th.admin-user-col-actions,
+  td.Richieste_admin, .td_richiesta_degustazione{
+    visibility: collapse;
+    width: 0;
+    min-width: 0 ;
+    max-width: 0;
+    padding: 0 ;
+    border: 0 ;
+    white-space: nowrap ;  /* evita che “tiri” la colonna */
+    overflow: hidden ;
+}
+
+td.td_richiesta_degustazione{ margin-right: 15px; }
+
+
+/*
+.admin-user-col-actions, .Richieste_admin{
+    visibility: collapse;
+    width: 0;
 }
 
 .table-data, .table-responsive {
   border-collapse: collapse;
   width: 100%;
   border: 1px solid var(--border-color);
-}
+}*/
 
 .table-data th,
 .table-data td,
@@ -200,6 +227,7 @@ footer{ margin-top:10px; }
 .table-responsive td {
   padding: 0.75rem 1rem;
   border: 0; /* reset */
+  text-align: left ;
 }
 
 .table-data tbody tr:not(:last-child) td,
