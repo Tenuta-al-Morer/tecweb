@@ -191,6 +191,20 @@ Uno degli aspetti più importanti del nostro CSS è l’utilizzo delle variabili
 
 Successivamente, vogliamo far notare l’utilizzo di tre differenti fogli di stile: style.css, mini.css e print.css. Questa decisione è stata presa per organizzare propriamente il codice CSS e per gestire meglio l’aspetto responsive del sito.
 
+#### Gestione della classe no-js
+
+Per garantire la corretta visualizzazione e fruibilità del sito indipendentemente dal supporto JavaScript del browser, è stata adottata la tecnica della classe `no-js`.
+
+Il tag `<html>` viene inizializzato con la classe `no-js`. All’interno della sezione `<head>`, è incluso uno script **script.js** che viene eseguito immediatamente al caricamento della pagina: se JavaScript è abilitato, lo script rimuove la classe `no-js`.
+
+Questo meccanismo permette di sfruttare i fogli di stile CSS per gestire due stati distinti dell’interfaccia:
+
+- **Stato senza JavaScript**: grazie al selettore `.no-js`, vengono applicati stili di fallback. Ad esempio, elementi che richiedono interazione dinamica (come slider o menu complessi) vengono mostrati in una forma statica e accessibile, evitando che l’utente visualizzi controlli non funzionanti.
+
+- **Stato con JavaScript**: la rimozione della classe permette l’applicazione degli stili dedicati alle funzionalità interattive avanzate, prevenendo il fenomeno del FOUC (*Flash of Unstyled Content*).
+
+Questa strategia assicura che il contenuto rimanga sempre accessibile, delegando a JavaScript solo l’arricchimento dell’esperienza utente e non le funzionalità critiche.
+
 ### CSS-Print
 
 Per la versione di stampa è stato posta particolare attenzione alla leggibilità su carta e all’essenzialità dei contenuti. È stato impostato un font con le grazie (*Times New Roman*) in sostituzione di quello web, e sono stati rimossi gli elementi grafici non necessari al fine di garantire un layout più pulito e un risparmio di inchiostro.
