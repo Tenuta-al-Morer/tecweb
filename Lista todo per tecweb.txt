@@ -15,8 +15,5 @@ Lista todo per tecweb:
     - login
     - mappa del sito
     - policy
-    - stile.css
-    - stampa.css
-    - mini.css
     
-- preparare la relazione (mettere valori finali della palette chiara css, spiegare classe no-js) -> Michele
+- preparare la relazione (spiegare classe no-js) -> Michele

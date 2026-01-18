@@ -243,6 +243,18 @@ di layout di tipo flex e grid. In quanto pesanti da renderizzare per i browser, 
 Successivamente, vogliamo far notare l'utilizzo di tre differenti fogli di stile: style.css, mini.css e print.css. 
 Questa decisione è stata presa per organizzare propriamente il codice CSS e per gestire meglio l'aspetto responsive del sito.
 
+\subsubsection{Gestione della classe no-js}
+Per garantire la corretta visualizzazione e fruibilità del sito indipendentemente dal supporto JavaScript del browser, è stata adottata la tecnica della classe \texttt{no-js}.
+
+Il tag \texttt{<html>} viene inizializzato con la classe \texttt{no-js}. All'interno della sezione \texttt{<head>}, è incluso uno script \textbf{script.js} che viene eseguito immediatamente al caricamento della pagina: se JavaScript è abilitato, lo script rimuove la classe \texttt{no-js}.
+
+Questo meccanismo permette di sfruttare i fogli di stile CSS per gestire due stati distinti dell'interfaccia:
+\begin{itemize}
+    \item \textbf{Stato senza JavaScript}: grazie al selettore \texttt{.no-js}, vengono applicati stili di fallback. Ad esempio, elementi che richiedono interazione dinamica (come slider o menu complessi) vengono mostrati in una forma statica e accessibile, evitando che l'utente visualizzi controlli non funzionanti.
+    \item \textbf{Stato con JavaScript}: la rimozione della classe permette l'applicazione degli stili dedicati alle funzionalità interattive avanzate, prevenendo il fenomeno del FOUC (\textit{Flash of Unstyled Content}).
+\end{itemize}
+Questa strategia assicura che il contenuto rimanga sempre accessibile, delegando a JavaScript solo l'arricchimento dell'esperienza utente e non le funzionalità critiche.
+
 \subsection{CSS-Print}
 Per la versione di stampa è stato posta particolare attenzione alla leggibilità su carta e all'essenzialità dei contenuti. 
 È stato impostato un font con le grazie (\textit{Times New Roman}) in sostituzione di quello web, e sono stati rimossi gli elementi grafici non necessari 
