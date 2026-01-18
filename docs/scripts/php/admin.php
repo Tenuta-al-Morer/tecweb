@@ -387,7 +387,7 @@ if ($view === 'utenti') {
             <td data-title='Email'>{$email}</td>
             <td data-title='Ruolo'>{$ruolo}</td>
             <td data-title='Registrazione'>{$dataReg}</td>
-            <td data-title='Azioni'>{$azioni}</td>
+            <td data-title='Azioni' class='Richieste_admin'>{$azioni}</td>
         </tr>";
     }
 }
