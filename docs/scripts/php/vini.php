@@ -207,7 +207,9 @@ function costruisciCardVino($vino) {
                 ' . $closeButtonsHTML . '
             </div>
             
-            <label for="' . $modalId . '" class="modal-backdrop-close" aria-hidden="true"></label>
+            <label for="' . $modalId . '" class="modal-backdrop-close">
+                <span class="visually-hidden">Chiudi finestra modale</span>
+            </label>
         </div>
     </article>';
 }
