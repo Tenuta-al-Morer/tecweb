@@ -66,7 +66,7 @@ Operazioni svolte per migliorare il ranking del sito:
 
 - separazione tra struttura e comportamento;
 
-- abbiamo limitato al massimo l’utilizzo dei display:none, visibility:hidden e abbiamo evitato completamente height:0.
+- abbiamo limitato l’utilizzo dei display:none, visibility:hidden e abbiamo evitato completamente height:0.
 
 ## Progettazione
 
