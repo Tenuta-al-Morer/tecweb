@@ -15,5 +15,3 @@ Lista todo per tecweb:
     - login
     - mappa del sito
     - policy
-    
-- preparare la relazione (spiegare classe no-js) -> Michele
