@@ -173,7 +173,7 @@ function costruisciCardVino($vino) {
                  role="dialog"
                  aria-modal="true"
                  aria-labelledby="' . $titleId . '"
-                 aria-describedby="' . $priceId . ' '. $descBreve . '"
+                 aria-describedby="' . $priceId . ' '. $descId . '"
                  tabindex="0">
 
                 <div class="modal-grid">
