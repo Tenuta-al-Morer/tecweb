@@ -353,6 +353,12 @@ Di seguito vengono analizzate le segnalazioni rilevate da Total Validator classi
 
 - **Possible heading:** Sempre nella pagina *Carrello*, il validatore segnala erroneamente il dato numerico relativo al "Costo del vino" come un possibile titolo, probabilmente a causa della sua formattazione visiva, sebbene si tratti di un semplice contenuto testuale.
 
+- **Falsi positivi in modalità light:**
+
+  - **Contrast Errors:** Il validatore segnala in tutte le pagine un errore di contrasto per la navigazion help quando nascosta (in modalità light).
+
+  - **Contrast Errors:** Vengono erroneamente segnalati errori di contrasto nella pagina home nella sezione con la foto di sfondo. Tuttavia la segnalazione risulta snagliata poichè il testo compare sopra la foto alla quale è stato applicato un colore di background di fallback violaceo che garantisce un contrasto superiore a 4.5:1.
+
 ### Screen reader
 
 Abbiamo testato l’accessibilità al sito da parte di screen reader quale NVDA, senza riscontrare problemi.
