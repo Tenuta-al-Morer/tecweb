@@ -1,6 +1,5 @@
 Lista todo per tecweb:   
 - sistemare cerca vino in vini (manca da fare la ricerca nella pagina vini. Il resto è apposto)
-- sistemare print css, deve operare da zero -> contarini
 - mettere conferma operazione su admin utenti
 - gestione vini in admin, gestione utenti in admin (pagina admin in generale) (il resto è già stato verificato)
 - fare mappa del sito (provate a vedere se può andare bene)
