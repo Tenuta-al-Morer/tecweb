@@ -173,7 +173,7 @@ function costruisciCardVino($vino) {
                  role="dialog"
                  aria-modal="true"
                  aria-labelledby="' . $titleId . '"
-                 aria-describedby="' . $priceId . ' '. $descBreve . '"
+                 aria-describedby="' . $priceId . ' '. $descId . '"
                  tabindex="0">
 
                 <div class="modal-grid">
@@ -207,7 +207,9 @@ function costruisciCardVino($vino) {
                 ' . $closeButtonsHTML . '
             </div>
             
-            <label for="' . $modalId . '" class="modal-backdrop-close" aria-hidden="true"></label>
+            <label for="' . $modalId . '" class="modal-backdrop-close">
+                <span class="visually-hidden">Chiudi finestra modale</span>
+            </label>
         </div>
     </article>';
 }
