@@ -1967,6 +1967,7 @@ footer a:visited, .main-nav-bar a:visited {
 }
 
 .sum{
+    position: absolute;
     text-indent: -999em;
 }
 
