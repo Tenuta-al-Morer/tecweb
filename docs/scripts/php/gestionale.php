@@ -156,10 +156,10 @@ foreach ($ordiniArchivioArray as $ordine) {
 
     $ordiniArchivio .= '<tr data-order-id="' . $ordineId . '">';
     $ordiniArchivio .= '<th scope="row">' . $ordineId . '</th>';
-    $ordiniArchivio .= '<td data-title="Cliente">' . htmlspecialchars($nomeCliente) . '</td>';
-    $ordiniArchivio .= '<td data-title="Totale Finale">' . number_format($ordine['totale_finale'], 2) . ' EUR</td>';
-    $ordiniArchivio .= '<td data-title="Data Creazione"><time datetime="' . htmlspecialchars($ordine['data_creazione']) .'">'. htmlspecialchars($ordine['data_creazione']). '</time></td>';
-    $ordiniArchivio .= '<td data-title="Stato">' . htmlspecialchars($ordine['stato_ordine']) . '</td>';
+    $ordiniArchivio .= '<td>' . htmlspecialchars($nomeCliente) . '</td>';
+    $ordiniArchivio .= '<td>' . number_format($ordine['totale_finale'], 2) . ' EUR</td>';
+    $ordiniArchivio .= '<td>' . htmlspecialchars($ordine['data_creazione']) . '</td>';
+    $ordiniArchivio .= '<td>' . htmlspecialchars($ordine['stato_ordine']) . '</td>';
     
     // MODIFICA QUI
     $ordiniArchivio .= '<td class="td_richiesta_degustazione" data-title="Dettagli">
