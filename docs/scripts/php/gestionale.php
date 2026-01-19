@@ -278,9 +278,9 @@ foreach ($messaggiArray as $messaggio) {
                     <form id="form_msg_' . $idMsg . '" action="" method="POST" class="standard-form">
                         <input type="hidden" name="messaggio_id" value="' . $idMsg . '">
                         <input type="hidden" name="azione" value="msg_risposta">
-                        <label for="richiesta1_' . $idMsg . '">Risposta<span aria-hidden="true">*</span></label>
+                        <label for="richiesta1_' . $idMsg . '">Rispondi alle necessità del cliente<span aria-hidden="true">*</span></label>
                         <textarea id="richiesta1_' . $idMsg . '" name="richiesta1" required rows="6"
-                            placeholder="Rispondi alle necessita del cliente"></textarea>
+                            placeholder="Risposta"></textarea>
                         <button type="submit" form="form_msg_' . $idMsg . '" class="btn-secondary">Invia</button>
                     </form>
                 </div></div></td></tr>';
