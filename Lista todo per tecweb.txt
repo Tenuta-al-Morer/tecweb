@@ -1,4 +1,5 @@
 Lista todo per tecweb:   
+- mettere <abbr title> dove serve e attributo abbr corretto sulle <th> delle tabelle
 - sistemare cerca vino in vini (manca da fare la ricerca nella pagina vini. Il resto è apposto)
 - mettere conferma operazione su admin utenti
 - gestione vini in admin, gestione utenti in admin (pagina admin in generale) (il resto è già stato verificato)
