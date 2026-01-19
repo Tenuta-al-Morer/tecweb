@@ -158,7 +158,7 @@ foreach ($ordiniArchivioArray as $ordine) {
     $ordiniArchivio .= '<th scope="row">' . $ordineId . '</th>';
     $ordiniArchivio .= '<td data-title="Cliente">' . htmlspecialchars($nomeCliente) . '</td>';
     $ordiniArchivio .= '<td data-title="Totale Finale">' . number_format($ordine['totale_finale'], 2) . ' EUR</td>';
-    $ordiniArchivio .= '<td data-title="Data Creazione">' . htmlspecialchars($ordine['data_creazione']) . '</td>';
+    $ordiniArchivio .= '<td data-title="Data Creazione"><time datetime="' . htmlspecialchars($ordine['data_creazione']) .'">'. htmlspecialchars($ordine['data_creazione']). '</time></td>';
     $ordiniArchivio .= '<td data-title="Stato">' . htmlspecialchars($ordine['stato_ordine']) . '</td>';
     
     // MODIFICA QUI
