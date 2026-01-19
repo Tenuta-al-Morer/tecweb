@@ -131,15 +131,15 @@ function caricaPagina($nomeFileHTML, $extraReplacements = []) {
             // Entrambi mandano a utente.php 
             if ($paginaCorrente === 'gestionale.php' || $paginaCorrente === 'staff.php') {
                 $userIconHTML = '
-                <span class="current-page-icon" aria-current="page" title="Sei nella Dashboard">
+                <span class="current-page-icon" aria-current="page" title="Sei in Gestionale">
                     <i class="fas fa-sliders-h" aria-hidden="true"></i>
-                    <span class="visually-hidden">Dashboard (Pagina corrente)</span>
+                    <span class="visually-hidden">Gestionale (Pagina corrente)</span>
                 </span>';
             } else {
                 $userIconHTML = '
-                <a href="utente.php" title="Vai alla Dashboard">
+                <a href="utente.php" title="Vai a Gestionale">
                     <i class="fas fa-sliders-h" aria-hidden="true"></i>
-                    <span class="visually-hidden">Dashboard</span>
+                    <span class="visually-hidden">Gestionale</span>
                 </a>';
             }
         } 
