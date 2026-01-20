@@ -9,7 +9,7 @@ Lista todo per tecweb:
 - controlla l’accessibilità di tutte le pagine e verificare con nvda che tutto funzioni per i ciechi:
     - vini
     - carrello (ho verificato e non si capisce con nvda che mi trovi nei pulsanti più o meno per la quantità, inoltre non si capisce benissimo il numero presente nell'icona del carrello a cosa si riferisce)
-    - area cliente
+    - area cliente (ho verificato e l'unica cosa è se va bene il come leggere il menù a lato. Non so se sia perfetto. Ditemi voi cosa ne pensate)
     - area gestionale
     - area admin
     - registrazione
