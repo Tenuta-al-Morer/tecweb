@@ -181,10 +181,10 @@ function costruisciCardVino($vino) {
                         <img src="' . $img . '" alt="' . $altText . '">
                     </div>
 
-                    <div class="modal-info-col">
+                    <div class="modal-info-col"> 
                         <h2 id="' . $titleId . '">' . $nome . '</h2>
 
-                        <p class="modal-price" id="' . $priceId . '">Prezzo: € ' . $prezzo . '</p>
+                        <p class="modal-price" id="' . $priceId . '"><strong>Prezzo:</strong> € ' . $prezzo . '</p>
 
                         <p class="modal-desc" id="' . $descId . '">' . $descEstesa . '</p>
 

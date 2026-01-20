@@ -4324,7 +4324,6 @@ html.no-js .modal-toggle-checkbox:checked {
 
 .modal-price {
     font-size: 1.5rem;
-    font-weight: bold;
     color: var(--enhance);
     margin-bottom: 1rem;
 }
@@ -4358,9 +4357,10 @@ html.no-js .modal-toggle-checkbox:checked {
 }
 
 .modal-specs-table th {
-    font-weight: 700;
+    font-weight: 800;
+    font-size: large;
     color: var(--secondary-color);
-    width: 40%;
+    width: 50%;
 }
 
 .modal-specs-table td {
@@ -4443,7 +4443,8 @@ html:not(.no-js) .selettore-nojs {
     border: none;
     font-size: 1.6rem;
     cursor: pointer;
-    color: var(--secondary-color);
+    color: color-mix(in srgb, var(--secondary-color) 80%, #000 20%);
+    background-color: #fff;
     height: 100%;
     display: flex;
     align-items: center;
