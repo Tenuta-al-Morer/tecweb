@@ -343,11 +343,9 @@ Abbiamo utilizzato i seguenti strumenti per effettuare test manuali:
 
 - WCAG Color contrast checker: controllo contrasto dei colori e applicazione di vari filtri visivi (protanopia, protanomalia, deuteranopia, deuteranomalia, tritanopia, tritanomalia, acromatopsia, acromatomalia), sempre raggiunto livello di conformità WCAG AA;
 
-- WAVE by WebAIM, Silktide Inspector: per controlli generali, non vengono segnalati errori;
+- WAVE by WebAIM, Silktide Inspector, Total Validator: per controlli generali, non vengono segnalati errori (esclusione fatta per i falsi positivi analizzati nella sezione successiva);
 
 - W3C Validator (per HTML e CSS): non vengono segnalati errori;
-
-- Total Validator;
 
 - Lighthouse: calcolo prestazioni del sito con buoni punteggi;
 
@@ -366,6 +364,8 @@ Di seguito vengono analizzate le segnalazioni rilevate da Total Validator classi
 - **Skipped heading level:** Nella pagina *Carrello*, la gerarchia dei titoli presenta dei salti (omissione di alcuni livelli intermedi) per adattarsi alla struttura logica delle sezioni secondarie, pur mantenendo la semantica di pagina.
 
 - **Possible heading:** Sempre nella pagina *Carrello*, il validatore segnala erroneamente il dato numerico relativo al "Costo del vino" come un possibile titolo, probabilmente a causa della sua formattazione visiva, sebbene si tratti di un semplice contenuto testuale.
+
+- **Multiple form labels:** Nelle schede dei vini, gli input di tipo checkbox utilizzati per l’apertura delle pagine "info" vengono segnalati come errori. Si tratta di un falso positivo poiché tali elementi non sono destinati alla raccolta dati, ma fungono da interruttori logici per lo stato di visibilità (pattern *CSS Checkbox Hack*); sono nascosti visivamente tramite classe `sr-only` ma rimangono pienamente operabili e accessibili tramite le `<label>` associate.
 
 - **Falsi positivi in modalità light:**
 
