@@ -1962,12 +1962,8 @@ footer a:visited, .main-nav-bar a:visited {
     margin-left: 1.5em;
 }
 
-.is-hidden {
+.is-hidden, .sum {
   display: none;
-}
-
-.sum{
-    text-indent: -999em;
 }
 
 #modalTitle, #modalUserTitle{

@@ -72,7 +72,7 @@
         <p class="visually-hidden" id="sum">Area gestionale della Tenuta al Morer per la gestione degli ordini, esperienze e messaggi.</p>
         <div class="user-dashboard-container">
             <aside class="dashboard-sidebar">
-                <h2 class="visually-hidden">Menu area gestionale</h2>
+                <p class="visually-hidden">Men&ugrave; area gestionale</p>
                 <nav>
                     <ul class="user-nav-list">
                         <li><a href="?sezione=ordini" class="user-nav-link [NAV_ACTIVE_ORDINI]" data-section="ordini">Ordini</a></li>
@@ -81,7 +81,7 @@
                         <li>
                             <form action="logout.php" method="POST" class="logout-form">
                                 <button type="submit" class="btn-secondary logout-btn">
-                                    <i class="fas fa-sign-out-alt" aria-hidden="true"></i> Logout
+                                    <i class="fas fa-sign-out-alt" aria-hidden="true"></i> <span lang="en">Logout</span>
                                 </button>
                             </form>
                         </li>
@@ -97,16 +97,10 @@
 
                 <section id="ordini" class="[ORDINI_CLASS]">
                     <h2>Ordini</h2>
-                    <p id="descrizione-tab-ordini" class="sum visually-hidden">
+                    <p id="descrizione-tab-ordini" class="sum">
                         La tabella riassume le richieste "in_attesa" di acquisto dei vini effettuate dagli utenti.
                         Ogni riga rappresenta un singolo ordine. Le colonne riportano: ID ordine, cliente,
                         totale finale, data di creazione, un comando per aprire i dettagli e la sezione di gestione richiesta.
-                    </p>
-
-                    <p id="descrizione-tab-ordini-archivio" class="sum visually-hidden">
-                        La tabella riassume le richieste di acquisto dei vini già gestite dallo staff.
-                        Ogni riga rappresenta un singolo ordine. Le colonne riportano: ID ordine, cliente, totale finale, data di creazione,
-                        stato richiesta e un comando per aprire i dettagli.
                     </p>
 
                     <section id="section-vini">
@@ -123,10 +117,10 @@
                             <thead>
                                 <tr>
                                     <th scope="col" abbr="ID">ID Ordine</th>
-                                    <th scope="col" abbr="Cliente">Cliente</th>
-                                    <th scope="col" abbr="Totale">Totale Finale</th>
+                                    <th scope="col">Cliente</th>
+                                    <th scope="col" abbr="Tot">Totale Finale</th>
                                     <th scope="col" abbr="Data">Data Creazione</th>
-                                    <th scope="col" abbr="Dettagli" class="admin-user-col-actions">Dettagli</th>
+                                    <th scope="col" class="admin-user-col-actions">Dettagli</th>
                                     <th scope="col" abbr="Gestione" class="admin-user-col-actions">Gestione richiesta</th>
                                 </tr>
                             </thead>
@@ -135,16 +129,22 @@
                             </tbody>
                         </table>
 
+                        <p id="descrizione-tab-ordini-archivio" class="sum">
+                        La tabella riassume le richieste di acquisto dei vini già gestite dallo staff.
+                        Ogni riga rappresenta un singolo ordine. Le colonne riportano: ID ordine, cliente, totale finale, data di creazione,
+                        stato richiesta e un comando per aprire i dettagli.
+                        </p>
+
                         <table class="table-data" id="tab-ordini-archivio" aria-describedby="descrizione-tab-ordini-archivio">
                             <caption>Archivio ordini</caption>
                             <thead>
                                 <tr>
                                     <th scope="col" abbr="ID">ID Ordine</th>
-                                    <th scope="col" abbr="Cliente">Cliente</th>
-                                    <th scope="col" abbr="Totale">Totale Finale</th>
+                                    <th scope="col">Cliente</th>
+                                    <th scope="col" abbr="Tot">Totale Finale</th>
                                     <th scope="col" abbr="Data">Data Creazione</th>
                                     <th scope="col" abbr="Stato">Stato richiesta</th>
-                                    <th scope="col" abbr="Dettagli" class="admin-user-col-actions">Dettagli</th>
+                                    <th scope="col" class="admin-user-col-actions">Dettagli</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -156,18 +156,14 @@
 
                 <section id="esperienze" class="[ESPERIENZE_CLASS]">
                     <h2>Esperienze</h2>
-                    <p id="descrizione-tab-degustazioni" class="sum visually-hidden">
+                    <p id="descrizione-tab-degustazioni" class="sum">
                         La tabella riassume le richieste di prenotazione attive di degustazioni.
                         Ogni riga rappresenta una singola prenotazione.
                         Le colonne riportano: ID prenotazione, cliente, tipo degustazione, data visita,
                         numero persone, un comando per aprire i dettagli e la sezione di gestione richiesta.
                     </p>
 
-                    <p id="descrizione-tab-degustazioni-archivio" class="visually-hidden sum">
-                        La tabella riassume le richieste di prenotazione già gestite dallo staff.
-                        Le colonne riportano: ID prenotazione, cliente, tipo degustazione, data visita,
-                        numero persone, stato richiesta e un comando per aprire i dettagli.
-                    </p>
+                    
 
                     <section id="section-esperienze">
                         <div class="admin-table-head">
@@ -183,11 +179,11 @@
                             <thead>
                                 <tr>
                                     <th scope="col" abbr="ID">ID esp.</th>
-                                    <th scope="col" abbr="Cliente">Cliente</th>
-                                    <th scope="col" abbr="Tipologia">Tipologia</th>
+                                    <th scope="col">Cliente</th>
+                                    <th scope="col" abbr="Tipo">Tipologia</th>
                                     <th scope="col" abbr="Data">Data visita</th>                            
                                     <th scope="col" abbr="Persone">N&deg; persone</th>
-                                    <th scope="col" abbr="Dettagli" class="admin-user-col-actions">Dettagli</th>
+                                    <th scope="col" class="admin-user-col-actions">Dettagli</th>
                                     <th scope="col" abbr="Gestione" class="admin-user-col-actions">Gestione richiesta</th>
                                 </tr>
                             </thead>
@@ -196,17 +192,23 @@
                             </tbody>
                         </table>
 
+                        <p id="descrizione-tab-degustazioni-archivio" class="sum">
+                        La tabella riassume le richieste di prenotazione già gestite dallo staff.
+                        Le colonne riportano: ID prenotazione, cliente, tipo degustazione, data visita,
+                        numero persone, stato richiesta e un comando per aprire i dettagli.
+                        </p>
+
                         <table class="table-data" id="tab-degustazioni-archivio" aria-describedby="descrizione-tab-degustazioni-archivio">
                             <caption>Archivio Degustazioni</caption>
                             <thead>
                                 <tr>
                                     <th scope="col" abbr="ID">ID esp.</th>
-                                    <th scope="col" abbr="Cliente">Cliente</th>
-                                    <th scope="col" abbr="Tipologia">Tipologia</th>
+                                    <th scope="col">Cliente</th>
+                                    <th scope="col" abbr="Tipo">Tipologia</th>
                                     <th scope="col" abbr="Data">Data visita</th>                            
                                     <th scope="col" abbr="Persone">N&deg; persone</th>
                                     <th scope="col" abbr="Stato">Stato richiesta</th>
-                                    <th scope="col" abbr="Dettagli" class="admin-user-col-actions">Dettagli</th>
+                                    <th scope="col" class="admin-user-col-actions">Dettagli</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -218,19 +220,14 @@
 
                 <section id="messaggi" class="[MESSAGGI_CLASS]">
                     <h2>Messaggi clienti</h2>
-                    <p id="descrizione-tab-messaggi" class="sum visually-hidden">
+                    <p id="descrizione-tab-messaggi" class="sum">
                         La tabella riassume le richieste di assistenza attive inviate dai clienti.
                         Ogni riga rappresenta una singola richiesta mandata dal cliente.
                         Le colonne riportano: ID messaggio, cliente, tipologia, data invio, 
                         un comando per aprire i dettagli e la sezione di gestione richiesta.
                     </p>
 
-                    <p id="descrizione-tab-messaggi-archivio" class="sum visually-hidden">
-                        La tabella riassume le richieste di assistenza già gestite dallo staff.
-                        Ogni riga rappresenta una singola richiesta mandata dal cliente.
-                        Le colonne riportano: ID messaggio, cliente, tipologia, data invio, messaggio
-                        e un comando per aprire i dettagli.
-                    </p>
+                    
 
                     <section id="section-messaggi">
                         <div class="admin-table-head">
@@ -244,12 +241,12 @@
                             <caption>Gestione messaggi</caption>
                             <thead>
                                 <tr>
-                                    <th scope="col" abbr="ID">ID mes.</th>
-                                    <th scope="col" abbr="Cliente">Cliente</th>
-                                    <th scope="col" abbr="Tipologia">Tipologia</th>
+                                    <th scope="col" abbr="ID">ID <abbr title="Messaggio">mes.</abbr></th>
+                                    <th scope="col">Cliente</th>
+                                    <th scope="col" abbr="Tipo">Tipologia</th>
                                     <th scope="col" abbr="Data">Data invio</th>
                                     <th scope="col">Messaggio</th>
-                                    <th scope="col" abbr="Gestisci" class="admin-user-col-actions">Gestisci</th>
+                                    <th scope="col" class="admin-user-col-actions">Gestisci</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -257,16 +254,23 @@
                             </tbody>
                         </table>
 
+                        <p id="descrizione-tab-messaggi-archivio" class="sum">
+                        La tabella riassume le richieste di assistenza già gestite dallo staff.
+                        Ogni riga rappresenta una singola richiesta mandata dal cliente.
+                        Le colonne riportano: ID messaggio, cliente, tipologia, data invio, messaggio
+                        e un comando per aprire i dettagli.
+                        </p>
+
                         <table class="table-data" id="tab-info-archivio" aria-describedby="descrizione-tab-messaggi-archivio">
                             <caption>Archivio messaggi</caption>
                             <thead>
                                 <tr>
-                                    <th scope="col" abbr="ID">ID mes.</th>
-                                    <th scope="col" abbr="Cliente">Cliente</th>
-                                    <th scope="col" abbr="Tipologia">Tipologia</th>
+                                    <th scope="col" abbr="ID">ID <abbr title="Messaggio">mes.</abbr></th>
+                                    <th scope="col">Cliente</th>
+                                    <th scope="col" abbr="Tipo">Tipologia</th>
                                     <th scope="col" abbr="Data">Data invio</th>
                                     <th scope="col">Messaggio</th>
-                                    <th scope="col" abbr="Dettagli" class="admin-user-col-actions">Dettagli</th>
+                                    <th scope="col" class="admin-user-col-actions">Dettagli</th>
                                 </tr>
                             </thead>
                             <tbody>
