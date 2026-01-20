@@ -159,55 +159,55 @@ function getFormVinoHTML($v = null) {
             <div class='admin-form-group'>
                 <label>Nome Vino *</label>
                 <input type='text' name='nome' class='admin-input' required value='$nome'>
-                <small class='input-help'>Es: Pinot Nero Riserva</small>
+                <small class='input-help'>Esempio: Pinot Nero Riserva</small>
             </div>
             <div class='admin-form-group'>
                 <label>Categoria *</label>
                 <select name='categoria' class='admin-input'>$catOptions</select>
-                <small class='input-help'>Es: Rossi</small>
+                <small class='input-help'>Esempio: Rossi</small>
             </div>
             <div class='admin-form-group'>
                 <label>Prezzo (€) *</label>
                 <input type='number' step='0.01' name='prezzo' class='admin-input' required value='$prezzo'>
-                <small class='input-help'>Es: 12.50</small>
+                <small class='input-help'>Esempio: 12.50</small>
             </div>
             <div class='admin-form-group'>
                 <label>Stock *</label>
                 <input type='number' name='quantita_stock' class='admin-input' required value='$stock'>
-                <small class='input-help'>Es: 120</small>
+                <small class='input-help'>Esempio: 120</small>
             </div>
             <div class='admin-form-group'>
                 <label>Stato</label>
                 <select name='stato' class='admin-input'>$statoOptions</select>
-                <small class='input-help'>Es: Attivo</small>
+                <small class='input-help'>Esempio: Attivo</small>
             </div>
             <div class='admin-form-group'>
                 <label>Percorso Immagine</label>
                 <input type='text' name='img' class='admin-input' value='$img'>
-                <small class='input-help'>Es: ../../images/tr/placeholder.webp</small>
+                <small class='input-help'>Esempio: ../../images/tr/placeholder.webp</small>
             </div>
         </div>
 
         <div class='admin-form-group'>
             <label>Descrizione Breve (Card)</label>
             <input type='text' name='descrizione_breve' class='admin-input' maxlength='100' value='$descBreve'>
-            <small class='input-help'>Es: Rosso elegante con note di frutti rossi</small>
+            <small class='input-help'>Esempio: Rosso elegante con note di frutti rossi</small>
         </div>
 
         <div class='admin-form-group'>
             <label>Descrizione Estesa (Modale)</label>
             <textarea name='descrizione_estesa' class='admin-input' rows='3'>$descEstesa</textarea>
-            <small class='input-help'>Es: Affinato in barrique per 12 mesi, struttura intensa e finale speziato.</small>
+            <small class='input-help'>Esempio: Affinato in barrique per 12 mesi, struttura intensa e finale speziato.</small>
         </div>
 
         <fieldset class='admin-fieldset'>
             <legend>Scheda Tecnica</legend>
             <div class='form-grid'>
-                <div class='admin-form-group'><label>Vitigno</label><input type='text' name='vitigno' class='admin-input' value='$vitigno'><small class='input-help'>Es: Cabernet Sauvignon</small></div>
-                <div class='admin-form-group'><label>Annata</label><input type='text' name='annata' class='admin-input' value='$annata'><small class='input-help'>Es: 2021</small></div>
-                <div class='admin-form-group'><label>Gradazione</label><input type='text' name='gradazione' class='admin-input' value='$gradazione'><small class='input-help'>Es: 13.5% vol</small></div>
-                <div class='admin-form-group'><label>Temperatura</label><input type='text' name='temperatura' class='admin-input' value='$temperatura'><small class='input-help'>Es: 16-18 C</small></div>
-                <div class='admin-form-group'><label>Abbinamenti</label><input type='text' name='abbinamenti' class='admin-input' value='$abbinamenti'><small class='input-help'>Es: Carni rosse, formaggi stagionati</small></div>
+                <div class='admin-form-group'><label>Vitigno</label><input type='text' name='vitigno' class='admin-input' value='$vitigno'><small class='input-help'>Esempio: Cabernet Sauvignon</small></div>
+                <div class='admin-form-group'><label>Annata</label><input type='text' name='annata' class='admin-input' value='$annata'><small class='input-help'>Esempio: 2021</small></div>
+                <div class='admin-form-group'><label>Gradazione</label><input type='text' name='gradazione' class='admin-input' value='$gradazione'><small class='input-help'>Esempio: 13.5% vol</small></div>
+                <div class='admin-form-group'><label>Temperatura</label><input type='text' name='temperatura' class='admin-input' value='$temperatura'><small class='input-help'>Esempio: 16-18 C</small></div>
+                <div class='admin-form-group'><label>Abbinamenti</label><input type='text' name='abbinamenti' class='admin-input' value='$abbinamenti'><small class='input-help'>Esempio: Carni rosse, formaggi stagionati</small></div>
             </div>
         </fieldset>
 
