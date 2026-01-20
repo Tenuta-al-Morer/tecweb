@@ -3,15 +3,13 @@ Lista todo per tecweb:
 - mettere <abbr title> dove serve e attributo abbr corretto sulle <th> delle tabelle
 - sistemare cerca vino in vini (manca da fare la ricerca nella pagina vini. Il resto è apposto)
 - mettere conferma operazione su admin utenti
-- gestione vini in admin, gestione utenti in admin (pagina admin in generale) (il resto è già stato verificato)
+- gestione vini in admin, gestione utenti in admin senza js (pagina admin in generale) (il resto è già stato verificato)
 - fare mappa del sito (provate a vedere se può andare bene)
-- controllare label in pagina vini e admin tramite WAVE o silktide
+- controllare label in pagina admin tramite WAVE o silktide
 - controlla l’accessibilità di tutte le pagine e verificare con nvda che tutto funzioni per i ciechi:
     - vini
     - carrello (ho verificato e non si capisce con nvda che mi trovi nei pulsanti più o meno per la quantità, inoltre non si capisce benissimo il numero presente nell'icona del carrello a cosa si riferisce)
     - area cliente (ho verificato e l'unica cosa è se va bene il come leggere il menù a lato. Non so se sia perfetto. Ditemi voi cosa ne pensate)
     - area gestionale
     - area admin
-    - registrazione
-    - login
     - mappa del sito
