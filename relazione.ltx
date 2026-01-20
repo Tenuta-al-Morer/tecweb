@@ -413,9 +413,8 @@ Abbiamo utilizzato i seguenti strumenti per effettuare test manuali:
 \begin{itemize}
 \item WCAG Color contrast checker: controllo contrasto dei colori e applicazione di vari filtri visivi (protanopia, protanomalia, deuteranopia, 
 deuteranomalia, tritanopia, tritanomalia, acromatopsia, acromatomalia), sempre raggiunto livello di conformità WCAG AA;
-\item WAVE by WebAIM, Silktide Inspector: per controlli generali, non vengono segnalati errori;
+\item WAVE by WebAIM, Silktide Inspector, Total Validator: per controlli generali, non vengono segnalati errori (esclusione fatta per i falsi positivi analizzati nella sezione successiva);
 \item W3C Validator (per HTML e CSS): non vengono segnalati errori;
-\item Total Validator;
 \item Lighthouse: calcolo prestazioni del sito con buoni punteggi;
 \item compatibilità con browser diversi quali Microsoft Edge, Google Chrome, Mozilla Firefox, Apple Safari e Opera;
 \item compatibilità con sistemi operativi diversi quali Microsoft Windows 10, Ubuntu 23.10, Android 9, Android 15, iOS 18.3;
@@ -430,6 +429,7 @@ Di seguito vengono analizzate le segnalazioni rilevate da Total Validator classi
 \item \textbf{Redundant link:} La segnalazione, presente in tutte le pagine, è causata dalla presenza adiacente del logo e della voce "Home" nella barra di navigazione. Sebbene entrambi puntino alla stessa destinazione, la ridondanza è mantenuta per favorire l'usabilità.
 \item \textbf{Skipped heading level:} Nella pagina \textit{Carrello}, la gerarchia dei titoli presenta dei salti (omissione di alcuni livelli intermedi) per adattarsi alla struttura logica delle sezioni secondarie, pur mantenendo la semantica di pagina.
 \item \textbf{Possible heading:} Sempre nella pagina \textit{Carrello}, il validatore segnala erroneamente il dato numerico relativo al "Costo del vino" come un possibile titolo, probabilmente a causa della sua formattazione visiva, sebbene si tratti di un semplice contenuto testuale.
+\item \textbf{Multiple form labels:} Nelle schede dei vini, gli input di tipo checkbox utilizzati per l'apertura delle pagine "info" vengono segnalati come errori. Si tratta di un falso positivo poiché tali elementi non sono destinati alla raccolta dati, ma fungono da interruttori logici per lo stato di visibilità (pattern \textit{CSS Checkbox Hack}); sono nascosti visivamente tramite classe \texttt{sr-only} ma rimangono pienamente operabili e accessibili tramite le \texttt{<label>} associate.
 \item \textbf{Falsi positivi in modalità light:} 
 \begin{itemize}
 \item \textbf{Contrast Errors:} Il validatore segnala in tutte le pagine un errore di contrasto per la navigazion help quando nascosta (in modalità light).

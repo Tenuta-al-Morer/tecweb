@@ -15,4 +15,3 @@ Lista todo per tecweb:
     - registrazione
     - login
     - mappa del sito
-    - policy
