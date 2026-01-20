@@ -2111,13 +2111,13 @@ footer a:visited, .main-nav-bar a:visited {
     line-height: 2;
 }
 
-.tenuta-separator {
+.content-separator {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.tenuta-separator::before {
+.content-separator::before {
     content: "";
     width: 60%;
     max-width: 900px;
