@@ -1,4 +1,6 @@
 Lista todo per tecweb:   
+- verificare tabella dei dettagli -> togliere <strong> e mettere span
+- togliere intestazioni h4 in mostra dettagli del gestionale. 
 - sistemare contrasti link visitato vs non visitato: 3:1
 - mettere <abbr> in mostra dettagli gestionale "x nome vino" come "per"
 - mettere <abbr title> dove serve e attributo abbr corretto sulle <th> delle tabelle
