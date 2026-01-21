@@ -174,7 +174,7 @@ foreach ($ordiniArchivioArray as $ordine) {
     $ordiniArchivio .= '<div class="details-section"><h4>Prodotti Ordinati:</h4><ul class="details-products-list">';
     if (!empty($ordine['elementi'])) {
         foreach ($ordine['elementi'] as $item) {
-            $ordiniArchivio .= '<li><span>' . (int)$item['quantita'] . '<abbr title="per">x</abbr> ' . htmlspecialchars($item['nome_vino_storico']) . '</span><span>' . number_format($item['prezzo_acquisto'], 2) . ' EUR</span></li>';
+            $ordiniArchivio .= '<li><span>' . (int)$item['quantita'] . '<span aria-label="per">x</span> ' . htmlspecialchars($item['nome_vino_storico']) . '</span><span>' . number_format($item['prezzo_acquisto'], 2) . ' EUR</span></li>';
         }
     } else {
         $ordiniArchivio .= '<li><span>Nessun prodotto associato.</span><span>0.00 EUR</span></li>';
