@@ -133,7 +133,7 @@ foreach ($ordiniArray as $ordine) {
     $ordini .= '</tr>';
 
     $ordini .= '<tr class="order-details-row is-hidden" id="details-row-' . $ordineId . '"><td colspan="6" class="order-details-cell"><div class="details-content">';
-    $ordini .= '<div class="details-section"><h4>Prodotti Ordinati:</h4><ul class="details-products-list">';
+    $ordini .= '<div class="details-section"><p class="details-section-heading">Prodotti Ordinati:</p><ul class="details-products-list">';
     if (!empty($ordine['elementi'])) {
         foreach ($ordine['elementi'] as $item) {
             $ordini .= '<li><span>' . (int)$item['quantita'] . '<span aria-hidden="true">x </span><span class="sr-only"> per </span>' . htmlspecialchars($item['nome_vino_storico']) . '</span><span>' . number_format($item['prezzo_acquisto'], 2) . ' EUR</span></li>';
@@ -142,7 +142,7 @@ foreach ($ordiniArray as $ordine) {
         $ordini .= '<li><span>Nessun prodotto associato.</span><span>0.00 EUR</span></li>';
     }
     $ordini .= '</ul></div>';
-    $ordini .= '<div class="details-section"><h4>Riepilogo e Spedizione:</h4><p><strong>ID Utente:</strong> #' . (int)$ordine['id_utente'] . '</p><p><strong>Indirizzo Spedizione:</strong> ' . nl2br(htmlspecialchars($ordine['indirizzo_spedizione'])) . '</p><div class="details-summary details-summary-left"><h4>Prezzi:</h4><p>Prezzo Prodotti: ' . number_format($ordine['totale_prodotti'], 2) . ' EUR</p><p>Costo Spedizione: ' . number_format($ordine['costo_spedizione'], 2) . ' EUR</p><p><strong>Totale Finale:</strong> <span>' . number_format($ordine['totale_finale'], 2) . ' EUR</span></p></div></div></div></td></tr>';
+    $ordini .= '<div class="details-section"><p class="details-section-heading">Riepilogo e Spedizione:</p><p><span class="subtitle">ID Utente:</span> #' . (int)$ordine['id_utente'] . '</p><p><span class="subtitle">Indirizzo Spedizione:</span> ' . nl2br(htmlspecialchars($ordine['indirizzo_spedizione'])) . '</p><div class="details-summary details-summary-left"><p class="details-section-heading">Prezzi:</p><p>Prezzo Prodotti: ' . number_format($ordine['totale_prodotti'], 2) . ' EUR</p><p>Costo Spedizione: ' . number_format($ordine['costo_spedizione'], 2) . ' EUR</p><p><span class="subtitle">Totale Finale:</span> <span>' . number_format($ordine['totale_finale'], 2) . ' EUR</span></p></div></div></div></td></tr>';
 }
 
 $ordiniArchivio = "";
@@ -171,7 +171,7 @@ foreach ($ordiniArchivioArray as $ordine) {
     $ordiniArchivio .= '</tr>';
 
     $ordiniArchivio .= '<tr class="order-details-row is-hidden" id="details-row-' . $ordineId . '"><td colspan="6" class="order-details-cell"><div class="details-content">';
-    $ordiniArchivio .= '<div class="details-section"><h4>Prodotti Ordinati:</h4><ul class="details-products-list">';
+    $ordiniArchivio .= '<div class="details-section"><p class="details-section-heading">Prodotti Ordinati:</p><ul class="details-products-list">';
     if (!empty($ordine['elementi'])) {
         foreach ($ordine['elementi'] as $item) {
             $ordiniArchivio .= '<li><span>' . (int)$item['quantita'] . 'x ' . htmlspecialchars($item['nome_vino_storico']) . '</span><span>' . number_format($item['prezzo_acquisto'], 2) . ' EUR</span></li>';
@@ -180,7 +180,7 @@ foreach ($ordiniArchivioArray as $ordine) {
         $ordiniArchivio .= '<li><span>Nessun prodotto associato.</span><span>0.00 EUR</span></li>';
     }
     $ordiniArchivio .= '</ul></div>';
-    $ordiniArchivio .= '<div class="details-section"><h4>Riepilogo e Spedizione:</h4><p><strong>ID Utente:</strong> #' . (int)$ordine['id_utente'] . '</p><p><strong>Indirizzo Spedizione:</strong> ' . nl2br(htmlspecialchars($ordine['indirizzo_spedizione'])) . '</p><div class="details-summary details-summary-left"><h4>Prezzi:</h4><p>Prezzo Prodotti: ' . number_format($ordine['totale_prodotti'], 2) . ' EUR</p><p>Costo Spedizione: ' . number_format($ordine['costo_spedizione'], 2) . ' EUR</p><p><strong>Totale Finale:</strong> <span>' . number_format($ordine['totale_finale'], 2) . ' EUR</span></p></div></div></div></td></tr>';
+    $ordiniArchivio .= '<div class="details-section"><p class="details-section-heading">Riepilogo e Spedizione:</p><p><span class="subtitle">ID Utente:</span> #' . (int)$ordine['id_utente'] . '</p><p><span class="subtitle">Indirizzo Spedizione:</span> ' . nl2br(htmlspecialchars($ordine['indirizzo_spedizione'])) . '</p><div class="details-summary details-summary-left"><p class="details-section-heading">Prezzi:</p><p>Prezzo Prodotti: ' . number_format($ordine['totale_prodotti'], 2) . ' EUR</p><p>Costo Spedizione: ' . number_format($ordine['costo_spedizione'], 2) . ' EUR</p><p><span class="subtitle">Totale Finale:</span> <span>' . number_format($ordine['totale_finale'], 2) . ' EUR</span></p></div></div></div></td></tr>';
 }
 
 
@@ -212,7 +212,7 @@ foreach ($prenotazioniArray as $prenotazione) {
     $prenotazioni .= '</tr>';
 
     $prenotazioni .= '<tr class="order-details-row is-hidden" id="details-row-' . $detailsKey . '"><td colspan="7" class="order-details-cell"><div class="details-content">';
-    $prenotazioni .= '<div class="details-section"><h4>Dettagli Prenotazione:</h4><ul class="details-products-list">';
+    $prenotazioni .= '<div class="details-section"><p class="details-section-heading">Dettagli Prenotazione:</p><ul class="details-products-list">';
     $prenotazioni .= '<li><span>Email</span><span>' . htmlspecialchars($prenotazione['email']) . '</span></li>';
     $prenotazioni .= '<li><span>Telefono</span><span>' . htmlspecialchars($prenotazione['prefisso']) . ' ' . htmlspecialchars($prenotazione['telefono']) . '</span></li>';
     $prenotazioni .= '<li><span>Data Invio</span><span>' . htmlspecialchars($prenotazione['data_invio']) . '</span></li>';
@@ -241,7 +241,7 @@ foreach ($prenotazioniArchivioArray as $prenotazione) {
     $prenotazioniArchivio .= '</tr>';
 
     $prenotazioniArchivio .= '<tr class="order-details-row is-hidden" id="details-row-' . $detailsKey . '"><td colspan="7" class="order-details-cell"><div class="details-content">';
-    $prenotazioniArchivio .= '<div class="details-section"><h4>Dettagli Prenotazione:</h4><ul class="details-products-list">';
+    $prenotazioniArchivio .= '<div class="details-section"><p class="details-section-heading">Dettagli Prenotazione:</p><ul class="details-products-list">';
     $prenotazioniArchivio .= '<li><span>Email</span><span>' . htmlspecialchars($prenotazione['email']) . '</span></li>';
     $prenotazioniArchivio .= '<li><span>Telefono</span><span>' . htmlspecialchars($prenotazione['prefisso']) . ' ' . htmlspecialchars($prenotazione['telefono']) . '</span></li>';
     $prenotazioniArchivio .= '<li><span>Data Invio</span><span>' . htmlspecialchars($prenotazione['data_invio']) . '</span></li>';
@@ -270,11 +270,11 @@ foreach ($messaggiArray as $messaggio) {
     $messaggi .= '</tr>';
 
     $messaggi .= '<tr class="order-details-row is-hidden" id="details-row-' . $detailsKey . '"><td colspan="6" class="order-details-cell"><div class="details-content">';
-    $messaggi .= '<div class="details-section"><h4>Dettagli Messaggio:</h4><ul class="details-products-list">';
+    $messaggi .= '<div class="details-section"><p class="details-section-heading">Dettagli Messaggio:</p><ul class="details-products-list">';
     $messaggi .= '<li><span>Email</span><span>' . htmlspecialchars($messaggio['email']) . '</span></li>';
     $messaggi .= '<li><span>Telefono</span><span>' . htmlspecialchars($messaggio['prefisso']) . ' ' . htmlspecialchars($messaggio['telefono']) . '</span></li>';
     $messaggi .= '</ul></div>';
-    $messaggi .= '<div class="details-section"><h4>Risposta:</h4>
+    $messaggi .= '<div class="details-section"><p class="details-section-heading">Risposta:</p>
                     <form id="form_msg_' . $idMsg . '" action="" method="POST" class="standard-form">
                         <input type="hidden" name="messaggio_id" value="' . $idMsg . '">
                         <input type="hidden" name="azione" value="msg_risposta">
@@ -307,7 +307,7 @@ foreach ($messaggiArchivioArray as $messaggio) {
     $messaggiArchivio .= '</tr>';
 
     $messaggiArchivio .= '<tr class="order-details-row is-hidden" id="details-row-' . $detailsKey . '"><td colspan="6" class="order-details-cell"><div class="details-content">';
-    $messaggiArchivio .= '<div class="details-section"><h4>Dettagli Messaggio:</h4><ul class="details-products-list">';
+    $messaggiArchivio .= '<div class="details-section"><p class="details-section-heading">Dettagli Messaggio:</p><ul class="details-products-list">';
     $messaggiArchivio .= '<li><span>Email</span><span>' . htmlspecialchars($messaggio['email']) . '</span></li>';
     $messaggiArchivio .= '<li><span>Telefono</span><span>' . htmlspecialchars($messaggio['prefisso']) . ' ' . htmlspecialchars($messaggio['telefono']) . '</span></li>';
     $messaggiArchivio .= '<li><span>Risposta</span><span>' . htmlspecialchars($messaggio['risposta']) . '</span></li>';

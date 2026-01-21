@@ -1,9 +1,6 @@
 Lista todo per tecweb:   
-- verificare tabella dei dettagli -> togliere <strong> e mettere span
-- togliere intestazioni h4 in mostra dettagli del gestionale. 
 - sistemare contrasti link visitato vs non visitato: 3:1
-- mettere <abbr> in mostra dettagli gestionale "x nome vino" come "per"
-- mettere <abbr title> dove serve e attributo abbr corretto sulle <th> delle tabelle
+- mettere <abbr title> dove serve e attributo abbr corretto sulle <th> delle tabelle (nvda non vuole leggerle)
 - sistemare cerca vino in vini (manca da fare la ricerca nella pagina vini. Il resto è apposto)
 - gestione vini in admin, gestione utenti in admin senza js (pagina admin in generale) (il resto è già stato verificato)
 - fare mappa del sito (provate a vedere se può andare bene)
