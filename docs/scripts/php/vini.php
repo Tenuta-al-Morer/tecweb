@@ -154,7 +154,7 @@ function costruisciCardVino($vino) {
     return '
     <article class="wine-article" id="' . $anchorId . '">
         <div class="wine-item">
-            <img src="' . $img . '" alt="' . $altText . '" class="wine-image" loading="lazy">
+            <img src="' . $img . '" alt="" class="wine-image" loading="lazy">
             <div class="content-wine-article">
                 <h3>' . $nome . '</h3>
                 <p>' . $descBreve . '</p> 
