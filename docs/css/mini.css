@@ -1473,3 +1473,51 @@ select:focus {
         font-size: 0.95rem;
     }
 }
+
+.sitemap-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.sitemap-info {
+    position: static;
+}
+
+
+
+.sitemap-main {
+    margin: 0;
+}
+
+.info-stats {
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.stat-box {
+    flex: 1;
+    min-width: 120px;
+}
+
+@media (max-width: 768px) {
+    .sitemap-main {
+        padding: 2rem 1rem;
+    }
+
+    .sitemap-tree a[title]:hover:after{
+        display: none;
+    }
+    
+    .tree-container,
+    .sitemap-info {
+        padding: 2rem;
+    }
+    
+    .sitemap-tree .tree-list.level-2 {
+        padding-left: 2.5rem;
+    }
+    
+    .sitemap-tree .tree-list.level-3 {
+        padding-left: 3.5rem;
+    }
+}

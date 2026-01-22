@@ -75,7 +75,27 @@
             </section>
 
             <div class="sitemap-tree" aria-label="Struttura della mappa del sito">
-                [sitemap_tree]
+                <div class="sitemap-layout">
+                    <div class="tree-container" role="navigation" aria-label="Mappa del sito">
+                        [sitemap_content]
+                    </div>
+                    
+                    <aside class="sitemap-info" aria-labelledby="info-title">
+                        <h2 id="info-title">Informazioni</h2>
+                        <p>Mappa gerarchica del sito.</p>
+                        
+                        <div class="info-stats">
+                            <div class="stat-box">
+                                <span class="stat-number">[totale_pagine]</span>
+                                <span class="stat-label">Pagine</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-number">[totale_sezioni]</span>
+                                <span class="stat-label">Sezioni</span>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
             </div>
         </main>
 
