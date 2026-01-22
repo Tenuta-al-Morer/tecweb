@@ -1,10 +1,8 @@
 Lista todo per tecweb:   
 - sistemare contrasti link visitato vs non visitato: 3:1
-- mettere <abbr title> dove serve e attributo abbr corretto sulle <th> delle tabelle (nvda non vuole leggerle)
 - gestione vini in admin, gestione utenti in admin senza js (pagina admin in generale) (il resto è già stato verificato)
 - controllare label in pagina admin tramite WAVE o silktide
 - controlla l’accessibilità di tutte le pagine e verificare con nvda che tutto funzioni per i ciechi:
     - vini
     - area gestionale
     - area admin
-    - mappa del sito

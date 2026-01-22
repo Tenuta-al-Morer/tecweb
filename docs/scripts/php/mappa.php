@@ -1,7 +1,6 @@
 <?php
 require_once 'common.php';
 
-// Struttura completa del sito 
 $struttura = [
     'Home' => [
         'link' => 'home.php',
@@ -10,22 +9,27 @@ $struttura = [
         'sub' => [
             'Tenuta' => [
                 'link' => 'tenuta.php',
+                'lang' => 'it',
                 'breadcrumb' => ['Home', 'Tenuta']
             ],
             'Vini' => [
                 'link' => 'vini.php',
+                'lang' => 'it',
                 'breadcrumb' => ['Home', 'Vini']
             ],
             'Esperienze' => [
                 'link' => 'esperienze.php',
+                'lang' => 'it',
                 'breadcrumb' => ['Home', 'Esperienze']
             ],
             'Contatti' => [
                 'link' => 'contatti.php',
+                'lang' => 'it',
                 'breadcrumb' => ['Home', 'Contatti']
             ],
             'Carrello' => [
                 'link' => 'carrello.php',
+                'lang' => 'it',
                 'breadcrumb' => ['Home', 'Carrello'],
                 'sub' => [
                     'Checkout' => [
@@ -42,33 +46,38 @@ $struttura = [
                 'sub' => [
                     'Registrazione' => [
                         'link' => 'registrazione.php',
+                        'lang' => 'it',
                         'breadcrumb' => ['Home', 'Login', 'Registrazione']
                     ]
                 ]
             ],
             'Area riservata' => [
                 'link' => 'areaPersonale.php',
+                'lang' => 'it',
                 'breadcrumb' => ['Home', 'Area Riservata']
             ],
             'Area gestionale' => [
                 'link' => 'gestionale.php',
+                'lang' => 'it',
                 'breadcrumb' => ['Home', 'Area Gestionale'],
                 'sub' => [
-                    'Ordini' => ['link' => 'gestionale.php?sezione=ordini'],
-                    'Richieste esperienze' => ['link' => 'gestionale.php?sezione=esperienze'],
-                    'Messaggi clienti' => ['link' => 'gestionale.php?sezione=messaggi']
+                    'Ordini' => ['link' => 'gestionale.php?sezione=ordini', 'lang' => 'it'],
+                    'Richieste esperienze' => ['link' => 'gestionale.php?sezione=esperienze', 'lang' => 'it'],
+                    'Messaggi clienti' => ['link' => 'gestionale.php?sezione=messaggi', 'lang' => 'it']
                 ]
             ],
             'Amministrazione' => [
                 'link' => 'admin.php',
+                'lang' => 'it',
                 'breadcrumb' => ['Home', 'Amministrazione'],
                 'sub' => [
-                    'Gestione vini' => ['link' => 'admin.php?view=vini'],
-                    'Gestione utenti' => ['link' => 'admin.php?view=utenti']
+                    'Gestione vini' => ['link' => 'admin.php?view=vini', 'lang' => 'it'],
+                    'Gestione utenti' => ['link' => 'admin.php?view=utenti', 'lang' => 'it']
                 ]
             ],
             'Note legali' => [
                 'link' => 'policy.php',
+                'lang' => 'it',
                 'breadcrumb' => ['Home', 'Policy'],
                 'sub' => [
                     'Privacy Policy' => [
@@ -78,19 +87,20 @@ $struttura = [
                     ],
                     'Accessibilità' => [
                         'link' => 'policy.php#accessibility',
+                        'lang' => 'it',
                         'breadcrumb' => ['Home', 'Policy', 'Accessibilità']
                     ]
                 ]
             ],
             'Mappa del sito' => [
                 'link' => 'mappa.php',
+                'lang' => 'it',
                 'breadcrumb' => ['Home', 'Mappa del sito']
             ]
         ]
     ]
 ];
 
-/* Funzione ricorsiva per generare la mappa HTML */
 function generaListaHTML($items, $livello = 0) {
     if (empty($items)) return '';
     
@@ -101,15 +111,18 @@ function generaListaHTML($items, $livello = 0) {
     foreach ($items as $label => $data) {
         $link = $data['link'] ?? '#';
         $sub = $data['sub'] ?? [];
-        $langAttr = isset($data['lang']) ? ' <span lang="'.$data['lang'].'">' : '';
-        $langClose = isset($data['lang']) ? '</span>' : '';
-        $breadcrumb = isset($data['breadcrumb']) ? ' title="Percorso: ' . implode(' &gt; ', $data['breadcrumb']) . '"' : '';
+        $lang = $data['lang'] ?? 'it';
+        $breadcrumbText = isset($data['breadcrumb']) ? implode(' › ', $data['breadcrumb']) : '';
         
         $classeItem = ($livello > 0) ? ' class="child-item"' : '';
 
         $html .= '<li' . $classeItem . '>';
-        $html .= '<a href="' . htmlspecialchars($link) . '"' . $breadcrumb . '>' . 
-                 $langAttr . htmlspecialchars($label) . $langClose . '</a>';
+        
+        $html .= '<a href="' . htmlspecialchars($link) . '" lang="' . $lang . '" aria-label="' . htmlspecialchars($label) . '"';
+        if ($breadcrumbText) {
+            $html .= ' title="Percorso: ' . htmlspecialchars($breadcrumbText) . '"';
+        }
+        $html .= '>' . htmlspecialchars($label) . '</a>';
         
         if (!empty($sub)) {
             $html .= generaListaHTML($sub, $livello + 1);
@@ -137,7 +150,6 @@ $sitemapHTML = generaListaHTML($struttura);
 
 $totalePagine = count($struttura['Home']['sub']);
 $totaleSezioni = countTotalPages($struttura);
-
 
 echo caricaPagina('../../html/mappa.html', [
     '[sitemap_content]' => $sitemapHTML,  
