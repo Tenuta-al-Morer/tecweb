@@ -1295,8 +1295,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (match) {
                     rimuoviErroreSearch();
+
+                    const targetFocus = match.querySelector('h3') || match;
                     match.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    targetFocus.setAttribute('tabindex', '-1');
+                    targetFocus.focus({ preventScroll: true });
                     match.classList.add('is-highlighted');
+
                     setTimeout(() => {
                         match.classList.remove('is-highlighted');
                     }, 3000);
