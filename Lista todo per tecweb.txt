@@ -6,3 +6,5 @@ Lista todo per tecweb:
     - vini
     - area gestionale
     - area admin
+
+completare convenzioni interne nella relazione
