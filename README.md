@@ -365,7 +365,7 @@ Di seguito vengono analizzate le segnalazioni rilevate da Total Validator classi
 
 - **Possible heading:** Sempre nella pagina *Carrello*, il validatore segnala erroneamente il dato numerico relativo al "Costo del vino" come un possibile titolo, probabilmente a causa della sua formattazione visiva, sebbene si tratti di un semplice contenuto testuale.
 
-- **Multiple form labels:** Nelle schede dei vini, gli input di tipo checkbox utilizzati per l’apertura delle pagine "info" vengono segnalati come errori. Si tratta di un falso positivo poiché tali elementi non sono destinati alla raccolta dati, ma fungono da interruttori logici per lo stato di visibilità (pattern *CSS Checkbox Hack*); sono nascosti visivamente tramite classe `sr-only` ma rimangono pienamente operabili e accessibili tramite le `<label>` associate.
+- **Multiple form labels:** Nella pagina Vini e Admin vengono segnalati parecchi errori nei form poichè alcune checkbox sono collegate a più label. Si tratta di un falso positivo poiché tali elementi non sono destinati alla raccolta dati, ma fungono da interruttori logici per lo stato di visibilità (pattern *CSS Checkbox Hack*); sono nascosti visivamente tramite classe `sr-only` ma rimangono pienamente operabili e accessibili tramite le `<label>` associate.
 
 - **Falsi positivi in modalità light:**
 
