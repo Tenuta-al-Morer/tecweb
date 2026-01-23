@@ -10,7 +10,7 @@
 :root {
     /* COLORI PRINCIPALI */
     --secondary-color: #C5A551;
-    --always-bright: #C5A551;
+    --always-bright: #A79455;
     --enhance: #c51e26;
     --errors: #FF2934;
     --right: #176F3A;
@@ -853,6 +853,7 @@ a.logo-link:hover img, a.logo-link:focus img { transform: scale(1.05); }
 
 .primary-navigation a:hover, .primary-navigation a:focus {
     color: var(--always-bright);
+    filter: brightness(1.4);
     text-decoration: underline;
     text-underline-offset: 0.25em;
     text-decoration-thickness: 2px;
@@ -921,6 +922,7 @@ a.logo-link:hover img, a.logo-link:focus img { transform: scale(1.05); }
 
 .mobile-icons a:hover, .mobile-icons a:focus {
     color: var(--always-bright);
+    filter: brightness(1.4);
     transform: scale(1.1);
     text-decoration: underline;
     text-underline-offset: 0.35em;
@@ -1014,7 +1016,7 @@ span.current-page{
 
 .breadcrumb-container { display: flex; align-items: center; gap: 0.6em; color: #fff; opacity: 0.9; }
 .breadcrumb-container a { color: var(--always-bright); text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 2px; }
-.breadcrumb-container a:hover, .breadcrumb-container a:focus { filter: brightness(1.2); }
+.breadcrumb-container a:hover, .breadcrumb-container a:focus { filter: brightness(1.4); }
 #breadcrumb img { height: 3em; }
 .separator { color: var(--border-color); font-size: 0.9em; }
 
@@ -1033,7 +1035,7 @@ span.current-page{
     display: inline-flex; align-items: center; justify-content: center; transition: all 0.3s ease;
 }
 
-#theme-toggle:hover, #theme-toggle:focus { color: var(--always-bright); opacity: 1; transform: scale(1.1); }
+#theme-toggle:hover, #theme-toggle:focus { color: var(--always-bright); opacity: 1; transform: scale(1.1); filter: brightness(1.4);}
 #theme-toggle i { pointer-events: none; }
 
 #theme-toggle svg {
@@ -1663,6 +1665,12 @@ footer small a + a::before {
 
 footer a:visited, .main-nav-bar a:visited { 
     color: var(--always-bright); 
+}
+
+footer a:hover, footer a:focus {
+    color: var(--always-bright);
+    filter: brightness(1.4);
+    text-decoration: underline;
 }
 
 /* =========================================
