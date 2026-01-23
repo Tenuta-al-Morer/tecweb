@@ -1,4 +1,6 @@
 Lista todo per tecweb:   
+- con silktide verificare il sito nella versione mobile (se riesci contarini a farlo te direttamente con il cellulare e tablet visto che riesci)
+- verfiicare funzionamento coi vari browser (contarini verifica pure safari con il tablet sia in modalità mobile che desktop)
 - sistemare contrasti link visitato vs non visitato: 3:1
 - gestione vini in admin, gestione utenti in admin senza js (pagina admin in generale) (il resto è già stato verificato)
 - controllare label in pagina admin tramite WAVE o silktide
