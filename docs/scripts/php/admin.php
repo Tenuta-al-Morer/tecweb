@@ -5,13 +5,11 @@ require_once 'DBConnection.php';
 
 use DB\DBConnection;
 
-// 1. Controllo Accesso
 if (!isset($_SESSION['utente']) || $_SESSION['ruolo'] !== 'admin') {
     header("location: 403.php");
     exit();
 }
 
-// 2. View selection
 $view = $_GET['view'] ?? ($_POST['view'] ?? 'vini');
 if (!in_array($view, ['vini', 'utenti'], true)) {
     $view = 'vini';
@@ -22,7 +20,6 @@ if ($view === 'utenti') {
     $query = trim($_GET['q'] ?? '');
 }
 
-// 3. Gestione Azioni (POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $azione = $_POST['azione'] ?? '';
     $db = new DBConnection();
@@ -64,7 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $db->ripristinaVino($_POST['id']);
     }
 
-    // --- AZIONI UTENTI (ORIGINALI - NON TOCCATE) ---
     if ($azione === 'salva_utente') {
         $nome = trim($_POST['utente_nome'] ?? '');
         $cognome = trim($_POST['utente_cognome'] ?? '');
@@ -96,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     
     $db->closeConnection();
-    // Redirect per pulire il POST
+    
     if ($view === 'utenti' && $query !== '') {
          header("Location: admin.php?view=" . $view . "&q=" . urlencode($query));
     } else {
@@ -105,19 +101,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-// 4. Caricamento Dati
 $htmlContent = caricaPagina('../../html/admin.html');
 $nomeUtente = htmlspecialchars($_SESSION['nome']);
 
 $db = new DBConnection();
-// Vini: prendiamo tutto per gestire il filtro eliminati via CSS
 $viniArray = ($view === 'vini') ? $db->getTuttiViniAdmin() : [];
 $utentiArray = ($view === 'utenti') ? $db->getUtentiAdmin() : [];
 $db->closeConnection();
 
 function getFormVinoHTML($v = null) {
     $isEdit = ($v !== null);
-    $id = $isEdit ? $v['id'] : '';
+    $id = $isEdit ? $v['id'] : 'new'; 
+    $suffix = "_" . $id; 
+    
     $nome = $isEdit ? htmlspecialchars($v['nome']) : '';
     $prezzo = $isEdit ? $v['prezzo'] : '';
     $stock = $isEdit ? $v['quantita_stock'] : '0';
@@ -130,7 +126,6 @@ function getFormVinoHTML($v = null) {
     $temperatura = $isEdit ? htmlspecialchars($v['temperatura']) : '';
     $abbinamenti = $isEdit ? htmlspecialchars($v['abbinamenti']) : '';
     
-    // Select Categoria
     $cats = ['rossi', 'bianchi', 'selezione'];
     $catOptions = "";
     $currentCat = $isEdit ? $v['categoria'] : 'rossi';
@@ -139,80 +134,81 @@ function getFormVinoHTML($v = null) {
         $catOptions .= "<option value='$c' $sel>" . ucfirst($c) . "</option>";
     }
 
-    // Select Stato
     $stati = ['attivo', 'nascosto']; 
     $statoOptions = "";
     $currentStato = $isEdit ? $v['stato'] : 'attivo';
-    // Se è eliminato, aggiungiamolo alle opzioni per completezza
     if ($currentStato === 'eliminato') $stati[] = 'eliminato'; 
     foreach($stati as $s) {
         $sel = ($currentStato == $s) ? 'selected' : '';
         $statoOptions .= "<option value='$s' $sel>" . ucfirst($s) . "</option>";
     }
 
+    $btnText = $isEdit ? 'Salva Modifiche' : 'Crea Vino';
+    $idVinoField = $isEdit ? $v['id'] : '';
+
     return "
     <form method='POST' enctype='multipart/form-data'>
         <input type='hidden' name='azione' value='salva_vino'>
-        <input type='hidden' name='id_vino' value='$id'>
+        <input type='hidden' name='id_vino' value='$idVinoField'>
         
         <div class='form-grid'>
             <div class='admin-form-group'>
-                <label>Nome Vino *</label>
-                <input type='text' name='nome' class='admin-input' required value='$nome'>
+                <label for='nome$suffix'>Nome Vino *</label>
+                <input type='text' id='nome$suffix' name='nome' class='admin-input' required value='$nome'>
                 <small class='input-help'>Esempio: Pinot Nero Riserva</small>
             </div>
             <div class='admin-form-group'>
-                <label>Categoria *</label>
-                <select name='categoria' class='admin-input'>$catOptions</select>
+                <label for='categoria$suffix'>Categoria *</label>
+                <select id='categoria$suffix' name='categoria' class='admin-input'>$catOptions</select>
                 <small class='input-help'>Esempio: Rossi</small>
             </div>
             <div class='admin-form-group'>
-                <label>Prezzo (€) *</label>
-                <input type='number' step='0.01' name='prezzo' class='admin-input' required value='$prezzo'>
+                <label for='prezzo$suffix'>Prezzo (€) *</label>
+                <input type='number' step='0.01' id='prezzo$suffix' name='prezzo' class='admin-input' required value='$prezzo'>
                 <small class='input-help'>Esempio: 12.50</small>
             </div>
             <div class='admin-form-group'>
-                <label>Stock *</label>
-                <input type='number' name='quantita_stock' class='admin-input' required value='$stock'>
+                <label for='stock$suffix'>Stock *</label>
+                <input type='number' id='stock$suffix' name='quantita_stock' class='admin-input' required value='$stock'>
                 <small class='input-help'>Esempio: 120</small>
             </div>
             <div class='admin-form-group'>
-                <label>Stato</label>
-                <select name='stato' class='admin-input'>$statoOptions</select>
+                <label for='stato$suffix'>Stato</label>
+                <select id='stato$suffix' name='stato' class='admin-input'>$statoOptions</select>
                 <small class='input-help'>Esempio: Attivo</small>
             </div>
             <div class='admin-form-group'>
-                <label>Percorso Immagine</label>
-                <input type='text' name='img' class='admin-input' value='$img'>
+                <label for='img$suffix'>Percorso Immagine</label>
+                <input type='text' id='img$suffix' name='img' class='admin-input' value='$img'>
                 <small class='input-help'>Esempio: ../../images/tr/placeholder.webp</small>
             </div>
         </div>
 
         <div class='admin-form-group'>
-            <label>Descrizione Breve (Card)</label>
-            <input type='text' name='descrizione_breve' class='admin-input' maxlength='100' value='$descBreve'>
+            <label for='desc_breve$suffix'>Descrizione Breve (Card)</label>
+            <input type='text' id='desc_breve$suffix' name='descrizione_breve' class='admin-input' maxlength='100' value='$descBreve'>
             <small class='input-help'>Esempio: Rosso elegante con note di frutti rossi</small>
         </div>
 
         <div class='admin-form-group'>
-            <label>Descrizione Estesa (Modale)</label>
-            <textarea name='descrizione_estesa' class='admin-input' rows='3'>$descEstesa</textarea>
-            <small class='input-help'>Esempio: Affinato in barrique per 12 mesi, struttura intensa e finale speziato.</small>
+            <label for='desc_estesa$suffix'>Descrizione Estesa (Modale)</label>
+            <textarea id='desc_estesa$suffix' name='descrizione_estesa' class='admin-input' rows='3'>$descEstesa</textarea>
+            <small class='input-help'>Esempio: Affinato in barrique per 12 mesi...</small>
         </div>
 
         <fieldset class='admin-fieldset'>
             <legend>Scheda Tecnica</legend>
             <div class='form-grid'>
-                <div class='admin-form-group'><label>Vitigno</label><input type='text' name='vitigno' class='admin-input' value='$vitigno'><small class='input-help'>Esempio: Cabernet Sauvignon</small></div>
-                <div class='admin-form-group'><label>Annata</label><input type='text' name='annata' class='admin-input' value='$annata'><small class='input-help'>Esempio: 2021</small></div>
-                <div class='admin-form-group'><label>Gradazione</label><input type='text' name='gradazione' class='admin-input' value='$gradazione'><small class='input-help'>Esempio: 13.5% vol</small></div>
-                <div class='admin-form-group'><label>Temperatura</label><input type='text' name='temperatura' class='admin-input' value='$temperatura'><small class='input-help'>Esempio: 16-18 C</small></div>
-                <div class='admin-form-group'><label>Abbinamenti</label><input type='text' name='abbinamenti' class='admin-input' value='$abbinamenti'><small class='input-help'>Esempio: Carni rosse, formaggi stagionati</small></div>
+                <div class='admin-form-group'><label for='vitigno$suffix'>Vitigno</label><input type='text' id='vitigno$suffix' name='vitigno' class='admin-input' value='$vitigno'></div>
+                <div class='admin-form-group'><label for='annata$suffix'>Annata</label><input type='text' id='annata$suffix' name='annata' class='admin-input' value='$annata'></div>
+                <div class='admin-form-group'><label for='grad$suffix'>Gradazione</label><input type='text' id='grad$suffix' name='gradazione' class='admin-input' value='$gradazione'></div>
+                <div class='admin-form-group'><label for='temp$suffix'>Temperatura</label><input type='text' id='temp$suffix' name='temperatura' class='admin-input' value='$temperatura'></div>
+                <div class='admin-form-group'><label for='abb$suffix'>Abbinamenti</label><input type='text' id='abb$suffix' name='abbinamenti' class='admin-input' value='$abbinamenti'></div>
             </div>
         </fieldset>
 
         <div class='admin-form-actions'>
-            <button type='submit' class='btn-primary'>" . ($isEdit ? 'Salva Modifiche' : 'Crea Vino') . "</button>
+            <button type='submit' class='btn-primary'>$btnText</button>
         </div>
     </form>";
 }
@@ -224,7 +220,6 @@ if ($view === 'vini') {
     foreach ($viniArray as $v) {
         $isDeleted = ($v['stato'] === 'eliminato');
         $rowClass = $isDeleted ? 'row-deleted' : '';
-        // Il CSS gestirà la visibilità di row-deleted basandosi sul checkbox #toggle-deleted-visibility
         
         $badgeClass = $isDeleted ? 'badge-hidden' : (($v['stato'] == 'attivo') ? 'badge-active' : 'badge-hidden');
         $txtStato = ucfirst($v['stato']);
@@ -233,7 +228,6 @@ if ($view === 'vini') {
         $stockClass = ($v['quantita_stock'] < 10 && !$isDeleted) ? 'stock-low' : '';
         $nomeSafe = htmlspecialchars($v['nome'], ENT_QUOTES);
         
-        // Icona Visibilità
         $iconaVisibilita = ($v['stato'] == 'attivo') 
             ? '<i class="fas fa-eye" aria-hidden="true"></i>' 
             : '<i class="fas fa-eye-slash icon-muted" aria-hidden="true"></i>';
@@ -242,13 +236,11 @@ if ($view === 'vini') {
         $modalToggleId = "modal-edit-" . $v['id'];
 
         if (!$isDeleted) {
-            // 1. Modifica (LABEL per checkbox)
             $actions .= "
             <label for='$modalToggleId' class='btn-icon' aria-label='Modifica $nomeSafe' role='button' tabindex='0'>
                 <i class='fas fa-edit'></i>
             </label>";
             
-            // 2. Toggle Visibilità (Form)
             $actions .= "
             <form method='POST'>
                 <input type='hidden' name='azione' value='toggle_vino'>
@@ -260,7 +252,6 @@ if ($view === 'vini') {
                 </button>
             </form>";
 
-            // 3. Elimina (Form)
             $actions .= "
             <form method='POST' onsubmit=\"return confirm('Sei sicuro di voler eliminare $nomeSafe?');\">
                 <input type='hidden' name='azione' value='elimina_vino'>
@@ -271,10 +262,9 @@ if ($view === 'vini') {
                 </button>
             </form>";
             
-            // Genero la modale specifica per questo vino (se non eliminato)
             $formHTML = getFormVinoHTML($v);
             $modaliViniHTML .= "
-            <input type='checkbox' id='$modalToggleId' class='state-toggle'>
+            <input type='checkbox' id='$modalToggleId' class='state-toggle' aria-label='Apri finestra modifica per $nomeSafe'>
             <div class='modal-wrapper-css'>
                 <label for='$modalToggleId' class='modal-overlay-close' aria-label='Chiudi'></label>
                 <div class='modal-box-css'>
@@ -285,7 +275,6 @@ if ($view === 'vini') {
             </div>";
 
         } else {
-            // Azioni per vini eliminati (solo ripristino)
             $actions = "
             <form method='POST' onsubmit=\"return confirm('Vuoi ripristinare $nomeSafe? Tornerà tra i vini nascosti.');\">
                 <input type='hidden' name='azione' value='ripristina_vino'>
@@ -313,12 +302,11 @@ if ($view === 'vini') {
     }
 }
 
-// Modale Nuovo Vino (No-JS)
 $modalNuovoVinoHTML = "";
 if ($view === 'vini') {
     $formNuovo = getFormVinoHTML(null);
     $modalNuovoVinoHTML = "
-    <input type='checkbox' id='toggle-modal-nuovo' class='state-toggle'>
+    <input type='checkbox' id='toggle-modal-nuovo' class='state-toggle' aria-label='Apri finestra creazione nuovo vino'>
     <div class='modal-wrapper-css'>
         <label for='toggle-modal-nuovo' class='modal-overlay-close' aria-label='Chiudi'></label>
         <div class='modal-box-css'>
@@ -331,7 +319,6 @@ if ($view === 'vini') {
 
 $rigaUtenti = "";
 if ($view === 'utenti') {
-    // Logica filtro ricerca utenti
     if ($query !== '') {
         $utentiArray = array_filter($utentiArray, function ($u) use ($query) {
             $q = strtolower($query);
@@ -396,7 +383,6 @@ $titoloAdmin = ($view === 'utenti') ? "Gestione Utenti" : "Gestione Catalogo Vin
 $tabViniClass = ($view === 'vini') ? "btn-primary" : "btn-secondary";
 $tabUtentiClass = ($view === 'utenti') ? "btn-primary" : "btn-secondary";
 
-// Checkbox per mostrare eliminati (solo vista vini)
 $toggleDeletedHTML = "
 <input type='checkbox' id='toggle-deleted-visibility' class='state-toggle'>
 <label for='toggle-deleted-visibility' class='toggle-label-wrapper'>
@@ -404,7 +390,6 @@ $toggleDeletedHTML = "
     <span>Mostra vini eliminati</span>
 </label>";
 
-// Sezione Vini HTML
 $sezioneVini = "
         <p id='descrizione-tab-vini' class='sum'>
             La tabella riassume i vini presenti nel catalogo. Ogni riga rappresenta un vino.
@@ -434,7 +419,6 @@ $sezioneVini = "
         $modaliViniHTML
         ";
 
-// Sezione Utenti HTML (Codice Originale)
 $sezioneUtenti = "
         <p id='descrizione-tab-utenti' class='sum'>
             La tabella riassume gli utenti registrati. Ogni riga rappresenta un utente.
@@ -460,22 +444,18 @@ $sezioneUtenti = "
             </table>
         </div>";
 
-// Pulsanti Nuovi Elementi
-// Vini: usa label per checkbox (No-JS)
 $btnNuovoVino = ($view === 'vini')
     ? "<label for='toggle-modal-nuovo' class=\"btn-primary admin-btn-inline\">
             <i class=\"fas fa-plus\" aria-hidden=\"true\"></i>&nbsp;Nuovo Vino
        </label>"
     : "";
 
-// Utenti: usa button onclick (JS originale) - NON TOCCATO
 $btnNuovoUtente = ($view === 'utenti')
     ? "<label for=\"toggle-modal-utente\" class=\"btn-primary\" role=\"button\" aria-label=\"Aggiungi nuovo utente\">
             <i class=\"fas fa-plus\" aria-hidden=\"true\"></i> Nuovo Utente
        </label>"
     : "";
 
-// Form Ricerca Utenti (Originale)
 $userSearchForm = "";
 if ($view === 'utenti') {
     $safeQuery = htmlspecialchars($query, ENT_QUOTES);
@@ -487,7 +467,6 @@ if ($view === 'utenti') {
         </form>";
 }
 
-// Replace
 $htmlContent = str_replace("[nome_utente]", $nomeUtente, $htmlContent);
 $htmlContent = str_replace("[titolo_admin]", $titoloAdmin, $htmlContent);
 $htmlContent = str_replace("[tab_vini_class]", $tabViniClass, $htmlContent);
@@ -498,7 +477,6 @@ $htmlContent = str_replace("[btn_nuovo_utente]", $btnNuovoUtente, $htmlContent);
 $htmlContent = str_replace("[sezione_vini]", ($view === 'vini') ? $sezioneVini : "", $htmlContent);
 $htmlContent = str_replace("[sezione_utenti]", ($view === 'utenti') ? $sezioneUtenti : "", $htmlContent);
 
-// Pulizia menu
 $htmlContent = str_replace("[cart_icon_link]", "", $htmlContent); 
 $htmlContent = str_replace("[user_area_link]", "", $htmlContent);
 
