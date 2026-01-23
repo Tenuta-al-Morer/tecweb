@@ -132,8 +132,6 @@ Elenco delle convenzioni interne del sito:
 
 - i link, sia quelli visitati che quelli non visitati, si presentano sottolineati. In particolare, i link non visitati hanno colore del testo bianco e sfondo nero. I link visitati invece hanno colore del testo oro e sfondo nero. Sono stati scelti questi colori in quanto fanno parte della palette utilizzata;
 
-- i forms si presentano con un colore di sfondo nero, testo di colore bianco ed etichette dei vari campi di input di colore grigio;
-
 - i link circolari (ovvero quelli che rimandano alla stessa pagina visualizzata) nel menù sono disabilitati e nascosti allo screen reader, oltre ad non avere la sottolineatura. Si indica così all’utente che il link non è utilizzabile, evitando i disagi dei link circolari.
 
 ### Schema database
