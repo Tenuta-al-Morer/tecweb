@@ -1655,13 +1655,14 @@ footer a {
     padding: 0;
     vertical-align: middle;
     font-size: 1.1rem;
+    padding: 0 0.2em;
 }
 
-footer small a + a::before {
+/*footer small a + a::before {
   content: "| ";
   padding: 0.5em;
   color: #fff;
-}
+}*/
 
 footer a:visited, .main-nav-bar a:visited { 
     color: var(--always-bright); 
