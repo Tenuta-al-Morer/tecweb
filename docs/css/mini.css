@@ -294,7 +294,7 @@ footer {
 }
 
 .tenuta-card-text {
-    text-align: left;
+    text-align: center;
 }
 
 .table-container {
@@ -410,14 +410,13 @@ body.light-mode .table-data td::before {
     .slider-btn { font-size: 2.5rem; padding: 0.3em; }
 }
 
-@media (max-width: 640px) {
-    .tenuta-hero-title { font-size: 2rem; }
-    .tenuta-hero-text { font-size: 0.95rem; }
-    .tenuta-section-title { font-size: 1.9rem; }
-    .tenuta-philosophy { padding: 60px 8vw; }
-    .tenuta-philosophy-title { font-size: 2.2rem; }
-    .tenuta-scroll-top { width: 44px; height: 44px; font-size: 1.3rem; }
-}
+.tenuta-hero-title { font-size: 2rem; }
+.tenuta-hero-text { font-size: 0.95rem; }
+.tenuta-section-title { font-size: 1.9rem; }
+.tenuta-philosophy { padding: 60px 8vw; }
+.tenuta-philosophy-title { font-size: 2.2rem; }
+.tenuta-scroll-top { width: 44px; height: 44px; font-size: 1.3rem; }
+
 
 @media screen and (max-width: 600px) {
     .row-two { flex-direction: column; gap: 0; }
@@ -1475,31 +1474,33 @@ select:focus {
 }
 
 .sitemap-layout {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-columns: 3fr 2fr;
 }
-
-.sitemap-info {
-    position: static;
-}
-
-
 
 .sitemap-main {
     margin: 0;
 }
 
-.info-stats {
-    flex-direction: row;
-    justify-content: space-around;
+.sitemap-tree {
+    padding: 0 1.5em;
 }
 
-.stat-box {
-    flex: 1;
-    min-width: 120px;
-}
+@media (max-width: 600px) {
+    .sitemap-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
 
-@media (max-width: 768px) {
+    .info-stats {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .stat-box {
+        flex: 1;
+        min-width: 120px;
+    }
+
     .sitemap-main {
         padding: 2rem 1rem;
     }
@@ -1511,6 +1512,7 @@ select:focus {
     .tree-container,
     .sitemap-info {
         padding: 2rem;
+        position: static;
     }
     
     .sitemap-tree .tree-list.level-2 {
@@ -1519,5 +1521,59 @@ select:focus {
     
     .sitemap-tree .tree-list.level-3 {
         padding-left: 3.5rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .tree-container, .sitemap-info {
+        padding: 0.8rem;
+    }
+
+    .sitemap-tree {
+        padding: 0 0;
+    }
+
+    .tree-container, .sitemap-info {
+        padding: 0.8rem 0.5rem; 
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .sitemap-tree {
+        padding: 0;
+    }
+
+    .info-stats {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .stat-box {
+        min-width: 0;    
+        width: 100%;     
+        margin-bottom: 0.5rem;
+    }
+
+    
+}
+
+@media (max-width: 300px) {
+
+
+    .sitemap-tree .tree-list.level-1 {
+        padding-left: 1rem;
+    }
+    
+    .sitemap-tree .tree-list.level-2 {
+        padding-left: 1.2rem;
+    }
+    
+    .sitemap-tree .tree-list.level-3 {
+        padding-left: 1.5rem;
+    }
+
+    .sitemap-tree li.child-item:before {
+        left: -0.8rem; 
+        font-size: 0.9em;
     }
 }

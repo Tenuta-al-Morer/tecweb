@@ -1151,10 +1151,6 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
     letter-spacing: 0.05em;
 }
 
-.table-data tbody tr:last-child td,
-.table-data tbody tr:last-child th {
-    border-bottom: 0;
-}
 
 .table-data tbody tr:hover, .table-data tbody tr:focus-within {
     background-color: var(--background);
@@ -1446,7 +1442,7 @@ main h2 { margin-top: 0.7em; padding: 1em 0; border-top: 2px solid var(--text-co
 .sitemap-tree a {
     text-decoration: none;
     color: var(--text-color);
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0rem;
     border-radius: 6px;
     transition: all 0.3s ease;
     display: inline-block;
@@ -3630,10 +3626,6 @@ body.light-mode .admin-search-input::placeholder {
     padding: 1rem;
     border-bottom: 1px solid var(--border-color);
     vertical-align: middle;
-}
-.compact-table tbody tr:last-child td,
-.compact-table tbody tr:last-child th {
-    border-bottom: 0;
 }
 .compact-table tbody tr:last-child td:first-child {
     border-bottom-left-radius: 6px;

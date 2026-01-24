@@ -1,5 +1,7 @@
 Lista todo per tecweb:   
-- con silktide verificare il sito nella versione mobile (se riesci contarini a farlo te direttamente con il cellulare e tablet visto che riesci)
+- versione mobile (togliere foto in info vini, 
+pulsanti in pagina admin tutti da spostare e i form per i vini e utenti da mettere un input sotto l'altro e non in due colonne)
+
 - verfiicare funzionamento coi vari browser (contarini verifica pure safari con il tablet sia in modalità mobile che desktop)
 - controlla l’accessibilità di tutte le pagine e verificare con nvda che tutto funzioni per i ciechi:
     - vini
