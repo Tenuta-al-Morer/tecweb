@@ -1171,6 +1171,10 @@ body.light-mode .btn-icon:focus {
     object-fit: contain;
 }
 
+.modal-img-col {
+    display: none;
+}
+
 .sezione {
     display: flex;
     flex-direction: row;
@@ -1553,13 +1557,9 @@ select:focus {
         width: 100%;     
         margin-bottom: 0.5rem;
     }
-
-    
 }
 
 @media (max-width: 300px) {
-
-
     .sitemap-tree .tree-list.level-1 {
         padding-left: 1rem;
     }
