@@ -287,7 +287,7 @@ if ($view === 'vini') {
         }
 
         $rigaVini .= "<tr class='{$rowClass}'>
-            <th scope='row' data-title='ID'><b>{$v['id']}</b></th>
+            <th scope='row'>{$v['id']}</th>
             <td data-title='Anteprima'><img src='" . htmlspecialchars($v['img']) . "' class='admin-thumb' alt=''></td>
             <td data-title='Dettagli'>
                 <div class='wine-title'>" . htmlspecialchars($v['nome']) . "</div>
