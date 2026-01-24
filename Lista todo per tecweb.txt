@@ -1,7 +1,7 @@
 Lista todo per tecweb:   
 - versione mobile (pulsanti in pagina admin tutti da spostare) (Il resto è già stato testato e controllato)
-- verfiicare funzionamento coi vari browser (contarini verifica pure safari con il tablet sia in modalità mobile che desktop)
-- controlla l’accessibilità di tutte le pagine e verificare con nvda che tutto funzioni per i ciechi:
+- verificare funzionamento coi vari browser (contarini verifica pure safari con il tablet sia in modalità mobile che desktop)
+- controlla l’accessibilità di tutte le pagine e verificare con nvda che tutto funzioni per i ciechi (versione mini)
     - vini
     - area gestionale
     - area admin
