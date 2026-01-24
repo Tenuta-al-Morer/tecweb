@@ -198,7 +198,7 @@ if (empty($ordini)) {
                     <th scope="col">N. Ordine</th>
                     <th scope="col">Data</th>
                     <th scope="col">Stato</th>
-                    <th scope="col" class="td_richiesta_degustazione">Totale</th>
+                    <th scope="col">Totale</th>
                     <th scope="col" class="td_richiesta_degustazione">Dettagli</th>
                 </tr>
             </thead>
