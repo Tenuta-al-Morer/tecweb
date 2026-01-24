@@ -617,7 +617,7 @@ body.light-mode .table-data td::before {
 }
 
 .details-products-list li {
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     gap: 0.3rem;
 }
