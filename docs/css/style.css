@@ -11,6 +11,7 @@
     /* COLORI PRINCIPALI */
     --secondary-color: #C5A551;
     --always-bright: #A79455;
+    --details-wine: #7A5F1A;
     --enhance: #c51e26;
     --errors: #FF2934;
     --right: #176F3A;
@@ -4113,7 +4114,7 @@ body.light-mode .close-modal:focus {
     text-transform: uppercase;
 }
 
-.buy-button:hover { 
+.buy-button:hover, .buy-button:focus { 
     background-color: #D2B360; 
     color: #000;
 }
@@ -4235,6 +4236,7 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin
 .modal-info-col h2{
     margin-top: 0;
     padding-top: 0;
+    color: #8a6b1e;
 }
 
 .modal-btn-large{
@@ -4410,7 +4412,7 @@ html.no-js .modal-toggle-checkbox:checked {
 .modal-specs-table th {
     font-weight: 800;
     font-size: large;
-    color: var(--secondary-color);
+    color: #8a6b1e;
     width: 50%;
 }
 
@@ -4494,7 +4496,8 @@ html:not(.no-js) .selettore-nojs {
     border: none;
     font-size: 1.6rem;
     cursor: pointer;
-    color: color-mix(in srgb, var(--secondary-color) 80%, #000 20%);
+    /*color: color-mix(in srgb, var(--secondary-color) 80%, #000 20%);*/
+    color: var(--details-wine);
     background-color: #fff;
     height: 100%;
     display: flex;
@@ -4503,8 +4506,8 @@ html:not(.no-js) .selettore-nojs {
     width: 2.3rem;
 }
 
-.selettore-quantita button:hover {
-    background-color: #f0f0f0; 
+.selettore-quantita button:hover, .selettore-quantita button:focus {
+    background-color: var(--border-color);
 }
 
 .selettore-quantita input.display-qty {
