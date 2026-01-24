@@ -1866,10 +1866,12 @@ footer a:hover, footer a:focus {
 }
 
 .checkbox-container input[type="checkbox"]:focus,
-.checkbox-container input[type="checkbox"]:focus-visible {
+.checkbox-container input[type="checkbox"]:focus-visible,
+.checkbox-container input[type="checkbox"]:hover {
     outline: 3px solid var(--secondary-color);
     outline-offset: 3px;
 }
+
 
 .toggle-password {
     position: absolute;
