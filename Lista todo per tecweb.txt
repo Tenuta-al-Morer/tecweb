@@ -7,3 +7,4 @@ Lista todo per tecweb:
     - area admin
 - aggiungere focus ai toggle archivio ecc.
 - completare convenzioni interne nella relazione -> bozza fatta da Ale C. (Magari guardare quelle degli anni scorsi per orientarsi)
+- eliminare tag <b>. Lo stile lo aggiungiamo con css. Ne ho eliminati alcuni non so se ce ne siano altri in giro
