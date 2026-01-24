@@ -918,6 +918,14 @@ main .table-responsive {
     grid-template-columns: 1fr;
 }
 
+.compact-table tr.row-deleted {
+    display: none;
+}
+
+#toggle-deleted-visibility:checked ~ .table-responsive .compact-table tr.row-deleted {
+    display: block;
+}
+
 body.light-mode .compact-table tr {
     background-color: #FFF;
     border: 1px solid var(--border-color);
