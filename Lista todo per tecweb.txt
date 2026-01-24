@@ -5,4 +5,5 @@ Lista todo per tecweb:
     - vini
     - area gestionale
     - area admin
-completare convenzioni interne nella relazione
+- aggiungere focus ai toggle archivio ecc.
+- completare convenzioni interne nella relazione -> bozza fatta da Ale C. (Magari guardare quelle degli anni scorsi per orientarsi)
