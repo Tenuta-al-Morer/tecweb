@@ -914,6 +914,9 @@ main .table-responsive {
     background: transparent;
     align-self: center;
 }
+.form-grid {
+    grid-template-columns: 1fr;
+}
 
 body.light-mode .compact-table tr {
     background-color: #FFF;
