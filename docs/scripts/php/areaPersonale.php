@@ -210,7 +210,7 @@ if (empty($ordini)) {
         $tabellaOrdini .= '<td data-title="N. Ordine">#' . $id_ordine . '</td>';
         $tabellaOrdini .= '<td data-title="Data">' . formatDate($ordine['data_creazione']) . '</td>';
         $tabellaOrdini .= '<td data-title="Stato">' . getStatusBadge($ordine['stato_ordine']) . '</td>';
-        $tabellaOrdini .= '<td data-title="Totale" class="td_richiesta_degustazione">€ ' . number_format($ordine['totale_finale'], 2, ',', '.') . '</td>';
+        $tabellaOrdini .= '<td data-title="Totale">€ ' . number_format($ordine['totale_finale'], 2, ',', '.') . '</td>';
         
         // MODIFICA QUI: Bottone con fallback NOSCRIPT
         $tabellaOrdini .= '<td class="td_richiesta_degustazione">
