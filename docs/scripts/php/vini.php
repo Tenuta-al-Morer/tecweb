@@ -86,7 +86,7 @@ function costruisciCardVino($vino) {
     $altText = "Bottiglia di " . $nome;
 
     $triggerHTML = '
-    <label for="' . $modalId . '" class="details-button" tabindex="0" role="button">
+    <label for="' . $modalId . '" class="details-button" tabindex="0" role="button" aria-label="Informazioni per  ' . $nome .'">
         Info
     </label>';
 
