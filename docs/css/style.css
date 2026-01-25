@@ -367,7 +367,7 @@ body.light-mode select:focus {
   flex: 0 0 auto;
 }
 
-.admin-table-head label.switch > input[type="checkbox"] {
+ input[type="checkbox"] {
   position: absolute;
   opacity: 0;
   width: 1px;
@@ -391,7 +391,7 @@ body.light-mode select:focus {
 }
 
 
-.admin-table-head label.switch > span.slider {
+ span.slider {
   position: relative;
   width: 56px;
   height: 30px;
@@ -402,7 +402,19 @@ body.light-mode select:focus {
   display: block;
 }
 
-.admin-table-head label.switch > span.slider::before {
+ span.slider:hover, .toggle-label-wrapper:hover {
+  box-shadow: 
+    0 0 0 2px var(--background), 
+    0 0 0 4px var(--secondary-color); 
+}
+
+.admin-table-head label.switch:focus-within > span.slider, .toggle-label-wrapper:focus {
+  box-shadow: 
+    0 0 0 2px var(--background), 
+    0 0 0 4px var(--secondary-color); 
+}
+
+ span.slider::before {
   content: "";
   position: absolute;
   width: 22px;
@@ -413,17 +425,16 @@ body.light-mode select:focus {
   transition: transform .25s ease;
   border-radius: 50%;
 }
-span.slider {background-color: red;}
 
-.admin-table-head label.switch > input[type="checkbox"]:checked + span.slider {
+ input[type="checkbox"]:checked + span.slider {
   background-color: var(--secondary-color);
 }
 
-.admin-table-head label.switch > input[type="checkbox"]:checked + span.slider::before {
+ input[type="checkbox"]:checked + span.slider::before {
   transform: translateX(26px);
 }
 
-.admin-table-head label.switch > input[type="checkbox"]:focus-visible + span.slider {
+ input[type="checkbox"]:focus-visible + span.slider {
   outline: 2px solid var(--secondary-color);
   outline-offset: 3px;
 }
