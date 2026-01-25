@@ -291,7 +291,7 @@ if (!empty($quantitaRidottaMsg)) {
     $alertMsgHTML .= '
     <div class="alert-bar">
         <i class="fas fa-info-circle"></i>
-        <span>La quantità di alcuni articoli (<b>' . $listaVini . '</b>) è stata aggiornata in base alla disponibilità attuale.</span>
+        <span>La quantità di alcuni articoli (' . $listaVini . ') è stata aggiornata in base alla disponibilità attuale.</span>
     </div>';
 }
 

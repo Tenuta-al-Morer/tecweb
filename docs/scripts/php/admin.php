@@ -368,7 +368,7 @@ if ($view === 'utenti') {
                 </div>";
 
         $rigaUtenti .= "<tr>
-            <th scope='row' data-title='ID'><b>{$idUtente}</b></th>
+            <th scope='row' data-title='ID'>{$idUtente}</th>
             <td data-title='Nome'>{$nome}</td>
             <td data-title='Cognome'>{$cognome}</td>
             <td data-title='Email'>{$email}</td>
