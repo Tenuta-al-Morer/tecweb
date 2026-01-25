@@ -83,7 +83,7 @@ function costruisciCardVino($vino) {
     $htmlStock = "";
     $cardActionHTML = "";
     $modalActionHTML = "";
-    $altText = "Bottiglia di " . $nome;
+    // $altText = "Bottiglia di " . $nome; immagine decorativa, non serve l'alt
 
     $triggerHTML = '
     <label for="' . $modalId . '" class="details-button" tabindex="0" role="button" aria-label="Informazioni per  ' . $nome .'">
@@ -97,7 +97,7 @@ function costruisciCardVino($vino) {
     ';
 
     if ($stock <= 0) {
-        $altText .= " - Esaurito";
+        // $altText .= " - Esaurito"; deprecato, ma serve mettere l'avviso che è esaurito
         
         $cardActionHTML = '
         <div class="card-actions esaurito-wrapper">
@@ -178,7 +178,7 @@ function costruisciCardVino($vino) {
 
                 <div class="modal-grid">
                     <div class="modal-img-col">
-                        <img src="' . $img . '" alt="' . $altText . '">
+                        <img src="' . $img . '" alt="">
                     </div>
 
                     <div class="modal-info-col"> 
