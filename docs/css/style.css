@@ -367,7 +367,7 @@ body.light-mode select:focus {
   flex: 0 0 auto;
 }
 
- input[type="checkbox"] {
+input[type="checkbox"] {
   position: absolute;
   opacity: 0;
   width: 1px;
@@ -375,6 +375,12 @@ body.light-mode select:focus {
   margin: 0;
   padding: 0;
 }
+
+input#privacy.contatti-checkbox[type="checkbox"], input#privacy.esperienze-checkbox[type="checkbox"] {
+    opacity: 1;
+    position: relative;
+}
+
 
 .slider-btn.pause-btn {
     top: 10px;          
