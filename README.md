@@ -134,6 +134,10 @@ Elenco delle convenzioni interne del sito:
 
 - i link circolari (ovvero quelli che rimandano alla stessa pagina visualizzata) nel menù sono disabilitati e nascosti allo screen reader, oltre ad non avere la sottolineatura. Si indica così all’utente che il link non è utilizzabile, evitando i disagi dei link circolari.
 
+- i campi obbligatori nei form sono contrassegnati visivamente con l’asterisco () e semanticamente con l’attributo `required`, mentre i campi facoltativi hanno esempi di compilazione tramite l’attributo `aria-describedby`;
+
+- le pagine di autenticazione (*login.html* e *registrazione.html*) hanno un layout semplificato con header ridotto, concentrandosi sull’esperienza utente per le funzioni di accesso;
+
 ### Schema database
 
 Le principali tabelle del database sono:
