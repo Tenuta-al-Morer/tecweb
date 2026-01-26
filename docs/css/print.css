@@ -186,7 +186,7 @@ footer{ margin-top:10px; }
 
 /*Gestione tabelle*/
 
-table.compact-table, table.table-data, table.table-responsive {
+table.table-data, table.table-responsive {
     width: 100%;
     table-layout: auto;
     border-collapse: collapse;

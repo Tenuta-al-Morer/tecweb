@@ -397,7 +397,7 @@ $sezioneVini = "
         </p>
         $toggleDeletedHTML
         <div class='table-responsive'>
-            <table class='compact-table' aria-describedby='descrizione-tab-vini'>
+            <table class='table-data' aria-describedby='descrizione-tab-vini'>
                 <caption>Elenco vini nel database</caption>
                 <thead>
                     <tr>
@@ -425,7 +425,7 @@ $sezioneUtenti = "
             Le colonne riportano: ID, nome, cognome, email, ruolo, data registrazione e azioni disponibili.
         </p>
         <div class='table-responsive'>
-            <table class='compact-table' aria-describedby='descrizione-tab-utenti'>
+            <table class='table-data' aria-describedby='descrizione-tab-utenti'>
                 <caption>Elenco utenti registrati</caption>
                 <thead>
                     <tr>

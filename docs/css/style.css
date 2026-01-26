@@ -3593,43 +3593,6 @@ body.light-mode .admin-search-input::placeholder {
     overflow-x: auto;
 }
 
-.compact-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    background-color: var(--background); 
-    color: var(--text-color);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    overflow: hidden;
-}
-
-.compact-table caption {
-    caption-side: top;
-    text-align: center;
-    font-weight: 700;
-    color: var(--secondary-color);
-    font-size: 1.5rem;
-    padding: 1rem;
-    padding-bottom: 0.8rem;
-}
-
-.compact-table th {
-    background-color: var(--background);
-    color: var(--secondary-color);
-    padding: 1rem;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 0.05em;
-    text-align: left;
-    border-bottom: 1px solid var(--border-color);
-}
-.compact-table thead th:first-child {
-    border-top-left-radius: 6px;
-}
-.compact-table thead th:last-child {
-    border-top-right-radius: 6px;
-}
 .admin-col-id { width: 50px; }
 .admin-col-img { width: 80px; }
 .admin-col-actions { width: 120px; }
@@ -3638,34 +3601,11 @@ body.light-mode .admin-search-input::placeholder {
 .admin-user-col-registered { width: 140px; }
 .admin-user-col-actions { width: 180px; }
 
-.compact-table tbody th {
-    background-color: transparent;
-    color: var(--text-color);
-    text-transform: none;
-    font-size: 1rem;
-    letter-spacing: normal;
-}
-
-.compact-table td {
-    padding: 1rem;
-    border-bottom: 1px solid var(--border-color);
-    vertical-align: middle;
-}
-.compact-table tbody tr:last-child td:first-child {
-    border-bottom-left-radius: 6px;
-}
-.compact-table tbody tr:last-child td:last-child {
-    border-bottom-right-radius: 6px;
-}
 .stock-low {
     color: var(--errors);
     font-weight: bold;
 }
 
-.compact-table tr:hover,
-.compact-table tr:focus-within {
-    background-color: var(--background);
-}
 
 .admin-thumb {
     width: 60px;
@@ -3912,34 +3852,6 @@ body.light-mode .admin-switch .btn-secondary:focus {
     color: #333333;
 }
 
-body.light-mode .compact-table {
-    background-color: #fff;
-    color: #333333;
-}
-
-body.light-mode .compact-table th {
-    background-color: #f4f4f4; 
-    color: var(--secondary-color);
-    border-bottom: 2px solid #dddddd;
-    font-weight: 800;
-}
-
-body.light-mode .compact-table tbody th {
-    background-color: transparent;
-    color: #444444;
-    border-bottom: 1px solid #eeeeee;
-    font-weight: 600;
-}
-
-body.light-mode .compact-table td {
-    border-bottom: 1px solid #eeeeee;
-    color: #444444;
-}
-
-body.light-mode .compact-table tr:hover,
-body.light-mode .compact-table tr:focus-within {
-    background-color: #f9f9f9; 
-}
 
 body.light-mode .wine-title {
     color: #222222; 
