@@ -167,13 +167,17 @@ function costruisciCardVino($vino) {
         <input type="checkbox" id="' . $modalId . '" class="modal-toggle-checkbox sr-only">
         
         <div class="modal-overlay">
+
+            <p id="descr-modale" class="sum">
+                Modale con maggiori informazioni per ' . $nome . ', con la tabella delle specifiche tecniche.
+            </p>
             
             <div id="' . $dialogId . '" 
                  class="modal-content"
                  role="dialog"
                  aria-modal="true"
                  aria-labelledby="' . $titleId . '"
-                 aria-describedby="Modale con maggiori informazioni per ' . $nome . '" tabindex="0">
+                 aria-describedby="descr-modale" tabindex="0">
 
 
                 <div class="modal-grid">
