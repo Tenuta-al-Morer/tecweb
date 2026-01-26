@@ -621,6 +621,7 @@ body.light-mode .table-data td::before {
 }
 
 .details-content {
+    width: 100%;
     flex-direction: column;
     gap: 0;
     padding: 1rem;

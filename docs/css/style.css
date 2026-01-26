@@ -2410,6 +2410,7 @@ body.light-mode .user-nav-link.is-active {
 }
 
 .details-section-heading {
+    text-align: left;
     color: var(--secondary-color);
     font-size: 1.1rem;
     font-weight: bold;
