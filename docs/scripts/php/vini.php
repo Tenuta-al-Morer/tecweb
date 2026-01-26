@@ -188,8 +188,12 @@ function costruisciCardVino($vino) {
 
                         <p class="modal-desc" id="' . $descId . '">' . $descEstesa . '</p>
 
+                        <p id="descr-tabella-vino" class="sum">
+                            La tabella riassume le specifiche tecniche del vino, specificandone vitigno, annata, gradazione alcolica, temperatura di servizio e abbinamenti consigliati.
+                        </p>
+
                         <div class="modal-specs">
-                            <table class="modal-specs-table">
+                            <table class="modal-specs-table" aria-describedby="descr-tabella-vino">
                                 <caption class="sr-only" id="' . $specsCaptionId . '">Specifiche tecniche di ' . $nome . '</caption>
                                 <tbody>
                                     <tr><th scope="row">Vitigno</th><td>' . $vitigno . '</td></tr>
