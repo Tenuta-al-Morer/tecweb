@@ -130,7 +130,7 @@ function costruisciCardVino($vino) {
             <div class="card-actions">
                 <div class="card-buy-block">
                     ' . $selectorHTML . '
-                    <button type="submit" class="buy-button card-action">Acquista <span class="sr-only">' . $nome . '</span></button>
+                    <button type="submit" class="buy-button card-action" aria-label="Acquista ' . $nome . '">Acquista</button>
                 </div>
                 ' . $triggerHTML . '
             </div>
@@ -146,7 +146,7 @@ function costruisciCardVino($vino) {
             
             <div class="modal-buy-block">
                 ' . $selectorHTML . '
-                <button type="submit" class="buy-button modal-btn-large">Acquista <span class="sr-only">' . $nome . '</span></button>
+                <button type="submit" class="buy-button modal-btn-large" aria-label="Acquista ' . $nome . '">Acquista</button>
             </div>
         </form>';
     }
