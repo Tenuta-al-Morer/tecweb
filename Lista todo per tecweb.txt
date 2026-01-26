@@ -1,4 +1,5 @@
 Lista todo per tecweb:   
+- controllare abbreviazioni (esempio in riepilogo ordine 'Q.ta')
 - versione mobile (pulsanti in pagina admin tutti da spostare) (Il resto è già stato testato e controllato)
 - controlla l’accessibilità di tutte le pagine e verificare con nvda che tutto funzioni per i ciechi (versione mini)
     - vini
