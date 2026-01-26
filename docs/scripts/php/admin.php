@@ -237,7 +237,7 @@ if ($view === 'vini') {
 
         if (!$isDeleted) {
             $actions .= "
-            <label for='$modalToggleId' class='btn-icon' aria-label='Modifica $nomeSafe' role='button' tabindex='0'>
+            <label for='$modalToggleId' class='btn-icon' title='Modifica $nomeSafe' aria-label='Modifica $nomeSafe' role='button' tabindex='0'>
                 <i class='fas fa-edit'></i>
             </label>";
             
@@ -247,7 +247,7 @@ if ($view === 'vini') {
                 <input type='hidden' name='view' value='{$view}'>
                 <input type='hidden' name='id' value='{$v['id']}'>
                 <input type='hidden' name='current_status' value='{$v['stato']}'>
-                <button type='submit' class='btn-icon' aria-label='Cambia visibilità $nomeSafe'>
+                <button type='submit' class='btn-icon' title='Cambia visibilità $nomeSafe' aria-label='Cambia visibilità $nomeSafe'>
                     $iconaVisibilita
                 </button>
             </form>";
@@ -257,7 +257,7 @@ if ($view === 'vini') {
                 <input type='hidden' name='azione' value='elimina_vino'>
                 <input type='hidden' name='view' value='{$view}'>
                 <input type='hidden' name='id' value='{$v['id']}'>
-                <button type='submit' class='btn-icon btn-icon-delete' aria-label='Elimina $nomeSafe'>
+                <button type='submit' class='btn-icon btn-icon-delete' title='Elimina $nomeSafe' aria-label='Elimina $nomeSafe'>
                     <i class='fas fa-trash'></i>
                 </button>
             </form>";
@@ -361,7 +361,7 @@ if ($view === 'utenti') {
                         <input type='hidden' name='azione' value='elimina_utente'>
                         <input type='hidden' name='view' value='{$view}'>
                         <input type='hidden' name='id' value='{$idUtente}'>
-                        <button type='submit' class='btn-icon btn-icon-delete' aria-label='Elimina {$nome} {$cognome}'>
+                        <button type='submit' class='btn-icon btn-icon-delete' title='Elimina {$nome} {$cognome}' aria-label='Elimina {$nome} {$cognome}'>
                             <i class='fas fa-trash'></i>
                         </button>
                     </form>
