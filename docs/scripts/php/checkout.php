@@ -109,7 +109,7 @@ foreach ($itemsAttivi as $item) {
         </div>
         <div class="rich-details">
             <span class="rich-name">' . htmlspecialchars($item['nome']) . '</span>
-            <span class="rich-qty">Q.tà: ' . $item['quantita'] . '</span>
+            <span class="rich-qty"><abbr title="Quantità">Q.tà</abbr>: ' . $item['quantita'] . '</span>
         </div>
         <div class="rich-price">€ ' . number_format($item['totale_riga'], 2) . '</div>
     </div>';

@@ -492,7 +492,7 @@ else {
                 <span>Totale:</span>
                 <span>€ <span id='summary-total'>" . number_format($totaleFinale, 2) . "</span></span>
             </div>
-            <p class='vat-text'>IVA inclusa</p>
+            <p class='vat-text'><abbr title=\"Imposta sul Valore Aggiunto\">IVA</abbr> inclusa</p>
             $checkoutHTML
         </div>
     </div>";
