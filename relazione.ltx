@@ -127,20 +127,20 @@ Operazioni svolte per migliorare il ranking del sito:
 \section{Progettazione}
 
 \subsection{Schema organizzativo}
-Abbiamo definito una struttura chiara che consente di navigare facilmente tra i prodotti disponibili e le relative opzioni di acquisto. Il catalogo dei vini è infatti organizzato secondo uno schema organizzativo esatto, ottenuto suddividendo i prodotti in categorie non sovrapponibili — “vini rossi”, “vini bianchi” e “La Selezione” — al fine di facilitare la consultazione da parte dell’utente. È inoltre presente una funzione di ricerca che permette di individuare rapidamente un vino all’interno del catalogo, agevolando l’utente che sa esattamente cosa cercare e desidera risparmiare tempo.
+Abbiamo definito una struttura chiara che consente di navigare facilmente tra i prodotti disponibili e le relative opzioni di acquisto. Il catalogo dei vini è infatti organizzato secondo uno schema organizzativo esatto, ottenuto suddividendo i prodotti in categorie non sovrapponibili - “vini rossi”, “vini bianchi” e “La Selezione” - al fine di facilitare la consultazione da parte dell’utente. È inoltre presente una funzione di ricerca che permette di individuare rapidamente un vino all’interno del catalogo, agevolando l’utente che sa esattamente cosa cercare e desidera risparmiare tempo.
 
 \subsection{Tipi di utente}
 Durante la fase di progettazione sono stati individuati i seguenti tipi di utente:
 
 \begin{itemize}
 \item \textbf{Ospite}: l'utente ospite ha accesso alle sezioni che non sono private del sito, come le pagine "Home", "Tenuta", "Vini", "Esperienze" e "Contatti". 
-Può prenotare degustazioni, inviare richeiste di assistenza e ha la possibilità di inserire vini nel carrello. 
+Può prenotare degustazioni, inviare richieste di assistenza e ha la possibilità di inserire vini nel carrello. 
 Tuttavia non può effettuare acquisti né accedere all'area riservata, a meno che non completi la registrazione.
 
-\item \textbf{Utente registrato}: l'utente registrato ha accesso completo alle funzionalità del sito relative agli utenti finali, 
+\item \textbf{Utente registrato}: l'utente registrato ha accesso completo alle funzionalità del sito relative agli utenti clienti, 
 come la possibilità di acquistare vini e gestire il proprio account all'interno dell'area riservata.
 
-\item \textbf{Staff}: l'utente staff può gestire le prenotazioni degli utenti, approvandole o rifiutandole. 
+\item \textbf{Staff}: l'utente staff può gestire gli ordini e le prenotazioni degli utenti, approvandole o rifiutandole. 
 Inoltre, ha il controllo delle richieste di assistenza ricevute tramite il modulo contatti.
 
 \item \textbf{Admin}: l'utente admin può gestire tutti gli aspetti del sito, inclusi gli ordini degli utenti, le prenotazioni, i messaggi di assistenza, 
@@ -157,12 +157,12 @@ Elenco delle funzionalità del sito:
 \item visualizzazione dei dettagli di uno specifico vino;
 \item ricerca testuale dei prodotti nel catalogo;
 \item acquisto vini (utente registrato);
-\item gestione carrello della spesa;
-\item checkout e creazione ordini;
+\item gestione carrello (cliente);
+\item checkout e creazione ordini (cliente);
 \item prenotazione esperienze;
 \item invio di richieste di assistenza;
 \item gestione account utente (modifica dati, cambio password, eliminazione account);
-\item consultazione storico ordini e stato prenotazioni nell'area riservata;
+\item consultazione storico ordini e stato prenotazioni nell'area riservata (cliente);
 \item gestione ordini (staff/admin);
 \item gestione prenotazioni (staff/admin);
 \item gestione messaggi assistenza (staff/admin);
@@ -177,15 +177,8 @@ Elenco delle convenzioni interne del sito:
 \item i link, sia quelli visitati che quelli non visitati, si presentano sottolineati. In particolare, i link non visitati hanno colore del testo bianco 
 e sfondo nero. I link visitati invece hanno colore del testo oro e sfondo nero. Sono stati scelti questi colori in quanto fanno parte della palette utilizzata;
 
-\item i link circolari (ovvero quelli che rimandano alla stessa pagina visualizzata) nel menù sono disabilitati e nascosti allo screen reader, 
-oltre ad non avere la sottolineatura. Si indica così all'utente che il link non è utilizzabile, evitando i disagi dei link circolari.
-
-\item i campi obbligatori nei form sono contrassegnati visivamente con l'asterisco (\textasteriskcentered) 
-e semanticamente con l'attributo \texttt{required}, mentre i campi facoltativi hanno esempi di compilazione tramite l'attributo \texttt{aria-describedby};
-
 \item le pagine di autenticazione (\textit{login.html} e \textit{registrazione.html}) hanno un layout semplificato con header ridotto, 
 concentrandosi sull'esperienza utente per le funzioni di accesso;
-
 
 \end{itemize}
 
@@ -194,7 +187,7 @@ Le principali tabelle del database sono:
 \begin{itemize}
 \item \textbf{utente}: gestisce gli account degli utenti con i relativi ruoli
 \item \textbf{vino}: catalogo completo dei prodotti vinicoli
-\item \textbf{carrello} e \textbf{carrello\_elemento}: gestione del carrello acquisti
+\item \textbf{carrello} e \textbf{carrello\_elemento}: gestione del carrello
 \item \textbf{ordine} e \textbf{ordine\_elemento}: gestione degli ordini effettuati
 \item \textbf{prenotazione}: gestione delle prenotazioni esperienze
 \item \textbf{contatto}: gestione dei messaggi di assistenza
@@ -203,13 +196,13 @@ Le principali tabelle del database sono:
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{assets_relazione/schema_relazionale.png}
-\caption{Schema del database Tenuta al Morer}
+\caption{Schema del database "Tenuta al Morer"}
 \end{figure}
 
 
 \section{Realizzazione}
 Per la realizzazione del sito abbiamo utilizzato dati relativi a vini realmente esistenti della tradizione vitivinicola veneta. 
-Le immagini dei prodotti e della tenuta sono state generate o ottimizzate tramite strumenti di intelligenza artificiale per garantire 
+Le immagini dei prodotti e della tenuta sono state generate tramite strumenti di intelligenza artificiale per garantire 
 una resa visiva coerente con il layout del sito, mantenendo comunque i riferimenti autentici al territorio e ai nomi originali dei prodotti.
 
 Inoltre, per lo sviluppo del frontend abbiamo adottato la strategia \textit{Desktop First}.
@@ -217,13 +210,11 @@ Inoltre, per lo sviluppo del frontend abbiamo adottato la strategia \textit{Desk
 \subsection{Struttura e contenuto}
 
 \subsubsection{HTML}
-Il sito è stato sviluppato in HTML5 con sintassi XML. Abbiamo cercato di mantenere più struttura possibile nei file HTML ed eventualmente andare a 
+Il sito è stato sviluppato in HTML5. Abbiamo cercato di mantenere più struttura possibile nei file HTML ed eventualmente andare a 
 lavorare e sostituire alcune parti con il PHP. Per sostituire singole parole, abbiamo utilizzato come segnaposto delle parole racchiuse tra 
 parentesi quadre ([marca]). Invece per sostituire intere sezioni è stato utilizzato il metodo preg\_replace() di PHP, rispettando un certo pattern.
 
 Un esempio è l'utilizzo nel file vini.html per la visualizzazione dei prodotti:
-
-\newpage
 
 \begin{quote}
 \begin{verbatim}
@@ -264,14 +255,14 @@ Questo meccanismo permette di sfruttare i fogli di stile CSS per gestire due sta
 \end{itemize}
 Questa strategia assicura che il contenuto rimanga sempre accessibile, delegando a JavaScript solo l'arricchimento dell'esperienza utente e non le funzionalità critiche.
 
-\subsection{CSS-Print}
+\subsubsection{CSS-Print}
 Per la versione di stampa è stato posta particolare attenzione alla leggibilità su carta e all'essenzialità dei contenuti. 
 È stato impostato un font con le grazie (\textit{Times New Roman}) in sostituzione di quello web, e sono stati rimossi gli elementi grafici non necessari 
 al fine di garantire un layout più pulito e un risparmio di inchiostro.
 
 Nello specifico:
 \begin{itemize}
-    \item Sono stati nascosti tutti gli elementi interattivi e di navigazione (navbar, form, pulsanti di azione e carrello vuoto).
+    \item Sono stati nascosti tutti gli elementi interattivi e di navigazione (navbar, pulsanti di azione e carrello vuoto).
     \item Sono state rimosse le immagini di sfondo puramente decorative e le icone, mantenendo visibili solo il logo e le immagini essenziali dei prodotti.
     \item La struttura della pagina è stata semplificata linearizzando i contenuti per adattarli al formato cartaceo verticale.
 \end{itemize}
@@ -285,7 +276,7 @@ dimensioni ridotte rispetto al formato PNG.
 Le fotografie relative alla tenuta e alle esperienze (es. \textit{vigneto.jpg}, \textit{vendemmia.jpg}) sono invece in formato \textbf{JPG}, 
 più idoneo per immagini fotografiche complesse privi di trasparenza.
 
-Tutte le immagini statiche sono state ottimizzate mantenendo una grandezza contenuta (idealmente sotto 1MB) per favorire la velocità di caricamento, 
+Tutte le immagini statiche sono state ottimizzate mantenendo una grandezza contenuta (sotto 0.5MB) per favorire la velocità di caricamento, 
 accettando il compromesso di una minore retrocompatibilità del formato WebP sui browser molto datati.
 
 Per quanto riguarda l'inserimento di nuovi prodotti tramite l'area riservata, il sistema di upload permette all'amministratore di caricare immagini 
@@ -343,8 +334,7 @@ Bordo & \#4B4B4B \\
 
 \subsubsection{PHP}
 Nelle sezioni contenenti form abbiamo implementato, nei casi di errore, un algoritmo per il ripopolamento dei vari campi di input presenti tramite 
-l'utilizzo della tecnica "segnaposto" descritta nella sezione 4.1.1. Sempre con lo stesso metodo viene inserito contenuto come tabelle e liste descrittive.
-
+l'utilizzo della tecnica "segnaposto" descritta nella sezione 4.1.1. 
 
 Sono presenti specifici file:
 \begin{itemize}
@@ -361,10 +351,9 @@ e il livello comportamentale (JavaScript). L'uso di JavaScript è finalizzato al
 rimangono pienamente operative anche in assenza di JavaScript, il quale agisce esclusivamente come livello aggiuntivo di ottimizzazione.
 
 \subsubsection{Validazione dell'input}
-Abbiamo eseguito controlli sull'input sia lato client, utilizzando il Javascript, che lato server tramite il PHP. 
+Abbiamo eseguito controlli sull'input sia lato client, utilizzando Javascript, che lato server tramite PHP. 
 La maggior parte dei controlli è stata eseguita tramite funzioni che controllano con delle espressioni regolari il contenuto degli input. 
-Inoltre ogni messaggio di errore ritornato dai metodi di validazione sopra elencati è stato pensato per essere personale e rassicurante, 
-fornendo all'utente una spiegazione chiara e concisa per risolvere il problema.
+Inoltre ogni messaggio di errore ritornato dai metodi di validazione sopra elencati è stato pensato per fornire all'utente una spiegazione chiara e concisa per risolvere il problema.
 
 \subsubsection{Sicurezza}
 In ambito sicurezza sono state implementate le seguenti precauzioni:
@@ -385,7 +374,7 @@ conformità AA delle WCAG come stabilito dalla legge italiana:
 
 \begin{itemize}
 \item navigazione da tastiera completa e accessibile che rispetta l'ordine visivo degli elementi;
-\item tabelle accessibili (anche tramite l'utilizzo dei tag th e scope appropriati);
+\item tabelle accessibili;
 \item form accessibili con label associate correttamente agli input;
 \item sono stati distinti i link visitati e non visitati;
 \item per ogni pagina è stato studiato ad hoc la sezione "above the fold" inserendoci le informazioni necessarie per rispondere alle domande "Dove sono? - 
@@ -409,8 +398,7 @@ determinate sezioni della pagina (skip to content).
 \subsubsection{Compatibilità}
 Le tabelle sono state rese responsive in modo da facilitarne la lettura su diversi dispositivi; inoltre il menù diventa un menù ad hamburger per 
 i piccoli schermi facilitando la navigazione. In generale i contenuti di ogni pagina web sono disposti in modo tale da essere facilmente consultabili 
-indipendentemente dal dispositivo utilizzato. L'utilizzo di eventi click nei listener JavaScript garantisce il funzionamento anche nei dispositivi 
-mobili e in quelli più datati.
+indipendentemente dal dispositivo utilizzato. 
 
 \section{Test effettuati}
 
@@ -425,8 +413,6 @@ deuteranomalia, tritanopia, tritanomalia, acromatopsia, acromatomalia), sempre r
 \item Lighthouse: calcolo prestazioni del sito con buoni punteggi;
 \item compatibilità con browser diversi quali Microsoft Edge, Google Chrome, Mozilla Firefox, Apple Safari e Opera;
 \item compatibilità con sistemi operativi diversi quali Microsoft Windows 10, Ubuntu 23.10, Android 9, Android 15, iOS 18.3;
-\item modalità Internet Explorer 11 di Microsoft Edge: le pagine caricate in modalità IE11 sono navigabili e accessibili dallo screen reader 
-(form inclusi), seppur non vengano applicati correttamente tutti gli stili CSS. Si nota che tale modalità disabilita anche l'esecuzione di script JavaScript.
 \end{itemize}
 
 \subsection{Analisi dei Falsi Positivi}
