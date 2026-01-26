@@ -78,17 +78,17 @@ Operazioni svolte per migliorare il ranking del sito:
 
 ### Schema organizzativo
 
-Abbiamo definito una struttura chiara che consente di navigare facilmente tra i prodotti disponibili e le relative opzioni di acquisto. Il catalogo dei vini è infatti organizzato secondo uno schema organizzativo esatto, ottenuto suddividendo i prodotti in categorie non sovrapponibili — “vini rossi”, “vini bianchi” e “La Selezione” — al fine di facilitare la consultazione da parte dell’utente. È inoltre presente una funzione di ricerca che permette di individuare rapidamente un vino all’interno del catalogo, agevolando l’utente che sa esattamente cosa cercare e desidera risparmiare tempo.
+Abbiamo definito una struttura chiara che consente di navigare facilmente tra i prodotti disponibili e le relative opzioni di acquisto. Il catalogo dei vini è infatti organizzato secondo uno schema organizzativo esatto, ottenuto suddividendo i prodotti in categorie non sovrapponibili - “vini rossi”, “vini bianchi” e “La Selezione” - al fine di facilitare la consultazione da parte dell’utente. È inoltre presente una funzione di ricerca che permette di individuare rapidamente un vino all’interno del catalogo, agevolando l’utente che sa esattamente cosa cercare e desidera risparmiare tempo.
 
 ### Tipi di utente
 
 Durante la fase di progettazione sono stati individuati i seguenti tipi di utente:
 
-- **Ospite**: l’utente ospite ha accesso alle sezioni che non sono private del sito, come le pagine "Home", "Tenuta", "Vini", "Esperienze" e "Contatti". Può prenotare degustazioni, inviare richeiste di assistenza e ha la possibilità di inserire vini nel carrello. Tuttavia non può effettuare acquisti né accedere all’area riservata, a meno che non completi la registrazione.
+- **Ospite**: l’utente ospite ha accesso alle sezioni che non sono private del sito, come le pagine "Home", "Tenuta", "Vini", "Esperienze" e "Contatti". Può prenotare degustazioni, inviare richieste di assistenza e ha la possibilità di inserire vini nel carrello. Tuttavia non può effettuare acquisti né accedere all’area riservata, a meno che non completi la registrazione.
 
-- **Utente registrato**: l’utente registrato ha accesso completo alle funzionalità del sito relative agli utenti finali, come la possibilità di acquistare vini e gestire il proprio account all’interno dell’area riservata.
+- **Utente registrato**: l’utente registrato ha accesso completo alle funzionalità del sito relative agli utenti clienti, come la possibilità di acquistare vini e gestire il proprio account all’interno dell’area riservata.
 
-- **Staff**: l’utente staff può gestire le prenotazioni degli utenti, approvandole o rifiutandole. Inoltre, ha il controllo delle richieste di assistenza ricevute tramite il modulo contatti.
+- **Staff**: l’utente staff può gestire gli ordini e le prenotazioni degli utenti, approvandole o rifiutandole. Inoltre, ha il controllo delle richieste di assistenza ricevute tramite il modulo contatti.
 
 - **Admin**: l’utente admin può gestire tutti gli aspetti del sito, inclusi gli ordini degli utenti, le prenotazioni, i messaggi di assistenza, il catalogo vini e la gestione degli utenti registrati.
 
@@ -108,9 +108,9 @@ Elenco delle funzionalità del sito:
 
 - acquisto vini (utente registrato);
 
-- gestione carrello della spesa;
+- gestione carrello (cliente);
 
-- checkout e creazione ordini;
+- checkout e creazione ordini (cliente);
 
 - prenotazione esperienze;
 
@@ -118,7 +118,7 @@ Elenco delle funzionalità del sito:
 
 - gestione account utente (modifica dati, cambio password, eliminazione account);
 
-- consultazione storico ordini e stato prenotazioni nell’area riservata;
+- consultazione storico ordini e stato prenotazioni nell’area riservata (cliente);
 
 - gestione ordini (staff/admin);
 
@@ -136,10 +136,6 @@ Elenco delle convenzioni interne del sito:
 
 - i link, sia quelli visitati che quelli non visitati, si presentano sottolineati. In particolare, i link non visitati hanno colore del testo bianco e sfondo nero. I link visitati invece hanno colore del testo oro e sfondo nero. Sono stati scelti questi colori in quanto fanno parte della palette utilizzata;
 
-- i link circolari (ovvero quelli che rimandano alla stessa pagina visualizzata) nel menù sono disabilitati e nascosti allo screen reader, oltre ad non avere la sottolineatura. Si indica così all’utente che il link non è utilizzabile, evitando i disagi dei link circolari.
-
-- i campi obbligatori nei form sono contrassegnati visivamente con l’asterisco () e semanticamente con l’attributo `required`, mentre i campi facoltativi hanno esempi di compilazione tramite l’attributo `aria-describedby`;
-
 - le pagine di autenticazione (*login.html* e *registrazione.html*) hanno un layout semplificato con header ridotto, concentrandosi sull’esperienza utente per le funzioni di accesso;
 
 ### Schema database
@@ -150,7 +146,7 @@ Le principali tabelle del database sono:
 
 - **vino**: catalogo completo dei prodotti vinicoli
 
-- **carrello** e **carrello_elemento**: gestione del carrello acquisti
+- **carrello** e **carrello_elemento**: gestione del carrello
 
 - **ordine** e **ordine_elemento**: gestione degli ordini effettuati
 
@@ -160,12 +156,12 @@ Le principali tabelle del database sono:
 
 <figure data-latex-placement="H">
 <img src="assets_relazione/schema_relazionale.png" style="width:90.0%" />
-<figcaption>Schema del database Tenuta al Morer</figcaption>
+<figcaption>Schema del database "Tenuta al Morer"</figcaption>
 </figure>
 
 ## Realizzazione
 
-Per la realizzazione del sito abbiamo utilizzato dati relativi a vini realmente esistenti della tradizione vitivinicola veneta. Le immagini dei prodotti e della tenuta sono state generate o ottimizzate tramite strumenti di intelligenza artificiale per garantire una resa visiva coerente con il layout del sito, mantenendo comunque i riferimenti autentici al territorio e ai nomi originali dei prodotti.
+Per la realizzazione del sito abbiamo utilizzato dati relativi a vini realmente esistenti della tradizione vitivinicola veneta. Le immagini dei prodotti e della tenuta sono state generate tramite strumenti di intelligenza artificiale per garantire una resa visiva coerente con il layout del sito, mantenendo comunque i riferimenti autentici al territorio e ai nomi originali dei prodotti.
 
 Inoltre, per lo sviluppo del frontend abbiamo adottato la strategia *Desktop First*.
 
@@ -173,7 +169,7 @@ Inoltre, per lo sviluppo del frontend abbiamo adottato la strategia *Desktop Fir
 
 #### HTML
 
-Il sito è stato sviluppato in HTML5 con sintassi XML. Abbiamo cercato di mantenere più struttura possibile nei file HTML ed eventualmente andare a lavorare e sostituire alcune parti con il PHP. Per sostituire singole parole, abbiamo utilizzato come segnaposto delle parole racchiuse tra parentesi quadre (\[marca\]). Invece per sostituire intere sezioni è stato utilizzato il metodo preg_replace() di PHP, rispettando un certo pattern.
+Il sito è stato sviluppato in HTML5. Abbiamo cercato di mantenere più struttura possibile nei file HTML ed eventualmente andare a lavorare e sostituire alcune parti con il PHP. Per sostituire singole parole, abbiamo utilizzato come segnaposto delle parole racchiuse tra parentesi quadre (\[marca\]). Invece per sostituire intere sezioni è stato utilizzato il metodo preg_replace() di PHP, rispettando un certo pattern.
 
 Un esempio è l’utilizzo nel file vini.html per la visualizzazione dei prodotti:
 
@@ -211,13 +207,13 @@ Questo meccanismo permette di sfruttare i fogli di stile CSS per gestire due sta
 
 Questa strategia assicura che il contenuto rimanga sempre accessibile, delegando a JavaScript solo l’arricchimento dell’esperienza utente e non le funzionalità critiche.
 
-### CSS-Print
+#### CSS-Print
 
 Per la versione di stampa è stato posta particolare attenzione alla leggibilità su carta e all’essenzialità dei contenuti. È stato impostato un font con le grazie (*Times New Roman*) in sostituzione di quello web, e sono stati rimossi gli elementi grafici non necessari al fine di garantire un layout più pulito e un risparmio di inchiostro.
 
 Nello specifico:
 
-- Sono stati nascosti tutti gli elementi interattivi e di navigazione (navbar, form, pulsanti di azione e carrello vuoto).
+- Sono stati nascosti tutti gli elementi interattivi e di navigazione (navbar, pulsanti di azione e carrello vuoto).
 
 - Sono state rimosse le immagini di sfondo puramente decorative e le icone, mantenendo visibili solo il logo e le immagini essenziali dei prodotti.
 
@@ -229,7 +225,7 @@ La gestione delle risorse grafiche è stata diversificata in base alla tipologia
 
 Le immagini relative ai prodotti (i vini) e gli elementi grafici dell’interfaccia (come i loghi) sono stati salvati in formato **WEBP**. Questa scelta, visibile in particolare nella sottocartella `tr`, è dettata dalla necessità di supportare lo sfondo trasparente mantenendo dimensioni ridotte rispetto al formato PNG. Le fotografie relative alla tenuta e alle esperienze (es. *vigneto.jpg*, *vendemmia.jpg*) sono invece in formato **JPG**, più idoneo per immagini fotografiche complesse privi di trasparenza.
 
-Tutte le immagini statiche sono state ottimizzate mantenendo una grandezza contenuta (idealmente sotto 1MB) per favorire la velocità di caricamento, accettando il compromesso di una minore retrocompatibilità del formato WebP sui browser molto datati.
+Tutte le immagini statiche sono state ottimizzate mantenendo una grandezza contenuta (sotto 0.5MB) per favorire la velocità di caricamento, accettando il compromesso di una minore retrocompatibilità del formato WebP sui browser molto datati.
 
 Per quanto riguarda l’inserimento di nuovi prodotti tramite l’area riservata, il sistema di upload permette all’amministratore di caricare immagini in diversi formati standard, senza restrizioni stringenti sul tipo di file in ingresso.
 
@@ -271,7 +267,7 @@ Palette colori modalità chiara
 
 #### PHP
 
-Nelle sezioni contenenti form abbiamo implementato, nei casi di errore, un algoritmo per il ripopolamento dei vari campi di input presenti tramite l’utilizzo della tecnica "segnaposto" descritta nella sezione 4.1.1. Sempre con lo stesso metodo viene inserito contenuto come tabelle e liste descrittive.
+Nelle sezioni contenenti form abbiamo implementato, nei casi di errore, un algoritmo per il ripopolamento dei vari campi di input presenti tramite l’utilizzo della tecnica "segnaposto" descritta nella sezione 4.1.1.
 
 Sono presenti specifici file:
 
@@ -289,7 +285,7 @@ Sono stati implementati script dedicati per la validazione lato client dei modul
 
 #### Validazione dell’input
 
-Abbiamo eseguito controlli sull’input sia lato client, utilizzando il Javascript, che lato server tramite il PHP. La maggior parte dei controlli è stata eseguita tramite funzioni che controllano con delle espressioni regolari il contenuto degli input. Inoltre ogni messaggio di errore ritornato dai metodi di validazione sopra elencati è stato pensato per essere personale e rassicurante, fornendo all’utente una spiegazione chiara e concisa per risolvere il problema.
+Abbiamo eseguito controlli sull’input sia lato client, utilizzando Javascript, che lato server tramite PHP. La maggior parte dei controlli è stata eseguita tramite funzioni che controllano con delle espressioni regolari il contenuto degli input. Inoltre ogni messaggio di errore ritornato dai metodi di validazione sopra elencati è stato pensato per fornire all’utente una spiegazione chiara e concisa per risolvere il problema.
 
 #### Sicurezza
 
@@ -309,7 +305,7 @@ Di seguito sono elencate tutte le scelte effettuate per migliorare l’accessibi
 
 - navigazione da tastiera completa e accessibile che rispetta l’ordine visivo degli elementi;
 
-- tabelle accessibili (anche tramite l’utilizzo dei tag th e scope appropriati);
+- tabelle accessibili;
 
 - form accessibili con label associate correttamente agli input;
 
@@ -339,7 +335,7 @@ Abbiamo utilizzato gli attributi ARIA per agevolare a tutte le categorie di uten
 
 #### Compatibilità
 
-Le tabelle sono state rese responsive in modo da facilitarne la lettura su diversi dispositivi; inoltre il menù diventa un menù ad hamburger per i piccoli schermi facilitando la navigazione. In generale i contenuti di ogni pagina web sono disposti in modo tale da essere facilmente consultabili indipendentemente dal dispositivo utilizzato. L’utilizzo di eventi click nei listener JavaScript garantisce il funzionamento anche nei dispositivi mobili e in quelli più datati.
+Le tabelle sono state rese responsive in modo da facilitarne la lettura su diversi dispositivi; inoltre il menù diventa un menù ad hamburger per i piccoli schermi facilitando la navigazione. In generale i contenuti di ogni pagina web sono disposti in modo tale da essere facilmente consultabili indipendentemente dal dispositivo utilizzato.
 
 ## Test effettuati
 
@@ -358,8 +354,6 @@ Abbiamo utilizzato i seguenti strumenti per effettuare test manuali:
 - compatibilità con browser diversi quali Microsoft Edge, Google Chrome, Mozilla Firefox, Apple Safari e Opera;
 
 - compatibilità con sistemi operativi diversi quali Microsoft Windows 10, Ubuntu 23.10, Android 9, Android 15, iOS 18.3;
-
-- modalità Internet Explorer 11 di Microsoft Edge: le pagine caricate in modalità IE11 sono navigabili e accessibili dallo screen reader (form inclusi), seppur non vengano applicati correttamente tutti gli stili CSS. Si nota che tale modalità disabilita anche l’esecuzione di script JavaScript.
 
 ### Analisi dei Falsi Positivi
 
