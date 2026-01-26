@@ -373,13 +373,13 @@ function renderCartItem($item, $isLogged, $type = 'active') {
                 
                 <button type='submit' name='action' value='aggiorna_quantita' class='hidden-submit' tabindex='-1' aria-hidden='true'>Aggiorna quantità</button>
 
-                <button type='submit' name='action' value='meno' class='qty-btn cart-action-btn' data-action='meno' data-id-riga='$idR' data-id-vino='$idV'>-</button>
+                <button type='submit' name='action' value='meno' class='qty-btn cart-action-btn' aria-label='Riduci quantità di $nome' data-action='meno' data-id-riga='$idR' data-id-vino='$idV'>-</button>
                 
                 <label for='qty_v_$idV' class='visually-hidden'>Quantità per $nome</label>
 
                 <input type='number' name='quantita' id='qty_v_$idV' value='$qty' class='qty-input' min='1' max='$limitMax' data-stock='$stock' data-id-riga='$idR' data-id-vino='$idV'>
                 
-                <button type='submit' name='action' value='piu' class='qty-btn cart-action-btn' data-action='piu' data-id-riga='$idR' data-id-vino='$idV'>+</button>
+                <button type='submit' name='action' value='piu' class='qty-btn cart-action-btn' aria-label='Aumenta quantità di $nome' data-action='piu' data-id-riga='$idR' data-id-vino='$idV'>+</button>
             </form>
             <span class='separator'>|</span>
             $btnElimina
