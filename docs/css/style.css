@@ -1954,6 +1954,9 @@ footer a:hover, footer a:focus {
 }
 
 .checkbox-container input[type="checkbox"] {
+    opacity: 1;
+    position: static;
+    pointer-events: auto;
     margin: 0;          
     width: 1.1em;       
     height: 1.1em;
@@ -2660,6 +2663,11 @@ a.feature-card.card-link {
 }
 
 .checkbox-wrapper-delete input[type="checkbox"] {
+    opacity: 1;
+    position: static;
+    pointer-events: auto;
+    width: 1.1em;       
+    height: 1.1em;
     margin-top: 0.3rem;
     accent-color: var(--enhance);
     transform: scale(1.2);
