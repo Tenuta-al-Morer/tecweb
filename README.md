@@ -10,9 +10,9 @@
 
 ## Introduzione
 
-La presente relazione ha come scopo quello di descrivere le metodologie e i ragionamenti che abbiamo applicato per la realizzazione del progetto per il corso di Tecnologie Web (Laurea in Informatica - L31) per l’anno accademico 2025-2026. Il progetto ha previsto la creazione di un sito web accessibile per la cantina vitivinicola Tenuta al Morer.
+La presente relazione ha come scopo quello di descrivere le metodologie e i ragionamenti che abbiamo applicato per la realizzazione del progetto per il corso di Tecnologie Web (Laurea in Informatica - L31) dell’anno accademico 2025-2026. Il progetto realizzato prevede la creazione di un sito web accessibile per la cantina vitivinicola "Tenuta al Morer".
 
-Il sito offre diverse funzionalità agli utenti:
+Il sito offre diverse funzionalità agli utenti clienti della Tenuta:
 
 - consultazione di contenuti informativi e descrittivi sulla tenuta;
 
@@ -26,21 +26,31 @@ Il sito offre diverse funzionalità agli utenti:
 
 - invio di richieste di assistenza o segnalazioni tramite l’apposita sezione contatti.
 
-L’obiettivo principale è stato sviluppare un’esperienza intuitiva e completa per gli utenti, facilitando l’interazione con la cantina e l’accesso alle informazioni sui prodotti.
+Mentre per quanto riguarda gli impiegati della Tenuta, la piattaforma offre:
+
+- possibilità di gestione delle attività della cantina richieste dal cliente.
+
+Infine, l’utente amministratore, oltre a quanto permesso allo staff, può:
+
+- gestire il catalogo dei vini;
+
+- gestire i permessi degli utenti registrati sulla piattaforma.
+
+L’obiettivo principale è stato quello di sviluppare un’esperienza intuitiva e completa per gli utenti, semplificando l’interazione tra clienti e lavoratori della cantina e migliorando l’accesso alle informazioni ad essa relative.
 
 ## Analisi dei requisiti
 
 Prima di avviare lo sviluppo del sito, abbiamo analizzato diversi siti web di cantine già esistenti per identificare le informazioni principali da includere. A partire da questi spunti, abbiamo integrato la nostra visione e i servizi aggiuntivi che intendiamo offrire, definendo così la struttura gerarchica del sito di Tenuta al Morer.
 
-Le pagine sono state progettate per essere semplici da usare e visivamente accattivanti, con particolare attenzione all’ottimizzazione per dispositivi mobili. In questa fase abbiamo anche stabilito convenzioni interne per garantire un’esperienza utente coerente e intuitiva.
+Le pagine sono state progettate per essere semplici da usare e visivamente accattivanti, con particolare attenzione all’ottimizzazione per dispositivi mobile. In questa fase abbiamo anche stabilito convenzioni interne per garantire un’esperienza utente coerente e intuitiva.
 
 ### Analisi utente
 
-Tenuta al Morer si presenta come un sito fruibile da chiunque sia alla ricerca di vini di qualità o di informazioni enologiche. Il sito si rivolge a un pubblico che possiede almeno conoscenze base sul mondo del vino; esso adotta un linguaggio tecnico dove necessario, ma rimane facilmente comprensibile nel complesso per accogliere l’eventuale utente che non ha le idee chiare e vuole informarsi per apprendere nuove informazioni.
+Tenuta al Morer si presenta come un sito fruibile da chiunque sia alla ricerca di vini di qualità o di informazioni enologiche. Il sito si rivolge a un pubblico eterogeneo, accogliendo sia utenti con conoscenze di base sul mondo del vino sia chi non ne sa nulla; adotta un linguaggio tecnico dove necessario, ma resta nel complesso facilmente comprensibile, così da coinvolgere e accompagnare anche l’utente meno esperto che desidera informarsi e apprendere nuove conoscenze.
 
 Struttura e layout sono semplici per permettere all’utente di familiarizzare facilmente con la navigazione del sito. Ci aspettiamo che la maggior parte degli utenti lo utilizzi con browser piuttosto recenti e che la tendenza agli accessi tramite mobile avvenga soprattutto per attività associate alla gestione delle proprie prenotazioni e alla ricerca veloce di vini.
 
-L’età degli utenti spazia dai 25 ai 70 anni.
+Il target dell’età degli utenti si stima sia compreso tra i 25 e i 70 anni, dato il tipo di servizio offerto.
 
 ### SEO
 
@@ -50,31 +60,25 @@ Di seguito vengono riportate le ricerche alle quali il sito vuole rispondere:
 
 - tutte le ricerche che contengano nomi di vini presenti nel sito;
 
-- tutte le ricerche sull’argomento delle degustazioni e visite in cantina;
+- tutte le ricerche sull’argomento delle degustazioni in cantina;
 
-- ricerche più generali come "cantina veneta", "vino", "acquisto vino online", "degustazione vini".
+- ricerche più generali come "cantina veneta", "vino", "acquisto vino online", "degustazione vini", ...
 
-Le parole chiave selezionate sono state pensate per rivolgersi sia ad utenti che hanno già un’idea chiara di cosa stanno cercando, sia a nuovi utenti che cercano di capire di più durante la navigazione.
+Le parole chiave selezionate sono state pensate per rivolgersi sia ad utenti che hanno già un’idea chiara di cosa stanno cercando, sia a nuovi utenti che cercano di apprendere maggiori informazioni durante la navigazione.
 
 Operazioni svolte per migliorare il ranking del sito:
 
-- il contenuto del tag title va dal particolare al generale e presenta parole chiave;
+- in ogni pagina sono state definite parole chiave coerenti con il contenuto, utilizzate nei testi e nei meta tag rilevanti (come title e description);
 
-- in ogni pagina, tramite il meta tag keywords, sono state indicate le parole chiave relative alla pagina stessa;
+- separazione tra struttura, presentazione e comportamento;
 
-- separazione tra struttura e presentazione;
-
-- separazione tra struttura e comportamento;
-
-- abbiamo limitato l’utilizzo dei display:none, visibility:hidden e abbiamo evitato completamente height:0.
+- ponendosi come obiettivo il miglioramento del ranking del sito, si è lavorato sull’ottimizzazione delle prestazioni, rendendo le pagine leggere attraverso la compressione delle immagini e l’utilizzo di formati adeguati, poiché una maggiore velocità di caricamento migliora il rendering e contribuisce indirettamente al posizionamento.
 
 ## Progettazione
 
 ### Schema organizzativo
 
-Abbiamo definito una struttura chiara per la gestione dei contenuti, organizzando le informazioni relative ai vini, alle prenotazioni e agli utenti in modo logico e interconnesso. Il sito permette di navigare facilmente tra i prodotti disponibili e le relative opzioni di acquisto.
-
-È presente una funzione di ricerca per individuare rapidamente un vino nel catalogo. Gli utenti registrati possono acquistare vini e prenotare degustazioni, mentre l’admin ha il compito di gestire gli ordini e aggiornare il catalogo vini.
+Abbiamo definito una struttura chiara che consente di navigare facilmente tra i prodotti disponibili e le relative opzioni di acquisto. Il catalogo dei vini è infatti organizzato secondo uno schema organizzativo esatto, ottenuto suddividendo i prodotti in categorie non sovrapponibili — “vini rossi”, “vini bianchi” e “La Selezione” — al fine di facilitare la consultazione da parte dell’utente. È inoltre presente una funzione di ricerca che permette di individuare rapidamente un vino all’interno del catalogo, agevolando l’utente che sa esattamente cosa cercare e desidera risparmiare tempo.
 
 ### Tipi di utente
 

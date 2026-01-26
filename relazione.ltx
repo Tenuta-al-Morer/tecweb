@@ -22,11 +22,11 @@
 
 \begin{center}
 
-    \includegraphics[width=5cm]{assets_relazione/logo.png}
+    \includegraphics[width=10cm]{assets_relazione/logo.png}
 
     \vspace{1cm}
 
-    {\huge \textbf{Relazione di progetto Tenuta al Morer}} \\ [0.5cm]
+    {\huge \textbf{Relazione di progetto "Tenuta al Morer"}} \\ [0.5cm]
     {\Large Corso di Tecnologie Web A.A. 2025-26}
 
     \vspace{1cm}
@@ -63,10 +63,10 @@
 
 \section{Introduzione}
 La presente relazione ha come scopo quello di descrivere le metodologie e i ragionamenti che abbiamo applicato per la realizzazione del progetto per 
-il corso di Tecnologie Web (Laurea in Informatica - L31) per l'anno accademico 2025-2026. Il progetto ha previsto la creazione di un sito web accessibile 
-per la cantina vitivinicola Tenuta al Morer. 
+il corso di Tecnologie Web (Laurea in Informatica - L31) dell'anno accademico 2025-2026. Il progetto realizzato prevede la creazione di un sito web accessibile 
+per la cantina vitivinicola "Tenuta al Morer". 
 
-Il sito offre diverse funzionalità agli utenti:
+Il sito offre diverse funzionalità agli utenti clienti della Tenuta:
 \begin{itemize}
 \item consultazione di contenuti informativi e descrittivi sulla tenuta;
 \item visualizzazione del catalogo dei vini disponibili;
@@ -75,9 +75,17 @@ Il sito offre diverse funzionalità agli utenti:
 \item gestione dell'area personale con storico ordini e prenotazioni;
 \item invio di richieste di assistenza o segnalazioni tramite l'apposita sezione contatti.
 \end{itemize}
+Mentre per quanto riguarda gli impiegati della Tenuta, la piattaforma offre:
+\begin{itemize}
+\item possibilità di gestione delle attività della cantina richieste dal cliente.
+\end{itemize}
+Infine, l'utente amministratore, oltre a quanto permesso allo staff, può:
+\begin{itemize}
+\item gestire il catalogo dei vini;
+\item gestire i permessi degli utenti registrati sulla piattaforma.
+\end{itemize}
 
-L'obiettivo principale è stato sviluppare un'esperienza intuitiva e completa per gli utenti, facilitando l'interazione con la cantina 
-e l'accesso alle informazioni sui prodotti.
+L’obiettivo principale è stato quello di sviluppare un’esperienza intuitiva e completa per gli utenti, semplificando l’interazione tra clienti e lavoratori della cantina e migliorando l’accesso alle informazioni ad essa relative.
 
 \section{Analisi dei requisiti}
 Prima di avviare lo sviluppo del sito, abbiamo analizzato diversi siti web di cantine già esistenti per identificare le informazioni principali da includere. 
@@ -85,48 +93,41 @@ A partire da questi spunti, abbiamo integrato la nostra visione e i servizi aggi
 di Tenuta al Morer.
 
 Le pagine sono state progettate per essere semplici da usare e visivamente accattivanti, con particolare attenzione all'ottimizzazione 
-per dispositivi mobili. In questa fase abbiamo anche stabilito convenzioni interne per garantire un'esperienza utente coerente e intuitiva.
+per dispositivi mobile. In questa fase abbiamo anche stabilito convenzioni interne per garantire un'esperienza utente coerente e intuitiva.
 
 \subsection{Analisi utente}
 Tenuta al Morer si presenta come un sito fruibile da chiunque sia alla ricerca di vini di qualità o di informazioni enologiche. 
-Il sito si rivolge a un pubblico che possiede almeno conoscenze base sul mondo del vino; esso adotta un linguaggio tecnico dove necessario, 
-ma rimane facilmente comprensibile nel complesso per accogliere l'eventuale utente che non ha le idee chiare e vuole informarsi per apprendere nuove informazioni.
+Il sito si rivolge a un pubblico eterogeneo, accogliendo sia utenti con conoscenze di base sul mondo del vino sia chi non ne sa nulla; adotta un linguaggio tecnico dove necessario, ma resta nel complesso facilmente comprensibile, così da coinvolgere e accompagnare anche l’utente meno esperto che desidera informarsi e apprendere nuove conoscenze.
 
 Struttura e layout sono semplici per permettere all'utente di familiarizzare facilmente con la navigazione del sito. 
 Ci aspettiamo che la maggior parte degli utenti lo utilizzi con browser piuttosto recenti e che la tendenza agli accessi tramite 
 mobile avvenga soprattutto per attività associate alla gestione delle proprie prenotazioni e alla ricerca veloce di vini.
 
-L'età degli utenti spazia dai 25 ai 70 anni.
+Il target dell'età degli utenti si stima sia compreso tra i 25 e i 70 anni, dato il tipo di servizio offerto.
 
 \subsection{SEO}
 Di seguito vengono riportate le ricerche alle quali il sito vuole rispondere:
 \begin{itemize}
 \item il nome del sito ("Tenuta al Morer");
 \item tutte le ricerche che contengano nomi di vini presenti nel sito;
-\item tutte le ricerche sull'argomento delle degustazioni e visite in cantina;
-\item ricerche più generali come "cantina veneta", "vino", "acquisto vino online", "degustazione vini".
+\item tutte le ricerche sull'argomento delle degustazioni in cantina;
+\item ricerche più generali come "cantina veneta", "vino", "acquisto vino online", "degustazione vini", ...
 \end{itemize}
 
 Le parole chiave selezionate sono state pensate per rivolgersi sia ad utenti che hanno già un'idea chiara di cosa stanno cercando, 
-sia a nuovi utenti che cercano di capire di più durante la navigazione.
+sia a nuovi utenti che cercano di apprendere maggiori informazioni durante la navigazione.
 
 Operazioni svolte per migliorare il ranking del sito:
 \begin{itemize}
-\item il contenuto del tag title va dal particolare al generale e presenta parole chiave;
-\item in ogni pagina, tramite il meta tag keywords, sono state indicate le parole chiave relative alla pagina stessa;
-\item separazione tra struttura e presentazione;
-\item separazione tra struttura e comportamento;
-\item abbiamo limitato l'utilizzo dei display:none, visibility:hidden e abbiamo evitato completamente height:0.
+\item in ogni pagina sono state definite parole chiave coerenti con il contenuto, utilizzate nei testi e nei meta tag rilevanti (come title e description);
+\item separazione tra struttura, presentazione e comportamento;
+\item ponendosi come obiettivo il miglioramento del ranking del sito, si è lavorato sull’ottimizzazione delle prestazioni, rendendo le pagine leggere attraverso la compressione delle immagini e l’utilizzo di formati adeguati, poiché una maggiore velocità di caricamento migliora il rendering e contribuisce indirettamente al posizionamento.
 \end{itemize}
 
 \section{Progettazione}
 
 \subsection{Schema organizzativo}
-Abbiamo definito una struttura chiara per la gestione dei contenuti, organizzando le informazioni relative ai vini, alle prenotazioni e agli utenti 
-in modo logico e interconnesso. Il sito permette di navigare facilmente tra i prodotti disponibili e le relative opzioni di acquisto.
-
-È presente una funzione di ricerca per individuare rapidamente un vino nel catalogo. Gli utenti registrati possono acquistare vini e prenotare degustazioni, 
-mentre l'admin ha il compito di gestire gli ordini e aggiornare il catalogo vini.
+Abbiamo definito una struttura chiara che consente di navigare facilmente tra i prodotti disponibili e le relative opzioni di acquisto. Il catalogo dei vini è infatti organizzato secondo uno schema organizzativo esatto, ottenuto suddividendo i prodotti in categorie non sovrapponibili — “vini rossi”, “vini bianchi” e “La Selezione” — al fine di facilitare la consultazione da parte dell’utente. È inoltre presente una funzione di ricerca che permette di individuare rapidamente un vino all’interno del catalogo, agevolando l’utente che sa esattamente cosa cercare e desidera risparmiare tempo.
 
 \subsection{Tipi di utente}
 Durante la fase di progettazione sono stati individuati i seguenti tipi di utente:
@@ -170,20 +171,20 @@ Elenco delle funzionalità del sito:
 \end{itemize}
 
 \subsection{Convenzioni interne}
-Di seguito vengono elencate le principali convenzioni grafiche e di navigazione adottate per garantire coerenza e usabilità all'interno del sito:
+Elenco delle convenzioni interne del sito:
 
 \begin{itemize}
-\item \textbf{Navigazione persistente:} nella quasi totalità delle pagine è presente una barra di navigazione (\textit{navbar}) 
-posizionata nella parte superiore del layout, che permette all'utente di orientarsi e raggiungere le sezioni principali in qualsiasi momento;
+\item i link, sia quelli visitati che quelli non visitati, si presentano sottolineati. In particolare, i link non visitati hanno colore del testo bianco 
+e sfondo nero. I link visitati invece hanno colore del testo oro e sfondo nero. Sono stati scelti questi colori in quanto fanno parte della palette utilizzata;
 
-\item \textbf{Header semplificato:} per le pagine funzionali di autenticazione (\textit{registrazione.html}, \textit{login.html}) 
-e per la pagina informativa sulla \textit{Privacy}, è stato adottato un header ridotto. Tale scelta progettuale mira a minimizzare 
-le distrazioni, focalizzando l'attenzione dell'utente sul contenuto specifico o sul form da compilare;
+\item i link circolari (ovvero quelli che rimandano alla stessa pagina visualizzata) nel menù sono disabilitati e nascosti allo screen reader, 
+oltre ad non avere la sottolineatura. Si indica così all'utente che il link non è utilizzabile, evitando i disagi dei link circolari.
 
-\item \textbf{Identità visiva:} l'utilizzo del color oro come tinta secondaria all'interno della palette. Questo colore viene 
-impiegato per richiamare il brand aziendale e per distinguere visivamente i collegamenti ipertestuali visitati, migliorando il 
-feedback visivo durante la navigazione.
-\end{itemize}
+\item i campi obbligatori nei form sono contrassegnati visivamente con l'asterisco (\textasteriskcentered) 
+e semanticamente con l'attributo \texttt{required}, mentre i campi facoltativi hanno esempi di compilazione tramite l'attributo \texttt{aria-describedby};
+
+\item le pagine di autenticazione (\textit{login.html} e \textit{registrazione.html}) hanno un layout semplificato con header ridotto, 
+concentrandosi sull'esperienza utente per le funzioni di accesso;
 
 
 \end{itemize}
