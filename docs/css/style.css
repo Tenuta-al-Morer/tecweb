@@ -3441,6 +3441,7 @@ body.light-mode .free-shipping-text {
 .admin-section-head h2 {
     white-space: nowrap; 
     margin: 0;     
+    padding-bottom: 0;
 }
 
 .admin-section-actions {
@@ -3483,7 +3484,7 @@ body.light-mode .free-shipping-text {
 }
 
 .admin-search-input {
-    min-width: 220px;
+    min-width: 100px;
     padding: 0.65rem 1rem;
     border: 1px solid var(--border-color);
     border-radius: 999px;
