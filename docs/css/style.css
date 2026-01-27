@@ -1957,7 +1957,7 @@ footer a:hover, footer a:focus {
     opacity: 1;
     position: static;
     pointer-events: auto;
-    margin: 0;          
+    margin-right: 0.5em;          
     width: 1.1em;       
     height: 1.1em;
     cursor: pointer;
