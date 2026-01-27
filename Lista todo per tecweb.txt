@@ -1,8 +1,3 @@
 Lista todo per tecweb:   
-- controllare se vanno bene tutte le abbreviazioni
-- versione mobile (pulsanti in pagina admin tutti da spostare) (Il resto è già stato testato e controllato)
-- controlla l’accessibilità di tutte le pagine e verificare con nvda che tutto funzioni per i ciechi (versione mini)
-    - vini
-    - area gestionale
-    - area admin
+- sistemare lettura numeri di telefono se ci riusciamo
 - leggere relazione e dire se ci sono modifiche da fare altrimenti è completata
