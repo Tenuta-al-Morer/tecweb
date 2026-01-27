@@ -1497,3 +1497,9 @@ select:focus {
         font-size: 0.9em;
     }
 }
+
+@media (max-width: 438px) {
+    .admin-section-head h2 {
+        padding-bottom: 0;   
+    }
+}
