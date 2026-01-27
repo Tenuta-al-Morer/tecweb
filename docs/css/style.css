@@ -3446,7 +3446,8 @@ body.light-mode .free-shipping-text {
 .admin-section-actions {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 0.5em;
+    justify-content: right;
     flex: 1; 
 }
 
@@ -3483,7 +3484,7 @@ body.light-mode .free-shipping-text {
 }
 
 .admin-search-input {
-    min-width: 100px;
+    min-width: 220px;
     padding: 0.65rem 1rem;
     border: 1px solid var(--border-color);
     border-radius: 999px;
