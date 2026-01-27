@@ -195,7 +195,7 @@ foreach ($prenotazioniArray as $prenotazione) {
     $prenotazioni .= '<td data-title="Cliente">' . htmlspecialchars($cliente) . '</td>';
     $prenotazioni .= '<td data-title="Tipo degustazione">' . htmlspecialchars($prenotazione['tipo_degustazione']) . '</td>';
     $prenotazioni .= '<td data-title="Data visita">' . htmlspecialchars($prenotazione['data_visita']) . '</td>';
-    $prenotazioni .= '<td data-title="N. persone">' . (int)$prenotazione['n_persone'] . '</td>';
+    $prenotazioni .= '<td data-title="Numero persone">' . (int)$prenotazione['n_persone'] . '</td>';
     $prenotazioni .= '<td class="td_richiesta_degustazione" data-title="Dettagli">
                         <a href="?sezione=esperienze#details-row-' . $detailsKey . '" class="btn-secondary btn-fallback">Mostra Dettagli</a>
                         <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $detailsKey . '" aria-expanded="false" aria-controls="details-row-' . $detailsKey . '">
@@ -214,7 +214,7 @@ foreach ($prenotazioniArray as $prenotazione) {
     $prenotazioni .= '<tr class="order-details-row is-hidden" id="details-row-' . $detailsKey . '"><td colspan="7" class="order-details-cell"><div class="details-content">';
     $prenotazioni .= '<div class="details-section"><p class="details-section-heading">Dettagli Prenotazione:</p><ul class="details-products-list">';
     $prenotazioni .= '<li><span>Email</span><span>' . htmlspecialchars($prenotazione['email']) . '</span></li>';
-    $prenotazioni .= '<li><span>Telefono</span><span>' . htmlspecialchars($prenotazione['prefisso']) . ' ' . htmlspecialchars($prenotazione['telefono']) . '</span></li>';
+    $prenotazioni .= '<li><span>Telefono</span><span aria-label="Numero di telefono: ' . implode(' ', str_split(str_replace(['+', ' ', '-'], '', htmlspecialchars($prenotazione['prefisso'] . $prenotazione['telefono'])))) . '">' . htmlspecialchars($prenotazione['prefisso']) . ' ' . htmlspecialchars($prenotazione['telefono']) . '</span></li>';
     $prenotazioni .= '<li><span>Data Invio</span><span>' . htmlspecialchars($prenotazione['data_invio']) . '</span></li>';
     $prenotazioni .= '</ul></div></div></td></tr>';
 }
@@ -230,7 +230,7 @@ foreach ($prenotazioniArchivioArray as $prenotazione) {
     $prenotazioniArchivio .= '<td data-title="Cliente">' . htmlspecialchars($cliente) . '</td>';
     $prenotazioniArchivio .= '<td data-title="Tipo degustazione">' . htmlspecialchars($prenotazione['tipo_degustazione']) . '</td>';
     $prenotazioniArchivio .= '<td data-title="Data visita">' . htmlspecialchars($prenotazione['data_visita']) . '</td>';
-    $prenotazioniArchivio .= '<td data-title="N. persone">' . (int)$prenotazione['n_persone'] . '</td>';
+    $prenotazioniArchivio .= '<td data-title="Numero persone">' . (int)$prenotazione['n_persone'] . '</td>';
     $prenotazioniArchivio .= '<td data-title="Stato">' . htmlspecialchars($prenotazione['stato']) . '</td>';
     $prenotazioniArchivio .= '<td class="td_richiesta_degustazione" data-title="Dettagli">
                                 <a href="?sezione=esperienze#details-row-' . $detailsKey . '" class="btn-secondary btn-fallback">Mostra Dettagli</a>
@@ -243,7 +243,7 @@ foreach ($prenotazioniArchivioArray as $prenotazione) {
     $prenotazioniArchivio .= '<tr class="order-details-row is-hidden" id="details-row-' . $detailsKey . '"><td colspan="7" class="order-details-cell"><div class="details-content">';
     $prenotazioniArchivio .= '<div class="details-section"><p class="details-section-heading">Dettagli Prenotazione:</p><ul class="details-products-list">';
     $prenotazioniArchivio .= '<li><span>Email</span><span>' . htmlspecialchars($prenotazione['email']) . '</span></li>';
-    $prenotazioniArchivio .= '<li><span>Telefono</span><span>' . htmlspecialchars($prenotazione['prefisso']) . ' ' . htmlspecialchars($prenotazione['telefono']) . '</span></li>';
+    $prenotazioniArchivio .= '<li><span>Telefono</span><span aria-label="Numero di telefono: ' . implode(' ', str_split(str_replace(['+', ' ', '-'], '', htmlspecialchars($prenotazione['prefisso'] . $prenotazione['telefono'])))) . '">' . htmlspecialchars($prenotazione['prefisso']) . ' ' . htmlspecialchars($prenotazione['telefono']) . '</span></li>';
     $prenotazioniArchivio .= '<li><span>Data Invio</span><span>' . htmlspecialchars($prenotazione['data_invio']) . '</span></li>';
     $prenotazioniArchivio .= '</ul></div></div></td></tr>';
 }
@@ -272,7 +272,7 @@ foreach ($messaggiArray as $messaggio) {
     $messaggi .= '<tr class="order-details-row is-hidden" id="details-row-' . $detailsKey . '"><td colspan="6" class="order-details-cell"><div class="details-content">';
     $messaggi .= '<div class="details-section"><p class="details-section-heading">Dettagli Messaggio:</p><ul class="details-products-list">';
     $messaggi .= '<li><span>Email</span><span>' . htmlspecialchars($messaggio['email']) . '</span></li>';
-    $messaggi .= '<li><span>Telefono</span><span>' . htmlspecialchars($messaggio['prefisso']) . ' ' . htmlspecialchars($messaggio['telefono']) . '</span></li>';
+    $messaggi .= '<li><span>Telefono</span><span aria-label="Numero di telefono: ' . implode(' ', str_split(str_replace(['+', ' ', '-'], '', htmlspecialchars($messaggio['prefisso'] . $messaggio['telefono'])))) . '">' . htmlspecialchars($messaggio['prefisso']) . ' ' . htmlspecialchars($messaggio['telefono']) . '</span></li>';
     $messaggi .= '</ul></div>';
     $messaggi .= '<div class="details-section"><p class="details-section-heading">Risposta:</p>
                     <form id="form_msg_' . $idMsg . '" action="" method="POST" class="standard-form">
@@ -309,7 +309,7 @@ foreach ($messaggiArchivioArray as $messaggio) {
     $messaggiArchivio .= '<tr class="order-details-row is-hidden" id="details-row-' . $detailsKey . '"><td colspan="6" class="order-details-cell"><div class="details-content">';
     $messaggiArchivio .= '<div class="details-section"><p class="details-section-heading">Dettagli Messaggio:</p><ul class="details-products-list">';
     $messaggiArchivio .= '<li><span>Email</span><span>' . htmlspecialchars($messaggio['email']) . '</span></li>';
-    $messaggiArchivio .= '<li><span>Telefono</span><span>' . htmlspecialchars($messaggio['prefisso']) . ' ' . htmlspecialchars($messaggio['telefono']) . '</span></li>';
+    $messaggiArchivio .= '<li><span>Telefono</span><span aria-label="Numero di telefono: ' . implode(' ', str_split(str_replace(['+', ' ', '-'], '', htmlspecialchars($messaggio['prefisso'] . $messaggio['telefono'])))) . '">' . htmlspecialchars($messaggio['prefisso']) . ' ' . htmlspecialchars($messaggio['telefono']) . '</span></li>';
     $messaggiArchivio .= '<li><span>Risposta</span><span>' . htmlspecialchars($messaggio['risposta']) . '</span></li>';
     $messaggiArchivio .= '</ul></div></div></td></tr>';
 }
