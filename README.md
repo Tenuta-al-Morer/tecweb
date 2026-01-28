@@ -84,13 +84,13 @@ Abbiamo definito una struttura chiara che consente di navigare facilmente tra i 
 
 Durante la fase di progettazione sono stati individuati i seguenti tipi di utente:
 
-- **Ospite**: l’utente ospite ha accesso alle sezioni che non sono private del sito, come le pagine "Home", "Tenuta", "Vini", "Esperienze" e "Contatti". Può prenotare degustazioni, inviare richieste di assistenza e ha la possibilità di inserire vini nel carrello. Tuttavia non può effettuare acquisti né accedere all’area riservata, a meno che non completi la registrazione.
+- **Utente non autenticato**: l’utente ospite ha accesso alle sezioni non sono private del sito, ossia le pagine "Home", "Tenuta", "Vini", "Esperienze" e "Contatti". Può prenotare degustazioni, inviare richieste di assistenza e ha la possibilità di inserire vini nel carrello. Tuttavia, non può effettuare acquisti né accedere all’area riservata, a meno che non completi la registrazione o effettui l’accesso.
 
-- **Utente registrato**: l’utente registrato ha accesso completo alle funzionalità del sito relative agli utenti clienti, come la possibilità di acquistare vini e gestire il proprio account all’interno dell’area riservata.
+- **Cliente**: l’utente cliente ha accesso completo alle funzionalità del sito relative agli utenti clienti, come la possibilità di acquistare vini e gestire il proprio account all’interno della propria area riservata.
 
-- **Staff**: l’utente staff può gestire gli ordini e le prenotazioni degli utenti, approvandole o rifiutandole. Inoltre, ha il controllo delle richieste di assistenza ricevute tramite il modulo contatti.
+- **Staff**: l’utente staff può gestire gli ordini e le prenotazioni dei clienti, approvandole o rifiutandole. Inoltre, ha il controllo delle richieste di assistenza ricevute tramite il modulo contatti.
 
-- **Admin**: l’utente admin può gestire tutti gli aspetti del sito, inclusi gli ordini degli utenti, le prenotazioni, i messaggi di assistenza, il catalogo vini e la gestione degli utenti registrati.
+- **Admin**: l’utente admin può gestire tutti gli aspetti del sito, inclusi gli ordini degli utenti, le prenotazioni, i messaggi di assistenza, il catalogo dei vini e la gestione degli utenti registrati.
 
 ### Funzionalità
 
@@ -106,7 +106,7 @@ Elenco delle funzionalità del sito:
 
 - ricerca testuale dei prodotti nel catalogo;
 
-- acquisto vini (utente registrato);
+- acquisto vini (cliente);
 
 - gestione carrello (cliente);
 
@@ -116,7 +116,7 @@ Elenco delle funzionalità del sito:
 
 - invio di richieste di assistenza;
 
-- gestione account utente (modifica dati, cambio password, eliminazione account);
+- gestione account cliente (modifica dati, cambio password, eliminazione account);
 
 - consultazione storico ordini e stato prenotazioni nell’area riservata (cliente);
 
@@ -134,25 +134,27 @@ Elenco delle funzionalità del sito:
 
 Elenco delle convenzioni interne del sito:
 
-- i link, sia quelli visitati che quelli non visitati, si presentano sottolineati. In particolare, i link non visitati hanno colore del testo bianco e sfondo nero. I link visitati invece hanno colore del testo oro e sfondo nero. Sono stati scelti questi colori in quanto fanno parte della palette utilizzata;
+- L’adozione delle UI Cards in sostituzione agli elenchi testuali permette di raggruppare i concetti in unità visive distinte e intuitive, riducendo significativamente il carico cognitivo dell’utente necessario per elaborare le informazioni contenute in pagine come: "Home", "Contatti", "Area Personale";
 
-- le pagine di autenticazione (*login.html* e *registrazione.html*) hanno un layout semplificato con header ridotto, concentrandosi sull’esperienza utente per le funzioni di accesso;
+- le pagine di autenticazione (*login.html* e *registrazione.html*) hanno un layout semplificato con header ridotto, al fine di concentrare l’esperienza utente alle sole funzioni di accesso;
+
+- Ad eccezione delle sezioni precedentemente citate, le restanti pagine presentano nell’"above the fold" un menù di navigazione principale che permette all’utente di orientarsi facilmente e identificare immediatamente i percorsi disponibili. Inoltre, per agevolare l’esperienza di navigazione, vengono distinti i link già visitati (*secondary-color*) da quelli non ancora consultati (in bianco);
 
 ### Schema database
 
 Le principali tabelle del database sono:
 
-- **utente**: gestisce gli account degli utenti con i relativi ruoli
+- **utente**: memorizza gli account degli utenti con i relativi ruoli
 
-- **vino**: catalogo completo dei prodotti vinicoli
+- **vino**: memorizza il catalogo completo dei prodotti vinicoli
 
-- **carrello** e **carrello_elemento**: gestione del carrello
+- **carrello** e **carrello_elemento**: servono per la gestione del carrello
 
-- **ordine** e **ordine_elemento**: gestione degli ordini effettuati
+- **ordine** e **ordine_elemento**: servono per la gestione degli ordini effettuati
 
-- **prenotazione**: gestione delle prenotazioni esperienze
+- **prenotazione**: memorizza le prenotazioni delle esperienze
 
-- **contatto**: gestione dei messaggi di assistenza
+- **contatto**: memorizza i messaggi di assistenza
 
 <figure data-latex-placement="H">
 <img src="assets_relazione/schema_relazionale.png" style="width:90.0%" />
@@ -161,29 +163,27 @@ Le principali tabelle del database sono:
 
 ## Realizzazione
 
-Per la realizzazione del sito abbiamo utilizzato dati relativi a vini realmente esistenti della tradizione vitivinicola veneta. Le immagini dei prodotti e della tenuta sono state generate tramite strumenti di intelligenza artificiale per garantire una resa visiva coerente con il layout del sito, mantenendo comunque i riferimenti autentici al territorio e ai nomi originali dei prodotti.
-
-Inoltre, per lo sviluppo del frontend abbiamo adottato la strategia *Desktop First*.
+Per la realizzazione del sito abbiamo utilizzato dati relativi a vini realmente esistenti nella tradizione vitivinicola veneta. Le immagini dei prodotti e della tenuta sono state generate tramite strumenti di intelligenza artificiale con l’obbiettivo di ottenere una resa visiva coerente con il layout del sito, mantenendo comunque i riferimenti autentici al territorio e ai nomi originali dei prodotti.
 
 ### Struttura e contenuto
 
 #### HTML
 
-Il sito è stato sviluppato in HTML5. Abbiamo cercato di mantenere più struttura possibile nei file HTML ed eventualmente andare a lavorare e sostituire alcune parti con il PHP. Per sostituire singole parole, abbiamo utilizzato come segnaposto delle parole racchiuse tra parentesi quadre (\[marca\]). Invece per sostituire intere sezioni è stato utilizzato il metodo preg_replace() di PHP, rispettando un certo pattern.
+Il sito è stato sviluppato in HTML5. Abbiamo cercato di mantenere più struttura possibile nei file HTML ed eventualmente andare a lavorare e sostituire alcune parti con il PHP. Per sostituire singole parole, abbiamo utilizzato come segnaposto delle parole racchiuse tra parentesi quadre (\[segnaposto\]). Invece per sostituire intere sezioni è stato utilizzato il metodo preg_replace() di PHP, rispettando un certo pattern.
 
-Un esempio è l’utilizzo nel file vini.html per la visualizzazione dei prodotti:
+Un esempio è l’utilizzo nel file areaPersonale.html:
 
-    <section id="red-wines">
-        <div class="sezione">
-            [vini_rossi]
-        </div>
-    </section>
+    <p>
+        Sei loggato come: [email_utente]
+    </p>
 
-In questo caso, per l’inserimento e l’aggiornamento dei vini visualizzati, verrà sostituita tutta la sezione compresa all’interno del div con classe "sezione". Questo approccio ci permette di impostare una struttura fissa nei file HTML e andare a modificare in maniera dinamica il contenuto tramite PHP.
+Questo approccio ci permette di impostare una struttura fissa nei file HTML e andare a modificare in maniera dinamica il contenuto tramite PHP.
 
 #### Popolamento database
 
-Per il popolamento del database abbiamo scelto di procedere manualmente, poiché non era necessario generare una grande quantità di dati. I nomi dei vini sono stati scelti in modo creativo dal nostro gruppo, mentre le immagini sono state generate tramite strumenti di intelligenza artificiale.
+Per il popolamento del database abbiamo adottato un duplice approccio. La tabella dei vini è stata creata manualmente: trattandosi di un numero limitato di prodotti, abbiamo preferito inserire direttamente informazioni precise.
+
+Al contrario, per le sezioni dedicate all’assistenza, agli ordini e alle prenotazioni delle esperienze, abbiamo scelto di generare i dati tramite Intelligenza Artificiale. Questa soluzione ci ha permesso di ottenere rapidamente un insieme completo di dati.
 
 ### Presentazione
 
