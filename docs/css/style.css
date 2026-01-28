@@ -4589,7 +4589,7 @@ body.light-mode #cart-toast {
     background-color: rgba(197, 165, 81, 0.05);
 }
 
-.no-js .user-nav-link[data-section] {
+.no-js .user-nav-link[data-section], .bold {
     font-weight: 700;
 }
 
