@@ -133,18 +133,18 @@ Abbiamo definito una struttura chiara che consente di navigare facilmente tra i 
 Durante la fase di progettazione sono stati individuati i seguenti tipi di utente:
 
 \begin{itemize}
-\item \textbf{Ospite}: l'utente ospite ha accesso alle sezioni che non sono private del sito, come le pagine "Home", "Tenuta", "Vini", "Esperienze" e "Contatti". 
+\item \textbf{Utente non autenticato}: l'utente ospite ha accesso alle sezioni non sono private del sito, ossia le pagine "Home", "Tenuta", "Vini", "Esperienze" e "Contatti". 
 Può prenotare degustazioni, inviare richieste di assistenza e ha la possibilità di inserire vini nel carrello. 
-Tuttavia non può effettuare acquisti né accedere all'area riservata, a meno che non completi la registrazione.
+Tuttavia, non può effettuare acquisti né accedere all'area riservata, a meno che non completi la registrazione o effettui l'accesso.
 
-\item \textbf{Utente registrato}: l'utente registrato ha accesso completo alle funzionalità del sito relative agli utenti clienti, 
-come la possibilità di acquistare vini e gestire il proprio account all'interno dell'area riservata.
+\item \textbf{Cliente}: l'utente cliente ha accesso completo alle funzionalità del sito relative agli utenti clienti, 
+come la possibilità di acquistare vini e gestire il proprio account all'interno della propria area riservata.
 
-\item \textbf{Staff}: l'utente staff può gestire gli ordini e le prenotazioni degli utenti, approvandole o rifiutandole. 
+\item \textbf{Staff}: l'utente staff può gestire gli ordini e le prenotazioni dei clienti, approvandole o rifiutandole. 
 Inoltre, ha il controllo delle richieste di assistenza ricevute tramite il modulo contatti.
 
 \item \textbf{Admin}: l'utente admin può gestire tutti gli aspetti del sito, inclusi gli ordini degli utenti, le prenotazioni, i messaggi di assistenza, 
-il catalogo vini e la gestione degli utenti registrati.
+il catalogo dei vini e la gestione degli utenti registrati.
 \end{itemize}
 
 \subsection{Funzionalità}
@@ -156,12 +156,12 @@ Elenco delle funzionalità del sito:
 \item visualizzazione catalogo vini;
 \item visualizzazione dei dettagli di uno specifico vino;
 \item ricerca testuale dei prodotti nel catalogo;
-\item acquisto vini (utente registrato);
+\item acquisto vini (cliente);
 \item gestione carrello (cliente);
 \item checkout e creazione ordini (cliente);
 \item prenotazione esperienze;
 \item invio di richieste di assistenza;
-\item gestione account utente (modifica dati, cambio password, eliminazione account);
+\item gestione account cliente (modifica dati, cambio password, eliminazione account);
 \item consultazione storico ordini e stato prenotazioni nell'area riservata (cliente);
 \item gestione ordini (staff/admin);
 \item gestione prenotazioni (staff/admin);
@@ -174,23 +174,24 @@ Elenco delle funzionalità del sito:
 Elenco delle convenzioni interne del sito:
 
 \begin{itemize}
-\item i link, sia quelli visitati che quelli non visitati, si presentano sottolineati. In particolare, i link non visitati hanno colore del testo bianco 
-e sfondo nero. I link visitati invece hanno colore del testo oro e sfondo nero. Sono stati scelti questi colori in quanto fanno parte della palette utilizzata;
+\item L'adozione delle UI Cards in sostituzione agli elenchi testuali permette di raggruppare i concetti in unità visive distinte e intuitive, 
+riducendo significativamente il carico cognitivo dell'utente necessario per elaborare le informazioni contenute in pagine come: "Home", "Contatti", "Area Personale";
 
 \item le pagine di autenticazione (\textit{login.html} e \textit{registrazione.html}) hanno un layout semplificato con header ridotto, 
-concentrandosi sull'esperienza utente per le funzioni di accesso;
+al fine di concentrare l'esperienza utente alle sole funzioni di accesso;
 
+\item Ad eccezione delle sezioni precedentemente citate, le restanti pagine presentano nell'"above the fold" un menù di navigazione principale che permette all'utente di orientarsi facilmente e identificare immediatamente i percorsi disponibili. Inoltre, per agevolare l'esperienza di navigazione, vengono distinti i link già visitati (\textit{secondary-color}) da quelli non ancora consultati (in bianco);
 \end{itemize}
 
 \subsection{Schema database}
 Le principali tabelle del database sono:
 \begin{itemize}
-\item \textbf{utente}: gestisce gli account degli utenti con i relativi ruoli
-\item \textbf{vino}: catalogo completo dei prodotti vinicoli
-\item \textbf{carrello} e \textbf{carrello\_elemento}: gestione del carrello
-\item \textbf{ordine} e \textbf{ordine\_elemento}: gestione degli ordini effettuati
-\item \textbf{prenotazione}: gestione delle prenotazioni esperienze
-\item \textbf{contatto}: gestione dei messaggi di assistenza
+\item \textbf{utente}: memorizza gli account degli utenti con i relativi ruoli
+\item \textbf{vino}: memorizza il catalogo completo dei prodotti vinicoli
+\item \textbf{carrello} e \textbf{carrello\_elemento}: servono per la gestione del carrello
+\item \textbf{ordine} e \textbf{ordine\_elemento}: servono per la gestione degli ordini effettuati
+\item \textbf{prenotazione}: memorizza le prenotazioni delle esperienze
+\item \textbf{contatto}: memorizza i messaggi di assistenza
 \end{itemize}
 
 \begin{figure}[H]
@@ -201,37 +202,33 @@ Le principali tabelle del database sono:
 
 
 \section{Realizzazione}
-Per la realizzazione del sito abbiamo utilizzato dati relativi a vini realmente esistenti della tradizione vitivinicola veneta. 
-Le immagini dei prodotti e della tenuta sono state generate tramite strumenti di intelligenza artificiale per garantire 
+Per la realizzazione del sito abbiamo utilizzato dati relativi a vini realmente esistenti nella tradizione vitivinicola veneta. 
+Le immagini dei prodotti e della tenuta sono state generate tramite strumenti di intelligenza artificiale con l'obbiettivo di ottenere 
 una resa visiva coerente con il layout del sito, mantenendo comunque i riferimenti autentici al territorio e ai nomi originali dei prodotti.
-
-Inoltre, per lo sviluppo del frontend abbiamo adottato la strategia \textit{Desktop First}.
 
 \subsection{Struttura e contenuto}
 
 \subsubsection{HTML}
 Il sito è stato sviluppato in HTML5. Abbiamo cercato di mantenere più struttura possibile nei file HTML ed eventualmente andare a 
 lavorare e sostituire alcune parti con il PHP. Per sostituire singole parole, abbiamo utilizzato come segnaposto delle parole racchiuse tra 
-parentesi quadre ([marca]). Invece per sostituire intere sezioni è stato utilizzato il metodo preg\_replace() di PHP, rispettando un certo pattern.
+parentesi quadre ([segnaposto]). Invece per sostituire intere sezioni è stato utilizzato il metodo preg\_replace() di PHP, rispettando un certo pattern.
 
-Un esempio è l'utilizzo nel file vini.html per la visualizzazione dei prodotti:
+Un esempio è l'utilizzo nel file areaPersonale.html:
 
 \begin{quote}
 \begin{verbatim}
-<section id="red-wines">
-    <div class="sezione">
-        [vini_rossi]
-    </div>
-</section>
+<p>
+    Sei loggato come: [email_utente]
+</p>
 \end{verbatim}
 \end{quote}
 
-In questo caso, per l'inserimento e l'aggiornamento dei vini visualizzati, verrà sostituita tutta la sezione compresa all'interno del div con classe "sezione". 
 Questo approccio ci permette di impostare una struttura fissa nei file HTML e andare a modificare in maniera dinamica il contenuto tramite PHP.
 
 \subsubsection{Popolamento database}
-Per il popolamento del database abbiamo scelto di procedere manualmente, poiché non era necessario generare una grande quantità di dati. 
-I nomi dei vini sono stati scelti in modo creativo dal nostro gruppo, mentre le immagini sono state generate tramite strumenti di intelligenza artificiale.
+Per il popolamento del database abbiamo adottato un duplice approccio. La tabella dei vini è stata creata manualmente: trattandosi di un numero limitato di prodotti, abbiamo preferito inserire direttamente informazioni precise.
+
+Al contrario, per le sezioni dedicate all’assistenza, agli ordini e alle prenotazioni delle esperienze, abbiamo scelto di generare i dati tramite Intelligenza Artificiale. Questa soluzione ci ha permesso di ottenere rapidamente un insieme completo di dati.
 
 \subsection{Presentazione}
 
