@@ -832,7 +832,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return false;
             }
 
-            if (input.type === 'email' && value !== '') {
+            if (input.type === 'email' && value !== '' && (value!=='admin' && value!=='user' && value!== 'staff')) {
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(value)) {
                     showError(input, 'Formato email non valido');
