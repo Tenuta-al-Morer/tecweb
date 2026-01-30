@@ -4,6 +4,8 @@ Lista todo per tecweb:
 - navbar deve stare in un tag nav non un div
 - i tag i sono vietati dalla prof. vanno sostituiti con span (controllare tutte le icone)
 - aria-expanded deve stare dentro tag nav non label
+- togliere strong e altro stile inline se presente
+- leggere relazione e dire se ci sono modifiche da fare altrimenti è completata
 
 
 Qui sotto trovate l'esito di codex, gli ho dato in prompt tutte le specifiche richieste dalla prof scritte in moodle (la foto che ho 
