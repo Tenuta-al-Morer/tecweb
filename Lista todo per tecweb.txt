@@ -1,14 +1,11 @@
 Lista todo per tecweb:   
-- sistemare lettura numeri di telefono se ci riusciamo
 - navbar deve stare in un tag nav non un div
 - i tag i sono vietati dalla prof. vanno sostituiti con span (controllare tutte le icone)
 - aria-expanded deve stare dentro tag nav non label
 - leggere relazione
 
-Criticità (ordine per gravità)
+Criticità 
 - Specifica “sintassi XML” non rispettata: le pagine sono HTML5 ma non XML‑well‑formed (tag void non auto‑chiusi, <br> non auto‑chiuso, assenza di namespace XHTML). Esempi in home.html (line 5), home.html (line 7), home.html (line 35), home.html (line 75).
 
 Verifica requisiti (evidenze principali)
 - Sintassi XML: KO (vedi criticità sopra).
-- Accessibilità per tutte le categorie: Parziale (buone pratiche in markup: skip link, ARIA, label/alt; ma non posso confermare al 100% senza test reali). Esempi: contatti.html, home.html, script.js.
-- Accessibilità cross‑browser e responsive: Parziale (presenti media query e CSS stampa, ma serve validazione reale su browser/dispositivi). mini.css, print.css, note in README.md.
