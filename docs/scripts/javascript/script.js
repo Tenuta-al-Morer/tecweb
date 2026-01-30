@@ -879,7 +879,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         forms.forEach(form => {
-            form.setAttribute('novalidate', true);
+            form.noValidate = true;
             const inputs = form.querySelectorAll('input, select, textarea');
 
             form.addEventListener('submit', (e) => {
