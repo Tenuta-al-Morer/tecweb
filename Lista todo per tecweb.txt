@@ -1,5 +1,4 @@
 Lista todo per tecweb:   
-- navbar deve stare in un tag nav non un div
 - aria-expanded deve stare dentro tag nav non label
 - leggere relazione
 
