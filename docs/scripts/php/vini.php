@@ -88,12 +88,12 @@ function costruisciCardVino($vino) {
     // $altText = "Bottiglia di " . $nome; immagine decorativa, non serve l'alt
 
     $triggerHTML = '
-    <label for="' . $modalId . '" class="details-button" tabindex="0" role="button" aria-label="Info: scheda di  ' . $nome .'">
+    <label for="' . $modalId . '" class="details-button" tabindex="0" aria-label="Info: scheda di  ' . $nome .'">
         Info
     </label>';
 
     $closeButtonsHTML = '
-        <label for="' . $modalId . '" class="modal-close-btn" aria-label="Chiudi scheda ' . $nome . '" tabindex="0" role="button">
+        <label for="' . $modalId . '" class="modal-close-btn" tabindex="0" aria-label="Chiudi scheda ' . $nome . '">
             &times;
         </label>
     ';
