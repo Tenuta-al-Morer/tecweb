@@ -239,8 +239,8 @@ CREATE TABLE `utente` (
 --
 
 INSERT INTO `utente` (`id`, `nome`, `cognome`, `email`, `password`, `data_registrazione`, `ruolo`, `indirizzo`, `citta`, `cap`, `provincia`, `prefisso`, `telefono`) VALUES
-(5, 'TestAdmin', 'Admin', 'admin', '$2y$10$C4nvcMK.3tnfALXz9sUmmeT.bJZxczgp.A3L1okyu0Zf6NjWw561m', '2025-12-08 17:34:01', 'admin', NULL, NULL, NULL, NULL, '+39', NULL),
-(6, 'TestUser', 'User', 'user', '$2y$10$CubhFtqfSPXVCYsGn4Y5B.MOwk80YcjYZz3hS8fAtb4xdPygFNy', '2025-12-08 17:34:01', 'user', 'Via Appia nuova 10', 'Roma', '12345', 'RM', '+39', '35101555408'),
+(5, 'TestAdmin', 'Admin', 'admin', '$2y$12$wj1eqzV9r3pncPFvrdDt8ueXjxh/ED/pDd05nNHtkU6DPG/UWLneS', '2025-12-08 17:34:01', 'admin', NULL, NULL, NULL, NULL, '+39', NULL),
+(6, 'TestUser', 'User', 'user', '$2y$10$CubhFtqfSPXVCYsGn4Y5B.MOwk80YcjYZz3hS8fAtb4xdPygFNy/G', '2025-12-08 17:34:01', 'user', 'Via Appia nuova 10', 'Roma', '12345', 'RM', '+39', '35101555408'),
 (7, 'TestStaff', 'Staff', 'staff', '$2y$12$StxkEY8E/fxSzhcqa8iGt.L1p0YpZITI62BAAerYTVDCy5blypgLW', '2025-12-28 12:17:04', 'staff', NULL, NULL, NULL, NULL, '+39', NULL);
 
 -- --------------------------------------------------------
