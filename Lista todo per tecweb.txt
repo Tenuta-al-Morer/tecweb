@@ -1,3 +1,41 @@
 Lista todo per tecweb:   
 - sistemare lettura numeri di telefono se ci riusciamo
 - leggere relazione e dire se ci sono modifiche da fare altrimenti è completata
+- navbar deve stare in un tag nav non un div
+- i tag i sono vietati dalla prof. vanno sostituiti con span (controllare tutte le icone)
+- aria-expanded deve stare dentro tag nav non label
+
+
+Qui sotto trovate l'esito di codex, gli ho dato in prompt tutte le specifiche richieste dalla prof scritte in moodle (la foto che ho 
+girato sul gruppo per capirsi) e ha analizzato tutto. Questo è il risultato:
+
+Criticità (ordine per gravità)
+- Specifica “sintassi XML” non rispettata: le pagine sono HTML5 ma non XML‑well‑formed (tag void non auto‑chiusi, <br> non auto‑chiuso, assenza di namespace XHTML). Esempi in home.html (line 5), home.html (line 7), home.html (line 35), home.html (line 75).
+- Separazione contenuto/presentazione/comportamento non completa: presenti stili inline e JS inline/inline handlers. Esempi: checkout.html (line 110), checkout.html (line 128), areaPersonale.php (line 58), admin.php (line 256), admin.php (line 279), admin.php (line 360).
+
+Verifica requisiti (evidenze principali)
+- HTML5: OK (DOCTYPE HTML5, es. home.html).
+- Degradazione elegante: OK (classe no-js e fallback CSS/noscript, es. style.css, mini.css, *.html).
+- Sintassi XML: KO (vedi criticità sopra).
+- Layout con CSS puri (CSS2/3): OK (style.css, mini.css, print.css).
+- Uso di Flex/Grid: OK (numerosi display:flex/grid in style.css e mini.css).
+- Separazione contenuto/presentazione/comportamento: KO (vedi criticità sopra).
+- Accessibilità per tutte le categorie: Parziale (buone pratiche in markup: skip link, ARIA, label/alt; ma non posso confermare al 100% senza test reali). Esempi: contatti.html, home.html, script.js.
+- Contenuti facilmente reperibili: OK (navigazione principale, breadcrumb, ricerca vini). Esempi: home.html, vini.html.
+- PHP per collezionare e pubblicare dati utente, con modifica/cancellazione: OK
+- Raccolta e salvataggio: contatti.php, esperienze.php, registrazione.php.
+- Modifica/cancellazione: areaPersonale.php (cambio password/elimina account), admin.php (CRUD vini/utenti).
+- Almeno un campo di testo libero: OK (<textarea> in contatti.html, admin.php).
+- Controllo input lato client e server: OK
+- Client: validazione generica in script.js (line 664).
+- Server: validazione in contatti.php, esperienze.php, registrazione.php.
+- Dati salvati in database: OK (DBConnection.php, schema in TenutaAlMorer.sql).
+- Database in forma normale (preferibile): Parziale (schema sembra normalizzato, con denormalizzazione intenzionale in ordine_elemento.nome_vino_storico). TenutaAlMorer.sql.
+- Relazione con fasi/ruoli gruppo: OK (relazione.pdf, relazione.ltx, riepilogo in README.md).
+- Analisi utenti + ricerche SEO + azioni ranking: OK (README.md, sezioni “Analisi utente” e “SEO”).
+- Accessibilità cross‑browser e responsive: Parziale (presenti media query e CSS stampa, ma serve validazione reale su browser/dispositivi). mini.css, print.css, note in README.md.
+
+Se vuoi, posso anche:
+- convertire i template a XHTML/XML‑compliant,
+- spostare gli inline style/script/onsubmit in CSS/JS esterni,
+- preparare una checklist di test (validatori HTML/CSS + accessibilità + responsive).
