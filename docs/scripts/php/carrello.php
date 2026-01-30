@@ -158,7 +158,7 @@ if (isset($_REQUEST['action'])) {
         $progressHTML = '<p class="shipping-info success"><i class="fas fa-check-circle"></i> Hai diritto alla spedizione GRATUITA!</p>';
     } else {
         $mancante = number_format($soglia - $newTotalProd, 2);
-        $progressHTML = '<p class="shipping-info warning"><i class="fas fa-info-circle"></i> Aggiungi altri <strong>€ ' . $mancante . '</strong> per la spedizione GRATIS.</p>';
+        $progressHTML = '<p class="shipping-info warning"><i class="fas fa-info-circle"></i> Aggiungi altri <span class="bold">€ ' . $mancante . '</span> per la spedizione GRATIS.</p>';
     }
 
     if (isset($_REQUEST['req_source'])) {
@@ -318,7 +318,7 @@ if ($totaleProdotti == 0) {
 } else {
     $mancante = number_format($sogliaGratuita - $totaleProdotti, 2);
     $msgSpedizione = '€ ' . number_format($costoSpedizioneStandard, 2);
-    $progressHTML = '<p class="shipping-info warning"><i class="fas fa-info-circle"></i> Aggiungi altri <strong>€ ' . $mancante . '</strong> per la spedizione GRATIS.</p>';
+    $progressHTML = '<p class="shipping-info warning"><i class="fas fa-info-circle"></i> Aggiungi altri <span class="bold">€ ' . $mancante . '</span> per la spedizione GRATIS.</p>';
 }
 
 // 4. FUNZIONE RENDER ITEM 
@@ -471,7 +471,7 @@ else {
         <div class='cart-list-container'>
             <h1 class='cart-title-main'>Carrello</h1>
             $activeProductsHTML
-            " . (!empty($activeItems) ? "<div class='cart-list-total-row'>Totale prodotti (<span id='cart-count-display'>$numArticoli</span>): <strong>€ <span id='cart-list-total'>" . number_format($totaleProdotti, 2) . "</span></strong></div>" : "") . "
+            " . (!empty($activeItems) ? "<div class='cart-list-total-row'>Totale prodotti (<span id='cart-count-display'>$numArticoli</span>): <span class='bold'>€ <span id='cart-list-total'>" . number_format($totaleProdotti, 2) . "</span></span></div>" : "") . "
             $savedProductsHTML
         </div>
 

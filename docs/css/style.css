@@ -4699,3 +4699,7 @@ body .auth-container .auth-form .form-group input:-webkit-autofill:active {
     font-size: inherit;
 }
 
+.little {
+    font-size: 0.85rem;
+    font-style: italic;
+}

@@ -166,7 +166,7 @@ $dashboardHTML = '
             <div class="card-icon"><i class="fas fa-wallet" aria-hidden="true"></i></div>
             <h3>Il Tuo Valore</h3>
             <p class="stat-number">€ ' . number_format($stats['totale_speso'], 2, ',', '.') . '</p>
-            <p class="stat-subtitle">su <strong>' . $stats['num_ordini'] . '</strong> ordini totali</p>
+            <p class="stat-subtitle">su <span class="bold">' . $stats['num_ordini'] . '</span> ordini totali</p>
         </a>
     </li>
     <li>
@@ -229,7 +229,7 @@ if (empty($ordini)) {
             $tabellaOrdini .= '<li><span>' . htmlspecialchars($item['quantita']) . 'x ' . htmlspecialchars($item['nome_vino_storico']) . '</span><span>€ ' . number_format($item['prezzo_acquisto'], 2, ',', '.') . ' (cad.)</span></li>';
         }
         $tabellaOrdini .= '</ul></div>'; 
-        $tabellaOrdini .= '<div class="details-section"><h4>Riepilogo e Spedizione:</h4><p><strong>Indirizzo Spedizione:</strong> ' . nl2br(htmlspecialchars($ordine['indirizzo_spedizione'])) . '</p><div class="details-summary"><p>Totale Prodotti: € ' . number_format($ordine['totale_prodotti'], 2, ',', '.') . '</p><p>Costo Spedizione: € ' . number_format($ordine['costo_spedizione'], 2, ',', '.') . '</p><p><strong>Totale Finale: <span>€ ' . number_format($ordine['totale_finale'], 2, ',', '.') . '</span></strong></p></div></div></div></td></tr>';
+        $tabellaOrdini .= '<div class="details-section"><h4>Riepilogo e Spedizione:</h4><p><span class="bold">Indirizzo Spedizione:</span> ' . nl2br(htmlspecialchars($ordine['indirizzo_spedizione'])) . '</p><div class="details-summary"><p>Totale Prodotti: € ' . number_format($ordine['totale_prodotti'], 2, ',', '.') . '</p><p>Costo Spedizione: € ' . number_format($ordine['costo_spedizione'], 2, ',', '.') . '</p><p><span class="bold">Totale Finale: € ' . number_format($ordine['totale_finale'], 2, ',', '.') . '</span></p></div></div></div></td></tr>';
     }
     $tabellaOrdini .= '</tbody></table>';
 }
@@ -308,7 +308,7 @@ $datiPersonaliHTML = '
 
     <div class="danger-zone">
         <h3><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Zona Pericolosa</h3>
-        <p>L\'eliminazione dell\'account è <strong>irreversibile</strong>. Perderai l\'accesso all\'area riservata.</p>
+        <p>L\'eliminazione dell\'account è <span class="bold">irreversibile</span>. Perderai l\'accesso all\'area riservata.</p>
         
         <form action="areaPersonale.php" method="POST" class="delete-account-form">
             <input type="hidden" name="azione_delete" value="elimina_definitivamente">
