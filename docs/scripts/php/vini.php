@@ -58,7 +58,7 @@ function costruisciCardVino($vino) {
     $id = (int)$vino['id'];
     $nome = htmlspecialchars($vino['nome']);
     $prezzo = number_format($vino['prezzo'], 2, ',', '.');
-    $img = htmlspecialchars($vino['img']);
+    $img = str_replace(' ', '%20', htmlspecialchars($vino['img']));
     $descBreve = htmlspecialchars($vino['descrizione_breve']);
     $descEstesa = htmlspecialchars($vino['descrizione_estesa']);
     $stock = (int)$vino['quantita_stock'];
@@ -75,6 +75,8 @@ function costruisciCardVino($vino) {
     $titleId = "modal-title-" . $id;
     $priceId = "modal-price-" . $id; 
     $descId = "modal-desc-" . $id;
+    $descrModaleId = "descr-modale-" . $id;
+    $descrTabellaId = "descr-tabella-" . $id;
     $specsCaptionId = "modal-specs-cap-" . $id;
 
     $qtySession = isset($_SESSION['vini_qty'][$id]) ? $_SESSION['vini_qty'][$id] : 1;
@@ -86,12 +88,12 @@ function costruisciCardVino($vino) {
     // $altText = "Bottiglia di " . $nome; immagine decorativa, non serve l'alt
 
     $triggerHTML = '
-    <label for="' . $modalId . '" class="details-button" tabindex="0" role="button" aria-label="Informazioni per  ' . $nome .'">
+    <label for="' . $modalId . '" class="details-button" tabindex="0" aria-label="Info: scheda di  ' . $nome .'">
         Info
     </label>';
 
     $closeButtonsHTML = '
-        <label for="' . $modalId . '" class="modal-close-btn" aria-label="Chiudi scheda ' . $nome . '" tabindex="0" role="button">
+        <label for="' . $modalId . '" class="modal-close-btn" tabindex="0" aria-label="Chiudi scheda ' . $nome . '">
             &times;
         </label>
     ';
@@ -168,7 +170,7 @@ function costruisciCardVino($vino) {
         
         <div class="modal-overlay">
 
-            <p id="descr-modale" class="sum">
+            <p id="' . $descrModaleId . '" class="sum">
                 Modale con maggiori informazioni per ' . $nome . ', con la tabella delle specifiche tecniche.
             </p>
             
@@ -177,7 +179,7 @@ function costruisciCardVino($vino) {
                  role="dialog"
                  aria-modal="true"
                  aria-labelledby="' . $titleId . '"
-                 aria-describedby="descr-modale" tabindex="0">
+                 aria-describedby="' . $descrModaleId . '" tabindex="0">
 
 
                 <div class="modal-grid">
@@ -192,12 +194,12 @@ function costruisciCardVino($vino) {
 
                         <p class="modal-desc" id="' . $descId . '">' . $descEstesa . '</p>
 
-                        <p id="descr-tabella-vino" class="sum">
+                        <p id="' . $descrTabellaId . '" class="sum">
                             La tabella riassume le specifiche tecniche del vino, specificandone vitigno, annata, gradazione alcolica, temperatura di servizio e abbinamenti consigliati.
                         </p>
 
                         <div class="modal-specs">
-                            <table class="modal-specs-table" aria-describedby="descr-tabella-vino">
+                            <table class="modal-specs-table" aria-describedby="'. $descrTabellaId . '">
                                 <caption class="sr-only" id="' . $specsCaptionId . '">Specifiche tecniche di ' . $nome . '</caption>
                                 <tbody>
                                     <tr><th scope="row">Vitigno</th><td>' . $vitigno . '</td></tr>
