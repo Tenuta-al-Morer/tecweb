@@ -229,8 +229,8 @@ if ($view === 'vini') {
         $nomeSafe = htmlspecialchars($v['nome'], ENT_QUOTES);
         
         $iconaVisibilita = ($v['stato'] == 'attivo') 
-            ? '<i class="fas fa-eye" aria-hidden="true"></i>' 
-            : '<i class="fas fa-eye-slash icon-muted" aria-hidden="true"></i>';
+            ? '<span class="fas fa-eye" aria-hidden="true"></span>' 
+            : '<span class="fas fa-eye-slash icon-muted" aria-hidden="true"></span>';
         
         $actions = "";
         $modalToggleId = "modal-edit-" . $v['id'];
@@ -238,7 +238,7 @@ if ($view === 'vini') {
         if (!$isDeleted) {
             $actions .= "
             <label for='$modalToggleId' class='btn-icon' title='Modifica $nomeSafe' aria-label='Modifica $nomeSafe' role='button' tabindex='0'>
-                <i class='fas fa-edit'></i>
+                <span class='fas fa-edit' aria-hidden='true'></span>
             </label>";
             
             $actions .= "
@@ -258,7 +258,7 @@ if ($view === 'vini') {
                 <input type='hidden' name='view' value='{$view}'>
                 <input type='hidden' name='id' value='{$v['id']}'>
                 <button type='submit' class='btn-icon btn-icon-delete' title='Elimina $nomeSafe' aria-label='Elimina $nomeSafe'>
-                    <i class='fas fa-trash'></i>
+                    <span class='fas fa-trash' aria-hidden='true'></span>
                 </button>
             </form>";
             
@@ -281,7 +281,7 @@ if ($view === 'vini') {
                 <input type='hidden' name='view' value='{$view}'>
                 <input type='hidden' name='id' value='{$v['id']}'>
                 <button type='submit' class='btn-icon btn-icon-restore' aria-label='Ripristina $nomeSafe' title='Ripristina Vino'>
-                    <i class='fas fa-trash-restore'></i> 
+                    <span class='fas fa-trash-restore' aria-hidden='true'></span>
                 </button>
             </form>";
         }
@@ -362,7 +362,7 @@ if ($view === 'utenti') {
                         <input type='hidden' name='view' value='{$view}'>
                         <input type='hidden' name='id' value='{$idUtente}'>
                         <button type='submit' class='btn-icon btn-icon-delete' title='Elimina {$nome} {$cognome}' aria-label='Elimina {$nome} {$cognome}'>
-                            <i class='fas fa-trash'></i>
+                            <span class='fas fa-trash' aria-hidden='true'></span>
                         </button>
                     </form>
                 </div>";
@@ -446,13 +446,13 @@ $sezioneUtenti = "
 
 $btnNuovoVino = ($view === 'vini')
     ? "<label for='toggle-modal-nuovo' class=\"btn-primary admin-btn-inline\">
-            <i class=\"fas fa-plus\" aria-hidden=\"true\"></i>&nbsp;Nuovo Vino
+            <span class=\"fas fa-plus\" aria-hidden=\"true\"></span>&nbsp;Nuovo Vino
        </label>"
     : "";
 
 $btnNuovoUtente = ($view === 'utenti')
     ? "<label for=\"toggle-modal-utente\" class=\"btn-primary\" role=\"button\" aria-label=\"Aggiungi nuovo utente\">
-            <i class=\"fas fa-plus\" aria-hidden=\"true\"></i> Nuovo Utente
+            <span class=\"fas fa-plus\" aria-hidden=\"true\"></span>&nbsp;Nuovo Utente
        </label>"
     : "";
 

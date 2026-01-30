@@ -119,7 +119,7 @@ foreach ($ordiniArray as $ordine) {
     $ordini .= '<td class="td_richiesta_degustazione" data-title="Dettagli">
                     <a href="?sezione=ordini#details-row-' . $ordineId . '" class="btn-secondary btn-fallback">Mostra Dettagli</a>
                     <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $ordineId . '" aria-expanded="false" aria-controls="details-row-' . $ordineId . '">
-                        Mostra <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        Mostra <span class="fas fa-chevron-down" aria-hidden="true"></span>
                     </button>
                 </td>';
                 
@@ -165,7 +165,7 @@ foreach ($ordiniArchivioArray as $ordine) {
     $ordiniArchivio .= '<td class="td_richiesta_degustazione" data-title="Dettagli">
                             <a href="?sezione=ordini#details-row-' . $ordineId . '" class="btn-secondary btn-fallback">Mostra Dettagli</a>
                             <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $ordineId . '" aria-expanded="false" aria-controls="details-row-' . $ordineId . '">
-                                Mostra <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                                Mostra <span class="fas fa-chevron-down" aria-hidden="true"></span>
                             </button>
                         </td>';
     $ordiniArchivio .= '</tr>';
@@ -199,7 +199,7 @@ foreach ($prenotazioniArray as $prenotazione) {
     $prenotazioni .= '<td class="td_richiesta_degustazione" data-title="Dettagli">
                         <a href="?sezione=esperienze#details-row-' . $detailsKey . '" class="btn-secondary btn-fallback">Mostra Dettagli</a>
                         <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $detailsKey . '" aria-expanded="false" aria-controls="details-row-' . $detailsKey . '">
-                            Mostra <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                            Mostra <span class="fas fa-chevron-down" aria-hidden="true"></span>
                         </button>
                     </td>';
     $prenotazioni .= '<td class="td_richiesta_degustazione" data-title="Gestione richiesta"> 
@@ -235,7 +235,7 @@ foreach ($prenotazioniArchivioArray as $prenotazione) {
     $prenotazioniArchivio .= '<td class="td_richiesta_degustazione" data-title="Dettagli">
                                 <a href="?sezione=esperienze#details-row-' . $detailsKey . '" class="btn-secondary btn-fallback">Mostra Dettagli</a>
                                 <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $detailsKey . '" aria-expanded="false" aria-controls="details-row-' . $detailsKey . '">
-                                    Mostra <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                                    Mostra <span class="fas fa-chevron-down" aria-hidden="true"></span>
                                 </button>
                             </td>';
     $prenotazioniArchivio .= '</tr>';
@@ -264,7 +264,7 @@ foreach ($messaggiArray as $messaggio) {
     $messaggi .= '<td class="td_richiesta_degustazione" data-title="Gestisci">
                     <a href="?sezione=messaggi#details-row-' . $detailsKey . '" class="btn-secondary btn-fallback">Mostra Dettagli</a>
                     <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $detailsKey . '" aria-expanded="false" aria-controls="details-row-' . $detailsKey . '">
-                        Mostra <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        Mostra <span class="fas fa-chevron-down" aria-hidden="true"></span>
                     </button>
                 </td>';
     $messaggi .= '</tr>';
@@ -301,7 +301,7 @@ foreach ($messaggiArchivioArray as $messaggio) {
     $messaggiArchivio .= '<td class="td_richiesta_degustazione" data-title="Gestisci">
                             <a href="?sezione=messaggi#details-row-' . $detailsKey . '" class="btn-secondary btn-fallback">Mostra Dettagli</a>
                             <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $detailsKey . '" aria-expanded="false" aria-controls="details-row-' . $detailsKey . '">
-                                Mostra <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                                Mostra <span class="fas fa-chevron-down" aria-hidden="true"></span>
                             </button>
                         </td>';
     $messaggiArchivio .= '</tr>';

@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         exit();
     } else {
         // Messaggio di errore accessibile
-        $errorMsg = '<div class="alert error" role="alert"><i class="fas fa-exclamation-triangle"></i> Errore durante l\'ordine: ' . htmlspecialchars($risultato['error']) . '</div>';
+        $errorMsg = '<div class="alert error" role="alert"><span class="fas fa-exclamation-triangle"></span> Errore durante l\'ordine: ' . htmlspecialchars($risultato['error']) . '</div>';
     }
 }
 

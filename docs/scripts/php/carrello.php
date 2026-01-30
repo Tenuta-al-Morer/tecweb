@@ -153,12 +153,12 @@ if (isset($_REQUEST['action'])) {
 
     $progressHTML = "";
     if ($newTotalProd == 0) {
-        $progressHTML = '<p class="shipping-info"><i class="fas fa-shopping-basket"></i> Aggiungi prodotti al carrello.</p>';
+        $progressHTML = '<p class="shipping-info"><span class="fas fa-shopping-basket"></span> Aggiungi prodotti al carrello.</p>';
     } elseif ($shipCost == 0) {
-        $progressHTML = '<p class="shipping-info success"><i class="fas fa-check-circle"></i> Hai diritto alla spedizione GRATUITA!</p>';
+        $progressHTML = '<p class="shipping-info success"><span class="fas fa-check-circle"></span> Hai diritto alla spedizione GRATUITA!</p>';
     } else {
         $mancante = number_format($soglia - $newTotalProd, 2);
-        $progressHTML = '<p class="shipping-info warning"><i class="fas fa-info-circle"></i> Aggiungi altri <span class="bold">€ ' . $mancante . '</span> per la spedizione GRATIS.</p>';
+        $progressHTML = '<p class="shipping-info warning"><span class="fas fa-info-circle"></span> Aggiungi altri <span class="bold">€ ' . $mancante . '</span> per la spedizione GRATIS.</p>';
     }
 
     if (isset($_REQUEST['req_source'])) {
@@ -186,9 +186,9 @@ if (isset($_REQUEST['action'])) {
 $userLinkHTML = '';
 if (isset($_SESSION['utente'])) {
     $targetPage = ($_SESSION['ruolo'] === 'admin') ? 'gestionale.php' : 'areaPersonale.php';
-    $userLinkHTML = '<a href="' . $targetPage . '" aria-label="Area Personale"><i class="fas fa-user-check"></i></a>';
+    $userLinkHTML = '<a href="' . $targetPage . '" aria-label="Area Personale"><span class="fas fa-user-check"></span></a>';
 } else {
-    $userLinkHTML = '<a href="login.php" aria-label="Accedi o Registrati"><i class="fas fa-user"></i></a>';
+    $userLinkHTML = '<a href="login.php" aria-label="Accedi o Registrati"><span class="fas fa-user"></span></a>';
 }
 
 $db = new DBConnection();
@@ -290,7 +290,7 @@ if (!empty($quantitaRidottaMsg)) {
     $listaVini = implode(", ", $quantitaRidottaMsg);
     $alertMsgHTML .= '
     <div class="alert-bar">
-        <i class="fas fa-info-circle"></i>
+        <span class="fas fa-info-circle"></span>
         <span>La quantità di alcuni articoli (' . $listaVini . ') è stata aggiornata in base alla disponibilità attuale.</span>
     </div>';
 }
@@ -311,14 +311,14 @@ $progressHTML = "";
 
 if ($totaleProdotti == 0) {
     $msgSpedizione = "€ 0.00";
-    $progressHTML = '<p class="shipping-info"><i class="fas fa-shopping-basket"></i> Aggiungi prodotti al carrello.</p>';
+    $progressHTML = '<p class="shipping-info"><span class="fas fa-shopping-basket"></span> Aggiungi prodotti al carrello.</p>';
 } elseif ($speseSpedizione == 0) {
     $msgSpedizione = '<span class="free-shipping-text">Gratuita</span>';
-    $progressHTML = '<p class="shipping-info success"><i class="fas fa-check-circle"></i> Hai diritto alla spedizione GRATUITA!</p>';
+    $progressHTML = '<p class="shipping-info success"><span class="fas fa-check-circle"></span> Hai diritto alla spedizione GRATUITA!</p>';
 } else {
     $mancante = number_format($sogliaGratuita - $totaleProdotti, 2);
     $msgSpedizione = '€ ' . number_format($costoSpedizioneStandard, 2);
-    $progressHTML = '<p class="shipping-info warning"><i class="fas fa-info-circle"></i> Aggiungi altri <span class="bold">€ ' . $mancante . '</span> per la spedizione GRATIS.</p>';
+    $progressHTML = '<p class="shipping-info warning"><span class="fas fa-info-circle"></span> Aggiungi altri <span class="bold">€ ' . $mancante . '</span> per la spedizione GRATIS.</p>';
 }
 
 // 4. FUNZIONE RENDER ITEM 
@@ -426,7 +426,7 @@ $mainContentHTML = "";
 if (empty($activeItems) && empty($savedItems)) {
     $mainContentHTML = "
     <div class='empty-cart-message'>
-        <i class='fas fa-wine-bottle'></i>
+        <span class='fas fa-wine-bottle'></span>
         <h2>Il tuo carrello è vuoto</h2>
         <p>Non hai ancora aggiunto prodotti.</p>
         <a href='vini.php' class='btn-primary btn-shop-empty'>Vai allo Shop</a>
@@ -441,7 +441,7 @@ else {
     } else {
         $activeProductsHTML = "
         <div class='empty-cart-message small-empty'>
-            <i class='fas fa-wine-bottle'></i>
+            <span class='fas fa-wine-bottle'></span>
             <h3>Il carrello attivo è vuoto</h3>
             <a href='vini.php' class='btn-primary btn-shop-empty'>Vai allo Shop</a>
         </div>";

@@ -1,6 +1,5 @@
 Lista todo per tecweb:   
 - navbar deve stare in un tag nav non un div
-- i tag i sono vietati dalla prof. vanno sostituiti con span (controllare tutte le icone)
 - aria-expanded deve stare dentro tag nav non label
 - leggere relazione
 

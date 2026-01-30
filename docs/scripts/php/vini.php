@@ -112,7 +112,7 @@ function costruisciCardVino($vino) {
     } else {
         $testoStock = ($stock <= 20) ? "Ultimi " . $stock . " pezzi!" : "Disponibile";
         $classeStock = ($stock <= 20) ? "stock-warning" : "stock-ok";
-        $htmlStock = '<p class="stock-info ' . $classeStock . '"><i class="fas fa-check-circle"></i> ' . $testoStock . '</p>';
+        $htmlStock = '<p class="stock-info ' . $classeStock . '"><span class="fas fa-check-circle"></span> ' . $testoStock . '</p>';
 
         $selectorHTML = '
         <div class="selettore-quantita card-action">
