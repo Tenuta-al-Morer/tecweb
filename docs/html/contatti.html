@@ -100,9 +100,11 @@
                                 </a>
                             </p>
                             <p>
-                                <a href="tel:+390422000000"><span class="fas fa-phone-alt" aria-hidden="true"></span>
-                                <span class="sr-only">Telefono:</span>
-                                <span class="link-text" aria-label="più 3 9. 0 4 2 2. 0 0 0. 0 0 0 ">+39 0422 000000</span>
+                                <a href="tel:+390422000000" aria-label="Chiama il numero +39 0422 000000">
+                                    <span class="fas fa-phone-alt" aria-hidden="true"></span>
+                                    <span class="sr-only">Telefono:</span>
+                                    <span class="link-text">+39 0422 000000</span>
+                                </a>
                             </p>
                             <p>
                                 <a href="mailto:info@tenutaalmorer.it"><span class="fas fa-envelope" aria-hidden="true"></span>
@@ -153,13 +155,13 @@
                             <div class="form-group row-two">
                                 <div>
                                     <label for="nome">Nome<span aria-hidden="true">*</span></label>
-                                    <input type="text" id="nome" name="nome" required autocomplete="name" value="[val_nome]" aria-describedby="nome-hint">
-                                    <span class="little" id="nome-hint" class="input-help">Esempio: Mario</span>
+                                    <input type="text" id="nome" name="nome" required autocomplete="given-name" value="[val_nome]" aria-describedby="nome-hint">
+                                    <span class="little input-help input-help" id="nome-hint">Esempio: Mario</span>
                                 </div>
                                 <div>
                                     <label for="cognome">Cognome<span aria-hidden="true">*</span></label>
-                                    <input type="text" id="cognome" name="cognome" required autocomplete="surname" value="[val_cognome]" aria-describedby="cognome-hint">
-                                    <span class="little" id="cognome-hint" class="input-help">Esempio: Rossi</span>
+                                    <input type="text" id="cognome" name="cognome" required autocomplete="family-name" value="[val_cognome]" aria-describedby="cognome-hint">
+                                    <span class="little input-help input-help" id="cognome-hint">Esempio: Rossi</span>
                                 </div>
                             </div>
 
@@ -167,7 +169,7 @@
                                 <div>
                                     <label for="email">Email<span aria-hidden="true">*</span></label>
                                     <input type="email" id="email" name="email" required autocomplete="email" value="[val_email]" aria-describedby="email-hint">
-                                    <span class="little" id="email-hint" class="input-help">Esempio: mario.rossi@email.com</span>
+                                    <span class="little input-help input-help" id="email-hint">Esempio: mario.rossi@email.com</span>
                                 </div>
 
                                 <div>
@@ -182,7 +184,7 @@
                                         <option value="assistenza" [sel_assistenza]>Assistenza tecnica</option>
                                         <option value="altro" [sel_altro]>Altro</option>
                                     </select>
-                                    <span class="little" id="tipo_supporto-hint" class="input-help">Seleziona l'argomento principale della richiesta.</span>
+                                    <span class="little input-help" id="tipo_supporto-hint">Seleziona l'argomento principale della richiesta.</span>
                                 </div>
                   
                             </div>
@@ -190,7 +192,7 @@
                             <div class="form-group">
                                 <label for="messaggio">Messaggio<span aria-hidden="true">*</span></label>
                                 <textarea id="messaggio" name="messaggio" rows="5" required aria-describedby="messaggio-hint">[val_messaggio]</textarea>
-                                <span class="little" id="messaggio-hint" class="input-help">Esempio: Vorrei maggiori informazioni sulla disponibilit&agrave; del Prosecco DOC...</span>
+                                <span class="little input-help" id="messaggio-hint">Esempio: Vorrei maggiori informazioni sulla disponibilit&agrave; del Prosecco DOC...</span>
                             </div>
 
                             <p class="checkbox-container">
