@@ -1,0 +1,873 @@
+Skip navigation
+Total Validator Home Page
+Main site navigation
+DocumentationReferenceWebsiteContact Form
+Summary report
+Start page:	http://tecweb.studenti.math.unipd.it/acontari/scripts/php/policy.php
+Issues:	1 Error, 3 Warnings
+Upgrade to Total Validator Pro to validate an entire site in one go
+
+Summary Issues Page
+Display issue details:HoverShow allHide all
+ Go to first issue
+
+  0 next issueprevious issueW874WCAG2 A 2.4.1: Add a skip navigation link as the first link on the page
+If your document has structure then you should add a skip navigation link to make it easier for accessible users to get to the page's content. To ensure detection, skip navigation links should point to a <main> element, or an element with role='main'. See Understanding 2.4.1, and Skip Navigation.
+  1 <!DOCTYPE html>
+  2 <html lang="it" class="">
+  2   <head>
+  3     <meta charset="utf-8">
+  4     <title>
+  4       Politiche, Privacy e Accessibilità - Tenuta al Morer
+  4     </title>
+  5     <link rel="icon" href="../../images/logo.ico" type="image/x-icon">
+  7     <meta name="description" content="Pagina estesa delle politiche, privacy policy, condizioni d'uso e dichiarazione di accessibilità del progetto didattico Tenuta al Morer.">
+  8     <meta name="keywords" content="Privacy Policy, GDPR, Condizioni d'uso, Accessibilità WCAG, Tenuta al Morer, Progetto didattico, Università Padova">
+  9     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 10     <meta name="robots" content="noindex, nofollow">
+ 12     <link rel="preconnect" href="https://fonts.googleapis.com">
+ 13     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+ 14     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+ 15     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet">
+ 16     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+ 18     <link rel="stylesheet" href="../../css/style.css" media="screen">
+ 19     <link rel="stylesheet" href="../../css/mini.css" media="screen and (max-width:1024px)">
+ 20     <link rel="stylesheet" href="../../css/print.css" media="print">
+ 22     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+ 23     <script src="../javascript/script.js">
+ 23     </script>
+ 24   </head>
+ 26   <body>
+ 27     <header class="header-policy">
+ 28 next issueprevious issueW877WCAG2 A 1.3.1: Distinguish between navigation groups using an ARIA label
+When the <nav> element is employed more than once on a page, distinguish between the navigation groups by using an 'aria-label' or 'aria-labelledby' attribute. See WCAG2 HTML Technique H97.
+          <nav>
+ 29         <a href="http://tecweb.studenti.math.unipd.it/acontari/scripts/php/admin.php" id="back-link" class="btn btn-outline-white">
+ 30           <i class="fas fa-arrow-left" aria-hidden="true">
+ 30           </i>
+ 30           Pagina precedente
+ 31         </a>
+ 32       </nav>
+ 34       <div class="sub-header">
+ 35         <nav id="breadcrumb" aria-label="Posizione nella pagina">
+ 36           <div class="breadcrumb-container">
+ 37             <span>
+ 37               Ti trovi in:
+ 37             </span>
+ 38             <a href="home.php">
+ 38               <span lang="en">
+ 38                 Home
+ 38               </span>
+ 38             </a>
+ 38             <span aria-hidden="true">
+ 38               &gt;
+ 38             </span>
+ 39             <span class="current-page" aria-current="page" lang="en">
+ 39               Policy
+ 39             </span>
+ 40           </div>
+ 41         </nav>
+ 43 next issueprevious issueE9081WCAG2 A 2.5.3: The accessible name in 'aria-label' must contain the visible label text: Passa alla modalita chiara
+The accessible name used by accessibility aids must contain the text displayed by the visible label. When choosing the text remember that both the name and the label may be read out aloud. See Understanding 2.5.3, and Accessibility API Mappings.
+            <button id="theme-toggle" title="Cambia modalità chiaro/scuro" aria-label="Cambia tema">
+ 44           <span class="visually-hidden">
+ 44             Passa alla modalita chiara
+ 44           </span>
+ 45           <svg viewBox="0 0 24 24" class="theme-icon" aria-hidden="true">
+ 46             <circle cx="12" cy="12" r="4.5">
+ 46             </circle>
+ 47             <line x1="12" y1="2" x2="12" y2="4">
+ 47             </line>
+ 48             <line x1="12" y1="20" x2="12" y2="22">
+ 48             </line>
+ 49             <line x1="4.2" y1="4.2" x2="5.8" y2="5.8">
+ 49             </line>
+ 50             <line x1="18.2" y1="18.2" x2="19.8" y2="19.8">
+ 50             </line>
+ 51             <line x1="2" y1="12" x2="4" y2="12">
+ 51             </line>
+ 52             <line x1="20" y1="12" x2="22" y2="12">
+ 52             </line>
+ 53             <line x1="4.2" y1="19.8" x2="5.8" y2="18.2">
+ 53             </line>
+ 54             <line x1="18.2" y1="5.8" x2="19.8" y2="4.2">
+ 54             </line>
+ 55           </svg>
+ 56         </button>
+ 57       </div>
+ 58     </header>
+ 60     <main id="content" class="container-policy" aria-labelledby="sum">
+ 61       <p class="visually-hidden" id="sum">
+ 61         Politiche generali e note legali del progetto didattico "Tenuta al Morer".
+ 61       </p>
+ 63       <header class="page-intro">
+ 64         <h1>
+ 64           Politiche Generali e Note Legali
+ 64         </h1>
+ 65         <p>
+ 65           Disposizioni estese relative all'utilizzo, alla gestione dei dati e agli standard tecnici di accessibilità per il Progetto Didattico "Tenuta al Morer".
+ 65         </p>
+ 66       </header>
+ 68       <section id="summary-table">
+ 69         <h2>
+ 69           Quadro Sinottico delle Politiche
+ 69         </h2>
+ 71         <p id="descrizione-tabella" class="visually-hidden">
+ 72           La tabella riassume le tre principali politiche del sito: Condizioni di utilizzo, Privacy Policy e Accessibilità. Per ogni politica vengono indicati la tipologia normativa, i destinatari e il tipo di consenso richiesto.
+ 74         </p>
+ 76         <div class="table-container">
+ 77           <table class="table-data" aria-describedby="descrizione-tabella">
+ 79             <caption>
+ 79               Riepilogo delle Politiche e Normative
+ 79             </caption>
+ 81             <thead>
+ 82               <tr>
+ 83                 <th scope="col" abbr="Nome">
+ 83                   Nome Politica
+ 83                 </th>
+ 84                 <th scope="col">
+ 84                   Tipologia
+ 84                 </th>
+ 85                 <th scope="col">
+ 85                   Destinatari
+ 85                 </th>
+ 86                 <th scope="col">
+ 86                   Consenso
+ 86                 </th>
+ 87               </tr>
+ 88             </thead>
+ 89             <tbody>
+ 90               <tr>
+ 91                 <th scope="row" abbr="Condizioni Utilizzo">
+ 91                   <a href="#terms-of-use">
+ 91                     Condizioni Generali di Utilizzo
+ 91                   </a>
+ 91                 </th>
+ 92                 <td data-title="Tipologia">
+ 92                   Termini del Servizio
+ 92                 </td>
+ 93                 <td data-title="Destinatari">
+ 93                   Tutti i visitatori
+ 93                 </td>
+ 94                 <td data-title="Consenso">
+ 94                   Implicito nella navigazione
+ 94                 </td>
+ 95               </tr>
+ 96               <tr>
+ 97                 <th scope="row" abbr="Privacy Policy">
+ 97                   <a href="#privacy-policy">
+ 97                     Informativa
+ 97                     <span lang="en">
+ 97                       Privacy
+ 97                     </span>
+ 97                     e Trattamento Dati
+ 97                   </a>
+ 97                 </th>
+ 98                 <td data-title="Tipologia">
+ 98                   Protezione Dati (
+ 98                   <abbr title="General Data Protection Regulation" lang="en">
+ 98                     GDPR
+ 98                   </abbr>
+ 98                   )
+ 98                 </td>
+ 99                 <td data-title="Destinatari">
+ 99                   Utenti registrati
+ 99                 </td>
+100                 <td data-title="Consenso">
+100                   Esplicito alla registrazione
+100                 </td>
+101               </tr>
+102               <tr>
+103                 <th scope="row" abbr="Accessibilità">
+103                   <a href="#accessibility">
+103                     Dichiarazione di Accessibilità
+103                   </a>
+103                 </th>
+104                 <td data-title="Tipologia">
+104                   Inclusività e Tecnica
+104                 </td>
+105                 <td data-title="Destinatari">
+105                   Tutti i visitatori
+105                 </td>
+106                 <td data-title="Consenso">
+106                   <span lang="en">
+106                     N/A
+106                   </span>
+106                 </td>
+107               </tr>
+108             </tbody>
+109           </table>
+110         </div>
+111       </section>
+113       <article id="terms-of-use" class="article-block">
+114         <h2>
+114           1. Condizioni Generali di Utilizzo
+114         </h2>
+116         <h3>
+116           1.1 Finalità Esclusivamente Didattica
+116         </h3>
+117         <p>
+117           Il presente sito
+117           <abbr title="World Wide Web">
+117             web
+117           </abbr>
+117           è stato realizzato esclusivamente a scopo didattico e accademico nell'ambito del corso di "Tecnologie Web" presso l'Università degli Studi di Padova.
+117           <strong>
+117             Non rappresenta una reale attività commerciale
+117           </strong>
+117           . Tutti i riferimenti a prodotti, prezzi e disponibilità sono puramente di fantasia e funzionali alla simulazione tecnica.
+117         </p>
+119         <h3>
+119           1.2 Simulazione
+119           <span lang="en">
+119             E-commerce
+119           </span>
+119           e Transazioni
+119         </h3>
+120         <p>
+120           La sezione "
+120           <span lang="en">
+120             Shop
+120           </span>
+120           " e le relative funzionalità di carrello e
+120           <span lang="en">
+120             checkout
+120           </span>
+120           sono
+120           <strong>
+120             mere simulazioni informatiche
+120           </strong>
+120           . Si avvisa esplicitamente l'utenza che:
+120         </p>
+121         <ul>
+122           <li>
+122             Non è possibile acquistare realmente i prodotti esposti.
+122           </li>
+123           <li>
+123             Nessun pagamento verrà processato e nessuna merce verrà spedita.
+123           </li>
+124           <li>
+124             L'utente non avrà la possibilità inserire dati di carte di credito o altri strumenti di pagamento.
+124           </li>
+125         </ul>
+127         <h3>
+127           1.3 Proprietà Intellettuale e
+127           <span lang="en">
+127             Copyright
+127           </span>
+127         </h3>
+128         <p>
+128           I contenuti originali (
+128           <span lang="en">
+128             layout
+128           </span>
+128           , codice, testi descrittivi) sono proprietà intellettuale del gruppo di studenti. Immagini e risorse di terze parti sono utilizzate in conformità alle normative per finalità didattiche o sotto licenze
+128           <span lang="en">
+128             Creative Commons
+128           </span>
+128           , con citazione della fonte ove richiesto. È vietata la riproduzione del codice sorgente per fini di lucro.
+128         </p>
+130         <h3>
+130           1.4 Limitazione di Responsabilità (Manleva)
+130         </h3>
+131         <p>
+131           Il servizio è fornito "
+131           <span lang="en">
+131             as is
+131           </span>
+131           " (così com'è). L'Università e gli studenti sviluppatori declinano ogni responsabilità per danni diretti o indiretti derivanti dall'uso improprio della piattaforma o da inesattezze nei contenuti informativi.
+131         </p>
+132       </article>
+134       <article id="privacy-policy" class="article-block">
+135         <h2>
+135           2. Informativa Estesa sulla
+135           <span lang="en">
+135             Privacy
+135           </span>
+135         </h2>
+136         <p>
+136           In ottemperanza al Regolamento
+136           <abbr title="Unione Europea">
+136             UE
+136           </abbr>
+136           2016/679 (
+136           <abbr title="General Data Protection Regulation" lang="en">
+136             GDPR
+136           </abbr>
+136           ), si forniscono i dettagli sul trattamento dei dati, ridotto al minimo essenziale per il funzionamento della
+136           <span lang="en">
+136             demo
+136           </span>
+136           .
+136         </p>
+138         <h3>
+138           2.1 Sicurezza dei Dati e Avvertenze Critiche
+138         </h3>
+139         <p>
+139           <strong>
+139             ATTENZIONE:
+139           </strong>
+139           Essendo un prototipo universitario ospitato su
+139           <span lang="en">
+139             server
+139           </span>
+139           di
+139           <span lang="en">
+139             test
+139           </span>
+139           o locali,
+139           <strong>
+139             non sono attivi protocolli di sicurezza di livello
+139             <span lang="en">
+139               enterprise
+139             </span>
+139           </strong>
+139           (es. crittografia
+139           <span lang="en">
+139             database
+139           </span>
+139           avanzata,
+139           <span lang="en">
+139             firewall
+139           </span>
+139           dedicati,
+139           <abbr title="Two-Factor Authentication" lang="en">
+139             2FA
+139           </abbr>
+139           ).
+139         </p>
+140         <p>
+140           Per la propria tutela, l'utente è tenuto a:
+140         </p>
+141         <ul>
+142           <li>
+142             <strong>
+142               Non utilizzare
+142               <span lang="en">
+142                 password
+142               </span>
+142               reali:
+142             </strong>
+142             Usare
+142             <span lang="en">
+142               password
+142             </span>
+142             fittizie o dedicate solo a questo sito.
+142           </li>
+143           <li>
+143             <strong>
+143               Non inserire dati sensibili:
+143             </strong>
+143             Non utilizzare informazioni anagrafiche, giudiziarie o bancarie.
+143           </li>
+144           <li>
+144             <strong>
+144               Utilizzare "
+144               <span lang="en">
+144                 Dummy Data
+144               </span>
+144               ":
+144             </strong>
+144             Si consiglia l'uso di nomi e indirizzi di fantasia per testare le funzionalità.
+144           </li>
+145         </ul>
+147         <h3>
+147           2.2 Tipologia e Finalità del Trattamento
+147         </h3>
+148         <p>
+148           I dati raccolti (
+148           <span lang="en">
+148             Username
+148           </span>
+148           ,
+148           <span lang="en">
+148             Email
+148           </span>
+148           , Dati di navigazione tecnica) servono esclusivamente a:
+148         </p>
+149         <ol>
+150           <li>
+150             Permettere l'accesso all'area riservata (gestione sessione).
+150           </li>
+151           <li>
+151             Simulare il processo di acquisto e gestione ordini.
+151           </li>
+152           <li>
+152             Garantire la sicurezza tecnica del
+152             <span lang="en">
+152               server
+152             </span>
+152             tramite
+152             <span lang="en">
+152               log
+152             </span>
+152             di errore.
+152           </li>
+153         </ol>
+155         <h3>
+155           2.3 Conservazione e Cancellazione (
+155           <span lang="en">
+155             Data Retention
+155           </span>
+155           )
+155         </h3>
+156         <p>
+156           I dati inseriti dagli utenti verranno conservati esclusivamente per la durata del progetto accademico e della relativa sessione d'esame. Al termine delle valutazioni,
+156           <strong>
+156             tutti i
+156             <span lang="en">
+156               record
+156             </span>
+156             presenti nel
+156             <span lang="en">
+156               database
+156             </span>
+156             verranno cancellati irreversibilmente
+156           </strong>
+156           .
+156         </p>
+157       </article>
+159       <article id="accessibility" class="article-block">
+160         <h2>
+160           3. Dichiarazione di Accessibilità e Scelte Tecniche
+160         </h2>
+161         <p>
+161           Il
+161           <span lang="en">
+161             team
+161           </span>
+161           di sviluppo ha posto massima attenzione all'inclusività, adottando pratiche di
+161           <span lang="en">
+161             design
+161           </span>
+161           e sviluppo volte a garantire la fruibilità del sito al maggior numero di utenti possibile, indipendentemente dalle loro abilità fisiche o sensoriali.
+161         </p>
+163         <h3>
+163           3.1 Livello di Conformità e Scelte Implementative
+163         </h3>
+164         <p>
+164           Di seguito sono elencate tutte le scelte effettuate per migliorare l’accessibilità del sito. Ognuna mira almeno al soddisfacimento del livello di conformità
+164           <strong>
+164             AA
+164           </strong>
+164           delle
+164           <abbr title="Web Content Accessibility Guidelines" lang="en">
+164             WCAG
+164           </abbr>
+164           come stabilito dalla legge italiana (Legge Stanca):
+164         </p>
+166         <ul>
+167           <li>
+167             <strong>
+167               Navigazione da tastiera:
+167             </strong>
+167             È garantita una navigazione completa e accessibile tramite l’aggiunta oculata degli attributi
+167             <code>
+167               tabindex
+167             </code>
+167             , rispettando rigorosamente l’ordine visivo degli elementi nel
+167             <abbr title="Document Object Model" lang="en">
+167               DOM
+167             </abbr>
+167             .
+167           </li>
+168           <li>
+168             <strong>
+168               Tabelle accessibili:
+168             </strong>
+168             Le tabelle (es. listini prezzi o specifiche vini) sono strutturate semanticamente, anche tramite l’utilizzo dei tag
+168             <code>
+168               &lt;time&gt;
+168             </code>
+168             ove necessario per le date.
+168           </li>
+169           <li>
+169             <strong>
+169               <span lang="en">
+169                 Form
+169               </span>
+169               accessibili:
+169             </strong>
+169             Tutti i moduli di contatto e
+169             <span lang="en">
+169               login
+169             </span>
+169             associano correttamente le etichette (
+169             <code>
+169               label
+169             </code>
+169             ) ai rispettivi campi di
+169             <span lang="en">
+169               input
+169             </span>
+169             .
+169           </li>
+170           <li>
+170             <strong>
+170               Stato dei
+170               <span lang="en">
+170                 Link
+170               </span>
+170               :
+170             </strong>
+170             Sono stati distinti visivamente i
+170             <span lang="en">
+170               link
+170             </span>
+170             visitati da quelli non visitati per migliorare l'orientamento dell'utente.
+170           </li>
+171           <li>
+171             <strong>
+171               Destinazione dei
+171               <span lang="en">
+171                 Link
+171               </span>
+171               :
+171             </strong>
+171             È stato opportunamente segnalato (tramite testo o icone) quando un
+171             <span lang="en">
+171               link
+171             </span>
+171             non porta ad una pagina
+171             <span lang="en">
+171               web
+171             </span>
+171             interna del sito (esempio:
+171             <span lang="en">
+171               link
+171             </span>
+171             esterni a consorzi o
+171             <span lang="en">
+171               mail
+171             </span>
+171             di contatto nella pagina "Chi siamo").
+171           </li>
+172           <li>
+172             <strong>
+172               <span lang="en">
+172                 Design "Above the Fold"
+172               </span>
+172               :
+172             </strong>
+172             Per ogni pagina è stata studiata
+172             <span lang="en">
+172               ad hoc
+172             </span>
+172             la sezione "
+172             <span lang="en">
+172               above the fold
+172             </span>
+172             " (la parte visibile senza scorrere), inserendoci le informazioni chiave per rispondere alle domande cognitive dell'utente:
+172             <em>
+172               "Dove sono? - Dove posso andare? - Di che cosa si tratta?"
+172             </em>
+172             .
+172           </li>
+173           <li>
+173             <strong>
+173               Contrasto Cromatico:
+173             </strong>
+173             Sono accessibili i contrasti tra i colori di testo e il relativo sfondo, verificati tramite strumenti di analisi del contrasto.
+173           </li>
+174           <li>
+174             <strong>
+174               Gerarchia di Navigazione:
+174             </strong>
+174             È stata adottata una gerarchia del sito ampia e poco profonda, per permettere di raggiungere i contenuti con pochi
+174             <span lang="en">
+174               click
+174             </span>
+174             .
+174           </li>
+175           <li>
+175             <strong>
+175               Abbreviazioni:
+175             </strong>
+175             Sono stati utilizzati i tag
+175             <code>
+175               &lt;abbr&gt;
+175             </code>
+175             per le abbreviazioni e gli acronimi, fornendo la spiegazione estesa.
+175           </li>
+176           <li>
+176             <strong>
+176               <span lang="en">
+176                 Headings
+176               </span>
+176               :
+176             </strong>
+176             I tag di intestazione (
+176             <code>
+176               h1
+176             </code>
+176             ,
+176             <code>
+176               h2
+176             </code>
+176             , ecc.) sono stati utilizzati in maniera semanticamente corretta, rispettando la gerarchia logica del documento senza salti di livello.
+176           </li>
+177           <li>
+177             <strong>
+177               Testo Alternativo (
+177               <span lang="en">
+177                 Alt Text
+177               </span>
+177               ):
+177             </strong>
+177             Tutte le immagini di contenuto possiedono un attributo
+177             <code>
+177               alt
+177             </code>
+177             adeguato. Anche l’utente staff, in fase di aggiunta di un nuovo vino nel catalogo, è guidato nell'inserimento di un’alternativa testuale alle immagini caricate (assumendo che l’staff sia adeguatamente formato per inserire una alternativa testuale valida).
+177           </li>
+178           <li>
+178             <strong>
+178               Immagini Decorative:
+178             </strong>
+178             Le immagini che non rappresentano contenuto informativo (es.
+178             <span lang="en">
+178               texture
+178             </span>
+178             di sfondo) sono state inserite tramite
+178             <span lang="en">
+178               CSS
+178             </span>
+178             o con attributo
+178             <code>
+178               alt=""
+178             </code>
+178             vuoto, affinché vengano ignorate dagli
+178             <span lang="en">
+178               screen reader
+178             </span>
+178             .
+178           </li>
+179           <li>
+179             <strong>
+179               <span lang="en">
+179                 Image Replacing
+179               </span>
+179               :
+179             </strong>
+179             Sono state usate opportune tecniche di
+179             <em>
+179               <span lang="en">
+179                 image replacing
+179               </span>
+179             </em>
+179             per le situazioni in cui le immagini contengono testo, garantendo che il testo sia comunque presente nel codice per le tecnologie assistive.
+179           </li>
+180           <li>
+180             <strong>
+180               Gestione Errori
+180               <span lang="en">
+180                 Form
+180               </span>
+180               :
+180             </strong>
+180             Nel caso di una compilazione errata di un
+180             <span lang="en">
+180               form
+180             </span>
+180             , i valori precedentemente inseriti non vengono eliminati, evitando all'utente la frustrazione di dover riscrivere tutto.
+180           </li>
+181         </ul>
+183         <h3>
+183           3.2 Aiuti per lo
+183           <span lang="en">
+183             Screen Reader
+183           </span>
+183           (
+183           <abbr title="Accessible Rich Internet Applications" lang="en">
+183             ARIA
+183           </abbr>
+183           )
+183         </h3>
+184         <p>
+184           Abbiamo utilizzato gli attributi
+184           <strong>
+184             <abbr title="Web Accessibility Initiative" lang="en">
+184               WAI
+184             </abbr>
+184             -
+184             <abbr title="Accessible Rich Internet Applications" lang="en">
+184               ARIA
+184             </abbr>
+184           </strong>
+184           per consentire a tutte le categorie di utenti l’interazione con il sito, specialmente per elementi dinamici. Inoltre è stata aggiunta una sezione apposita all’inizio di ogni pagina (invisibile graficamente ma rilevata dagli
+184           <span lang="en">
+184             screen reader
+184           </span>
+184           ) che contiene gli aiuti per la navigazione, permettendo ad un utente che naviga da tastiera di raggiungere direttamente determinate sezioni della pagina (funzionalità
+184           <em>
+184             "
+184             <span lang="en">
+184               Skip to content
+184             </span>
+184             "
+184           </em>
+184           ).
+184         </p>
+186         <h3>
+186           3.3 Compatibilità e Responsività
+186         </h3>
+187         <p>
+187           Le tabelle sono state rese responsive in modo da facilitarne la lettura su diversi dispositivi senza perdita di informazioni. Inoltre:
+187         </p>
+188         <ul>
+189           <li>
+189             Il menù di navigazione si trasforma in un
+189             <strong>
+189               menù ad
+189               <span lang="en">
+189                 hamburger
+189               </span>
+189             </strong>
+189             per i piccoli schermi, facilitando l'uso su
+189             <span lang="en">
+189               mobile
+189             </span>
+189             .
+189           </li>
+190           <li>
+190             Lo stesso principio di adattabilità è applicato ai
+190             <span lang="en">
+190               form
+190             </span>
+190             di filtro del catalogo vini e alle griglie dei prodotti.
+190           </li>
+191           <li>
+191             I contenuti di ogni pagina
+191             <span lang="en">
+191               web
+191             </span>
+191             sono disposti in modo tale da essere facilmente consultabili indipendentemente dal dispositivo utilizzato (
+191             <span lang="en">
+191               Liquid Layout
+191             </span>
+191             ).
+191           </li>
+192         </ul>
+193         <p>
+193           Tecnicamente, sono state utilizzate strutture moderne come
+193           <strong>
+193             <span lang="en">
+193               Flexbox
+193             </span>
+193           </strong>
+193           e
+193           <strong>
+193             <span lang="en">
+193               CSS Grid
+193             </span>
+193           </strong>
+193           , privilegiando dimensioni dei
+193           <span lang="en">
+193             font
+193           </span>
+193           e dei contenitori espresse in unità relative (
+193           <code>
+193             em
+193           </code>
+193           ,
+193           <code>
+193             rem
+193           </code>
+193           ,
+193           <code>
+193             %
+193           </code>
+193           ) ed evitando misure fisse in
+193           <span lang="en">
+193             pixel
+193           </span>
+193           . L’utilizzo di eventi
+193           <code>
+193             click
+193           </code>
+193           <span lang="en">
+193             standard
+193           </span>
+193           nei
+193           <span lang="en">
+193             listener
+193           </span>
+193           <span lang="en">
+193             JavaScript
+193           </span>
+193           garantisce il funzionamento anche nei dispositivi
+193           <span lang="en">
+193             touch
+193           </span>
+193           e in quelli più datati.
+193         </p>
+195         <h3>
+195           3.4 Meccanismo di
+195           <span lang="en">
+195             Feedback
+195           </span>
+195         </h3>
+196         <p>
+196           Nonostante l'impegno profuso, essendo un progetto in continuo sviluppo, potrebbero verificarsi imperfezioni. Per segnalare casi di mancata conformità o per richiedere informazioni in un formato alternativo, si prega di contattare il
+197           <span lang="en">
+197             team
+197           </span>
+197           di sviluppo tramite i riferimenti indicati nella
+198           <span lang="en">
+198             repository
+198           </span>
+198           di github
+198 next issueprevious issueW885WCAG2 A 1.1.1/2.4.4/2.4.9: Do not use the URL as link text
+Describe the purpose of a link by providing descriptive text as the content of the <a> element. This description lets a user distinguish this link from other links in the Web page and helps the user determine whether to follow the link. The URL of the destination is generally not sufficiently descriptive. See WCAG2 HTML Technique H30.
+              <a href="https://github.com/Tenuta-al-Morer/tecweb" class="policy-link" target="_blank">
+198             https://github.com/Tenuta-al-Morer/tecweb
+198           </a>
+198           all'interno del file
+198           <strong>
+198             README.md
+198           </strong>
+198           .
+198         </p>
+199       </article>
+201     </main>
+204     <footer>
+205       <div class="footer-content">
+206         <small>
+207           © 2025 Tenuta al Morer -
+207           <abbr title="Partita">
+207             P.
+207           </abbr>
+207           <abbr title="Imposta sul Valore Aggiunto">
+207             IVA
+207           </abbr>
+207           00000000000
+207           <br>
+208           <a href="policy.php">
+208             Note legali
+208           </a>
+208           |
+209           <a href="policy.php#privacy-policy">
+209             <span lang="en">
+209               Privacy Policy
+209             </span>
+209           </a>
+209           |
+210           <a href="policy.php#accessibility">
+210             Accessibilità
+210           </a>
+210           |
+211           <a href="mappa.php">
+211             Mappa del sito
+211           </a>
+212         </small>
+213       </div>
+214     </footer>
+216     <button id="backToTopBtn" aria-label="Torna all'inizio della pagina">
+217       <svg viewBox="0 0 24 24" class="arrow-icon" aria-hidden="true">
+218         <path d="M12 5 L12 19 M5 12 L12 5 L19 12">
+218         </path>
+219       </svg>
+220     </button>
+223   </body>
+223 </html>
+© 2005-2026 Total Validator

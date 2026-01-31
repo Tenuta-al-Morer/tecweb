@@ -1,0 +1,413 @@
+Skip navigation
+Total Validator Home Page
+Main site navigation
+DocumentationReferenceWebsiteContact Form
+Summary report
+Start page:	http://tecweb.studenti.math.unipd.it/acontari/scripts/php/checkout.php
+Issues:	4 Errors, 4 Warnings
+Upgrade to Total Validator Pro to validate an entire site in one go
+
+Summary Issues Page
+Display issue details:HoverShow allHide all
+ Go to first issue
+
+  1 <!DOCTYPE html>
+  2 <html lang="it" class="">
+  2   <head>
+  3     <meta charset="utf-8">
+  4     <title>
+  4       Spedizione - Tenuta al Morer
+  4     </title>
+  5     <link rel="icon" href="../../images/logo.ico" type="image/x-icon">
+  7     <meta name="description" content="Completa il tuo ordine inserendo i dati di spedizione.">
+  8     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  9     <meta name="format-detection" content="telephone=no,email=no,address=no">
+ 11     <link rel="preconnect" href="https://fonts.googleapis.com">
+ 12     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+ 13     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+ 14     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet">
+ 15     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+ 17     <link rel="stylesheet" href="../../css/style.css" media="screen">
+ 18     <link rel="stylesheet" href="../../css/mini.css" media="screen and (max-width:1024px)">
+ 19     <link rel="stylesheet" href="../../css/print.css" media="print">
+ 20     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+ 21     <script src="../javascript/script.js">
+ 21     </script>
+ 22   </head>
+ 24   <body>
+ 25     <header>
+ 26       <nav id="help">
+ 27         <a class="navigationHelp" href="#content">
+ 27           Vai al contenuto
+ 27         </a>
+ 28       </nav>
+ 29       <div class="main-nav-bar">
+ 30         <input type="checkbox" id="menu-checkbox" class="menu-checkbox visually-hidden">
+ 32         <label for="menu-checkbox" class="menu-toggle" aria-controls="main-navigation" aria-expanded="false">
+ 33           <i class="fas fa-bars" aria-hidden="true">
+ 33           </i>
+ 34           <span class="visually-hidden">
+ 34             Apri il menu di navigazione
+ 34           </span>
+ 35         </label>
+ 37 next issueprevious issueW867WCAG2 A 2.4.4: Identical adjacent links with different link text. See matching tag on line: 40
+If you have adjacent links to the same place with different link text (when read aloud) it can be confusing to the user. You should consider combining these into one link and removing any redundant link text. See Understanding 2.4.4.
+            <a href="home.php" class="logo-link">
+ 37           <img src="../../images/logo.webp" alt="Tenuta al Morer - Home">
+ 37         </a>
+ 38 next issueprevious issueW877WCAG2 A 1.3.1: Distinguish between navigation groups using an ARIA label
+When the <nav> element is employed more than once on a page, distinguish between the navigation groups by using an 'aria-label' or 'aria-labelledby' attribute. See WCAG2 HTML Technique H97.
+            <nav id="main-navigation" class="primary-navigation">
+ 39           <ul>
+ 40             <li>
+ 40 next issueprevious issueW867WCAG2 A 2.4.4: Identical adjacent links with different link text. See matching tag on line: 37
+If you have adjacent links to the same place with different link text (when read aloud) it can be confusing to the user. You should consider combining these into one link and removing any redundant link text. See Understanding 2.4.4.
+                  <a href="home.php">
+ 40                 <span lang="en">
+ 40                   Home
+ 40                 </span>
+ 40               </a>
+ 40             </li>
+ 41             <li>
+ 41               <a href="tenuta.php">
+ 41                 Tenuta
+ 41               </a>
+ 41             </li>
+ 42             <li>
+ 42               <a href="vini.php">
+ 42                 Vini
+ 42               </a>
+ 42             </li>
+ 43             <li>
+ 43               <a href="esperienze.php">
+ 43                 Esperienze
+ 43               </a>
+ 43             </li>
+ 44             <li>
+ 44               <a href="contatti.php">
+ 44                 Contatti
+ 44               </a>
+ 44             </li>
+ 45           </ul>
+ 46         </nav>
+ 47         <div class="mobile-icons">
+ 49           <span class="current-page-icon cart-icon-container" aria-current="page" title="Sei nel Carrello">
+ 50             <i class="fas fa-shopping-cart" aria-hidden="true">
+ 50             </i>
+ 51             <span class="cart-badge" id="global-cart-badge">
+ 51               4
+ 51             </span>
+ 52             <span class="visually-hidden" lang="en">
+ 52               Shop (Pagina corrente)
+ 52             </span>
+ 53           </span>
+ 55           <a href="utente.php" title="Vai alla tua Area Riservata">
+ 56             <i class="fas fa-user" aria-hidden="true">
+ 56             </i>
+ 57             <span class="visually-hidden">
+ 57               Area Riservata
+ 57             </span>
+ 58           </a>
+ 59         </div>
+ 60       </div>
+ 61       <div class="sub-header">
+ 62 next issueprevious issueW877WCAG2 A 1.3.1: Distinguish between navigation groups using an ARIA label
+When the <nav> element is employed more than once on a page, distinguish between the navigation groups by using an 'aria-label' or 'aria-labelledby' attribute. See WCAG2 HTML Technique H97.
+            <nav id="breadcrumb">
+ 63           <div class="breadcrumb-container">
+ 64             <span>
+ 64               Ti trovi in:
+ 64             </span>
+ 65             <a href="home.php">
+ 65               <span lang="en">
+ 65                 Home
+ 65               </span>
+ 65             </a>
+ 65             <span aria-hidden="true">
+ 65               &gt;
+ 65             </span>
+ 66             <a href="carrello.php">
+ 66               <span>
+ 66                 Carrello
+ 66               </span>
+ 66             </a>
+ 66             <span aria-hidden="true">
+ 66               &gt;
+ 66             </span>
+ 67             <span class="current-page" aria-current="page">
+ 67               Spedizione
+ 67             </span>
+ 68           </div>
+ 69         </nav>
+ 70 next issueprevious issueE9081WCAG2 A 2.5.3: The accessible name in 'aria-label' must contain the visible label text: Passa alla modalita chiara
+The accessible name used by accessibility aids must contain the text displayed by the visible label. When choosing the text remember that both the name and the label may be read out aloud. See Understanding 2.5.3, and Accessibility API Mappings.
+            <button id="theme-toggle" title="Cambia modalità chiaro/scuro" aria-label="Cambia tema">
+ 71           <span class="visually-hidden">
+ 71             Passa alla modalita chiara
+ 71           </span>
+ 72           <svg viewBox="0 0 24 24" class="theme-icon" aria-hidden="true">
+ 73             <circle cx="12" cy="12" r="4.5">
+ 73             </circle>
+ 74             <line x1="12" y1="2" x2="12" y2="4">
+ 74             </line>
+ 75             <line x1="12" y1="20" x2="12" y2="22">
+ 75             </line>
+ 76             <line x1="4.2" y1="4.2" x2="5.8" y2="5.8">
+ 76             </line>
+ 77             <line x1="18.2" y1="18.2" x2="19.8" y2="19.8">
+ 77             </line>
+ 78             <line x1="2" y1="12" x2="4" y2="12">
+ 78             </line>
+ 79             <line x1="20" y1="12" x2="22" y2="12">
+ 79             </line>
+ 80             <line x1="4.2" y1="19.8" x2="5.8" y2="18.2">
+ 80             </line>
+ 81             <line x1="18.2" y1="5.8" x2="19.8" y2="4.2">
+ 81             </line>
+ 82           </svg>
+ 83         </button>
+ 84       </div>
+ 85     </header>
+ 87     <main id="content" class="container" aria-labelledby="sum">
+ 88       <p class="visually-hidden" id="sum">
+ 88         Completa il tuo ordine inserendo i dati di spedizione.
+ 88       </p>
+ 89       <div id="php-errors" aria-live="assertive">
+ 91       </div>
+ 93       <div class="back-nav">
+ 94         <a href="carrello.php" class="btn-back-outline">
+ 95           <i class="fas fa-arrow-left">
+ 95           </i>
+ 95           Torna al Carrello
+ 96         </a>
+ 97       </div>
+ 99       <h1 class="checkout-title">
+ 99         Spedizione
+ 99       </h1>
+101 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+          <form action="checkout.php" method="POST" id="checkout-form" class="checkout-layout" novalidate="true">
+103         <div class="checkout-details">
+105           <section class="checkout-section" aria-labelledby="shipping-heading">
+106             <h2 id="shipping-heading">
+106               <i class="fas fa-truck" aria-hidden="true">
+106               </i>
+106               Indirizzo di Spedizione
+106             </h2>
+108             <div class="grid-layout-form">
+109               <div class="form-group row-two">
+110                 <div>
+111                   <label for="nome">
+111                     Nome
+111                     <span aria-hidden="true">
+111                       *
+111                     </span>
+111                   </label>
+112                   <input type="text" id="nome" name="nome" required="" autocomplete="given-name" value="TestUser" aria-describedby="nome-hint">
+113                   <small id="nome-hint" class="input-help">
+113                     Esempio: Mario
+113                   </small>
+114                 </div>
+115                 <div>
+116                   <label for="cognome">
+116                     Cognome
+116                     <span aria-hidden="true">
+116                       *
+116                     </span>
+116                   </label>
+117                   <input type="text" id="cognome" name="cognome" required="" autocomplete="family-name" value="User" aria-describedby="cognome-hint">
+118                   <small id="cognome-hint" class="input-help">
+118                     Esempio: Rossi
+118                   </small>
+119                 </div>
+120               </div>
+122               <div class="form-group">
+123                 <label for="indirizzo">
+123                   Indirizzo e n. civico
+123                   <span aria-hidden="true">
+123                     *
+123                   </span>
+123                 </label>
+124 next issueprevious issueE622HTML: The 'autocomplete' attribute does not have a valid value: It must be an ordered list of specific autofill tokens
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                    <input type="text" id="indirizzo" name="indirizzo" required="" autocomplete="shipping street-address" value="Via Appia nuova 10" aria-describedby="indirizzo-hint">
+125                 <small id="indirizzo-hint" class="input-help">
+125                   Esempio: Via Roma 10
+125                 </small>
+126               </div>
+128               <div class="form-group row-three">
+129                 <div class="flex-grow-2">
+130                   <label for="citta">
+130                     Città
+130                     <span aria-hidden="true">
+130                       *
+130                     </span>
+130                   </label>
+131                   <input type="text" id="citta" name="citta" required="" autocomplete="shipping address-level2" value="Roma" aria-describedby="citta-hint">
+132                   <small id="citta-hint" class="input-help">
+132                     Esempio: Milano
+132                   </small>
+133                 </div>
+134                 <div class="flex-grow-1">
+135                   <label for="provincia">
+135                     Prov.
+135                     <span aria-hidden="true">
+135                       *
+135                     </span>
+135                   </label>
+136                   <input type="text" id="provincia" name="provincia" required="" maxlength="2" autocomplete="shipping address-level1" style="text-transform:uppercase" value="RM" aria-describedby="provincia-hint">
+137                   <small id="provincia-hint" class="input-help">
+137                     Esempio: MI
+137                   </small>
+138                 </div>
+139                 <div class="flex-grow-1">
+140                   <label for="cap">
+140                     CAP
+140                     <span aria-hidden="true">
+140                       *
+140                     </span>
+140                   </label>
+141                   <input type="text" id="cap" name="cap" required="" pattern="[0-9]{5}" maxlength="5" autocomplete="shipping postal-code" inputmode="numeric" value="12345" aria-describedby="cap-hint">
+142                   <small id="cap-hint" class="input-help">
+142                     Esempio: 20121
+142                   </small>
+143                 </div>
+144               </div>
+146               <div class="form-group">
+147                 <label id="phone-label">
+147                   Telefono (per il corriere)
+147                   <span aria-hidden="true">
+147                     *
+147                   </span>
+147                 </label>
+148                 <div class="phone-group" role="group" aria-labelledby="phone-label">
+149                   <div class="phone-prefix">
+150                     <label for="prefisso" class="visually-hidden">
+150                       Prefisso
+150                     </label>
+151                     <input type="text" id="prefisso" name="prefisso" value="+39" required="" autocomplete="tel-country-code" aria-describedby="prefisso-hint">
+152                     <small id="prefisso-hint" class="input-help">
+152                       Esempio: +39
+152                     </small>
+153                   </div>
+154                   <div class="phone-number" style="flex-grow:1;">
+155                     <label for="telefono" class="visually-hidden">
+155                       Numero
+155                     </label>
+156 next issueprevious issueE622HTML: The 'autocomplete' attribute does not have a valid value: It must be an ordered list of specific autofill tokens
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                        <input type="tel" id="telefono" name="telefono" required="" autocomplete="tel-national" value="35101555408" aria-describedby="telefono-hint">
+157                     <small id="telefono-hint" class="input-help">
+157                       Esempio: 333 1234567
+157                     </small>
+158                   </div>
+159                 </div>
+160               </div>
+162             </div>
+163           </section>
+165         </div>
+167         <aside class="checkout-sidebar" id="order-summary">
+168           <div class="summary-box">
+169             <h3>
+169               Riepilogo Ordine
+169             </h3>
+171             <div class="summary-items-list">
+173               <div class="summary-item-rich">
+174                 <div class="mini-img-wrapper">
+175                   <img src="../../images/tr/Merlot.webp" alt="Merlot">
+176                 </div>
+177                 <div class="rich-details">
+178                   <span class="rich-name">
+178                     Merlot
+178                   </span>
+179                   <span class="rich-qty">
+179                     <abbr title="Quantità">
+179                       Q.tà
+179                     </abbr>
+179                     : 4
+179                   </span>
+180                 </div>
+181                 <div class="rich-price">
+181                   € 56.00
+181                 </div>
+182               </div>
+183             </div>
+185             <div class="summary-totals">
+186               <div class="row">
+187                 <span>
+187                   Subtotale
+187                 </span>
+188                 <span>
+188                   € 56.00
+188                 </span>
+189               </div>
+190               <div class="row">
+191                 <span>
+191                   Spedizione
+191                 </span>
+192                 <span>
+192                   <span class="text-green">
+192                     Gratuita
+192                   </span>
+192                 </span>
+193               </div>
+194               <div class="row total">
+195                 <span>
+195                   Totale (IVA incl.)
+195                 </span>
+196                 <span>
+196                   € 56.00
+196                 </span>
+197               </div>
+198             </div>
+200             <div class="summary-actions">
+201               <input type="hidden" name="action" value="crea_ordine">
+202               <button type="submit" class="btn-primary btn-full pulse-on-hover">
+202                 Conferma Ordine
+202               </button>
+203             </div>
+204           </div>
+205         </aside>
+207       </form>
+209     </main>
+212     <footer>
+213       <div class="footer-content">
+214         <small>
+215           © 2025 Tenuta al Morer -
+215           <abbr title="Partita">
+215             P.
+215           </abbr>
+215           <abbr title="Imposta sul Valore Aggiunto">
+215             IVA
+215           </abbr>
+215           00000000000
+215           <br>
+216           <a href="policy.php">
+216             Note legali
+216           </a>
+216           |
+217           <a href="policy.php#privacy-policy">
+217             <span lang="en">
+217               Privacy Policy
+217             </span>
+217           </a>
+217           |
+218           <a href="policy.php#accessibility">
+218             Accessibilità
+218           </a>
+218           |
+219           <a href="mappa.php">
+219             Mappa del sito
+219           </a>
+220         </small>
+221       </div>
+222     </footer>
+224     <button id="backToTopBtn" aria-label="Torna all'inizio della pagina" class="show">
+225       <svg viewBox="0 0 24 24" class="arrow-icon" aria-hidden="true">
+226         <path d="M12 5 L12 19 M5 12 L12 5 L19 12">
+226         </path>
+227       </svg>
+228     </button>
+232   </body>
+232 </html>
+© 2005-2026 Total Validator

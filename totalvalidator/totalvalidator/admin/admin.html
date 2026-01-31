@@ -1,0 +1,3340 @@
+Skip navigation
+Total Validator Home Page
+Main site navigation
+DocumentationReferenceWebsiteContact Form
+Summary report
+Start page:	http://tecweb.studenti.math.unipd.it/acontari/scripts/php/admin.php
+Issues:	74 Errors, 2 Warnings
+Upgrade to Total Validator Pro to validate an entire site in one go
+
+Summary Issues Page
+Display issue details:HoverShow allHide all
+ Go to first issue
+
+   1 <!DOCTYPE html>
+   2 <html lang="it" class="">
+   2   <head>
+   3     <meta charset="utf-8">
+   4     <title>
+   4       Tenuta al Morer
+   4     </title>
+   5     <link rel="icon" href="../../images/logo.ico" type="image/x-icon">
+   6     <meta name="description" content="Cantina veneta che produce vini autentici, legati alla terra e alla tradizione locale.">
+   7     <meta name="keywords" content="Tenuta al Morer, cantina veneta, vino veneto, vini artigianali, vini delle colline venete, tradizione veneta, vino italiano, tenuta vitivinicola, vini naturali, degustazione vini, vino del Veneto">
+   8     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  10     <link rel="preconnect" href="https://fonts.googleapis.com">
+  11     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  12     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+  13     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet">
+  14     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+  16     <link rel="stylesheet" href="../../css/style.css" media="screen">
+  17     <link rel="stylesheet" href="../../css/mini.css" media="screen and (max-width:1024px)">
+  18     <link rel="stylesheet" href="../../css/print.css" media="print">
+  20     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  21     <script src="../javascript/script.js">
+  21     </script>
+  22   </head>
+  24   <body>
+  25     <header>
+  26       <nav id="help">
+  27         <a class="navigationHelp" href="#content-admin">
+  27           Vai al contenuto
+  27         </a>
+  28       </nav>
+  30       <div class="main-nav-bar">
+  31         <input type="checkbox" id="menu-checkbox" class="menu-checkbox visually-hidden">
+  33         <label for="menu-checkbox" class="menu-toggle" aria-controls="main-navigation" aria-expanded="false">
+  34           <i class="fas fa-bars" aria-hidden="true">
+  34           </i>
+  35           <span class="visually-hidden">
+  35             Apri il menu di navigazione
+  35           </span>
+  36         </label>
+  39         <div class="logo-link">
+  39           <img src="../../images/logo.webp" alt="Tenuta al Morer - Home">
+  39         </div>
+  41 next issueprevious issueW877WCAG2 A 1.3.1: Distinguish between navigation groups using an ARIA label
+When the <nav> element is employed more than once on a page, distinguish between the navigation groups by using an 'aria-label' or 'aria-labelledby' attribute. See WCAG2 HTML Technique H97.
+             <nav id="main-navigation" class="primary-navigation">
+  42           <ul>
+  43             <li>
+  43               <a href="home.php">
+  43                 <span lang="en">
+  43                   Home
+  43                 </span>
+  43               </a>
+  43             </li>
+  44             <li>
+  44               <a href="tenuta.php">
+  44                 Tenuta
+  44               </a>
+  44             </li>
+  45             <li>
+  45               <a href="vini.php">
+  45                 Vini
+  45               </a>
+  45             </li>
+  46             <li>
+  46               <a href="esperienze.php">
+  46                 Esperienze
+  46               </a>
+  46             </li>
+  47             <li>
+  47               <a href="contatti.php">
+  47                 Contatti
+  47               </a>
+  47             </li>
+  48           </ul>
+  49         </nav>
+  51         <div class="mobile-icons">
+  53           <span class="current-page-icon" aria-current="page" title="Sei in Amministrazione">
+  54             <i class="fas fa-edit" aria-hidden="true">
+  54             </i>
+  55             <span class="visually-hidden">
+  55               Amministrazione (Pagina corrente)
+  55             </span>
+  56           </span>
+  59           <a href="utente.php" title="Vai a Gestionale">
+  60             <i class="fas fa-sliders-h" aria-hidden="true">
+  60             </i>
+  61             <span class="visually-hidden">
+  61               Gestionale
+  61             </span>
+  62           </a>
+  63         </div>
+  65       </div>
+  67       <div class="sub-header">
+  68 next issueprevious issueW877WCAG2 A 1.3.1: Distinguish between navigation groups using an ARIA label
+When the <nav> element is employed more than once on a page, distinguish between the navigation groups by using an 'aria-label' or 'aria-labelledby' attribute. See WCAG2 HTML Technique H97.
+             <nav id="breadcrumb">
+  69           <div class="breadcrumb-container">
+  70             <span>
+  70               Ti trovi in:
+  70             </span>
+  71             <a href="home.php">
+  71               <span lang="en">
+  71                 Home
+  71               </span>
+  71             </a>
+  71             <span aria-hidden="true">
+  71               &gt;
+  71             </span>
+  72             <span class="current-page">
+  72               Admin
+  72             </span>
+  73           </div>
+  74         </nav>
+  76 next issueprevious issueE9081WCAG2 A 2.5.3: The accessible name in 'aria-label' must contain the visible label text: Passa alla modalita chiara
+The accessible name used by accessibility aids must contain the text displayed by the visible label. When choosing the text remember that both the name and the label may be read out aloud. See Understanding 2.5.3, and Accessibility API Mappings.
+             <button id="theme-toggle" title="Cambia modalità chiaro/scuro" aria-label="Cambia tema">
+  77           <span class="visually-hidden">
+  77             Passa alla modalita chiara
+  77           </span>
+  78           <svg viewBox="0 0 24 24" class="theme-icon" aria-hidden="true">
+  79             <circle cx="12" cy="12" r="4.5">
+  79             </circle>
+  80             <line x1="12" y1="2" x2="12" y2="4">
+  80             </line>
+  81             <line x1="12" y1="20" x2="12" y2="22">
+  81             </line>
+  82             <line x1="4.2" y1="4.2" x2="5.8" y2="5.8">
+  82             </line>
+  83             <line x1="18.2" y1="18.2" x2="19.8" y2="19.8">
+  83             </line>
+  84             <line x1="2" y1="12" x2="4" y2="12">
+  84             </line>
+  85             <line x1="20" y1="12" x2="22" y2="12">
+  85             </line>
+  86             <line x1="4.2" y1="19.8" x2="5.8" y2="18.2">
+  86             </line>
+  87             <line x1="18.2" y1="5.8" x2="19.8" y2="4.2">
+  87             </line>
+  88           </svg>
+  89         </button>
+  90       </div>
+  91     </header>
+  93     <main id="content-admin" class="admin-wrapper" aria-labelledby="sum">
+  94       <p class="visually-hidden" id="sum">
+  94         Pannello di amministrazione della Tenuta al Morer per la gestione di vini e utenti.
+  94       </p>
+  95       <div class="admin-page-title">
+  96         <h1>
+  96           Amministrazione
+  96         </h1>
+  97         <p>
+  97           Operatore:
+  97           <strong>
+  97             TestAdmin
+  97           </strong>
+  97         </p>
+  98       </div>
+ 100       <div class="admin-switch admin-switch-full">
+ 101         <a href="admin.php?view=vini" class="btn-primary">
+ 101           Gestione Vini
+ 101         </a>
+ 102         <a href="admin.php?view=utenti" class="btn-secondary">
+ 102           Gestione Utenti
+ 102         </a>
+ 103       </div>
+ 105       <div class="admin-section-head">
+ 106         <h2>
+ 106           Gestione Catalogo Vini
+ 106         </h2>
+ 107         <div class="admin-section-actions">
+ 109           <label for="toggle-modal-nuovo" class="btn-primary admin-btn-inline">
+ 110             <i class="fas fa-plus" aria-hidden="true">
+ 110             </i>
+ 110             &nbsp;Nuovo Vino
+ 111           </label>
+ 113         </div>
+ 114       </div>
+ 117       <p id="descrizione-tab-vini" class="sum">
+ 118         La tabella riassume i vini presenti nel catalogo. Ogni riga rappresenta un vino. Le colonne riportano: ID, immagine, dettagli, prezzo, stock, stato e azioni disponibili.
+ 120       </p>
+ 122       <input type="checkbox" id="toggle-deleted-visibility" class="state-toggle">
+ 123       <label for="toggle-deleted-visibility" class="toggle-label-wrapper">
+ 124 next issueprevious issueE6091HTML: This tag or content is not allowed here. One of the following was expected: A phrasing content element except <label>
+There are strict rules as to what tags may be nested within others, as well as the order and number of tags allowed. This error may also be caused by incorrectly nesting tags, missing end tags, or similar structural issues. So if it is not obvious what is wrong, fix any structural issues first. See the HTML Living Standard.
+             <div class="toggle-switch-graphic">
+ 124         </div>
+ 125         <span>
+ 125           Mostra vini eliminati
+ 125         </span>
+ 126       </label>
+ 127       <div class="table-responsive">
+ 128         <table class="table-data" aria-describedby="descrizione-tab-vini">
+ 129           <caption>
+ 129             Elenco vini nel database
+ 129           </caption>
+ 130           <thead>
+ 131             <tr>
+ 132               <th scope="col" abbr="ID" class="admin-col-id">
+ 132                 ID
+ 132               </th>
+ 133               <th scope="col" abbr="Immagine" class="admin-col-img">
+ 133                 Img
+ 133               </th>
+ 134               <th scope="col" abbr="Dettagli">
+ 134                 Dettagli Vino
+ 134               </th>
+ 135               <th scope="col" abbr="Prezzo">
+ 135                 Prezzo
+ 135               </th>
+ 136               <th scope="col" abbr="Stock">
+ 136                 Stock
+ 136               </th>
+ 137               <th scope="col" abbr="Stato">
+ 137                 Stato
+ 137               </th>
+ 138               <th scope="col" abbr="Azioni" class="admin-col-actions">
+ 138                 Azioni
+ 138               </th>
+ 139             </tr>
+ 140           </thead>
+ 141           <tbody>
+ 142             <tr class="">
+ 143               <th scope="row">
+ 143                 12
+ 143               </th>
+ 144               <td data-title="Anteprima">
+ 144 next issueprevious issueE622HTML: The 'src' attribute does not have a valid value: It is an invalid URI, most likely containing invalid characters such as spaces (see rfc3986)
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                     <img src="../../images/tr/Rosae Nobile.webp" class="admin-thumb" alt="">
+ 144               </td>
+ 145               <td data-title="Dettagli">
+ 146                 <div class="wine-title">
+ 146                   Rosae Nobile
+ 146                 </div>
+ 147                 <div class="wine-cat">
+ 147                   Selezione
+ 147                 </div>
+ 148                 <div class="truncate">
+ 148                   Rosato di alta classe.
+ 148                 </div>
+ 149               </td>
+ 150               <td data-title="Prezzo">
+ 150                 € 19.00
+ 150               </td>
+ 151               <td data-title="Stock" class="stock-low">
+ 151                 0
+ 151               </td>
+ 152               <td data-title="Stato">
+ 152                 <span class="badge badge-active">
+ 152                   Attivo
+ 152                 </span>
+ 152               </td>
+ 153               <td data-title="Azioni" class="admin-col-actions">
+ 153                 <div class="action-group">
+ 154 next issueprevious issueE956WCAG2 A 4.1.2: The value of the 'role' attribute is not valid for this element
+Elements can only have specific roles as defined by the ARIA specification. So, you may be better off using a more appropriate element for this role. See ARIA in HTML.
+     E904WCAG2 A 1.3.1: Label text is missing
+Associate labels properly with their controls. See WCAG2 Failure F68.
+                       <label for="modal-edit-12" class="btn-icon" title="Modifica Rosae Nobile" aria-label="Modifica Rosae Nobile" role="button" tabindex="0">
+ 155                     <i class="fas fa-edit">
+ 155                     </i>
+ 156                   </label>
+ 157 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" novalidate="true">
+ 158                     <input type="hidden" name="azione" value="toggle_vino">
+ 159                     <input type="hidden" name="view" value="vini">
+ 160                     <input type="hidden" name="id" value="12">
+ 161                     <input type="hidden" name="current_status" value="attivo">
+ 162                     <button type="submit" class="btn-icon" title="Cambia visibilità Rosae Nobile" aria-label="Cambia visibilità Rosae Nobile">
+ 163                       <i class="fas fa-eye" aria-hidden="true">
+ 163                       </i>
+ 164                     </button>
+ 165                   </form>
+ 166 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare Rosae Nobile?');" novalidate="true">
+ 167                     <input type="hidden" name="azione" value="elimina_vino">
+ 168                     <input type="hidden" name="view" value="vini">
+ 169                     <input type="hidden" name="id" value="12">
+ 170                     <button type="submit" class="btn-icon btn-icon-delete" title="Elimina Rosae Nobile" aria-label="Elimina Rosae Nobile">
+ 171                       <i class="fas fa-trash">
+ 171                       </i>
+ 172                     </button>
+ 173                   </form>
+ 173                 </div>
+ 173               </td>
+ 174             </tr>
+ 174             <tr class="">
+ 175               <th scope="row">
+ 175                 11
+ 175               </th>
+ 176               <td data-title="Anteprima">
+ 176                 <img src="../../images/tr/Incanto.webp" class="admin-thumb" alt="">
+ 176               </td>
+ 177               <td data-title="Dettagli">
+ 178                 <div class="wine-title">
+ 178                   Incanto
+ 178                 </div>
+ 179                 <div class="wine-cat">
+ 179                   Selezione
+ 179                 </div>
+ 180                 <div class="truncate">
+ 180                   Profumi floreali.
+ 180                 </div>
+ 181               </td>
+ 182               <td data-title="Prezzo">
+ 182                 € 20.00
+ 182               </td>
+ 183               <td data-title="Stock" class="">
+ 183                 277
+ 183               </td>
+ 184               <td data-title="Stato">
+ 184                 <span class="badge badge-active">
+ 184                   Attivo
+ 184                 </span>
+ 184               </td>
+ 185               <td data-title="Azioni" class="admin-col-actions">
+ 185                 <div class="action-group">
+ 186 next issueprevious issueE956WCAG2 A 4.1.2: The value of the 'role' attribute is not valid for this element
+Elements can only have specific roles as defined by the ARIA specification. So, you may be better off using a more appropriate element for this role. See ARIA in HTML.
+     E904WCAG2 A 1.3.1: Label text is missing
+Associate labels properly with their controls. See WCAG2 Failure F68.
+                       <label for="modal-edit-11" class="btn-icon" title="Modifica Incanto" aria-label="Modifica Incanto" role="button" tabindex="0">
+ 187                     <i class="fas fa-edit">
+ 187                     </i>
+ 188                   </label>
+ 189 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" novalidate="true">
+ 190                     <input type="hidden" name="azione" value="toggle_vino">
+ 191                     <input type="hidden" name="view" value="vini">
+ 192                     <input type="hidden" name="id" value="11">
+ 193                     <input type="hidden" name="current_status" value="attivo">
+ 194                     <button type="submit" class="btn-icon" title="Cambia visibilità Incanto" aria-label="Cambia visibilità Incanto">
+ 195                       <i class="fas fa-eye" aria-hidden="true">
+ 195                       </i>
+ 196                     </button>
+ 197                   </form>
+ 198 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare Incanto?');" novalidate="true">
+ 199                     <input type="hidden" name="azione" value="elimina_vino">
+ 200                     <input type="hidden" name="view" value="vini">
+ 201                     <input type="hidden" name="id" value="11">
+ 202                     <button type="submit" class="btn-icon btn-icon-delete" title="Elimina Incanto" aria-label="Elimina Incanto">
+ 203                       <i class="fas fa-trash">
+ 203                       </i>
+ 204                     </button>
+ 205                   </form>
+ 205                 </div>
+ 205               </td>
+ 206             </tr>
+ 206             <tr class="">
+ 207               <th scope="row">
+ 207                 10
+ 207               </th>
+ 208               <td data-title="Anteprima">
+ 208 next issueprevious issueE622HTML: The 'src' attribute does not have a valid value: It is an invalid URI, most likely containing invalid characters such as spaces (see rfc3986)
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                     <img src="../../images/tr/Vigna Dorata.webp" class="admin-thumb" alt="">
+ 208               </td>
+ 209               <td data-title="Dettagli">
+ 210                 <div class="wine-title">
+ 210                   Vigna Dorata
+ 210                 </div>
+ 211                 <div class="wine-cat">
+ 211                   Selezione
+ 211                 </div>
+ 212                 <div class="truncate">
+ 212                   Dolce e avvolgente.
+ 212                 </div>
+ 213               </td>
+ 214               <td data-title="Prezzo">
+ 214                 € 22.00
+ 214               </td>
+ 215               <td data-title="Stock" class="">
+ 215                 19
+ 215               </td>
+ 216               <td data-title="Stato">
+ 216                 <span class="badge badge-active">
+ 216                   Attivo
+ 216                 </span>
+ 216               </td>
+ 217               <td data-title="Azioni" class="admin-col-actions">
+ 217                 <div class="action-group">
+ 218 next issueprevious issueE956WCAG2 A 4.1.2: The value of the 'role' attribute is not valid for this element
+Elements can only have specific roles as defined by the ARIA specification. So, you may be better off using a more appropriate element for this role. See ARIA in HTML.
+     E904WCAG2 A 1.3.1: Label text is missing
+Associate labels properly with their controls. See WCAG2 Failure F68.
+                       <label for="modal-edit-10" class="btn-icon" title="Modifica Vigna Dorata" aria-label="Modifica Vigna Dorata" role="button" tabindex="0">
+ 219                     <i class="fas fa-edit">
+ 219                     </i>
+ 220                   </label>
+ 221 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" novalidate="true">
+ 222                     <input type="hidden" name="azione" value="toggle_vino">
+ 223                     <input type="hidden" name="view" value="vini">
+ 224                     <input type="hidden" name="id" value="10">
+ 225                     <input type="hidden" name="current_status" value="attivo">
+ 226                     <button type="submit" class="btn-icon" title="Cambia visibilità Vigna Dorata" aria-label="Cambia visibilità Vigna Dorata">
+ 227                       <i class="fas fa-eye" aria-hidden="true">
+ 227                       </i>
+ 228                     </button>
+ 229                   </form>
+ 230 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare Vigna Dorata?');" novalidate="true">
+ 231                     <input type="hidden" name="azione" value="elimina_vino">
+ 232                     <input type="hidden" name="view" value="vini">
+ 233                     <input type="hidden" name="id" value="10">
+ 234                     <button type="submit" class="btn-icon btn-icon-delete" title="Elimina Vigna Dorata" aria-label="Elimina Vigna Dorata">
+ 235                       <i class="fas fa-trash">
+ 235                       </i>
+ 236                     </button>
+ 237                   </form>
+ 237                 </div>
+ 237               </td>
+ 238             </tr>
+ 238             <tr class="">
+ 239               <th scope="row">
+ 239                 9
+ 239               </th>
+ 240               <td data-title="Anteprima">
+ 240 next issueprevious issueE622HTML: The 'src' attribute does not have a valid value: It is an invalid URI, most likely containing invalid characters such as spaces (see rfc3986)
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                     <img src="../../images/tr/Gran Morer.webp" class="admin-thumb" alt="">
+ 240               </td>
+ 241               <td data-title="Dettagli">
+ 242                 <div class="wine-title">
+ 242                   Gran Morer
+ 242                 </div>
+ 243                 <div class="wine-cat">
+ 243                   Selezione
+ 243                 </div>
+ 244                 <div class="truncate">
+ 244                   Riserva speciale.
+ 244                 </div>
+ 245               </td>
+ 246               <td data-title="Prezzo">
+ 246                 € 25.00
+ 246               </td>
+ 247               <td data-title="Stock" class="">
+ 247                 118
+ 247               </td>
+ 248               <td data-title="Stato">
+ 248                 <span class="badge badge-active">
+ 248                   Attivo
+ 248                 </span>
+ 248               </td>
+ 249               <td data-title="Azioni" class="admin-col-actions">
+ 249                 <div class="action-group">
+ 250 next issueprevious issueE956WCAG2 A 4.1.2: The value of the 'role' attribute is not valid for this element
+Elements can only have specific roles as defined by the ARIA specification. So, you may be better off using a more appropriate element for this role. See ARIA in HTML.
+     E904WCAG2 A 1.3.1: Label text is missing
+Associate labels properly with their controls. See WCAG2 Failure F68.
+                       <label for="modal-edit-9" class="btn-icon" title="Modifica Gran Morer" aria-label="Modifica Gran Morer" role="button" tabindex="0">
+ 251                     <i class="fas fa-edit">
+ 251                     </i>
+ 252                   </label>
+ 253 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" novalidate="true">
+ 254                     <input type="hidden" name="azione" value="toggle_vino">
+ 255                     <input type="hidden" name="view" value="vini">
+ 256                     <input type="hidden" name="id" value="9">
+ 257                     <input type="hidden" name="current_status" value="attivo">
+ 258                     <button type="submit" class="btn-icon" title="Cambia visibilità Gran Morer" aria-label="Cambia visibilità Gran Morer">
+ 259                       <i class="fas fa-eye" aria-hidden="true">
+ 259                       </i>
+ 260                     </button>
+ 261                   </form>
+ 262 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare Gran Morer?');" novalidate="true">
+ 263                     <input type="hidden" name="azione" value="elimina_vino">
+ 264                     <input type="hidden" name="view" value="vini">
+ 265                     <input type="hidden" name="id" value="9">
+ 266                     <button type="submit" class="btn-icon btn-icon-delete" title="Elimina Gran Morer" aria-label="Elimina Gran Morer">
+ 267                       <i class="fas fa-trash">
+ 267                       </i>
+ 268                     </button>
+ 269                   </form>
+ 269                 </div>
+ 269               </td>
+ 270             </tr>
+ 270             <tr class="">
+ 271               <th scope="row">
+ 271                 8
+ 271               </th>
+ 272               <td data-title="Anteprima">
+ 272                 <img src="../../images/tr/Prosecco.webp" class="admin-thumb" alt="">
+ 272               </td>
+ 273               <td data-title="Dettagli">
+ 274                 <div class="wine-title">
+ 274                   Prosecco
+ 274                 </div>
+ 275                 <div class="wine-cat">
+ 275                   Bianchi
+ 275                 </div>
+ 276                 <div class="truncate">
+ 276                   Le bollicine venete.
+ 276                 </div>
+ 277               </td>
+ 278               <td data-title="Prezzo">
+ 278                 € 12.50
+ 278               </td>
+ 279               <td data-title="Stock" class="stock-low">
+ 279                 0
+ 279               </td>
+ 280               <td data-title="Stato">
+ 280                 <span class="badge badge-active">
+ 280                   Attivo
+ 280                 </span>
+ 280               </td>
+ 281               <td data-title="Azioni" class="admin-col-actions">
+ 281                 <div class="action-group">
+ 282 next issueprevious issueE956WCAG2 A 4.1.2: The value of the 'role' attribute is not valid for this element
+Elements can only have specific roles as defined by the ARIA specification. So, you may be better off using a more appropriate element for this role. See ARIA in HTML.
+     E904WCAG2 A 1.3.1: Label text is missing
+Associate labels properly with their controls. See WCAG2 Failure F68.
+                       <label for="modal-edit-8" class="btn-icon" title="Modifica Prosecco" aria-label="Modifica Prosecco" role="button" tabindex="0">
+ 283                     <i class="fas fa-edit">
+ 283                     </i>
+ 284                   </label>
+ 285 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" novalidate="true">
+ 286                     <input type="hidden" name="azione" value="toggle_vino">
+ 287                     <input type="hidden" name="view" value="vini">
+ 288                     <input type="hidden" name="id" value="8">
+ 289                     <input type="hidden" name="current_status" value="attivo">
+ 290                     <button type="submit" class="btn-icon" title="Cambia visibilità Prosecco" aria-label="Cambia visibilità Prosecco">
+ 291                       <i class="fas fa-eye" aria-hidden="true">
+ 291                       </i>
+ 292                     </button>
+ 293                   </form>
+ 294 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare Prosecco?');" novalidate="true">
+ 295                     <input type="hidden" name="azione" value="elimina_vino">
+ 296                     <input type="hidden" name="view" value="vini">
+ 297                     <input type="hidden" name="id" value="8">
+ 298                     <button type="submit" class="btn-icon btn-icon-delete" title="Elimina Prosecco" aria-label="Elimina Prosecco">
+ 299                       <i class="fas fa-trash">
+ 299                       </i>
+ 300                     </button>
+ 301                   </form>
+ 301                 </div>
+ 301               </td>
+ 302             </tr>
+ 302             <tr class="">
+ 303               <th scope="row">
+ 303                 7
+ 303               </th>
+ 304               <td data-title="Anteprima">
+ 304 next issueprevious issueE622HTML: The 'src' attribute does not have a valid value: It is an invalid URI, most likely containing invalid characters such as spaces (see rfc3986)
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                     <img src="../../images/tr/Pinot Grigio.webp" class="admin-thumb" alt="">
+ 304               </td>
+ 305               <td data-title="Dettagli">
+ 306                 <div class="wine-title">
+ 306                   Pinot Grigio
+ 306                 </div>
+ 307                 <div class="wine-cat">
+ 307                   Bianchi
+ 307                 </div>
+ 308                 <div class="truncate">
+ 308                   Fresco e sapido.
+ 308                 </div>
+ 309               </td>
+ 310               <td data-title="Prezzo">
+ 310                 € 13.00
+ 310               </td>
+ 311               <td data-title="Stock" class="">
+ 311                 196
+ 311               </td>
+ 312               <td data-title="Stato">
+ 312                 <span class="badge badge-hidden">
+ 312                   Nascosto
+ 312                 </span>
+ 312               </td>
+ 313               <td data-title="Azioni" class="admin-col-actions">
+ 313                 <div class="action-group">
+ 314 next issueprevious issueE956WCAG2 A 4.1.2: The value of the 'role' attribute is not valid for this element
+Elements can only have specific roles as defined by the ARIA specification. So, you may be better off using a more appropriate element for this role. See ARIA in HTML.
+     E904WCAG2 A 1.3.1: Label text is missing
+Associate labels properly with their controls. See WCAG2 Failure F68.
+                       <label for="modal-edit-7" class="btn-icon" title="Modifica Pinot Grigio" aria-label="Modifica Pinot Grigio" role="button" tabindex="0">
+ 315                     <i class="fas fa-edit">
+ 315                     </i>
+ 316                   </label>
+ 317 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" novalidate="true">
+ 318                     <input type="hidden" name="azione" value="toggle_vino">
+ 319                     <input type="hidden" name="view" value="vini">
+ 320                     <input type="hidden" name="id" value="7">
+ 321                     <input type="hidden" name="current_status" value="nascosto">
+ 322                     <button type="submit" class="btn-icon" title="Cambia visibilità Pinot Grigio" aria-label="Cambia visibilità Pinot Grigio">
+ 323                       <i class="fas fa-eye-slash icon-muted" aria-hidden="true">
+ 323                       </i>
+ 324                     </button>
+ 325                   </form>
+ 326 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare Pinot Grigio?');" novalidate="true">
+ 327                     <input type="hidden" name="azione" value="elimina_vino">
+ 328                     <input type="hidden" name="view" value="vini">
+ 329                     <input type="hidden" name="id" value="7">
+ 330                     <button type="submit" class="btn-icon btn-icon-delete" title="Elimina Pinot Grigio" aria-label="Elimina Pinot Grigio">
+ 331                       <i class="fas fa-trash">
+ 331                       </i>
+ 332                     </button>
+ 333                   </form>
+ 333                 </div>
+ 333               </td>
+ 334             </tr>
+ 334             <tr class="">
+ 335               <th scope="row">
+ 335                 6
+ 335               </th>
+ 336               <td data-title="Anteprima">
+ 336 next issueprevious issueE622HTML: The 'src' attribute does not have a valid value: It is an invalid URI, most likely containing invalid characters such as spaces (see rfc3986)
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                     <img src="../../images/tr/Manzoni Bianco.webp" class="admin-thumb" alt="">
+ 336               </td>
+ 337               <td data-title="Dettagli">
+ 338                 <div class="wine-title">
+ 338                   Manzoni Bianco
+ 338                 </div>
+ 339                 <div class="wine-cat">
+ 339                   Bianchi
+ 339                 </div>
+ 340                 <div class="truncate">
+ 340                   Aromatico e strutturato.
+ 340                 </div>
+ 341               </td>
+ 342               <td data-title="Prezzo">
+ 342                 € 15.00
+ 342               </td>
+ 343               <td data-title="Stock" class="">
+ 343                 58
+ 343               </td>
+ 344               <td data-title="Stato">
+ 344                 <span class="badge badge-active">
+ 344                   Attivo
+ 344                 </span>
+ 344               </td>
+ 345               <td data-title="Azioni" class="admin-col-actions">
+ 345                 <div class="action-group">
+ 346 next issueprevious issueE956WCAG2 A 4.1.2: The value of the 'role' attribute is not valid for this element
+Elements can only have specific roles as defined by the ARIA specification. So, you may be better off using a more appropriate element for this role. See ARIA in HTML.
+     E904WCAG2 A 1.3.1: Label text is missing
+Associate labels properly with their controls. See WCAG2 Failure F68.
+                       <label for="modal-edit-6" class="btn-icon" title="Modifica Manzoni Bianco" aria-label="Modifica Manzoni Bianco" role="button" tabindex="0">
+ 347                     <i class="fas fa-edit">
+ 347                     </i>
+ 348                   </label>
+ 349 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" novalidate="true">
+ 350                     <input type="hidden" name="azione" value="toggle_vino">
+ 351                     <input type="hidden" name="view" value="vini">
+ 352                     <input type="hidden" name="id" value="6">
+ 353                     <input type="hidden" name="current_status" value="attivo">
+ 354                     <button type="submit" class="btn-icon" title="Cambia visibilità Manzoni Bianco" aria-label="Cambia visibilità Manzoni Bianco">
+ 355                       <i class="fas fa-eye" aria-hidden="true">
+ 355                       </i>
+ 356                     </button>
+ 357                   </form>
+ 358 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare Manzoni Bianco?');" novalidate="true">
+ 359                     <input type="hidden" name="azione" value="elimina_vino">
+ 360                     <input type="hidden" name="view" value="vini">
+ 361                     <input type="hidden" name="id" value="6">
+ 362                     <button type="submit" class="btn-icon btn-icon-delete" title="Elimina Manzoni Bianco" aria-label="Elimina Manzoni Bianco">
+ 363                       <i class="fas fa-trash">
+ 363                       </i>
+ 364                     </button>
+ 365                   </form>
+ 365                 </div>
+ 365               </td>
+ 366             </tr>
+ 366             <tr class="">
+ 367               <th scope="row">
+ 367                 5
+ 367               </th>
+ 368               <td data-title="Anteprima">
+ 368                 <img src="../../images/tr/Chardonnay.webp" class="admin-thumb" alt="">
+ 368               </td>
+ 369               <td data-title="Dettagli">
+ 370                 <div class="wine-title">
+ 370                   Chardonnay
+ 370                 </div>
+ 371                 <div class="wine-cat">
+ 371                   Bianchi
+ 371                 </div>
+ 372                 <div class="truncate">
+ 372                   Elegante e fruttato.
+ 372                 </div>
+ 373               </td>
+ 374               <td data-title="Prezzo">
+ 374                 € 13.50
+ 374               </td>
+ 375               <td data-title="Stock" class="">
+ 375                 222
+ 375               </td>
+ 376               <td data-title="Stato">
+ 376                 <span class="badge badge-active">
+ 376                   Attivo
+ 376                 </span>
+ 376               </td>
+ 377               <td data-title="Azioni" class="admin-col-actions">
+ 377                 <div class="action-group">
+ 378 next issueprevious issueE956WCAG2 A 4.1.2: The value of the 'role' attribute is not valid for this element
+Elements can only have specific roles as defined by the ARIA specification. So, you may be better off using a more appropriate element for this role. See ARIA in HTML.
+     E904WCAG2 A 1.3.1: Label text is missing
+Associate labels properly with their controls. See WCAG2 Failure F68.
+                       <label for="modal-edit-5" class="btn-icon" title="Modifica Chardonnay" aria-label="Modifica Chardonnay" role="button" tabindex="0">
+ 379                     <i class="fas fa-edit">
+ 379                     </i>
+ 380                   </label>
+ 381 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" novalidate="true">
+ 382                     <input type="hidden" name="azione" value="toggle_vino">
+ 383                     <input type="hidden" name="view" value="vini">
+ 384                     <input type="hidden" name="id" value="5">
+ 385                     <input type="hidden" name="current_status" value="attivo">
+ 386                     <button type="submit" class="btn-icon" title="Cambia visibilità Chardonnay" aria-label="Cambia visibilità Chardonnay">
+ 387                       <i class="fas fa-eye" aria-hidden="true">
+ 387                       </i>
+ 388                     </button>
+ 389                   </form>
+ 390 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare Chardonnay?');" novalidate="true">
+ 391                     <input type="hidden" name="azione" value="elimina_vino">
+ 392                     <input type="hidden" name="view" value="vini">
+ 393                     <input type="hidden" name="id" value="5">
+ 394                     <button type="submit" class="btn-icon btn-icon-delete" title="Elimina Chardonnay" aria-label="Elimina Chardonnay">
+ 395                       <i class="fas fa-trash">
+ 395                       </i>
+ 396                     </button>
+ 397                   </form>
+ 397                 </div>
+ 397               </td>
+ 398             </tr>
+ 398             <tr class="">
+ 399               <th scope="row">
+ 399                 4
+ 399               </th>
+ 400               <td data-title="Anteprima">
+ 400                 <img src="../../images/tr/Refosco.webp" class="admin-thumb" alt="">
+ 400               </td>
+ 401               <td data-title="Dettagli">
+ 402                 <div class="wine-title">
+ 402                   Refosco
+ 402                 </div>
+ 403                 <div class="wine-cat">
+ 403                   Rossi
+ 403                 </div>
+ 404                 <div class="truncate">
+ 404                   Carattere forte e intenso.
+ 404                 </div>
+ 405               </td>
+ 406               <td data-title="Prezzo">
+ 406                 € 15.50
+ 406               </td>
+ 407               <td data-title="Stock" class="">
+ 407                 158
+ 407               </td>
+ 408               <td data-title="Stato">
+ 408                 <span class="badge badge-active">
+ 408                   Attivo
+ 408                 </span>
+ 408               </td>
+ 409               <td data-title="Azioni" class="admin-col-actions">
+ 409                 <div class="action-group">
+ 410 next issueprevious issueE956WCAG2 A 4.1.2: The value of the 'role' attribute is not valid for this element
+Elements can only have specific roles as defined by the ARIA specification. So, you may be better off using a more appropriate element for this role. See ARIA in HTML.
+     E904WCAG2 A 1.3.1: Label text is missing
+Associate labels properly with their controls. See WCAG2 Failure F68.
+                       <label for="modal-edit-4" class="btn-icon" title="Modifica Refosco" aria-label="Modifica Refosco" role="button" tabindex="0">
+ 411                     <i class="fas fa-edit">
+ 411                     </i>
+ 412                   </label>
+ 413 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" novalidate="true">
+ 414                     <input type="hidden" name="azione" value="toggle_vino">
+ 415                     <input type="hidden" name="view" value="vini">
+ 416                     <input type="hidden" name="id" value="4">
+ 417                     <input type="hidden" name="current_status" value="attivo">
+ 418                     <button type="submit" class="btn-icon" title="Cambia visibilità Refosco" aria-label="Cambia visibilità Refosco">
+ 419                       <i class="fas fa-eye" aria-hidden="true">
+ 419                       </i>
+ 420                     </button>
+ 421                   </form>
+ 422 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare Refosco?');" novalidate="true">
+ 423                     <input type="hidden" name="azione" value="elimina_vino">
+ 424                     <input type="hidden" name="view" value="vini">
+ 425                     <input type="hidden" name="id" value="4">
+ 426                     <button type="submit" class="btn-icon btn-icon-delete" title="Elimina Refosco" aria-label="Elimina Refosco">
+ 427                       <i class="fas fa-trash">
+ 427                       </i>
+ 428                     </button>
+ 429                   </form>
+ 429                 </div>
+ 429               </td>
+ 430             </tr>
+ 430             <tr class="">
+ 431               <th scope="row">
+ 431                 3
+ 431               </th>
+ 432               <td data-title="Anteprima">
+ 432 next issueprevious issueE622HTML: The 'src' attribute does not have a valid value: It is an invalid URI, most likely containing invalid characters such as spaces (see rfc3986)
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                     <img src="../../images/tr/Cabernet Franc 1.webp" class="admin-thumb" alt="">
+ 432               </td>
+ 433               <td data-title="Dettagli">
+ 434                 <div class="wine-title">
+ 434                   Cabernet Franc
+ 434                 </div>
+ 435                 <div class="wine-cat">
+ 435                   Rossi
+ 435                 </div>
+ 436                 <div class="truncate">
+ 436                   Deciso e persistente.
+ 436                 </div>
+ 437               </td>
+ 438               <td data-title="Prezzo">
+ 438                 € 16.00
+ 438               </td>
+ 439               <td data-title="Stock" class="">
+ 439                 97
+ 439               </td>
+ 440               <td data-title="Stato">
+ 440                 <span class="badge badge-hidden">
+ 440                   Nascosto
+ 440                 </span>
+ 440               </td>
+ 441               <td data-title="Azioni" class="admin-col-actions">
+ 441                 <div class="action-group">
+ 442 next issueprevious issueE956WCAG2 A 4.1.2: The value of the 'role' attribute is not valid for this element
+Elements can only have specific roles as defined by the ARIA specification. So, you may be better off using a more appropriate element for this role. See ARIA in HTML.
+     E904WCAG2 A 1.3.1: Label text is missing
+Associate labels properly with their controls. See WCAG2 Failure F68.
+                       <label for="modal-edit-3" class="btn-icon" title="Modifica Cabernet Franc" aria-label="Modifica Cabernet Franc" role="button" tabindex="0">
+ 443                     <i class="fas fa-edit">
+ 443                     </i>
+ 444                   </label>
+ 445 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" novalidate="true">
+ 446                     <input type="hidden" name="azione" value="toggle_vino">
+ 447                     <input type="hidden" name="view" value="vini">
+ 448                     <input type="hidden" name="id" value="3">
+ 449                     <input type="hidden" name="current_status" value="nascosto">
+ 450                     <button type="submit" class="btn-icon" title="Cambia visibilità Cabernet Franc" aria-label="Cambia visibilità Cabernet Franc">
+ 451                       <i class="fas fa-eye-slash icon-muted" aria-hidden="true">
+ 451                       </i>
+ 452                     </button>
+ 453                   </form>
+ 454 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare Cabernet Franc?');" novalidate="true">
+ 455                     <input type="hidden" name="azione" value="elimina_vino">
+ 456                     <input type="hidden" name="view" value="vini">
+ 457                     <input type="hidden" name="id" value="3">
+ 458                     <button type="submit" class="btn-icon btn-icon-delete" title="Elimina Cabernet Franc" aria-label="Elimina Cabernet Franc">
+ 459                       <i class="fas fa-trash">
+ 459                       </i>
+ 460                     </button>
+ 461                   </form>
+ 461                 </div>
+ 461               </td>
+ 462             </tr>
+ 462             <tr class="">
+ 463               <th scope="row">
+ 463                 2
+ 463               </th>
+ 464               <td data-title="Anteprima">
+ 464                 <img src="../../images/tr/Merlot.webp" class="admin-thumb" alt="">
+ 464               </td>
+ 465               <td data-title="Dettagli">
+ 466                 <div class="wine-title">
+ 466                   Merlot
+ 466                 </div>
+ 467                 <div class="wine-cat">
+ 467                   Rossi
+ 467                 </div>
+ 468                 <div class="truncate">
+ 468                   Morbido e vellutato.
+ 468                 </div>
+ 469               </td>
+ 470               <td data-title="Prezzo">
+ 470                 € 14.00
+ 470               </td>
+ 471               <td data-title="Stock" class="">
+ 471                 96
+ 471               </td>
+ 472               <td data-title="Stato">
+ 472                 <span class="badge badge-active">
+ 472                   Attivo
+ 472                 </span>
+ 472               </td>
+ 473               <td data-title="Azioni" class="admin-col-actions">
+ 473                 <div class="action-group">
+ 474 next issueprevious issueE956WCAG2 A 4.1.2: The value of the 'role' attribute is not valid for this element
+Elements can only have specific roles as defined by the ARIA specification. So, you may be better off using a more appropriate element for this role. See ARIA in HTML.
+     E904WCAG2 A 1.3.1: Label text is missing
+Associate labels properly with their controls. See WCAG2 Failure F68.
+                       <label for="modal-edit-2" class="btn-icon" title="Modifica Merlot" aria-label="Modifica Merlot" role="button" tabindex="0">
+ 475                     <i class="fas fa-edit">
+ 475                     </i>
+ 476                   </label>
+ 477 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" novalidate="true">
+ 478                     <input type="hidden" name="azione" value="toggle_vino">
+ 479                     <input type="hidden" name="view" value="vini">
+ 480                     <input type="hidden" name="id" value="2">
+ 481                     <input type="hidden" name="current_status" value="attivo">
+ 482                     <button type="submit" class="btn-icon" title="Cambia visibilità Merlot" aria-label="Cambia visibilità Merlot">
+ 483                       <i class="fas fa-eye" aria-hidden="true">
+ 483                       </i>
+ 484                     </button>
+ 485                   </form>
+ 486 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare Merlot?');" novalidate="true">
+ 487                     <input type="hidden" name="azione" value="elimina_vino">
+ 488                     <input type="hidden" name="view" value="vini">
+ 489                     <input type="hidden" name="id" value="2">
+ 490                     <button type="submit" class="btn-icon btn-icon-delete" title="Elimina Merlot" aria-label="Elimina Merlot">
+ 491                       <i class="fas fa-trash">
+ 491                       </i>
+ 492                     </button>
+ 493                   </form>
+ 493                 </div>
+ 493               </td>
+ 494             </tr>
+ 494             <tr class="">
+ 495               <th scope="row">
+ 495                 1
+ 495               </th>
+ 496               <td data-title="Anteprima">
+ 496 next issueprevious issueE622HTML: The 'src' attribute does not have a valid value: It is an invalid URI, most likely containing invalid characters such as spaces (see rfc3986)
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                     <img src="../../images/tr/Raboso del Piave.webp" class="admin-thumb" alt="">
+ 496               </td>
+ 497               <td data-title="Dettagli">
+ 498                 <div class="wine-title">
+ 498                   Raboso del Piave
+ 498                 </div>
+ 499                 <div class="wine-cat">
+ 499                   Rossi
+ 499                 </div>
+ 500                 <div class="truncate">
+ 500                   Un vino rosso corposo e avvolgente.
+ 500                 </div>
+ 501               </td>
+ 502               <td data-title="Prezzo">
+ 502                 € 18.50
+ 502               </td>
+ 503               <td data-title="Stock" class="stock-low">
+ 503                 0
+ 503               </td>
+ 504               <td data-title="Stato">
+ 504                 <span class="badge badge-active">
+ 504                   Attivo
+ 504                 </span>
+ 504               </td>
+ 505               <td data-title="Azioni" class="admin-col-actions">
+ 505                 <div class="action-group">
+ 506 next issueprevious issueE956WCAG2 A 4.1.2: The value of the 'role' attribute is not valid for this element
+Elements can only have specific roles as defined by the ARIA specification. So, you may be better off using a more appropriate element for this role. See ARIA in HTML.
+     E904WCAG2 A 1.3.1: Label text is missing
+Associate labels properly with their controls. See WCAG2 Failure F68.
+                       <label for="modal-edit-1" class="btn-icon" title="Modifica Raboso del Piave" aria-label="Modifica Raboso del Piave" role="button" tabindex="0">
+ 507                     <i class="fas fa-edit">
+ 507                     </i>
+ 508                   </label>
+ 509 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" novalidate="true">
+ 510                     <input type="hidden" name="azione" value="toggle_vino">
+ 511                     <input type="hidden" name="view" value="vini">
+ 512                     <input type="hidden" name="id" value="1">
+ 513                     <input type="hidden" name="current_status" value="attivo">
+ 514                     <button type="submit" class="btn-icon" title="Cambia visibilità Raboso del Piave" aria-label="Cambia visibilità Raboso del Piave">
+ 515                       <i class="fas fa-eye" aria-hidden="true">
+ 515                       </i>
+ 516                     </button>
+ 517                   </form>
+ 518 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                       <form method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare Raboso del Piave?');" novalidate="true">
+ 519                     <input type="hidden" name="azione" value="elimina_vino">
+ 520                     <input type="hidden" name="view" value="vini">
+ 521                     <input type="hidden" name="id" value="1">
+ 522                     <button type="submit" class="btn-icon btn-icon-delete" title="Elimina Raboso del Piave" aria-label="Elimina Raboso del Piave">
+ 523                       <i class="fas fa-trash">
+ 523                       </i>
+ 524                     </button>
+ 525                   </form>
+ 525                 </div>
+ 525               </td>
+ 526             </tr>
+ 527           </tbody>
+ 528         </table>
+ 529       </div>
+ 531 next issueprevious issueE874WCAG2 A 3.3.2: The matching <label> text must appear after the control
+Associate labels properly with their controls. See WCAG2 HTML Technique H44.
+           <input type="checkbox" id="toggle-modal-nuovo" class="state-toggle" aria-label="Apri finestra creazione nuovo vino">
+ 532       <div class="modal-wrapper-css">
+ 533         <label for="toggle-modal-nuovo" class="modal-overlay-close" aria-label="Chiudi">
+ 533         </label>
+ 534         <div class="modal-box-css">
+ 535           <label for="toggle-modal-nuovo" class="modal-close-x" aria-label="Chiudi">
+ 535             ×
+ 535           </label>
+ 536           <h2 class="modal-title">
+ 536             Aggiungi Nuovo Vino
+ 536           </h2>
+ 538 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+               <form method="POST" enctype="multipart/form-data" novalidate="true">
+ 539             <input type="hidden" name="azione" value="salva_vino">
+ 540             <input type="hidden" name="id_vino" value="">
+ 542             <div class="form-grid">
+ 543               <div class="admin-form-group">
+ 544                 <label for="nome_new">
+ 544                   Nome Vino *
+ 544                 </label>
+ 545                 <input type="text" id="nome_new" name="nome" class="admin-input" required="" value="">
+ 546                 <small class="input-help">
+ 546                   Esempio: Pinot Nero Riserva
+ 546                 </small>
+ 547               </div>
+ 548               <div class="admin-form-group">
+ 549                 <label for="categoria_new">
+ 549                   Categoria *
+ 549                 </label>
+ 550                 <select id="categoria_new" name="categoria" class="admin-input">
+ 550                   <option value="rossi" selected="">
+ 550                     Rossi
+ 550                   </option>
+ 550                   <option value="bianchi">
+ 550                     Bianchi
+ 550                   </option>
+ 550                   <option value="selezione">
+ 550                     Selezione
+ 550                   </option>
+ 550                 </select>
+ 551                 <small class="input-help">
+ 551                   Esempio: Rossi
+ 551                 </small>
+ 552               </div>
+ 553               <div class="admin-form-group">
+ 554                 <label for="prezzo_new">
+ 554                   Prezzo (€) *
+ 554                 </label>
+ 555 next issueprevious issueE622HTML: The 'value' attribute does not have a valid value: It must be a floating point number
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                     <input type="number" step="0.01" id="prezzo_new" name="prezzo" class="admin-input" required="" value="">
+ 556                 <small class="input-help">
+ 556                   Esempio: 12.50
+ 556                 </small>
+ 557               </div>
+ 558               <div class="admin-form-group">
+ 559                 <label for="stock_new">
+ 559                   Stock *
+ 559                 </label>
+ 560                 <input type="number" id="stock_new" name="quantita_stock" class="admin-input" required="" value="0">
+ 561                 <small class="input-help">
+ 561                   Esempio: 120
+ 561                 </small>
+ 562               </div>
+ 563               <div class="admin-form-group">
+ 564                 <label for="stato_new">
+ 564                   Stato
+ 564                 </label>
+ 565                 <select id="stato_new" name="stato" class="admin-input">
+ 565                   <option value="attivo" selected="">
+ 565                     Attivo
+ 565                   </option>
+ 565                   <option value="nascosto">
+ 565                     Nascosto
+ 565                   </option>
+ 565                 </select>
+ 566                 <small class="input-help">
+ 566                   Esempio: Attivo
+ 566                 </small>
+ 567               </div>
+ 568               <div class="admin-form-group">
+ 569                 <label for="img_new">
+ 569                   Percorso Immagine
+ 569                 </label>
+ 570                 <input type="text" id="img_new" name="img" class="admin-input" value="../../images/tr/placeholder.webp">
+ 571                 <small class="input-help">
+ 571                   Esempio: ../../images/tr/placeholder.webp
+ 571                 </small>
+ 572               </div>
+ 573             </div>
+ 575             <div class="admin-form-group">
+ 576               <label for="desc_breve_new">
+ 576                 Descrizione Breve (Card)
+ 576               </label>
+ 577               <input type="text" id="desc_breve_new" name="descrizione_breve" class="admin-input" maxlength="100" value="">
+ 578               <small class="input-help">
+ 578                 Esempio: Rosso elegante con note di frutti rossi
+ 578               </small>
+ 579             </div>
+ 581             <div class="admin-form-group">
+ 582               <label for="desc_estesa_new">
+ 582                 Descrizione Estesa (Modale)
+ 582               </label>
+ 583               <textarea id="desc_estesa_new" name="descrizione_estesa" class="admin-input" rows="3">
+ 583               </textarea>
+ 584               <small class="input-help">
+ 584                 Esempio: Affinato in barrique per 12 mesi...
+ 584               </small>
+ 585             </div>
+ 587             <fieldset class="admin-fieldset">
+ 588               <legend>
+ 588                 Scheda Tecnica
+ 588               </legend>
+ 589               <div class="form-grid">
+ 590                 <div class="admin-form-group">
+ 590                   <label for="vitigno_new">
+ 590                     Vitigno
+ 590                   </label>
+ 590                   <input type="text" id="vitigno_new" name="vitigno" class="admin-input" value="">
+ 590                 </div>
+ 591                 <div class="admin-form-group">
+ 591                   <label for="annata_new">
+ 591                     Annata
+ 591                   </label>
+ 591                   <input type="text" id="annata_new" name="annata" class="admin-input" value="">
+ 591                 </div>
+ 592                 <div class="admin-form-group">
+ 592                   <label for="grad_new">
+ 592                     Gradazione
+ 592                   </label>
+ 592                   <input type="text" id="grad_new" name="gradazione" class="admin-input" value="">
+ 592                 </div>
+ 593                 <div class="admin-form-group">
+ 593                   <label for="temp_new">
+ 593                     Temperatura
+ 593                   </label>
+ 593                   <input type="text" id="temp_new" name="temperatura" class="admin-input" value="">
+ 593                 </div>
+ 594                 <div class="admin-form-group">
+ 594                   <label for="abb_new">
+ 594                     Abbinamenti
+ 594                   </label>
+ 594                   <input type="text" id="abb_new" name="abbinamenti" class="admin-input" value="">
+ 594                 </div>
+ 595               </div>
+ 596             </fieldset>
+ 598             <div class="admin-form-actions">
+ 599               <button type="submit" class="btn-primary">
+ 599                 Crea Vino
+ 599               </button>
+ 600             </div>
+ 601           </form>
+ 602         </div>
+ 603       </div>
+ 605       <input type="checkbox" id="modal-edit-12" class="state-toggle" aria-label="Apri finestra modifica per Rosae Nobile">
+ 606       <div class="modal-wrapper-css">
+ 607         <label for="modal-edit-12" class="modal-overlay-close" aria-label="Chiudi">
+ 607         </label>
+ 608         <div class="modal-box-css">
+ 609           <label for="modal-edit-12" class="modal-close-x" aria-label="Chiudi">
+ 609             ×
+ 609           </label>
+ 610           <h2 class="modal-title">
+ 610             Modifica Vino: Rosae Nobile
+ 610           </h2>
+ 612 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+               <form method="POST" enctype="multipart/form-data" novalidate="true">
+ 613             <input type="hidden" name="azione" value="salva_vino">
+ 614             <input type="hidden" name="id_vino" value="12">
+ 616             <div class="form-grid">
+ 617               <div class="admin-form-group">
+ 618                 <label for="nome_12">
+ 618                   Nome Vino *
+ 618                 </label>
+ 619                 <input type="text" id="nome_12" name="nome" class="admin-input" required="" value="Rosae Nobile">
+ 620                 <small class="input-help">
+ 620                   Esempio: Pinot Nero Riserva
+ 620                 </small>
+ 621               </div>
+ 622               <div class="admin-form-group">
+ 623                 <label for="categoria_12">
+ 623                   Categoria *
+ 623                 </label>
+ 624                 <select id="categoria_12" name="categoria" class="admin-input">
+ 624                   <option value="rossi">
+ 624                     Rossi
+ 624                   </option>
+ 624                   <option value="bianchi">
+ 624                     Bianchi
+ 624                   </option>
+ 624                   <option value="selezione" selected="">
+ 624                     Selezione
+ 624                   </option>
+ 624                 </select>
+ 625                 <small class="input-help">
+ 625                   Esempio: Rossi
+ 625                 </small>
+ 626               </div>
+ 627               <div class="admin-form-group">
+ 628                 <label for="prezzo_12">
+ 628                   Prezzo (€) *
+ 628                 </label>
+ 629                 <input type="number" step="0.01" id="prezzo_12" name="prezzo" class="admin-input" required="" value="19.00">
+ 630                 <small class="input-help">
+ 630                   Esempio: 12.50
+ 630                 </small>
+ 631               </div>
+ 632               <div class="admin-form-group">
+ 633                 <label for="stock_12">
+ 633                   Stock *
+ 633                 </label>
+ 634                 <input type="number" id="stock_12" name="quantita_stock" class="admin-input" required="" value="0">
+ 635                 <small class="input-help">
+ 635                   Esempio: 120
+ 635                 </small>
+ 636               </div>
+ 637               <div class="admin-form-group">
+ 638                 <label for="stato_12">
+ 638                   Stato
+ 638                 </label>
+ 639                 <select id="stato_12" name="stato" class="admin-input">
+ 639                   <option value="attivo" selected="">
+ 639                     Attivo
+ 639                   </option>
+ 639                   <option value="nascosto">
+ 639                     Nascosto
+ 639                   </option>
+ 639                 </select>
+ 640                 <small class="input-help">
+ 640                   Esempio: Attivo
+ 640                 </small>
+ 641               </div>
+ 642               <div class="admin-form-group">
+ 643                 <label for="img_12">
+ 643                   Percorso Immagine
+ 643                 </label>
+ 644                 <input type="text" id="img_12" name="img" class="admin-input" value="../../images/tr/Rosae Nobile.webp">
+ 645                 <small class="input-help">
+ 645                   Esempio: ../../images/tr/placeholder.webp
+ 645                 </small>
+ 646               </div>
+ 647             </div>
+ 649             <div class="admin-form-group">
+ 650               <label for="desc_breve_12">
+ 650                 Descrizione Breve (Card)
+ 650               </label>
+ 651               <input type="text" id="desc_breve_12" name="descrizione_breve" class="admin-input" maxlength="100" value="Rosato di alta classe.">
+ 652               <small class="input-help">
+ 652                 Esempio: Rosso elegante con note di frutti rossi
+ 652               </small>
+ 653             </div>
+ 655             <div class="admin-form-group">
+ 656               <label for="desc_estesa_12">
+ 656                 Descrizione Estesa (Modale)
+ 656               </label>
+ 657               <textarea id="desc_estesa_12" name="descrizione_estesa" class="admin-input" rows="3">
+ 657                 Rosato di alta classe, note di frutti di bosco e rosa canina.
+ 657               </textarea>
+ 658               <small class="input-help">
+ 658                 Esempio: Affinato in barrique per 12 mesi...
+ 658               </small>
+ 659             </div>
+ 661             <fieldset class="admin-fieldset">
+ 662               <legend>
+ 662                 Scheda Tecnica
+ 662               </legend>
+ 663               <div class="form-grid">
+ 664                 <div class="admin-form-group">
+ 664                   <label for="vitigno_12">
+ 664                     Vitigno
+ 664                   </label>
+ 664                   <input type="text" id="vitigno_12" name="vitigno" class="admin-input" value="Raboso vinif. in bianco">
+ 664                 </div>
+ 665                 <div class="admin-form-group">
+ 665                   <label for="annata_12">
+ 665                     Annata
+ 665                   </label>
+ 665                   <input type="text" id="annata_12" name="annata" class="admin-input" value="2023">
+ 665                 </div>
+ 666                 <div class="admin-form-group">
+ 666                   <label for="grad_12">
+ 666                     Gradazione
+ 666                   </label>
+ 666                   <input type="text" id="grad_12" name="gradazione" class="admin-input" value="12.0% Vol">
+ 666                 </div>
+ 667                 <div class="admin-form-group">
+ 667                   <label for="temp_12">
+ 667                     Temperatura
+ 667                   </label>
+ 667                   <input type="text" id="temp_12" name="temperatura" class="admin-input" value="8-10°C">
+ 667                 </div>
+ 668                 <div class="admin-form-group">
+ 668                   <label for="abb_12">
+ 668                     Abbinamenti
+ 668                   </label>
+ 668                   <input type="text" id="abb_12" name="abbinamenti" class="admin-input" value="Antipasti di pesce, Sushi">
+ 668                 </div>
+ 669               </div>
+ 670             </fieldset>
+ 672             <div class="admin-form-actions">
+ 673               <button type="submit" class="btn-primary">
+ 673                 Salva Modifiche
+ 673               </button>
+ 674             </div>
+ 675           </form>
+ 676         </div>
+ 677       </div>
+ 678       <input type="checkbox" id="modal-edit-11" class="state-toggle" aria-label="Apri finestra modifica per Incanto">
+ 679       <div class="modal-wrapper-css">
+ 680         <label for="modal-edit-11" class="modal-overlay-close" aria-label="Chiudi">
+ 680         </label>
+ 681         <div class="modal-box-css">
+ 682           <label for="modal-edit-11" class="modal-close-x" aria-label="Chiudi">
+ 682             ×
+ 682           </label>
+ 683           <h2 class="modal-title">
+ 683             Modifica Vino: Incanto
+ 683           </h2>
+ 685 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+               <form method="POST" enctype="multipart/form-data" novalidate="true">
+ 686             <input type="hidden" name="azione" value="salva_vino">
+ 687             <input type="hidden" name="id_vino" value="11">
+ 689             <div class="form-grid">
+ 690               <div class="admin-form-group">
+ 691                 <label for="nome_11">
+ 691                   Nome Vino *
+ 691                 </label>
+ 692                 <input type="text" id="nome_11" name="nome" class="admin-input" required="" value="Incanto">
+ 693                 <small class="input-help">
+ 693                   Esempio: Pinot Nero Riserva
+ 693                 </small>
+ 694               </div>
+ 695               <div class="admin-form-group">
+ 696                 <label for="categoria_11">
+ 696                   Categoria *
+ 696                 </label>
+ 697                 <select id="categoria_11" name="categoria" class="admin-input">
+ 697                   <option value="rossi">
+ 697                     Rossi
+ 697                   </option>
+ 697                   <option value="bianchi">
+ 697                     Bianchi
+ 697                   </option>
+ 697                   <option value="selezione" selected="">
+ 697                     Selezione
+ 697                   </option>
+ 697                 </select>
+ 698                 <small class="input-help">
+ 698                   Esempio: Rossi
+ 698                 </small>
+ 699               </div>
+ 700               <div class="admin-form-group">
+ 701                 <label for="prezzo_11">
+ 701                   Prezzo (€) *
+ 701                 </label>
+ 702                 <input type="number" step="0.01" id="prezzo_11" name="prezzo" class="admin-input" required="" value="20.00">
+ 703                 <small class="input-help">
+ 703                   Esempio: 12.50
+ 703                 </small>
+ 704               </div>
+ 705               <div class="admin-form-group">
+ 706                 <label for="stock_11">
+ 706                   Stock *
+ 706                 </label>
+ 707                 <input type="number" id="stock_11" name="quantita_stock" class="admin-input" required="" value="277">
+ 708                 <small class="input-help">
+ 708                   Esempio: 120
+ 708                 </small>
+ 709               </div>
+ 710               <div class="admin-form-group">
+ 711                 <label for="stato_11">
+ 711                   Stato
+ 711                 </label>
+ 712                 <select id="stato_11" name="stato" class="admin-input">
+ 712                   <option value="attivo" selected="">
+ 712                     Attivo
+ 712                   </option>
+ 712                   <option value="nascosto">
+ 712                     Nascosto
+ 712                   </option>
+ 712                 </select>
+ 713                 <small class="input-help">
+ 713                   Esempio: Attivo
+ 713                 </small>
+ 714               </div>
+ 715               <div class="admin-form-group">
+ 716                 <label for="img_11">
+ 716                   Percorso Immagine
+ 716                 </label>
+ 717                 <input type="text" id="img_11" name="img" class="admin-input" value="../../images/tr/Incanto.webp">
+ 718                 <small class="input-help">
+ 718                   Esempio: ../../images/tr/placeholder.webp
+ 718                 </small>
+ 719               </div>
+ 720             </div>
+ 722             <div class="admin-form-group">
+ 723               <label for="desc_breve_11">
+ 723                 Descrizione Breve (Card)
+ 723               </label>
+ 724               <input type="text" id="desc_breve_11" name="descrizione_breve" class="admin-input" maxlength="100" value="Profumi floreali.">
+ 725               <small class="input-help">
+ 725                 Esempio: Rosso elegante con note di frutti rossi
+ 725               </small>
+ 726             </div>
+ 728             <div class="admin-form-group">
+ 729               <label for="desc_estesa_11">
+ 729                 Descrizione Estesa (Modale)
+ 729               </label>
+ 730               <textarea id="desc_estesa_11" name="descrizione_estesa" class="admin-input" rows="3">
+ 730                 Un vino che incanta per i suoi profumi floreali intensi e la persistenza.
+ 730               </textarea>
+ 731               <small class="input-help">
+ 731                 Esempio: Affinato in barrique per 12 mesi...
+ 731               </small>
+ 732             </div>
+ 734             <fieldset class="admin-fieldset">
+ 735               <legend>
+ 735                 Scheda Tecnica
+ 735               </legend>
+ 736               <div class="form-grid">
+ 737                 <div class="admin-form-group">
+ 737                   <label for="vitigno_11">
+ 737                     Vitigno
+ 737                   </label>
+ 737                   <input type="text" id="vitigno_11" name="vitigno" class="admin-input" value="Vitigni aromatici">
+ 737                 </div>
+ 738                 <div class="admin-form-group">
+ 738                   <label for="annata_11">
+ 738                     Annata
+ 738                   </label>
+ 738                   <input type="text" id="annata_11" name="annata" class="admin-input" value="2022">
+ 738                 </div>
+ 739                 <div class="admin-form-group">
+ 739                   <label for="grad_11">
+ 739                     Gradazione
+ 739                   </label>
+ 739                   <input type="text" id="grad_11" name="gradazione" class="admin-input" value="12.5% Vol">
+ 739                 </div>
+ 740                 <div class="admin-form-group">
+ 740                   <label for="temp_11">
+ 740                     Temperatura
+ 740                   </label>
+ 740                   <input type="text" id="temp_11" name="temperatura" class="admin-input" value="8-10°C">
+ 740                 </div>
+ 741                 <div class="admin-form-group">
+ 741                   <label for="abb_11">
+ 741                     Abbinamenti
+ 741                   </label>
+ 741                   <input type="text" id="abb_11" name="abbinamenti" class="admin-input" value="Piatti speziati, Formaggi freschi">
+ 741                 </div>
+ 742               </div>
+ 743             </fieldset>
+ 745             <div class="admin-form-actions">
+ 746               <button type="submit" class="btn-primary">
+ 746                 Salva Modifiche
+ 746               </button>
+ 747             </div>
+ 748           </form>
+ 749         </div>
+ 750       </div>
+ 751       <input type="checkbox" id="modal-edit-10" class="state-toggle" aria-label="Apri finestra modifica per Vigna Dorata">
+ 752       <div class="modal-wrapper-css">
+ 753         <label for="modal-edit-10" class="modal-overlay-close" aria-label="Chiudi">
+ 753         </label>
+ 754         <div class="modal-box-css">
+ 755           <label for="modal-edit-10" class="modal-close-x" aria-label="Chiudi">
+ 755             ×
+ 755           </label>
+ 756           <h2 class="modal-title">
+ 756             Modifica Vino: Vigna Dorata
+ 756           </h2>
+ 758 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+               <form method="POST" enctype="multipart/form-data" novalidate="true">
+ 759             <input type="hidden" name="azione" value="salva_vino">
+ 760             <input type="hidden" name="id_vino" value="10">
+ 762             <div class="form-grid">
+ 763               <div class="admin-form-group">
+ 764                 <label for="nome_10">
+ 764                   Nome Vino *
+ 764                 </label>
+ 765                 <input type="text" id="nome_10" name="nome" class="admin-input" required="" value="Vigna Dorata">
+ 766                 <small class="input-help">
+ 766                   Esempio: Pinot Nero Riserva
+ 766                 </small>
+ 767               </div>
+ 768               <div class="admin-form-group">
+ 769                 <label for="categoria_10">
+ 769                   Categoria *
+ 769                 </label>
+ 770                 <select id="categoria_10" name="categoria" class="admin-input">
+ 770                   <option value="rossi">
+ 770                     Rossi
+ 770                   </option>
+ 770                   <option value="bianchi">
+ 770                     Bianchi
+ 770                   </option>
+ 770                   <option value="selezione" selected="">
+ 770                     Selezione
+ 770                   </option>
+ 770                 </select>
+ 771                 <small class="input-help">
+ 771                   Esempio: Rossi
+ 771                 </small>
+ 772               </div>
+ 773               <div class="admin-form-group">
+ 774                 <label for="prezzo_10">
+ 774                   Prezzo (€) *
+ 774                 </label>
+ 775                 <input type="number" step="0.01" id="prezzo_10" name="prezzo" class="admin-input" required="" value="22.00">
+ 776                 <small class="input-help">
+ 776                   Esempio: 12.50
+ 776                 </small>
+ 777               </div>
+ 778               <div class="admin-form-group">
+ 779                 <label for="stock_10">
+ 779                   Stock *
+ 779                 </label>
+ 780                 <input type="number" id="stock_10" name="quantita_stock" class="admin-input" required="" value="19">
+ 781                 <small class="input-help">
+ 781                   Esempio: 120
+ 781                 </small>
+ 782               </div>
+ 783               <div class="admin-form-group">
+ 784                 <label for="stato_10">
+ 784                   Stato
+ 784                 </label>
+ 785                 <select id="stato_10" name="stato" class="admin-input">
+ 785                   <option value="attivo" selected="">
+ 785                     Attivo
+ 785                   </option>
+ 785                   <option value="nascosto">
+ 785                     Nascosto
+ 785                   </option>
+ 785                 </select>
+ 786                 <small class="input-help">
+ 786                   Esempio: Attivo
+ 786                 </small>
+ 787               </div>
+ 788               <div class="admin-form-group">
+ 789                 <label for="img_10">
+ 789                   Percorso Immagine
+ 789                 </label>
+ 790                 <input type="text" id="img_10" name="img" class="admin-input" value="../../images/tr/Vigna Dorata.webp">
+ 791                 <small class="input-help">
+ 791                   Esempio: ../../images/tr/placeholder.webp
+ 791                 </small>
+ 792               </div>
+ 793             </div>
+ 795             <div class="admin-form-group">
+ 796               <label for="desc_breve_10">
+ 796                 Descrizione Breve (Card)
+ 796               </label>
+ 797               <input type="text" id="desc_breve_10" name="descrizione_breve" class="admin-input" maxlength="100" value="Dolce e avvolgente.">
+ 798               <small class="input-help">
+ 798                 Esempio: Rosso elegante con note di frutti rossi
+ 798               </small>
+ 799             </div>
+ 801             <div class="admin-form-group">
+ 802               <label for="desc_estesa_10">
+ 802                 Descrizione Estesa (Modale)
+ 802               </label>
+ 803               <textarea id="desc_estesa_10" name="descrizione_estesa" class="admin-input" rows="3">
+ 803                 Selezione di uve passite, dolce, avvolgente e dai riflessi dorati.
+ 803               </textarea>
+ 804               <small class="input-help">
+ 804                 Esempio: Affinato in barrique per 12 mesi...
+ 804               </small>
+ 805             </div>
+ 807             <fieldset class="admin-fieldset">
+ 808               <legend>
+ 808                 Scheda Tecnica
+ 808               </legend>
+ 809               <div class="form-grid">
+ 810                 <div class="admin-form-group">
+ 810                   <label for="vitigno_10">
+ 810                     Vitigno
+ 810                   </label>
+ 810                   <input type="text" id="vitigno_10" name="vitigno" class="admin-input" value="Verduzzo">
+ 810                 </div>
+ 811                 <div class="admin-form-group">
+ 811                   <label for="annata_10">
+ 811                     Annata
+ 811                   </label>
+ 811                   <input type="text" id="annata_10" name="annata" class="admin-input" value="2020">
+ 811                 </div>
+ 812                 <div class="admin-form-group">
+ 812                   <label for="grad_10">
+ 812                     Gradazione
+ 812                   </label>
+ 812                   <input type="text" id="grad_10" name="gradazione" class="admin-input" value="14.0% Vol">
+ 812                 </div>
+ 813                 <div class="admin-form-group">
+ 813                   <label for="temp_10">
+ 813                     Temperatura
+ 813                   </label>
+ 813                   <input type="text" id="temp_10" name="temperatura" class="admin-input" value="10-12°C">
+ 813                 </div>
+ 814                 <div class="admin-form-group">
+ 814                   <label for="abb_10">
+ 814                     Abbinamenti
+ 814                   </label>
+ 814                   <input type="text" id="abb_10" name="abbinamenti" class="admin-input" value="Pasticceria secca, Formaggi erborinati">
+ 814                 </div>
+ 815               </div>
+ 816             </fieldset>
+ 818             <div class="admin-form-actions">
+ 819               <button type="submit" class="btn-primary">
+ 819                 Salva Modifiche
+ 819               </button>
+ 820             </div>
+ 821           </form>
+ 822         </div>
+ 823       </div>
+ 824       <input type="checkbox" id="modal-edit-9" class="state-toggle" aria-label="Apri finestra modifica per Gran Morer">
+ 825       <div class="modal-wrapper-css">
+ 826         <label for="modal-edit-9" class="modal-overlay-close" aria-label="Chiudi">
+ 826         </label>
+ 827         <div class="modal-box-css">
+ 828           <label for="modal-edit-9" class="modal-close-x" aria-label="Chiudi">
+ 828             ×
+ 828           </label>
+ 829           <h2 class="modal-title">
+ 829             Modifica Vino: Gran Morer
+ 829           </h2>
+ 831 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+               <form method="POST" enctype="multipart/form-data" novalidate="true">
+ 832             <input type="hidden" name="azione" value="salva_vino">
+ 833             <input type="hidden" name="id_vino" value="9">
+ 835             <div class="form-grid">
+ 836               <div class="admin-form-group">
+ 837                 <label for="nome_9">
+ 837                   Nome Vino *
+ 837                 </label>
+ 838                 <input type="text" id="nome_9" name="nome" class="admin-input" required="" value="Gran Morer">
+ 839                 <small class="input-help">
+ 839                   Esempio: Pinot Nero Riserva
+ 839                 </small>
+ 840               </div>
+ 841               <div class="admin-form-group">
+ 842                 <label for="categoria_9">
+ 842                   Categoria *
+ 842                 </label>
+ 843                 <select id="categoria_9" name="categoria" class="admin-input">
+ 843                   <option value="rossi">
+ 843                     Rossi
+ 843                   </option>
+ 843                   <option value="bianchi">
+ 843                     Bianchi
+ 843                   </option>
+ 843                   <option value="selezione" selected="">
+ 843                     Selezione
+ 843                   </option>
+ 843                 </select>
+ 844                 <small class="input-help">
+ 844                   Esempio: Rossi
+ 844                 </small>
+ 845               </div>
+ 846               <div class="admin-form-group">
+ 847                 <label for="prezzo_9">
+ 847                   Prezzo (€) *
+ 847                 </label>
+ 848                 <input type="number" step="0.01" id="prezzo_9" name="prezzo" class="admin-input" required="" value="25.00">
+ 849                 <small class="input-help">
+ 849                   Esempio: 12.50
+ 849                 </small>
+ 850               </div>
+ 851               <div class="admin-form-group">
+ 852                 <label for="stock_9">
+ 852                   Stock *
+ 852                 </label>
+ 853                 <input type="number" id="stock_9" name="quantita_stock" class="admin-input" required="" value="118">
+ 854                 <small class="input-help">
+ 854                   Esempio: 120
+ 854                 </small>
+ 855               </div>
+ 856               <div class="admin-form-group">
+ 857                 <label for="stato_9">
+ 857                   Stato
+ 857                 </label>
+ 858                 <select id="stato_9" name="stato" class="admin-input">
+ 858                   <option value="attivo" selected="">
+ 858                     Attivo
+ 858                   </option>
+ 858                   <option value="nascosto">
+ 858                     Nascosto
+ 858                   </option>
+ 858                 </select>
+ 859                 <small class="input-help">
+ 859                   Esempio: Attivo
+ 859                 </small>
+ 860               </div>
+ 861               <div class="admin-form-group">
+ 862                 <label for="img_9">
+ 862                   Percorso Immagine
+ 862                 </label>
+ 863                 <input type="text" id="img_9" name="img" class="admin-input" value="../../images/tr/Gran Morer.webp">
+ 864                 <small class="input-help">
+ 864                   Esempio: ../../images/tr/placeholder.webp
+ 864                 </small>
+ 865               </div>
+ 866             </div>
+ 868             <div class="admin-form-group">
+ 869               <label for="desc_breve_9">
+ 869                 Descrizione Breve (Card)
+ 869               </label>
+ 870               <input type="text" id="desc_breve_9" name="descrizione_breve" class="admin-input" maxlength="100" value="Riserva speciale.">
+ 871               <small class="input-help">
+ 871                 Esempio: Rosso elegante con note di frutti rossi
+ 871               </small>
+ 872             </div>
+ 874             <div class="admin-form-group">
+ 875               <label for="desc_estesa_9">
+ 875                 Descrizione Estesa (Modale)
+ 875               </label>
+ 876               <textarea id="desc_estesa_9" name="descrizione_estesa" class="admin-input" rows="3">
+ 876                 La nostra riserva speciale. Invecchiato in botte, complesso e speziato.
+ 876               </textarea>
+ 877               <small class="input-help">
+ 877                 Esempio: Affinato in barrique per 12 mesi...
+ 877               </small>
+ 878             </div>
+ 880             <fieldset class="admin-fieldset">
+ 881               <legend>
+ 881                 Scheda Tecnica
+ 881               </legend>
+ 882               <div class="form-grid">
+ 883                 <div class="admin-form-group">
+ 883                   <label for="vitigno_9">
+ 883                     Vitigno
+ 883                   </label>
+ 883                   <input type="text" id="vitigno_9" name="vitigno" class="admin-input" value="Uvaggio Segreto">
+ 883                 </div>
+ 884                 <div class="admin-form-group">
+ 884                   <label for="annata_9">
+ 884                     Annata
+ 884                   </label>
+ 884                   <input type="text" id="annata_9" name="annata" class="admin-input" value="2018">
+ 884                 </div>
+ 885                 <div class="admin-form-group">
+ 885                   <label for="grad_9">
+ 885                     Gradazione
+ 885                   </label>
+ 885                   <input type="text" id="grad_9" name="gradazione" class="admin-input" value="14.5% Vol">
+ 885                 </div>
+ 886                 <div class="admin-form-group">
+ 886                   <label for="temp_9">
+ 886                     Temperatura
+ 886                   </label>
+ 886                   <input type="text" id="temp_9" name="temperatura" class="admin-input" value="18-20°C">
+ 886                 </div>
+ 887                 <div class="admin-form-group">
+ 887                   <label for="abb_9">
+ 887                     Abbinamenti
+ 887                   </label>
+ 887                   <input type="text" id="abb_9" name="abbinamenti" class="admin-input" value="Meditazione, Carni importanti">
+ 887                 </div>
+ 888               </div>
+ 889             </fieldset>
+ 891             <div class="admin-form-actions">
+ 892               <button type="submit" class="btn-primary">
+ 892                 Salva Modifiche
+ 892               </button>
+ 893             </div>
+ 894           </form>
+ 895         </div>
+ 896       </div>
+ 897       <input type="checkbox" id="modal-edit-8" class="state-toggle" aria-label="Apri finestra modifica per Prosecco">
+ 898       <div class="modal-wrapper-css">
+ 899         <label for="modal-edit-8" class="modal-overlay-close" aria-label="Chiudi">
+ 899         </label>
+ 900         <div class="modal-box-css">
+ 901           <label for="modal-edit-8" class="modal-close-x" aria-label="Chiudi">
+ 901             ×
+ 901           </label>
+ 902           <h2 class="modal-title">
+ 902             Modifica Vino: Prosecco
+ 902           </h2>
+ 904 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+               <form method="POST" enctype="multipart/form-data" novalidate="true">
+ 905             <input type="hidden" name="azione" value="salva_vino">
+ 906             <input type="hidden" name="id_vino" value="8">
+ 908             <div class="form-grid">
+ 909               <div class="admin-form-group">
+ 910                 <label for="nome_8">
+ 910                   Nome Vino *
+ 910                 </label>
+ 911                 <input type="text" id="nome_8" name="nome" class="admin-input" required="" value="Prosecco">
+ 912                 <small class="input-help">
+ 912                   Esempio: Pinot Nero Riserva
+ 912                 </small>
+ 913               </div>
+ 914               <div class="admin-form-group">
+ 915                 <label for="categoria_8">
+ 915                   Categoria *
+ 915                 </label>
+ 916                 <select id="categoria_8" name="categoria" class="admin-input">
+ 916                   <option value="rossi">
+ 916                     Rossi
+ 916                   </option>
+ 916                   <option value="bianchi" selected="">
+ 916                     Bianchi
+ 916                   </option>
+ 916                   <option value="selezione">
+ 916                     Selezione
+ 916                   </option>
+ 916                 </select>
+ 917                 <small class="input-help">
+ 917                   Esempio: Rossi
+ 917                 </small>
+ 918               </div>
+ 919               <div class="admin-form-group">
+ 920                 <label for="prezzo_8">
+ 920                   Prezzo (€) *
+ 920                 </label>
+ 921                 <input type="number" step="0.01" id="prezzo_8" name="prezzo" class="admin-input" required="" value="12.50">
+ 922                 <small class="input-help">
+ 922                   Esempio: 12.50
+ 922                 </small>
+ 923               </div>
+ 924               <div class="admin-form-group">
+ 925                 <label for="stock_8">
+ 925                   Stock *
+ 925                 </label>
+ 926                 <input type="number" id="stock_8" name="quantita_stock" class="admin-input" required="" value="0">
+ 927                 <small class="input-help">
+ 927                   Esempio: 120
+ 927                 </small>
+ 928               </div>
+ 929               <div class="admin-form-group">
+ 930                 <label for="stato_8">
+ 930                   Stato
+ 930                 </label>
+ 931                 <select id="stato_8" name="stato" class="admin-input">
+ 931                   <option value="attivo" selected="">
+ 931                     Attivo
+ 931                   </option>
+ 931                   <option value="nascosto">
+ 931                     Nascosto
+ 931                   </option>
+ 931                 </select>
+ 932                 <small class="input-help">
+ 932                   Esempio: Attivo
+ 932                 </small>
+ 933               </div>
+ 934               <div class="admin-form-group">
+ 935                 <label for="img_8">
+ 935                   Percorso Immagine
+ 935                 </label>
+ 936                 <input type="text" id="img_8" name="img" class="admin-input" value="../../images/tr/Prosecco.webp">
+ 937                 <small class="input-help">
+ 937                   Esempio: ../../images/tr/placeholder.webp
+ 937                 </small>
+ 938               </div>
+ 939             </div>
+ 941             <div class="admin-form-group">
+ 942               <label for="desc_breve_8">
+ 942                 Descrizione Breve (Card)
+ 942               </label>
+ 943               <input type="text" id="desc_breve_8" name="descrizione_breve" class="admin-input" maxlength="100" value="Le bollicine venete.">
+ 944               <small class="input-help">
+ 944                 Esempio: Rosso elegante con note di frutti rossi
+ 944               </small>
+ 945             </div>
+ 947             <div class="admin-form-group">
+ 948               <label for="desc_estesa_8">
+ 948                 Descrizione Estesa (Modale)
+ 948               </label>
+ 949               <textarea id="desc_estesa_8" name="descrizione_estesa" class="admin-input" rows="3">
+ 949                 Le bollicine venete per eccellenza. Fresco, vivace e floreale.
+ 949               </textarea>
+ 950               <small class="input-help">
+ 950                 Esempio: Affinato in barrique per 12 mesi...
+ 950               </small>
+ 951             </div>
+ 953             <fieldset class="admin-fieldset">
+ 954               <legend>
+ 954                 Scheda Tecnica
+ 954               </legend>
+ 955               <div class="form-grid">
+ 956                 <div class="admin-form-group">
+ 956                   <label for="vitigno_8">
+ 956                     Vitigno
+ 956                   </label>
+ 956                   <input type="text" id="vitigno_8" name="vitigno" class="admin-input" value="Glera 100%">
+ 956                 </div>
+ 957                 <div class="admin-form-group">
+ 957                   <label for="annata_8">
+ 957                     Annata
+ 957                   </label>
+ 957                   <input type="text" id="annata_8" name="annata" class="admin-input" value="2024">
+ 957                 </div>
+ 958                 <div class="admin-form-group">
+ 958                   <label for="grad_8">
+ 958                     Gradazione
+ 958                   </label>
+ 958                   <input type="text" id="grad_8" name="gradazione" class="admin-input" value="11.0% Vol">
+ 958                 </div>
+ 959                 <div class="admin-form-group">
+ 959                   <label for="temp_8">
+ 959                     Temperatura
+ 959                   </label>
+ 959                   <input type="text" id="temp_8" name="temperatura" class="admin-input" value="6-8°C">
+ 959                 </div>
+ 960                 <div class="admin-form-group">
+ 960                   <label for="abb_8">
+ 960                     Abbinamenti
+ 960                   </label>
+ 960                   <input type="text" id="abb_8" name="abbinamenti" class="admin-input" value="Brindisi, Aperitivi, Dolci secchi">
+ 960                 </div>
+ 961               </div>
+ 962             </fieldset>
+ 964             <div class="admin-form-actions">
+ 965               <button type="submit" class="btn-primary">
+ 965                 Salva Modifiche
+ 965               </button>
+ 966             </div>
+ 967           </form>
+ 968         </div>
+ 969       </div>
+ 970       <input type="checkbox" id="modal-edit-7" class="state-toggle" aria-label="Apri finestra modifica per Pinot Grigio">
+ 971       <div class="modal-wrapper-css">
+ 972         <label for="modal-edit-7" class="modal-overlay-close" aria-label="Chiudi">
+ 972         </label>
+ 973         <div class="modal-box-css">
+ 974           <label for="modal-edit-7" class="modal-close-x" aria-label="Chiudi">
+ 974             ×
+ 974           </label>
+ 975           <h2 class="modal-title">
+ 975             Modifica Vino: Pinot Grigio
+ 975           </h2>
+ 977 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+               <form method="POST" enctype="multipart/form-data" novalidate="true">
+ 978             <input type="hidden" name="azione" value="salva_vino">
+ 979             <input type="hidden" name="id_vino" value="7">
+ 981             <div class="form-grid">
+ 982               <div class="admin-form-group">
+ 983                 <label for="nome_7">
+ 983                   Nome Vino *
+ 983                 </label>
+ 984                 <input type="text" id="nome_7" name="nome" class="admin-input" required="" value="Pinot Grigio">
+ 985                 <small class="input-help">
+ 985                   Esempio: Pinot Nero Riserva
+ 985                 </small>
+ 986               </div>
+ 987               <div class="admin-form-group">
+ 988                 <label for="categoria_7">
+ 988                   Categoria *
+ 988                 </label>
+ 989                 <select id="categoria_7" name="categoria" class="admin-input">
+ 989                   <option value="rossi">
+ 989                     Rossi
+ 989                   </option>
+ 989                   <option value="bianchi" selected="">
+ 989                     Bianchi
+ 989                   </option>
+ 989                   <option value="selezione">
+ 989                     Selezione
+ 989                   </option>
+ 989                 </select>
+ 990                 <small class="input-help">
+ 990                   Esempio: Rossi
+ 990                 </small>
+ 991               </div>
+ 992               <div class="admin-form-group">
+ 993                 <label for="prezzo_7">
+ 993                   Prezzo (€) *
+ 993                 </label>
+ 994                 <input type="number" step="0.01" id="prezzo_7" name="prezzo" class="admin-input" required="" value="13.00">
+ 995                 <small class="input-help">
+ 995                   Esempio: 12.50
+ 995                 </small>
+ 996               </div>
+ 997               <div class="admin-form-group">
+ 998                 <label for="stock_7">
+ 998                   Stock *
+ 998                 </label>
+ 999                 <input type="number" id="stock_7" name="quantita_stock" class="admin-input" required="" value="196">
+1000                 <small class="input-help">
+1000                   Esempio: 120
+1000                 </small>
+1001               </div>
+1002               <div class="admin-form-group">
+1003                 <label for="stato_7">
+1003                   Stato
+1003                 </label>
+1004                 <select id="stato_7" name="stato" class="admin-input">
+1004                   <option value="attivo">
+1004                     Attivo
+1004                   </option>
+1004                   <option value="nascosto" selected="">
+1004                     Nascosto
+1004                   </option>
+1004                 </select>
+1005                 <small class="input-help">
+1005                   Esempio: Attivo
+1005                 </small>
+1006               </div>
+1007               <div class="admin-form-group">
+1008                 <label for="img_7">
+1008                   Percorso Immagine
+1008                 </label>
+1009                 <input type="text" id="img_7" name="img" class="admin-input" value="../../images/tr/Pinot Grigio.webp">
+1010                 <small class="input-help">
+1010                   Esempio: ../../images/tr/placeholder.webp
+1010                 </small>
+1011               </div>
+1012             </div>
+1014             <div class="admin-form-group">
+1015               <label for="desc_breve_7">
+1015                 Descrizione Breve (Card)
+1015               </label>
+1016               <input type="text" id="desc_breve_7" name="descrizione_breve" class="admin-input" maxlength="100" value="Fresco e sapido.">
+1017               <small class="input-help">
+1017                 Esempio: Rosso elegante con note di frutti rossi
+1017               </small>
+1018             </div>
+1020             <div class="admin-form-group">
+1021               <label for="desc_estesa_7">
+1021                 Descrizione Estesa (Modale)
+1021               </label>
+1022               <textarea id="desc_estesa_7" name="descrizione_estesa" class="admin-input" rows="3">
+1022                 Fresco, sapido e piacevole. Ottimo come aperitivo o tutto pasto leggero.
+1022               </textarea>
+1023               <small class="input-help">
+1023                 Esempio: Affinato in barrique per 12 mesi...
+1023               </small>
+1024             </div>
+1026             <fieldset class="admin-fieldset">
+1027               <legend>
+1027                 Scheda Tecnica
+1027               </legend>
+1028               <div class="form-grid">
+1029                 <div class="admin-form-group">
+1029                   <label for="vitigno_7">
+1029                     Vitigno
+1029                   </label>
+1029                   <input type="text" id="vitigno_7" name="vitigno" class="admin-input" value="Pinot Grigio">
+1029                 </div>
+1030                 <div class="admin-form-group">
+1030                   <label for="annata_7">
+1030                     Annata
+1030                   </label>
+1030                   <input type="text" id="annata_7" name="annata" class="admin-input" value="2023">
+1030                 </div>
+1031                 <div class="admin-form-group">
+1031                   <label for="grad_7">
+1031                     Gradazione
+1031                   </label>
+1031                   <input type="text" id="grad_7" name="gradazione" class="admin-input" value="12.0% Vol">
+1031                 </div>
+1032                 <div class="admin-form-group">
+1032                   <label for="temp_7">
+1032                     Temperatura
+1032                   </label>
+1032                   <input type="text" id="temp_7" name="temperatura" class="admin-input" value="8-10°C">
+1032                 </div>
+1033                 <div class="admin-form-group">
+1033                   <label for="abb_7">
+1033                     Abbinamenti
+1033                   </label>
+1033                   <input type="text" id="abb_7" name="abbinamenti" class="admin-input" value="Aperitivi, Carni bianche">
+1033                 </div>
+1034               </div>
+1035             </fieldset>
+1037             <div class="admin-form-actions">
+1038               <button type="submit" class="btn-primary">
+1038                 Salva Modifiche
+1038               </button>
+1039             </div>
+1040           </form>
+1041         </div>
+1042       </div>
+1043       <input type="checkbox" id="modal-edit-6" class="state-toggle" aria-label="Apri finestra modifica per Manzoni Bianco">
+1044       <div class="modal-wrapper-css">
+1045         <label for="modal-edit-6" class="modal-overlay-close" aria-label="Chiudi">
+1045         </label>
+1046         <div class="modal-box-css">
+1047           <label for="modal-edit-6" class="modal-close-x" aria-label="Chiudi">
+1047             ×
+1047           </label>
+1048           <h2 class="modal-title">
+1048             Modifica Vino: Manzoni Bianco
+1048           </h2>
+1050 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+               <form method="POST" enctype="multipart/form-data" novalidate="true">
+1051             <input type="hidden" name="azione" value="salva_vino">
+1052             <input type="hidden" name="id_vino" value="6">
+1054             <div class="form-grid">
+1055               <div class="admin-form-group">
+1056                 <label for="nome_6">
+1056                   Nome Vino *
+1056                 </label>
+1057                 <input type="text" id="nome_6" name="nome" class="admin-input" required="" value="Manzoni Bianco">
+1058                 <small class="input-help">
+1058                   Esempio: Pinot Nero Riserva
+1058                 </small>
+1059               </div>
+1060               <div class="admin-form-group">
+1061                 <label for="categoria_6">
+1061                   Categoria *
+1061                 </label>
+1062                 <select id="categoria_6" name="categoria" class="admin-input">
+1062                   <option value="rossi">
+1062                     Rossi
+1062                   </option>
+1062                   <option value="bianchi" selected="">
+1062                     Bianchi
+1062                   </option>
+1062                   <option value="selezione">
+1062                     Selezione
+1062                   </option>
+1062                 </select>
+1063                 <small class="input-help">
+1063                   Esempio: Rossi
+1063                 </small>
+1064               </div>
+1065               <div class="admin-form-group">
+1066                 <label for="prezzo_6">
+1066                   Prezzo (€) *
+1066                 </label>
+1067                 <input type="number" step="0.01" id="prezzo_6" name="prezzo" class="admin-input" required="" value="15.00">
+1068                 <small class="input-help">
+1068                   Esempio: 12.50
+1068                 </small>
+1069               </div>
+1070               <div class="admin-form-group">
+1071                 <label for="stock_6">
+1071                   Stock *
+1071                 </label>
+1072                 <input type="number" id="stock_6" name="quantita_stock" class="admin-input" required="" value="58">
+1073                 <small class="input-help">
+1073                   Esempio: 120
+1073                 </small>
+1074               </div>
+1075               <div class="admin-form-group">
+1076                 <label for="stato_6">
+1076                   Stato
+1076                 </label>
+1077                 <select id="stato_6" name="stato" class="admin-input">
+1077                   <option value="attivo" selected="">
+1077                     Attivo
+1077                   </option>
+1077                   <option value="nascosto">
+1077                     Nascosto
+1077                   </option>
+1077                 </select>
+1078                 <small class="input-help">
+1078                   Esempio: Attivo
+1078                 </small>
+1079               </div>
+1080               <div class="admin-form-group">
+1081                 <label for="img_6">
+1081                   Percorso Immagine
+1081                 </label>
+1082                 <input type="text" id="img_6" name="img" class="admin-input" value="../../images/tr/Manzoni Bianco.webp">
+1083                 <small class="input-help">
+1083                   Esempio: ../../images/tr/placeholder.webp
+1083                 </small>
+1084               </div>
+1085             </div>
+1087             <div class="admin-form-group">
+1088               <label for="desc_breve_6">
+1088                 Descrizione Breve (Card)
+1088               </label>
+1089               <input type="text" id="desc_breve_6" name="descrizione_breve" class="admin-input" maxlength="100" value="Aromatico e strutturato.">
+1090               <small class="input-help">
+1090                 Esempio: Rosso elegante con note di frutti rossi
+1090               </small>
+1091             </div>
+1093             <div class="admin-form-group">
+1094               <label for="desc_estesa_6">
+1094                 Descrizione Estesa (Modale)
+1094               </label>
+1095               <textarea id="desc_estesa_6" name="descrizione_estesa" class="admin-input" rows="3">
+1095                 Incrocio Riesling e Pinot Bianco. Aromatico, strutturato e di grande eleganza.
+1095               </textarea>
+1096               <small class="input-help">
+1096                 Esempio: Affinato in barrique per 12 mesi...
+1096               </small>
+1097             </div>
+1099             <fieldset class="admin-fieldset">
+1100               <legend>
+1100                 Scheda Tecnica
+1100               </legend>
+1101               <div class="form-grid">
+1102                 <div class="admin-form-group">
+1102                   <label for="vitigno_6">
+1102                     Vitigno
+1102                   </label>
+1102                   <input type="text" id="vitigno_6" name="vitigno" class="admin-input" value="Incrocio Manzoni">
+1102                 </div>
+1103                 <div class="admin-form-group">
+1103                   <label for="annata_6">
+1103                     Annata
+1103                   </label>
+1103                   <input type="text" id="annata_6" name="annata" class="admin-input" value="2023">
+1103                 </div>
+1104                 <div class="admin-form-group">
+1104                   <label for="grad_6">
+1104                     Gradazione
+1104                   </label>
+1104                   <input type="text" id="grad_6" name="gradazione" class="admin-input" value="13.0% Vol">
+1104                 </div>
+1105                 <div class="admin-form-group">
+1105                   <label for="temp_6">
+1105                     Temperatura
+1105                   </label>
+1105                   <input type="text" id="temp_6" name="temperatura" class="admin-input" value="10-12°C">
+1105                 </div>
+1106                 <div class="admin-form-group">
+1106                   <label for="abb_6">
+1106                     Abbinamenti
+1106                   </label>
+1106                   <input type="text" id="abb_6" name="abbinamenti" class="admin-input" value="Risotti, Crostacei">
+1106                 </div>
+1107               </div>
+1108             </fieldset>
+1110             <div class="admin-form-actions">
+1111               <button type="submit" class="btn-primary">
+1111                 Salva Modifiche
+1111               </button>
+1112             </div>
+1113           </form>
+1114         </div>
+1115       </div>
+1116       <input type="checkbox" id="modal-edit-5" class="state-toggle" aria-label="Apri finestra modifica per Chardonnay">
+1117       <div class="modal-wrapper-css">
+1118         <label for="modal-edit-5" class="modal-overlay-close" aria-label="Chiudi">
+1118         </label>
+1119         <div class="modal-box-css">
+1120           <label for="modal-edit-5" class="modal-close-x" aria-label="Chiudi">
+1120             ×
+1120           </label>
+1121           <h2 class="modal-title">
+1121             Modifica Vino: Chardonnay
+1121           </h2>
+1123 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+               <form method="POST" enctype="multipart/form-data" novalidate="true">
+1124             <input type="hidden" name="azione" value="salva_vino">
+1125             <input type="hidden" name="id_vino" value="5">
+1127             <div class="form-grid">
+1128               <div class="admin-form-group">
+1129                 <label for="nome_5">
+1129                   Nome Vino *
+1129                 </label>
+1130                 <input type="text" id="nome_5" name="nome" class="admin-input" required="" value="Chardonnay">
+1131                 <small class="input-help">
+1131                   Esempio: Pinot Nero Riserva
+1131                 </small>
+1132               </div>
+1133               <div class="admin-form-group">
+1134                 <label for="categoria_5">
+1134                   Categoria *
+1134                 </label>
+1135                 <select id="categoria_5" name="categoria" class="admin-input">
+1135                   <option value="rossi">
+1135                     Rossi
+1135                   </option>
+1135                   <option value="bianchi" selected="">
+1135                     Bianchi
+1135                   </option>
+1135                   <option value="selezione">
+1135                     Selezione
+1135                   </option>
+1135                 </select>
+1136                 <small class="input-help">
+1136                   Esempio: Rossi
+1136                 </small>
+1137               </div>
+1138               <div class="admin-form-group">
+1139                 <label for="prezzo_5">
+1139                   Prezzo (€) *
+1139                 </label>
+1140                 <input type="number" step="0.01" id="prezzo_5" name="prezzo" class="admin-input" required="" value="13.50">
+1141                 <small class="input-help">
+1141                   Esempio: 12.50
+1141                 </small>
+1142               </div>
+1143               <div class="admin-form-group">
+1144                 <label for="stock_5">
+1144                   Stock *
+1144                 </label>
+1145                 <input type="number" id="stock_5" name="quantita_stock" class="admin-input" required="" value="222">
+1146                 <small class="input-help">
+1146                   Esempio: 120
+1146                 </small>
+1147               </div>
+1148               <div class="admin-form-group">
+1149                 <label for="stato_5">
+1149                   Stato
+1149                 </label>
+1150                 <select id="stato_5" name="stato" class="admin-input">
+1150                   <option value="attivo" selected="">
+1150                     Attivo
+1150                   </option>
+1150                   <option value="nascosto">
+1150                     Nascosto
+1150                   </option>
+1150                 </select>
+1151                 <small class="input-help">
+1151                   Esempio: Attivo
+1151                 </small>
+1152               </div>
+1153               <div class="admin-form-group">
+1154                 <label for="img_5">
+1154                   Percorso Immagine
+1154                 </label>
+1155                 <input type="text" id="img_5" name="img" class="admin-input" value="../../images/tr/Chardonnay.webp">
+1156                 <small class="input-help">
+1156                   Esempio: ../../images/tr/placeholder.webp
+1156                 </small>
+1157               </div>
+1158             </div>
+1160             <div class="admin-form-group">
+1161               <label for="desc_breve_5">
+1161                 Descrizione Breve (Card)
+1161               </label>
+1162               <input type="text" id="desc_breve_5" name="descrizione_breve" class="admin-input" maxlength="100" value="Elegante e fruttato.">
+1163               <small class="input-help">
+1163                 Esempio: Rosso elegante con note di frutti rossi
+1163               </small>
+1164             </div>
+1166             <div class="admin-form-group">
+1167               <label for="desc_estesa_5">
+1167                 Descrizione Estesa (Modale)
+1167               </label>
+1168               <textarea id="desc_estesa_5" name="descrizione_estesa" class="admin-input" rows="3">
+1168                 Elegante, fruttato con sentori di mela golden e crosta di pane.
+1168               </textarea>
+1169               <small class="input-help">
+1169                 Esempio: Affinato in barrique per 12 mesi...
+1169               </small>
+1170             </div>
+1172             <fieldset class="admin-fieldset">
+1173               <legend>
+1173                 Scheda Tecnica
+1173               </legend>
+1174               <div class="form-grid">
+1175                 <div class="admin-form-group">
+1175                   <label for="vitigno_5">
+1175                     Vitigno
+1175                   </label>
+1175                   <input type="text" id="vitigno_5" name="vitigno" class="admin-input" value="Chardonnay">
+1175                 </div>
+1176                 <div class="admin-form-group">
+1176                   <label for="annata_5">
+1176                     Annata
+1176                   </label>
+1176                   <input type="text" id="annata_5" name="annata" class="admin-input" value="2023">
+1176                 </div>
+1177                 <div class="admin-form-group">
+1177                   <label for="grad_5">
+1177                     Gradazione
+1177                   </label>
+1177                   <input type="text" id="grad_5" name="gradazione" class="admin-input" value="12.0% Vol">
+1177                 </div>
+1178                 <div class="admin-form-group">
+1178                   <label for="temp_5">
+1178                     Temperatura
+1178                   </label>
+1178                   <input type="text" id="temp_5" name="temperatura" class="admin-input" value="8-10°C">
+1178                 </div>
+1179                 <div class="admin-form-group">
+1179                   <label for="abb_5">
+1179                     Abbinamenti
+1179                   </label>
+1179                   <input type="text" id="abb_5" name="abbinamenti" class="admin-input" value="Antipasti magri, Pesce">
+1179                 </div>
+1180               </div>
+1181             </fieldset>
+1183             <div class="admin-form-actions">
+1184               <button type="submit" class="btn-primary">
+1184                 Salva Modifiche
+1184               </button>
+1185             </div>
+1186           </form>
+1187         </div>
+1188       </div>
+1189       <input type="checkbox" id="modal-edit-4" class="state-toggle" aria-label="Apri finestra modifica per Refosco">
+1190       <div class="modal-wrapper-css">
+1191         <label for="modal-edit-4" class="modal-overlay-close" aria-label="Chiudi">
+1191         </label>
+1192         <div class="modal-box-css">
+1193           <label for="modal-edit-4" class="modal-close-x" aria-label="Chiudi">
+1193             ×
+1193           </label>
+1194           <h2 class="modal-title">
+1194             Modifica Vino: Refosco
+1194           </h2>
+1196 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+               <form method="POST" enctype="multipart/form-data" novalidate="true">
+1197             <input type="hidden" name="azione" value="salva_vino">
+1198             <input type="hidden" name="id_vino" value="4">
+1200             <div class="form-grid">
+1201               <div class="admin-form-group">
+1202                 <label for="nome_4">
+1202                   Nome Vino *
+1202                 </label>
+1203                 <input type="text" id="nome_4" name="nome" class="admin-input" required="" value="Refosco">
+1204                 <small class="input-help">
+1204                   Esempio: Pinot Nero Riserva
+1204                 </small>
+1205               </div>
+1206               <div class="admin-form-group">
+1207                 <label for="categoria_4">
+1207                   Categoria *
+1207                 </label>
+1208                 <select id="categoria_4" name="categoria" class="admin-input">
+1208                   <option value="rossi" selected="">
+1208                     Rossi
+1208                   </option>
+1208                   <option value="bianchi">
+1208                     Bianchi
+1208                   </option>
+1208                   <option value="selezione">
+1208                     Selezione
+1208                   </option>
+1208                 </select>
+1209                 <small class="input-help">
+1209                   Esempio: Rossi
+1209                 </small>
+1210               </div>
+1211               <div class="admin-form-group">
+1212                 <label for="prezzo_4">
+1212                   Prezzo (€) *
+1212                 </label>
+1213                 <input type="number" step="0.01" id="prezzo_4" name="prezzo" class="admin-input" required="" value="15.50">
+1214                 <small class="input-help">
+1214                   Esempio: 12.50
+1214                 </small>
+1215               </div>
+1216               <div class="admin-form-group">
+1217                 <label for="stock_4">
+1217                   Stock *
+1217                 </label>
+1218                 <input type="number" id="stock_4" name="quantita_stock" class="admin-input" required="" value="158">
+1219                 <small class="input-help">
+1219                   Esempio: 120
+1219                 </small>
+1220               </div>
+1221               <div class="admin-form-group">
+1222                 <label for="stato_4">
+1222                   Stato
+1222                 </label>
+1223                 <select id="stato_4" name="stato" class="admin-input">
+1223                   <option value="attivo" selected="">
+1223                     Attivo
+1223                   </option>
+1223                   <option value="nascosto">
+1223                     Nascosto
+1223                   </option>
+1223                 </select>
+1224                 <small class="input-help">
+1224                   Esempio: Attivo
+1224                 </small>
+1225               </div>
+1226               <div class="admin-form-group">
+1227                 <label for="img_4">
+1227                   Percorso Immagine
+1227                 </label>
+1228                 <input type="text" id="img_4" name="img" class="admin-input" value="../../images/tr/Refosco.webp">
+1229                 <small class="input-help">
+1229                   Esempio: ../../images/tr/placeholder.webp
+1229                 </small>
+1230               </div>
+1231             </div>
+1233             <div class="admin-form-group">
+1234               <label for="desc_breve_4">
+1234                 Descrizione Breve (Card)
+1234               </label>
+1235               <input type="text" id="desc_breve_4" name="descrizione_breve" class="admin-input" maxlength="100" value="Carattere forte e intenso.">
+1236               <small class="input-help">
+1236                 Esempio: Rosso elegante con note di frutti rossi
+1236               </small>
+1237             </div>
+1239             <div class="admin-form-group">
+1240               <label for="desc_estesa_4">
+1240                 Descrizione Estesa (Modale)
+1240               </label>
+1241               <textarea id="desc_estesa_4" name="descrizione_estesa" class="admin-input" rows="3">
+1241                 Autoctono dal carattere forte, colore rosso rubino intenso con riflessi violacei.
+1241               </textarea>
+1242               <small class="input-help">
+1242                 Esempio: Affinato in barrique per 12 mesi...
+1242               </small>
+1243             </div>
+1245             <fieldset class="admin-fieldset">
+1246               <legend>
+1246                 Scheda Tecnica
+1246               </legend>
+1247               <div class="form-grid">
+1248                 <div class="admin-form-group">
+1248                   <label for="vitigno_4">
+1248                     Vitigno
+1248                   </label>
+1248                   <input type="text" id="vitigno_4" name="vitigno" class="admin-input" value="Refosco p.r.">
+1248                 </div>
+1249                 <div class="admin-form-group">
+1249                   <label for="annata_4">
+1249                     Annata
+1249                   </label>
+1249                   <input type="text" id="annata_4" name="annata" class="admin-input" value="2021">
+1249                 </div>
+1250                 <div class="admin-form-group">
+1250                   <label for="grad_4">
+1250                     Gradazione
+1250                   </label>
+1250                   <input type="text" id="grad_4" name="gradazione" class="admin-input" value="13.0% Vol">
+1250                 </div>
+1251                 <div class="admin-form-group">
+1251                   <label for="temp_4">
+1251                     Temperatura
+1251                   </label>
+1251                   <input type="text" id="temp_4" name="temperatura" class="admin-input" value="16-18°C">
+1251                 </div>
+1252                 <div class="admin-form-group">
+1252                   <label for="abb_4">
+1252                     Abbinamenti
+1252                   </label>
+1252                   <input type="text" id="abb_4" name="abbinamenti" class="admin-input" value="Piatti tipici veneti, Carni grasse">
+1252                 </div>
+1253               </div>
+1254             </fieldset>
+1256             <div class="admin-form-actions">
+1257               <button type="submit" class="btn-primary">
+1257                 Salva Modifiche
+1257               </button>
+1258             </div>
+1259           </form>
+1260         </div>
+1261       </div>
+1262       <input type="checkbox" id="modal-edit-3" class="state-toggle" aria-label="Apri finestra modifica per Cabernet Franc">
+1263       <div class="modal-wrapper-css">
+1264         <label for="modal-edit-3" class="modal-overlay-close" aria-label="Chiudi">
+1264         </label>
+1265         <div class="modal-box-css">
+1266           <label for="modal-edit-3" class="modal-close-x" aria-label="Chiudi">
+1266             ×
+1266           </label>
+1267           <h2 class="modal-title">
+1267             Modifica Vino: Cabernet Franc
+1267           </h2>
+1269 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+               <form method="POST" enctype="multipart/form-data" novalidate="true">
+1270             <input type="hidden" name="azione" value="salva_vino">
+1271             <input type="hidden" name="id_vino" value="3">
+1273             <div class="form-grid">
+1274               <div class="admin-form-group">
+1275                 <label for="nome_3">
+1275                   Nome Vino *
+1275                 </label>
+1276                 <input type="text" id="nome_3" name="nome" class="admin-input" required="" value="Cabernet Franc">
+1277                 <small class="input-help">
+1277                   Esempio: Pinot Nero Riserva
+1277                 </small>
+1278               </div>
+1279               <div class="admin-form-group">
+1280                 <label for="categoria_3">
+1280                   Categoria *
+1280                 </label>
+1281                 <select id="categoria_3" name="categoria" class="admin-input">
+1281                   <option value="rossi" selected="">
+1281                     Rossi
+1281                   </option>
+1281                   <option value="bianchi">
+1281                     Bianchi
+1281                   </option>
+1281                   <option value="selezione">
+1281                     Selezione
+1281                   </option>
+1281                 </select>
+1282                 <small class="input-help">
+1282                   Esempio: Rossi
+1282                 </small>
+1283               </div>
+1284               <div class="admin-form-group">
+1285                 <label for="prezzo_3">
+1285                   Prezzo (€) *
+1285                 </label>
+1286                 <input type="number" step="0.01" id="prezzo_3" name="prezzo" class="admin-input" required="" value="16.00">
+1287                 <small class="input-help">
+1287                   Esempio: 12.50
+1287                 </small>
+1288               </div>
+1289               <div class="admin-form-group">
+1290                 <label for="stock_3">
+1290                   Stock *
+1290                 </label>
+1291                 <input type="number" id="stock_3" name="quantita_stock" class="admin-input" required="" value="97">
+1292                 <small class="input-help">
+1292                   Esempio: 120
+1292                 </small>
+1293               </div>
+1294               <div class="admin-form-group">
+1295                 <label for="stato_3">
+1295                   Stato
+1295                 </label>
+1296                 <select id="stato_3" name="stato" class="admin-input">
+1296                   <option value="attivo">
+1296                     Attivo
+1296                   </option>
+1296                   <option value="nascosto" selected="">
+1296                     Nascosto
+1296                   </option>
+1296                 </select>
+1297                 <small class="input-help">
+1297                   Esempio: Attivo
+1297                 </small>
+1298               </div>
+1299               <div class="admin-form-group">
+1300                 <label for="img_3">
+1300                   Percorso Immagine
+1300                 </label>
+1301                 <input type="text" id="img_3" name="img" class="admin-input" value="../../images/tr/Cabernet Franc 1.webp">
+1302                 <small class="input-help">
+1302                   Esempio: ../../images/tr/placeholder.webp
+1302                 </small>
+1303               </div>
+1304             </div>
+1306             <div class="admin-form-group">
+1307               <label for="desc_breve_3">
+1307                 Descrizione Breve (Card)
+1307               </label>
+1308               <input type="text" id="desc_breve_3" name="descrizione_breve" class="admin-input" maxlength="100" value="Deciso e persistente.">
+1309               <small class="input-help">
+1309                 Esempio: Rosso elegante con note di frutti rossi
+1309               </small>
+1310             </div>
+1312             <div class="admin-form-group">
+1313               <label for="desc_estesa_3">
+1313                 Descrizione Estesa (Modale)
+1313               </label>
+1314               <textarea id="desc_estesa_3" name="descrizione_estesa" class="admin-input" rows="3">
+1314                 Note erbacee caratteristiche, gusto deciso e persistente. Un vino di carattere.
+1314               </textarea>
+1315               <small class="input-help">
+1315                 Esempio: Affinato in barrique per 12 mesi...
+1315               </small>
+1316             </div>
+1318             <fieldset class="admin-fieldset">
+1319               <legend>
+1319                 Scheda Tecnica
+1319               </legend>
+1320               <div class="form-grid">
+1321                 <div class="admin-form-group">
+1321                   <label for="vitigno_3">
+1321                     Vitigno
+1321                   </label>
+1321                   <input type="text" id="vitigno_3" name="vitigno" class="admin-input" value="Cabernet Franc">
+1321                 </div>
+1322                 <div class="admin-form-group">
+1322                   <label for="annata_3">
+1322                     Annata
+1322                   </label>
+1322                   <input type="text" id="annata_3" name="annata" class="admin-input" value="2021">
+1322                 </div>
+1323                 <div class="admin-form-group">
+1323                   <label for="grad_3">
+1323                     Gradazione
+1323                   </label>
+1323                   <input type="text" id="grad_3" name="gradazione" class="admin-input" value="13.0% Vol">
+1323                 </div>
+1324                 <div class="admin-form-group">
+1324                   <label for="temp_3">
+1324                     Temperatura
+1324                   </label>
+1324                   <input type="text" id="temp_3" name="temperatura" class="admin-input" value="16-18°C">
+1324                 </div>
+1325                 <div class="admin-form-group">
+1325                   <label for="abb_3">
+1325                     Abbinamenti
+1325                   </label>
+1325                   <input type="text" id="abb_3" name="abbinamenti" class="admin-input" value="Salumi, Grigliate">
+1325                 </div>
+1326               </div>
+1327             </fieldset>
+1329             <div class="admin-form-actions">
+1330               <button type="submit" class="btn-primary">
+1330                 Salva Modifiche
+1330               </button>
+1331             </div>
+1332           </form>
+1333         </div>
+1334       </div>
+1335       <input type="checkbox" id="modal-edit-2" class="state-toggle" aria-label="Apri finestra modifica per Merlot">
+1336       <div class="modal-wrapper-css">
+1337         <label for="modal-edit-2" class="modal-overlay-close" aria-label="Chiudi">
+1337         </label>
+1338         <div class="modal-box-css">
+1339           <label for="modal-edit-2" class="modal-close-x" aria-label="Chiudi">
+1339             ×
+1339           </label>
+1340           <h2 class="modal-title">
+1340             Modifica Vino: Merlot
+1340           </h2>
+1342 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+               <form method="POST" enctype="multipart/form-data" novalidate="true">
+1343             <input type="hidden" name="azione" value="salva_vino">
+1344             <input type="hidden" name="id_vino" value="2">
+1346             <div class="form-grid">
+1347               <div class="admin-form-group">
+1348                 <label for="nome_2">
+1348                   Nome Vino *
+1348                 </label>
+1349                 <input type="text" id="nome_2" name="nome" class="admin-input" required="" value="Merlot">
+1350                 <small class="input-help">
+1350                   Esempio: Pinot Nero Riserva
+1350                 </small>
+1351               </div>
+1352               <div class="admin-form-group">
+1353                 <label for="categoria_2">
+1353                   Categoria *
+1353                 </label>
+1354                 <select id="categoria_2" name="categoria" class="admin-input">
+1354                   <option value="rossi" selected="">
+1354                     Rossi
+1354                   </option>
+1354                   <option value="bianchi">
+1354                     Bianchi
+1354                   </option>
+1354                   <option value="selezione">
+1354                     Selezione
+1354                   </option>
+1354                 </select>
+1355                 <small class="input-help">
+1355                   Esempio: Rossi
+1355                 </small>
+1356               </div>
+1357               <div class="admin-form-group">
+1358                 <label for="prezzo_2">
+1358                   Prezzo (€) *
+1358                 </label>
+1359                 <input type="number" step="0.01" id="prezzo_2" name="prezzo" class="admin-input" required="" value="14.00">
+1360                 <small class="input-help">
+1360                   Esempio: 12.50
+1360                 </small>
+1361               </div>
+1362               <div class="admin-form-group">
+1363                 <label for="stock_2">
+1363                   Stock *
+1363                 </label>
+1364                 <input type="number" id="stock_2" name="quantita_stock" class="admin-input" required="" value="96">
+1365                 <small class="input-help">
+1365                   Esempio: 120
+1365                 </small>
+1366               </div>
+1367               <div class="admin-form-group">
+1368                 <label for="stato_2">
+1368                   Stato
+1368                 </label>
+1369                 <select id="stato_2" name="stato" class="admin-input">
+1369                   <option value="attivo" selected="">
+1369                     Attivo
+1369                   </option>
+1369                   <option value="nascosto">
+1369                     Nascosto
+1369                   </option>
+1369                 </select>
+1370                 <small class="input-help">
+1370                   Esempio: Attivo
+1370                 </small>
+1371               </div>
+1372               <div class="admin-form-group">
+1373                 <label for="img_2">
+1373                   Percorso Immagine
+1373                 </label>
+1374                 <input type="text" id="img_2" name="img" class="admin-input" value="../../images/tr/Merlot.webp">
+1375                 <small class="input-help">
+1375                   Esempio: ../../images/tr/placeholder.webp
+1375                 </small>
+1376               </div>
+1377             </div>
+1379             <div class="admin-form-group">
+1380               <label for="desc_breve_2">
+1380                 Descrizione Breve (Card)
+1380               </label>
+1381               <input type="text" id="desc_breve_2" name="descrizione_breve" class="admin-input" maxlength="100" value="Morbido e vellutato.">
+1382               <small class="input-help">
+1382                 Esempio: Rosso elegante con note di frutti rossi
+1382               </small>
+1383             </div>
+1385             <div class="admin-form-group">
+1386               <label for="desc_estesa_2">
+1386                 Descrizione Estesa (Modale)
+1386               </label>
+1387               <textarea id="desc_estesa_2" name="descrizione_estesa" class="admin-input" rows="3">
+1387                 Il classico Merlot: morbido, vellutato e versatile. Ideale per ogni occasione.
+1387               </textarea>
+1388               <small class="input-help">
+1388                 Esempio: Affinato in barrique per 12 mesi...
+1388               </small>
+1389             </div>
+1391             <fieldset class="admin-fieldset">
+1392               <legend>
+1392                 Scheda Tecnica
+1392               </legend>
+1393               <div class="form-grid">
+1394                 <div class="admin-form-group">
+1394                   <label for="vitigno_2">
+1394                     Vitigno
+1394                   </label>
+1394                   <input type="text" id="vitigno_2" name="vitigno" class="admin-input" value="Merlot 100%">
+1394                 </div>
+1395                 <div class="admin-form-group">
+1395                   <label for="annata_2">
+1395                     Annata
+1395                   </label>
+1395                   <input type="text" id="annata_2" name="annata" class="admin-input" value="2022">
+1395                 </div>
+1396                 <div class="admin-form-group">
+1396                   <label for="grad_2">
+1396                     Gradazione
+1396                   </label>
+1396                   <input type="text" id="grad_2" name="gradazione" class="admin-input" value="12.5% Vol">
+1396                 </div>
+1397                 <div class="admin-form-group">
+1397                   <label for="temp_2">
+1397                     Temperatura
+1397                   </label>
+1397                   <input type="text" id="temp_2" name="temperatura" class="admin-input" value="16-18°C">
+1397                 </div>
+1398                 <div class="admin-form-group">
+1398                   <label for="abb_2">
+1398                     Abbinamenti
+1398                   </label>
+1398                   <input type="text" id="abb_2" name="abbinamenti" class="admin-input" value="Arrosti, Formaggi media stagionatura">
+1398                 </div>
+1399               </div>
+1400             </fieldset>
+1402             <div class="admin-form-actions">
+1403               <button type="submit" class="btn-primary">
+1403                 Salva Modifiche
+1403               </button>
+1404             </div>
+1405           </form>
+1406         </div>
+1407       </div>
+1408       <input type="checkbox" id="modal-edit-1" class="state-toggle" aria-label="Apri finestra modifica per Raboso del Piave">
+1409       <div class="modal-wrapper-css">
+1410         <label for="modal-edit-1" class="modal-overlay-close" aria-label="Chiudi">
+1410         </label>
+1411         <div class="modal-box-css">
+1412           <label for="modal-edit-1" class="modal-close-x" aria-label="Chiudi">
+1412             ×
+1412           </label>
+1413           <h2 class="modal-title">
+1413             Modifica Vino: Raboso del Piave
+1413           </h2>
+1415 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+               <form method="POST" enctype="multipart/form-data" novalidate="true">
+1416             <input type="hidden" name="azione" value="salva_vino">
+1417             <input type="hidden" name="id_vino" value="1">
+1419             <div class="form-grid">
+1420               <div class="admin-form-group">
+1421                 <label for="nome_1">
+1421                   Nome Vino *
+1421                 </label>
+1422                 <input type="text" id="nome_1" name="nome" class="admin-input" required="" value="Raboso del Piave">
+1423                 <small class="input-help">
+1423                   Esempio: Pinot Nero Riserva
+1423                 </small>
+1424               </div>
+1425               <div class="admin-form-group">
+1426                 <label for="categoria_1">
+1426                   Categoria *
+1426                 </label>
+1427                 <select id="categoria_1" name="categoria" class="admin-input">
+1427                   <option value="rossi" selected="">
+1427                     Rossi
+1427                   </option>
+1427                   <option value="bianchi">
+1427                     Bianchi
+1427                   </option>
+1427                   <option value="selezione">
+1427                     Selezione
+1427                   </option>
+1427                 </select>
+1428                 <small class="input-help">
+1428                   Esempio: Rossi
+1428                 </small>
+1429               </div>
+1430               <div class="admin-form-group">
+1431                 <label for="prezzo_1">
+1431                   Prezzo (€) *
+1431                 </label>
+1432                 <input type="number" step="0.01" id="prezzo_1" name="prezzo" class="admin-input" required="" value="18.50">
+1433                 <small class="input-help">
+1433                   Esempio: 12.50
+1433                 </small>
+1434               </div>
+1435               <div class="admin-form-group">
+1436                 <label for="stock_1">
+1436                   Stock *
+1436                 </label>
+1437                 <input type="number" id="stock_1" name="quantita_stock" class="admin-input" required="" value="0">
+1438                 <small class="input-help">
+1438                   Esempio: 120
+1438                 </small>
+1439               </div>
+1440               <div class="admin-form-group">
+1441                 <label for="stato_1">
+1441                   Stato
+1441                 </label>
+1442                 <select id="stato_1" name="stato" class="admin-input">
+1442                   <option value="attivo" selected="">
+1442                     Attivo
+1442                   </option>
+1442                   <option value="nascosto">
+1442                     Nascosto
+1442                   </option>
+1442                 </select>
+1443                 <small class="input-help">
+1443                   Esempio: Attivo
+1443                 </small>
+1444               </div>
+1445               <div class="admin-form-group">
+1446                 <label for="img_1">
+1446                   Percorso Immagine
+1446                 </label>
+1447                 <input type="text" id="img_1" name="img" class="admin-input" value="../../images/tr/Raboso del Piave.webp">
+1448                 <small class="input-help">
+1448                   Esempio: ../../images/tr/placeholder.webp
+1448                 </small>
+1449               </div>
+1450             </div>
+1452             <div class="admin-form-group">
+1453               <label for="desc_breve_1">
+1453                 Descrizione Breve (Card)
+1453               </label>
+1454               <input type="text" id="desc_breve_1" name="descrizione_breve" class="admin-input" maxlength="100" value="Un vino rosso corposo e avvolgente.">
+1455               <small class="input-help">
+1455                 Esempio: Rosso elegante con note di frutti rossi
+1455               </small>
+1456             </div>
+1458             <div class="admin-form-group">
+1459               <label for="desc_estesa_1">
+1459                 Descrizione Estesa (Modale)
+1459               </label>
+1460               <textarea id="desc_estesa_1" name="descrizione_estesa" class="admin-input" rows="3">
+1460                 Un vino rosso corposo e avvolgente, perfetto per carni rosse e formaggi stagionati. Note di marasca e prugna.
+1460               </textarea>
+1461               <small class="input-help">
+1461                 Esempio: Affinato in barrique per 12 mesi...
+1461               </small>
+1462             </div>
+1464             <fieldset class="admin-fieldset">
+1465               <legend>
+1465                 Scheda Tecnica
+1465               </legend>
+1466               <div class="form-grid">
+1467                 <div class="admin-form-group">
+1467                   <label for="vitigno_1">
+1467                     Vitigno
+1467                   </label>
+1467                   <input type="text" id="vitigno_1" name="vitigno" class="admin-input" value="Raboso 100%">
+1467                 </div>
+1468                 <div class="admin-form-group">
+1468                   <label for="annata_1">
+1468                     Annata
+1468                   </label>
+1468                   <input type="text" id="annata_1" name="annata" class="admin-input" value="2019">
+1468                 </div>
+1469                 <div class="admin-form-group">
+1469                   <label for="grad_1">
+1469                     Gradazione
+1469                   </label>
+1469                   <input type="text" id="grad_1" name="gradazione" class="admin-input" value="13.5% Vol">
+1469                 </div>
+1470                 <div class="admin-form-group">
+1470                   <label for="temp_1">
+1470                     Temperatura
+1470                   </label>
+1470                   <input type="text" id="temp_1" name="temperatura" class="admin-input" value="18-20°C">
+1470                 </div>
+1471                 <div class="admin-form-group">
+1471                   <label for="abb_1">
+1471                     Abbinamenti
+1471                   </label>
+1471                   <input type="text" id="abb_1" name="abbinamenti" class="admin-input" value="Carni rosse, Selvaggina">
+1471                 </div>
+1472               </div>
+1473             </fieldset>
+1475             <div class="admin-form-actions">
+1476               <button type="submit" class="btn-primary">
+1476                 Salva Modifiche
+1476               </button>
+1477             </div>
+1478           </form>
+1479         </div>
+1480       </div>
+1483     </main>
+1485     <div id="modalVino" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+1486       <div class="modal-box">
+1487         <button class="close-modal" onclick="chiudiModal()" aria-label="Chiudi">
+1487           ×
+1487         </button>
+1488         <h2 id="modalTitle">
+1488           Gestione Vino
+1488         </h2>
+1490 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+             <form action="admin.php" method="POST" enctype="multipart/form-data" novalidate="true">
+1491           <input type="hidden" name="azione" value="salva_vino">
+1492           <input type="hidden" name="id_vino" id="id_vino" value="">
+1493           <input type="hidden" name="view" value="vini">
+1495           <div class="form-grid">
+1496             <div class="admin-form-group">
+1497               <label for="nome">
+1497                 Nome Vino *
+1497               </label>
+1498               <input type="text" name="nome" id="nome" class="admin-input" required="" aria-describedby="nome-hint">
+1499               <small id="nome-hint" class="input-help">
+1499                 Esempio: Pinot Nero Riserva
+1499               </small>
+1500             </div>
+1501             <div class="admin-form-group">
+1502               <label for="categoria">
+1502                 Categoria *
+1502               </label>
+1503               <select name="categoria" id="categoria" class="admin-input" aria-describedby="categoria-hint">
+1504                 <option value="rossi">
+1504                   Rossi
+1504                 </option>
+1505                 <option value="bianchi">
+1505                   Bianchi
+1505                 </option>
+1506                 <option value="selezione">
+1506                   Selezione
+1506                 </option>
+1507               </select>
+1508               <small id="categoria-hint" class="input-help">
+1508                 Esempio: Rossi
+1508               </small>
+1509             </div>
+1510           </div>
+1512           <div class="form-grid">
+1513             <div class="admin-form-group">
+1514               <label for="prezzo">
+1514                 Prezzo (€) *
+1514               </label>
+1515               <input type="number" step="0.01" name="prezzo" id="prezzo" class="admin-input" required="" aria-describedby="prezzo-hint">
+1516               <small id="prezzo-hint" class="input-help">
+1516                 Esempio: 12.50
+1516               </small>
+1517             </div>
+1518             <div class="admin-form-group">
+1519               <label for="quantita_stock">
+1519                 Quantità Stock *
+1519               </label>
+1520               <input type="number" name="quantita_stock" id="quantita_stock" class="admin-input" required="" aria-describedby="quantita_stock-hint">
+1521               <small id="quantita_stock-hint" class="input-help">
+1521                 Esempio: 120
+1521               </small>
+1522             </div>
+1523           </div>
+1525           <div class="form-grid">
+1526             <div class="admin-form-group">
+1527               <label for="stato">
+1527                 Visibilità *
+1527               </label>
+1528               <select name="stato" id="stato" class="admin-input" aria-describedby="stato-hint">
+1529                 <option value="attivo">
+1529                   Attivo
+1529                 </option>
+1530                 <option value="nascosto">
+1530                   Nascosto
+1530                 </option>
+1531               </select>
+1532               <small id="stato-hint" class="input-help">
+1532                 Esempio: Attivo
+1532               </small>
+1533             </div>
+1534             <div class="admin-form-group">
+1535               <label for="img">
+1535                 Carica Immagine
+1535               </label>
+1536               <input type="file" name="img" id="img" class="admin-input" accept="image/*" aria-describedby="img-hint">
+1537               <small id="img-hint" class="input-help">
+1537                 Esempio: JPG o PNG
+1537               </small>
+1538             </div>
+1539           </div>
+1541           <div class="admin-form-group">
+1542             <label for="descrizione_breve">
+1542               Descrizione Breve
+1542             </label>
+1543             <input type="text" name="descrizione_breve" id="descrizione_breve" class="admin-input" aria-describedby="descrizione_breve-hint">
+1544             <small id="descrizione_breve-hint" class="input-help">
+1544               Esempio: Rosso elegante con note di frutti rossi
+1544             </small>
+1545           </div>
+1547           <div class="admin-form-group">
+1548             <label for="descrizione_estesa">
+1548               Descrizione Estesa
+1548             </label>
+1549             <textarea name="descrizione_estesa" id="descrizione_estesa" rows="3" class="admin-input" aria-describedby="descrizione_estesa-hint">
+1549             </textarea>
+1550             <small id="descrizione_estesa-hint" class="input-help">
+1550               Esempio: Affinato in barrique per 12 mesi, struttura intensa e finale speziato.
+1550             </small>
+1551           </div>
+1553           <fieldset class="admin-fieldset">
+1554             <legend class="admin-fieldset-legend">
+1554               Scheda Tecnica
+1554             </legend>
+1555             <div class="form-grid">
+1556               <div class="admin-form-group">
+1556                 <label for="vitigno">
+1556                   Vitigno
+1556                 </label>
+1556                 <input type="text" name="vitigno" id="vitigno" class="admin-input" aria-describedby="vitigno-hint">
+1556                 <small id="vitigno-hint" class="input-help">
+1556                   Esempio: Cabernet Sauvignon
+1556                 </small>
+1556               </div>
+1557               <div class="admin-form-group">
+1557                 <label for="annata">
+1557                   Annata
+1557                 </label>
+1557                 <input type="text" name="annata" id="annata" class="admin-input" aria-describedby="annata-hint">
+1557                 <small id="annata-hint" class="input-help">
+1557                   Esempio: 2021
+1557                 </small>
+1557               </div>
+1558               <div class="admin-form-group">
+1558                 <label for="gradazione">
+1558                   Gradazione
+1558                 </label>
+1558                 <input type="text" name="gradazione" id="gradazione" class="admin-input" aria-describedby="gradazione-hint">
+1558                 <small id="gradazione-hint" class="input-help">
+1558                   Esempio: 13.5
+1558                   <abbr title="percent volume">
+1558                     % vol
+1558                   </abbr>
+1558                 </small>
+1558               </div>
+1559               <div class="admin-form-group">
+1559                 <label for="temperatura">
+1559                   Temperatura
+1559                 </label>
+1559                 <input type="text" name="temperatura" id="temperatura" class="admin-input" aria-describedby="temperatura-hint">
+1559                 <small id="temperatura-hint" class="input-help">
+1559                   Esempio: 16-18°C
+1559                 </small>
+1559               </div>
+1560             </div>
+1561             <div class="admin-form-group">
+1561               <label for="abbinamenti">
+1561                 Abbinamenti
+1561               </label>
+1561               <input type="text" name="abbinamenti" id="abbinamenti" class="admin-input" aria-describedby="abbinamenti-hint">
+1561               <small id="abbinamenti-hint" class="input-help">
+1561                 Esempio: Carni rosse, formaggi stagionati
+1561               </small>
+1561             </div>
+1562           </fieldset>
+1564           <div class="admin-form-actions">
+1565             <button type="button" class="btn-secondary" onclick="chiudiModal()">
+1565               Annulla
+1565             </button>
+1566             <button type="submit" class="btn-primary">
+1566               Salva Vino
+1566             </button>
+1567           </div>
+1568         </form>
+1569       </div>
+1570     </div>
+1572     <input type="checkbox" id="toggle-modal-utente" class="state-toggle" aria-label="Apri o chiudi finestra creazione utente">
+1573     <div class="modal-wrapper-css" role="dialog" aria-modal="true" aria-labelledby="modalUserTitle">
+1574       <label for="toggle-modal-utente" class="modal-overlay-close" aria-label="Chiudi">
+1574       </label>
+1575       <div class="modal-box-css">
+1576         <label class="modal-close-x" for="toggle-modal-utente" aria-label="Chiudi">
+1576           ×
+1576         </label>
+1577         <h2 id="modalUserTitle">
+1577           Gestione Utente
+1577         </h2>
+1579 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+             <form action="admin.php" method="POST" novalidate="true">
+1580           <input type="hidden" name="azione" value="salva_utente">
+1581           <input type="hidden" name="view" value="utenti">
+1583           <div class="form-grid">
+1584             <div class="admin-form-group">
+1585               <label for="utente_nome">
+1585                 Nome *
+1585               </label>
+1586               <input type="text" name="utente_nome" id="utente_nome" class="admin-input" required="" aria-describedby="utente_nome-hint">
+1587               <small id="utente_nome-hint" class="input-help">
+1587                 Esempio: Mario
+1587               </small>
+1588             </div>
+1589             <div class="admin-form-group">
+1590               <label for="utente_cognome">
+1590                 Cognome *
+1590               </label>
+1591               <input type="text" name="utente_cognome" id="utente_cognome" class="admin-input" required="" aria-describedby="utente_cognome-hint">
+1592               <small id="utente_cognome-hint" class="input-help">
+1592                 Esempio: Rossi
+1592               </small>
+1593             </div>
+1594           </div>
+1596           <div class="form-grid">
+1597             <div class="admin-form-group">
+1598               <label for="utente_email">
+1598                 Email *
+1598               </label>
+1599               <input type="email" name="utente_email" id="utente_email" class="admin-input" required="" aria-describedby="utente_email-hint">
+1600               <small id="utente_email-hint" class="input-help">
+1600                 Esempio: mario.rossi@email.com
+1600               </small>
+1601             </div>
+1602             <div class="admin-form-group">
+1603               <label for="utente_password">
+1603                 Password *
+1603               </label>
+1604               <input type="password" name="utente_password" id="utente_password" class="admin-input" required="" minlength="8" aria-describedby="utente_password-hint">
+1605               <small id="utente_password-hint" class="input-help">
+1605                 Minimo 8 caratteri.
+1605               </small>
+1606             </div>
+1607           </div>
+1609           <div class="admin-form-group">
+1610             <label for="utente_ruolo">
+1610               Ruolo *
+1610             </label>
+1611             <select name="utente_ruolo" id="utente_ruolo" class="admin-input" required="" aria-describedby="utente_ruolo-hint">
+1612               <option value="user">
+1612                 user
+1612               </option>
+1613               <option value="staff">
+1613                 staff
+1613               </option>
+1614               <option value="admin">
+1614                 admin
+1614               </option>
+1615             </select>
+1616             <small id="utente_ruolo-hint" class="input-help">
+1616               Seleziona il ruolo dell'utente.
+1616             </small>
+1617           </div>
+1619           <div class="admin-form-actions">
+1620             <label class="btn-secondary" for="toggle-modal-utente" role="button">
+1620               Annulla
+1620             </label>
+1621             <button type="submit" class="btn-primary">
+1621               Crea Utente
+1621             </button>
+1622           </div>
+1623         </form>
+1624       </div>
+1625     </div>
+1628     <footer>
+1629       <div class="footer-content">
+1630         <small>
+1631           © 2025 Tenuta al Morer -
+1631           <abbr title="Partita">
+1631             P.
+1631           </abbr>
+1631           <abbr title="Imposta sul Valore Aggiunto">
+1631             IVA
+1631           </abbr>
+1631           00000000000
+1631           <br>
+1632           <a href="policy.php">
+1632             Note legali
+1632           </a>
+1632           |
+1633           <a href="policy.php#privacy-policy">
+1633             <span lang="en">
+1633               Privacy Policy
+1633             </span>
+1633           </a>
+1633           |
+1634           <a href="policy.php#accessibility">
+1634             Accessibilità
+1634           </a>
+1634           |
+1635           <a href="mappa.php">
+1635             Mappa del sito
+1635           </a>
+1636         </small>
+1637       </div>
+1638     </footer>
+1640     <button id="backToTopBtn" aria-label="Torna all'inizio della pagina">
+1641       <svg viewBox="0 0 24 24" class="arrow-icon" aria-hidden="true">
+1642         <path d="M12 5 L12 19 M5 12 L12 5 L19 12">
+1642         </path>
+1643       </svg>
+1644     </button>
+1649   </body>
+1649 </html>
+© 2005-2026 Total Validator

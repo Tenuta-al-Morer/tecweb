@@ -1,0 +1,252 @@
+Skip navigation
+Total Validator Home Page
+Main site navigation
+DocumentationReferenceWebsiteContact Form
+Summary report
+Start page:	http://tecweb.studenti.math.unipd.it/acontari/scripts/php/registrazione.php
+Issues:	2 Errors, 1 Warning
+Upgrade to Total Validator Pro to validate an entire site in one go
+
+Summary Issues Page
+Display issue details:HoverShow allHide all
+ Go to first issue
+
+  0 next issueprevious issueW874WCAG2 A 2.4.1: Add a skip navigation link as the first link on the page
+If your document has structure then you should add a skip navigation link to make it easier for accessible users to get to the page's content. To ensure detection, skip navigation links should point to a <main> element, or an element with role='main'. See Understanding 2.4.1, and Skip Navigation.
+  1 <!DOCTYPE html>
+  2 <html lang="it" class="">
+  2   <head>
+  3     <meta charset="utf-8">
+  4     <title>
+  4       Registrati - Tenuta al Morer
+  4     </title>
+  5     <meta name="description" content="Crea un nuovo account su Tenuta al Morer per accedere a offerte esclusive e gestire i tuoi ordini.">
+  6     <link rel="icon" href="../../images/logo.ico" type="image/x-icon">
+  7     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  9     <link rel="preconnect" href="https://fonts.googleapis.com">
+ 10     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+ 11     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+ 12     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet">
+ 13     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+ 15     <link rel="stylesheet" href="../../css/style.css" media="screen">
+ 16     <link rel="stylesheet" href="../../css/mini.css" media="screen and (max-width:1024px)">
+ 17     <link rel="stylesheet" href="../../css/print.css" media="print">
+ 18     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+ 20     <script src="../javascript/script.js">
+ 20     </script>
+ 21   </head>
+ 23   <body>
+ 24     <header>
+ 25       <div class="login-header-logo">
+ 26         <a href="home.php">
+ 27           <img src="../../images/logo.webp" alt="Tenuta al Morer - Home">
+ 28         </a>
+ 29       </div>
+ 31       <div class="sub-header">
+ 32         <nav id="breadcrumb">
+ 33           <div class="breadcrumb-container">
+ 34             <span>
+ 34               Ti trovi in:
+ 34             </span>
+ 35             <a href="home.php">
+ 35               <span lang="en">
+ 35                 Home
+ 35               </span>
+ 35             </a>
+ 35             <span aria-hidden="true">
+ 35               &gt;
+ 35             </span>
+ 36             <a href="login.php">
+ 36               <span>
+ 36                 Accedi
+ 36               </span>
+ 36             </a>
+ 36             <span aria-hidden="true">
+ 36               &gt;
+ 36             </span>
+ 37             <span class="current-page" aria-current="page">
+ 37               Registrazione
+ 37             </span>
+ 38           </div>
+ 39         </nav>
+ 41 next issueprevious issueE9081WCAG2 A 2.5.3: The accessible name in 'aria-label' must contain the visible label text: Passa alla modalita chiara
+The accessible name used by accessibility aids must contain the text displayed by the visible label. When choosing the text remember that both the name and the label may be read out aloud. See Understanding 2.5.3, and Accessibility API Mappings.
+            <button id="theme-toggle" title="Cambia modalità chiaro/scuro" aria-label="Cambia tema">
+ 42           <span class="visually-hidden">
+ 42             Passa alla modalita chiara
+ 42           </span>
+ 43           <svg viewBox="0 0 24 24" class="theme-icon" aria-hidden="true">
+ 44             <circle cx="12" cy="12" r="4.5">
+ 44             </circle>
+ 45             <line x1="12" y1="2" x2="12" y2="4">
+ 45             </line>
+ 46             <line x1="12" y1="20" x2="12" y2="22">
+ 46             </line>
+ 47             <line x1="4.2" y1="4.2" x2="5.8" y2="5.8">
+ 47             </line>
+ 48             <line x1="18.2" y1="18.2" x2="19.8" y2="19.8">
+ 48             </line>
+ 49             <line x1="2" y1="12" x2="4" y2="12">
+ 49             </line>
+ 50             <line x1="20" y1="12" x2="22" y2="12">
+ 50             </line>
+ 51             <line x1="4.2" y1="19.8" x2="5.8" y2="18.2">
+ 51             </line>
+ 52             <line x1="18.2" y1="5.8" x2="19.8" y2="4.2">
+ 52             </line>
+ 53           </svg>
+ 54         </button>
+ 55       </div>
+ 56     </header>
+ 58     <main id="content" aria-labelledby="sum">
+ 59       <p class="visually-hidden" id="sum">
+ 59         Crea un nuovo account su Tenuta al Morer per accedere, gestire i tuoi ordini e le tue esperienze.
+ 59       </p>
+ 60       <div class="auth-container">
+ 61         <h1>
+ 61           Crea un
+ 61           <span lang="en">
+ 61             Account
+ 61           </span>
+ 61         </h1>
+ 62         <p>
+ 62           Entra a far parte della famiglia Tenuta al Morer.
+ 62         </p>
+ 64         <div id="php-errors" role="alert" aria-live="assertive">
+ 66         </div>
+ 68 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+            <form action="registrazione.php" method="POST" class="auth-form" novalidate="true">
+ 69           <div class="form-row">
+ 70             <div class="form-group">
+ 71               <label for="nome">
+ 71                 Nome
+ 71               </label>
+ 72               <input type="text" id="nome" name="nome" required="" autocomplete="given-name" value="" pattern="[a-zA-Z\s'àèéìòùÀÈÉÌÒÙ]+" aria-describedby="nome-hint">
+ 73               <small id="nome-hint" class="input-help">
+ 73                 Esempio: Mario
+ 73               </small>
+ 74             </div>
+ 75             <div class="form-group">
+ 76               <label for="cognome">
+ 76                 Cognome
+ 76               </label>
+ 77               <input type="text" id="cognome" name="cognome" required="" autocomplete="family-name" value="" pattern="[a-zA-Z\s'àèéìòùÀÈÉÌÒÙ]+" aria-describedby="cognome-hint">
+ 78               <small id="cognome-hint" class="input-help">
+ 78                 Esempio: Rossi
+ 78               </small>
+ 79             </div>
+ 80           </div>
+ 82           <div class="form-group">
+ 83             <label for="email">
+ 83               Email
+ 83             </label>
+ 84             <input type="email" id="email" name="email" required="" autocomplete="email" value="" aria-describedby="email-hint">
+ 85             <small id="email-hint" class="input-help">
+ 85               Esempio: mario.rossi@email.com
+ 85             </small>
+ 86           </div>
+ 88           <div class="form-group">
+ 89             <label for="password">
+ 89               Password
+ 89             </label>
+ 90             <div class="password-wrapper">
+ 91               <input type="password" id="password" name="password" required="" autocomplete="new-password" minlength="8" aria-describedby="password-hint">
+ 92               <button type="button" class="toggle-password" aria-label="Mostra password">
+ 93                 <i class="fas fa-eye" aria-hidden="true">
+ 93                 </i>
+ 94               </button>
+ 95             </div>
+ 96             <small id="password-hint" class="input-help">
+ 96               Minimo 8 caratteri. Esempio: "••••••••"
+ 96             </small>
+ 97           </div>
+ 99           <div class="form-group">
+100             <label for="confirm-password">
+100               Conferma Password
+100             </label>
+101             <div class="password-wrapper">
+102               <input type="password" id="confirm-password" name="confirm-password" required="" autocomplete="new-password" minlength="8" aria-describedby="confirm-password-hint">
+103               <button type="button" class="toggle-password" aria-label="Mostra password">
+104                 <i class="fas fa-eye" aria-hidden="true">
+104                 </i>
+105               </button>
+106             </div>
+107             <small id="confirm-password-hint" class="input-help">
+107               Ripeti la password per conferma.
+107             </small>
+108           </div>
+110           <div class="form-group checkbox-group">
+111             <label class="checkbox-container">
+112               <input type="checkbox" name="privacy" required="">
+113               <span>
+114                 Ho letto e accetto la
+114                 <a href="policy.php?action=close" target="_blank">
+114                   Privacy Policy
+114                 </a>
+114                 e dichiaro di essere maggiorenne
+114                 <span aria-hidden="true">
+114                   *
+114                 </span>
+115               </span>
+116             </label>
+117           </div>
+119           <button type="submit" class="btn-primary">
+119             REGISTRATI
+119           </button>
+120         </form>
+122         <div class="auth-footer">
+123           <p>
+123             Hai già un
+123             <span lang="en">
+123               account
+123             </span>
+123             ?
+123             <a href="login.php">
+123               Accedi qui
+123             </a>
+123           </p>
+124         </div>
+125       </div>
+126     </main>
+129     <footer>
+130       <div class="footer-content">
+131         <small>
+132           © 2025 Tenuta al Morer -
+132           <abbr title="Partita">
+132             P.
+132           </abbr>
+132           <abbr title="Imposta sul Valore Aggiunto">
+132             IVA
+132           </abbr>
+132           00000000000
+132           <br>
+133           <a href="policy.php">
+133             Note legali
+133           </a>
+133           |
+134           <a href="policy.php#privacy-policy">
+134             <span lang="en">
+134               Privacy Policy
+134             </span>
+134           </a>
+134           |
+135           <a href="policy.php#accessibility">
+135             Accessibilità
+135           </a>
+135           |
+136           <a href="mappa.php">
+136             Mappa del sito
+136           </a>
+137         </small>
+138       </div>
+139     </footer>
+141     <button id="backToTopBtn" aria-label="Torna all'inizio della pagina">
+142       <svg viewBox="0 0 24 24" class="arrow-icon" aria-hidden="true">
+143         <path d="M12 5 L12 19 M5 12 L12 5 L19 12">
+143         </path>
+144       </svg>
+145     </button>
+149   </body>
+149 </html>
+© 2005-2026 Total Validator
