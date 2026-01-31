@@ -85,22 +85,20 @@ function costruisciCardVino($vino) {
     $htmlStock = "";
     $cardActionHTML = "";
     $modalActionHTML = "";
-    // $altText = "Bottiglia di " . $nome; immagine decorativa, non serve l'alt
-
+    
     $triggerHTML = '
-    <label for="' . $modalId . '" class="details-button" tabindex="0" aria-label="Info: scheda di  ' . $nome .'">
-        Info
+    <label for="' . $modalId . '" class="details-button" tabindex="0">
+        Info <span class="visually-hidden">: scheda di ' . $nome . '</span>
     </label>';
 
     $closeButtonsHTML = '
-        <label for="' . $modalId . '" class="modal-close-btn" tabindex="0" aria-label="Chiudi scheda ' . $nome . '">
-            &times;
+        <label for="' . $modalId . '" class="modal-close-btn" tabindex="0">
+            <span aria-hidden="true">&times;</span>
+            <span class="visually-hidden">Chiudi scheda ' . $nome . '</span>
         </label>
     ';
 
     if ($stock <= 0) {
-        // $altText .= " - Esaurito"; deprecato, ma serve mettere l'avviso che è esaurito
-        
         $cardActionHTML = '
         <div class="card-actions esaurito-wrapper">
              <span class="badge-esaurito card-action">Esaurito</span>
@@ -116,9 +114,23 @@ function costruisciCardVino($vino) {
 
         $selectorHTML = '
         <div class="selettore-quantita card-action">
-            <button type="submit" name="direction" value="minus" formaction="vini.php" class="btn-minus" aria-label="Riduci quantità di ' . $nome . '">-</button>
-            <input type="number" name="quantita" value="' . $qtySession . '" class="display-qty" min="1" max="' . $stock . '" aria-label="Quantità da acquistare">
-            <button type="submit" name="direction" value="plus" formaction="vini.php" class="btn-plus" aria-label="Aumenta quantità di ' . $nome . '">+</button>
+            <button type="submit" name="direction" value="minus" formaction="vini.php" class="btn-minus">
+                - <span class="visually-hidden">Riduci quantità di ' . $nome . ' (scheda)</span>
+            </button>
+            <input type="number" name="quantita" value="' . $qtySession . '" class="display-qty" min="1" max="' . $stock . '" aria-label="Quantità da acquistare di ' . $nome . ' (scheda)">
+            <button type="submit" name="direction" value="plus" formaction="vini.php" class="btn-plus">
+                + <span class="visually-hidden">Aumenta quantità di ' . $nome . ' (scheda)</span>
+            </button>
+        </div>';
+        $selectorModal = '
+        <div class="selettore-quantita card-action">
+            <button type="submit" name="direction" value="minus" formaction="vini.php" class="btn-minus">
+                - <span class="visually-hidden">Riduci quantità di ' . $nome . ' (modale)</span>
+            </button>
+            <input type="number" name="quantita" value="' . $qtySession . '" class="display-qty" min="1" max="' . $stock . '" aria-label="Quantità da acquistare di ' . $nome . ' (modale)">
+            <button type="submit" name="direction" value="plus" formaction="vini.php" class="btn-plus">
+                + <span class="visually-hidden">Aumenta quantità di ' . $nome . ' (modale)</span>
+            </button>
         </div>';
 
         $cardActionHTML = '
@@ -132,7 +144,9 @@ function costruisciCardVino($vino) {
             <div class="card-actions">
                 <div class="card-buy-block">
                     ' . $selectorHTML . '
-                    <button type="submit" class="buy-button card-action" aria-label="Acquista ' . $nome . '">Acquista</button>
+                    <button type="submit" class="buy-button card-action">
+                        Acquista <span class="visually-hidden">' . $nome . ' (scheda)</span>
+                    </button>
                 </div>
                 ' . $triggerHTML . '
             </div>
@@ -147,8 +161,10 @@ function costruisciCardVino($vino) {
             <input type="hidden" name="update_temp_qty" value="1">
             
             <div class="modal-buy-block">
-                ' . $selectorHTML . '
-                <button type="submit" class="buy-button modal-btn-large" aria-label="Acquista ' . $nome . '">Acquista</button>
+                ' . $selectorModal . '
+                <button type="submit" class="buy-button modal-btn-large">
+                    Acquista <span class="visually-hidden">' . $nome . ' (modale)</span>
+                </button>
             </div>
         </form>';
     }
@@ -166,7 +182,7 @@ function costruisciCardVino($vino) {
         
         ' . $cardActionHTML . '
 
-        <input type="checkbox" id="' . $modalId . '" class="modal-toggle-checkbox sr-only">
+        <input type="checkbox" id="' . $modalId . '" class="modal-toggle-checkbox visually-hidden">
         
         <div class="modal-overlay">
 
@@ -218,7 +234,7 @@ function costruisciCardVino($vino) {
             </div>
             
             <label for="' . $modalId . '" class="modal-backdrop-close">
-                <span class="visually-hidden">Chiudi finestra modale</span>
+                <span class="visually-hidden">Chiudi finestra modale di ' . $nome . '</span>
             </label>
         </div>
     </article>';
@@ -255,7 +271,7 @@ foreach ($tuttiIVini as $vino) {
     $htmlDatalist .= '<option value="' . $nomeVino . '">';
 }
 $htmlDatalist .= '</datalist>';
-// Se hai un placeholder specifico nel HTML è meglio, altrimenti lo "incolliamo" in fondo al body
+
 $htmlContent = str_replace("</body>", $htmlDatalist . "</body>", $htmlContent);
 
 echo $htmlContent;
