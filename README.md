@@ -189,35 +189,37 @@ Al contrario, per le sezioni dedicate all’assistenza, agli ordini e alle preno
 
 #### CSS
 
-Uno degli aspetti più importanti del nostro CSS è l’utilizzo delle variabili, impostate all’inizio del file e riutilizzate più volte in parti differenti. In questo modo riusciamo ad uniformare e tenere sotto controllo i contrasti e i colori utilizzati. Particolare attenzione è stata posta anche all’utilizzo di layout di tipo flex e grid. In quanto pesanti da renderizzare per i browser, ne è stato fatto un uso consapevole, evitando di andare oltre il secondo livello.
+Uno degli aspetti più importanti del nostro CSS è l’utilizzo delle variabili, impostate all’inizio del file e riutilizzate più volte in parti differenti. In questo modo siamo riusciti ad uniformare e tenere sotto controllo i contrasti e i colori utilizzati. Particolare attenzione è stata posta anche all’utilizzo di layout di tipo flex e grid. Data la loro pensantezza di renderizzazione per i browser, ne è stato fatto un uso consapevole, cercando di evitare di superare il secondo livello.
 
-In secodno luogo, vogliamo far notare l’utilizzo di tre differenti fogli di stile: style.css, mini.css e print.css. Questa decisione è stata presa per organizzare propriamente il codice CSS e per gestire meglio l’aspetto responsive del sito.
+In secondo luogo, si evidenzia l’utilizzo di tre differenti fogli di stile: style.css, mini.css e print.css. Questa suddivisione è stata adottata per organizzare propriamente il codice CSS per gestire al meglio l’aspetto responsive del sito e garantire un adeguato layout di stampa in caso di occorrenza.
 
 #### Gestione della classe no-js
 
-Per garantire la corretta visualizzazione e fruibilità del sito indipendentemente dal supporto JavaScript del browser, è stata adottata la tecnica della classe `no-js`.
+Per garantire la corretta visualizzazione e fruibilità del sito, indipendentemente dal supporto JavaScript del browser, è stata adottata la classe `no-js`.
 
-Il tag `<html>` viene inizializzato con la classe `no-js`. All’interno della sezione `<head>`, è incluso **script.js** che viene eseguito immediatamente al caricamento della pagina: se JavaScript è abilitato, lo script rimuove la classe `no-js`.
+In particolare, il tag `<html>` viene inizializzato con la classe `no-js`; nella sezione `<head>` è incluso **script.js** che viene eseguito immediatamente al caricamento della pagina: se JavaScript è abilitato, la classe `no-js` viene rimossa.
 
 Questo meccanismo permette di sfruttare i fogli di stile CSS per gestire due stati distinti dell’interfaccia:
 
 - **Stato senza JavaScript**: grazie al selettore `.no-js`, vengono applicati stili di fallback. Ad esempio, elementi che richiedono interazione dinamica (come slider o menu complessi) vengono mostrati in una forma statica e accessibile, evitando che l’utente visualizzi controlli non funzionanti.
 
-- **Stato con JavaScript**: la rimozione della classe permette l’applicazione degli stili dedicati alle funzionalità interattive avanzate, prevenendo il fenomeno del FOUC (*Flash of Unstyled Content*).
+- **Stato con JavaScript**: la rimozione della classe permette l’applicazione degli stili dedicati alle funzionalità interattive avanzate.
 
-Questa strategia assicura che il contenuto rimanga sempre accessibile, delegando a JavaScript solo l’arricchimento dell’esperienza utente e non le funzionalità critiche.
+Questa strategia assicura che il contenuto rimanga sempre usabile accessibile, delegando a JavaScript solo l’arricchimento dell’esperienza utente e non le funzionalità critiche.
 
 #### CSS-Print
 
-Per la versione di stampa è stato posta particolare attenzione alla leggibilità su carta e all’essenzialità dei contenuti. È stato impostato un font con le grazie (*Times New Roman*) in sostituzione di quello web, e sono stati rimossi gli elementi grafici non necessari al fine di garantire un layout più pulito e un risparmio di inchiostro.
+Per la versione di stampa è stata posta particolare attenzione alla leggibilità su carta e alla visualizzazione dei contenuti informativi. In particolare, è stato impostato un font con le grazie (*Times New Roman*) in sostituzione di quello web e sono stati rimossi elementi grafici ritenuti non necessari (decorativi) al fine di garantire un layout più pulito e un risparmio di inchiostro (*PrintFriendly*).
 
 Nello specifico:
 
 - sono stati nascosti tutti gli elementi interattivi e di navigazione (navbar, pulsanti di azione e carrello vuoto);
 
-- sono state rimosse le immagini di sfondo puramente decorative e le icone, mantenendo visibili solo il logo e le immagini essenziali dei prodotti;
+- sono state rimosse le immagini puramente decorative, mantenendo visibili solo il logo e i contenuti grafici informativi;
 
-- La struttura della pagina è stata semplificata linearizzando i contenuti per adattarli al formato cartaceo verticale.
+- la struttura della pagina è stata semplificata linearizzando i contenuti per adattarli al formato cartaceo verticale;
+
+- Per garantire una stampa eco-compatibile (PrintFriendly), l’interfaccia "cartacea" è stata limitata alla sola modalità light-mode. Tale scelta mira a ridurre drasticamente il consumo di inchiostro, evitando la stampa di sfondi scuri.
 
 #### Immagini e icone
 
