@@ -26,18 +26,18 @@
 
 <body> 
     <header>
-        <nav id="help">
+        <nav id="help" aria-label="Aiuto alla navigazione">
             <a class="navigationHelp" href="#content">Vai al contenuto</a>
         </nav>
 
-        <nav class="main-nav-bar">    
+        <nav class="main-nav-bar" aria-label="Navigazione principale">    
             [menu_toggle]
 
             <a href="home.php" class="logo-link">
                 <img src="../../images/logo.webp" alt="Tenuta al Morer - Home">
             </a>
 
-            <nav id="main-navigation" class="primary-navigation">
+            <nav id="main-navigation" class="primary-navigation" aria-label="Menu principale">
                 <ul>
                     <li><a href="home.php"><span lang="en">Home</span></a></li> 
                     <li><a href="tenuta.php">Tenuta</a></li>
@@ -54,7 +54,7 @@
         </nav>
 
         <div class="sub-header">
-            <nav id="breadcrumb">
+            <nav id="breadcrumb" aria-label="Percorso di navigazione">
                 <div class="breadcrumb-container">
                     <span>Ti trovi in: </span>
                     <a href="home.php"><span lang="en">Home</span></a><span aria-hidden="true"> &gt; </span> 
@@ -114,12 +114,12 @@
                                 <div>
                                     <label for="nome">Nome<span aria-hidden="true">*</span></label>
                                     <input type="text" id="nome" name="nome" required autocomplete="name" value="[val_nome]" aria-describedby="nome-hint">
-                                    <span class="little" id="nome-hint" class="input-help">Esempio: Mario</span>
+                                    <span class="little input-help" id="nome-hint" >Esempio: Mario</span>
                                 </div>
                                 <div>
                                     <label for="cognome">Cognome<span aria-hidden="true">*</span></label>
                                     <input type="text" id="cognome" name="cognome" required autocomplete="family-name" value="[val_cognome]" aria-describedby="cognome-hint">
-                                    <span class="little" id="cognome-hint" class="input-help">Esempio: Rossi</span>
+                                    <span class="little input-help" id="cognome-hint" >Esempio: Rossi</span>
                                 </div>
                             </div>
 
@@ -127,7 +127,7 @@
                                 <div>
                                     <label for="email">Email<span aria-hidden="true">*</span></label>
                                     <input type="email" id="email" name="email" required autocomplete="email" value="[val_email]" aria-describedby="email-hint">
-                                    <span class="little" id="email-hint" class="input-help">Esempio: mario.rossi@email.com</span>
+                                    <span class="little input-help" id="email-hint" >Esempio: mario.rossi@email.com</span>
                                 </div>
 
                                 <div>
@@ -137,7 +137,7 @@
                                         <option value="Linea Oro" [sel_Linea Oro]>Linea Oro</option>
                                         <option value="Piave" [sel_Piave]>Piave</option>
                                     </select>
-                                    <span class="little" id="tipo_degustazione-hint" class="input-help">Scegli il pacchetto che preferisci.</span>
+                                    <span class="little input-help" id="tipo_degustazione-hint" >Scegli il pacchetto che preferisci.</span>
                                 </div>
                   
                             </div>
@@ -146,12 +146,12 @@
                                 <div>
                                     <label for="data">Data<span aria-hidden="true">*</span></label>
                                     <input type="date" id="data" name="data" required value="[val_data]" aria-describedby="data-hint">
-                                    <span class="little" id="data-hint" class="input-help">Seleziona il giorno desiderato per la visita.</span>
+                                    <span class="little input-help" id="data-hint" >Seleziona il giorno desiderato per la visita.</span>
                                 </div>
                                 <div>
                                     <label for="persone">Persone<span aria-hidden="true">*</span></label>
                                     <input type="number" id="persone" name="persone" min="1" max="50" required value="[val_persone]" aria-describedby="persone-hint">
-                                    <span class="little" id="persone-hint" class="input-help">Numero partecipanti (min 1, max 50).</span>
+                                    <span class="little input-help" id="persone-hint" >Numero partecipanti (min 1, max 50).</span>
                                 </div>
                             </div>
 
