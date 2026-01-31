@@ -10,8 +10,7 @@ $htmlContent = caricaPagina('../../html/esperienze.html');
 $feedbackMessage = "";
 $valori = [
     'nome' => '', 'cognome' => '', 'email' => '', 
-    'tipo_degustazione' => '', 'prefisso' => '+39', 
-    'telefono' => '', 'data' => '', 'persone' => ''
+    'tipo_degustazione' => '', 'data' => '', 'persone' => ''
 ];
 
 // 2. Controllo se il form è stato inviato
@@ -22,8 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $valori['cognome'] = htmlspecialchars(trim($_POST['cognome'] ?? ''));
     $valori['email'] = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $valori['tipo_degustazione'] = htmlspecialchars($_POST['tipo_degustazione'] ?? '');
-    $valori['prefisso'] = htmlspecialchars(trim($_POST['prefisso'] ?? '+39'));
-    $valori['telefono'] = htmlspecialchars(trim($_POST['telefono'] ?? ''));
     $valori['data'] = htmlspecialchars(trim($_POST['data'] ?? ''));
     $valori['persone'] = (int)($_POST['persone'] ?? 0);
     $privacy = isset($_POST['privacy']);
@@ -58,8 +55,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $valori['cognome'], 
                 $valori['email'], 
                 $valori['tipo_degustazione'], 
-                $valori['prefisso'], 
-                $valori['telefono'], 
                 $valori['data'],     // data_visita
                 $valori['persone']   // n_persone
             );
@@ -70,7 +65,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $feedbackMessage = '<div class="alert success" role="alert"><span class="fas fa-check-circle"></span> Richiesta inviata! Ti contatteremo per confermare.</div>';
                 // Resetto i valori
                 $valori = array_fill_keys(array_keys($valori), ''); 
-                $valori['prefisso'] = '+39'; 
             } else {
                 // Errore generico (con role="alert")
                 $feedbackMessage = '<div class="alert error" role="alert"><span class="fas fa-exclamation-triangle"></span> Errore nel salvataggio. Riprova più tardi.</div>';
@@ -97,8 +91,6 @@ $htmlContent = str_replace("[feedback_message]", $feedbackMessage, $htmlContent)
 $htmlContent = str_replace("[val_nome]", $valori['nome'], $htmlContent);
 $htmlContent = str_replace("[val_cognome]", $valori['cognome'], $htmlContent);
 $htmlContent = str_replace("[val_email]", $valori['email'], $htmlContent);
-$htmlContent = str_replace("[val_prefisso]", $valori['prefisso'], $htmlContent);
-$htmlContent = str_replace("[val_telefono]", $valori['telefono'], $htmlContent);
 $htmlContent = str_replace("[val_data]", $valori['data'], $htmlContent);
 // Gestione placeholder numerico per persone (se 0 mettiamo vuoto)
 $htmlContent = str_replace("[val_persone]", ($valori['persone'] > 0 ? $valori['persone'] : ''), $htmlContent);

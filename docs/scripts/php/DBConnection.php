@@ -170,20 +170,25 @@ class DBConnection {
 
 
     // FUNZIONE PER SALVARE UNA PRENOTAZIONE
-    public function salvaPrenotazione($nome, $cognome, $email, $tipo_degustazione, $prefisso, $telefono, $data_visita, $n_persone) {
-        $query = "INSERT INTO prenotazione (nome, cognome, email, tipo_degustazione, data_visita, n_persone, data_invio, stato) 
-                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), 'in_attesa')";
-        
-        $stmt = $this->connection->prepare($query);
-        if (!$stmt) { return false; }
+    // FUNZIONE PER SALVARE UNA PRENOTAZIONE
+    public function salvaPrenotazione($nome, $cognome, $email, $tipo_degustazione, $data_visita, $n_persone) {
 
-        $stmt->bind_param("sssssssi", $nome, $cognome, $email, $tipo_degustazione, $prefisso, $telefono, $data_visita, $n_persone);
-        
-        $result = $stmt->execute();
+        $query = "INSERT INTO prenotazione
+                (nome, cognome, email, tipo_degustazione, data_visita, n_persone, data_invio, stato)
+                VALUES (?, ?, ?, ?, ?, ?, NOW(), 'in_attesa')";
+
+        $stmt = $this->connection->prepare($query);
+        if (!$stmt) return false;
+
+        // 5 stringhe + 1 intero
+        $stmt->bind_param("sssssi", $nome, $cognome, $email, $tipo_degustazione, $data_visita, $n_persone);
+
+        $ok = $stmt->execute();
         $stmt->close();
 
-        return $result;
+        return $ok;
     }
+
 
     // FUNZIONE ARCHIVIA PRENOTAZIONE
     public function archiviaPrenotazione($id) {
