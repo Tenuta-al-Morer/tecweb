@@ -1,4 +1,5 @@
 Lista todo per tecweb:
+- leggere privacy e valutare se è tutto corretto
 - sistemare warning dovuti a prefissi in gestionale -> contarini
 - leggere relazione
     sistemare tutta la sezione riguardante i test. perché diciamo che non sono presenti errori però bisogna tornare a 
