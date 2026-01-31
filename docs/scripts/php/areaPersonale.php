@@ -163,22 +163,22 @@ $dashboardHTML = '
 <ul class="dashboard-grid">
     <li>
         <a href="?sezione=ordini" class="feature-card card-link border-gold">
-            <div class="card-icon"><i class="fas fa-wallet" aria-hidden="true"></i></div>
+            <div class="card-icon"><span class="fas fa-wallet" aria-hidden="true"></span></div>
             <h3>Il Tuo Valore</h3>
             <p class="stat-number">€ ' . number_format($stats['totale_speso'], 2, ',', '.') . '</p>
-            <p class="stat-subtitle">su <strong>' . $stats['num_ordini'] . '</strong> ordini totali</p>
+            <p class="stat-subtitle">su <span class="bold">' . $stats['num_ordini'] . '</span> ordini totali</p>
         </a>
     </li>
     <li>
         <a href="?sezione=ordini" class="feature-card card-link border-gold">
-            <div class="card-icon"><i class="fas fa-shipping-fast" aria-hidden="true"></i></div>
+            <div class="card-icon"><span class="fas fa-shipping-fast" aria-hidden="true"></span></div>
             <h3>Ultimo Ordine</h3>
             ' . $ultimoOrdineHTML . '
         </a>
     </li>
     <li>
         <a href="?sezione=esperienze" class="feature-card card-link border-gold">
-            <div class="card-icon"><i class="fas fa-glass-cheers" aria-hidden="true"></i></div>
+            <div class="card-icon"><span class="fas fa-glass-cheers" aria-hidden="true"></span></div>
             <h3>Le Tue Esperienze</h3>
             ' . $statoPrenotazioniHTML . '
         </a>
@@ -188,7 +188,7 @@ $dashboardHTML = '
 
 $tabellaOrdini = '';
 if (empty($ordini)) {
-    $tabellaOrdini = '<div class="alert-box"><p><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Non hai ancora effettuato ordini. Visita la sezione <a href="vini.php">Vini!</a></p></div>';
+    $tabellaOrdini = '<div class="alert-box"><p><span class="fas fa-exclamation-triangle" aria-hidden="true"></span> Non hai ancora effettuato ordini. Visita la sezione <a href="vini.php">Vini!</a></p></div>';
 } else {
     $tabellaOrdini .= '
         <table class="table-data">
@@ -220,7 +220,7 @@ if (empty($ordini)) {
                     <button type="submit" class="btn-secondary">Mostra Dettagli</button>
                 </form>
             </noscript>
-            <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $id_ordine . '" aria-expanded="false" aria-controls="details-row-' . $id_ordine . '">Mostra <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+            <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $id_ordine . '" aria-expanded="false" aria-controls="details-row-' . $id_ordine . '">Mostra <span class="fas fa-chevron-down" aria-hidden="true"></span></button>
         </td></tr>';
         
         $tabellaOrdini .= '<tr class="order-details-row is-hidden" id="details-row-' . $id_ordine . '"><td colspan="5" class="order-details-cell"><div class="details-content">';
@@ -229,14 +229,14 @@ if (empty($ordini)) {
             $tabellaOrdini .= '<li><span>' . htmlspecialchars($item['quantita']) . 'x ' . htmlspecialchars($item['nome_vino_storico']) . '</span><span>€ ' . number_format($item['prezzo_acquisto'], 2, ',', '.') . ' (cad.)</span></li>';
         }
         $tabellaOrdini .= '</ul></div>'; 
-        $tabellaOrdini .= '<div class="details-section"><h4>Riepilogo e Spedizione:</h4><p><strong>Indirizzo Spedizione:</strong> ' . nl2br(htmlspecialchars($ordine['indirizzo_spedizione'])) . '</p><div class="details-summary"><p>Totale Prodotti: € ' . number_format($ordine['totale_prodotti'], 2, ',', '.') . '</p><p>Costo Spedizione: € ' . number_format($ordine['costo_spedizione'], 2, ',', '.') . '</p><p><strong>Totale Finale: <span>€ ' . number_format($ordine['totale_finale'], 2, ',', '.') . '</span></strong></p></div></div></div></td></tr>';
+        $tabellaOrdini .= '<div class="details-section"><h4>Riepilogo e Spedizione:</h4><p><span class="bold">Indirizzo Spedizione:</span> ' . nl2br(htmlspecialchars($ordine['indirizzo_spedizione'])) . '</p><div class="details-summary"><p>Totale Prodotti: € ' . number_format($ordine['totale_prodotti'], 2, ',', '.') . '</p><p>Costo Spedizione: € ' . number_format($ordine['costo_spedizione'], 2, ',', '.') . '</p><p><span class="bold">Totale Finale: € ' . number_format($ordine['totale_finale'], 2, ',', '.') . '</span></p></div></div></div></td></tr>';
     }
     $tabellaOrdini .= '</tbody></table>';
 }
 
 $tabellaPrenotazioni = '';
 if (empty($prenotazioni)) {
-    $tabellaPrenotazioni = '<div class="alert-box"><p><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Non hai ancora inviato richieste di prenotazione. Visita la sezione <a href="esperienze.php">Esperienze!</a></p></div>';
+    $tabellaPrenotazioni = '<div class="alert-box"><p><span class="fas fa-exclamation-triangle" aria-hidden="true"></span> Non hai ancora inviato richieste di prenotazione. Visita la sezione <a href="esperienze.php">Esperienze!</a></p></div>';
 } else {
     $tabellaPrenotazioni .= '<table class="table-data">
             <caption>Storico delle tue richieste esperienze</caption>
@@ -268,7 +268,7 @@ if (empty($prenotazioni)) {
                     <button type="submit" class="btn-secondary">Mostra Dettagli</button>
                 </form>
             </noscript>
-            <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $details_key . '" aria-expanded="false" aria-controls="details-row-' . $details_key . '">Mostra <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+            <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $details_key . '" aria-expanded="false" aria-controls="details-row-' . $details_key . '">Mostra <span class="fas fa-chevron-down" aria-hidden="true"></span></button>
         </td></tr>';
 
         $tabellaPrenotazioni .= '<tr class="order-details-row is-hidden" id="details-row-' . $details_key . '"><td colspan="6" class="order-details-cell"><div class="details-content">';
@@ -296,19 +296,19 @@ $datiPersonaliHTML = '
         </div>
         <div class="profile-body">
             <div class="profile-info-item">
-                <span class="info-label"><i class="fas fa-envelope" aria-hidden="true"></i> Email</span>
+                <span class="info-label"><span class="fas fa-envelope" aria-hidden="true"></span> Email</span>
                 <span class="info-value">' . htmlspecialchars($infoUtente['email']) . '</span>
             </div>
             <div class="profile-info-item">
-                <span class="info-label"><i class="fas fa-id-badge" aria-hidden="true"></i> ID Utente</span>
+                <span class="info-label"><span class="fas fa-id-badge" aria-hidden="true"></span> ID Utente</span>
                 <span class="info-value">#' . $idUtente . '</span>
             </div>
         </div>
     </div>
 
     <div class="danger-zone">
-        <h3><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Zona Pericolosa</h3>
-        <p>L\'eliminazione dell\'account è <strong>irreversibile</strong>. Perderai l\'accesso all\'area riservata.</p>
+        <h3><span class="fas fa-exclamation-triangle" aria-hidden="true"></span> Zona Pericolosa</h3>
+        <p>L\'eliminazione dell\'account è <span class="bold">irreversibile</span>. Perderai l\'accesso all\'area riservata.</p>
         
         <form action="areaPersonale.php" method="POST" class="delete-account-form">
             <input type="hidden" name="azione_delete" value="elimina_definitivamente">
@@ -337,7 +337,7 @@ $formPasswordHTML = '
             <div class="password-wrapper">
                 <input type="password" id="vecchia_password" name="vecchia_password" required placeholder="Inserisci la password attuale" autocomplete="current-password">
                 <button type="button" class="toggle-password" aria-pressed="false">
-                    <i class="fas fa-eye" aria-hidden="true"></i>
+                    <span class="fas fa-eye" aria-hidden="true"></span>
                     <span class="visually-hidden">Mostra password</span>
                 </button>
             </div>
@@ -348,7 +348,7 @@ $formPasswordHTML = '
             <div class="password-wrapper">
                 <input type="password" id="nuova_password" name="nuova_password" required placeholder="Inserisci la nuova password" autocomplete="new-password">
                 <button type="button" class="toggle-password" aria-pressed="false">
-                    <i class="fas fa-eye" aria-hidden="true"></i>
+                    <span class="fas fa-eye" aria-hidden="true"></span>
                     <span class="visually-hidden">Mostra password</span>
                 </button>
             </div>
@@ -359,7 +359,7 @@ $formPasswordHTML = '
             <div class="password-wrapper">
                 <input type="password" id="ripeti_password" name="ripeti_password" required placeholder="Ripeti la nuova password" autocomplete="new-password">
                 <button type="button" class="toggle-password" aria-pressed="false">
-                    <i class="fas fa-eye" aria-hidden="true"></i>
+                    <span class="fas fa-eye" aria-hidden="true"></span>
                     <span class="visually-hidden">Mostra password</span>
                 </button>
             </div>

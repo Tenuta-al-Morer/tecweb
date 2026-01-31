@@ -54,13 +54,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($risultato) {
             // Successo
-            $feedbackMessage = '<div class="alert success" role="alert"><i class="fas fa-check-circle"></i> Messaggio inviato con successo! Ti risponderemo presto.</div>';
+            $feedbackMessage = '<div class="alert success" role="alert"><span class="fas fa-check-circle"></span> Messaggio inviato con successo! Ti risponderemo presto.</div>';
         } else {
             // Errore generico
-            $feedbackMessage = '<div class="alert error" role="alert"><i class="fas fa-exclamation-triangle"></i> Errore nel salvataggio. Riprova più tardi.</div>';
+            $feedbackMessage = '<div class="alert error" role="alert"><span class="fas fa-exclamation-triangle"></span> Errore nel salvataggio. Riprova più tardi.</div>';
         }
     } catch (Exception $e) {
-        $feedbackMessage = '<div class="alert error" role="alert"><i class="fas fa-bomb"></i> Errore di sistema.</div>';
+        $feedbackMessage = '<div class="alert error" role="alert"><span class="fas fa-bomb"></span> Errore di sistema.</div>';
     }
     } else {
         // Ci sono errori di validazione PHP

@@ -879,7 +879,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         forms.forEach(form => {
-            form.setAttribute('novalidate', true);
+            form.noValidate = true;
             const inputs = form.querySelectorAll('input, select, textarea');
 
             form.addEventListener('submit', (e) => {
@@ -1147,7 +1147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.body.addEventListener('keydown', function(e) {
-            if (e.target.getAttribute('role') === 'button' && e.target.tagName === 'LABEL') {
+            if (e.target.tagName === 'LABEL' && e.target.getAttribute('tabindex') === '0') {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
                     e.target.click();

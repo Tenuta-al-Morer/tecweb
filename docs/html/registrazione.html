@@ -41,7 +41,7 @@
             </nav>
 
             <button id="theme-toggle" title="Cambia modalità chiaro/scuro" aria-label="Cambia tema">
-                <i class="fas fa-moon" aria-hidden="true"></i>
+                <span class="fas fa-moon" aria-hidden="true"></span>
             </button>
         </div>
     </header>
@@ -61,19 +61,19 @@
                     <div class="form-group">
                         <label for="nome">Nome</label>
                         <input type="text" id="nome" name="nome" required autocomplete="given-name" value="[nome]" pattern="[a-zA-Z\s'àèéìòùÀÈÉÌÒÙ]+" aria-describedby="nome-hint">
-                        <small id="nome-hint" class="input-help">Esempio: Mario</small>
+                        <span class="little" id="nome-hint" class="input-help">Esempio: Mario</span>
                     </div>
                     <div class="form-group">
                         <label for="cognome">Cognome</label>
                          <input type="text" id="cognome" name="cognome" required autocomplete="family-name" value="[cognome]" pattern="[a-zA-Z\s'àèéìòùÀÈÉÌÒÙ]+" aria-describedby="cognome-hint">
-                         <small id="cognome-hint" class="input-help">Esempio: Rossi</small>
+                         <span class="little" id="cognome-hint" class="input-help">Esempio: Rossi</span>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email</label>
                      <input type="email" id="email" name="email" required autocomplete="email" value="[email]" aria-describedby="email-hint">
-                     <small id="email-hint" class="input-help">Esempio: mario.rossi@email.com</small>
+                     <span class="little" id="email-hint" class="input-help">Esempio: mario.rossi@email.com</span>
                 </div>
 
                 <div class="form-group">
@@ -81,10 +81,10 @@
                     <div class="password-wrapper">
                         <input type="password" id="password" name="password" required autocomplete="new-password" minlength="8" aria-describedby="password-hint">
                         <button type="button" class="toggle-password" aria-label="Mostra password">
-                            <i class="fas fa-eye" aria-hidden="true"></i>
+                            <span class="fas fa-eye" aria-hidden="true"></span>
                         </button>
                     </div>
-                    <small id="password-hint" class="input-help">Minimo 8 caratteri. Esempio: "••••••••"</small>
+                    <span class="little" id="password-hint" class="input-help">Minimo 8 caratteri. Esempio: "••••••••"</span>
                 </div>
 
                 <div class="form-group">
@@ -92,10 +92,10 @@
                     <div class="password-wrapper">
                         <input type="password" id="confirm-password" name="confirm-password" required autocomplete="new-password" minlength="8" aria-describedby="confirm-password-hint">
                         <button type="button" class="toggle-password" aria-label="Mostra password">
-                            <i class="fas fa-eye" aria-hidden="true"></i>
+                            <span class="fas fa-eye" aria-hidden="true"></span>
                         </button>
                     </div>
-                    <small id="confirm-password-hint" class="input-help">Ripeti la password per conferma.</small>
+                    <span class="little" id="confirm-password-hint" class="input-help">Ripeti la password per conferma.</span>
                 </div>
 
                 <div class="form-group checkbox-group">

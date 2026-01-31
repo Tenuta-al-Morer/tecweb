@@ -155,45 +155,45 @@ function getFormVinoHTML($v = null) {
             <div class='admin-form-group'>
                 <label for='nome$suffix'>Nome Vino *</label>
                 <input type='text' id='nome$suffix' name='nome' class='admin-input' required value='$nome'>
-                <small class='input-help'>Esempio: Pinot Nero Riserva</small>
+                <span class='input-help little'>Esempio: Pinot Nero Riserva</span>
             </div>
             <div class='admin-form-group'>
                 <label for='categoria$suffix'>Categoria *</label>
                 <select id='categoria$suffix' name='categoria' class='admin-input'>$catOptions</select>
-                <small class='input-help'>Esempio: Rossi</small>
+                <span class='input-help little'>Esempio: Rossi</span>
             </div>
             <div class='admin-form-group'>
                 <label for='prezzo$suffix'>Prezzo (€) *</label>
                 <input type='number' step='0.01' id='prezzo$suffix' name='prezzo' class='admin-input' required value='$prezzo'>
-                <small class='input-help'>Esempio: 12.50</small>
+                <span class='input-help little'>Esempio: 12.50</span>
             </div>
             <div class='admin-form-group'>
                 <label for='stock$suffix'>Stock *</label>
                 <input type='number' id='stock$suffix' name='quantita_stock' class='admin-input' required value='$stock'>
-                <small class='input-help'>Esempio: 120</small>
+                <span class='input-help little'>Esempio: 120</span>
             </div>
             <div class='admin-form-group'>
                 <label for='stato$suffix'>Stato</label>
                 <select id='stato$suffix' name='stato' class='admin-input'>$statoOptions</select>
-                <small class='input-help'>Esempio: Attivo</small>
+                <span class='input-help little'>Esempio: Attivo</span>
             </div>
             <div class='admin-form-group'>
                 <label for='img$suffix'>Percorso Immagine</label>
                 <input type='text' id='img$suffix' name='img' class='admin-input' value='$img'>
-                <small class='input-help'>Esempio: ../../images/tr/placeholder.webp</small>
+                <span class='input-help little'>Esempio: ../../images/tr/placeholder.webp</span>
             </div>
         </div>
 
         <div class='admin-form-group'>
             <label for='desc_breve$suffix'>Descrizione Breve (Card)</label>
             <input type='text' id='desc_breve$suffix' name='descrizione_breve' class='admin-input' maxlength='100' value='$descBreve'>
-            <small class='input-help'>Esempio: Rosso elegante con note di frutti rossi</small>
+            <span class='input-help little'>Esempio: Rosso elegante con note di frutti rossi</span>
         </div>
 
         <div class='admin-form-group'>
             <label for='desc_estesa$suffix'>Descrizione Estesa (Modale)</label>
             <textarea id='desc_estesa$suffix' name='descrizione_estesa' class='admin-input' rows='3'>$descEstesa</textarea>
-            <small class='input-help'>Esempio: Affinato in barrique per 12 mesi...</small>
+            <span class='input-help little'>Esempio: Affinato in barrique per 12 mesi...</span>
         </div>
 
         <fieldset class='admin-fieldset'>
@@ -229,8 +229,8 @@ if ($view === 'vini') {
         $nomeSafe = htmlspecialchars($v['nome'], ENT_QUOTES);
         
         $iconaVisibilita = ($v['stato'] == 'attivo') 
-            ? '<i class="fas fa-eye" aria-hidden="true"></i>' 
-            : '<i class="fas fa-eye-slash icon-muted" aria-hidden="true"></i>';
+            ? '<span class="fas fa-eye" aria-hidden="true"></span>' 
+            : '<span class="fas fa-eye-slash icon-muted" aria-hidden="true"></span>';
         
         $actions = "";
         $modalToggleId = "modal-edit-" . $v['id'];
@@ -238,7 +238,7 @@ if ($view === 'vini') {
         if (!$isDeleted) {
             $actions .= "
             <label for='$modalToggleId' class='btn-icon' title='Modifica $nomeSafe' aria-label='Modifica $nomeSafe' role='button' tabindex='0'>
-                <i class='fas fa-edit'></i>
+                <span class='fas fa-edit' aria-hidden='true'></span>
             </label>";
             
             $actions .= "
@@ -258,7 +258,7 @@ if ($view === 'vini') {
                 <input type='hidden' name='view' value='{$view}'>
                 <input type='hidden' name='id' value='{$v['id']}'>
                 <button type='submit' class='btn-icon btn-icon-delete' title='Elimina $nomeSafe' aria-label='Elimina $nomeSafe'>
-                    <i class='fas fa-trash'></i>
+                    <span class='fas fa-trash' aria-hidden='true'></span>
                 </button>
             </form>";
             
@@ -281,7 +281,7 @@ if ($view === 'vini') {
                 <input type='hidden' name='view' value='{$view}'>
                 <input type='hidden' name='id' value='{$v['id']}'>
                 <button type='submit' class='btn-icon btn-icon-restore' aria-label='Ripristina $nomeSafe' title='Ripristina Vino'>
-                    <i class='fas fa-trash-restore'></i> 
+                    <span class='fas fa-trash-restore' aria-hidden='true'></span>
                 </button>
             </form>";
         }
@@ -362,7 +362,7 @@ if ($view === 'utenti') {
                         <input type='hidden' name='view' value='{$view}'>
                         <input type='hidden' name='id' value='{$idUtente}'>
                         <button type='submit' class='btn-icon btn-icon-delete' title='Elimina {$nome} {$cognome}' aria-label='Elimina {$nome} {$cognome}'>
-                            <i class='fas fa-trash'></i>
+                            <span class='fas fa-trash' aria-hidden='true'></span>
                         </button>
                     </form>
                 </div>";
@@ -446,13 +446,13 @@ $sezioneUtenti = "
 
 $btnNuovoVino = ($view === 'vini')
     ? "<label for='toggle-modal-nuovo' class=\"btn-primary admin-btn-inline\">
-            <i class=\"fas fa-plus\" aria-hidden=\"true\"></i>&nbsp;Nuovo Vino
+            <span class=\"fas fa-plus\" aria-hidden=\"true\"></span>&nbsp;Nuovo Vino
        </label>"
     : "";
 
 $btnNuovoUtente = ($view === 'utenti')
     ? "<label for=\"toggle-modal-utente\" class=\"btn-primary\" role=\"button\" aria-label=\"Aggiungi nuovo utente\">
-            <i class=\"fas fa-plus\" aria-hidden=\"true\"></i> Nuovo Utente
+            <span class=\"fas fa-plus\" aria-hidden=\"true\"></span>&nbsp;Nuovo Utente
        </label>"
     : "";
 

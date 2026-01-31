@@ -84,13 +84,13 @@ function caricaPagina($nomeFileHTML, $extraReplacements = []) {
         if ($paginaCorrente === 'admin.php') {
             $cartIconHTML = '
             <span class="current-page-icon" aria-current="page" title="Sei in Amministrazione">
-                <i class="fas fa-edit" aria-hidden="true"></i>
+                <span class="fas fa-edit" aria-hidden="true"></span>
                 <span class="visually-hidden">Amministrazione (Pagina corrente)</span>
             </span>';
         } else {
             $cartIconHTML = '
             <a href="admin.php" title="Vai a Amministrazione">
-                <i class="fas fa-edit" aria-hidden="true"></i>
+                <span class="fas fa-edit" aria-hidden="true"></span>
                 <span class="visually-hidden">Amministrazione</span>
             </a>';
         }
@@ -104,14 +104,14 @@ function caricaPagina($nomeFileHTML, $extraReplacements = []) {
         if ($paginaCorrente === 'carrello.php' || $paginaCorrente === 'checkout.php' ) {
             $cartIconHTML = '
             <span class="current-page-icon cart-icon-container" aria-current="page" title="Sei nel Carrello">
-                <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                <span class="fas fa-shopping-cart" aria-hidden="true"></span>
                 ' . $badgeHTML . '
                 <span class="visually-hidden" lang="en">Shop (Pagina corrente)</span>
             </span>';
         } else {
             $cartIconHTML = '
             <a href="carrello.php" title="Vai al carrello" class="cart-icon-container">
-                <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                <span class="fas fa-shopping-cart" aria-hidden="true"></span>
                 ' . $badgeHTML . '
                 <span class="visually-hidden" lang="en">Shop</span>
             </a>';
@@ -132,13 +132,13 @@ function caricaPagina($nomeFileHTML, $extraReplacements = []) {
             if ($paginaCorrente === 'gestionale.php' || $paginaCorrente === 'staff.php') {
                 $userIconHTML = '
                 <span class="current-page-icon" aria-current="page" title="Sei in Gestionale">
-                    <i class="fas fa-sliders-h" aria-hidden="true"></i>
+                    <span class="fas fa-sliders-h" aria-hidden="true"></span>
                     <span class="visually-hidden">Gestionale (Pagina corrente)</span>
                 </span>';
             } else {
                 $userIconHTML = '
                 <a href="utente.php" title="Vai a Gestionale">
-                    <i class="fas fa-sliders-h" aria-hidden="true"></i>
+                    <span class="fas fa-sliders-h" aria-hidden="true"></span>
                     <span class="visually-hidden">Gestionale</span>
                 </a>';
             }
@@ -148,13 +148,13 @@ function caricaPagina($nomeFileHTML, $extraReplacements = []) {
             if ($paginaCorrente === 'areaPersonale.php') {
                 $userIconHTML = '
                 <span class="current-page-icon" aria-current="page" title="Sei nella tua Area Riservata">
-                    <i class="fas fa-user" aria-hidden="true"></i>
+                    <span class="fas fa-user" aria-hidden="true"></span>
                     <span class="visually-hidden">Area Riservata (Pagina corrente)</span>
                 </span>';
             } else {
                 $userIconHTML = '
                 <a href="utente.php" title="Vai alla tua Area Riservata">
-                    <i class="fas fa-user" aria-hidden="true"></i>
+                    <span class="fas fa-user" aria-hidden="true"></span>
                     <span class="visually-hidden">Area Riservata</span>
                 </a>';
             }
@@ -165,13 +165,13 @@ function caricaPagina($nomeFileHTML, $extraReplacements = []) {
         if ($paginaCorrente === 'carrello.php') {
             $userIconHTML = '
             <a href="login.php?return=carrello.php" title="Accedi per completare l\'ordine">
-                <i class="fas fa-user-alt-slash" aria-hidden="true"></i>
+                <span class="fas fa-user-alt-slash" aria-hidden="true"></span>
                 <span class="visually-hidden">Accedi</span>
             </a>';
         } else {
             $userIconHTML = '
             <a href="login.php" title="Vai alla pagina di login">
-                <i class="fas fa-user-alt-slash" aria-hidden="true"></i>
+                <span class="fas fa-user-alt-slash" aria-hidden="true"></span>
                 <span class="visually-hidden">Accedi</span>
             </a>';
         }
@@ -181,13 +181,13 @@ function caricaPagina($nomeFileHTML, $extraReplacements = []) {
     $footer = '
         <footer>
             <div class="footer-content">
-                <small>
+                <span class="little">
                     &copy; 2025 Tenuta al Morer - <abbr title="Partita">P.</abbr> <abbr title="Imposta sul Valore Aggiunto">IVA</abbr> 00000000000 <br>
                     <a href="policy.php">Note legali</a> |
                     <a href="policy.php#privacy-policy"><span lang="en">  Privacy Policy</span></a> | 
                     <a href="policy.php#accessibility">  Accessibilità</a> |
                     <a href="mappa.php">Mappa del sito</a>  
-                </small>
+                </span>
             </div>
         </footer>';
 
@@ -200,7 +200,7 @@ function caricaPagina($nomeFileHTML, $extraReplacements = []) {
     $menuTogle = '<input type="checkbox" id="menu-checkbox" class="menu-checkbox visually-hidden">
 
             <label for="menu-checkbox" class="menu-toggle" aria-controls="main-navigation" aria-expanded="false">
-                <i class="fas fa-bars" aria-hidden="true"></i>
+                <span class="fas fa-bars" aria-hidden="true"></span>
                 <span class="visually-hidden">Apri il menu di navigazione</span>
             </label>';
 

@@ -1,0 +1,126 @@
+Skip navigation
+Total Validator Home Page
+Main site navigation
+DocumentationReferenceWebsiteContact Form
+Summary report
+Start page:	http://tecweb.studenti.math.unipd.it/acontari/scripts/php/403.php
+Issues:	1 Warning
+Upgrade to Total Validator Pro to validate an entire site in one go
+
+Summary Issues Page
+Display issue details:HoverShow allHide all
+ Go to first issue
+
+  0 next issueprevious issueW874WCAG2 A 2.4.1: Add a skip navigation link as the first link on the page
+If your document has structure then you should add a skip navigation link to make it easier for accessible users to get to the page's content. To ensure detection, skip navigation links should point to a <main> element, or an element with role='main'. See Understanding 2.4.1, and Skip Navigation.
+  1 <!DOCTYPE html>
+  2 <html lang="it" class="no-js">
+  2   <head>
+  3     <meta charset="utf-8">
+  4     <title>
+  4       Accesso Negato - Tenuta al Morer
+  4     </title>
+  5     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  6     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+  7     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet">
+  8     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+ 10     <link rel="stylesheet" href="../../css/style.css" media="screen">
+ 11     <link rel="stylesheet" href="../../css/mini.css" media="screen and (max-width:1024px)">
+ 12     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+ 13   </head>
+ 14   <body>
+ 15     <header>
+ 16       <div class="login-header-logo">
+ 17         <a href="home.php">
+ 17           <img src="../../images/logo.webp" alt="Tenuta al Morer - Home">
+ 17         </a>
+ 18       </div>
+ 19       <div class="sub-header">
+ 20         <nav id="breadcrumb">
+ 21           <div class="breadcrumb-container">
+ 22             <span>
+ 22               Ti trovi in:
+ 22             </span>
+ 23             <a href="home.php">
+ 23               <span lang="en">
+ 23                 Home
+ 23               </span>
+ 23             </a>
+ 23             <span aria-hidden="true">
+ 23               &gt;
+ 23             </span>
+ 23             <span class="current-page">
+ 23               Accesso Negato
+ 23             </span>
+ 24           </div>
+ 25         </nav>
+ 26       </div>
+ 27     </header>
+ 29     <main id="content">
+ 30       <div class="auth-container">
+ 31         <div class="red">
+ 32           <i class="fas fa-user-lock">
+ 32           </i>
+ 33         </div>
+ 34         <h1>
+ 34           Accesso Negato
+ 34         </h1>
+ 35         <p>
+ 35           Spiacenti, questa è una "Riserva Privata".
+ 35         </p>
+ 36         <p>
+ 36           Non disponi delle autorizzazioni necessarie per visualizzare questa pagina.
+ 36         </p>
+ 38         <div class="button-errors">
+ 39           <a href="login.php" class="btn-primary">
+ 39             ACCEDI
+ 39           </a>
+ 40           <br>
+ 40           <br>
+ 41           <a href="home.php" class="btn-primary">
+ 41             Torna alla Home
+ 41           </a>
+ 42         </div>
+ 43       </div>
+ 44     </main>
+ 47     <footer>
+ 48       <div class="footer-content">
+ 49         <small>
+ 50           © 2025 Tenuta al Morer -
+ 50           <abbr title="Partita">
+ 50             P.
+ 50           </abbr>
+ 50           <abbr title="Imposta sul Valore Aggiunto">
+ 50             IVA
+ 50           </abbr>
+ 50           00000000000
+ 50           <br>
+ 51           <a href="policy.php">
+ 51             Note legali
+ 51           </a>
+ 51           |
+ 52           <a href="policy.php#privacy-policy">
+ 52             <span lang="en">
+ 52               Privacy Policy
+ 52             </span>
+ 52           </a>
+ 52           |
+ 53           <a href="policy.php#accessibility">
+ 53             Accessibilità
+ 53           </a>
+ 53           |
+ 54           <a href="mappa.php">
+ 54             Mappa del sito
+ 54           </a>
+ 55         </small>
+ 56       </div>
+ 57     </footer>
+ 59     <button id="backToTopBtn" aria-label="Torna all'inizio della pagina">
+ 60       <svg viewBox="0 0 24 24" class="arrow-icon" aria-hidden="true">
+ 61         <path d="M12 5 L12 19 M5 12 L12 5 L19 12">
+ 61         </path>
+ 62       </svg>
+ 63     </button>
+ 66   </body>
+ 66 </html>
+© 2005-2026 Total Validator

@@ -1,0 +1,294 @@
+Skip navigation
+Total Validator Home Page
+Main site navigation
+DocumentationReferenceWebsiteContact Form
+Summary report
+Start page:	http://tecweb.studenti.math.unipd.it/acontari/scripts/php/tenuta.php
+Issues:	1 Error, 4 Warnings
+Upgrade to Total Validator Pro to validate an entire site in one go
+
+Summary Issues Page
+Display issue details:HoverShow allHide all
+ Go to first issue
+
+  1 <!DOCTYPE html>
+  2 <html lang="it" class="">
+  2   <head>
+  3     <meta charset="utf-8">
+  4     <title>
+  4       La Tenuta - Tenuta al Morer
+  4     </title>
+  5     <link rel="icon" href="../../images/logo.ico" type="image/x-icon">
+  7     <meta name="description" content="Scopri la storia e il territorio della Tenuta al Morer, dove la tradizione veneta incontra la passione per la viticoltura nelle colline.">
+  8     <meta name="keywords" content="Tenuta al Morer, tradizione veneta, viticoltura, colline">
+  9     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 11     <link rel="preconnect" href="https://fonts.googleapis.com">
+ 12     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+ 13     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+ 14     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet">
+ 15     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+ 17     <link rel="stylesheet" href="../../css/style.css" media="screen">
+ 18     <link rel="stylesheet" href="../../css/mini.css" media="screen and (max-width:1024px)">
+ 19     <link rel="stylesheet" href="../../css/print.css" media="print">
+ 20     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+ 21     <script src="../javascript/script.js">
+ 21     </script>
+ 22   </head>
+ 24   <body>
+ 25     <header>
+ 26       <nav id="help">
+ 27         <a class="navigationHelp" href="#content-te">
+ 27           Vai al contenuto
+ 27         </a>
+ 28       </nav>
+ 30       <div class="main-nav-bar">
+ 31         <input type="checkbox" id="menu-checkbox" class="menu-checkbox visually-hidden">
+ 33         <label for="menu-checkbox" class="menu-toggle" aria-controls="main-navigation" aria-expanded="false">
+ 34           <i class="fas fa-bars" aria-hidden="true">
+ 34           </i>
+ 35           <span class="visually-hidden">
+ 35             Apri il menu di navigazione
+ 35           </span>
+ 36         </label>
+ 38 next issueprevious issueW867WCAG2 A 2.4.4: Identical adjacent links with different link text. See matching tag on line: 44
+If you have adjacent links to the same place with different link text (when read aloud) it can be confusing to the user. You should consider combining these into one link and removing any redundant link text. See Understanding 2.4.4.
+            <a href="home.php" class="logo-link">
+ 39           <img src="../../images/logo.webp" alt="Tenuta al Morer - Home">
+ 40         </a>
+ 42 next issueprevious issueW877WCAG2 A 1.3.1: Distinguish between navigation groups using an ARIA label
+When the <nav> element is employed more than once on a page, distinguish between the navigation groups by using an 'aria-label' or 'aria-labelledby' attribute. See WCAG2 HTML Technique H97.
+            <nav id="main-navigation" class="primary-navigation">
+ 43           <ul>
+ 44             <li>
+ 44 next issueprevious issueW867WCAG2 A 2.4.4: Identical adjacent links with different link text. See matching tag on line: 38
+If you have adjacent links to the same place with different link text (when read aloud) it can be confusing to the user. You should consider combining these into one link and removing any redundant link text. See Understanding 2.4.4.
+                  <a href="home.php">
+ 44                 <span lang="en">
+ 44                   Home
+ 44                 </span>
+ 44               </a>
+ 44             </li>
+ 45             <li>
+ 45               <span aria-current="page">
+ 45                 Tenuta
+ 45               </span>
+ 45             </li>
+ 46             <li>
+ 46               <a href="vini.php">
+ 46                 Vini
+ 46               </a>
+ 46             </li>
+ 47             <li>
+ 47               <a href="esperienze.php">
+ 47                 Esperienze
+ 47               </a>
+ 47             </li>
+ 48             <li>
+ 48               <a href="contatti.php">
+ 48                 Contatti
+ 48               </a>
+ 48             </li>
+ 49           </ul>
+ 50         </nav>
+ 52         <div class="mobile-icons">
+ 54           <a href="admin.php" title="Vai a Amministrazione">
+ 55             <i class="fas fa-edit" aria-hidden="true">
+ 55             </i>
+ 56             <span class="visually-hidden">
+ 56               Amministrazione
+ 56             </span>
+ 57           </a>
+ 59           <a href="utente.php" title="Vai a Gestionale">
+ 60             <i class="fas fa-sliders-h" aria-hidden="true">
+ 60             </i>
+ 61             <span class="visually-hidden">
+ 61               Gestionale
+ 61             </span>
+ 62           </a>
+ 64         </div>
+ 65       </div>
+ 67       <div class="sub-header">
+ 68 next issueprevious issueW877WCAG2 A 1.3.1: Distinguish between navigation groups using an ARIA label
+When the <nav> element is employed more than once on a page, distinguish between the navigation groups by using an 'aria-label' or 'aria-labelledby' attribute. See WCAG2 HTML Technique H97.
+            <nav id="breadcrumb">
+ 69           <div class="breadcrumb-container">
+ 70             <span>
+ 70               Ti trovi in:
+ 70             </span>
+ 71             <a href="home.php">
+ 71               <span lang="en">
+ 71                 Home
+ 71               </span>
+ 71             </a>
+ 71             <span aria-hidden="true">
+ 71               &gt;
+ 71             </span>
+ 72             <span class="current-page">
+ 72               La tenuta
+ 72             </span>
+ 73           </div>
+ 74         </nav>
+ 76 next issueprevious issueE9081WCAG2 A 2.5.3: The accessible name in 'aria-label' must contain the visible label text: Passa alla modalita chiara
+The accessible name used by accessibility aids must contain the text displayed by the visible label. When choosing the text remember that both the name and the label may be read out aloud. See Understanding 2.5.3, and Accessibility API Mappings.
+            <button id="theme-toggle" title="Cambia modalità chiaro/scuro" aria-label="Cambia tema">
+ 77           <span class="visually-hidden">
+ 77             Passa alla modalita chiara
+ 77           </span>
+ 78           <svg viewBox="0 0 24 24" class="theme-icon" aria-hidden="true">
+ 79             <circle cx="12" cy="12" r="4.5">
+ 79             </circle>
+ 80             <line x1="12" y1="2" x2="12" y2="4">
+ 80             </line>
+ 81             <line x1="12" y1="20" x2="12" y2="22">
+ 81             </line>
+ 82             <line x1="4.2" y1="4.2" x2="5.8" y2="5.8">
+ 82             </line>
+ 83             <line x1="18.2" y1="18.2" x2="19.8" y2="19.8">
+ 83             </line>
+ 84             <line x1="2" y1="12" x2="4" y2="12">
+ 84             </line>
+ 85             <line x1="20" y1="12" x2="22" y2="12">
+ 85             </line>
+ 86             <line x1="4.2" y1="19.8" x2="5.8" y2="18.2">
+ 86             </line>
+ 87             <line x1="18.2" y1="5.8" x2="19.8" y2="4.2">
+ 87             </line>
+ 88           </svg>
+ 89         </button>
+ 90       </div>
+ 91     </header>
+ 93     <main class="tenuta-main" aria-labelledby="sum" id="content-te">
+ 94       <p class="visually-hidden" id="sum">
+ 94         In questa pagina puoi scoprire la storia, il territorio e la filosofia della Tenuta al Morer, una tradizione di famiglia che si tramanda da generazioni nel cuore del Veneto.
+ 94       </p>
+ 95       <section class="tenuta-hero">
+ 96         <div class="tenuta-hero-inner">
+ 97           <h1 id="tenuta-title" class="tenuta-hero-title">
+ 98             La nostra tenuta: una tradizione di famiglia
+ 99           </h1>
+100           <p class="tenuta-hero-text">
+101             La Tenuta al Morer nasce nel cuore del Veneto, una terra ricca di storia e tradizione vinicola. Dal 1920, la nostra famiglia si dedica con passione alla coltivazione della vite e alla produzione di vini di qualità che esprimono il carattere unico del nostro
+103             <span lang="fr">
+103               terroir
+103             </span>
+103             .
+104           </p>
+105         </div>
+106       </section>
+108       <section class="tenuta-card">
+109         <div class="tenuta-card-image">
+110           <img src="../../images/tenuta_3.jpg" alt="">
+111         </div>
+112         <div class="tenuta-card-text">
+113           <h2 class="tenuta-section-title">
+113             Le nostre origini
+113           </h2>
+114           <p>
+115             Tutto iniziò quando il bisnonno Giovanni acquistò i primi ettari di terra collinare, riconoscendo immediatamente il potenziale di questo territorio benedetto dal clima favorevole e dalla composizione unica del suolo. Con dedizione e amore per la terra, iniziò a piantare le prime viti, ponendo le fondamenta di quella che sarebbe diventata la Tenuta al Morer.
+120           </p>
+121         </div>
+122       </section>
+124       <div class="content-separator">
+124       </div>
+126       <section class="tenuta-card tenuta-card--reverse">
+127         <div class="tenuta-card-image">
+128           <img src="../../images/vigneto_chat.jpg" alt="">
+129         </div>
+130         <div class="tenuta-card-text">
+131           <h2 class="tenuta-section-title">
+131             Tradizione e innovazione
+131           </h2>
+132           <p>
+133             Oggi, dopo quattro generazioni, continuiamo a seguire i principi tramandati dai nostri antenati, combinandoli con tecniche moderne di vinificazione. I nostri 45 ettari di vigneto sono coltivati con metodi sostenibili, rispettando l’ambiente e la biodiversità del territorio.
+136           </p>
+137         </div>
+138       </section>
+140       <div class="content-separator">
+140       </div>
+142       <section class="tenuta-card">
+143         <div class="tenuta-card-image">
+144           <img src="../../images/cantina_interno.jpg" alt="">
+145         </div>
+146         <div class="tenuta-card-text">
+147           <h2 class="tenuta-section-title">
+147             La cantina
+147           </h2>
+148           <p>
+149             La nostra cantina moderna è stata progettata per ottimizzare ogni fase del processo produttivo, dalla vendemmia manuale alla vinificazione controllata, fino all’affinamento in
+150             <span lang="fr">
+150               barriques
+150             </span>
+150             di rovere francese. Ogni bottiglia che produciamo è il risultato di un lavoro meticoloso e di una passione incondizionata per il vino di qualità.
+153           </p>
+154         </div>
+155       </section>
+157       <div class="content-separator">
+157       </div>
+159       <section class="tenuta-card tenuta-card--reverse">
+160         <div class="tenuta-card-image">
+161           <img src="../../images/vigneto.jpg" alt="">
+162         </div>
+163         <div class="tenuta-card-text">
+164           <h2 class="tenuta-section-title">
+164             Il territorio
+164           </h2>
+165           <p>
+166             Le nostre vigne si estendono su dolci colline a un’altitudine ideale, beneficiando di un microclima perfetto per la maturazione delle uve. Il terreno, ricco di minerali e con un’ottima esposizione solare, conferisce ai nostri vini quella complessità e profondità che li rendono unici.
+170           </p>
+171         </div>
+172       </section>
+174       <section class="tenuta-philosophy">
+175         <div class="tenuta-philosophy-inner">
+176           <h2 class="tenuta-philosophy-title">
+176             La nostra filosofia
+176           </h2>
+177           <p class="tenuta-philosophy-text">
+178             Crediamo che un grande vino nasca dalla combinazione di tre elementi: un territorio d’eccellenza, il rispetto per la natura e la passione dell’uomo. Ogni giorno lavoriamo con questo spirito, consapevoli che ogni bottiglia porta con sé la storia, la tradizione e l’anima della nostra famiglia.
+181           </p>
+182           <p class="tenuta-philosophy-text">
+183             Vi invitiamo a venire a trovarci per scoprire di persona la bellezza della nostra tenuta e degustare i vini che produciamo con tanto amore e dedizione.
+185           </p>
+186         </div>
+187       </section>
+188     </main>
+191     <footer>
+192       <div class="footer-content">
+193         <small>
+194           © 2025 Tenuta al Morer -
+194           <abbr title="Partita">
+194             P.
+194           </abbr>
+194           <abbr title="Imposta sul Valore Aggiunto">
+194             IVA
+194           </abbr>
+194           00000000000
+194           <br>
+195           <a href="policy.php">
+195             Note legali
+195           </a>
+195           |
+196           <a href="policy.php#privacy-policy">
+196             <span lang="en">
+196               Privacy Policy
+196             </span>
+196           </a>
+196           |
+197           <a href="policy.php#accessibility">
+197             Accessibilità
+197           </a>
+197           |
+198           <a href="mappa.php">
+198             Mappa del sito
+198           </a>
+199         </small>
+200       </div>
+201     </footer>
+203     <button id="backToTopBtn" aria-label="Torna all'inizio della pagina">
+204       <svg viewBox="0 0 24 24" class="arrow-icon" aria-hidden="true">
+205         <path d="M12 5 L12 19 M5 12 L12 5 L19 12">
+205         </path>
+206       </svg>
+207     </button>
+210   </body>
+210 </html>
+© 2005-2026 Total Validator

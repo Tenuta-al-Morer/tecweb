@@ -1,3 +1,9 @@
 Lista todo per tecweb:   
-- togliere strong e altro stile inline se presente
-- leggere relazione e dire se ci sono modifiche da fare altrimenti è completata
+- aria-expanded deve stare dentro tag nav non label
+- leggere relazione
+
+Criticità 
+- Specifica “sintassi XML” non rispettata: le pagine sono HTML5 ma non XML‑well‑formed (tag void non auto‑chiusi, <br> non auto‑chiuso, assenza di namespace XHTML). Esempi in home.html (line 5), home.html (line 7), home.html (line 35), home.html (line 75).
+
+Verifica requisiti (evidenze principali)
+- Sintassi XML: KO (vedi criticità sopra).

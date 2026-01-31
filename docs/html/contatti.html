@@ -30,7 +30,7 @@
             <a class="navigationHelp" href="#content">Vai al contenuto</a>
         </nav>
 
-        <div class="main-nav-bar">    
+        <dnaviv class="main-nav-bar">    
             [menu_toggle]
 
 
@@ -52,7 +52,7 @@
                 [cart_icon_link]
                 [user_area_link]
             </div>
-        </div>
+        </nav>
 
         <div class="sub-header">
             <nav id="breadcrumb">
@@ -64,7 +64,7 @@
             </nav>
 
             <button id="theme-toggle" title="Cambia modalità chiaro/scuro" aria-label="Cambia tema">
-                <i class="fas fa-moon" aria-hidden="true"></i>
+                <span class="fas fa-moon" aria-hidden="true"></span>
             </button>
         </div>
     </header>
@@ -79,8 +79,8 @@
             </p>
 
             <aside class="alert-box"> 
-                <p><i class="fas fa-wine-glass-alt" aria-hidden="true"></i> 
-                <strong>Vuoi prenotare una visita o una degustazione?</strong></p>
+                <p><span class="fas fa-wine-glass-alt" aria-hidden="true"></span> 
+                <span class="bold">Vuoi prenotare una visita o una degustazione?</span></p>
                 <p>Per gestire al meglio la tua accoglienza, ti preghiamo di usare l'apposita sezione.</p>
                 <a href="esperienze.php" class="btn-text-link">Vai alla pagina Esperienze <span aria-hidden="true">&rarr;</span></a>
             </aside>
@@ -94,19 +94,18 @@
                         <address class="info-list">
                             <p>
                                 <a href="https://www.google.com/maps/place/45%C2%B047'25.2%22N+12%C2%B017'49.2%22E/@45.7929044,12.2897198,13z/data=!4m4!3m3!8m2!3d45.79034!4d12.296986?entry=ttu&g_ep=EgoyMDI1MTIwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">
-                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                <span class="fas fa-map-marker-alt" aria-hidden="true"></span>
                                 <span class="sr-only">Indirizzo:</span> 
                                 <span class="link-text">Via del Vino 42, Spresiano 31027 (TV)</span>
                                 </a>
                             </p>
                             <p>
-                                <a href="tel:+390422000000"><i class="fas fa-phone-alt" aria-hidden="true"></i>
+                                <a href="tel:+390422000000"><span class="fas fa-phone-alt" aria-hidden="true"></span>
                                 <span class="sr-only">Telefono:</span>
-                                <span class="link-text">+39 0422 000000</span>
-                                </a>
+                                <span class="link-text" aria-label="più 3 9. 0 4 2 2. 0 0 0. 0 0 0 ">+39 0422 000000</span>
                             </p>
                             <p>
-                                <a href="mailto:info@tenutaalmorer.it"><i class="fas fa-envelope" aria-hidden="true"></i>
+                                <a href="mailto:info@tenutaalmorer.it"><span class="fas fa-envelope" aria-hidden="true"></span>
                                 <span class="sr-only">Email:</span>
                                 <span class="link-text">info@tenutaalmorer.it</span>
                                 </a>
@@ -118,9 +117,9 @@
                         <h2 id="orari-title">Orari di apertura</h2>
                         <p>La cantina e gli uffici sono aperti al pubblico:</p>
                         <ul class="hours-list">
-                            <li><strong>Luned&igrave; - Venerd&igrave;:</strong> 09:00 - 18:00</li>
-                            <li><strong>Sabato:</strong> 09:00 - 13:00</li>
-                            <li><strong>Domenica:</strong> Chiuso</li>
+                            <li><span class="bold">Luned&igrave; - Venerd&igrave;:</span> 09:00 - 18:00</li>
+                            <li><span class="bold">Sabato:</span> 09:00 - 13:00</li>
+                            <li><span class="bold">Domenica:</span> Chiuso</li>
                         </ul>
                     </section>
 
@@ -155,12 +154,12 @@
                                 <div>
                                     <label for="nome">Nome<span aria-hidden="true">*</span></label>
                                     <input type="text" id="nome" name="nome" required autocomplete="name" value="[val_nome]" aria-describedby="nome-hint">
-                                    <small id="nome-hint" class="input-help">Esempio: Mario</small>
+                                    <span class="little" id="nome-hint" class="input-help">Esempio: Mario</span>
                                 </div>
                                 <div>
                                     <label for="cognome">Cognome<span aria-hidden="true">*</span></label>
                                     <input type="text" id="cognome" name="cognome" required autocomplete="surname" value="[val_cognome]" aria-describedby="cognome-hint">
-                                    <small id="cognome-hint" class="input-help">Esempio: Rossi</small>
+                                    <span class="little" id="cognome-hint" class="input-help">Esempio: Rossi</span>
                                 </div>
                             </div>
 
@@ -168,7 +167,7 @@
                                 <div>
                                     <label for="email">Email<span aria-hidden="true">*</span></label>
                                     <input type="email" id="email" name="email" required autocomplete="email" value="[val_email]" aria-describedby="email-hint">
-                                    <small id="email-hint" class="input-help">Esempio: mario.rossi@email.com</small>
+                                    <span class="little" id="email-hint" class="input-help">Esempio: mario.rossi@email.com</span>
                                 </div>
 
                                 <div>
@@ -183,7 +182,7 @@
                                         <option value="assistenza" [sel_assistenza]>Assistenza tecnica</option>
                                         <option value="altro" [sel_altro]>Altro</option>
                                     </select>
-                                    <small id="tipo_supporto-hint" class="input-help">Seleziona l'argomento principale della richiesta.</small>
+                                    <span class="little" id="tipo_supporto-hint" class="input-help">Seleziona l'argomento principale della richiesta.</span>
                                 </div>
                   
                             </div>
@@ -191,7 +190,7 @@
                             <div class="form-group">
                                 <label for="messaggio">Messaggio<span aria-hidden="true">*</span></label>
                                 <textarea id="messaggio" name="messaggio" rows="5" required aria-describedby="messaggio-hint">[val_messaggio]</textarea>
-                                <small id="messaggio-hint" class="input-help">Esempio: Vorrei maggiori informazioni sulla disponibilit&agrave; del Prosecco DOC...</small>
+                                <span class="little" id="messaggio-hint" class="input-help">Esempio: Vorrei maggiori informazioni sulla disponibilit&agrave; del Prosecco DOC...</span>
                             </div>
 
                             <p class="checkbox-container">

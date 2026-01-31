@@ -1,0 +1,3286 @@
+Skip navigation
+Total Validator Home Page
+Main site navigation
+DocumentationReferenceWebsiteContact Form
+Summary report
+Start page:	http://tecweb.studenti.math.unipd.it/acontari/scripts/php/gestionale.php
+Issues:	45 Errors, 5 Warnings
+Upgrade to Total Validator Pro to validate an entire site in one go
+
+Summary Issues Page
+Display issue details:HoverShow allHide all
+ Go to first issue
+
+  1 <!DOCTYPE html>
+  2 <html lang="it" class="">
+  2   <head>
+  3     <meta charset="utf-8">
+  4     <title>
+  4       Area Gestionale - Tenuta al Morer
+  4     </title>
+  5     <link rel="icon" href="../../images/logo.ico" type="image/x-icon">
+  7     <meta name="description" content="Gestisci l'area gestionale dell'azienda: ordini, prenotazioni e richieste dei clienti.">
+  8     <meta name="keywords" content="esperienze, degustazioni, Tenuta al Morer, vini, messaggi, gestione, richieste">
+  9     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 10     <meta name="format-detection" content="telephone=no,email=no,address=no">
+ 12     <link rel="preconnect" href="https://fonts.googleapis.com">
+ 13     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+ 14     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+ 15     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet">
+ 16     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+ 18     <link rel="stylesheet" href="../../css/style.css" media="screen">
+ 19     <link rel="stylesheet" href="../../css/mini.css" media="screen and (max-width:1024px)">
+ 20     <link rel="stylesheet" href="../../css/print.css" media="print">
+ 21     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+ 22     <script src="../javascript/script.js">
+ 22     </script>
+ 23   </head>
+ 25   <body>
+ 26     <header>
+ 27       <nav id="help">
+ 28         <a class="navigationHelp" href="#content-ad">
+ 28           Vai al contenuto
+ 28         </a>
+ 29       </nav>
+ 31       <div class="main-nav-bar">
+ 32         <input type="checkbox" id="menu-checkbox" class="menu-checkbox visually-hidden">
+ 34         <label for="menu-checkbox" class="menu-toggle" aria-controls="main-navigation" aria-expanded="false">
+ 35           <i class="fas fa-bars" aria-hidden="true">
+ 35           </i>
+ 36           <span class="visually-hidden">
+ 36             Apri il menu di navigazione
+ 36           </span>
+ 37         </label>
+ 39 next issueprevious issueW867WCAG2 A 2.4.4: Identical adjacent links with different link text. See matching tag on line: 45
+If you have adjacent links to the same place with different link text (when read aloud) it can be confusing to the user. You should consider combining these into one link and removing any redundant link text. See Understanding 2.4.4.
+            <a href="home.php" class="logo-link">
+ 40           <img src="../../images/logo.webp" alt="Tenuta al Morer - Home">
+ 41         </a>
+ 43 next issueprevious issueW877WCAG2 A 1.3.1: Distinguish between navigation groups using an ARIA label
+When the <nav> element is employed more than once on a page, distinguish between the navigation groups by using an 'aria-label' or 'aria-labelledby' attribute. See WCAG2 HTML Technique H97.
+            <nav id="main-navigation" class="primary-navigation">
+ 44           <ul>
+ 45             <li>
+ 45 next issueprevious issueW867WCAG2 A 2.4.4: Identical adjacent links with different link text. See matching tag on line: 39
+If you have adjacent links to the same place with different link text (when read aloud) it can be confusing to the user. You should consider combining these into one link and removing any redundant link text. See Understanding 2.4.4.
+                  <a href="home.php">
+ 45                 <span lang="en">
+ 45                   Home
+ 45                 </span>
+ 45               </a>
+ 45             </li>
+ 46             <li>
+ 46               <a href="tenuta.php">
+ 46                 Tenuta
+ 46               </a>
+ 46             </li>
+ 47             <li>
+ 47               <a href="vini.php">
+ 47                 Vini
+ 47               </a>
+ 47             </li>
+ 48             <li>
+ 48               <a href="esperienze.php">
+ 48                 Esperienze
+ 48               </a>
+ 48             </li>
+ 49             <li>
+ 49               <a href="contatti.php">
+ 49                 Contatti
+ 49               </a>
+ 49             </li>
+ 50           </ul>
+ 51         </nav>
+ 53         <div class="mobile-icons">
+ 55           <a href="admin.php" title="Vai a Amministrazione">
+ 56             <i class="fas fa-edit" aria-hidden="true">
+ 56             </i>
+ 57             <span class="visually-hidden">
+ 57               Amministrazione
+ 57             </span>
+ 58           </a>
+ 60           <span class="current-page-icon" aria-current="page" title="Sei in Gestionale">
+ 61             <i class="fas fa-sliders-h" aria-hidden="true">
+ 61             </i>
+ 62             <span class="visually-hidden">
+ 62               Gestionale (Pagina corrente)
+ 62             </span>
+ 63           </span>
+ 64         </div>
+ 65       </div>
+ 67       <div class="sub-header">
+ 68 next issueprevious issueW877WCAG2 A 1.3.1: Distinguish between navigation groups using an ARIA label
+When the <nav> element is employed more than once on a page, distinguish between the navigation groups by using an 'aria-label' or 'aria-labelledby' attribute. See WCAG2 HTML Technique H97.
+            <nav id="breadcrumb">
+ 69           <div class="breadcrumb-container">
+ 70             <span>
+ 70               Ti trovi in:
+ 70             </span>
+ 71             <a href="home.php">
+ 71               <span lang="en">
+ 71                 Home
+ 71               </span>
+ 71             </a>
+ 71             <span aria-hidden="true">
+ 71               &gt;
+ 71             </span>
+ 72             <span class="current-page">
+ 72               Area Gestionale
+ 72             </span>
+ 73           </div>
+ 74         </nav>
+ 76 next issueprevious issueE9081WCAG2 A 2.5.3: The accessible name in 'aria-label' must contain the visible label text: Passa alla modalita chiara
+The accessible name used by accessibility aids must contain the text displayed by the visible label. When choosing the text remember that both the name and the label may be read out aloud. See Understanding 2.5.3, and Accessibility API Mappings.
+            <button id="theme-toggle" title="Cambia modalità chiaro/scuro" aria-label="Cambia tema">
+ 77           <span class="visually-hidden">
+ 77             Passa alla modalita chiara
+ 77           </span>
+ 78           <svg viewBox="0 0 24 24" class="theme-icon" aria-hidden="true">
+ 79             <circle cx="12" cy="12" r="4.5">
+ 79             </circle>
+ 80             <line x1="12" y1="2" x2="12" y2="4">
+ 80             </line>
+ 81             <line x1="12" y1="20" x2="12" y2="22">
+ 81             </line>
+ 82             <line x1="4.2" y1="4.2" x2="5.8" y2="5.8">
+ 82             </line>
+ 83             <line x1="18.2" y1="18.2" x2="19.8" y2="19.8">
+ 83             </line>
+ 84             <line x1="2" y1="12" x2="4" y2="12">
+ 84             </line>
+ 85             <line x1="20" y1="12" x2="22" y2="12">
+ 85             </line>
+ 86             <line x1="4.2" y1="19.8" x2="5.8" y2="18.2">
+ 86             </line>
+ 87             <line x1="18.2" y1="5.8" x2="19.8" y2="4.2">
+ 87             </line>
+ 88           </svg>
+ 89         </button>
+ 90       </div>
+ 91     </header>
+ 93     <main id="content-ad" aria-labelledby="sum">
+ 94       <p class="visually-hidden" id="sum">
+ 94         Area gestionale della Tenuta al Morer per la gestione degli ordini, esperienze e messaggi.
+ 94       </p>
+ 95       <div class="user-dashboard-container">
+ 96         <aside class="dashboard-sidebar">
+ 97           <p class="visually-hidden">
+ 97             Menù area gestionale
+ 97           </p>
+ 98 next issueprevious issueW877WCAG2 A 1.3.1: Distinguish between navigation groups using an ARIA label
+When the <nav> element is employed more than once on a page, distinguish between the navigation groups by using an 'aria-label' or 'aria-labelledby' attribute. See WCAG2 HTML Technique H97.
+              <nav>
+ 99             <ul class="user-nav-list">
+100               <li>
+100                 <a href="?sezione=ordini" class="user-nav-link is-active" data-section="ordini">
+100                   Ordini
+100                 </a>
+100               </li>
+101               <li>
+101                 <a href="?sezione=esperienze" class="user-nav-link " data-section="esperienze">
+101                   Richieste esperienze
+101                 </a>
+101               </li>
+102               <li>
+102                 <a href="?sezione=messaggi" class="user-nav-link " data-section="messaggi">
+102                   Messaggi clienti
+102                 </a>
+102               </li>
+103               <li>
+104 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                    <form action="logout.php" method="POST" class="logout-form" novalidate="true">
+105                   <button type="submit" class="btn-secondary logout-btn">
+106                     <i class="fas fa-sign-out-alt" aria-hidden="true">
+106                     </i>
+106                     <span lang="en">
+106                       Logout
+106                     </span>
+107                   </button>
+108                 </form>
+109               </li>
+110             </ul>
+111           </nav>
+112         </aside>
+114         <div class="dashboard-content">
+115           <h1>
+115             Area Gestionale
+115           </h1>
+116           <p>
+117             Sei loggato come:
+117             <strong>
+117               admin
+117             </strong>
+117             . Ruolo:
+117             <strong>
+117               admin
+117             </strong>
+117             .
+118           </p>
+120           <section id="ordini" class="content-section is-visible">
+121             <h2>
+121               Ordini
+121             </h2>
+122             <p id="descrizione-tab-ordini" class="sum">
+123               La tabella riassume le richieste "in_attesa" di acquisto dei vini effettuate dagli utenti. Ogni riga rappresenta un singolo ordine. Le colonne riportano: ID ordine, cliente, totale finale, data di creazione, un comando per aprire i dettagli e la sezione di gestione richiesta.
+126             </p>
+128             <section id="section-vini">
+129               <div class="admin-table-head">
+130                 <label class="switch">
+131                   <input type="checkbox" id="toggleArchivioVini">
+132                   <span class="slider">
+132                   </span>
+133                   <span class="switch-text">
+133                     Visualizza archivio ordini
+133                   </span>
+134                 </label>
+135               </div>
+137               <table class="table-data" id="tab-ordini" aria-describedby="descrizione-tab-ordini">
+138                 <caption>
+138                   Gestione ordini
+138                 </caption>
+139                 <thead>
+140                   <tr>
+141                     <th scope="col" abbr="ID">
+141                       ID Ordine
+141                     </th>
+142                     <th scope="col">
+142                       Cliente
+142                     </th>
+143                     <th scope="col" abbr="Tot">
+143                       Totale Finale
+143                     </th>
+144                     <th scope="col" abbr="Data">
+144                       Data Creazione
+144                     </th>
+145                     <th scope="col" class="admin-user-col-actions">
+145                       Dettagli
+145                     </th>
+146                     <th scope="col" abbr="Gestione" class="admin-user-col-actions">
+146                       Gestione richiesta
+146                     </th>
+147                   </tr>
+148                 </thead>
+149                 <tbody>
+150                   <tr data-order-id="17">
+150                     <th scope="row">
+150                       17
+150                     </th>
+150                     <td data-title="Cliente">
+150                       User TestUser
+150                     </td>
+150                     <td data-title="Totale Finale">
+150                       96.50 EUR
+150                     </td>
+150                     <td data-title="Data Creazione">
+150                       2025-12-28 02:19:04
+150                     </td>
+150                     <td class="td_richiesta_degustazione" data-title="Dettagli">
+151                       <a href="?sezione=ordini#details-row-17" class="btn-secondary btn-fallback">
+151                         Mostra Dettagli
+151                       </a>
+152 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Mostra' is not unique. See matching tags on lines: 163, 174, 185, 196, 207, 218, 229
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                          <button type="button" class="btn-secondary toggle-details-btn" data-order-id="17" aria-expanded="false" aria-controls="details-row-17">
+153                         Mostra
+153                         <i class="fas fa-chevron-down" aria-hidden="true">
+153                         </i>
+154                       </button>
+155                     </td>
+155                     <td class="td_richiesta_degustazione" data-title="Gestione richiesta">
+156 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                          <form action="" method="POST" class="standard-form" novalidate="true">
+157                         <input type="hidden" name="ordine_id" value="17">
+158 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Accetta' is not unique. See matching tags on lines: 169, 180, 191, 202, 213, 224, 235
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                            <button type="submit" name="azione" value="accetta" class="btn-secondary btn-accept">
+158                           Accetta
+158                         </button>
+159 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Rifiuta' is not unique. See matching tags on lines: 170, 181, 192, 203, 214, 225, 236
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                            <button type="submit" name="azione" value="rifiuta" class="btn-secondary btn-reject">
+159                           Rifiuta
+159                         </button>
+160                       </form>
+161                     </td>
+161                   </tr>
+161                   <tr class="order-details-row is-hidden" id="details-row-17">
+161                     <td colspan="6" class="order-details-cell">
+161                       <div class="details-content">
+161                         <div class="details-section">
+161                           <p class="details-section-heading">
+161                             Prodotti Ordinati:
+161                           </p>
+161                           <ul class="details-products-list">
+161                             <li>
+161                               <span>
+161                                 4
+161                                 <span aria-hidden="true">
+161                                   x 
+161                                 </span>
+161                                 <span class="sr-only">
+161                                   per
+161                                 </span>
+161                                 Merlot
+161                               </span>
+161                               <span>
+161                                 14.00 EUR
+161                               </span>
+161                             </li>
+161                             <li>
+161                               <span>
+161                                 3
+161                                 <span aria-hidden="true">
+161                                   x 
+161                                 </span>
+161                                 <span class="sr-only">
+161                                   per
+161                                 </span>
+161                                 Chardonnay
+161                               </span>
+161                               <span>
+161                                 13.50 EUR
+161                               </span>
+161                             </li>
+161                           </ul>
+161                         </div>
+161                         <div class="details-section">
+161                           <p class="details-section-heading">
+161                             Riepilogo e Spedizione:
+161                           </p>
+161                           <p>
+161                             <span class="subtitle">
+161                               ID Utente:
+161                             </span>
+161                             #6
+161                           </p>
+161                           <p>
+161                             <span class="subtitle">
+161                               Indirizzo Spedizione:
+161                             </span>
+161                             Via Appia nuova 10, Roma 12345 (RM)
+161                           </p>
+161                           <div class="details-summary details-summary-left">
+161                             <p class="details-section-heading">
+161                               Prezzi:
+161                             </p>
+161                             <p>
+161                               Prezzo Prodotti: 96.50 EUR
+161                             </p>
+161                             <p>
+161                               Costo Spedizione: 0.00 EUR
+161                             </p>
+161                             <p>
+161                               <span class="subtitle">
+161                                 Totale Finale:
+161                               </span>
+161                               <span>
+161                                 96.50 EUR
+161                               </span>
+161                             </p>
+161                           </div>
+161                         </div>
+161                       </div>
+161                     </td>
+161                   </tr>
+161                   <tr data-order-id="16">
+161                     <th scope="row">
+161                       16
+161                     </th>
+161                     <td data-title="Cliente">
+161                       User TestUser
+161                     </td>
+161                     <td data-title="Totale Finale">
+161                       724.50 EUR
+161                     </td>
+161                     <td data-title="Data Creazione">
+161                       2025-12-27 21:04:12
+161                     </td>
+161                     <td class="td_richiesta_degustazione" data-title="Dettagli">
+162                       <a href="?sezione=ordini#details-row-16" class="btn-secondary btn-fallback">
+162                         Mostra Dettagli
+162                       </a>
+163 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Mostra' is not unique. See matching tags on lines: 152, 174, 185, 196, 207, 218, 229
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                          <button type="button" class="btn-secondary toggle-details-btn" data-order-id="16" aria-expanded="false" aria-controls="details-row-16">
+164                         Mostra
+164                         <i class="fas fa-chevron-down" aria-hidden="true">
+164                         </i>
+165                       </button>
+166                     </td>
+166                     <td class="td_richiesta_degustazione" data-title="Gestione richiesta">
+167 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                          <form action="" method="POST" class="standard-form" novalidate="true">
+168                         <input type="hidden" name="ordine_id" value="16">
+169 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Accetta' is not unique. See matching tags on lines: 158, 180, 191, 202, 213, 224, 235
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                            <button type="submit" name="azione" value="accetta" class="btn-secondary btn-accept">
+169                           Accetta
+169                         </button>
+170 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Rifiuta' is not unique. See matching tags on lines: 159, 181, 192, 203, 214, 225, 236
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                            <button type="submit" name="azione" value="rifiuta" class="btn-secondary btn-reject">
+170                           Rifiuta
+170                         </button>
+171                       </form>
+172                     </td>
+172                   </tr>
+172                   <tr class="order-details-row is-hidden" id="details-row-16">
+172                     <td colspan="6" class="order-details-cell">
+172                       <div class="details-content">
+172                         <div class="details-section">
+172                           <p class="details-section-heading">
+172                             Prodotti Ordinati:
+172                           </p>
+172                           <ul class="details-products-list">
+172                             <li>
+172                               <span>
+172                                 33
+172                                 <span aria-hidden="true">
+172                                   x 
+172                                 </span>
+172                                 <span class="sr-only">
+172                                   per
+172                                 </span>
+172                                 Raboso del Piave
+172                               </span>
+172                               <span>
+172                                 18.50 EUR
+172                               </span>
+172                             </li>
+172                             <li>
+172                               <span>
+172                                 6
+172                                 <span aria-hidden="true">
+172                                   x 
+172                                 </span>
+172                                 <span class="sr-only">
+172                                   per
+172                                 </span>
+172                                 Rosae Nobile
+172                               </span>
+172                               <span>
+172                                 19.00 EUR
+172                               </span>
+172                             </li>
+172                           </ul>
+172                         </div>
+172                         <div class="details-section">
+172                           <p class="details-section-heading">
+172                             Riepilogo e Spedizione:
+172                           </p>
+172                           <p>
+172                             <span class="subtitle">
+172                               ID Utente:
+172                             </span>
+172                             #6
+172                           </p>
+172                           <p>
+172                             <span class="subtitle">
+172                               Indirizzo Spedizione:
+172                             </span>
+172                             Via Appia nuova 10, Roma 12345 (RM)
+172                           </p>
+172                           <div class="details-summary details-summary-left">
+172                             <p class="details-section-heading">
+172                               Prezzi:
+172                             </p>
+172                             <p>
+172                               Prezzo Prodotti: 724.50 EUR
+172                             </p>
+172                             <p>
+172                               Costo Spedizione: 0.00 EUR
+172                             </p>
+172                             <p>
+172                               <span class="subtitle">
+172                                 Totale Finale:
+172                               </span>
+172                               <span>
+172                                 724.50 EUR
+172                               </span>
+172                             </p>
+172                           </div>
+172                         </div>
+172                       </div>
+172                     </td>
+172                   </tr>
+172                   <tr data-order-id="15">
+172                     <th scope="row">
+172                       15
+172                     </th>
+172                     <td data-title="Cliente">
+172                       User TestUser
+172                     </td>
+172                     <td data-title="Totale Finale">
+172                       100.00 EUR
+172                     </td>
+172                     <td data-title="Data Creazione">
+172                       2025-12-27 21:02:16
+172                     </td>
+172                     <td class="td_richiesta_degustazione" data-title="Dettagli">
+173                       <a href="?sezione=ordini#details-row-15" class="btn-secondary btn-fallback">
+173                         Mostra Dettagli
+173                       </a>
+174 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Mostra' is not unique. See matching tags on lines: 152, 163, 185, 196, 207, 218, 229
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                          <button type="button" class="btn-secondary toggle-details-btn" data-order-id="15" aria-expanded="false" aria-controls="details-row-15">
+175                         Mostra
+175                         <i class="fas fa-chevron-down" aria-hidden="true">
+175                         </i>
+176                       </button>
+177                     </td>
+177                     <td class="td_richiesta_degustazione" data-title="Gestione richiesta">
+178 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                          <form action="" method="POST" class="standard-form" novalidate="true">
+179                         <input type="hidden" name="ordine_id" value="15">
+180 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Accetta' is not unique. See matching tags on lines: 158, 169, 191, 202, 213, 224, 235
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                            <button type="submit" name="azione" value="accetta" class="btn-secondary btn-accept">
+180                           Accetta
+180                         </button>
+181 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Rifiuta' is not unique. See matching tags on lines: 159, 170, 192, 203, 214, 225, 236
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                            <button type="submit" name="azione" value="rifiuta" class="btn-secondary btn-reject">
+181                           Rifiuta
+181                         </button>
+182                       </form>
+183                     </td>
+183                   </tr>
+183                   <tr class="order-details-row is-hidden" id="details-row-15">
+183                     <td colspan="6" class="order-details-cell">
+183                       <div class="details-content">
+183                         <div class="details-section">
+183                           <p class="details-section-heading">
+183                             Prodotti Ordinati:
+183                           </p>
+183                           <ul class="details-products-list">
+183                             <li>
+183                               <span>
+183                                 4
+183                                 <span aria-hidden="true">
+183                                   x 
+183                                 </span>
+183                                 <span class="sr-only">
+183                                   per
+183                                 </span>
+183                                 Gran Morer
+183                               </span>
+183                               <span>
+183                                 25.00 EUR
+183                               </span>
+183                             </li>
+183                           </ul>
+183                         </div>
+183                         <div class="details-section">
+183                           <p class="details-section-heading">
+183                             Riepilogo e Spedizione:
+183                           </p>
+183                           <p>
+183                             <span class="subtitle">
+183                               ID Utente:
+183                             </span>
+183                             #6
+183                           </p>
+183                           <p>
+183                             <span class="subtitle">
+183                               Indirizzo Spedizione:
+183                             </span>
+183                             Via Appia nuova 10, Roma 12345 (RM)
+183                           </p>
+183                           <div class="details-summary details-summary-left">
+183                             <p class="details-section-heading">
+183                               Prezzi:
+183                             </p>
+183                             <p>
+183                               Prezzo Prodotti: 100.00 EUR
+183                             </p>
+183                             <p>
+183                               Costo Spedizione: 0.00 EUR
+183                             </p>
+183                             <p>
+183                               <span class="subtitle">
+183                                 Totale Finale:
+183                               </span>
+183                               <span>
+183                                 100.00 EUR
+183                               </span>
+183                             </p>
+183                           </div>
+183                         </div>
+183                       </div>
+183                     </td>
+183                   </tr>
+183                   <tr data-order-id="14">
+183                     <th scope="row">
+183                       14
+183                     </th>
+183                     <td data-title="Cliente">
+183                       User TestUser
+183                     </td>
+183                     <td data-title="Totale Finale">
+183                       92.50 EUR
+183                     </td>
+183                     <td data-title="Data Creazione">
+183                       2025-12-27 20:54:18
+183                     </td>
+183                     <td class="td_richiesta_degustazione" data-title="Dettagli">
+184                       <a href="?sezione=ordini#details-row-14" class="btn-secondary btn-fallback">
+184                         Mostra Dettagli
+184                       </a>
+185 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Mostra' is not unique. See matching tags on lines: 152, 163, 174, 196, 207, 218, 229
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                          <button type="button" class="btn-secondary toggle-details-btn" data-order-id="14" aria-expanded="false" aria-controls="details-row-14">
+186                         Mostra
+186                         <i class="fas fa-chevron-down" aria-hidden="true">
+186                         </i>
+187                       </button>
+188                     </td>
+188                     <td class="td_richiesta_degustazione" data-title="Gestione richiesta">
+189 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                          <form action="" method="POST" class="standard-form" novalidate="true">
+190                         <input type="hidden" name="ordine_id" value="14">
+191 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Accetta' is not unique. See matching tags on lines: 158, 169, 180, 202, 213, 224, 235
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                            <button type="submit" name="azione" value="accetta" class="btn-secondary btn-accept">
+191                           Accetta
+191                         </button>
+192 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Rifiuta' is not unique. See matching tags on lines: 159, 170, 181, 203, 214, 225, 236
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                            <button type="submit" name="azione" value="rifiuta" class="btn-secondary btn-reject">
+192                           Rifiuta
+192                         </button>
+193                       </form>
+194                     </td>
+194                   </tr>
+194                   <tr class="order-details-row is-hidden" id="details-row-14">
+194                     <td colspan="6" class="order-details-cell">
+194                       <div class="details-content">
+194                         <div class="details-section">
+194                           <p class="details-section-heading">
+194                             Prodotti Ordinati:
+194                           </p>
+194                           <ul class="details-products-list">
+194                             <li>
+194                               <span>
+194                                 5
+194                                 <span aria-hidden="true">
+194                                   x 
+194                                 </span>
+194                                 <span class="sr-only">
+194                                   per
+194                                 </span>
+194                                 Raboso del Piave
+194                               </span>
+194                               <span>
+194                                 18.50 EUR
+194                               </span>
+194                             </li>
+194                           </ul>
+194                         </div>
+194                         <div class="details-section">
+194                           <p class="details-section-heading">
+194                             Riepilogo e Spedizione:
+194                           </p>
+194                           <p>
+194                             <span class="subtitle">
+194                               ID Utente:
+194                             </span>
+194                             #6
+194                           </p>
+194                           <p>
+194                             <span class="subtitle">
+194                               Indirizzo Spedizione:
+194                             </span>
+194                             Via Appia nuova 10, Roma 12345 (RM)
+194                           </p>
+194                           <div class="details-summary details-summary-left">
+194                             <p class="details-section-heading">
+194                               Prezzi:
+194                             </p>
+194                             <p>
+194                               Prezzo Prodotti: 92.50 EUR
+194                             </p>
+194                             <p>
+194                               Costo Spedizione: 0.00 EUR
+194                             </p>
+194                             <p>
+194                               <span class="subtitle">
+194                                 Totale Finale:
+194                               </span>
+194                               <span>
+194                                 92.50 EUR
+194                               </span>
+194                             </p>
+194                           </div>
+194                         </div>
+194                       </div>
+194                     </td>
+194                   </tr>
+194                   <tr data-order-id="13">
+194                     <th scope="row">
+194                       13
+194                     </th>
+194                     <td data-title="Cliente">
+194                       User TestUser
+194                     </td>
+194                     <td data-title="Totale Finale">
+194                       295.00 EUR
+194                     </td>
+194                     <td data-title="Data Creazione">
+194                       2025-12-27 20:49:26
+194                     </td>
+194                     <td class="td_richiesta_degustazione" data-title="Dettagli">
+195                       <a href="?sezione=ordini#details-row-13" class="btn-secondary btn-fallback">
+195                         Mostra Dettagli
+195                       </a>
+196 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Mostra' is not unique. See matching tags on lines: 152, 163, 174, 185, 207, 218, 229
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                          <button type="button" class="btn-secondary toggle-details-btn" data-order-id="13" aria-expanded="false" aria-controls="details-row-13">
+197                         Mostra
+197                         <i class="fas fa-chevron-down" aria-hidden="true">
+197                         </i>
+198                       </button>
+199                     </td>
+199                     <td class="td_richiesta_degustazione" data-title="Gestione richiesta">
+200 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                          <form action="" method="POST" class="standard-form" novalidate="true">
+201                         <input type="hidden" name="ordine_id" value="13">
+202 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Accetta' is not unique. See matching tags on lines: 158, 169, 180, 191, 213, 224, 235
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                            <button type="submit" name="azione" value="accetta" class="btn-secondary btn-accept">
+202                           Accetta
+202                         </button>
+203 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Rifiuta' is not unique. See matching tags on lines: 159, 170, 181, 192, 214, 225, 236
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                            <button type="submit" name="azione" value="rifiuta" class="btn-secondary btn-reject">
+203                           Rifiuta
+203                         </button>
+204                       </form>
+205                     </td>
+205                   </tr>
+205                   <tr class="order-details-row is-hidden" id="details-row-13">
+205                     <td colspan="6" class="order-details-cell">
+205                       <div class="details-content">
+205                         <div class="details-section">
+205                           <p class="details-section-heading">
+205                             Prodotti Ordinati:
+205                           </p>
+205                           <ul class="details-products-list">
+205                             <li>
+205                               <span>
+205                                 4
+205                                 <span aria-hidden="true">
+205                                   x 
+205                                 </span>
+205                                 <span class="sr-only">
+205                                   per
+205                                 </span>
+205                                 Merlot
+205                               </span>
+205                               <span>
+205                                 14.00 EUR
+205                               </span>
+205                             </li>
+205                             <li>
+205                               <span>
+205                                 5
+205                                 <span aria-hidden="true">
+205                                   x 
+205                                 </span>
+205                                 <span class="sr-only">
+205                                   per
+205                                 </span>
+205                                 Gran Morer
+205                               </span>
+205                               <span>
+205                                 25.00 EUR
+205                               </span>
+205                             </li>
+205                             <li>
+205                               <span>
+205                                 4
+205                                 <span aria-hidden="true">
+205                                   x 
+205                                 </span>
+205                                 <span class="sr-only">
+205                                   per
+205                                 </span>
+205                                 Chardonnay
+205                               </span>
+205                               <span>
+205                                 13.50 EUR
+205                               </span>
+205                             </li>
+205                             <li>
+205                               <span>
+205                                 4
+205                                 <span aria-hidden="true">
+205                                   x 
+205                                 </span>
+205                                 <span class="sr-only">
+205                                   per
+205                                 </span>
+205                                 Manzoni Bianco
+205                               </span>
+205                               <span>
+205                                 15.00 EUR
+205                               </span>
+205                             </li>
+205                           </ul>
+205                         </div>
+205                         <div class="details-section">
+205                           <p class="details-section-heading">
+205                             Riepilogo e Spedizione:
+205                           </p>
+205                           <p>
+205                             <span class="subtitle">
+205                               ID Utente:
+205                             </span>
+205                             #6
+205                           </p>
+205                           <p>
+205                             <span class="subtitle">
+205                               Indirizzo Spedizione:
+205                             </span>
+205                             Via Appia nuova 10, Roma 00100 (RM)
+205                           </p>
+205                           <div class="details-summary details-summary-left">
+205                             <p class="details-section-heading">
+205                               Prezzi:
+205                             </p>
+205                             <p>
+205                               Prezzo Prodotti: 295.00 EUR
+205                             </p>
+205                             <p>
+205                               Costo Spedizione: 0.00 EUR
+205                             </p>
+205                             <p>
+205                               <span class="subtitle">
+205                                 Totale Finale:
+205                               </span>
+205                               <span>
+205                                 295.00 EUR
+205                               </span>
+205                             </p>
+205                           </div>
+205                         </div>
+205                       </div>
+205                     </td>
+205                   </tr>
+205                   <tr data-order-id="12">
+205                     <th scope="row">
+205                       12
+205                     </th>
+205                     <td data-title="Cliente">
+205                       User TestUser
+205                     </td>
+205                     <td data-title="Totale Finale">
+205                       247.00 EUR
+205                     </td>
+205                     <td data-title="Data Creazione">
+205                       2025-12-27 14:34:20
+205                     </td>
+205                     <td class="td_richiesta_degustazione" data-title="Dettagli">
+206                       <a href="?sezione=ordini#details-row-12" class="btn-secondary btn-fallback">
+206                         Mostra Dettagli
+206                       </a>
+207 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Mostra' is not unique. See matching tags on lines: 152, 163, 174, 185, 196, 218, 229
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                          <button type="button" class="btn-secondary toggle-details-btn" data-order-id="12" aria-expanded="false" aria-controls="details-row-12">
+208                         Mostra
+208                         <i class="fas fa-chevron-down" aria-hidden="true">
+208                         </i>
+209                       </button>
+210                     </td>
+210                     <td class="td_richiesta_degustazione" data-title="Gestione richiesta">
+211 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                          <form action="" method="POST" class="standard-form" novalidate="true">
+212                         <input type="hidden" name="ordine_id" value="12">
+213 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Accetta' is not unique. See matching tags on lines: 158, 169, 180, 191, 202, 224, 235
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                            <button type="submit" name="azione" value="accetta" class="btn-secondary btn-accept">
+213                           Accetta
+213                         </button>
+214 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Rifiuta' is not unique. See matching tags on lines: 159, 170, 181, 192, 203, 225, 236
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                            <button type="submit" name="azione" value="rifiuta" class="btn-secondary btn-reject">
+214                           Rifiuta
+214                         </button>
+215                       </form>
+216                     </td>
+216                   </tr>
+216                   <tr class="order-details-row is-hidden" id="details-row-12">
+216                     <td colspan="6" class="order-details-cell">
+216                       <div class="details-content">
+216                         <div class="details-section">
+216                           <p class="details-section-heading">
+216                             Prodotti Ordinati:
+216                           </p>
+216                           <ul class="details-products-list">
+216                             <li>
+216                               <span>
+216                                 13
+216                                 <span aria-hidden="true">
+216                                   x 
+216                                 </span>
+216                                 <span class="sr-only">
+216                                   per
+216                                 </span>
+216                                 Rosae Nobile
+216                               </span>
+216                               <span>
+216                                 19.00 EUR
+216                               </span>
+216                             </li>
+216                           </ul>
+216                         </div>
+216                         <div class="details-section">
+216                           <p class="details-section-heading">
+216                             Riepilogo e Spedizione:
+216                           </p>
+216                           <p>
+216                             <span class="subtitle">
+216                               ID Utente:
+216                             </span>
+216                             #6
+216                           </p>
+216                           <p>
+216                             <span class="subtitle">
+216                               Indirizzo Spedizione:
+216                             </span>
+216                             Via Roma 10, Conselve 12345 (pd)
+216                           </p>
+216                           <div class="details-summary details-summary-left">
+216                             <p class="details-section-heading">
+216                               Prezzi:
+216                             </p>
+216                             <p>
+216                               Prezzo Prodotti: 247.00 EUR
+216                             </p>
+216                             <p>
+216                               Costo Spedizione: 0.00 EUR
+216                             </p>
+216                             <p>
+216                               <span class="subtitle">
+216                                 Totale Finale:
+216                               </span>
+216                               <span>
+216                                 247.00 EUR
+216                               </span>
+216                             </p>
+216                           </div>
+216                         </div>
+216                       </div>
+216                     </td>
+216                   </tr>
+216                   <tr data-order-id="10">
+216                     <th scope="row">
+216                       10
+216                     </th>
+216                     <td data-title="Cliente">
+216                       User TestUser
+216                     </td>
+216                     <td data-title="Totale Finale">
+216                       60.00 EUR
+216                     </td>
+216                     <td data-title="Data Creazione">
+216                       2025-12-27 01:23:13
+216                     </td>
+216                     <td class="td_richiesta_degustazione" data-title="Dettagli">
+217                       <a href="?sezione=ordini#details-row-10" class="btn-secondary btn-fallback">
+217                         Mostra Dettagli
+217                       </a>
+218 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Mostra' is not unique. See matching tags on lines: 152, 163, 174, 185, 196, 207, 229
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                          <button type="button" class="btn-secondary toggle-details-btn" data-order-id="10" aria-expanded="false" aria-controls="details-row-10">
+219                         Mostra
+219                         <i class="fas fa-chevron-down" aria-hidden="true">
+219                         </i>
+220                       </button>
+221                     </td>
+221                     <td class="td_richiesta_degustazione" data-title="Gestione richiesta">
+222 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                          <form action="" method="POST" class="standard-form" novalidate="true">
+223                         <input type="hidden" name="ordine_id" value="10">
+224 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Accetta' is not unique. See matching tags on lines: 158, 169, 180, 191, 202, 213, 235
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                            <button type="submit" name="azione" value="accetta" class="btn-secondary btn-accept">
+224                           Accetta
+224                         </button>
+225 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Rifiuta' is not unique. See matching tags on lines: 159, 170, 181, 192, 203, 214, 236
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                            <button type="submit" name="azione" value="rifiuta" class="btn-secondary btn-reject">
+225                           Rifiuta
+225                         </button>
+226                       </form>
+227                     </td>
+227                   </tr>
+227                   <tr class="order-details-row is-hidden" id="details-row-10">
+227                     <td colspan="6" class="order-details-cell">
+227                       <div class="details-content">
+227                         <div class="details-section">
+227                           <p class="details-section-heading">
+227                             Prodotti Ordinati:
+227                           </p>
+227                           <ul class="details-products-list">
+227                             <li>
+227                               <span>
+227                                 4
+227                                 <span aria-hidden="true">
+227                                   x 
+227                                 </span>
+227                                 <span class="sr-only">
+227                                   per
+227                                 </span>
+227                                 Manzoni Bianco
+227                               </span>
+227                               <span>
+227                                 15.00 EUR
+227                               </span>
+227                             </li>
+227                           </ul>
+227                         </div>
+227                         <div class="details-section">
+227                           <p class="details-section-heading">
+227                             Riepilogo e Spedizione:
+227                           </p>
+227                           <p>
+227                             <span class="subtitle">
+227                               ID Utente:
+227                             </span>
+227                             #6
+227                           </p>
+227                           <p>
+227                             <span class="subtitle">
+227                               Indirizzo Spedizione:
+227                             </span>
+227                             Via Roma 1, Milano
+227                           </p>
+227                           <div class="details-summary details-summary-left">
+227                             <p class="details-section-heading">
+227                               Prezzi:
+227                             </p>
+227                             <p>
+227                               Prezzo Prodotti: 60.00 EUR
+227                             </p>
+227                             <p>
+227                               Costo Spedizione: 0.00 EUR
+227                             </p>
+227                             <p>
+227                               <span class="subtitle">
+227                                 Totale Finale:
+227                               </span>
+227                               <span>
+227                                 60.00 EUR
+227                               </span>
+227                             </p>
+227                           </div>
+227                         </div>
+227                       </div>
+227                     </td>
+227                   </tr>
+227                   <tr data-order-id="7">
+227                     <th scope="row">
+227                       7
+227                     </th>
+227                     <td data-title="Cliente">
+227                       User TestUser
+227                     </td>
+227                     <td data-title="Totale Finale">
+227                       125.00 EUR
+227                     </td>
+227                     <td data-title="Data Creazione">
+227                       2025-12-27 01:23:12
+227                     </td>
+227                     <td class="td_richiesta_degustazione" data-title="Dettagli">
+228                       <a href="?sezione=ordini#details-row-7" class="btn-secondary btn-fallback">
+228                         Mostra Dettagli
+228                       </a>
+229 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Mostra' is not unique. See matching tags on lines: 152, 163, 174, 185, 196, 207, 218
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                          <button type="button" class="btn-secondary toggle-details-btn" data-order-id="7" aria-expanded="false" aria-controls="details-row-7">
+230                         Mostra
+230                         <i class="fas fa-chevron-down" aria-hidden="true">
+230                         </i>
+231                       </button>
+232                     </td>
+232                     <td class="td_richiesta_degustazione" data-title="Gestione richiesta">
+233 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                          <form action="" method="POST" class="standard-form" novalidate="true">
+234                         <input type="hidden" name="ordine_id" value="7">
+235 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Accetta' is not unique. See matching tags on lines: 158, 169, 180, 191, 202, 213, 224
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                            <button type="submit" name="azione" value="accetta" class="btn-secondary btn-accept">
+235                           Accetta
+235                         </button>
+236 next issueprevious issueE913WCAG2 AA 2.4.6: The form control label 'Rifiuta' is not unique. See matching tags on lines: 159, 170, 181, 192, 203, 214, 225
+Use unique labels so that users can distinguish between form controls on the same page when read out aloud. Alternatively, place them within different <fieldset> with unique <legend> labels, because the legend text is read out along with the label text. See WCAG2 Success Criterion 2.4.6.
+                            <button type="submit" name="azione" value="rifiuta" class="btn-secondary btn-reject">
+236                           Rifiuta
+236                         </button>
+237                       </form>
+238                     </td>
+238                   </tr>
+238                   <tr class="order-details-row is-hidden" id="details-row-7">
+238                     <td colspan="6" class="order-details-cell">
+238                       <div class="details-content">
+238                         <div class="details-section">
+238                           <p class="details-section-heading">
+238                             Prodotti Ordinati:
+238                           </p>
+238                           <ul class="details-products-list">
+238                             <li>
+238                               <span>
+238                                 5
+238                                 <span aria-hidden="true">
+238                                   x 
+238                                 </span>
+238                                 <span class="sr-only">
+238                                   per
+238                                 </span>
+238                                 Gran Morer
+238                               </span>
+238                               <span>
+238                                 25.00 EUR
+238                               </span>
+238                             </li>
+238                           </ul>
+238                         </div>
+238                         <div class="details-section">
+238                           <p class="details-section-heading">
+238                             Riepilogo e Spedizione:
+238                           </p>
+238                           <p>
+238                             <span class="subtitle">
+238                               ID Utente:
+238                             </span>
+238                             #6
+238                           </p>
+238                           <p>
+238                             <span class="subtitle">
+238                               Indirizzo Spedizione:
+238                             </span>
+238                             Via Roma 1, Milano
+238                           </p>
+238                           <div class="details-summary details-summary-left">
+238                             <p class="details-section-heading">
+238                               Prezzi:
+238                             </p>
+238                             <p>
+238                               Prezzo Prodotti: 125.00 EUR
+238                             </p>
+238                             <p>
+238                               Costo Spedizione: 0.00 EUR
+238                             </p>
+238                             <p>
+238                               <span class="subtitle">
+238                                 Totale Finale:
+238                               </span>
+238                               <span>
+238                                 125.00 EUR
+238                               </span>
+238                             </p>
+238                           </div>
+238                         </div>
+238                       </div>
+238                     </td>
+238                   </tr>
+239                 </tbody>
+240               </table>
+242               <p id="descrizione-tab-ordini-archivio" class="sum">
+243                 La tabella riassume le richieste di acquisto dei vini già gestite dallo staff. Ogni riga rappresenta un singolo ordine. Le colonne riportano: ID ordine, cliente, totale finale, data di creazione, stato richiesta e un comando per aprire i dettagli.
+246               </p>
+248               <table class="table-data" id="tab-ordini-archivio" aria-describedby="descrizione-tab-ordini-archivio" style="display: none;">
+249                 <caption>
+249                   Archivio ordini
+249                 </caption>
+250                 <thead>
+251                   <tr>
+252                     <th scope="col" abbr="ID">
+252                       ID Ordine
+252                     </th>
+253                     <th scope="col">
+253                       Cliente
+253                     </th>
+254                     <th scope="col" abbr="Tot">
+254                       Totale Finale
+254                     </th>
+255                     <th scope="col" abbr="Data">
+255                       Data Creazione
+255                     </th>
+256                     <th scope="col" abbr="Stato">
+256                       Stato richiesta
+256                     </th>
+257                     <th scope="col" class="admin-user-col-actions">
+257                       Dettagli
+257                     </th>
+258                   </tr>
+259                 </thead>
+260                 <tbody>
+261                   <tr data-order-id="5">
+261                     <th scope="row">
+261                       5
+261                     </th>
+261                     <td data-title="Cliente">
+261                       User TestUser
+261                     </td>
+261                     <td data-title="Totale Finale">
+261                       40.00 EUR
+261                     </td>
+261                     <td data-title="Data Creazione">
+261                       2025-12-22 22:44:32
+261                     </td>
+261                     <td data-title="Stato">
+261                       annullato
+261                     </td>
+261                     <td class="td_richiesta_degustazione" data-title="Dettagli">
+262                       <a href="?sezione=ordini#details-row-5" class="btn-secondary btn-fallback">
+262                         Mostra Dettagli
+262                       </a>
+263                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="5" aria-expanded="false" aria-controls="details-row-5">
+264                         Mostra
+264                         <i class="fas fa-chevron-down" aria-hidden="true">
+264                         </i>
+265                       </button>
+266                     </td>
+266                   </tr>
+266                   <tr class="order-details-row is-hidden" id="details-row-5">
+266                     <td colspan="6" class="order-details-cell">
+266                       <div class="details-content">
+266                         <div class="details-section">
+266                           <p class="details-section-heading">
+266                             Prodotti Ordinati:
+266                           </p>
+266                           <ul class="details-products-list">
+266                             <li>
+266                               <span>
+266                                 Nessun prodotto associato.
+266                               </span>
+266                               <span>
+266                                 0.00 EUR
+266                               </span>
+266                             </li>
+266                           </ul>
+266                         </div>
+266                         <div class="details-section">
+266                           <p class="details-section-heading">
+266                             Riepilogo e Spedizione:
+266                           </p>
+266                           <p>
+266                             <span class="subtitle">
+266                               ID Utente:
+266                             </span>
+266                             #6
+266                           </p>
+266                           <p>
+266                             <span class="subtitle">
+266                               Indirizzo Spedizione:
+266                             </span>
+266                             Via Roma 12, 31020 Villorba (TV)
+266                           </p>
+266                           <div class="details-summary details-summary-left">
+266                             <p class="details-section-heading">
+266                               Prezzi:
+266                             </p>
+266                             <p>
+266                               Prezzo Prodotti: 32.50 EUR
+266                             </p>
+266                             <p>
+266                               Costo Spedizione: 7.50 EUR
+266                             </p>
+266                             <p>
+266                               <span class="subtitle">
+266                                 Totale Finale:
+266                               </span>
+266                               <span>
+266                                 40.00 EUR
+266                               </span>
+266                             </p>
+266                           </div>
+266                         </div>
+266                       </div>
+266                     </td>
+266                   </tr>
+266                   <tr data-order-id="4">
+266                     <th scope="row">
+266                       4
+266                     </th>
+266                     <td data-title="Cliente">
+266                       User TestUser
+266                     </td>
+266                     <td data-title="Totale Finale">
+266                       55.50 EUR
+266                     </td>
+266                     <td data-title="Data Creazione">
+266                       2025-12-22 22:44:15
+266                     </td>
+266                     <td data-title="Stato">
+266                       approvato
+266                     </td>
+266                     <td class="td_richiesta_degustazione" data-title="Dettagli">
+267                       <a href="?sezione=ordini#details-row-4" class="btn-secondary btn-fallback">
+267                         Mostra Dettagli
+267                       </a>
+268                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="4" aria-expanded="false" aria-controls="details-row-4">
+269                         Mostra
+269                         <i class="fas fa-chevron-down" aria-hidden="true">
+269                         </i>
+270                       </button>
+271                     </td>
+271                   </tr>
+271                   <tr class="order-details-row is-hidden" id="details-row-4">
+271                     <td colspan="6" class="order-details-cell">
+271                       <div class="details-content">
+271                         <div class="details-section">
+271                           <p class="details-section-heading">
+271                             Prodotti Ordinati:
+271                           </p>
+271                           <ul class="details-products-list">
+271                             <li>
+271                               <span>
+271                                 Nessun prodotto associato.
+271                               </span>
+271                               <span>
+271                                 0.00 EUR
+271                               </span>
+271                             </li>
+271                           </ul>
+271                         </div>
+271                         <div class="details-section">
+271                           <p class="details-section-heading">
+271                             Riepilogo e Spedizione:
+271                           </p>
+271                           <p>
+271                             <span class="subtitle">
+271                               ID Utente:
+271                             </span>
+271                             #6
+271                           </p>
+271                           <p>
+271                             <span class="subtitle">
+271                               Indirizzo Spedizione:
+271                             </span>
+271                             Via Roma 12, 31020 Villorba (TV)
+271                           </p>
+271                           <div class="details-summary details-summary-left">
+271                             <p class="details-section-heading">
+271                               Prezzi:
+271                             </p>
+271                             <p>
+271                               Prezzo Prodotti: 47.00 EUR
+271                             </p>
+271                             <p>
+271                               Costo Spedizione: 8.50 EUR
+271                             </p>
+271                             <p>
+271                               <span class="subtitle">
+271                                 Totale Finale:
+271                               </span>
+271                               <span>
+271                                 55.50 EUR
+271                               </span>
+271                             </p>
+271                           </div>
+271                         </div>
+271                       </div>
+271                     </td>
+271                   </tr>
+271                   <tr data-order-id="1">
+271                     <th scope="row">
+271                       1
+271                     </th>
+271                     <td data-title="Cliente">
+271                       User TestUser
+271                     </td>
+271                     <td data-title="Totale Finale">
+271                       40.50 EUR
+271                     </td>
+271                     <td data-title="Data Creazione">
+271                       2025-12-22 21:10:41
+271                     </td>
+271                     <td data-title="Stato">
+271                       approvato
+271                     </td>
+271                     <td class="td_richiesta_degustazione" data-title="Dettagli">
+272                       <a href="?sezione=ordini#details-row-1" class="btn-secondary btn-fallback">
+272                         Mostra Dettagli
+272                       </a>
+273                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="1" aria-expanded="false" aria-controls="details-row-1">
+274                         Mostra
+274                         <i class="fas fa-chevron-down" aria-hidden="true">
+274                         </i>
+275                       </button>
+276                     </td>
+276                   </tr>
+276                   <tr class="order-details-row is-hidden" id="details-row-1">
+276                     <td colspan="6" class="order-details-cell">
+276                       <div class="details-content">
+276                         <div class="details-section">
+276                           <p class="details-section-heading">
+276                             Prodotti Ordinati:
+276                           </p>
+276                           <ul class="details-products-list">
+276                             <li>
+276                               <span>
+276                                 2x Manzoni Bianco
+276                               </span>
+276                               <span>
+276                                 30.00 EUR
+276                               </span>
+276                             </li>
+276                           </ul>
+276                         </div>
+276                         <div class="details-section">
+276                           <p class="details-section-heading">
+276                             Riepilogo e Spedizione:
+276                           </p>
+276                           <p>
+276                             <span class="subtitle">
+276                               ID Utente:
+276                             </span>
+276                             #6
+276                           </p>
+276                           <p>
+276                             <span class="subtitle">
+276                               Indirizzo Spedizione:
+276                             </span>
+276                             indirizzo
+276                           </p>
+276                           <div class="details-summary details-summary-left">
+276                             <p class="details-section-heading">
+276                               Prezzi:
+276                             </p>
+276                             <p>
+276                               Prezzo Prodotti: 3.00 EUR
+276                             </p>
+276                             <p>
+276                               Costo Spedizione: 10.50 EUR
+276                             </p>
+276                             <p>
+276                               <span class="subtitle">
+276                                 Totale Finale:
+276                               </span>
+276                               <span>
+276                                 40.50 EUR
+276                               </span>
+276                             </p>
+276                           </div>
+276                         </div>
+276                       </div>
+276                     </td>
+276                   </tr>
+276                   <tr data-order-id="9">
+276                     <th scope="row">
+276                       9
+276                     </th>
+276                     <td data-title="Cliente">
+276                       User TestUser
+276                     </td>
+276                     <td data-title="Totale Finale">
+276                       215.00 EUR
+276                     </td>
+276                     <td data-title="Data Creazione">
+276                       2025-12-01 09:00:00
+276                     </td>
+276                     <td data-title="Stato">
+276                       approvato
+276                     </td>
+276                     <td class="td_richiesta_degustazione" data-title="Dettagli">
+277                       <a href="?sezione=ordini#details-row-9" class="btn-secondary btn-fallback">
+277                         Mostra Dettagli
+277                       </a>
+278                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="9" aria-expanded="false" aria-controls="details-row-9">
+279                         Mostra
+279                         <i class="fas fa-chevron-down" aria-hidden="true">
+279                         </i>
+280                       </button>
+281                     </td>
+281                   </tr>
+281                   <tr class="order-details-row is-hidden" id="details-row-9">
+281                     <td colspan="6" class="order-details-cell">
+281                       <div class="details-content">
+281                         <div class="details-section">
+281                           <p class="details-section-heading">
+281                             Prodotti Ordinati:
+281                           </p>
+281                           <ul class="details-products-list">
+281                             <li>
+281                               <span>
+281                                 5x Incanto
+281                               </span>
+281                               <span>
+281                                 20.00 EUR
+281                               </span>
+281                             </li>
+281                             <li>
+281                               <span>
+281                                 6x Prosecco
+281                               </span>
+281                               <span>
+281                                 12.50 EUR
+281                               </span>
+281                             </li>
+281                             <li>
+281                               <span>
+281                                 2x Refosco
+281                               </span>
+281                               <span>
+281                                 15.50 EUR
+281                               </span>
+281                             </li>
+281                           </ul>
+281                         </div>
+281                         <div class="details-section">
+281                           <p class="details-section-heading">
+281                             Riepilogo e Spedizione:
+281                           </p>
+281                           <p>
+281                             <span class="subtitle">
+281                               ID Utente:
+281                             </span>
+281                             #6
+281                           </p>
+281                           <p>
+281                             <span class="subtitle">
+281                               Indirizzo Spedizione:
+281                             </span>
+281                             Ufficio Test, Roma
+281                           </p>
+281                           <div class="details-summary details-summary-left">
+281                             <p class="details-section-heading">
+281                               Prezzi:
+281                             </p>
+281                             <p>
+281                               Prezzo Prodotti: 215.00 EUR
+281                             </p>
+281                             <p>
+281                               Costo Spedizione: 0.00 EUR
+281                             </p>
+281                             <p>
+281                               <span class="subtitle">
+281                                 Totale Finale:
+281                               </span>
+281                               <span>
+281                                 215.00 EUR
+281                               </span>
+281                             </p>
+281                           </div>
+281                         </div>
+281                       </div>
+281                     </td>
+281                   </tr>
+281                   <tr data-order-id="8">
+281                     <th scope="row">
+281                       8
+281                     </th>
+281                     <td data-title="Cliente">
+281                       User TestUser
+281                     </td>
+281                     <td data-title="Totale Finale">
+281                       38.00 EUR
+281                     </td>
+281                     <td data-title="Data Creazione">
+281                       2025-11-20 14:30:00
+281                     </td>
+281                     <td data-title="Stato">
+281                       annullato
+281                     </td>
+281                     <td class="td_richiesta_degustazione" data-title="Dettagli">
+282                       <a href="?sezione=ordini#details-row-8" class="btn-secondary btn-fallback">
+282                         Mostra Dettagli
+282                       </a>
+283                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="8" aria-expanded="false" aria-controls="details-row-8">
+284                         Mostra
+284                         <i class="fas fa-chevron-down" aria-hidden="true">
+284                         </i>
+285                       </button>
+286                     </td>
+286                   </tr>
+286                   <tr class="order-details-row is-hidden" id="details-row-8">
+286                     <td colspan="6" class="order-details-cell">
+286                       <div class="details-content">
+286                         <div class="details-section">
+286                           <p class="details-section-heading">
+286                             Prodotti Ordinati:
+286                           </p>
+286                           <ul class="details-products-list">
+286                             <li>
+286                               <span>
+286                                 2x Merlot
+286                               </span>
+286                               <span>
+286                                 14.00 EUR
+286                               </span>
+286                             </li>
+286                           </ul>
+286                         </div>
+286                         <div class="details-section">
+286                           <p class="details-section-heading">
+286                             Riepilogo e Spedizione:
+286                           </p>
+286                           <p>
+286                             <span class="subtitle">
+286                               ID Utente:
+286                             </span>
+286                             #6
+286                           </p>
+286                           <p>
+286                             <span class="subtitle">
+286                               Indirizzo Spedizione:
+286                             </span>
+286                             Via Roma 1, Milano
+286                           </p>
+286                           <div class="details-summary details-summary-left">
+286                             <p class="details-section-heading">
+286                               Prezzi:
+286                             </p>
+286                             <p>
+286                               Prezzo Prodotti: 28.00 EUR
+286                             </p>
+286                             <p>
+286                               Costo Spedizione: 10.00 EUR
+286                             </p>
+286                             <p>
+286                               <span class="subtitle">
+286                                 Totale Finale:
+286                               </span>
+286                               <span>
+286                                 38.00 EUR
+286                               </span>
+286                             </p>
+286                           </div>
+286                         </div>
+286                       </div>
+286                     </td>
+286                   </tr>
+286                   <tr data-order-id="6">
+286                     <th scope="row">
+286                       6
+286                     </th>
+286                     <td data-title="Cliente">
+286                       User TestUser
+286                     </td>
+286                     <td data-title="Totale Finale">
+286                       47.00 EUR
+286                     </td>
+286                     <td data-title="Data Creazione">
+286                       2025-10-15 10:00:00
+286                     </td>
+286                     <td data-title="Stato">
+286                       approvato
+286                     </td>
+286                     <td class="td_richiesta_degustazione" data-title="Dettagli">
+287                       <a href="?sezione=ordini#details-row-6" class="btn-secondary btn-fallback">
+287                         Mostra Dettagli
+287                       </a>
+288                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="6" aria-expanded="false" aria-controls="details-row-6">
+289                         Mostra
+289                         <i class="fas fa-chevron-down" aria-hidden="true">
+289                         </i>
+290                       </button>
+291                     </td>
+291                   </tr>
+291                   <tr class="order-details-row is-hidden" id="details-row-6">
+291                     <td colspan="6" class="order-details-cell">
+291                       <div class="details-content">
+291                         <div class="details-section">
+291                           <p class="details-section-heading">
+291                             Prodotti Ordinati:
+291                           </p>
+291                           <ul class="details-products-list">
+291                             <li>
+291                               <span>
+291                                 2x Raboso del Piave
+291                               </span>
+291                               <span>
+291                                 18.50 EUR
+291                               </span>
+291                             </li>
+291                           </ul>
+291                         </div>
+291                         <div class="details-section">
+291                           <p class="details-section-heading">
+291                             Riepilogo e Spedizione:
+291                           </p>
+291                           <p>
+291                             <span class="subtitle">
+291                               ID Utente:
+291                             </span>
+291                             #6
+291                           </p>
+291                           <p>
+291                             <span class="subtitle">
+291                               Indirizzo Spedizione:
+291                             </span>
+291                             Via Roma 1, Milano
+291                           </p>
+291                           <div class="details-summary details-summary-left">
+291                             <p class="details-section-heading">
+291                               Prezzi:
+291                             </p>
+291                             <p>
+291                               Prezzo Prodotti: 37.00 EUR
+291                             </p>
+291                             <p>
+291                               Costo Spedizione: 10.00 EUR
+291                             </p>
+291                             <p>
+291                               <span class="subtitle">
+291                                 Totale Finale:
+291                               </span>
+291                               <span>
+291                                 47.00 EUR
+291                               </span>
+291                             </p>
+291                           </div>
+291                         </div>
+291                       </div>
+291                     </td>
+291                   </tr>
+292                 </tbody>
+293               </table>
+294             </section>
+295           </section>
+297           <section id="esperienze" class="content-section is-hidden">
+298             <h2>
+298               Esperienze
+298             </h2>
+299             <p id="descrizione-tab-degustazioni" class="sum">
+300               La tabella riassume le richieste di prenotazione attive di degustazioni. Ogni riga rappresenta una singola prenotazione. Le colonne riportano: ID prenotazione, cliente, tipo degustazione, data visita, numero persone, un comando per aprire i dettagli e la sezione di gestione richiesta.
+304             </p>
+308             <section id="section-esperienze">
+309               <div class="admin-table-head">
+310                 <label class="switch">
+311                   <input type="checkbox" id="toggleArchivioPrenotazioni">
+312                   <span class="slider">
+312                   </span>
+313                   <span class="switch-text">
+313                     Visualizza archivio prenotazioni
+313                   </span>
+314                 </label>
+315               </div>
+317               <table class="table-data" id="tab-degustazioni" aria-describedby="descrizione-tab-degustazioni">
+318                 <caption>
+318                   Gestione degustazioni
+318                 </caption>
+319                 <thead>
+320                   <tr>
+321                     <th scope="col" abbr="ID">
+321                       ID esp.
+321                     </th>
+322                     <th scope="col">
+322                       Cliente
+322                     </th>
+323                     <th scope="col" abbr="Tipo">
+323                       Tipologia
+323                     </th>
+324                     <th scope="col" abbr="Data">
+324                       Data visita
+324                     </th>
+325                     <th scope="col" abbr="Persone">
+325                       Numero persone
+325                     </th>
+326                     <th scope="col" class="admin-user-col-actions">
+326                       Dettagli
+326                     </th>
+327                     <th scope="col" abbr="Gestione" class="admin-user-col-actions">
+327                       Gestione richiesta
+327                     </th>
+328                   </tr>
+329                 </thead>
+330                 <tbody>
+331                   <tr data-order-id="booking-11">
+331                     <th scope="row">
+331                       11
+331                     </th>
+331                     <td data-title="Cliente">
+331                       test test
+331                     </td>
+331                     <td data-title="Tipo degustazione">
+331                       Linea Oro
+331                     </td>
+331                     <td data-title="Data visita">
+331                       2026-03-12
+331                     </td>
+331                     <td data-title="Numero persone">
+331                       3
+331                     </td>
+331                     <td class="td_richiesta_degustazione" data-title="Dettagli">
+332                       <a href="?sezione=esperienze#details-row-booking-11" class="btn-secondary btn-fallback">
+332                         Mostra Dettagli
+332                       </a>
+333                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="booking-11" aria-expanded="false" aria-controls="details-row-booking-11">
+334                         Mostra
+334                         <i class="fas fa-chevron-down" aria-hidden="true">
+334                         </i>
+335                       </button>
+336                     </td>
+336                     <td class="td_richiesta_degustazione" data-title="Gestione richiesta">
+337 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                          <form action="" method="POST" class="standard-form" novalidate="true">
+338                         <input type="hidden" name="prenotazione_id" value="11">
+339                         <button type="submit" name="azione" value="accetta" class="btn-secondary btn-accept">
+339                           Accetta
+339                         </button>
+340                         <button type="submit" name="azione" value="rifiuta" class="btn-secondary btn-reject">
+340                           Rifiuta
+340                         </button>
+341                       </form>
+342                     </td>
+342                   </tr>
+342                   <tr class="order-details-row is-hidden" id="details-row-booking-11">
+342                     <td colspan="7" class="order-details-cell">
+342                       <div class="details-content">
+342                         <div class="details-section">
+342                           <p class="details-section-heading">
+342                             Dettagli Prenotazione:
+342                           </p>
+342                           <ul class="details-products-list">
+342                             <li>
+342                               <span>
+342                                 Email
+342                               </span>
+342                               <span>
+342                                 tes@test.test
+342                               </span>
+342                             </li>
+342                             <li>
+342                               <span>
+342                                 Telefono
+342                               </span>
+342                               <span aria-label="Numero di telefono: 3 9 4 3 2 4 3 2 4 3">
+342                                 +39 43243243
+342                               </span>
+342                             </li>
+342                             <li>
+342                               <span>
+342                                 Data Invio
+342                               </span>
+342                               <span>
+342                                 2025-12-27 01:27:41
+342                               </span>
+342                             </li>
+342                           </ul>
+342                         </div>
+342                       </div>
+342                     </td>
+342                   </tr>
+342                   <tr data-order-id="booking-5">
+342                     <th scope="row">
+342                       5
+342                     </th>
+342                     <td data-title="Cliente">
+342                       Rossi Mario
+342                     </td>
+342                     <td data-title="Tipo degustazione">
+342                       Linea Oro
+342                     </td>
+342                     <td data-title="Data visita">
+342                       2026-02-14
+342                     </td>
+342                     <td data-title="Numero persone">
+342                       2
+342                     </td>
+342                     <td class="td_richiesta_degustazione" data-title="Dettagli">
+343                       <a href="?sezione=esperienze#details-row-booking-5" class="btn-secondary btn-fallback">
+343                         Mostra Dettagli
+343                       </a>
+344                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="booking-5" aria-expanded="false" aria-controls="details-row-booking-5">
+345                         Mostra
+345                         <i class="fas fa-chevron-down" aria-hidden="true">
+345                         </i>
+346                       </button>
+347                     </td>
+347                     <td class="td_richiesta_degustazione" data-title="Gestione richiesta">
+348 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                          <form action="" method="POST" class="standard-form" novalidate="true">
+349                         <input type="hidden" name="prenotazione_id" value="5">
+350                         <button type="submit" name="azione" value="accetta" class="btn-secondary btn-accept">
+350                           Accetta
+350                         </button>
+351                         <button type="submit" name="azione" value="rifiuta" class="btn-secondary btn-reject">
+351                           Rifiuta
+351                         </button>
+352                       </form>
+353                     </td>
+353                   </tr>
+353                   <tr class="order-details-row is-hidden" id="details-row-booking-5">
+353                     <td colspan="7" class="order-details-cell">
+353                       <div class="details-content">
+353                         <div class="details-section">
+353                           <p class="details-section-heading">
+353                             Dettagli Prenotazione:
+353                           </p>
+353                           <ul class="details-products-list">
+353                             <li>
+353                               <span>
+353                                 Email
+353                               </span>
+353                               <span>
+353                                 mario.rossi@fake.com
+353                               </span>
+353                             </li>
+353                             <li>
+353                               <span>
+353                                 Telefono
+353                               </span>
+353                               <span aria-label="Numero di telefono: 3 9 3 3 3 1 1 1 2 2 2 3">
+353                                 +39 3331112223
+353                               </span>
+353                             </li>
+353                             <li>
+353                               <span>
+353                                 Data Invio
+353                               </span>
+353                               <span>
+353                                 2025-12-27 01:23:25
+353                               </span>
+353                             </li>
+353                           </ul>
+353                         </div>
+353                       </div>
+353                     </td>
+353                   </tr>
+353                   <tr data-order-id="booking-6">
+353                     <th scope="row">
+353                       6
+353                     </th>
+353                     <td data-title="Cliente">
+353                       Verdi Luigi
+353                     </td>
+353                     <td data-title="Tipo degustazione">
+353                       Piave
+353                     </td>
+353                     <td data-title="Data visita">
+353                       2026-03-01
+353                     </td>
+353                     <td data-title="Numero persone">
+353                       4
+353                     </td>
+353                     <td class="td_richiesta_degustazione" data-title="Dettagli">
+354                       <a href="?sezione=esperienze#details-row-booking-6" class="btn-secondary btn-fallback">
+354                         Mostra Dettagli
+354                       </a>
+355                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="booking-6" aria-expanded="false" aria-controls="details-row-booking-6">
+356                         Mostra
+356                         <i class="fas fa-chevron-down" aria-hidden="true">
+356                         </i>
+357                       </button>
+358                     </td>
+358                     <td class="td_richiesta_degustazione" data-title="Gestione richiesta">
+359 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                          <form action="" method="POST" class="standard-form" novalidate="true">
+360                         <input type="hidden" name="prenotazione_id" value="6">
+361                         <button type="submit" name="azione" value="accetta" class="btn-secondary btn-accept">
+361                           Accetta
+361                         </button>
+362                         <button type="submit" name="azione" value="rifiuta" class="btn-secondary btn-reject">
+362                           Rifiuta
+362                         </button>
+363                       </form>
+364                     </td>
+364                   </tr>
+364                   <tr class="order-details-row is-hidden" id="details-row-booking-6">
+364                     <td colspan="7" class="order-details-cell">
+364                       <div class="details-content">
+364                         <div class="details-section">
+364                           <p class="details-section-heading">
+364                             Dettagli Prenotazione:
+364                           </p>
+364                           <ul class="details-products-list">
+364                             <li>
+364                               <span>
+364                                 Email
+364                               </span>
+364                               <span>
+364                                 luigi.v@provider.it
+364                               </span>
+364                             </li>
+364                             <li>
+364                               <span>
+364                                 Telefono
+364                               </span>
+364                               <span aria-label="Numero di telefono: 3 9 3 3 3 4 4 4 5 5 5 6">
+364                                 +39 3334445556
+364                               </span>
+364                             </li>
+364                             <li>
+364                               <span>
+364                                 Data Invio
+364                               </span>
+364                               <span>
+364                                 2025-12-27 01:23:25
+364                               </span>
+364                             </li>
+364                           </ul>
+364                         </div>
+364                       </div>
+364                     </td>
+364                   </tr>
+364                   <tr data-order-id="booking-10">
+364                     <th scope="row">
+364                       10
+364                     </th>
+364                     <td data-title="Cliente">
+364                       Gialli Giulia
+364                     </td>
+364                     <td data-title="Tipo degustazione">
+364                       Piave
+364                     </td>
+364                     <td data-title="Data visita">
+364                       2026-05-05
+364                     </td>
+364                     <td data-title="Numero persone">
+364                       3
+364                     </td>
+364                     <td class="td_richiesta_degustazione" data-title="Dettagli">
+365                       <a href="?sezione=esperienze#details-row-booking-10" class="btn-secondary btn-fallback">
+365                         Mostra Dettagli
+365                       </a>
+366                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="booking-10" aria-expanded="false" aria-controls="details-row-booking-10">
+367                         Mostra
+367                         <i class="fas fa-chevron-down" aria-hidden="true">
+367                         </i>
+368                       </button>
+369                     </td>
+369                     <td class="td_richiesta_degustazione" data-title="Gestione richiesta">
+370 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                          <form action="" method="POST" class="standard-form" novalidate="true">
+371                         <input type="hidden" name="prenotazione_id" value="10">
+372                         <button type="submit" name="azione" value="accetta" class="btn-secondary btn-accept">
+372                           Accetta
+372                         </button>
+373                         <button type="submit" name="azione" value="rifiuta" class="btn-secondary btn-reject">
+373                           Rifiuta
+373                         </button>
+374                       </form>
+375                     </td>
+375                   </tr>
+375                   <tr class="order-details-row is-hidden" id="details-row-booking-10">
+375                     <td colspan="7" class="order-details-cell">
+375                       <div class="details-content">
+375                         <div class="details-section">
+375                           <p class="details-section-heading">
+375                             Dettagli Prenotazione:
+375                           </p>
+375                           <ul class="details-products-list">
+375                             <li>
+375                               <span>
+375                                 Email
+375                               </span>
+375                               <span>
+375                                 giulia.g@posta.it
+375                               </span>
+375                             </li>
+375                             <li>
+375                               <span>
+375                                 Telefono
+375                               </span>
+375                               <span aria-label="Numero di telefono: 3 9 3 3 1 0 0 0 0 0 0 0">
+375                                 +39 3310000000
+375                               </span>
+375                             </li>
+375                             <li>
+375                               <span>
+375                                 Data Invio
+375                               </span>
+375                               <span>
+375                                 2025-12-27 01:23:25
+375                               </span>
+375                             </li>
+375                           </ul>
+375                         </div>
+375                       </div>
+375                     </td>
+375                   </tr>
+376                 </tbody>
+377               </table>
+379               <p id="descrizione-tab-degustazioni-archivio" class="sum">
+380                 La tabella riassume le richieste di prenotazione già gestite dallo staff. Le colonne riportano: ID prenotazione, cliente, tipo degustazione, data visita, numero persone, stato richiesta e un comando per aprire i dettagli.
+383               </p>
+385               <table class="table-data" id="tab-degustazioni-archivio" aria-describedby="descrizione-tab-degustazioni-archivio" style="display: none;">
+386                 <caption>
+386                   Archivio Degustazioni
+386                 </caption>
+387                 <thead>
+388                   <tr>
+389                     <th scope="col" abbr="ID">
+389                       ID esp.
+389                     </th>
+390                     <th scope="col">
+390                       Cliente
+390                     </th>
+391                     <th scope="col" abbr="Tipo">
+391                       Tipologia
+391                     </th>
+392                     <th scope="col" abbr="Data">
+392                       Data visita
+392                     </th>
+393                     <th scope="col" abbr="Persone">
+393                       Numero persone
+393                     </th>
+394                     <th scope="col" abbr="Stato">
+394                       Stato richiesta
+394                     </th>
+395                     <th scope="col" class="admin-user-col-actions">
+395                       Dettagli
+395                     </th>
+396                   </tr>
+397                 </thead>
+398                 <tbody>
+399                   <tr data-order-id="booking-8">
+399                     <th scope="row">
+399                       8
+399                     </th>
+399                     <td data-title="Cliente">
+399                       Doe John
+399                     </td>
+399                     <td data-title="Tipo degustazione">
+399                       Piave
+399                     </td>
+399                     <td data-title="Data visita">
+399                       2026-04-10
+399                     </td>
+399                     <td data-title="Numero persone">
+399                       2
+399                     </td>
+399                     <td data-title="Stato">
+399                       annullato
+399                     </td>
+399                     <td class="td_richiesta_degustazione" data-title="Dettagli">
+400                       <a href="?sezione=esperienze#details-row-booking-8" class="btn-secondary btn-fallback">
+400                         Mostra Dettagli
+400                       </a>
+401                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="booking-8" aria-expanded="false" aria-controls="details-row-booking-8">
+402                         Mostra
+402                         <i class="fas fa-chevron-down" aria-hidden="true">
+402                         </i>
+403                       </button>
+404                     </td>
+404                   </tr>
+404                   <tr class="order-details-row is-hidden" id="details-row-booking-8">
+404                     <td colspan="7" class="order-details-cell">
+404                       <div class="details-content">
+404                         <div class="details-section">
+404                           <p class="details-section-heading">
+404                             Dettagli Prenotazione:
+404                           </p>
+404                           <ul class="details-products-list">
+404                             <li>
+404                               <span>
+404                                 Email
+404                               </span>
+404                               <span>
+404                                 j.doe@international.com
+404                               </span>
+404                             </li>
+404                             <li>
+404                               <span>
+404                                 Telefono
+404                               </span>
+404                               <span aria-label="Numero di telefono: 1 5 5 5 0 1 9 9">
+404                                 +1 5550199
+404                               </span>
+404                             </li>
+404                             <li>
+404                               <span>
+404                                 Data Invio
+404                               </span>
+404                               <span>
+404                                 2025-12-27 01:23:25
+404                               </span>
+404                             </li>
+404                           </ul>
+404                         </div>
+404                       </div>
+404                     </td>
+404                   </tr>
+404                   <tr data-order-id="booking-1">
+404                     <th scope="row">
+404                       1
+404                     </th>
+404                     <td data-title="Cliente">
+404                       User Test
+404                     </td>
+404                     <td data-title="Tipo degustazione">
+404                       Degustazione Premium
+404                     </td>
+404                     <td data-title="Data visita">
+404                       2025-10-10
+404                     </td>
+404                     <td data-title="Numero persone">
+404                       4
+404                     </td>
+404                     <td data-title="Stato">
+404                       approvato
+404                     </td>
+404                     <td class="td_richiesta_degustazione" data-title="Dettagli">
+405                       <a href="?sezione=esperienze#details-row-booking-1" class="btn-secondary btn-fallback">
+405                         Mostra Dettagli
+405                       </a>
+406                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="booking-1" aria-expanded="false" aria-controls="details-row-booking-1">
+407                         Mostra
+407                         <i class="fas fa-chevron-down" aria-hidden="true">
+407                         </i>
+408                       </button>
+409                     </td>
+409                   </tr>
+409                   <tr class="order-details-row is-hidden" id="details-row-booking-1">
+409                     <td colspan="7" class="order-details-cell">
+409                       <div class="details-content">
+409                         <div class="details-section">
+409                           <p class="details-section-heading">
+409                             Dettagli Prenotazione:
+409                           </p>
+409                           <ul class="details-products-list">
+409                             <li>
+409                               <span>
+409                                 Email
+409                               </span>
+409                               <span>
+409                                 user@test.com
+409                               </span>
+409                             </li>
+409                             <li>
+409                               <span>
+409                                 Telefono
+409                               </span>
+409                               <span aria-label="Numero di telefono: 3 9 3 3 3 1 2 3 4 5 6 7">
+409                                 +39 3331234567
+409                               </span>
+409                             </li>
+409                             <li>
+409                               <span>
+409                                 Data Invio
+409                               </span>
+409                               <span>
+409                                 2025-12-22 22:39:38
+409                               </span>
+409                             </li>
+409                           </ul>
+409                         </div>
+409                       </div>
+409                     </td>
+409                   </tr>
+409                   <tr data-order-id="booking-3">
+409                     <th scope="row">
+409                       3
+409                     </th>
+409                     <td data-title="Cliente">
+409                       User Test
+409                     </td>
+409                     <td data-title="Tipo degustazione">
+409                       Degustazione Classica
+409                     </td>
+409                     <td data-title="Data visita">
+409                       2026-01-15
+409                     </td>
+409                     <td data-title="Numero persone">
+409                       2
+409                     </td>
+409                     <td data-title="Stato">
+409                       approvato
+409                     </td>
+409                     <td class="td_richiesta_degustazione" data-title="Dettagli">
+410                       <a href="?sezione=esperienze#details-row-booking-3" class="btn-secondary btn-fallback">
+410                         Mostra Dettagli
+410                       </a>
+411                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="booking-3" aria-expanded="false" aria-controls="details-row-booking-3">
+412                         Mostra
+412                         <i class="fas fa-chevron-down" aria-hidden="true">
+412                         </i>
+413                       </button>
+414                     </td>
+414                   </tr>
+414                   <tr class="order-details-row is-hidden" id="details-row-booking-3">
+414                     <td colspan="7" class="order-details-cell">
+414                       <div class="details-content">
+414                         <div class="details-section">
+414                           <p class="details-section-heading">
+414                             Dettagli Prenotazione:
+414                           </p>
+414                           <ul class="details-products-list">
+414                             <li>
+414                               <span>
+414                                 Email
+414                               </span>
+414                               <span>
+414                                 user@test.com
+414                               </span>
+414                             </li>
+414                             <li>
+414                               <span>
+414                                 Telefono
+414                               </span>
+414                               <span aria-label="Numero di telefono: 3 9 3 3 3 1 2 3 4 5 6 7">
+414                                 +39 3331234567
+414                               </span>
+414                             </li>
+414                             <li>
+414                               <span>
+414                                 Data Invio
+414                               </span>
+414                               <span>
+414                                 2025-12-22 22:39:38
+414                               </span>
+414                             </li>
+414                           </ul>
+414                         </div>
+414                       </div>
+414                     </td>
+414                   </tr>
+414                   <tr data-order-id="booking-7">
+414                     <th scope="row">
+414                       7
+414                     </th>
+414                     <td data-title="Cliente">
+414                       Bianchi Anna
+414                     </td>
+414                     <td data-title="Tipo degustazione">
+414                       Linea Oro
+414                     </td>
+414                     <td data-title="Data visita">
+414                       2026-01-20
+414                     </td>
+414                     <td data-title="Numero persone">
+414                       10
+414                     </td>
+414                     <td data-title="Stato">
+414                       approvato
+414                     </td>
+414                     <td class="td_richiesta_degustazione" data-title="Dettagli">
+415                       <a href="?sezione=esperienze#details-row-booking-7" class="btn-secondary btn-fallback">
+415                         Mostra Dettagli
+415                       </a>
+416                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="booking-7" aria-expanded="false" aria-controls="details-row-booking-7">
+417                         Mostra
+417                         <i class="fas fa-chevron-down" aria-hidden="true">
+417                         </i>
+418                       </button>
+419                     </td>
+419                   </tr>
+419                   <tr class="order-details-row is-hidden" id="details-row-booking-7">
+419                     <td colspan="7" class="order-details-cell">
+419                       <div class="details-content">
+419                         <div class="details-section">
+419                           <p class="details-section-heading">
+419                             Dettagli Prenotazione:
+419                           </p>
+419                           <ul class="details-products-list">
+419                             <li>
+419                               <span>
+419                                 Email
+419                               </span>
+419                               <span>
+419                                 anna.b@testmail.com
+419                               </span>
+419                             </li>
+419                             <li>
+419                               <span>
+419                                 Telefono
+419                               </span>
+419                               <span aria-label="Numero di telefono: 3 9 3 2 0 9 8 7 6 5 4 3">
+419                                 +39 3209876543
+419                               </span>
+419                             </li>
+419                             <li>
+419                               <span>
+419                                 Data Invio
+419                               </span>
+419                               <span>
+419                                 2025-12-20 10:00:00
+419                               </span>
+419                             </li>
+419                           </ul>
+419                         </div>
+419                       </div>
+419                     </td>
+419                   </tr>
+419                   <tr data-order-id="booking-9">
+419                     <th scope="row">
+419                       9
+419                     </th>
+419                     <td data-title="Cliente">
+419                       Neri Elena
+419                     </td>
+419                     <td data-title="Tipo degustazione">
+419                       Linea Oro
+419                     </td>
+419                     <td data-title="Data visita">
+419                       2026-02-28
+419                     </td>
+419                     <td data-title="Numero persone">
+419                       6
+419                     </td>
+419                     <td data-title="Stato">
+419                       annullato
+419                     </td>
+419                     <td class="td_richiesta_degustazione" data-title="Dettagli">
+420                       <a href="?sezione=esperienze#details-row-booking-9" class="btn-secondary btn-fallback">
+420                         Mostra Dettagli
+420                       </a>
+421                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="booking-9" aria-expanded="false" aria-controls="details-row-booking-9">
+422                         Mostra
+422                         <i class="fas fa-chevron-down" aria-hidden="true">
+422                         </i>
+423                       </button>
+424                     </td>
+424                   </tr>
+424                   <tr class="order-details-row is-hidden" id="details-row-booking-9">
+424                     <td colspan="7" class="order-details-cell">
+424                       <div class="details-content">
+424                         <div class="details-section">
+424                           <p class="details-section-heading">
+424                             Dettagli Prenotazione:
+424                           </p>
+424                           <ul class="details-products-list">
+424                             <li>
+424                               <span>
+424                                 Email
+424                               </span>
+424                               <span>
+424                                 elena.n@fake.com
+424                               </span>
+424                             </li>
+424                             <li>
+424                               <span>
+424                                 Telefono
+424                               </span>
+424                               <span aria-label="Numero di telefono: 3 9 3 4 7 1 2 3 4 5 6 7">
+424                                 +39 3471234567
+424                               </span>
+424                             </li>
+424                             <li>
+424                               <span>
+424                                 Data Invio
+424                               </span>
+424                               <span>
+424                                 2025-11-15 08:00:00
+424                               </span>
+424                             </li>
+424                           </ul>
+424                         </div>
+424                       </div>
+424                     </td>
+424                   </tr>
+425                 </tbody>
+426               </table>
+427             </section>
+428           </section>
+430           <section id="messaggi" class="content-section is-hidden">
+431             <h2>
+431               Messaggi clienti
+431             </h2>
+432             <p id="descrizione-tab-messaggi" class="sum">
+433               La tabella riassume le richieste di assistenza attive inviate dai clienti. Ogni riga rappresenta una singola richiesta mandata dal cliente. Le colonne riportano: ID messaggio, cliente, tipologia, data invio, un comando per aprire i dettagli e la sezione di gestione richiesta.
+437             </p>
+441             <section id="section-messaggi">
+442               <div class="admin-table-head">
+443                 <label class="switch">
+444                   <input type="checkbox" id="toggleArchivioMessaggi">
+445                   <span class="slider">
+445                   </span>
+446                   <span class="switch-text">
+446                     Visualizza archivio richieste
+446                   </span>
+447                 </label>
+448               </div>
+449               <table class="table-data" id="tab-info" aria-describedby="descrizione-tab-messaggi">
+450                 <caption>
+450                   Gestione messaggi
+450                 </caption>
+451                 <thead>
+452                   <tr>
+453                     <th scope="col" abbr="ID">
+453                       ID
+453                       <abbr title="Messaggio">
+453                         mes.
+453                       </abbr>
+453                     </th>
+454                     <th scope="col">
+454                       Cliente
+454                     </th>
+455                     <th scope="col" abbr="Tipo">
+455                       Tipologia
+455                     </th>
+456                     <th scope="col" abbr="Data">
+456                       Data invio
+456                     </th>
+457                     <th scope="col">
+457                       Messaggio
+457                     </th>
+458                     <th scope="col" class="admin-user-col-actions">
+458                       Gestisci
+458                     </th>
+459                   </tr>
+460                 </thead>
+461                 <tbody>
+462                   <tr data-order-id="msg-4">
+462                     <th scope="row">
+462                       4
+462                     </th>
+462                     <td data-title="Cliente">
+462                       Toni Luca
+462                     </td>
+462                     <td data-title="Tipologia">
+462                       informazioni_vini
+462                     </td>
+462                     <td data-title="Data invio">
+462                       2025-12-27 01:23:34
+462                     </td>
+462                     <td data-title="Messaggio">
+462                       Salve, vorrei sapere se il Raboso è barricato. Grazie.
+462                     </td>
+462                     <td class="td_richiesta_degustazione" data-title="Gestisci">
+463                       <a href="?sezione=messaggi#details-row-msg-4" class="btn-secondary btn-fallback">
+463                         Mostra Dettagli
+463                       </a>
+464                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="msg-4" aria-expanded="false" aria-controls="details-row-msg-4">
+465                         Mostra
+465                         <i class="fas fa-chevron-down" aria-hidden="true">
+465                         </i>
+466                       </button>
+467                     </td>
+467                   </tr>
+467                   <tr class="order-details-row is-hidden" id="details-row-msg-4">
+467                     <td colspan="6" class="order-details-cell">
+467                       <div class="details-content">
+467                         <div class="details-section">
+467                           <p class="details-section-heading">
+467                             Dettagli Messaggio:
+467                           </p>
+467                           <ul class="details-products-list">
+467                             <li>
+467                               <span>
+467                                 Email
+467                               </span>
+467                               <span>
+467                                 luca.toni@calcio.it
+467                               </span>
+467                             </li>
+467                             <li>
+467                               <span>
+467                                 Telefono
+467                               </span>
+467                               <span aria-label="Numero di telefono: 3 9 3 3 3 9 9 9 8 8 8 7">
+467                                 +39 3339998887
+467                               </span>
+467                             </li>
+467                           </ul>
+467                         </div>
+467                         <div class="details-section">
+467                           <p class="details-section-heading">
+467                             Risposta:
+467                           </p>
+468 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                              <form id="form_msg_4" action="" method="POST" class="standard-form" novalidate="true">
+469                             <input type="hidden" name="messaggio_id" value="4">
+470                             <input type="hidden" name="azione" value="msg_risposta">
+471                             <label for="richiesta1_4">
+471                               Rispondi alle necessità del cliente
+471                               <span aria-hidden="true">
+471                                 *
+471                               </span>
+471                             </label>
+472                             <textarea id="richiesta1_4" name="richiesta1" required="" rows="6" placeholder="Risposta">
+472                             </textarea>
+473                             <button type="submit" form="form_msg_4" class="btn-secondary">
+473                               Invia
+473                             </button>
+474                           </form>
+475                         </div>
+475                       </div>
+475                     </td>
+475                   </tr>
+475                   <tr data-order-id="msg-5">
+475                     <th scope="row">
+475                       5
+475                     </th>
+475                     <td data-title="Cliente">
+475                       Callas Maria
+475                     </td>
+475                     <td data-title="Tipologia">
+475                       visita_degustazione
+475                     </td>
+475                     <td data-title="Data invio">
+475                       2025-12-27 01:23:34
+475                     </td>
+475                     <td data-title="Messaggio">
+475                       Organizzate visite per gruppi numerosi (50 persone)?
+475                     </td>
+475                     <td class="td_richiesta_degustazione" data-title="Gestisci">
+476                       <a href="?sezione=messaggi#details-row-msg-5" class="btn-secondary btn-fallback">
+476                         Mostra Dettagli
+476                       </a>
+477                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="msg-5" aria-expanded="false" aria-controls="details-row-msg-5">
+478                         Mostra
+478                         <i class="fas fa-chevron-down" aria-hidden="true">
+478                         </i>
+479                       </button>
+480                     </td>
+480                   </tr>
+480                   <tr class="order-details-row is-hidden" id="details-row-msg-5">
+480                     <td colspan="6" class="order-details-cell">
+480                       <div class="details-content">
+480                         <div class="details-section">
+480                           <p class="details-section-heading">
+480                             Dettagli Messaggio:
+480                           </p>
+480                           <ul class="details-products-list">
+480                             <li>
+480                               <span>
+480                                 Email
+480                               </span>
+480                               <span>
+480                                 divina@opera.com
+480                               </span>
+480                             </li>
+480                             <li>
+480                               <span>
+480                                 Telefono
+480                               </span>
+480                               <span aria-label="Numero di telefono: 3 9 3 3 3 7 7 7 6 6 6 5">
+480                                 +39 3337776665
+480                               </span>
+480                             </li>
+480                           </ul>
+480                         </div>
+480                         <div class="details-section">
+480                           <p class="details-section-heading">
+480                             Risposta:
+480                           </p>
+481 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                              <form id="form_msg_5" action="" method="POST" class="standard-form" novalidate="true">
+482                             <input type="hidden" name="messaggio_id" value="5">
+483                             <input type="hidden" name="azione" value="msg_risposta">
+484                             <label for="richiesta1_5">
+484                               Rispondi alle necessità del cliente
+484                               <span aria-hidden="true">
+484                                 *
+484                               </span>
+484                             </label>
+485                             <textarea id="richiesta1_5" name="richiesta1" required="" rows="6" placeholder="Risposta">
+485                             </textarea>
+486                             <button type="submit" form="form_msg_5" class="btn-secondary">
+486                               Invia
+486                             </button>
+487                           </form>
+488                         </div>
+488                       </div>
+488                     </td>
+488                   </tr>
+488                   <tr data-order-id="msg-6">
+488                     <th scope="row">
+488                       6
+488                     </th>
+488                     <td data-title="Cliente">
+488                       Pertini Sandro
+488                     </td>
+488                     <td data-title="Tipologia">
+488                       ordine_online
+488                     </td>
+488                     <td data-title="Data invio">
+488                       2025-12-27 01:23:34
+488                     </td>
+488                     <td data-title="Messaggio">
+488                       Ho sbagliato indirizzo nell'ultimo ordine, come posso cambiare?
+488                     </td>
+488                     <td class="td_richiesta_degustazione" data-title="Gestisci">
+489                       <a href="?sezione=messaggi#details-row-msg-6" class="btn-secondary btn-fallback">
+489                         Mostra Dettagli
+489                       </a>
+490                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="msg-6" aria-expanded="false" aria-controls="details-row-msg-6">
+491                         Mostra
+491                         <i class="fas fa-chevron-down" aria-hidden="true">
+491                         </i>
+492                       </button>
+493                     </td>
+493                   </tr>
+493                   <tr class="order-details-row is-hidden" id="details-row-msg-6">
+493                     <td colspan="6" class="order-details-cell">
+493                       <div class="details-content">
+493                         <div class="details-section">
+493                           <p class="details-section-heading">
+493                             Dettagli Messaggio:
+493                           </p>
+493                           <ul class="details-products-list">
+493                             <li>
+493                               <span>
+493                                 Email
+493                               </span>
+493                               <span>
+493                                 sandro@presidente.it
+493                               </span>
+493                             </li>
+493                             <li>
+493                               <span>
+493                                 Telefono
+493                               </span>
+493                               <span aria-label="Numero di telefono: 3 9 3 3 3 1 1 1 1 1 1 1">
+493                                 +39 3331111111
+493                               </span>
+493                             </li>
+493                           </ul>
+493                         </div>
+493                         <div class="details-section">
+493                           <p class="details-section-heading">
+493                             Risposta:
+493                           </p>
+494 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                              <form id="form_msg_6" action="" method="POST" class="standard-form" novalidate="true">
+495                             <input type="hidden" name="messaggio_id" value="6">
+496                             <input type="hidden" name="azione" value="msg_risposta">
+497                             <label for="richiesta1_6">
+497                               Rispondi alle necessità del cliente
+497                               <span aria-hidden="true">
+497                                 *
+497                               </span>
+497                             </label>
+498                             <textarea id="richiesta1_6" name="richiesta1" required="" rows="6" placeholder="Risposta">
+498                             </textarea>
+499                             <button type="submit" form="form_msg_6" class="btn-secondary">
+499                               Invia
+499                             </button>
+500                           </form>
+501                         </div>
+501                       </div>
+501                     </td>
+501                   </tr>
+501                   <tr data-order-id="msg-7">
+501                     <th scope="row">
+501                       7
+501                     </th>
+501                     <td data-title="Cliente">
+501                       Vio Bebe
+501                     </td>
+501                     <td data-title="Tipologia">
+501                       partnership
+501                     </td>
+501                     <td data-title="Data invio">
+501                       2025-12-27 01:23:34
+501                     </td>
+501                     <td data-title="Messaggio">
+501                       Vorrei proporre i vostri vini per un evento sportivo.
+501                     </td>
+501                     <td class="td_richiesta_degustazione" data-title="Gestisci">
+502                       <a href="?sezione=messaggi#details-row-msg-7" class="btn-secondary btn-fallback">
+502                         Mostra Dettagli
+502                       </a>
+503                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="msg-7" aria-expanded="false" aria-controls="details-row-msg-7">
+504                         Mostra
+504                         <i class="fas fa-chevron-down" aria-hidden="true">
+504                         </i>
+505                       </button>
+506                     </td>
+506                   </tr>
+506                   <tr class="order-details-row is-hidden" id="details-row-msg-7">
+506                     <td colspan="6" class="order-details-cell">
+506                       <div class="details-content">
+506                         <div class="details-section">
+506                           <p class="details-section-heading">
+506                             Dettagli Messaggio:
+506                           </p>
+506                           <ul class="details-products-list">
+506                             <li>
+506                               <span>
+506                                 Email
+506                               </span>
+506                               <span>
+506                                 bebe@scherma.it
+506                               </span>
+506                             </li>
+506                             <li>
+506                               <span>
+506                                 Telefono
+506                               </span>
+506                               <span aria-label="Numero di telefono: 3 9 3 3 3 2 2 2 2 2 2 2">
+506                                 +39 3332222222
+506                               </span>
+506                             </li>
+506                           </ul>
+506                         </div>
+506                         <div class="details-section">
+506                           <p class="details-section-heading">
+506                             Risposta:
+506                           </p>
+507 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                              <form id="form_msg_7" action="" method="POST" class="standard-form" novalidate="true">
+508                             <input type="hidden" name="messaggio_id" value="7">
+509                             <input type="hidden" name="azione" value="msg_risposta">
+510                             <label for="richiesta1_7">
+510                               Rispondi alle necessità del cliente
+510                               <span aria-hidden="true">
+510                                 *
+510                               </span>
+510                             </label>
+511                             <textarea id="richiesta1_7" name="richiesta1" required="" rows="6" placeholder="Risposta">
+511                             </textarea>
+512                             <button type="submit" form="form_msg_7" class="btn-secondary">
+512                               Invia
+512                             </button>
+513                           </form>
+514                         </div>
+514                       </div>
+514                     </td>
+514                   </tr>
+514                   <tr data-order-id="msg-9">
+514                     <th scope="row">
+514                       9
+514                     </th>
+514                     <td data-title="Cliente">
+514                       Rossi Paolo
+514                     </td>
+514                     <td data-title="Tipologia">
+514                       altro
+514                     </td>
+514                     <td data-title="Data invio">
+514                       2025-12-27 01:23:34
+514                     </td>
+514                     <td data-title="Messaggio">
+514                       Avete distributori in Spagna?
+514                     </td>
+514                     <td class="td_richiesta_degustazione" data-title="Gestisci">
+515                       <a href="?sezione=messaggi#details-row-msg-9" class="btn-secondary btn-fallback">
+515                         Mostra Dettagli
+515                       </a>
+516                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="msg-9" aria-expanded="false" aria-controls="details-row-msg-9">
+517                         Mostra
+517                         <i class="fas fa-chevron-down" aria-hidden="true">
+517                         </i>
+518                       </button>
+519                     </td>
+519                   </tr>
+519                   <tr class="order-details-row is-hidden" id="details-row-msg-9">
+519                     <td colspan="6" class="order-details-cell">
+519                       <div class="details-content">
+519                         <div class="details-section">
+519                           <p class="details-section-heading">
+519                             Dettagli Messaggio:
+519                           </p>
+519                           <ul class="details-products-list">
+519                             <li>
+519                               <span>
+519                                 Email
+519                               </span>
+519                               <span>
+519                                 pablito@mondiale.it
+519                               </span>
+519                             </li>
+519                             <li>
+519                               <span>
+519                                 Telefono
+519                               </span>
+519                               <span aria-label="Numero di telefono: 3 9 3 3 3 5 5 5 5 5 5 5">
+519                                 +39 3335555555
+519                               </span>
+519                             </li>
+519                           </ul>
+519                         </div>
+519                         <div class="details-section">
+519                           <p class="details-section-heading">
+519                             Risposta:
+519                           </p>
+520 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                              <form id="form_msg_9" action="" method="POST" class="standard-form" novalidate="true">
+521                             <input type="hidden" name="messaggio_id" value="9">
+522                             <input type="hidden" name="azione" value="msg_risposta">
+523                             <label for="richiesta1_9">
+523                               Rispondi alle necessità del cliente
+523                               <span aria-hidden="true">
+523                                 *
+523                               </span>
+523                             </label>
+524                             <textarea id="richiesta1_9" name="richiesta1" required="" rows="6" placeholder="Risposta">
+524                             </textarea>
+525                             <button type="submit" form="form_msg_9" class="btn-secondary">
+525                               Invia
+525                             </button>
+526                           </form>
+527                         </div>
+527                       </div>
+527                     </td>
+527                   </tr>
+527                   <tr data-order-id="msg-3">
+527                     <th scope="row">
+527                       3
+527                     </th>
+527                     <td data-title="Cliente">
+527                       Stevanin Michele
+527                     </td>
+527                     <td data-title="Tipologia">
+527                       assistenza
+527                     </td>
+527                     <td data-title="Data invio">
+527                       2025-12-27 00:58:06
+527                     </td>
+527                     <td data-title="Messaggio">
+527                       vediamo se funziona tutto questo
+527                     </td>
+527                     <td class="td_richiesta_degustazione" data-title="Gestisci">
+528                       <a href="?sezione=messaggi#details-row-msg-3" class="btn-secondary btn-fallback">
+528                         Mostra Dettagli
+528                       </a>
+529                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="msg-3" aria-expanded="false" aria-controls="details-row-msg-3">
+530                         Mostra
+530                         <i class="fas fa-chevron-down" aria-hidden="true">
+530                         </i>
+531                       </button>
+532                     </td>
+532                   </tr>
+532                   <tr class="order-details-row is-hidden" id="details-row-msg-3">
+532                     <td colspan="6" class="order-details-cell">
+532                       <div class="details-content">
+532                         <div class="details-section">
+532                           <p class="details-section-heading">
+532                             Dettagli Messaggio:
+532                           </p>
+532                           <ul class="details-products-list">
+532                             <li>
+532                               <span>
+532                                 Email
+532                               </span>
+532                               <span>
+532                                 michele.stevanin@gmail.com
+532                               </span>
+532                             </li>
+532                             <li>
+532                               <span>
+532                                 Telefono
+532                               </span>
+532                               <span aria-label="Numero di telefono: 3 9 3 5 1 0 4 0 8 3 0 1">
+532                                 +39 3510408301
+532                               </span>
+532                             </li>
+532                           </ul>
+532                         </div>
+532                         <div class="details-section">
+532                           <p class="details-section-heading">
+532                             Risposta:
+532                           </p>
+533 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                              <form id="form_msg_3" action="" method="POST" class="standard-form" novalidate="true">
+534                             <input type="hidden" name="messaggio_id" value="3">
+535                             <input type="hidden" name="azione" value="msg_risposta">
+536                             <label for="richiesta1_3">
+536                               Rispondi alle necessità del cliente
+536                               <span aria-hidden="true">
+536                                 *
+536                               </span>
+536                             </label>
+537                             <textarea id="richiesta1_3" name="richiesta1" required="" rows="6" placeholder="Risposta">
+537                             </textarea>
+538                             <button type="submit" form="form_msg_3" class="btn-secondary">
+538                               Invia
+538                             </button>
+539                           </form>
+540                         </div>
+540                       </div>
+540                     </td>
+540                   </tr>
+540                   <tr data-order-id="msg-2">
+540                     <th scope="row">
+540                       2
+540                     </th>
+540                     <td data-title="Cliente">
+540                       User Test
+540                     </td>
+540                     <td data-title="Tipologia">
+540                       Ordine
+540                     </td>
+540                     <td data-title="Data invio">
+540                       2025-12-22 22:39:38
+540                     </td>
+540                     <td data-title="Messaggio">
+540                       Buongiorno, vorrei sapere quando verrà spedito il mio ordine.
+540                     </td>
+540                     <td class="td_richiesta_degustazione" data-title="Gestisci">
+541                       <a href="?sezione=messaggi#details-row-msg-2" class="btn-secondary btn-fallback">
+541                         Mostra Dettagli
+541                       </a>
+542                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="msg-2" aria-expanded="false" aria-controls="details-row-msg-2">
+543                         Mostra
+543                         <i class="fas fa-chevron-down" aria-hidden="true">
+543                         </i>
+544                       </button>
+545                     </td>
+545                   </tr>
+545                   <tr class="order-details-row is-hidden" id="details-row-msg-2">
+545                     <td colspan="6" class="order-details-cell">
+545                       <div class="details-content">
+545                         <div class="details-section">
+545                           <p class="details-section-heading">
+545                             Dettagli Messaggio:
+545                           </p>
+545                           <ul class="details-products-list">
+545                             <li>
+545                               <span>
+545                                 Email
+545                               </span>
+545                               <span>
+545                                 user@test.com
+545                               </span>
+545                             </li>
+545                             <li>
+545                               <span>
+545                                 Telefono
+545                               </span>
+545                               <span aria-label="Numero di telefono: 3 9 3 3 3 1 2 3 4 5 6 7">
+545                                 +39 3331234567
+545                               </span>
+545                             </li>
+545                           </ul>
+545                         </div>
+545                         <div class="details-section">
+545                           <p class="details-section-heading">
+545                             Risposta:
+545                           </p>
+546 next issueprevious issueE622HTML: The 'novalidate' attribute does not have a valid value. It should have one of the following values: novalidate 
+The HTML specification being tested against defines certain valid values for each attribute. Usually a list of valid values will be displayed when you see this message. Note that many values must be in lower case in XHTML, including the 'x' in numeric hex entity references. Also note that what values are allowed varies from standard to standard.
+                              <form id="form_msg_2" action="" method="POST" class="standard-form" novalidate="true">
+547                             <input type="hidden" name="messaggio_id" value="2">
+548                             <input type="hidden" name="azione" value="msg_risposta">
+549                             <label for="richiesta1_2">
+549                               Rispondi alle necessità del cliente
+549                               <span aria-hidden="true">
+549                                 *
+549                               </span>
+549                             </label>
+550                             <textarea id="richiesta1_2" name="richiesta1" required="" rows="6" placeholder="Risposta">
+550                             </textarea>
+551                             <button type="submit" form="form_msg_2" class="btn-secondary">
+551                               Invia
+551                             </button>
+552                           </form>
+553                         </div>
+553                       </div>
+553                     </td>
+553                   </tr>
+554                 </tbody>
+555               </table>
+557               <p id="descrizione-tab-messaggi-archivio" class="sum">
+558                 La tabella riassume le richieste di assistenza già gestite dallo staff. Ogni riga rappresenta una singola richiesta mandata dal cliente. Le colonne riportano: ID messaggio, cliente, tipologia, data invio, messaggio e un comando per aprire i dettagli.
+562               </p>
+564               <table class="table-data" id="tab-info-archivio" aria-describedby="descrizione-tab-messaggi-archivio" style="display: none;">
+565                 <caption>
+565                   Archivio messaggi
+565                 </caption>
+566                 <thead>
+567                   <tr>
+568                     <th scope="col" abbr="ID">
+568                       ID
+568                       <abbr title="Messaggio">
+568                         mes.
+568                       </abbr>
+568                     </th>
+569                     <th scope="col">
+569                       Cliente
+569                     </th>
+570                     <th scope="col" abbr="Tipo">
+570                       Tipologia
+570                     </th>
+571                     <th scope="col" abbr="Data">
+571                       Data invio
+571                     </th>
+572                     <th scope="col">
+572                       Messaggio
+572                     </th>
+573                     <th scope="col" class="admin-user-col-actions">
+573                       Dettagli
+573                     </th>
+574                   </tr>
+575                 </thead>
+576                 <tbody>
+577                   <tr data-order-id="msg-8">
+577                     <th scope="row">
+577                       8
+577                     </th>
+577                     <td data-title="Cliente">
+577                       Baggio Roberto
+577                     </td>
+577                     <td data-title="Tipologia">
+577                       assistenza
+577                     </td>
+577                     <td data-title="Data invio">
+577                       2025-12-27 01:23:34
+577                     </td>
+577                     <td data-title="Messaggio">
+577                       Il codice sconto non funziona nel carrello.
+577                     </td>
+577                     <td class="td_richiesta_degustazione" data-title="Gestisci">
+578                       <a href="?sezione=messaggi#details-row-msg-8" class="btn-secondary btn-fallback">
+578                         Mostra Dettagli
+578                       </a>
+579                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="msg-8" aria-expanded="false" aria-controls="details-row-msg-8">
+580                         Mostra
+580                         <i class="fas fa-chevron-down" aria-hidden="true">
+580                         </i>
+581                       </button>
+582                     </td>
+582                   </tr>
+582                   <tr class="order-details-row is-hidden" id="details-row-msg-8">
+582                     <td colspan="6" class="order-details-cell">
+582                       <div class="details-content">
+582                         <div class="details-section">
+582                           <p class="details-section-heading">
+582                             Dettagli Messaggio:
+582                           </p>
+582                           <ul class="details-products-list">
+582                             <li>
+582                               <span>
+582                                 Email
+582                               </span>
+582                               <span>
+582                                 codino@divino.it
+582                               </span>
+582                             </li>
+582                             <li>
+582                               <span>
+582                                 Telefono
+582                               </span>
+582                               <span aria-label="Numero di telefono: 3 9 3 3 3 4 4 4 4 4 4 4">
+582                                 +39 3334444444
+582                               </span>
+582                             </li>
+582                             <li>
+582                               <span>
+582                                 Risposta
+582                               </span>
+582                               <span>
+582                                 esempio di risposta fornita dal supporto.
+582                               </span>
+582                             </li>
+582                           </ul>
+582                         </div>
+582                       </div>
+582                     </td>
+582                   </tr>
+582                   <tr data-order-id="msg-1">
+582                     <th scope="row">
+582                       1
+582                     </th>
+582                     <td data-title="Cliente">
+582                       User Test
+582                     </td>
+582                     <td data-title="Tipologia">
+582                       Informazioni
+582                     </td>
+582                     <td data-title="Data invio">
+582                       2025-12-22 22:39:38
+582                     </td>
+582                     <td data-title="Messaggio">
+582                       Ho bisogno di informazioni sulle degustazioni.
+582                     </td>
+582                     <td class="td_richiesta_degustazione" data-title="Gestisci">
+583                       <a href="?sezione=messaggi#details-row-msg-1" class="btn-secondary btn-fallback">
+583                         Mostra Dettagli
+583                       </a>
+584                       <button type="button" class="btn-secondary toggle-details-btn" data-order-id="msg-1" aria-expanded="false" aria-controls="details-row-msg-1">
+585                         Mostra
+585                         <i class="fas fa-chevron-down" aria-hidden="true">
+585                         </i>
+586                       </button>
+587                     </td>
+587                   </tr>
+587                   <tr class="order-details-row is-hidden" id="details-row-msg-1">
+587                     <td colspan="6" class="order-details-cell">
+587                       <div class="details-content">
+587                         <div class="details-section">
+587                           <p class="details-section-heading">
+587                             Dettagli Messaggio:
+587                           </p>
+587                           <ul class="details-products-list">
+587                             <li>
+587                               <span>
+587                                 Email
+587                               </span>
+587                               <span>
+587                                 user@test.com
+587                               </span>
+587                             </li>
+587                             <li>
+587                               <span>
+587                                 Telefono
+587                               </span>
+587                               <span aria-label="Numero di telefono: 3 9 3 3 3 1 2 3 4 5 6 7">
+587                                 +39 3331234567
+587                               </span>
+587                             </li>
+587                             <li>
+587                               <span>
+587                                 Risposta
+587                               </span>
+587                               <span>
+587                                 -
+587                               </span>
+587                             </li>
+587                           </ul>
+587                         </div>
+587                       </div>
+587                     </td>
+587                   </tr>
+588                 </tbody>
+589               </table>
+590             </section>
+591           </section>
+592         </div>
+593       </div>
+594     </main>
+597     <footer>
+598       <div class="footer-content">
+599         <small>
+600           © 2025 Tenuta al Morer -
+600           <abbr title="Partita">
+600             P.
+600           </abbr>
+600           <abbr title="Imposta sul Valore Aggiunto">
+600             IVA
+600           </abbr>
+600           00000000000
+600           <br>
+601           <a href="policy.php">
+601             Note legali
+601           </a>
+601           |
+602           <a href="policy.php#privacy-policy">
+602             <span lang="en">
+602               Privacy Policy
+602             </span>
+602           </a>
+602           |
+603           <a href="policy.php#accessibility">
+603             Accessibilità
+603           </a>
+603           |
+604           <a href="mappa.php">
+604             Mappa del sito
+604           </a>
+605         </small>
+606       </div>
+607     </footer>
+609     <button id="backToTopBtn" aria-label="Torna all'inizio della pagina" class="">
+610       <svg viewBox="0 0 24 24" class="arrow-icon" aria-hidden="true">
+611         <path d="M12 5 L12 19 M5 12 L12 5 L19 12">
+611         </path>
+612       </svg>
+613     </button>
+617   </body>
+617 </html>
+© 2005-2026 Total Validator
