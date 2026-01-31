@@ -14,7 +14,7 @@ La presente relazione ha come scopo quello di descrivere le metodologie e i ragi
 
 Il sito offre diverse funzionalità agli utenti clienti della Tenuta:
 
-- consultazione di contenuti informativi e descrittivi sulla tenuta;
+- consultazione di contenuti informativi e descrittivi sulla Tenuta;
 
 - visualizzazione del catalogo dei vini disponibili;
 
@@ -26,7 +26,7 @@ Il sito offre diverse funzionalità agli utenti clienti della Tenuta:
 
 - invio di richieste di assistenza o segnalazioni tramite l’apposita sezione contatti.
 
-Mentre per quanto riguarda gli impiegati della Tenuta, la piattaforma offre:
+Mentre, per quanto riguarda gli impiegati della Tenuta, la piattaforma offre:
 
 - possibilità di gestione delle attività della cantina richieste dal cliente.
 
@@ -78,15 +78,15 @@ Operazioni svolte per migliorare il ranking del sito:
 
 ### Schema organizzativo
 
-Abbiamo definito una struttura chiara che consente di navigare facilmente tra i prodotti disponibili e le relative opzioni di acquisto. Il catalogo dei vini è infatti organizzato secondo uno schema organizzativo esatto, ottenuto suddividendo i prodotti in categorie non sovrapponibili - “vini rossi”, “vini bianchi” e “La Selezione” - al fine di facilitare la consultazione da parte dell’utente. È inoltre presente una funzione di ricerca che permette di individuare rapidamente un vino all’interno del catalogo, agevolando l’utente che sa esattamente cosa cercare e desidera risparmiare tempo.
+Abbiamo definito una struttura chiara che consenta di navigare facilmente tra i prodotti disponibili e le relative opzioni di acquisto. Il catalogo dei vini è infatti strutturato secondo uno schema organizzativo esatto, ottenuto suddividendo i prodotti in categorie non sovrapponibili - “vini rossi”, “vini bianchi” e “La Selezione” - al fine di facilitare la consultazione da parte dell’utente. È inoltre presente una funzione di ricerca che permette di individuare rapidamente un vino all’interno del catalogo, agevolando l’utente che sa esattamente cosa cercare e desidera risparmiare tempo.
 
 ### Tipi di utente
 
 Durante la fase di progettazione sono stati individuati i seguenti tipi di utente:
 
-- **Utente non autenticato**: l’utente ospite ha accesso alle sezioni non sono private del sito, ossia le pagine "Home", "Tenuta", "Vini", "Esperienze" e "Contatti". Può prenotare degustazioni, inviare richieste di assistenza e ha la possibilità di inserire vini nel carrello. Tuttavia, non può effettuare acquisti né accedere all’area riservata, a meno che non completi la registrazione o effettui l’accesso.
+- **Utente non autenticato**: l’utente ospite ha accesso alle sezioni non private del sito, ossia le pagine "Home", "Tenuta", "Vini", "Esperienze" e "Contatti". Può prenotare degustazioni, inviare richieste di assistenza e ha la possibilità di inserire vini nel carrello. Tuttavia, non può effettuare acquisti né accedere all’area riservata, a meno che non completi la registrazione o effettui l’accesso.
 
-- **Cliente**: l’utente cliente ha accesso completo alle funzionalità del sito relative agli utenti clienti, come la possibilità di acquistare vini e gestire il proprio account all’interno della propria area riservata.
+- **Cliente**: ha accesso completo alle funzionalità del sito relative agli utenti clienti, come la possibilità di acquistare vini e gestire il proprio account all’interno della propria area riservata.
 
 - **Staff**: l’utente staff può gestire gli ordini e le prenotazioni dei clienti, approvandole o rifiutandole. Inoltre, ha il controllo delle richieste di assistenza ricevute tramite il modulo contatti.
 
@@ -114,7 +114,7 @@ Elenco delle funzionalità del sito:
 
 - prenotazione esperienze;
 
-- invio di richieste di assistenza;
+- invio richieste di assistenza;
 
 - gestione account cliente (modifica dati, cambio password, eliminazione account);
 
@@ -134,11 +134,11 @@ Elenco delle funzionalità del sito:
 
 Elenco delle convenzioni interne del sito:
 
-- L’adozione delle UI Cards in sostituzione agli elenchi testuali permette di raggruppare i concetti in unità visive distinte e intuitive, riducendo significativamente il carico cognitivo dell’utente necessario per elaborare le informazioni contenute in pagine come: "Home", "Contatti", "Area Personale";
+- l’adozione delle UI Cards in sostituzione degli elenchi testuali permette di raggruppare i concetti in unità visive distinte e intuitive, riducendo significativamente il carico cognitivo dell’utente necessario per elaborare le informazioni contenute in pagine come: "Home", "Contatti", "Area Personale";
 
 - le pagine di autenticazione (*login.html* e *registrazione.html*) hanno un layout semplificato con header ridotto, al fine di concentrare l’esperienza utente alle sole funzioni di accesso;
 
-- Ad eccezione delle sezioni precedentemente citate, le restanti pagine presentano nell’"above the fold" un menù di navigazione principale che permette all’utente di orientarsi facilmente e identificare immediatamente i percorsi disponibili. Inoltre, per agevolare l’esperienza di navigazione, vengono distinti i link già visitati (*secondary-color*) da quelli non ancora consultati (in bianco);
+- ad eccezione delle sezioni precedentemente citate, le restanti pagine presentano nell’"above the fold" un menù di navigazione principale che permetta all’utente di orientarsi facilmente e identificare immediatamente i percorsi disponibili. Inoltre, per agevolare l’esperienza di navigazione, vengono distinti i link già visitati (*secondary-color*) da quelli non ancora consultati (in bianco);
 
 ### Schema database
 
@@ -191,13 +191,13 @@ Al contrario, per le sezioni dedicate all’assistenza, agli ordini e alle preno
 
 Uno degli aspetti più importanti del nostro CSS è l’utilizzo delle variabili, impostate all’inizio del file e riutilizzate più volte in parti differenti. In questo modo riusciamo ad uniformare e tenere sotto controllo i contrasti e i colori utilizzati. Particolare attenzione è stata posta anche all’utilizzo di layout di tipo flex e grid. In quanto pesanti da renderizzare per i browser, ne è stato fatto un uso consapevole, evitando di andare oltre il secondo livello.
 
-Successivamente, vogliamo far notare l’utilizzo di tre differenti fogli di stile: style.css, mini.css e print.css. Questa decisione è stata presa per organizzare propriamente il codice CSS e per gestire meglio l’aspetto responsive del sito.
+In secodno luogo, vogliamo far notare l’utilizzo di tre differenti fogli di stile: style.css, mini.css e print.css. Questa decisione è stata presa per organizzare propriamente il codice CSS e per gestire meglio l’aspetto responsive del sito.
 
 #### Gestione della classe no-js
 
 Per garantire la corretta visualizzazione e fruibilità del sito indipendentemente dal supporto JavaScript del browser, è stata adottata la tecnica della classe `no-js`.
 
-Il tag `<html>` viene inizializzato con la classe `no-js`. All’interno della sezione `<head>`, è incluso uno script **script.js** che viene eseguito immediatamente al caricamento della pagina: se JavaScript è abilitato, lo script rimuove la classe `no-js`.
+Il tag `<html>` viene inizializzato con la classe `no-js`. All’interno della sezione `<head>`, è incluso **script.js** che viene eseguito immediatamente al caricamento della pagina: se JavaScript è abilitato, lo script rimuove la classe `no-js`.
 
 Questo meccanismo permette di sfruttare i fogli di stile CSS per gestire due stati distinti dell’interfaccia:
 
@@ -213,9 +213,9 @@ Per la versione di stampa è stato posta particolare attenzione alla leggibilit�
 
 Nello specifico:
 
-- Sono stati nascosti tutti gli elementi interattivi e di navigazione (navbar, pulsanti di azione e carrello vuoto).
+- sono stati nascosti tutti gli elementi interattivi e di navigazione (navbar, pulsanti di azione e carrello vuoto);
 
-- Sono state rimosse le immagini di sfondo puramente decorative e le icone, mantenendo visibili solo il logo e le immagini essenziali dei prodotti.
+- sono state rimosse le immagini di sfondo puramente decorative e le icone, mantenendo visibili solo il logo e le immagini essenziali dei prodotti;
 
 - La struttura della pagina è stata semplificata linearizzando i contenuti per adattarli al formato cartaceo verticale.
 
@@ -223,7 +223,7 @@ Nello specifico:
 
 La gestione delle risorse grafiche è stata diversificata in base alla tipologia di contenuto per bilanciare qualità e performance.
 
-Le immagini relative ai prodotti (i vini) e gli elementi grafici dell’interfaccia (come i loghi) sono stati salvati in formato **WEBP**. Questa scelta, visibile in particolare nella sottocartella `tr`, è dettata dalla necessità di supportare lo sfondo trasparente mantenendo dimensioni ridotte rispetto al formato PNG. Le fotografie relative alla tenuta e alle esperienze (es. *vigneto.jpg*, *vendemmia.jpg*) sono invece in formato **JPG**, più idoneo per immagini fotografiche complesse privi di trasparenza.
+Le immagini relative ai prodotti (i vini) e gli elementi grafici dell’interfaccia (come i loghi) sono stati salvati in formato **WEBP**. Questa scelta, visibile in particolare nella sottocartella `tr`, è dettata dalla necessità di supportare lo sfondo trasparente mantenendo dimensioni ridotte rispetto al formato PNG. Le fotografie relative alla Tenuta e alle esperienze (es. *vigneto.jpg*, *vendemmia.jpg*) sono invece in formato **JPG**, più idoneo per immagini fotografiche complesse privi di trasparenza.
 
 Tutte le immagini statiche sono state ottimizzate mantenendo una grandezza contenuta (sotto 0.5MB) per favorire la velocità di caricamento, accettando il compromesso di una minore retrocompatibilità del formato WebP sui browser molto datati.
 
@@ -231,7 +231,7 @@ Per quanto riguarda l’inserimento di nuovi prodotti tramite l’area riservata
 
 #### Font
 
-Abbiamo usato il font **Atkinson Hyperlegible** per tutto il sito web essendo un font accessibile e senza grazie. Abbiamo applicato un’interlinea di 1.5 em per facilitare la lettura. Sono presenti dei font di fallback che sono: Lexend, Roboto e sans-serif.
+Abbiamo usato il font **Atkinson Hyperlegible** per tutto il sito web essendo un font accessibile e senza grazie. Abbiamo applicato un’interlinea di 1.5 em per facilitare la lettura. Sono presenti dei font di fallback che sono: Lexend, Roboto e Sans-Serif.
 
 #### Colori
 
@@ -249,7 +249,7 @@ Dopo diversi tentativi di ottimizzazione dei colori, abbiamo definito e adottato
 | Colore attenzione  |    \#FFC107    |
 | Bordo              |    \#B6B6B6    |
 
-Palette colori principale (modalità scura)
+Palette colori modalità scura
 
 | **Colore**         | **Codice HEX** |
 |:-------------------|:--------------:|
@@ -331,11 +331,11 @@ Di seguito sono elencate tutte le scelte effettuate per migliorare l’accessibi
 
 #### Aiuti per lo screen reader
 
-Abbiamo utilizzato gli attributi ARIA per agevolare a tutte le categorie di utenti l’interazione con il sito. Inoltre è stata aggiunta una sezione apposta all’inizio di ogni pagina che contiene gli aiuti per la navigazione permettendo ad un utente che naviga da tastiera di raggiungere direttamente determinate sezioni della pagina (skip to content).
+Abbiamo utilizzato gli attributi ARIA per agevolare a tutte le categorie di utenti l’interazione con il sito. Inoltre è stata aggiunta una sezione all’inizio di ogni pagina che contiene gli aiuti per la navigazione. permettendo ad un utente che naviga da tastiera di raggiungere direttamente determinate sezioni della pagina (skip to content).
 
 #### Compatibilità
 
-Le tabelle sono state rese responsive in modo da facilitarne la lettura su diversi dispositivi; inoltre il menù diventa un menù ad hamburger per i piccoli schermi facilitando la navigazione. In generale i contenuti di ogni pagina web sono disposti in modo tale da essere facilmente consultabili indipendentemente dal dispositivo utilizzato.
+Le tabelle sono state rese responsive in modo da facilitarne la lettura su diversi dispositivi; inoltre la navbar diventa un menù ad hamburger per i piccoli schermi facilitando la navigazione. In generale, i contenuti di ogni pagina web sono disposti in modo tale da essere facilmente consultabili, indipendentemente dal dispositivo utilizzato.
 
 ## Test effettuati
 
@@ -343,7 +343,7 @@ Le tabelle sono state rese responsive in modo da facilitarne la lettura su diver
 
 Abbiamo utilizzato i seguenti strumenti per effettuare test manuali:
 
-- WCAG Color contrast checker: controllo contrasto dei colori e applicazione di vari filtri visivi (protanopia, protanomalia, deuteranopia, deuteranomalia, tritanopia, tritanomalia, acromatopsia, acromatomalia), sempre raggiunto livello di conformità WCAG AA;
+- WCAG Color contrast checker: controllo contrasto dei colori e applicazione di vari filtri visivi (protanopia, protanomalia, deuteranopia, deuteranomalia, tritanopia, tritanomalia, acromatopsia, acromatomalia); è sempre stato raggiunto il livello di conformità WCAG AA;
 
 - WAVE by WebAIM, Silktide Inspector, Total Validator: per controlli generali, non vengono segnalati errori (esclusione fatta per i falsi positivi analizzati nella sezione successiva);
 
@@ -357,7 +357,7 @@ Abbiamo utilizzato i seguenti strumenti per effettuare test manuali:
 
 ### Analisi dei Falsi Positivi
 
-Di seguito vengono analizzate le segnalazioni rilevate da Total Validator classificate come falsi positivi, in quanto derivanti da scelte progettuali deliberate o interpretazioni errate del validatore:
+Di seguito vengono analizzate le segnalazioni rilevate da Total Validator, classificate come falsi positivi, in quanto derivanti da scelte progettuali deliberate o interpretazioni errate del validatore:
 
 - **Redundant link:** La segnalazione, presente in tutte le pagine, è causata dalla presenza adiacente del logo e della voce "Home" nella barra di navigazione. Sebbene entrambi puntino alla stessa destinazione, la ridondanza è mantenuta per favorire l’usabilità.
 
@@ -371,7 +371,7 @@ Di seguito vengono analizzate le segnalazioni rilevate da Total Validator classi
 
   - **Contrast Errors:** Il validatore segnala in tutte le pagine un errore di contrasto per la navigazion help quando nascosta (in modalità light).
 
-  - **Contrast Errors:** Vengono erroneamente segnalati errori di contrasto nella pagina home nella sezione con la foto di sfondo. Tuttavia la segnalazione risulta snagliata poichè il testo compare sopra la foto alla quale è stato applicato un colore di background di fallback violaceo che garantisce un contrasto superiore a 4.5:1.
+  - **Contrast Errors:** Vengono erroneamente segnalati errori di contrasto nella pagina home nella sezione con la foto di sfondo. Tuttavia la segnalazione risulta sbagliata poichè il testo compare sopra la foto alla quale è stato applicato un colore di background di fallback violaceo che garantisce un contrasto superiore a 4.5:1.
 
 ### Screen reader
 
@@ -433,8 +433,8 @@ Ci siamo organizzati suddividendo il lavoro in base alle diverse pagine e funzio
 
 ## Note
 
-1.  Il sito è stato sviluppato con particolare attenzione alle linee guida per l’accessibilità WCAG 2.1 livello AA;
+1.  Il sito è stato sviluppato con particolare attenzione alle linee guida per l’accessibilità WCAG 2.1 livello AA.
 
-2.  Nonostante la natura dimostrativa, sono state applicate best practice di sicurezza base per la protezione delle sessioni utente;
+2.  Nonostante la natura dimostrativa, sono state applicate best practice di sicurezza base per la protezione delle sessioni utente.
 
 3.  Il database viene fornito già popolato con dati dimostrativi per facilitare il testing delle funzionalità.
