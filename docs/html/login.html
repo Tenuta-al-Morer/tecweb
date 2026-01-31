@@ -32,7 +32,7 @@
         </div>
 
         <div class="sub-header">
-            <nav id="breadcrumb" >
+            <nav id="breadcrumb" aria-label="Percorso di navigazione">
                 <div class="breadcrumb-container">
                     <span>Ti trovi in: </span>
                     <a href="home.php"><span lang="en">Home</span></a><span aria-hidden="true"> &gt; </span> 
@@ -60,7 +60,7 @@
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" required autocomplete="username" value="[email]" aria-describedby="email-hint">
-                    <span class="little" id="email-hint" class="input-help">Esempio: mario.rossi@email.com</span>
+                    <span class="little input-help" id="email-hint">Esempio: mario.rossi@email.com</span>
                 </div>
 
                 <div class="form-group">
@@ -72,7 +72,7 @@
                             <span class="visually-hidden">Mostra password</span>
                         </button>
                     </div>
-                    <span class="little" id="password-hint" class="input-help">Inserisci la password associata all'email.</span>
+                    <span class="little input-help" id="password-hint">Inserisci la password associata all'email.</span>
                 </div>
 
                 <button type="submit" class="btn-primary">
