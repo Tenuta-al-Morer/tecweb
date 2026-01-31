@@ -447,8 +447,8 @@ body.light-mode .table-data td::before {
     .slider-btn { font-size: 2.5rem; padding: 0.3em; }
 }
 
-.tenuta-hero-title { font-size: 2rem; }
-.tenuta-hero-text { font-size: 0.95rem; }
+.page-hero-title { font-size: 2rem; }
+.page-hero-text { font-size: 0.95rem; }
 .tenuta-section-title { font-size: 1.9rem; }
 .tenuta-philosophy { padding: 60px 8vw; }
 .tenuta-philosophy-title { font-size: 2.2rem; }

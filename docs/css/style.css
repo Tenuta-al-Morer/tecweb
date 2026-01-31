@@ -2085,27 +2085,27 @@ footer a:hover, footer a:focus {
     margin-bottom: 0 ;
 }
 
-.tenuta-hero {
+.page-hero {
     display: flex;
     justify-content: center;
     text-align: center;
 }
 
-.tenuta-hero-inner {
+.page-hero-inner {
     max-width: 900px;
     display: flex;
     flex-direction: column;
     gap: 24px;
 }
 
-.tenuta-hero-title {
+.page-hero-title {
     font-weight: 700;
     font-size: clamp(2.4rem, 4vw, 3.8rem);
     line-height: 1.2;
     letter-spacing: 0.02em;
 }
 
-.tenuta-hero-text {
+.page-hero-text {
     font-size: 1.15rem;
     line-height: 1.9;
     color: var(--text-color);
