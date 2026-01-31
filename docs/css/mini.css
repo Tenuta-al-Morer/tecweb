@@ -3,10 +3,13 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
-    padding: 0 0em;
+    padding: 0 0.8em;
     min-height: 4.5em;
     background-color: var(--always-dark-bg);
     flex-wrap: nowrap;
+}
+.no-js .main-nav-bar {
+    padding: 0 0em;
 }
 
 .menu-toggle {
