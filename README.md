@@ -174,7 +174,7 @@ Il sito è stato sviluppato in HTML5. Abbiamo cercato di mantenere più struttur
 Un esempio è l’utilizzo nel file areaPersonale.html:
 
     <p>
-        Sei loggato come: [email_utente]
+        Sei loggato come: <span class="bold">[email_utente]</span>
     </p>
 
 Questo approccio ci permette di impostare una struttura fissa nei file HTML e andare a modificare in maniera dinamica il contenuto tramite PHP.
