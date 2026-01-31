@@ -98,7 +98,7 @@ Elenco delle funzionalità del sito:
 
 - registrazione utente;
 
-- login utente/staff/admin;
+- login cliente/staff/admin;
 
 - visualizzazione catalogo vini;
 
@@ -138,7 +138,7 @@ Elenco delle convenzioni interne del sito:
 
 - le pagine di autenticazione (*login.html* e *registrazione.html*) hanno un layout semplificato con header ridotto, al fine di concentrare l’esperienza utente alle sole funzioni di accesso;
 
-- ad eccezione delle sezioni precedentemente citate, le restanti pagine presentano nell’"above the fold" un menù di navigazione principale che permetta all’utente di orientarsi facilmente e identificare immediatamente i percorsi disponibili. Inoltre, per agevolare l’esperienza di navigazione, vengono distinti i link già visitati (*secondary-color*) da quelli non ancora consultati (in bianco);
+- ad eccezione delle sezioni precedentemente citate, le restanti pagine presentano nell’area definita "above the fold" un menù di navigazione principale che permetta all’utente di orientarsi facilmente e identificare immediatamente i percorsi disponibili. Inoltre, per agevolare l’esperienza di navigazione, vengono distinti i link già visitati (*secondary-color*) da quelli non ancora consultati (in bianco);
 
 ### Schema database
 
