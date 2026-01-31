@@ -10,8 +10,7 @@ $htmlContent = caricaPagina('../../html/contatti.html');
 $feedbackMessage = "";
 $valori = [
     'nome' => '', 'cognome' => '', 'email' => '', 
-    'tipo_supporto' => '', 'prefisso' => '+39', 
-    'telefono' => '', 'messaggio' => ''
+    'tipo_supporto' => '', 'messaggio' => ''
 ];
 
 // 2. Controllo se il form è stato inviato
@@ -22,8 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $valori['cognome'] = htmlspecialchars(trim($_POST['cognome'] ?? ''));
     $valori['email'] = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $valori['tipo_supporto'] = htmlspecialchars($_POST['tipo_supporto'] ?? '');
-    $valori['prefisso'] = htmlspecialchars(trim($_POST['prefisso'] ?? '+39'));
-    $valori['telefono'] = htmlspecialchars(trim($_POST['telefono'] ?? ''));
     $valori['messaggio'] = htmlspecialchars(trim($_POST['messaggio'] ?? ''));
     $privacy = isset($_POST['privacy']);
 
@@ -46,8 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $valori['cognome'], 
                 $valori['email'], 
                 $valori['tipo_supporto'], 
-                $valori['prefisso'], 
-                $valori['telefono'], 
                 $valori['messaggio']
             );
             $db->closeConnection();
@@ -81,8 +76,6 @@ $htmlContent = str_replace("[feedback_message]", $feedbackMessage, $htmlContent)
 $htmlContent = str_replace("[val_nome]", $valori['nome'], $htmlContent);
 $htmlContent = str_replace("[val_cognome]", $valori['cognome'], $htmlContent);
 $htmlContent = str_replace("[val_email]", $valori['email'], $htmlContent);
-$htmlContent = str_replace("[val_prefisso]", $valori['prefisso'], $htmlContent);
-$htmlContent = str_replace("[val_telefono]", $valori['telefono'], $htmlContent);
 $htmlContent = str_replace("[val_messaggio]", $valori['messaggio'], $htmlContent);
 
 // Gestione Select (Opzione selezionata)
