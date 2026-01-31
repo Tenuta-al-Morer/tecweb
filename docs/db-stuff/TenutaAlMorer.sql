@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Creato il: Gen 31, 2026 alle 16:04
+-- Creato il: Gen 31, 2026 alle 16:28
 -- Versione del server: 8.0.44-0ubuntu0.24.04.2
 -- Versione PHP: 8.3.6
 
@@ -95,8 +95,14 @@ CREATE TABLE `contatto` (
 -- Dump dei dati per la tabella `contatto`
 --
 
-INSERT INTO `contatto` (`id`, `nome`, `cognome`, `email`, `tipo_supporto`, `prefisso`, `telefono`, `messaggio`, `risposta`, `data_invio`, `stato`) VALUES
-(1, 'Test', 'User', 'user@test.com', 'Informazioni', '+39', '3331234567', 'Ho bisogno di informazioni sulle degustazioni.', ' - ', '2025-12-22 22:39:38', 'risposto');
+INSERT INTO `contatto` (`id`, `nome`, `cognome`, `email`, `tipo_supporto`, `messaggio`, `risposta`, `data_invio`, `stato`) VALUES
+(1, 'Test', 'User', 'user@test.com', 'Informazioni', 'Ho bisogno di informazioni sulle degustazioni.', ' - ', '2025-12-22 22:39:38', 'risposto'),
+(10, 'Alessandro', 'Contarini', 'alessandro.contarini@test.com', 'ordine_online', 'Non mi è ancora arrivato l&#039;ordine online', NULL, '2026-01-31 17:22:55', 'aperto'),
+(11, 'Luca', 'Marcuzzo', 'luca.marcuzzo@test.com', 'informazioni_vini', 'Tra quanto è disponibile il Raboso del Piave?', NULL, '2026-01-31 17:24:39', 'aperto'),
+(12, 'Alessandro', 'Contarini', 'alessandro.contarini@test.com', 'ordine_online', 'Qual è il tempo media di consegna?', NULL, '2026-01-31 17:25:27', 'aperto'),
+(13, 'Giovanni', 'Visentin', 'giovanni.visentin@test.com', 'visita_degustazione', 'Esistono altri tipi di degustazioni? O cambiano a periodi?', NULL, '2026-01-31 17:25:59', 'aperto'),
+(14, 'Michele', 'Stevanin', 'michele.stevanin@test.com', 'assistenza', 'Come accedo alla mia area personale?', NULL, '2026-01-31 17:26:28', 'aperto'),
+(15, 'Michele', 'Stevanin', 'michele.stevanin@test.com', 'assistenza', 'Come accedo alla mia area personale?', NULL, '2026-01-31 17:27:57', 'aperto');
 
 -- --------------------------------------------------------
 
@@ -338,7 +344,7 @@ ALTER TABLE `carrello_elemento`
 -- AUTO_INCREMENT per la tabella `contatto`
 --
 ALTER TABLE `contatto`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT per la tabella `ordine`

@@ -138,12 +138,12 @@ class DBConnection {
     }
 
 
-    public function salvaMessaggio($nome, $cognome, $email, $tipo_supporto, $prefisso, $telefono, $messaggio) {
+    public function salvaMessaggio($nome, $cognome, $email, $tipo_supporto, $messaggio) {
         
         // Query di inserimento nella nuova tabella
         $query = "INSERT INTO contatto 
-                 (nome, cognome, email, tipo_supporto, prefisso, telefono, messaggio, data_invio, stato) 
-                 VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), 'aperto')";
+                 (nome, cognome, email, tipo_supporto, messaggio, data_invio, stato) 
+                 VALUES (?, ?, ?, ?, ?, NOW(), 'aperto')";
 
         $stmt = $this->connection->prepare($query);
         
@@ -152,15 +152,14 @@ class DBConnection {
         }
 
         // "sssssss" indica che sono 7 stringhe
-        $stmt->bind_param("sssssss", 
-            $nome, 
-            $cognome, 
-            $email, 
-            $tipo_supporto, 
-            $prefisso, 
-            $telefono, 
+        $stmt->bind_param("sssss",
+            $nome,
+            $cognome,
+            $email,
+            $tipo_supporto,
             $messaggio
         );
+
 
         $result = $stmt->execute();
         $stmt->close();
