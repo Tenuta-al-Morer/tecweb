@@ -31,7 +31,7 @@ CREATE TABLE `carrello` (
   `id` int NOT NULL,
   `id_utente` int NOT NULL,
   `data_aggiornamento` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dump dei dati per la tabella `carrello`
@@ -57,7 +57,7 @@ CREATE TABLE `carrello_elemento` (
   `quantita` int NOT NULL DEFAULT '1',
   `data_inserimento` datetime DEFAULT CURRENT_TIMESTAMP,
   `stato` enum('attivo','salvato') NOT NULL DEFAULT 'attivo'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dump dei dati per la tabella `carrello_elemento`
@@ -89,7 +89,7 @@ CREATE TABLE `contatto` (
   `risposta` text,
   `data_invio` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `stato` enum('aperto','risposto') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dump dei dati per la tabella `contatto`
@@ -119,7 +119,7 @@ CREATE TABLE `ordine` (
   `totale_finale` decimal(10,2) NOT NULL,
   `indirizzo_spedizione` text NOT NULL,
   `data_creazione` datetime DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dump dei dati per la tabella `ordine`
@@ -144,7 +144,7 @@ CREATE TABLE `ordine_elemento` (
   `nome_vino_storico` varchar(255) NOT NULL,
   `quantita` int NOT NULL,
   `prezzo_acquisto` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dump dei dati per la tabella `ordine_elemento`
@@ -172,7 +172,7 @@ CREATE TABLE `prenotazione` (
   `n_persone` int NOT NULL,
   `data_invio` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `stato` enum('in_attesa','approvato','annullato') NOT NULL DEFAULT 'in_attesa'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dump dei dati per la tabella `prenotazione`
@@ -209,7 +209,7 @@ CREATE TABLE `utente` (
   `provincia` varchar(10) DEFAULT NULL,
   `prefisso` varchar(10) DEFAULT '+39',
   `telefono` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dump dei dati per la tabella `utente`
@@ -245,7 +245,7 @@ CREATE TABLE `vino` (
   `gradazione` varchar(20) DEFAULT 'N/D',
   `temperatura` varchar(20) DEFAULT 'N/D',
   `abbinamenti` varchar(255) DEFAULT 'N/D'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dump dei dati per la tabella `vino`
