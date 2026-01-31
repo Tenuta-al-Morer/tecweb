@@ -10,7 +10,7 @@ $htmlContent = caricaPagina('../../html/esperienze.html');
 $feedbackMessage = "";
 $valori = [
     'nome' => '', 'cognome' => '', 'email' => '', 
-    'tipo_degustazione' => '', 'data' => '', 'persone' => ''
+    'tipo_degustazione' => '', 'data' => '', 'persone' => 0
 ];
 
 // 2. Controllo se il form è stato inviato
@@ -65,6 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $feedbackMessage = '<div class="alert success" role="alert"><span class="fas fa-check-circle"></span> Richiesta inviata! Ti contatteremo per confermare.</div>';
                 // Resetto i valori
                 $valori = array_fill_keys(array_keys($valori), ''); 
+                $valori['persone'] = 0;
             } else {
                 // Errore generico (con role="alert")
                 $feedbackMessage = '<div class="alert error" role="alert"><span class="fas fa-exclamation-triangle"></span> Errore nel salvataggio. Riprova più tardi.</div>';
@@ -93,7 +94,12 @@ $htmlContent = str_replace("[val_cognome]", $valori['cognome'], $htmlContent);
 $htmlContent = str_replace("[val_email]", $valori['email'], $htmlContent);
 $htmlContent = str_replace("[val_data]", $valori['data'], $htmlContent);
 // Gestione placeholder numerico per persone (se 0 mettiamo vuoto)
-$htmlContent = str_replace("[val_persone]", ($valori['persone'] > 0 ? $valori['persone'] : ''), $htmlContent);
+$attrValPersone = '';
+if (is_int($valori['persone']) && $valori['persone'] >= 1 && $valori['persone'] <= 50) {
+    $attrValPersone = 'value="' . $valori['persone'] . '"';
+}
+$htmlContent = str_replace("[attr_val_persone]", $attrValPersone, $htmlContent);
+
 
 // Gestione Select
 $options = ['Linea Oro', 'Piave'];

@@ -1,5 +1,5 @@
 Lista todo per tecweb:
-- link nella main-nav-bar se passati sopra con tab NVDA dice "link visitato" anche se mai visitato 
+- sistemare warning dovuti a prefissi in gestionale -> contarini
 - leggere relazione
     sistemare tutta la sezione riguardante i test. perché diciamo che non sono presenti errori però bisogna tornare a 
     verificare che non ci siano
