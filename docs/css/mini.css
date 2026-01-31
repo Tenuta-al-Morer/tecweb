@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
-    padding: 0 0.8em;
+    padding: 0 0em;
     min-height: 4.5em;
     background-color: var(--always-dark-bg);
     flex-wrap: nowrap;
@@ -113,21 +113,59 @@
 }
 
 .primary-navigation {
-    display: none;
-    width: 100%;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: var(--always-dark-bg);
-    border-top: 1px solid var(--always-bright);
-    box-shadow: 0 5px 10px var(--black);
-    z-index: 999;
+  display: none;
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--always-dark-bg);
+  border-top: 1px solid var(--always-bright);
+  box-shadow: 0 5px 10px var(--black);
+  z-index: 999;
 }
 
-.primary-navigation.is-open {
-    display: block;
-    animation: slideDown 0.3s ease-out;
+/* NO-JS: sempre visibile e NON overlay */
+.no-js .primary-navigation {
+  display: block;
+  position: relative;  /* o static */
+  top: auto;
+  left: auto;
+  z-index: auto;
 }
+
+/* NO-JS: hamburger non serve */
+.no-js .menu-toggle,
+.no-js .menu-checkbox {
+  display: none;
+}
+
+/* JS: aperto solo quando serve */
+.js .primary-navigation.is-open {
+  display: block;
+  animation: slideDown 0.3s ease-out;
+}
+
+.no-js .main-nav-bar {
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.no-js .primary-navigation {
+  display: block;
+  position: static;      /* o relative: l'importante è NON absolute */
+  flex-basis: 100%;
+  width: 100%;
+  order: 3;              /* la metti dopo logo e icone */
+}
+
+.no-js .logo-link {
+  order: 1;
+}
+
+.no-js .mobile-icons {
+  order: 2;
+}
+
 
 @keyframes slideDown {
     from { opacity: 0; transform: translateY(-10px); }

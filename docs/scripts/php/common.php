@@ -199,11 +199,10 @@ function caricaPagina($nomeFileHTML, $extraReplacements = []) {
 
     $menuTogle = '<input type="checkbox" id="menu-checkbox" class="menu-checkbox visually-hidden">
 
-            <label for="menu-checkbox" class="menu-toggle" aria-controls="main-navigation" aria-expanded="false">
+            <button type="button" class="menu-toggle" aria-controls="main-navigation" aria-expanded="false">
                 <span class="fas fa-bars" aria-hidden="true"></span>
                 <span class="visually-hidden">Apri il menu di navigazione</span>
-            </label>';
-
+            </button>';
 
     // Sostituisco il segnaposto del carrello/matita
     $htmlContent = str_replace("[cart_icon_link]", $cartIconHTML, $htmlContent);

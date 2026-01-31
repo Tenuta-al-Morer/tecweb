@@ -139,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================
      * 2. MENU DI NAVIGAZIONE 
      * ========================================== */
+    /*
     safeExecute('Navigation Menu', () => {
         const menuCheckbox = document.getElementById('menu-checkbox'); 
         const navMenu = document.querySelector('#main-navigation');
@@ -180,6 +181,57 @@ document.addEventListener('DOMContentLoaded', () => {
             }, { passive: true });
         }
     });
+    */
+    safeExecute('Navigation Menu', () => {
+        const menuCheckbox = document.getElementById('menu-checkbox');
+        const navMenu = document.querySelector('#main-navigation');
+        const menuButton = document.querySelector('.menu-toggle');
+        const srText = menuButton?.querySelector('.visually-hidden');
+
+        if (menuCheckbox && navMenu && menuButton) {
+
+            const chiudiMenu = () => {
+            menuCheckbox.checked = false;
+            menuButton.setAttribute('aria-expanded', 'false');
+            navMenu.classList.remove('is-open');
+            if (srText) srText.textContent = 'Apri il menu di navigazione';
+            };
+
+            // NUOVO: click sul bottone -> toggle checkbox -> trigger change
+            menuButton.addEventListener('click', () => {
+            menuCheckbox.checked = !menuCheckbox.checked;
+            menuCheckbox.dispatchEvent(new Event('change', { bubbles: true }));
+            });
+
+            menuCheckbox.addEventListener('change', () => {
+            const isOpen = menuCheckbox.checked;
+            menuButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+
+            if (isOpen) {
+                navMenu.classList.add('is-open');
+                if (srText) srText.textContent = 'Chiudi il menu di navigazione';
+            } else {
+                navMenu.classList.remove('is-open');
+                if (srText) srText.textContent = 'Apri il menu di navigazione';
+            }
+            });
+
+            document.addEventListener('click', (e) => {
+            if (
+                menuCheckbox.checked &&
+                !e.target.closest('#main-navigation') &&
+                !e.target.closest('.menu-toggle')
+            ) {
+                chiudiMenu();
+            }
+            });
+
+            window.addEventListener('scroll', () => {
+            if (menuCheckbox.checked) chiudiMenu();
+            }, { passive: true });
+        }
+        });
+
 
     /* ==========================================
     * 3. UTILITIES (Scroll top, Links)
