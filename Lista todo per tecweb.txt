@@ -1,4 +1,5 @@
-Lista todo per tecweb:   
+Lista todo per tecweb:
+- link nella main-nav-bar se passati sopra con tab NVDA dice "link visitato" anche se mai visitato 
 - aria-expanded deve stare dentro tag nav non label
 - leggere relazione
     risulta snagliata poich`e il testo
