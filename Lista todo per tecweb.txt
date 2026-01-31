@@ -1,11 +1,6 @@
 Lista todo per tecweb:
 - link nella main-nav-bar se passati sopra con tab NVDA dice "link visitato" anche se mai visitato 
-- aria-expanded deve stare dentro tag nav non label
 - leggere relazione
-    risulta snagliata poich`e il testo
-    l'utente ospite CHE non ...
-    funzionalità CLIENTE, staff, admin
-    nell’”above the fold” -> troppe virgolette
     sistemare tutta la sezione riguardante i test. perché diciamo che non sono presenti errori però bisogna tornare a 
     verificare che non ci siano
 - verificare risolti tutti gli errori, se il print funziona correttamente

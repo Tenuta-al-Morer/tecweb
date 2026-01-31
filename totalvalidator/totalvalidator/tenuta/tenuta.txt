@@ -1,3 +1,3 @@
-tutto risolto, mancano gli aria-expanded
+tutto risolto
 
 resta sempre il dubbio sulle nav annidate dentro header
