@@ -1,0 +1,7 @@
+sistemato solo area header
+
+ci sono warning dovuti dai link alt"" delle immagini, chat dice che vanno tolti per risolvere
+(non so quanto sia giusto)
+
+poi c'è il problema degli heading, manca h2, c'è h1 > h3
+(so che era stato scritto qualcosa a riguardo nella relazione)
