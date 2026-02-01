@@ -337,47 +337,65 @@ Di seguito sono elencate tutte le scelte effettuate per migliorare l’accessibi
 
 #### Aiuti per lo screen reader
 
-Abbiamo utilizzato gli attributi ARIA per agevolare a tutte le categorie di utenti l’interazione con il sito. Inoltre è stata aggiunta una sezione all’inizio di ogni pagina che contiene gli aiuti per la navigazione. permettendo ad un utente che naviga da tastiera di raggiungere direttamente determinate sezioni della pagina (skip to content).
+Per agevolare gli utenti che utilizzano lo screen reader per navigare sul sito, sono stati adottati i seguenti accorgimenti:
+
+- all’inizio di ogni pagina sono presenti aiuti alla navigazione (*Vai al contenuto*) che consentono all’utente di risparmiare tempo qualora non fosse interessato all’ascolto dell’intestazione di inizio pagina;
+
+- quando necessario, vengono utilizzati gli attributi `aria` per migliorare l’accessibilità dei contenuti;
+
+- le tabelle rese accessibili includono accorgimenti come `aria-describedby` e l’attributo `abbr` per facilitare la comprensione dei dati e velocizzarne l’esplorazione;
+
+- se il contenuto della pagina supera la porzione visibile (*above the fold*), viene fornito un pulsante che permette di tornare rapidamente in cima alla pagina;
+
+- quando presenti termini in lingue diverse da quella principale della pagina, vengono utilizzati gli attributi `lang` per garantire una corretta lettura da parte dello screen reader;
+
+- in generale, si è cercato di utilizzare il più possibile tag HTML5 semantici, in modo da facilitare l’interpretazione dei contenuti da parte degli screen reader;
+
+- sono state fornite alternative testuali per tutti i contenuti visivi/grafici che veicolano informazioni.
 
 #### Compatibilità
 
-Le tabelle sono state rese responsive in modo da facilitarne la lettura su diversi dispositivi; inoltre la navbar diventa un menù ad hamburger per i piccoli schermi facilitando la navigazione. In generale, i contenuti di ogni pagina web sono disposti in modo tale da essere facilmente consultabili, indipendentemente dal dispositivo utilizzato.
+Le tabelle del sito sono state rese completamente responsive, utilizzando, ad esempio, gli attributi `data-title`, in modo da facilitarne la lettura anche su dispositivi con schermi di dimensioni ridotte. Questo permette agli utenti di visualizzare le informazioni in maniera chiara senza dover scorrere orizzontalmente o perdere dettagli importanti. La navbar è stata progettata per adattarsi automaticamente: sui piccoli schermi si trasforma in un menù a “hamburger”, semplificando l’accesso alle voci principali e riducendo l’ingombro visivo.
+
+In generale, tutte le pagine del sito implementano layout fluidi, cioè strutture che si adattano dinamicamente alle diverse dimensioni e risoluzioni degli schermi. Ciò garantisce che i contenuti siano sempre leggibili e facilmente usabili, sia su desktop, tablet o smartphone. Per ottenere questo comportamento, sono state create due diverse media query, ciascuna studiata per specifici intervalli di larghezza dello schermo, entrambe in grado di mantenere la fluidità dei layout e assicurare un’esperienza di navigazione uniforme su tutti i dispositivi.
 
 ## Test effettuati
 
 ### Navigabilità e accessibilità
 
-Abbiamo utilizzato i seguenti strumenti per effettuare test manuali:
+Per verificare l’accessibilità del sito sono stati utilizzati sia strumenti automatici sia test manuali.
 
-- WCAG Color contrast checker: controllo contrasto dei colori e applicazione di vari filtri visivi (protanopia, protanomalia, deuteranopia, deuteranomalia, tritanopia, tritanomalia, acromatopsia, acromatomalia); è sempre stato raggiunto il livello di conformità WCAG AA;
+Strumenti automatici utilizzati:
 
-- WAVE by WebAIM, Silktide Inspector, Total Validator: per controlli generali, non vengono segnalati errori (esclusione fatta per i falsi positivi analizzati nella sezione successiva);
+- Silktide
 
-- W3C Validator (per HTML e CSS): non vengono segnalati errori;
+- WAVE by WebAIM
 
-- Lighthouse: calcolo prestazioni del sito con buoni punteggi;
+- Total Validator
 
-- compatibilità con browser diversi quali Microsoft Edge, Google Chrome, Mozilla Firefox, Apple Safari e Opera;
+- W3C Validator (HTML e CSS)
 
-- compatibilità con sistemi operativi diversi quali Microsoft Windows 10, Ubuntu 23.10, Android 9, Android 15, iOS 18.3;
+- Lighthouse (per il calcolo delle prestazioni del sito)
+
+Questi strumenti hanno permesso di verificare rapidamente contrasti, individuare errori e rilevare eventuali mancanze di tag. I controlli automatici hanno evidenziato che il sito raggiunge il livello di conformità WCAG AA per quanto riguarda i contrasti dei colori, anche applicando filtri visivi specifici per varie forme di daltonismo. Non sono stati riscontrati errori significativi dai validatori, ad eccezione di falsi positivi analizzati separatamente.
+
+Test manuali effettuati:
+
+- Controllo della corretta struttura degli headings
+
+- Verifica dell’uso appropriato dei tag semantici
+
+- Controllo della presenza e correttezza degli attributi `alt` delle immagini
+
+- Compatibilità del sito con diversi browser: Microsoft Edge, Google Chrome, Mozilla Firefox, Apple Safari e Opera
+
+- Compatibilità con diversi sistemi operativi: Microsoft Windows 10, Ubuntu 23.10, Android 9, Android 15 e iOS 18.3
+
+Questa combinazione di test automatici e manuali ha garantito che il sito sia accessibile, leggibile e navigabile correttamente da tutti gli utenti, comprese le persone che utilizzano screen reader o altre tecnologie assistive.
 
 ### Analisi dei Falsi Positivi
 
-Di seguito vengono analizzate le segnalazioni rilevate da Total Validator, classificate come falsi positivi, in quanto derivanti da scelte progettuali deliberate o interpretazioni errate del validatore:
-
-- **Redundant link:** La segnalazione, presente in tutte le pagine, è causata dalla presenza adiacente del logo e della voce "Home" nella barra di navigazione. Sebbene entrambi puntino alla stessa destinazione, la ridondanza è mantenuta per favorire l’usabilità.
-
-- **Skipped heading level:** Nella pagina *Carrello*, la gerarchia dei titoli presenta dei salti (omissione di alcuni livelli intermedi) per adattarsi alla struttura logica delle sezioni secondarie, pur mantenendo la semantica di pagina.
-
-- **Possible heading:** Sempre nella pagina *Carrello*, il validatore segnala erroneamente il dato numerico relativo al "Costo del vino" come un possibile titolo, probabilmente a causa della sua formattazione visiva, sebbene si tratti di un semplice contenuto testuale.
-
-- **Multiple form labels:** Nella pagina Vini e Admin vengono segnalati parecchi errori nei form poichè alcune checkbox sono collegate a più label. Si tratta di un falso positivo poiché tali elementi non sono destinati alla raccolta dati, ma fungono da interruttori logici per lo stato di visibilità (pattern *CSS Checkbox Hack*); sono nascosti visivamente tramite classe `sr-only` ma rimangono pienamente operabili e accessibili tramite le `<label>` associate.
-
-- **Falsi positivi in modalità light:**
-
-  - **Contrast Errors:** Il validatore segnala in tutte le pagine un errore di contrasto per la navigazion help quando nascosta (in modalità light).
-
-  - **Contrast Errors:** Vengono erroneamente segnalati errori di contrasto nella pagina home nella sezione con la foto di sfondo. Tuttavia la segnalazione risulta sbagliata poichè il testo compare sopra la foto alla quale è stato applicato un colore di background di fallback violaceo che garantisce un contrasto superiore a 4.5:1.
+da fare
 
 ### Screen reader
 
