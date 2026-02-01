@@ -7,6 +7,8 @@ Lista todo per tecweb:
 - verificare risolti tutti gli errori, se il print funziona correttamente
 - decidere cosa fare delle nav annidate nell'header
 - sistemare css pagina admin "risposta messaggi"
+- sistemare focus policy
+- sistemare tag <i>
 
 
 Criticità 
