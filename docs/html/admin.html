@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="../../css/mini.css" media="screen and (max-width:1024px)">
         <link rel="stylesheet" href="../../css/print.css" media="print">
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
         <script src="../javascript/script.js"></script>
     </head>
 
@@ -106,7 +106,7 @@
                     <div class="admin-form-group">
                         <label for="nome">Nome Vino *</label>
                         <input type="text" name="nome" id="nome" class="admin-input" required aria-describedby="nome-hint">
-                        <span class="little" id="nome-hint" class="input-help">Esempio: Pinot Nero Riserva</span>
+                        <span class="little input-help" id="nome-hint" >Esempio: Pinot Nero Riserva</span>
                     </div>
                     <div class="admin-form-group">
                         <label for="categoria">Categoria *</label>
@@ -115,7 +115,7 @@
                             <option value="bianchi">Bianchi</option>
                             <option value="selezione">Selezione</option>
                         </select>
-                        <span class="little" id="categoria-hint" class="input-help">Esempio: Rossi</span>
+                        <span class="little input-help" id="categoria-hint" >Esempio: Rossi</span>
                     </div>
                 </div>
 
@@ -123,12 +123,12 @@
                     <div class="admin-form-group">
                         <label for="prezzo">Prezzo (€) *</label>
                         <input type="number" step="0.01" name="prezzo" id="prezzo" class="admin-input" required aria-describedby="prezzo-hint">
-                        <span class="little" id="prezzo-hint" class="input-help">Esempio: 12.50</span>
+                        <span class="little input-help" id="prezzo-hint" >Esempio: 12.50</span>
                     </div>
                     <div class="admin-form-group">
                         <label for="quantita_stock">Quantità Stock *</label>
                         <input type="number" name="quantita_stock" id="quantita_stock" class="admin-input" required aria-describedby="quantita_stock-hint">
-                        <span class="little" id="quantita_stock-hint" class="input-help">Esempio: 120</span>
+                        <span class="little input-help" id="quantita_stock-hint" >Esempio: 120</span>
                     </div>
                 </div>
 
@@ -139,36 +139,36 @@
                             <option value="attivo">Attivo</option>
                             <option value="nascosto">Nascosto</option>
                         </select>
-                        <span class="little" id="stato-hint" class="input-help">Esempio: Attivo</span>
+                        <span class="little input-help" id="stato-hint" >Esempio: Attivo</span>
                     </div>
                     <div class="admin-form-group">
                         <label for="img">Carica Immagine</label>
                         <input type="file" name="img" id="img" class="admin-input" accept="image/*" aria-describedby="img-hint">
-                        <span class="little" id="img-hint" class="input-help">Esempio: JPG o PNG</span>
+                        <span class="little input-help" id="img-hint" >Esempio: JPG o PNG</span>
                     </div>
                 </div>
 
                 <div class="admin-form-group">
                     <label for="descrizione_breve">Descrizione Breve</label>
                     <input type="text" name="descrizione_breve" id="descrizione_breve" class="admin-input" aria-describedby="descrizione_breve-hint">
-                    <span class="little" id="descrizione_breve-hint" class="input-help">Esempio: Rosso elegante con note di frutti rossi</span>
+                    <span class="little input-help" id="descrizione_breve-hint" >Esempio: Rosso elegante con note di frutti rossi</span>
                 </div>
 
                 <div class="admin-form-group">
                     <label for="descrizione_estesa">Descrizione Estesa</label>
                     <textarea name="descrizione_estesa" id="descrizione_estesa" rows="3" class="admin-input" aria-describedby="descrizione_estesa-hint"></textarea>
-                    <span class="little" id="descrizione_estesa-hint" class="input-help">Esempio: Affinato in barrique per 12 mesi, struttura intensa e finale speziato.</span>
+                    <span class="little input-help" id="descrizione_estesa-hint" >Esempio: Affinato in barrique per 12 mesi, struttura intensa e finale speziato.</span>
                 </div>
 
                 <fieldset class="admin-fieldset">
                     <legend class="admin-fieldset-legend">Scheda Tecnica</legend>
                     <div class="form-grid">
-                        <div class="admin-form-group"><label for="vitigno">Vitigno</label><input type="text" name="vitigno" id="vitigno" class="admin-input" aria-describedby="vitigno-hint"><span class="little" id="vitigno-hint" class="input-help">Esempio: Cabernet Sauvignon</span></div>
-                        <div class="admin-form-group"><label for="annata">Annata</label><input type="text" name="annata" id="annata" class="admin-input" aria-describedby="annata-hint"><span class="little" id="annata-hint" class="input-help">Esempio: 2021</span></div>
-                        <div class="admin-form-group"><label for="gradazione">Gradazione</label><input type="text" name="gradazione" id="gradazione" class="admin-input" aria-describedby="gradazione-hint"><span class="little" id="gradazione-hint" class="input-help">Esempio: 13.5<abbr title="percent volume">% vol</abbr></span></div>
-                        <div class="admin-form-group"><label for="temperatura">Temperatura</label><input type="text" name="temperatura" id="temperatura" class="admin-input" aria-describedby="temperatura-hint"><span class="little" id="temperatura-hint" class="input-help">Esempio: 16-18°C</span></div>
+                        <div class="admin-form-group"><label for="vitigno">Vitigno</label><input type="text" name="vitigno" id="vitigno" class="admin-input" aria-describedby="vitigno-hint"><span class="little input-help" id="vitigno-hint" >Esempio: Cabernet Sauvignon</span></div>
+                        <div class="admin-form-group"><label for="annata">Annata</label><input type="text" name="annata" id="annata" class="admin-input" aria-describedby="annata-hint"><span class="little input-help" id="annata-hint" >Esempio: 2021</span></div>
+                        <div class="admin-form-group"><label for="gradazione">Gradazione</label><input type="text" name="gradazione" id="gradazione" class="admin-input" aria-describedby="gradazione-hint"><span class="little input-help" id="gradazione-hint" >Esempio: 13.5<abbr title="percent volume">% vol</abbr></span></div>
+                        <div class="admin-form-group"><label for="temperatura">Temperatura</label><input type="text" name="temperatura" id="temperatura" class="admin-input" aria-describedby="temperatura-hint"><span class="little input-help" id="temperatura-hint" >Esempio: 16-18°C</span></div>
                     </div>
-                    <div class="admin-form-group"><label for="abbinamenti">Abbinamenti</label><input type="text" name="abbinamenti" id="abbinamenti" class="admin-input" aria-describedby="abbinamenti-hint"><span class="little" id="abbinamenti-hint" class="input-help">Esempio: Carni rosse, formaggi stagionati</span></div>
+                    <div class="admin-form-group"><label for="abbinamenti">Abbinamenti</label><input type="text" name="abbinamenti" id="abbinamenti" class="admin-input" aria-describedby="abbinamenti-hint"><span class="little input-help" id="abbinamenti-hint" >Esempio: Carni rosse, formaggi stagionati</span></div>
                 </fieldset>
 
                 <div class="admin-form-actions">
@@ -194,12 +194,12 @@
                     <div class="admin-form-group">
                         <label for="utente_nome">Nome *</label>
                         <input type="text" name="utente_nome" id="utente_nome" class="admin-input" required aria-describedby="utente_nome-hint">
-                        <span class="little" id="utente_nome-hint" class="input-help">Esempio: Mario</span>
+                        <span class="little input-help" id="utente_nome-hint" >Esempio: Mario</span>
                     </div>
                     <div class="admin-form-group">
                         <label for="utente_cognome">Cognome *</label>
                         <input type="text" name="utente_cognome" id="utente_cognome" class="admin-input" required aria-describedby="utente_cognome-hint">
-                        <span class="little" id="utente_cognome-hint" class="input-help">Esempio: Rossi</span>
+                        <span class="little input-help" id="utente_cognome-hint" >Esempio: Rossi</span>
                     </div>
                 </div>
 
@@ -207,12 +207,12 @@
                     <div class="admin-form-group">
                         <label for="utente_email">Email *</label>
                         <input type="email" name="utente_email" id="utente_email" class="admin-input" required aria-describedby="utente_email-hint">
-                        <span class="little" id="utente_email-hint" class="input-help">Esempio: mario.rossi@email.com</span>
+                        <span class="little input-help" id="utente_email-hint" >Esempio: mario.rossi@email.com</span>
                     </div>
                     <div class="admin-form-group">
                         <label for="utente_password">Password *</label>
                         <input type="password" name="utente_password" id="utente_password" class="admin-input" required minlength="8" aria-describedby="utente_password-hint">
-                        <span class="little" id="utente_password-hint" class="input-help">Minimo 8 caratteri.</span>
+                        <span class="little input-help" id="utente_password-hint" >Minimo 8 caratteri.</span>
                     </div>
                 </div>
 
@@ -223,7 +223,7 @@
                         <option value="staff">staff</option>
                         <option value="admin">admin</option>
                     </select>
-                    <span class="little" id="utente_ruolo-hint" class="input-help">Seleziona il ruolo dell'utente.</span>
+                    <span class="little input-help" id="utente_ruolo-hint" >Seleziona il ruolo dell'utente.</span>
                 </div>
 
                 <div class="admin-form-actions">
