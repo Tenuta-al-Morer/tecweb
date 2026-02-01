@@ -330,7 +330,8 @@ function renderCartItem($item, $isLogged, $type = 'active') {
     
     $statoVino = isset($item['stato_vino']) ? $item['stato_vino'] : (isset($item['stato']) ? $item['stato'] : 'attivo');
 
-    $imgSrc = htmlspecialchars($item['img']);
+    $imgRaw = $item['img'];
+    $imgSrc = htmlspecialchars(str_replace(' ', '%20', $imgRaw), ENT_QUOTES, 'UTF-8');
     $nome = htmlspecialchars($item['nome']);
     $desc = htmlspecialchars($item['descrizione_breve']);
     $prezzoSingolo = number_format($item['prezzo'], 2);
@@ -404,7 +405,7 @@ function renderCartItem($item, $isLogged, $type = 'active') {
     return "
     <div class='cart-item " . ($type == 'saved' ? 'item-saved' : '') . "'>
         <div class='cart-item-img'>
-            <a href='vini.php'><img src='$imgSrc' alt='$nome'></a>
+            <img src='$imgSrc' alt='$nome'>
         </div>
         <div class='cart-item-details'>
             <div class='item-header'>
@@ -425,6 +426,7 @@ $mainContentHTML = "";
 
 if (empty($activeItems) && empty($savedItems)) {
     $mainContentHTML = "
+    <h1 class='page-main-title'>Il tuo Carrello</h1>
     <div class='empty-cart-message'>
         <span class='fas fa-wine-bottle'></span>
         <h2>Il tuo carrello è vuoto</h2>
@@ -449,7 +451,7 @@ else {
 
     $savedProductsHTML = "";
     if (!empty($savedItems)) {
-        $savedProductsHTML .= "<div class='saved-items-section'><h3>Salvati per dopo / Non disponibili</h3>";
+        $savedProductsHTML .= "<div class='saved-items-section'><h2 class='saved-items-title'>Salvati per dopo / Non disponibili</h2>";
         foreach ($savedItems as $item) {
             $savedProductsHTML .= renderCartItem($item, $isLogged, 'saved');
         }
@@ -467,15 +469,19 @@ else {
     }
 
     $mainContentHTML = "
+    <h1 class='page-main-title'>Il tuo Carrello</h1>
     <div class='cart-layout'>
         <div class='cart-list-container'>
-            <h1 class='cart-title-main'>Carrello</h1>
+            <h2 class='cart-title-main'>Prodotti in carrello</h2>
             $activeProductsHTML
             " . (!empty($activeItems) ? "<div class='cart-list-total-row'>Totale prodotti (<span id='cart-count-display'>$numArticoli</span>): <span class='bold'>€ <span id='cart-list-total'>" . number_format($totaleProdotti, 2) . "</span></span></div>" : "") . "
             $savedProductsHTML
         </div>
 
         <div class='cart-summary-box'>
+            <div class='summary-header'>
+                <h2>Riepilogo Ordine</h2>
+            </div>
             <div id='shipping-message-container'>
                 $progressHTML
             </div>
