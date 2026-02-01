@@ -528,9 +528,9 @@ document.addEventListener('DOMContentLoaded', () => {
      * ========================================== */
     safeExecute('Admin Tabs', () => {
         const map = {
-            "#tab-vini": "#section-vini",
-            "#tab-degustazioni": "#section-esperienze",
-            "#tab-info": "#section-messaggi",
+            "#tab-vini": "#ordini",
+            "#tab-degustazioni": "#esperienze",
+            "#tab-info": "#messaggi",
         };
 
         const tabs = document.querySelectorAll(".admin-tabs .admin-tab");
