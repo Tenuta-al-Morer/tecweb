@@ -12,3 +12,5 @@ Criticità
 
 Verifica requisiti (evidenze principali)
 - Sintassi XML: KO (vedi criticità sopra).
+
+togliere telefono prenotazioni e contatti gestionale 
