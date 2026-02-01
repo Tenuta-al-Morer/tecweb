@@ -16,6 +16,6 @@ Verifica requisiti (evidenze principali)
 - Sintassi XML: KO (vedi criticità sopra).
 
 sistemare css pagina admin nella risposta contatti
-percorso immagine admin da fare
+percorso immagine admin da fare e eliminare l'aggiunta di conteuto alt (vini alt vuoto)
 
 da controllare 4.2.4 lunedì
