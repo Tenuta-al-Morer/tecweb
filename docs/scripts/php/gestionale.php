@@ -115,19 +115,18 @@ foreach ($ordiniArray as $ordine) {
     $ordini .= '<td data-title="Totale Finale">' . number_format($ordine['totale_finale'], 2) . ' EUR</td>';
     $ordini .= '<td data-title="Data Creazione">' . htmlspecialchars($ordine['data_creazione']) . '</td>';
     
-    // MODIFICA QUI: Rimosso <noscript>, aggiunto doppio bottone gestito via CSS
     $ordini .= '<td class="td_richiesta_degustazione" data-title="Dettagli">
                     <a href="?sezione=ordini#details-row-' . $ordineId . '" class="btn-secondary btn-fallback">Mostra Dettagli</a>
-                    <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $ordineId . '" aria-expanded="false" aria-controls="details-row-' . $ordineId . '">
+                    <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $ordineId . '" aria-expanded="false" aria-controls="details-row-' . $ordineId . '" aria-label="Mostra dettagli ordine ' . $ordineId . '">
                         Mostra <span class="fas fa-chevron-down" aria-hidden="true"></span>
                     </button>
                 </td>';
                 
     $ordini .= '<td class="td_richiesta_degustazione" data-title="Gestione richiesta"> 
-                    <form action="" method="POST" class="standard-form">
+                    <form method="POST" class="standard-form">
                         <input type="hidden" name="ordine_id" value="' . $ordineId . '">
-                        <button type="submit" name="azione" value="accetta" class="btn-secondary btn-accept">Accetta</button>
-                        <button type="submit" name="azione" value="rifiuta" class="btn-secondary btn-reject">Rifiuta</button>
+                        <button type="submit" name="azione" value="accetta" class="btn-secondary btn-accept" aria-label="Accetta ordine ' . $ordineId . '">Accetta</button>
+                        <button type="submit" name="azione" value="rifiuta" class="btn-secondary btn-reject" aria-label="Rifiuta ordine ' . $ordineId . '">Rifiuta</button>
                     </form>
                 </td>';
     $ordini .= '</tr>';
@@ -164,7 +163,7 @@ foreach ($ordiniArchivioArray as $ordine) {
     // MODIFICA QUI
     $ordiniArchivio .= '<td class="td_richiesta_degustazione" data-title="Dettagli">
                             <a href="?sezione=ordini#details-row-' . $ordineId . '" class="btn-secondary btn-fallback">Mostra Dettagli</a>
-                            <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $ordineId . '" aria-expanded="false" aria-controls="details-row-' . $ordineId . '">
+                            <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $ordineId . '" aria-expanded="false" aria-controls="details-row-' . $ordineId . '" aria-label="Mostra dettagli ordine ' . $ordineId . '">
                                 Mostra <span class="fas fa-chevron-down" aria-hidden="true"></span>
                             </button>
                         </td>';
@@ -198,15 +197,15 @@ foreach ($prenotazioniArray as $prenotazione) {
     $prenotazioni .= '<td data-title="Numero persone">' . (int)$prenotazione['n_persone'] . '</td>';
     $prenotazioni .= '<td class="td_richiesta_degustazione" data-title="Dettagli">
                         <a href="?sezione=esperienze#details-row-' . $detailsKey . '" class="btn-secondary btn-fallback">Mostra Dettagli</a>
-                        <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $detailsKey . '" aria-expanded="false" aria-controls="details-row-' . $detailsKey . '">
+                        <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $detailsKey . '" aria-expanded="false" aria-controls="details-row-' . $detailsKey . '" aria-label="Mostra dettagli prenotazione ' . $prenotazioneId . '">
                             Mostra <span class="fas fa-chevron-down" aria-hidden="true"></span>
                         </button>
                     </td>';
     $prenotazioni .= '<td class="td_richiesta_degustazione" data-title="Gestione richiesta"> 
-                        <form action="" method="POST" class="standard-form">
+                        <form method="POST" class="standard-form">
                             <input type="hidden" name="prenotazione_id" value="' . $prenotazioneId . '">
-                            <button type="submit" name="azione" value="accetta" class="btn-secondary btn-accept">Accetta</button>
-                            <button type="submit" name="azione" value="rifiuta" class="btn-secondary btn-reject">Rifiuta</button>
+                            <button type="submit" name="azione" value="accetta" class="btn-secondary btn-accept" aria-label="Accetta prenotazione ' . $prenotazioneId . '">Accetta</button>
+                            <button type="submit" name="azione" value="rifiuta" class="btn-secondary btn-reject" aria-label="Rifiuta prenotazione ' . $prenotazioneId . '">Rifiuta</button>
                         </form>
                     </td>';
     $prenotazioni .= '</tr>';
@@ -272,13 +271,13 @@ foreach ($messaggiArray as $messaggio) {
     $messaggi .= '<li><span>Email</span><span>' . htmlspecialchars($messaggio['email']) . '</span></li>';
     $messaggi .= '</ul></div>';
     $messaggi .= '<div class="details-section"><p class="details-section-heading">Risposta:</p>
-                    <form id="form_msg_' . $idMsg . '" action="" method="POST" class="standard-form">
+                    <form id="form_msg_' . $idMsg . '" method="POST" class="standard-form">
                         <input type="hidden" name="messaggio_id" value="' . $idMsg . '">
                         <input type="hidden" name="azione" value="msg_risposta">
                         <label for="richiesta1_' . $idMsg . '">Rispondi alle necessità del cliente<span aria-hidden="true">*</span></label>
                         <textarea id="richiesta1_' . $idMsg . '" name="richiesta1" required rows="6"
                             placeholder="Risposta"></textarea>
-                        <button type="submit" form="form_msg_' . $idMsg . '" class="btn-secondary">Invia</button>
+                        <button type="submit" form="form_msg_' . $idMsg . '" class="btn-secondary" aria-label="Invia risposta al messaggio ' . $idMsg . '">Invia</button>
                     </form>
                 </div></div></td></tr>';
 }
