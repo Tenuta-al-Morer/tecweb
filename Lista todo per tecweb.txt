@@ -1,15 +1,18 @@
 Lista todo per tecweb:
-- leggere privacy e valutare se è tutto corretto
-- sistemare warning dovuti a prefissi in gestionale -> contarini
+- leggere privacy e valutare se è tutto corretto -> contarini
 - leggere relazione
     sistemare tutta la sezione riguardante i test. perché diciamo che non sono presenti errori però bisogna tornare a 
     verificare che non ci siano
-- verificare risolti tutti gli errori, se il print funziona correttamente
+- verificare risolti tutti gli errori, se il print funziona correttamente -> contarini
 - decidere cosa fare delle nav annidate nell'header
-- sistemare css pagina admin "risposta messaggi"
+- sistemare css pagina gestionale "risposta messaggi"
 - sistemare focus aiuti alla navigazione in policy
 - sistemare tag <i> in script.js
 - vedere se è possibile togliere da js la parte di novalidate, che senso ha non validare un form??? che poi in teoria non compare neanche più
+- verificare html e css se è valido:
+    Il sito web deve essere realizzato con lo standard HTML5. Le pagine devono degradare in modo elegante e devono rispettare la sintassi XML;
+    il layout deve essere realizzato con CSS puri (CSS2 o CSS3);
+- fare in modo di aggiungere l'immagine del vino in admin "aggiunta vino" e non il percorso dell'img
 
 Criticità 
 - Specifica “sintassi XML” non rispettata: le pagine sono HTML5 ma non XML‑well‑formed (tag void non auto‑chiusi, <br> non auto‑chiuso, assenza di namespace XHTML). Esempi in home.html (line 5), home.html (line 7), home.html (line 35), home.html (line 75).
