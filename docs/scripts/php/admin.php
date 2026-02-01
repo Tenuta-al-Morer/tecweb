@@ -117,7 +117,9 @@ function getFormVinoHTML($v = null) {
     $nome = $isEdit ? htmlspecialchars($v['nome']) : '';
     $prezzo = $isEdit ? $v['prezzo'] : '';
     $stock = $isEdit ? $v['quantita_stock'] : '0';
-    $img = $isEdit ? htmlspecialchars($v['img']) : '../../images/tr/placeholder.webp';
+
+    $img = $isEdit ? str_replace(' ', '%20', htmlspecialchars($v['img'])) : '../../images/tr/placeholder.webp';
+
     $descBreve = $isEdit ? htmlspecialchars($v['descrizione_breve']) : '';
     $descEstesa = $isEdit ? htmlspecialchars($v['descrizione_estesa']) : '';
     $vitigno = $isEdit ? htmlspecialchars($v['vitigno']) : '';
@@ -237,7 +239,7 @@ if ($view === 'vini') {
 
         if (!$isDeleted) {
             $actions .= "
-            <label for='$modalToggleId' class='btn-icon' title='Modifica $nomeSafe' aria-label='Modifica $nomeSafe' role='button' tabindex='0'>
+            <label for='$modalToggleId' class='btn-icon' title='Modifica $nomeSafe' aria-label='Modifica $nomeSafe' tabindex='0'>
                 <span class='fas fa-edit' aria-hidden='true'></span>
             </label>";
             
