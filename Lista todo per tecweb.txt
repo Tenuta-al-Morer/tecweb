@@ -15,7 +15,7 @@ Criticità
 Verifica requisiti (evidenze principali)
 - Sintassi XML: KO (vedi criticità sopra).
 
-togliere telefono prenotazioni e contatti gestionale 
+sistemare css pagina admin nella risposta contatti
 percorso immagine admin da fare
 
 da controllare 4.2.4 lunedì
