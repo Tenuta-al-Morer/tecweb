@@ -275,7 +275,6 @@ if (empty($prenotazioni)) {
         $tabellaPrenotazioni .= '<div class="details-section"><h4>Dettagli Richiesta:</h4><ul class="details-products-list">';
         $tabellaPrenotazioni .= '<li><span>Tipo esperienza</span><span>' . htmlspecialchars($prenotazione['tipo_degustazione']) . '</span></li>';
         $tabellaPrenotazioni .= '<li><span>Email</span><span>' . htmlspecialchars($prenotazione['email']) . '</span></li>';
-        $tabellaPrenotazioni .= '<li><span>Telefono</span><span aria-label="Numero di telefono: ' . implode(' ', str_split(str_replace(['+', ' ', '-'], '', htmlspecialchars($prenotazione['prefisso'] . $prenotazione['telefono'])))) . '">' . htmlspecialchars($prenotazione['prefisso']) . ' ' . htmlspecialchars($prenotazione['telefono']) . '</span></li>';
         $tabellaPrenotazioni .= '</ul></div></div></td></tr>';
     }
     $tabellaPrenotazioni .= '</tbody></table>';
