@@ -237,31 +237,31 @@ Abbiamo usato il font **Atkinson Hyperlegible** per tutto il sito web poichè ac
 
 #### Colori
 
-Per garantire che il sito sia accessibile e che tutti gli utenti (inclusi coloro con difficoltà visive) possano navigarlo facilmente, abbiamo scelto una palette di colori con particolare attenzione al contrasto e alla leggibilità. Abbiamo selezionato colori assicurandoci che il contrasto tra il testo e lo sfondo sia sufficientemente elevato, in conformità alle linee guida WCAG 2.1 di livello AA.
+Per garantire che il sito sia accessibile e che tutti gli utenti (inclusi coloro con difficoltà visive) possano navigarlo facilmente, abbiamo scelto una palette di colori con particolare attenzione al contrasto e alla leggibilità. Abbiamo selezionato i colori assicurandoci che il contrasto tra il testo e lo sfondo sia sufficientemente elevato, in conformità alle linee guida WCAG 2.1 di livello AA.
 
 Dopo diversi tentativi di ottimizzazione dei colori, abbiamo definito e adottato la seguente palette:
 
-| **Colore**         | **Codice HEX** |
-|:-------------------|:--------------:|
-| Testo principale   |    \#E0E0E0    |
-| Sfondo principale  |    \#1D1D1D    |
-| Accento secondario |    \#C5A551    |
-| Colore errori      |    \#FF2934    |
-| Colore successo    |    \#176F3A    |
-| Colore attenzione  |    \#FFC107    |
-| Bordo              |    \#B6B6B6    |
+| **Colore**        | **Codice HEX** |
+|:------------------|:--------------:|
+| Testo principale  |    \#E0E0E0    |
+| Tema sfondo       |    \#1D1D1D    |
+| Colore secondario |    \#C5A551    |
+| Colore errori     |    \#FF2934    |
+| Colore successo   |    \#176F3A    |
+| Colore attenzione |    \#FFC107    |
+| Colore bordo      |    \#B6B6B6    |
 
 Palette colori modalità scura
 
-| **Colore**         | **Codice HEX** |
-|:-------------------|:--------------:|
-| Testo principale   |    \#121212    |
-| Sfondo principale  |    \#F4F4F4    |
-| Accento secondario |    \#7A5F1A    |
-| Colore errori      |    \#990109    |
-| Colore successo    |    \#02771D    |
-| Colore attenzione  |    \#856404    |
-| Bordo              |    \#4B4B4B    |
+| **Colore**        | **Codice HEX** |
+|:------------------|:--------------:|
+| Testo principale  |    \#121212    |
+| Tema sfondo       |    \#F4F4F4    |
+| Colore secondario |    \#7A5F1A    |
+| Colore errori     |    \#990109    |
+| Colore successo   |    \#02771D    |
+| Colore attenzione |    \#856404    |
+| Colore bordo      |    \#4B4B4B    |
 
 Palette colori modalità chiara
 
@@ -269,25 +269,25 @@ Palette colori modalità chiara
 
 #### PHP
 
-Nelle sezioni contenenti form abbiamo implementato, nei casi di errore, un algoritmo per il ripopolamento dei vari campi di input presenti tramite l’utilizzo della tecnica "segnaposto" descritta nella sezione 4.1.1.
+Nelle sezioni contenenti form abbiamo implementato, nei casi di errore, un algoritmo per il ripopolamento dei vari campi di input presenti tramite l’utilizzo della tecnica "segnaposto" descritta nella sezione 4.1.1. Questa soluzione evita che l’utente debba reinserire tutte le informazioni in caso di invio del form non andato a buon fine.
 
-Sono presenti specifici file:
+I file principali con cui viene gestita l’infrastruttura PHP sono:
 
 - DBConnection.php: gestisce la connessione al database e contiene i vari metodi per effettuare le query SQL;
 
-- common.php: gestisce parti comuni nelle varie pagine come footer e icone mobili in alto a destra;
+- common.php: gestisce parti comuni nelle varie pagine html come footer e icone mobili in alto a destra;
 
-- per ogni file .html, un corrispettivo file .php associato. Unica eccezione il file logout.php, richiamato nel file areaPersonale.html e gestionale.html.
+- un file .php associato ad ogni pagina .html. Unica eccezione riguarda il file logout.php che viene richiamato nelle pagine areaPersonale.html e gestionale.html.
 
 #### JavaScript
 
-Sono stati implementati script dedicati per la validazione lato client dei moduli, garantendo una netta separazione tra la struttura semantica (HTML) e il livello comportamentale (JavaScript). L’uso di JavaScript è finalizzato al miglioramento della User Experience (UX) e della reattività dell’interfaccia.
+Sono stati implementati script dedicati alla validazione lato client dei moduli, garantendo così una netta separazione tra la struttura semantica (HTML) e il livello comportamentale (JavaScript). L’uso di JavaScript è finalizzato al miglioramento della User Experience (UX) e della reattività dell’interfaccia. Inoltre, i controlli eseguiti lato client tramite JavaScript, e successivamente replicati lato server in PHP, permettono di intercettare gli errori in fase preliminare, riducendo il carico complessivo ed evitando la formazione di colli di bottiglia.
 
 È fondamentale notare che l’intero progetto è stato sviluppato secondo il principio del Progressive Enhancement: tutte le funzionalità essenziali rimangono pienamente operative anche in assenza di JavaScript, il quale agisce esclusivamente come livello aggiuntivo di ottimizzazione.
 
 #### Validazione dell’input
 
-Abbiamo eseguito controlli sull’input sia lato client, utilizzando Javascript, che lato server tramite PHP. La maggior parte dei controlli è stata eseguita tramite funzioni che controllano con delle espressioni regolari il contenuto degli input. Inoltre ogni messaggio di errore ritornato dai metodi di validazione sopra elencati è stato pensato per fornire all’utente una spiegazione chiara e concisa per risolvere il problema.
+Abbiamo eseguito controlli sull’input sia lato client, utilizzando Javascript, che lato server tramite PHP. La maggior parte dei controlli è stata eseguita tramite funzioni che controllano con delle espressioni regolari il contenuto degli input. Inoltre, ogni messaggio di errore ritornato dai metodi di validazione sopra elencati è stato pensato per fornire all’utente una spiegazione chiara e concisa del problema.
 
 #### Sicurezza
 
