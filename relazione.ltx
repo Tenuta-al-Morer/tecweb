@@ -369,24 +369,30 @@ Queste pagine hanno principalmente scopo informativo e di aiuto per l'utente.
 
 \subsection{Accessibilità}
 Di seguito sono elencate tutte le scelte effettuate per migliorare l'accessibilità del sito. Ognuna mira almeno al soddisfacimento del livello di 
-conformità AA delle WCAG come stabilito dalla legge italiana:
+conformità AA delle WCAG 2.1 come stabilito dalla legge italiana (ed europea):
 
 \begin{itemize}
 \item navigazione da tastiera completa e accessibile che rispetta l'ordine visivo degli elementi;
 \item tabelle accessibili;
-\item form accessibili con label associate correttamente agli input;
-\item sono stati distinti i link visitati e non visitati;
-\item per ogni pagina è stato studiato ad hoc la sezione "above the fold" inserendoci le informazioni necessarie per rispondere alle domande "Dove sono? - 
-Dove posso andare? - Di che cosa si tratta?";
-\item sono accessibili i contrasti tra i colori di testo e relativo sfondo;
+\item form accessibili con label associate correttamente agli input (feedback e feedforward chiari e utili a tutte le categorie di utenti);
+\item per garantire l'orientamento dell'utente abbiamo verificato che nel "above the fold" di ogni pagina fosse semplice e immediato rispondere 
+alle domande: "Dove sono? - Dove posso andare? - Di che cosa si tratta?";
+\item i contrasti tra i colori di testo e relativo sfondo sono accessibili;
 \item è stata adottata una gerarchia del sito ampia e poco profonda;
-\item sono stati utilizzati i tag abbr per le abbreviazioni;
-\item i tag di headings (h1, h2, ...) sono stati utilizzati in maniera corretta rispettando la gerarchia;
-\item tutte le immagini di contenuto possiedono un attributo alt adeguato. Anche l'utente admin in fase di aggiunta di un nuovo vino nel catalogo è guidato 
-nell'inserimento di un'alternativa testuale alle immagini caricate (assumendo che l'admin sia adeguatamente formato per inserire una alternativa testuale valida);
-\item le immagini che non rappresentano contenuto sono state inserite come sfondo e quindi parte della presentazione;
-\item sono state usate opportune tecniche di image replacing per le immagini che contengono contenuto testuale;
-\item nel caso di una compilazione errata di un form i valori inseriti non vengono eliminati.
+\item sono stati utilizzati i tag \textit{<abbr>} per esplicitare le abbreviazioni;
+\item i tag di headings (h1, h2, ...) sono stati utilizzati in maniera corretta e semanticamente coerente, rispettando la gerarchia;
+\item tutte le immagini decorative possiedono un attributo \textit{alt} vuoto (\texttt{alt=""}). Al contrario, le immagini informative sono corredate da 
+un attributo \textit{alt} con un contenuto adeguato alle informazioni che veicolano;
+\item sono state utilizzate opportune tecniche di image replacement per l’immagine presente 
+nella sezione home contenente testo, garantendo così che, qualora l’immagine non venga renderizzata, 
+il testo rimanga leggibile e presenti un adeguato contrasto rispetto al relativo sfondo;
+\item nel caso di una compilazione errata di un form i valori inseriti non vengono eliminati;
+\item per agevolare l’utente nella compilazione dei form in modo più semplice e veloce, sono stati utilizzati gli attributi \texttt{autocomplete};
+\item in ogni pagina sono stati implementati gli aiuti alla navigazione (vai al contenuto) per aiutare e velocizzare la navigazione da tastiera;
+\item sono state fornite alternative testuali per tutti i contenuti visivi/grafici;
+\item l’animazione nella pagina home è stata progettata con una velocità conforme alle linee guida WCAG, 
+garantendo un’esperienza visiva confortevole. L’utente può interromperla in qualsiasi momento tramite apposito pulsante; inoltre, se il browser è 
+impostato su "prefers-reduced-motion: reduce", l’animazione non viene mostrata, pur rimanendo usabile attraverso i controlli manuali (bottoni freccette).
 \end{itemize}
 
 \subsubsection{Aiuti per lo screen reader}
