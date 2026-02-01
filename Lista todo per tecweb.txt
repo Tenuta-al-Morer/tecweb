@@ -7,8 +7,8 @@ Lista todo per tecweb:
 - verificare risolti tutti gli errori, se il print funziona correttamente
 - decidere cosa fare delle nav annidate nell'header
 - sistemare css pagina admin "risposta messaggi"
-- sistemare focus policy
-- sistemare tag <i>
+- sistemare focus aiuti alla navigazione in policy
+- sistemare tag <i> in script.js
 - vedere se è possibile togliere da js la parte di novalidate, che senso ha non validare un form??? che poi in teoria non compare neanche più
 
 Criticità 
@@ -17,7 +17,7 @@ Criticità
 Verifica requisiti (evidenze principali)
 - Sintassi XML: KO (vedi criticità sopra).
 
-sistemare css pagina admin nella risposta contatti
+
 percorso immagine admin da fare e eliminare l'aggiunta di conteuto alt (vini alt vuoto)
 
-da controllare 4.2.4 lunedì
+da controllare sezione 4.2.4 lunedì
