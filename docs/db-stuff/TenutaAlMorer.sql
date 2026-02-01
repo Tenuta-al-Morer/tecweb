@@ -83,8 +83,6 @@ CREATE TABLE `contatto` (
   `cognome` varchar(50) NOT NULL,
   `email` varchar(255) NOT NULL,
   `tipo_supporto` varchar(128) NOT NULL,
-  `prefisso` varchar(10) NOT NULL,
-  `telefono` varchar(20) NOT NULL,
   `messaggio` text NOT NULL,
   `risposta` text,
   `data_invio` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
