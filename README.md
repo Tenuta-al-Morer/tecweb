@@ -225,19 +225,19 @@ Nello specifico:
 
 La gestione delle risorse grafiche è stata diversificata in base alla tipologia di contenuto per bilanciare qualità e performance.
 
-Le immagini relative ai prodotti (i vini) e gli elementi grafici dell’interfaccia (come i loghi) sono stati salvati in formato **WEBP**. Questa scelta, visibile in particolare nella sottocartella `tr`, è dettata dalla necessità di supportare lo sfondo trasparente mantenendo dimensioni ridotte rispetto al formato PNG. Le fotografie relative alla Tenuta e alle esperienze (es. *vigneto.jpg*, *vendemmia.jpg*) sono invece in formato **JPG**, più idoneo per immagini fotografiche complesse privi di trasparenza.
+Le immagini relative ai prodotti (vini) e agli elementi grafici dell’interfaccia (come i loghi) sono stati salvati in formato **WebP**. Questa scelta, visibile nella sottocartella `tr`, è dettata sia dalla necessità di supportare lo sfondo trasparente, sia dal mantenere le rimensioni ridotte rispetto a formati come **PNG**. Le immagini della Tenuta e delle esperienze (come *vigneto.jpg* o *vendemmia.jpg*) utilizzano il formato **JPG**. Questa scelta è motivata dall’ottimo rapporto tra qualità e compressione del formato, ideale per gestire fotografie complesse che non richiedono trasparenza.
 
-Tutte le immagini statiche sono state ottimizzate mantenendo una grandezza contenuta (sotto 0.5MB) per favorire la velocità di caricamento, accettando il compromesso di una minore retrocompatibilità del formato WebP sui browser molto datati.
+Tutte le immagini sono state ottimizzate mantenendo una dimensione ridotta (sotto 0.3MB) al fine di favorire la velocità di rendering.
 
-Per quanto riguarda l’inserimento di nuovi prodotti tramite l’area riservata, il sistema di upload permette all’amministratore di caricare immagini in diversi formati standard, senza restrizioni stringenti sul tipo di file in ingresso.
+Per quanto riguarda l’inserimento di nuovi prodotti tramite l’area riservata (admin), il sistema di upload permette all’amministratore di caricare immagini in diversi formati standard, senza restrizioni stringenti sul tipo di file in ingresso.
 
 #### Font
 
-Abbiamo usato il font **Atkinson Hyperlegible** per tutto il sito web essendo un font accessibile e senza grazie. Abbiamo applicato un’interlinea di 1.5 em per facilitare la lettura. Sono presenti dei font di fallback che sono: Lexend, Roboto e Sans-Serif.
+Abbiamo usato il font **Atkinson Hyperlegible** per tutto il sito web poichè accessibile e senza grazie. Abbiamo applicato un’interlinea di 1.5 em per facilitare la lettura. Sono presenti inoltre dei font di fallback: Lexend e Roboto.
 
 #### Colori
 
-Per garantire che il sito sia accessibile e che tutti gli utenti (inclusi coloro con difficoltà visive) possano navigarlo facilmente, abbiamo scelto una palette di colori con particolare attenzione al contrasto e alla leggibilità. Abbiamo selezionato colori assicurandoci che il contrasto tra il testo e lo sfondo sia sufficientemente elevato, in conformità alle linee guida WCAG di livello AA per la maggior parte dei contenuti; viene sempre garantito almeno il livello AA.
+Per garantire che il sito sia accessibile e che tutti gli utenti (inclusi coloro con difficoltà visive) possano navigarlo facilmente, abbiamo scelto una palette di colori con particolare attenzione al contrasto e alla leggibilità. Abbiamo selezionato colori assicurandoci che il contrasto tra il testo e lo sfondo sia sufficientemente elevato, in conformità alle linee guida WCAG 2.1 di livello AA.
 
 Dopo diversi tentativi di ottimizzazione dei colori, abbiamo definito e adottato la seguente palette:
 
