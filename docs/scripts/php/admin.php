@@ -229,7 +229,7 @@ if ($view === 'vini') {
         
         $stockClass = ($v['quantita_stock'] < 10 && !$isDeleted) ? 'stock-low' : '';
         $nomeSafe = htmlspecialchars($v['nome'], ENT_QUOTES);
-        
+        $imgSrc = str_replace(' ', '%20', htmlspecialchars($v['img']));
         $iconaVisibilita = ($v['stato'] == 'attivo') 
             ? '<span class="fas fa-eye" aria-hidden="true"></span>' 
             : '<span class="fas fa-eye-slash icon-muted" aria-hidden="true"></span>';
@@ -239,7 +239,8 @@ if ($view === 'vini') {
 
         if (!$isDeleted) {
             $actions .= "
-            <label for='$modalToggleId' class='btn-icon' title='Modifica $nomeSafe' aria-label='Modifica $nomeSafe' tabindex='0'>
+            <label for='$modalToggleId' class='btn-icon' title='Modifica $nomeSafe' tabindex='0'>
+                <span class='visually-hidden'>Modifica $nomeSafe</span>
                 <span class='fas fa-edit' aria-hidden='true'></span>
             </label>";
             
@@ -268,9 +269,9 @@ if ($view === 'vini') {
             $modaliViniHTML .= "
             <input type='checkbox' id='$modalToggleId' class='state-toggle' aria-label='Apri finestra modifica per $nomeSafe'>
             <div class='modal-wrapper-css'>
-                <label for='$modalToggleId' class='modal-overlay-close' aria-label='Chiudi'></label>
+                <label for='$modalToggleId' class='modal-overlay-close' title='Chiudi'></label>
                 <div class='modal-box-css'>
-                    <label for='$modalToggleId' class='modal-close-x' aria-label='Chiudi'>&times;</label>
+                    <label for='$modalToggleId' class='modal-close-x' title='Chiudi'>&times;</label>
                     <h2 class='modal-title'>Modifica Vino: $nomeSafe</h2>
                     $formHTML
                 </div>
@@ -290,7 +291,7 @@ if ($view === 'vini') {
 
         $rigaVini .= "<tr class='{$rowClass}'>
             <th scope='row'>{$v['id']}</th>
-            <td data-title='Anteprima'><img src='" . htmlspecialchars($v['img']) . "' class='admin-thumb' alt=''></td>
+            <td data-title='Anteprima'><img src='$imgSrc' class='admin-thumb' alt='Anteprima $nomeSafe'></td>
             <td data-title='Dettagli'>
                 <div class='wine-title'>" . htmlspecialchars($v['nome']) . "</div>
                 <div class='wine-cat'>" . ucfirst($v['categoria']) . "</div>
@@ -310,9 +311,9 @@ if ($view === 'vini') {
     $modalNuovoVinoHTML = "
     <input type='checkbox' id='toggle-modal-nuovo' class='state-toggle' aria-label='Apri finestra creazione nuovo vino'>
     <div class='modal-wrapper-css'>
-        <label for='toggle-modal-nuovo' class='modal-overlay-close' aria-label='Chiudi'></label>
+        <label for='toggle-modal-nuovo' class='modal-overlay-close' title='Chiudi'></label>
         <div class='modal-box-css'>
-            <label for='toggle-modal-nuovo' class='modal-close-x' aria-label='Chiudi'>&times;</label>
+            <label for='toggle-modal-nuovo' class='modal-close-x' title='Chiudi'>&times;</label>
             <h2 class='modal-title'>Aggiungi Nuovo Vino</h2>
             $formNuovo
         </div>
@@ -388,7 +389,7 @@ $tabUtentiClass = ($view === 'utenti') ? "btn-primary" : "btn-secondary";
 $toggleDeletedHTML = "
 <input type='checkbox' id='toggle-deleted-visibility' class='state-toggle'>
 <label for='toggle-deleted-visibility' class='toggle-label-wrapper'>
-    <div class='toggle-switch-graphic'></div>
+    <span class='toggle-switch-graphic'></span>
     <span>Mostra vini eliminati</span>
 </label>";
 
@@ -453,7 +454,7 @@ $btnNuovoVino = ($view === 'vini')
     : "";
 
 $btnNuovoUtente = ($view === 'utenti')
-    ? "<label for=\"toggle-modal-utente\" class=\"btn-primary\" role=\"button\" aria-label=\"Aggiungi nuovo utente\">
+    ? "<label for=\"toggle-modal-utente\" class=\"btn-primary\" tabindex=\"0\">
             <span class=\"fas fa-plus\" aria-hidden=\"true\"></span>&nbsp;Nuovo Utente
        </label>"
     : "";
