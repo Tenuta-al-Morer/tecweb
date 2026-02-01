@@ -9,6 +9,7 @@ Lista todo per tecweb:
 - verificare html e css se è valido:
     Il sito web deve essere realizzato con lo standard HTML5. Le pagine devono degradare in modo elegante e devono rispettare la sintassi XML;
     il layout deve essere realizzato con CSS puri (CSS2 o CSS3);
+    css da provare a validare con totalvalidator. con w3c è già validato e ok
 - fare in modo di aggiungere l'immagine del vino in admin "aggiunta vino" e non il percorso dell'img
 - rifare test veloci con nvda
 
