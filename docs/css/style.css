@@ -804,8 +804,15 @@ a.policy-link:hover, a.policy-link:focus, a.policy-link:visited {
     color: var(--secondary-color);
 }
 
-.header-policy > nav:first-of-type {
-    padding-left: 1.25em; padding-right: 1.25em; margin-bottom: 1.5em; 
+.header-policy #back-link  {
+    padding-left: 1.25em; padding-right: 1.25em; margin-bottom: 1.5em; margin-left: 2em;
+}
+
+#help {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    gap: 10px; 
 }
 
 .header-policy .sub-header {
@@ -4720,4 +4727,15 @@ body .auth-container .auth-form .form-group input:-webkit-autofill:active {
 .little {
     font-size: 0.85rem;
     font-style: italic;
+}
+
+.details-products-list li {
+    display: flex;
+    gap: 10px; 
+}
+
+.details-products-list li span:first-child {
+    flex-shrink: 0;   
+    min-width: 100px; 
+    font-weight: bold; 
 }

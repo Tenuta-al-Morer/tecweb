@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const moonIconOld = `
             <span class="visually-hidden">Passa alla modalità scura</span>
-            <i class="fas fa-moon" aria-hidden="true"></i>
+            <span class="fas fa-moon" aria-hidden="true"></span>
         `;
 
 
@@ -742,12 +742,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isSpacer) {
             div.className = 'error-spacer';
             div.setAttribute('aria-hidden', 'true');
-            div.innerHTML = `<i class="fas fa-exclamation-circle"></i> &nbsp;`; 
+            div.innerHTML = `<span class="fas fa-exclamation-circle"></span> &nbsp;`; 
         } else {
             div.className = 'error-message';
             div.setAttribute('role', 'alert');
             div.setAttribute('aria-live', 'polite'); 
-            div.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+            div.innerHTML = `<span class="fas fa-exclamation-circle"></span> ${message}`;
         }
         return div;
     };
@@ -1151,7 +1151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (btn) {
                         btn.disabled = true;
                         const originalText = btn.innerText;
-                        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Elaborazione...';
+                        btn.innerHTML = '<span class="fas fa-spinner fa-spin"></span> Elaborazione...';
                         
                         setTimeout(() => {
                             btn.disabled = false;
@@ -1292,7 +1292,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.appendChild(localToast);
             }
 
-            localToast.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+            localToast.innerHTML = `<span class="fas fa-check-circle"></span> ${message}`;
             localToast.classList.add('show');
 
             setTimeout(() => {
@@ -1314,7 +1314,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     errorDiv.setAttribute('role', 'alert');
                     container.insertBefore(errorDiv, searchInput);
                 }                
-                errorDiv.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${msg}`;
+                errorDiv.innerHTML = `<span class="fas fa-exclamation-circle"></span> ${msg}`;
                 searchInput.classList.add('input-error');
                 searchInput.setAttribute('aria-invalid', 'true');
             };

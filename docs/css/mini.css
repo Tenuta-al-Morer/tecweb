@@ -735,6 +735,14 @@ body.light-mode .table-data td::before {
     transition: all 0.3s ease;
 }
 
+.details-products-list li span:first-child {
+    flex-shrink: 0;
+    min-width: 80px; 
+    font-weight: bold;
+    text-align: left;
+    justify-content: flex-start; 
+}
+
 @media (max-width: 475px) {
     .profile-layout {
         gap: 1.5rem;
@@ -1544,3 +1552,4 @@ select:focus {
         padding-bottom: 0;   
     }
 }
+
