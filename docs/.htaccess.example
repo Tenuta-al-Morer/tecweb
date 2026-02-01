@@ -1,24 +1,23 @@
-# Attivazione Rewrite Engine
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /lmarcuzz/
+    RewriteBase /mstevani/
+
+    # URL senza estensione → .php 
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^(.+)$ $1.php [L]
+
+    # Redirect .html → .php
+    RewriteRule ^(.+)\.html$ $1.php [L,R=301]
 </IfModule>
 
 DirectoryIndex index.php index.html
 
 # Pagine di Errore Personalizzate
-ErrorDocument 404 /lmarcuzz/404.php
-ErrorDocument 403 /lmarcuzz/403.php
-ErrorDocument 500 /lmarcuzz/500.php
+ErrorDocument 404 /mstevani/scripts/php/404.php
+ErrorDocument 403 /mstevani/scripts/php/403.php
+ErrorDocument 500 /mstevani/scripts/php/500.php
 
 # Protezione file sensibili
 <FilesMatch "^(config\.php|common\.php|\.htaccess|DBConnection\.php)$">
     Require all denied
 </FilesMatch>
-
-# Reindirizzamenti - Rewrite Rules
-<IfModule mod_rewrite.c>
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)\.html$ $1.php [L,R=301]
-</IfModule>

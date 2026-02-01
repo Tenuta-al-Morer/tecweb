@@ -237,31 +237,31 @@ Abbiamo usato il font **Atkinson Hyperlegible** per tutto il sito web poichè ac
 
 #### Colori
 
-Per garantire che il sito sia accessibile e che tutti gli utenti (inclusi coloro con difficoltà visive) possano navigarlo facilmente, abbiamo scelto una palette di colori con particolare attenzione al contrasto e alla leggibilità. Abbiamo selezionato colori assicurandoci che il contrasto tra il testo e lo sfondo sia sufficientemente elevato, in conformità alle linee guida WCAG 2.1 di livello AA.
+Per garantire che il sito sia accessibile e che tutti gli utenti (inclusi coloro con difficoltà visive) possano navigarlo facilmente, abbiamo scelto una palette di colori con particolare attenzione al contrasto e alla leggibilità. Abbiamo selezionato i colori assicurandoci che il contrasto tra il testo e lo sfondo sia sufficientemente elevato, in conformità alle linee guida WCAG 2.1 di livello AA.
 
 Dopo diversi tentativi di ottimizzazione dei colori, abbiamo definito e adottato la seguente palette:
 
-| **Colore**         | **Codice HEX** |
-|:-------------------|:--------------:|
-| Testo principale   |    \#E0E0E0    |
-| Sfondo principale  |    \#1D1D1D    |
-| Accento secondario |    \#C5A551    |
-| Colore errori      |    \#FF2934    |
-| Colore successo    |    \#176F3A    |
-| Colore attenzione  |    \#FFC107    |
-| Bordo              |    \#B6B6B6    |
+| **Colore**        | **Codice HEX** |
+|:------------------|:--------------:|
+| Testo principale  |    \#E0E0E0    |
+| Tema sfondo       |    \#1D1D1D    |
+| Colore secondario |    \#C5A551    |
+| Colore errori     |    \#FF2934    |
+| Colore successo   |    \#176F3A    |
+| Colore attenzione |    \#FFC107    |
+| Colore bordo      |    \#B6B6B6    |
 
 Palette colori modalità scura
 
-| **Colore**         | **Codice HEX** |
-|:-------------------|:--------------:|
-| Testo principale   |    \#121212    |
-| Sfondo principale  |    \#F4F4F4    |
-| Accento secondario |    \#7A5F1A    |
-| Colore errori      |    \#990109    |
-| Colore successo    |    \#02771D    |
-| Colore attenzione  |    \#856404    |
-| Bordo              |    \#4B4B4B    |
+| **Colore**        | **Codice HEX** |
+|:------------------|:--------------:|
+| Testo principale  |    \#121212    |
+| Tema sfondo       |    \#F4F4F4    |
+| Colore secondario |    \#7A5F1A    |
+| Colore errori     |    \#990109    |
+| Colore successo   |    \#02771D    |
+| Colore attenzione |    \#856404    |
+| Colore bordo      |    \#4B4B4B    |
 
 Palette colori modalità chiara
 
@@ -269,25 +269,25 @@ Palette colori modalità chiara
 
 #### PHP
 
-Nelle sezioni contenenti form abbiamo implementato, nei casi di errore, un algoritmo per il ripopolamento dei vari campi di input presenti tramite l’utilizzo della tecnica "segnaposto" descritta nella sezione 4.1.1.
+Nelle sezioni contenenti form abbiamo implementato, nei casi di errore, un algoritmo per il ripopolamento dei vari campi di input presenti tramite l’utilizzo della tecnica "segnaposto" descritta nella sezione 4.1.1. Questa soluzione evita che l’utente debba reinserire tutte le informazioni in caso di invio del form non andato a buon fine.
 
-Sono presenti specifici file:
+I file principali con cui viene gestita l’infrastruttura PHP sono:
 
 - DBConnection.php: gestisce la connessione al database e contiene i vari metodi per effettuare le query SQL;
 
-- common.php: gestisce parti comuni nelle varie pagine come footer e icone mobili in alto a destra;
+- common.php: gestisce parti comuni nelle varie pagine html come footer e icone mobili in alto a destra;
 
-- per ogni file .html, un corrispettivo file .php associato. Unica eccezione il file logout.php, richiamato nel file areaPersonale.html e gestionale.html.
+- un file .php associato ad ogni pagina .html. Unica eccezione riguarda il file logout.php che viene richiamato nelle pagine areaPersonale.html e gestionale.html.
 
 #### JavaScript
 
-Sono stati implementati script dedicati per la validazione lato client dei moduli, garantendo una netta separazione tra la struttura semantica (HTML) e il livello comportamentale (JavaScript). L’uso di JavaScript è finalizzato al miglioramento della User Experience (UX) e della reattività dell’interfaccia.
+Sono stati implementati script dedicati alla validazione lato client dei moduli, garantendo così una netta separazione tra la struttura semantica (HTML) e il livello comportamentale (JavaScript). L’uso di JavaScript è finalizzato al miglioramento della User Experience (UX) e della reattività dell’interfaccia. Inoltre, i controlli eseguiti lato client tramite JavaScript, e successivamente replicati lato server in PHP, permettono di intercettare gli errori in fase preliminare, riducendo il carico complessivo ed evitando la formazione di colli di bottiglia.
 
 È fondamentale notare che l’intero progetto è stato sviluppato secondo il principio del Progressive Enhancement: tutte le funzionalità essenziali rimangono pienamente operative anche in assenza di JavaScript, il quale agisce esclusivamente come livello aggiuntivo di ottimizzazione.
 
 #### Validazione dell’input
 
-Abbiamo eseguito controlli sull’input sia lato client, utilizzando Javascript, che lato server tramite PHP. La maggior parte dei controlli è stata eseguita tramite funzioni che controllano con delle espressioni regolari il contenuto degli input. Inoltre ogni messaggio di errore ritornato dai metodi di validazione sopra elencati è stato pensato per fornire all’utente una spiegazione chiara e concisa per risolvere il problema.
+Abbiamo eseguito controlli sull’input sia lato client, utilizzando Javascript, che lato server tramite PHP. La maggior parte dei controlli è stata eseguita tramite funzioni che controllano con delle espressioni regolari il contenuto degli input. Inoltre, ogni messaggio di errore ritornato dai metodi di validazione sopra elencati è stato pensato per fornire all’utente una spiegazione chiara e concisa del problema.
 
 #### Sicurezza
 
@@ -303,33 +303,37 @@ Le direttive che si occupano degli errori di navigazione sono state inserite nel
 
 ### Accessibilità
 
-Di seguito sono elencate tutte le scelte effettuate per migliorare l’accessibilità del sito. Ognuna mira almeno al soddisfacimento del livello di conformità AA delle WCAG come stabilito dalla legge italiana:
+Di seguito sono elencate tutte le scelte effettuate per migliorare l’accessibilità del sito. Ognuna mira almeno al soddisfacimento del livello di conformità AA delle WCAG 2.1 come stabilito dalla legge italiana (ed europea):
 
 - navigazione da tastiera completa e accessibile che rispetta l’ordine visivo degli elementi;
 
 - tabelle accessibili;
 
-- form accessibili con label associate correttamente agli input;
+- form accessibili con label associate correttamente agli input (feedback e feedforward chiari e utili a tutte le categorie di utenti);
 
-- sono stati distinti i link visitati e non visitati;
+- per garantire l’orientamento dell’utente abbiamo verificato che nel "above the fold" di ogni pagina fosse semplice e immediato rispondere alle domande: "Dove sono? - Dove posso andare? - Di che cosa si tratta?";
 
-- per ogni pagina è stato studiato ad hoc la sezione "above the fold" inserendoci le informazioni necessarie per rispondere alle domande "Dove sono? - Dove posso andare? - Di che cosa si tratta?";
-
-- sono accessibili i contrasti tra i colori di testo e relativo sfondo;
+- i contrasti tra i colori di testo e relativo sfondo sono accessibili;
 
 - è stata adottata una gerarchia del sito ampia e poco profonda;
 
-- sono stati utilizzati i tag abbr per le abbreviazioni;
+- sono stati utilizzati i tag *\<abbr\>* per esplicitare le abbreviazioni;
 
-- i tag di headings (h1, h2, ...) sono stati utilizzati in maniera corretta rispettando la gerarchia;
+- i tag di headings (h1, h2, ...) sono stati utilizzati in maniera corretta e semanticamente coerente, rispettando la gerarchia;
 
-- tutte le immagini di contenuto possiedono un attributo alt adeguato. Anche l’utente admin in fase di aggiunta di un nuovo vino nel catalogo è guidato nell’inserimento di un’alternativa testuale alle immagini caricate (assumendo che l’admin sia adeguatamente formato per inserire una alternativa testuale valida);
+- tutte le immagini decorative possiedono un attributo *alt* vuoto (`alt=""`). Al contrario, le immagini informative sono corredate da un attributo *alt* con un contenuto adeguato alle informazioni che veicolano;
 
-- le immagini che non rappresentano contenuto sono state inserite come sfondo e quindi parte della presentazione;
+- sono state utilizzate opportune tecniche di image replacement per l’immagine presente nella sezione home contenente testo, garantendo così che, qualora l’immagine non venga renderizzata, il testo rimanga leggibile e presenti un adeguato contrasto rispetto al relativo sfondo;
 
-- sono state usate opportune tecniche di image replacing per le immagini che contengono contenuto testuale;
+- nel caso di una compilazione errata di un form i valori inseriti non vengono eliminati;
 
-- nel caso di una compilazione errata di un form i valori inseriti non vengono eliminati.
+- per agevolare l’utente nella compilazione dei form in modo più semplice e veloce, sono stati utilizzati gli attributi `autocomplete`;
+
+- in ogni pagina sono stati implementati gli aiuti alla navigazione (vai al contenuto) per aiutare e velocizzare la navigazione da tastiera;
+
+- sono state fornite alternative testuali per tutti i contenuti visivi/grafici;
+
+- l’animazione nella pagina home è stata progettata con una velocità conforme alle linee guida WCAG, garantendo un’esperienza visiva confortevole. L’utente può interromperla in qualsiasi momento tramite apposito pulsante; inoltre, se il browser è impostato su "prefers-reduced-motion: reduce", l’animazione non viene mostrata, pur rimanendo usabile attraverso i controlli manuali (bottoni freccette).
 
 #### Aiuti per lo screen reader
 
