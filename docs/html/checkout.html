@@ -24,14 +24,18 @@
 
 <body> 
     <header>
-        <nav id="help">
+        <nav id="help" aria-label="Aiuto alla navigazione">
             <a class="navigationHelp" href="#content">Vai al contenuto</a>
         </nav>
-        <nav class="main-nav-bar">    
+
+        <nav class="main-nav-bar" aria-label="Navigazione principale">    
             [menu_toggle]
 
-            <a href="home.php" class="logo-link"><img src="../../images/logo.webp" alt="Tenuta al Morer - Home"></a>
-            <nav id="main-navigation" class="primary-navigation">
+            <a href="home.php" class="logo-link">
+                <img src="../../images/logo.webp" alt="Tenuta al Morer - Home">
+            </a>
+
+            <nav id="main-navigation" class="primary-navigation" aria-label="Menu principale">
                 <ul>
                     <li><a href="home.php"><span lang="en">Home</span></a></li> 
                     <li><a href="tenuta.php">Tenuta</a></li>
@@ -46,7 +50,7 @@
             </div>
         </nav>
         <div class="sub-header">
-            <nav id="breadcrumb">
+            <nav id="breadcrumb" aria-label="Percorso di navigazione">
                 <div class="breadcrumb-container">
                     <span>Ti trovi in: </span>
                     <a href="home.php"><span lang="en">Home</span></a><span aria-hidden="true"> &gt; </span> 
@@ -54,7 +58,10 @@
                     <span class="current-page" aria-current="page">Spedizione</span>
                 </div>
             </nav>
-            <button id="theme-toggle" title="Cambia modalità chiaro/scuro" aria-label="Cambia tema"><span class="fas fa-moon" aria-hidden="true"></span></button>
+
+            <button id="theme-toggle" title="Cambia modalità chiaro/scuro" aria-label="Cambia tema">
+            <span class="fas fa-moon" aria-hidden="true"></span>
+            </button>
         </div>
     </header>
 
@@ -95,14 +102,14 @@
 
                         <div class="form-group">
                             <label for="indirizzo">Indirizzo e n. civico<span aria-hidden="true">*</span></label>
-                            <input type="text" id="indirizzo" name="indirizzo" required autocomplete="shipping street-address" value="[val_indirizzo]" aria-describedby="indirizzo-hint">
+                            <input type="text" id="indirizzo" name="indirizzo" required autocomplete="street-address" value="[val_indirizzo]" aria-describedby="indirizzo-hint">
                             <span class="little" id="indirizzo-hint" class="input-help">Esempio: Via Roma 10</span>
                         </div>
 
                         <div class="form-group row-three">
                             <div class="flex-grow-2">
                                 <label for="citta">Città<span aria-hidden="true">*</span></label>
-                                <input type="text" id="citta" name="citta" required autocomplete="shipping address-level2" value="[val_citta]" aria-describedby="citta-hint">
+                                <input type="text" id="citta" name="citta" required autocomplete="address-level2" value="[val_citta]" aria-describedby="citta-hint">
                                 <span class="little" id="citta-hint" class="input-help">Esempio: Milano</span>
                             </div>
                             <div class="flex-grow-1">
@@ -122,7 +129,7 @@
                             <div class="phone-group" role="group" aria-labelledby="phone-label">
                                 <div class="phone-prefix">
                                     <label for="prefisso" class="visually-hidden">Prefisso</label>
-                                    <input type="text" id="prefisso" name="prefisso" value="[val_prefisso]" required autocomplete="tel-country-code" aria-describedby="prefisso-hint">
+                                    <input type="text" id="prefisso" name="prefisso" value="[val_prefisso]" required autocomplete="tel-country-cod" aria-describedby="prefisso-hint">
                                     <span class="little" id="prefisso-hint" class="input-help">Esempio: +39</span>
                                 </div>
                                 <div class="phone-number">
