@@ -287,7 +287,7 @@ td.td_richiesta_degustazione{ margin-right: 15px; }
 
 .wine-article{
     flex: 0 0 100%;
-    max-width: auto;
+    max-width: 100%;
     margin: 0 auto;
     break-inside: avoid;
     page-break-inside: avoid;
