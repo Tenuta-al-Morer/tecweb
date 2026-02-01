@@ -18,20 +18,24 @@
     <link rel="stylesheet" href="../../css/style.css" media="screen"> 
     <link rel="stylesheet" href="../../css/mini.css" media="screen and (max-width:1024px)">
     <link rel="stylesheet" href="../../css/print.css" media="print">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     <script src="../javascript/script.js"></script>
 </head>
 
 <body> 
     <header>
-        <nav id="help">
+        <nav id="help" aria-label="Aiuto alla navigazione">
             <a class="navigationHelp" href="#content">Vai al contenuto</a>
         </nav>
-        <nav class="main-nav-bar">    
+
+        <nav class="main-nav-bar" aria-label="Navigazione principale">    
             [menu_toggle]
 
-            <a href="home.php" class="logo-link"><img src="../../images/logo.webp" alt="Tenuta al Morer - Home"></a>
-            <nav id="main-navigation" class="primary-navigation">
+            <a href="home.php" class="logo-link">
+                <img src="../../images/logo.webp" alt="Tenuta al Morer - Home">
+            </a>
+
+            <nav id="main-navigation" class="primary-navigation" aria-label="Menu principale">
                 <ul>
                     <li><a href="home.php"><span lang="en">Home</span></a></li> 
                     <li><a href="tenuta.php">Tenuta</a></li>
@@ -46,7 +50,7 @@
             </div>
         </nav>
         <div class="sub-header">
-            <nav id="breadcrumb">
+            <nav id="breadcrumb" aria-label="Percorso di navigazione">
                 <div class="breadcrumb-container">
                     <span>Ti trovi in: </span>
                     <a href="home.php"><span lang="en">Home</span></a><span aria-hidden="true"> &gt; </span> 
@@ -54,7 +58,10 @@
                     <span class="current-page" aria-current="page">Spedizione</span>
                 </div>
             </nav>
-            <button id="theme-toggle" title="Cambia modalità chiaro/scuro" aria-label="Cambia tema"><span class="fas fa-moon" aria-hidden="true"></span></button>
+
+            <button id="theme-toggle" title="Cambia modalità chiaro/scuro" aria-label="Cambia tema">
+            <span class="fas fa-moon" aria-hidden="true"></span>
+            </button>
         </div>
     </header>
 
@@ -84,36 +91,36 @@
                             <div>
                                 <label for="nome">Nome<span aria-hidden="true">*</span></label>
                                 <input type="text" id="nome" name="nome" required autocomplete="given-name" value="[val_nome]" aria-describedby="nome-hint">
-                                <span class="little" id="nome-hint" class="input-help">Esempio: Mario</span>
+                                <span class="little input-help" id="nome-hint" >Esempio: Mario</span>
                             </div>
                             <div>
                                 <label for="cognome">Cognome<span aria-hidden="true">*</span></label>
                                 <input type="text" id="cognome" name="cognome" required autocomplete="family-name" value="[val_cognome]" aria-describedby="cognome-hint">
-                                <span class="little" id="cognome-hint" class="input-help">Esempio: Rossi</span>
+                                <span class="little input-help" id="cognome-hint" >Esempio: Rossi</span>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="indirizzo">Indirizzo e n. civico<span aria-hidden="true">*</span></label>
-                            <input type="text" id="indirizzo" name="indirizzo" required autocomplete="shipping street-address" value="[val_indirizzo]" aria-describedby="indirizzo-hint">
-                            <span class="little" id="indirizzo-hint" class="input-help">Esempio: Via Roma 10</span>
+                            <input type="text" id="indirizzo" name="indirizzo" required autocomplete="address-line1" value="[val_indirizzo]" aria-describedby="indirizzo-hint">
+                            <span class="little input-help" id="indirizzo-hint" >Esempio: Via Roma 10</span>
                         </div>
 
                         <div class="form-group row-three">
                             <div class="flex-grow-2">
                                 <label for="citta">Città<span aria-hidden="true">*</span></label>
-                                <input type="text" id="citta" name="citta" required autocomplete="shipping address-level2" value="[val_citta]" aria-describedby="citta-hint">
-                                <span class="little" id="citta-hint" class="input-help">Esempio: Milano</span>
+                                <input type="text" id="citta" name="citta" required autocomplete="address-level2" value="[val_citta]" aria-describedby="citta-hint">
+                                <span class="little input-help" id="citta-hint" >Esempio: Milano</span>
                             </div>
                             <div class="flex-grow-1">
                                 <label for="provincia">Prov.<span aria-hidden="true">*</span></label>
                                 <input type="text" id="provincia" name="provincia" required maxlength="2" autocomplete="shipping address-level1" value="[val_provincia]" aria-describedby="provincia-hint">
-                                <span class="little" id="provincia-hint" class="input-help">Esempio: MI</span>
+                                <span class="little input-help" id="provincia-hint" >Esempio: MI</span>
                             </div>
                             <div class="flex-grow-1">
                                 <label for="cap">CAP<span aria-hidden="true">*</span></label>
                                 <input type="text" id="cap" name="cap" required pattern="[0-9]{5}" maxlength="5" autocomplete="shipping postal-code" inputmode="numeric" value="[val_cap]" aria-describedby="cap-hint">
-                                <span class="little" id="cap-hint" class="input-help">Esempio: 20121</span>
+                                <span class="little input-help" id="cap-hint" >Esempio: 20121</span>
                             </div>
                         </div>
 
@@ -123,12 +130,12 @@
                                 <div class="phone-prefix">
                                     <label for="prefisso" class="visually-hidden">Prefisso</label>
                                     <input type="text" id="prefisso" name="prefisso" value="[val_prefisso]" required autocomplete="tel-country-code" aria-describedby="prefisso-hint">
-                                    <span class="little" id="prefisso-hint" class="input-help">Esempio: +39</span>
+                                    <span class="little input-help" id="prefisso-hint" >Esempio: +39</span>
                                 </div>
                                 <div class="phone-number">
                                     <label for="telefono" class="visually-hidden">Numero</label>
-                                    <input type="tel" id="telefono" name="telefono" required autocomplete="tel-national" value="[val_telefono]" aria-describedby="telefono-hint">
-                                    <span class="little" id="telefono-hint" class="input-help">Esempio: 333 1234567</span>
+                                    <input type="tel" id="telefono" name="telefono" required autocomplete="tel" value="[val_telefono]" aria-describedby="telefono-hint">
+                                    <span class="little input-help" id="telefono-hint" >Esempio: 333 1234567</span>
                                 </div>
                             </div>
                         </div>
