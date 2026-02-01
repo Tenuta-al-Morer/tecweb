@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1deb3
+-- version 5.2.2deb1+deb13u1
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Creato il: Gen 31, 2026 alle 16:28
--- Versione del server: 8.0.44-0ubuntu0.24.04.2
--- Versione PHP: 8.3.6
+-- Creato il: Feb 01, 2026 alle 08:10
+-- Versione del server: 11.8.3-MariaDB-0+deb13u1 from Debian
+-- Versione PHP: 8.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `carrello` (
-  `id` int NOT NULL,
-  `id_utente` int NOT NULL,
-  `data_aggiornamento` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `id_utente` int(11) NOT NULL,
+  `data_aggiornamento` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -42,7 +42,8 @@ INSERT INTO `carrello` (`id`, `id_utente`, `data_aggiornamento`) VALUES
 (2, 9, '2026-01-31 16:43:42'),
 (3, 10, '2026-01-31 16:44:59'),
 (4, 12, '2026-01-31 16:46:55'),
-(5, 13, '2026-01-31 16:48:23');
+(5, 13, '2026-01-31 16:48:23'),
+(6, 5, '2026-02-01 09:03:43');
 
 -- --------------------------------------------------------
 
@@ -51,11 +52,11 @@ INSERT INTO `carrello` (`id`, `id_utente`, `data_aggiornamento`) VALUES
 --
 
 CREATE TABLE `carrello_elemento` (
-  `id` int NOT NULL,
-  `id_carrello` int NOT NULL,
-  `id_vino` int NOT NULL,
-  `quantita` int NOT NULL DEFAULT '1',
-  `data_inserimento` datetime DEFAULT CURRENT_TIMESTAMP,
+  `id` int(11) NOT NULL,
+  `id_carrello` int(11) NOT NULL,
+  `id_vino` int(11) NOT NULL,
+  `quantita` int(11) NOT NULL DEFAULT 1,
+  `data_inserimento` datetime DEFAULT current_timestamp(),
   `stato` enum('attivo','salvato') NOT NULL DEFAULT 'attivo'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -64,8 +65,8 @@ CREATE TABLE `carrello_elemento` (
 --
 
 INSERT INTO `carrello_elemento` (`id`, `id_carrello`, `id_vino`, `quantita`, `data_inserimento`, `stato`) VALUES
-(1, 1, 2, 2, '2026-01-31 16:40:38', 'attivo'),
-(3, 1, 10, 3, '2026-01-31 16:40:45', 'salvato'),
+(1, 1, 2, 2, '2026-01-31 16:40:38', 'salvato'),
+(3, 1, 10, 3, '2026-01-31 16:40:45', 'attivo'),
 (5, 2, 6, 1, '2026-01-31 16:44:04', 'attivo'),
 (7, 2, 10, 1, '2026-01-31 16:44:09', 'salvato'),
 (8, 3, 11, 1, '2026-01-31 16:45:06', 'attivo'),
@@ -78,14 +79,14 @@ INSERT INTO `carrello_elemento` (`id`, `id_carrello`, `id_vino`, `quantita`, `da
 --
 
 CREATE TABLE `contatto` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `cognome` varchar(50) NOT NULL,
   `email` varchar(255) NOT NULL,
   `tipo_supporto` varchar(128) NOT NULL,
   `messaggio` text NOT NULL,
-  `risposta` text,
-  `data_invio` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `risposta` text DEFAULT NULL,
+  `data_invio` datetime NOT NULL DEFAULT current_timestamp(),
   `stato` enum('aperto','risposto') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -94,8 +95,8 @@ CREATE TABLE `contatto` (
 --
 
 INSERT INTO `contatto` (`id`, `nome`, `cognome`, `email`, `tipo_supporto`, `messaggio`, `risposta`, `data_invio`, `stato`) VALUES
-(1, 'Test', 'User', 'user@test.com', 'Informazioni', 'Ho bisogno di informazioni sulle degustazioni.', ' - ', '2025-12-22 22:39:38', 'risposto'),
-(10, 'Alessandro', 'Contarini', 'alessandro.contarini@test.com', 'ordine_online', 'Non mi è ancora arrivato l&#039;ordine online', NULL, '2026-01-31 17:22:55', 'aperto'),
+(1, 'Test', 'User', 'user@test.com', 'Informazioni', 'Ho bisogno di informazioni sulle degustazioni.', 'Può trovare tutte le informazioni sulla nostra pagina \"Esperienze\". Se ha ancora bisogno non esiti a contattarci nuovamente', '2025-12-22 22:39:38', 'risposto'),
+(10, 'Alessandro', 'Contarini', 'alessandro.contarini@test.com', 'ordine_online', 'Non mi è ancora arrivato l\'ordine online', 'Stiamo verificando lo stato del suo ordine. Le invieremo una mail di conferma', '2026-01-31 17:22:55', 'risposto'),
 (11, 'Luca', 'Marcuzzo', 'luca.marcuzzo@test.com', 'informazioni_vini', 'Tra quanto è disponibile il Raboso del Piave?', NULL, '2026-01-31 17:24:39', 'aperto'),
 (12, 'Alessandro', 'Contarini', 'alessandro.contarini@test.com', 'ordine_online', 'Qual è il tempo media di consegna?', NULL, '2026-01-31 17:25:27', 'aperto'),
 (13, 'Giovanni', 'Visentin', 'giovanni.visentin@test.com', 'visita_degustazione', 'Esistono altri tipi di degustazioni? O cambiano a periodi?', NULL, '2026-01-31 17:25:59', 'aperto'),
@@ -109,14 +110,14 @@ INSERT INTO `contatto` (`id`, `nome`, `cognome`, `email`, `tipo_supporto`, `mess
 --
 
 CREATE TABLE `ordine` (
-  `id` int NOT NULL,
-  `id_utente` int DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  `id_utente` int(11) DEFAULT NULL,
   `stato_ordine` enum('in_attesa','approvato','annullato') NOT NULL DEFAULT 'in_attesa',
   `totale_prodotti` decimal(10,2) NOT NULL,
   `costo_spedizione` decimal(10,2) NOT NULL,
   `totale_finale` decimal(10,2) NOT NULL,
   `indirizzo_spedizione` text NOT NULL,
-  `data_creazione` datetime DEFAULT CURRENT_TIMESTAMP
+  `data_creazione` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -124,10 +125,12 @@ CREATE TABLE `ordine` (
 --
 
 INSERT INTO `ordine` (`id`, `id_utente`, `stato_ordine`, `totale_prodotti`, `costo_spedizione`, `totale_finale`, `indirizzo_spedizione`, `data_creazione`) VALUES
-(1, 6, 'in_attesa', 31.00, 10.00, 41.00, 'Via Appia nuova 10, Roma 12345 (RM)', '2026-01-31 16:41:32'),
-(2, 6, 'in_attesa', 15.00, 10.00, 25.00, 'Via Appia nuova 10, Roma 12345 (RM)', '2026-01-31 16:42:27'),
+(1, 6, 'approvato', 31.00, 10.00, 41.00, 'Via Appia nuova 10, Roma 12345 (RM)', '2026-01-31 16:41:32'),
+(2, 6, 'annullato', 15.00, 10.00, 25.00, 'Via Appia nuova 10, Roma 12345 (RM)', '2026-01-31 16:42:27'),
 (3, 9, 'in_attesa', 27.00, 10.00, 37.00, 'Via Appia nuova 10, Roma 12345 (RM)', '2026-01-31 16:44:29'),
-(4, 12, 'in_attesa', 15.50, 10.00, 25.50, 'Via delle vigne 10, Vicenza 12345 (VI)', '2026-01-31 16:47:40');
+(4, 12, 'in_attesa', 15.50, 10.00, 25.50, 'Via delle vigne 10, Vicenza 12345 (VI)', '2026-01-31 16:47:40'),
+(5, 6, 'in_attesa', 15.00, 10.00, 25.00, 'Via Appia nuova 10, Roma 12345 (RM)', '2026-02-01 08:56:01'),
+(6, 6, 'in_attesa', 13.50, 10.00, 23.50, 'Via Appia nuova 10, Roma 12345 (RM)', '2026-02-01 08:56:22');
 
 -- --------------------------------------------------------
 
@@ -136,11 +139,11 @@ INSERT INTO `ordine` (`id`, `id_utente`, `stato_ordine`, `totale_prodotti`, `cos
 --
 
 CREATE TABLE `ordine_elemento` (
-  `id` int NOT NULL,
-  `id_ordine` int NOT NULL,
-  `id_vino` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `id_ordine` int(11) NOT NULL,
+  `id_vino` int(11) NOT NULL,
   `nome_vino_storico` varchar(255) NOT NULL,
-  `quantita` int NOT NULL,
+  `quantita` int(11) NOT NULL,
   `prezzo_acquisto` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -152,7 +155,9 @@ INSERT INTO `ordine_elemento` (`id`, `id_ordine`, `id_vino`, `nome_vino_storico`
 (1, 1, 4, 'Refosco', 2, 15.50),
 (2, 2, 6, 'Manzoni Bianco', 1, 15.00),
 (3, 3, 5, 'Chardonnay', 2, 13.50),
-(4, 4, 4, 'Refosco', 1, 15.50);
+(4, 4, 4, 'Refosco', 1, 15.50),
+(5, 5, 6, 'Manzoni Bianco', 1, 15.00),
+(6, 6, 5, 'Chardonnay', 1, 13.50);
 
 -- --------------------------------------------------------
 
@@ -161,14 +166,14 @@ INSERT INTO `ordine_elemento` (`id`, `id_ordine`, `id_vino`, `nome_vino_storico`
 --
 
 CREATE TABLE `prenotazione` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `cognome` varchar(50) NOT NULL,
   `email` varchar(255) NOT NULL,
   `tipo_degustazione` varchar(50) NOT NULL,
   `data_visita` date NOT NULL,
-  `n_persone` int NOT NULL,
-  `data_invio` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `n_persone` int(11) NOT NULL,
+  `data_invio` datetime NOT NULL DEFAULT current_timestamp(),
   `stato` enum('in_attesa','approvato','annullato') NOT NULL DEFAULT 'in_attesa'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -194,12 +199,12 @@ INSERT INTO `prenotazione` (`id`, `nome`, `cognome`, `email`, `tipo_degustazione
 --
 
 CREATE TABLE `utente` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `cognome` varchar(50) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `data_registrazione` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `data_registrazione` datetime NOT NULL DEFAULT current_timestamp(),
   `ruolo` enum('user','admin','staff') NOT NULL DEFAULT 'user',
   `indirizzo` varchar(255) DEFAULT NULL,
   `citta` varchar(100) DEFAULT NULL,
@@ -229,10 +234,10 @@ INSERT INTO `utente` (`id`, `nome`, `cognome`, `email`, `password`, `data_regist
 --
 
 CREATE TABLE `vino` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL,
   `prezzo` decimal(10,2) NOT NULL,
-  `quantita_stock` int NOT NULL DEFAULT '0',
+  `quantita_stock` int(11) NOT NULL DEFAULT 0,
   `stato` enum('attivo','nascosto','eliminato') DEFAULT 'attivo',
   `img` varchar(255) NOT NULL,
   `categoria` enum('rossi','bianchi','selezione') NOT NULL,
@@ -254,8 +259,8 @@ INSERT INTO `vino` (`id`, `nome`, `prezzo`, `quantita_stock`, `stato`, `img`, `c
 (2, 'Merlot', 14.00, 96, 'attivo', '../../images/tr/Merlot.webp', 'rossi', 'Morbido e vellutato.', 'Il classico Merlot: morbido, vellutato e versatile. Ideale per ogni occasione.', 'Merlot 100%', '2022', '12.5% Vol', '16-18°C', 'Arrosti, Formaggi media stagionatura'),
 (3, 'Cabernet Franc', 16.00, 97, 'nascosto', '../../images/tr/Cabernet Franc 1.webp', 'rossi', 'Deciso e persistente.', 'Note erbacee caratteristiche, gusto deciso e persistente. Un vino di carattere.', 'Cabernet Franc', '2021', '13.0% Vol', '16-18°C', 'Salumi, Grigliate'),
 (4, 'Refosco', 15.50, 155, 'attivo', '../../images/tr/Refosco.webp', 'rossi', 'Carattere forte e intenso.', 'Autoctono dal carattere forte, colore rosso rubino intenso con riflessi violacei.', 'Refosco p.r.', '2021', '13.0% Vol', '16-18°C', 'Piatti tipici veneti, Carni grasse'),
-(5, 'Chardonnay', 13.50, 220, 'attivo', '../../images/tr/Chardonnay.webp', 'bianchi', 'Elegante e fruttato.', 'Elegante, fruttato con sentori di mela golden e crosta di pane.', 'Chardonnay', '2023', '12.0% Vol', '8-10°C', 'Antipasti magri, Pesce'),
-(6, 'Manzoni Bianco', 15.00, 57, 'attivo', '../../images/tr/Manzoni Bianco.webp', 'bianchi', 'Aromatico e strutturato.', 'Incrocio Riesling e Pinot Bianco. Aromatico, strutturato e di grande eleganza.', 'Incrocio Manzoni', '2023', '13.0% Vol', '10-12°C', 'Risotti, Crostacei'),
+(5, 'Chardonnay', 13.50, 219, 'attivo', '../../images/tr/Chardonnay.webp', 'bianchi', 'Elegante e fruttato.', 'Elegante, fruttato con sentori di mela golden e crosta di pane.', 'Chardonnay', '2023', '12.0% Vol', '8-10°C', 'Antipasti magri, Pesce'),
+(6, 'Manzoni Bianco', 15.00, 56, 'attivo', '../../images/tr/Manzoni Bianco.webp', 'bianchi', 'Aromatico e strutturato.', 'Incrocio Riesling e Pinot Bianco. Aromatico, strutturato e di grande eleganza.', 'Incrocio Manzoni', '2023', '13.0% Vol', '10-12°C', 'Risotti, Crostacei'),
 (7, 'Pinot Grigio', 13.00, 196, 'nascosto', '../../images/tr/Pinot Grigio.webp', 'bianchi', 'Fresco e sapido.', 'Fresco, sapido e piacevole. Ottimo come aperitivo o tutto pasto leggero.', 'Pinot Grigio', '2023', '12.0% Vol', '8-10°C', 'Aperitivi, Carni bianche'),
 (8, 'Prosecco', 12.50, 0, 'attivo', '../../images/tr/Prosecco.webp', 'bianchi', 'Le bollicine venete.', 'Le bollicine venete per eccellenza. Fresco, vivace e floreale.', 'Glera 100%', '2024', '11.0% Vol', '6-8°C', 'Brindisi, Aperitivi, Dolci secchi'),
 (9, 'Gran Morer', 25.00, 118, 'attivo', '../../images/tr/Gran Morer.webp', 'selezione', 'Riserva speciale.', 'La nostra riserva speciale. Invecchiato in botte, complesso e speziato.', 'Uvaggio Segreto', '2018', '14.5% Vol', '18-20°C', 'Meditazione, Carni importanti'),
@@ -330,49 +335,49 @@ ALTER TABLE `vino`
 -- AUTO_INCREMENT per la tabella `carrello`
 --
 ALTER TABLE `carrello`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT per la tabella `carrello_elemento`
 --
 ALTER TABLE `carrello_elemento`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT per la tabella `contatto`
 --
 ALTER TABLE `contatto`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT per la tabella `ordine`
 --
 ALTER TABLE `ordine`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT per la tabella `ordine_elemento`
 --
 ALTER TABLE `ordine_elemento`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT per la tabella `prenotazione`
 --
 ALTER TABLE `prenotazione`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT per la tabella `utente`
 --
 ALTER TABLE `utente`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT per la tabella `vino`
 --
 ALTER TABLE `vino`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Limiti per le tabelle scaricate
