@@ -361,41 +361,41 @@ In generale, tutte le pagine del sito implementano layout fluidi, cioè struttur
 
 ## Test effettuati
 
-### Navigabilità e accessibilità
+### Accessibilità e validazione
 
-Per verificare l’accessibilità del sito sono stati utilizzati sia strumenti automatici sia test manuali.
+Per verificare l’accessibilità, la correttezza e l’ottimizzazione del sito sono stati utilizzati sia strumenti automatici che test manuali.
 
 Strumenti automatici utilizzati:
 
-- Silktide
+- Silktide;
 
-- WAVE by WebAIM
+- WAVE by WebAIM;
 
-- Total Validator
+- Total Validator;
 
-- W3C Validator (HTML e CSS)
+- W3C Validator (HTML e CSS);
 
-- Lighthouse (per il calcolo delle prestazioni del sito)
+- Lighthouse (per il calcolo delle prestazioni del sito).
 
-Questi strumenti hanno permesso di verificare rapidamente contrasti, individuare errori e rilevare eventuali mancanze di tag. I controlli automatici hanno evidenziato che il sito raggiunge il livello di conformità WCAG AA per quanto riguarda i contrasti dei colori, anche applicando filtri visivi specifici per varie forme di daltonismo. Non sono stati riscontrati errori significativi dai validatori, ad eccezione di falsi positivi analizzati separatamente.
+L’impiego di questi strumenti ha permesso di individuare rapidamente errori di sintassi, problemi di contrasto e eventuali tag mancanti. I controlli automatici hanno confermato che il sito raggiunge il livello di conformità WCAG 2.1 AA per i contrasti dei colori, anche simulando differenti forme di daltonismo tramite i filtri visivi. I validatori HTML e CSS non hanno evidenziato errori, fatta eccezione per alcuni falsi positivi, che sono stati analizzati nella sezione 5.2.
 
 Test manuali effettuati:
 
-- Controllo della corretta struttura degli headings
+- controllo della corretta struttura degli headings;
 
-- Verifica dell’uso appropriato dei tag semantici
+- verifica dell’uso appropriato dei tag semantici;
 
-- Controllo della presenza e correttezza degli attributi `alt` delle immagini
+- controllo della presenza e correttezza degli attributi `alt` delle immagini;
 
-- Compatibilità del sito con diversi browser: Microsoft Edge, Google Chrome, Mozilla Firefox, Apple Safari e Opera
+- compatibilità del sito con diversi browser: Microsoft Edge, Google Chrome, Mozilla Firefox, Apple Safari e Opera;
 
-- Compatibilità con diversi sistemi operativi: Microsoft Windows 10, Ubuntu 23.10, Android 9, Android 15 e iOS 18.3
+- compatibilità con diversi sistemi operativi: Microsoft Windows 10, Ubuntu 23.10, Android 9, Android 15 e iOS 18.3.
 
 Questa combinazione di test automatici e manuali ha garantito che il sito sia accessibile, leggibile e navigabile correttamente da tutti gli utenti, comprese le persone che utilizzano screen reader o altre tecnologie assistive.
 
 ### Analisi dei Falsi Positivi
 
-da fare
+Da fare una volta corretti tutti i vari errori veri
 
 ### Screen reader
 
