@@ -1,4 +1,5 @@
 Lista todo per tecweb:
+- aggiungere immagini in footer dell'accessibilità del sito. vedi w3c css validator
 - leggere privacy e valutare se è tutto corretto -> contarini
 - leggere relazione
     sistemare tutta la sezione riguardante i test. perché diciamo che non sono presenti errori però bisogna tornare a 
