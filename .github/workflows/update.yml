@@ -1,4 +1,4 @@
-name: Documentazione PDF & README
+name: PDF & README
 
 on:
   push:
