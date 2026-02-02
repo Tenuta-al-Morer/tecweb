@@ -5,13 +5,14 @@ on:
     paths:
       - 'relazione.ltx'
       - 'assets_relazione/readme.lua'
+      - '.github/workflows/update_docs.yml'
 
 permissions:
   contents: write
 
 jobs:
   build_and_update:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     
     steps:
       - name: Checkout del codice
@@ -24,10 +25,13 @@ jobs:
         run: |
           pandoc relazione.ltx -f latex -t gfm --lua-filter=assets_relazione/readme.lua --wrap=none -o README.md
 
-      - name: Compila PDF con LaTeX
-        uses: xu-cheng/latex-action@v3
+      - name: Setup Tectonic
+        uses: wtfjoke/setup-tectonic@v1
         with:
-          root_file: relazione.ltx
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Compila PDF con Tectonic
+        run: tectonic relazione.ltx
 
       - name: Commit e Push dei cambiamenti
         uses: stefanzweifel/git-auto-commit-action@v5
