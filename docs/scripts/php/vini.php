@@ -135,8 +135,6 @@ function costruisciCardVino($vino) {
             </button>
         </div>';
 
-        // ✅ FIX MINIMO PER TOTAL VALIDATOR:
-        // il form contiene SOLO acquisto/quantità, la label Info è FUORI dal form.
         $cardActionHTML = '
         <div class="card-actions">
             <form action="carrello.php" method="POST" class="wine-form">
