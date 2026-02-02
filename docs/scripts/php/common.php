@@ -181,13 +181,18 @@ function caricaPagina($nomeFileHTML, $extraReplacements = []) {
     $footer = '
         <footer>
             <div class="footer-content">
-                
+                <p>
                     &copy; 2025 Tenuta al Morer - <abbr title="Partita">P.</abbr> <abbr title="Imposta sul Valore Aggiunto">IVA</abbr> 00000000000 <br>
                     <a href="policy.php">Note legali</a> |
-                    <a href="policy.php#privacy-policy"><span lang="en">  Privacy Policy</span></a> | 
-                    <a href="policy.php#accessibility">  Accessibilità</a> |
-                    <a href="mappa.php">Mappa del sito</a>  
-            
+                    <a href="policy.php#privacy-policy"><span lang="en">Privacy Policy</span></a> | 
+                    <a href="policy.php#accessibility">Accessibilità</a> |
+                    <a href="mappa.php">Mappa del sito</a>
+                </p>
+                
+                <div class="w3c-badges">
+                    <img src="../../images/w3chtml.png" alt="HTML5 Valido" width="88" height="31">
+                    <img src="../../images/w3ccss.png" alt="CSS Valido" width="88" height="31">
+                </div>
             </div>
         </footer>';
 

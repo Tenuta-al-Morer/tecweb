@@ -4,7 +4,3 @@ Lista todo per tecweb:
 
 NVDA
 - admin gestione vini via tab in crea nuovo vino impossibile uscire dal modale
-
-Risposte a Wave
-- È stato adottato un pattern CSS-only basato su checkbox e label per gestire l’apertura e la chiusura delle finestre modali, garantendo il funzionamento anche in assenza di JavaScript.
-WAVE segnala l’alert “Multiple form labels” perché più elementi <label> sono associati allo stesso input type="checkbox". (VINI OK per questo motivo)

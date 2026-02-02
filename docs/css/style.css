@@ -4739,3 +4739,12 @@ body .auth-container .auth-form .form-group input:-webkit-autofill:active {
     min-width: 100px; 
     font-weight: bold; 
 }
+
+.w3c-badges {
+    margin-top: 15px; 
+}
+
+.w3c-badges img {
+    margin: 0 5px;    
+    vertical-align: middle;
+}
