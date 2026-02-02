@@ -85,7 +85,7 @@ Infine, l'utente amministratore, oltre a quanto permesso allo staff, può:
 \item gestire i permessi degli utenti registrati sulla piattaforma.
 \end{itemize}
 
-L’obiettivo principale è stato quello di sviluppare un’esperienza intuitiva e completa per gli utenti, semplificando l’interazione tra clienti e lavoratori della cantina e migliorando l’accesso alle informazioni ad essa relative.
+L'obiettivo principale è stato quello di sviluppare un'esperienza intuitiva e completa per gli utenti, semplificando l'interazione tra clienti e lavoratori della cantina e migliorando l'accesso alle informazioni ad essa relative.
 
 \section{Analisi dei requisiti}
 Prima di avviare lo sviluppo del sito, abbiamo analizzato diversi siti web di cantine già esistenti per identificare le informazioni principali da includere. 
@@ -97,7 +97,7 @@ per dispositivi mobile. In questa fase abbiamo anche stabilito convenzioni inter
 
 \subsection{Analisi utente}
 Tenuta al Morer si presenta come un sito fruibile da chiunque sia alla ricerca di vini di qualità o di informazioni enologiche. 
-Il sito si rivolge a un pubblico eterogeneo, accogliendo sia utenti con conoscenze di base sul mondo del vino sia chi non ne sa nulla; adotta un linguaggio tecnico dove necessario, ma resta nel complesso facilmente comprensibile, così da coinvolgere e accompagnare anche l’utente meno esperto che desidera informarsi e apprendere nuove conoscenze.
+Il sito si rivolge a un pubblico eterogeneo, accogliendo sia utenti con conoscenze di base sul mondo del vino sia chi non ne sa nulla; adotta un linguaggio tecnico dove necessario, ma resta nel complesso facilmente comprensibile, così da coinvolgere e accompagnare anche l'utente meno esperto che desidera informarsi e apprendere nuove conoscenze.
 
 Struttura e layout sono semplici per permettere all'utente di familiarizzare facilmente con la navigazione del sito. 
 Ci aspettiamo che la maggior parte degli utenti lo utilizzi con browser piuttosto recenti e che la tendenza agli accessi tramite 
@@ -121,13 +121,13 @@ Operazioni svolte per migliorare il ranking del sito:
 \begin{itemize}
 \item in ogni pagina sono state definite parole chiave coerenti con il contenuto, utilizzate nei testi e nei meta tag rilevanti (come title e description);
 \item separazione tra struttura, presentazione e comportamento;
-\item ponendosi come obiettivo il miglioramento del ranking del sito, si è lavorato sull’ottimizzazione delle prestazioni, rendendo le pagine leggere attraverso la compressione delle immagini e l'utilizzo di formati adeguati, poiché una maggiore velocità di caricamento migliora il rendering e contribuisce indirettamente al posizionamento.
+\item ponendosi come obiettivo il miglioramento del ranking del sito, si è lavorato sull'ottimizzazione delle prestazioni, rendendo le pagine leggere attraverso la compressione delle immagini e l'utilizzo di formati adeguati, poiché una maggiore velocità di caricamento migliora il rendering e contribuisce indirettamente al posizionamento.
 \end{itemize}
 
 \section{Progettazione}
 
 \subsection{Schema organizzativo}
-Abbiamo definito una struttura chiara che consenta di navigare facilmente tra i prodotti disponibili e le relative opzioni di acquisto. Il catalogo dei vini è infatti strutturato secondo uno schema organizzativo esatto, ottenuto suddividendo i prodotti in categorie non sovrapponibili - “vini rossi”, “vini bianchi” e “La Selezione” - al fine di facilitare la consultazione da parte dell’utente. È inoltre presente una funzione di ricerca che permette di individuare rapidamente un vino all’interno del catalogo, agevolando l’utente che sa esattamente cosa cercare e desidera risparmiare tempo.
+Abbiamo definito una struttura chiara che consenta di navigare facilmente tra i prodotti disponibili e le relative opzioni di acquisto. Il catalogo dei vini è infatti strutturato secondo uno schema organizzativo esatto, ottenuto suddividendo i prodotti in categorie non sovrapponibili - “vini rossi”, “vini bianchi” e “La Selezione” - al fine di facilitare la consultazione da parte dell'utente. È inoltre presente una funzione di ricerca che permette di individuare rapidamente un vino all'interno del catalogo, agevolando l'utente che sa esattamente cosa cercare e desidera risparmiare tempo.
 
 \subsection{Tipi di utente}
 Durante la fase di progettazione sono stati individuati i seguenti tipi di utente:
@@ -228,7 +228,7 @@ Questo approccio ci permette di impostare una struttura fissa nei file HTML e an
 \subsubsection{Popolamento database}
 Per il popolamento del database abbiamo adottato un duplice approccio. La tabella dei vini è stata creata manualmente: trattandosi di un numero limitato di prodotti, abbiamo preferito inserire direttamente informazioni precise.
 
-Al contrario, per le sezioni dedicate all’assistenza, agli ordini e alle prenotazioni delle esperienze, abbiamo scelto di generare i dati tramite Intelligenza Artificiale. Questa soluzione ci ha permesso di ottenere rapidamente un insieme completo di dati.
+Al contrario, per le sezioni dedicate all'assistenza, agli ordini e alle prenotazioni delle esperienze, abbiamo scelto di generare i dati tramite Intelligenza Artificiale. Questa soluzione ci ha permesso di ottenere rapidamente un insieme completo di dati.
 
 \subsection{Presentazione}
 
@@ -272,7 +272,7 @@ Le immagini relative ai prodotti (vini) e agli elementi grafici dell'interfaccia
 Questa scelta, visibile nella sottocartella \texttt{tr}, è dettata sia dalla necessità di supportare lo sfondo trasparente, sia dal mantenere 
 le rimensioni ridotte rispetto a formati come \textbf{PNG}.
 Le immagini della Tenuta e delle esperienze (come \textit{vigneto.jpg} o \textit{vendemmia.jpg}) utilizzano il formato \textbf{JPG}. 
-Questa scelta è motivata dall’ottimo rapporto tra qualità e compressione del formato, ideale per gestire fotografie complesse che non richiedono trasparenza.
+Questa scelta è motivata dall'ottimo rapporto tra qualità e compressione del formato, ideale per gestire fotografie complesse che non richiedono trasparenza.
 
 Tutte le immagini sono state ottimizzate mantenendo una dimensione ridotta (sotto 0.3MB) al fine di favorire la velocità di rendering.
 
@@ -383,31 +383,31 @@ alle domande: "Dove sono? - Dove posso andare? - Di che cosa si tratta?";
 \item i tag di headings (h1, h2, ...) sono stati utilizzati in maniera corretta e semanticamente coerente, rispettando la gerarchia;
 \item tutte le immagini decorative possiedono un attributo \textit{alt} vuoto (\texttt{alt=""}). Al contrario, le immagini informative sono corredate da 
 un attributo \textit{alt} con un contenuto adeguato alle informazioni che veicolano;
-\item sono state utilizzate opportune tecniche di image replacement per l’immagine presente 
-nella sezione home contenente testo, garantendo così che, qualora l’immagine non venga renderizzata, 
+\item sono state utilizzate opportune tecniche di image replacement per l'immagine presente 
+nella sezione home contenente testo, garantendo così che, qualora l'immagine non venga renderizzata, 
 il testo rimanga leggibile e presenti un adeguato contrasto rispetto al relativo sfondo;
 \item nel caso di una compilazione errata di un form i valori inseriti non vengono eliminati;
-\item per agevolare l’utente nella compilazione dei form in modo più semplice e veloce, sono stati utilizzati gli attributi \texttt{autocomplete};
+\item per agevolare l'utente nella compilazione dei form in modo più semplice e veloce, sono stati utilizzati gli attributi \texttt{autocomplete};
 \item in ogni pagina sono stati implementati gli aiuti alla navigazione (vai al contenuto) per aiutare e velocizzare la navigazione da tastiera;
 \item sono state fornite alternative testuali per tutti i contenuti visivi/grafici;
-\item l’animazione nella pagina home è stata progettata con una velocità conforme alle linee guida WCAG, 
-garantendo un’esperienza visiva confortevole. L’utente può interromperla in qualsiasi momento tramite apposito pulsante; inoltre, se il browser è 
-impostato su "prefers-reduced-motion: reduce", l’animazione non viene mostrata, pur rimanendo usabile attraverso i controlli manuali (bottoni freccette).
+\item l'animazione nella pagina home è stata progettata con una velocità conforme alle linee guida WCAG, 
+garantendo un'esperienza visiva confortevole. L'utente può interromperla in qualsiasi momento tramite apposito pulsante; inoltre, se il browser è 
+impostato su "prefers-reduced-motion: reduce", l'animazione non viene mostrata, pur rimanendo usabile attraverso i controlli manuali (bottoni freccette).
 \end{itemize}
 
 \subsubsection{Aiuti per lo screen reader}
 Per agevolare gli utenti che utilizzano lo screen reader per navigare sul sito, sono stati adottati i seguenti accorgimenti:
 
 \begin{itemize}
-\item all’inizio di ogni pagina sono presenti aiuti alla navigazione (\textit{Vai al contenuto}) che consentono all’utente di risparmiare tempo qualora 
-non fosse interessato all’ascolto dell'intestazione di inizio pagina;
-\item quando necessario, vengono utilizzati gli attributi \texttt{aria} per migliorare l’accessibilità dei contenuti;
-\item le tabelle rese accessibili includono accorgimenti come \texttt{aria-describedby} e l’attributo \texttt{abbr} per facilitare la comprensione dei dati e 
+\item all'inizio di ogni pagina sono presenti aiuti alla navigazione (\textit{Vai al contenuto}) che consentono all'utente di risparmiare tempo qualora 
+non fosse interessato all'ascolto dell'intestazione di inizio pagina;
+\item quando necessario, vengono utilizzati gli attributi \texttt{aria} per migliorare l'accessibilità dei contenuti;
+\item le tabelle rese accessibili includono accorgimenti come \texttt{aria-describedby} e l'attributo \texttt{abbr} per facilitare la comprensione dei dati e 
 velocizzarne l'esplorazione;
 \item se il contenuto della pagina supera la porzione visibile (\emph{above the fold}), viene fornito un pulsante che permette di tornare rapidamente in cima alla pagina;
 \item quando presenti termini in lingue diverse da quella principale della pagina, vengono utilizzati gli attributi \texttt{lang} 
 per garantire una corretta lettura da parte dello screen reader;
-\item in generale, si è cercato di utilizzare il più possibile tag HTML5 semantici, in modo da facilitare l’interpretazione dei contenuti da parte degli screen reader;
+\item in generale, si è cercato di utilizzare il più possibile tag HTML5 semantici, in modo da facilitare l'interpretazione dei contenuti da parte degli screen reader;
 \item sono state fornite alternative testuali per tutti i contenuti visivi/grafici che veicolano informazioni.
 \end{itemize}
 
@@ -415,18 +415,18 @@ per garantire una corretta lettura da parte dello screen reader;
 Le tabelle del sito sono state rese completamente responsive, utilizzando, ad esempio, gli attributi \texttt{data-title}, 
 in modo da facilitarne la lettura anche su dispositivi con schermi di dimensioni ridotte. Questo permette agli utenti di visualizzare 
 le informazioni in maniera chiara senza dover scorrere orizzontalmente o perdere dettagli importanti. La navbar è stata 
-progettata per adattarsi automaticamente: sui piccoli schermi si trasforma in un menù a “hamburger”, semplificando l’accesso alle voci principali e riducendo l’ingombro visivo.
+progettata per adattarsi automaticamente: sui piccoli schermi si trasforma in un menù a “hamburger”, semplificando l'accesso alle voci principali e riducendo l'ingombro visivo.
 
 In generale, tutte le pagine del sito implementano layout fluidi, cioè strutture che si adattano dinamicamente alle diverse dimensioni 
 e risoluzioni degli schermi. Ciò garantisce che i contenuti siano sempre leggibili e facilmente usabili, sia su desktop, tablet o smartphone. 
 Per ottenere questo comportamento, sono state create due diverse media query, ciascuna studiata per specifici intervalli di larghezza dello schermo, 
-entrambe in grado di mantenere la fluidità dei layout e assicurare un’esperienza di navigazione uniforme su tutti i dispositivi.
+entrambe in grado di mantenere la fluidità dei layout e assicurare un'esperienza di navigazione uniforme su tutti i dispositivi.
 
 \section{Test effettuati}
 
 \subsection{Accessibilità e validazione}
 
-Per verificare l’accessibilità, la correttezza e l'ottimizzazione del sito sono stati utilizzati sia strumenti automatici che test manuali.
+Per verificare l'accessibilità, la correttezza e l'ottimizzazione del sito sono stati utilizzati sia strumenti automatici che test manuali.
 
 Strumenti automatici utilizzati:
 \begin{itemize}
@@ -437,7 +437,7 @@ Strumenti automatici utilizzati:
 \item Performance DevTools (per il calcolo delle prestazioni del sito).
 \end{itemize}
 
-L’impiego di tali strumenti ha consentito di individuare rapidamente eventuali errori tecnici come problemi di sintassi, di contrasto 
+L'impiego di tali strumenti ha consentito di individuare rapidamente eventuali errori tecnici come problemi di sintassi, di contrasto 
 e la presenza di tag mancanti o non correttamente strutturati. 
 I controlli effettuati hanno confermato che il sito rispetta i requisiti di conformità WCAG 2.1 livello AA in tutti i suoi aspetti. 
 I tool adottati hanno evidenziato esito positivo in tutte le pagine del sito, con un numero minimo di segnalazioni che sono state 
@@ -446,7 +446,7 @@ successivamente analizzate e commentate nella sezione 5.2.
 Test manuali effettuati:
 \begin{itemize}
 \item controllo della corretta struttura e gerarchia degli headings;
-\item verifica dell’uso appropriato dei tag semantici;
+\item verifica dell'uso appropriato dei tag semantici;
 \item controllo della completa correttezza e corenza degli attributi \texttt{alt} alle relative immagini;
 \item controllo della navigabilità da tastiera di tutte le pagine del sito;
 \item verifica del corretto funzionamento dei form e della gestione degli errori;
@@ -464,19 +464,19 @@ comprese le persone che utilizzano screen reader o altre tecnologie assistive.
 
 \subsection{Analisi dei Falsi Positivi}
 
-L’analisi dei falsi positivi è stata effettuata dopo la correzione di tutte le problematiche effettivamente riscontrate; di seguito sono riportate le segnalazioni risultate non critiche:
+L'analisi dei falsi positivi è stata effettuata dopo la correzione di tutte le problematiche effettivamente riscontrate; di seguito sono riportate le segnalazioni risultate non critiche:
 \begin{itemize}
-\item \textbf{WAVE by WebAIM}: WAVE segnala l’alert “Multiple form labels” perché più elementi label sono associati allo stesso input type="checkbox".
-Questa scelta deriva dall’adozione di un pattern CSS-only basato su checkbox e label per gestire l’apertura e la chiusura delle finestre modali, 
+\item \textbf{WAVE by WebAIM}: WAVE segnala l'alert “Multiple form labels” perché più elementi label sono associati allo stesso input type="checkbox".
+Questa scelta deriva dall'adozione di un pattern CSS-only basato su checkbox e label per gestire l'apertura e la chiusura delle finestre modali, 
 garantendo il funzionamento anche in assenza di JavaScript.
 \end{itemize}
 
 
 \subsection{Screen reader}
-L’accessibilità del sito è stata testata utilizzando lo screen reader NVDA, 
+L'accessibilità del sito è stata testata utilizzando lo screen reader NVDA, 
 verificando la corretta lettura e interpretazione di tutti i contenuti e delle principali componenti interattive. 
-I test hanno incluso il controllo dell’ordine di navigazione da tastiera, della corretta associazione tra etichette e campi di input, 
-dell’interpretazione dei ruoli e degli attributi ARIA, nonché della lettura strutturata di tabelle, form e altri elementi complessi. 
+I test hanno incluso il controllo dell'ordine di navigazione da tastiera, della corretta associazione tra etichette e campi di input, 
+dell'interpretazione dei ruoli e degli attributi ARIA, nonché della lettura strutturata di tabelle, form e altri elementi complessi. 
 Le verifiche non hanno evidenziato criticità rilevanti.
 
 \section{Organizzazione del gruppo}
