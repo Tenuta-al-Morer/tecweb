@@ -114,19 +114,22 @@ foreach ($ordiniArray as $ordine) {
     $ordini .= '<td data-title="Cliente">' . htmlspecialchars($nomeCliente) . '</td>';
     $ordini .= '<td data-title="Totale Finale">' . number_format($ordine['totale_finale'], 2) . ' EUR</td>';
     $ordini .= '<td data-title="Data Creazione">' . htmlspecialchars($ordine['data_creazione']) . '</td>';
-    
     $ordini .= '<td class="td_richiesta_degustazione" data-title="Dettagli">
-                    <a href="?sezione=ordini#details-row-' . $ordineId . '" class="btn-secondary btn-fallback">Mostra Dettagli</a>
-                    <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $ordineId . '" aria-expanded="false" aria-controls="details-row-' . $ordineId . '" aria-label="Mostra dettagli ordine ' . $ordineId . '">
-                        Mostra <span class="fas fa-chevron-down" aria-hidden="true"></span>
+                    <a href="?sezione=ordini#details-row-' . $ordineId . '" class="btn-secondary btn-fallback">Mostra Dettagli <span class="sr-only">ordine ' . $ordineId . '</span></a>
+                    <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $ordineId . '" aria-expanded="false" aria-controls="details-row-' . $ordineId . '">
+                        Mostra <span class="sr-only">dettagli ordine ' . $ordineId . '</span> <span class="fas fa-chevron-down" aria-hidden="true"></span>
                     </button>
                 </td>';
                 
     $ordini .= '<td class="td_richiesta_degustazione" data-title="Gestione richiesta"> 
                     <form method="POST" class="standard-form">
                         <input type="hidden" name="ordine_id" value="' . $ordineId . '">
-                        <button type="submit" name="azione" value="accetta" class="btn-secondary btn-accept" aria-label="Accetta ordine ' . $ordineId . '">Accetta</button>
-                        <button type="submit" name="azione" value="rifiuta" class="btn-secondary btn-reject" aria-label="Rifiuta ordine ' . $ordineId . '">Rifiuta</button>
+                        <button type="submit" name="azione" value="accetta" class="btn-secondary btn-accept">
+                            Accetta <span class="sr-only">ordine ' . $ordineId . '</span>
+                        </button>
+                        <button type="submit" name="azione" value="rifiuta" class="btn-secondary btn-reject">
+                            Rifiuta <span class="sr-only">ordine ' . $ordineId . '</span>
+                        </button>
                     </form>
                 </td>';
     $ordini .= '</tr>';
@@ -160,11 +163,10 @@ foreach ($ordiniArchivioArray as $ordine) {
     $ordiniArchivio .= '<td data-title="Data Creazione">' . htmlspecialchars($ordine['data_creazione']) . '</td>';
     $ordiniArchivio .= '<td data-title="Stato">' . htmlspecialchars($ordine['stato_ordine']) . '</td>';
     
-    // MODIFICA QUI
     $ordiniArchivio .= '<td class="td_richiesta_degustazione" data-title="Dettagli">
-                            <a href="?sezione=ordini#details-row-' . $ordineId . '" class="btn-secondary btn-fallback">Mostra Dettagli</a>
-                            <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $ordineId . '" aria-expanded="false" aria-controls="details-row-' . $ordineId . '" aria-label="Mostra dettagli ordine ' . $ordineId . '">
-                                Mostra <span class="fas fa-chevron-down" aria-hidden="true"></span>
+                            <a href="?sezione=ordini#details-row-' . $ordineId . '" class="btn-secondary btn-fallback">Mostra Dettagli <span class="sr-only">ordine ' . $ordineId . '</span></a>
+                            <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $ordineId . '" aria-expanded="false" aria-controls="details-row-' . $ordineId . '">
+                                Mostra <span class="sr-only">dettagli ordine ' . $ordineId . '</span> <span class="fas fa-chevron-down" aria-hidden="true"></span>
                             </button>
                         </td>';
     $ordiniArchivio .= '</tr>';
@@ -196,16 +198,20 @@ foreach ($prenotazioniArray as $prenotazione) {
     $prenotazioni .= '<td data-title="Data visita">' . htmlspecialchars($prenotazione['data_visita']) . '</td>';
     $prenotazioni .= '<td data-title="Numero persone">' . (int)$prenotazione['n_persone'] . '</td>';
     $prenotazioni .= '<td class="td_richiesta_degustazione" data-title="Dettagli">
-                        <a href="?sezione=esperienze#details-row-' . $detailsKey . '" class="btn-secondary btn-fallback">Mostra Dettagli</a>
-                        <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $detailsKey . '" aria-expanded="false" aria-controls="details-row-' . $detailsKey . '" aria-label="Mostra dettagli prenotazione ' . $prenotazioneId . '">
-                            Mostra <span class="fas fa-chevron-down" aria-hidden="true"></span>
+                        <a href="?sezione=esperienze#details-row-' . $detailsKey . '" class="btn-secondary btn-fallback">Mostra Dettagli <span class="sr-only">prenotazione ' . $prenotazioneId . '</span></a>
+                        <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $detailsKey . '" aria-expanded="false" aria-controls="details-row-' . $detailsKey . '">
+                            Mostra <span class="sr-only">dettagli prenotazione ' . $prenotazioneId . '</span> <span class="fas fa-chevron-down" aria-hidden="true"></span>
                         </button>
                     </td>';
     $prenotazioni .= '<td class="td_richiesta_degustazione" data-title="Gestione richiesta"> 
                         <form method="POST" class="standard-form">
                             <input type="hidden" name="prenotazione_id" value="' . $prenotazioneId . '">
-                            <button type="submit" name="azione" value="accetta" class="btn-secondary btn-accept" aria-label="Accetta prenotazione ' . $prenotazioneId . '">Accetta</button>
-                            <button type="submit" name="azione" value="rifiuta" class="btn-secondary btn-reject" aria-label="Rifiuta prenotazione ' . $prenotazioneId . '">Rifiuta</button>
+                            <button type="submit" name="azione" value="accetta" class="btn-secondary btn-accept">
+                                Accetta <span class="sr-only">prenotazione ' . $prenotazioneId . '</span>
+                            </button>
+                            <button type="submit" name="azione" value="rifiuta" class="btn-secondary btn-reject">
+                                Rifiuta <span class="sr-only">prenotazione ' . $prenotazioneId . '</span>
+                            </button>
                         </form>
                     </td>';
     $prenotazioni .= '</tr>';
@@ -231,9 +237,9 @@ foreach ($prenotazioniArchivioArray as $prenotazione) {
     $prenotazioniArchivio .= '<td data-title="Numero persone">' . (int)$prenotazione['n_persone'] . '</td>';
     $prenotazioniArchivio .= '<td data-title="Stato">' . htmlspecialchars($prenotazione['stato']) . '</td>';
     $prenotazioniArchivio .= '<td class="td_richiesta_degustazione" data-title="Dettagli">
-                                <a href="?sezione=esperienze#details-row-' . $detailsKey . '" class="btn-secondary btn-fallback">Mostra Dettagli</a>
+                                <a href="?sezione=esperienze#details-row-' . $detailsKey . '" class="btn-secondary btn-fallback">Mostra Dettagli <span class="sr-only">prenotazione ' . $prenotazioneId . '</span></a>
                                 <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $detailsKey . '" aria-expanded="false" aria-controls="details-row-' . $detailsKey . '">
-                                    Mostra <span class="fas fa-chevron-down" aria-hidden="true"></span>
+                                    Mostra <span class="sr-only">dettagli prenotazione ' . $prenotazioneId . '</span> <span class="fas fa-chevron-down" aria-hidden="true"></span>
                                 </button>
                             </td>';
     $prenotazioniArchivio .= '</tr>';
@@ -259,9 +265,9 @@ foreach ($messaggiArray as $messaggio) {
     $messaggi .= '<td data-title="Data invio">' . htmlspecialchars($messaggio['data_invio']) . '</td>';
     $messaggi .= '<td data-title="Messaggio">' . htmlspecialchars($messaggio['messaggio']) . '</td>';
     $messaggi .= '<td class="td_richiesta_degustazione" data-title="Gestisci">
-                    <a href="?sezione=messaggi#details-row-' . $detailsKey . '" class="btn-secondary btn-fallback">Mostra Dettagli</a>
+                    <a href="?sezione=messaggi#details-row-' . $detailsKey . '" class="btn-secondary btn-fallback">Mostra Dettagli <span class="sr-only">messaggio ' . $idMsg . '</span></a>
                     <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $detailsKey . '" aria-expanded="false" aria-controls="details-row-' . $detailsKey . '">
-                        Mostra <span class="fas fa-chevron-down" aria-hidden="true"></span>
+                        Mostra <span class="sr-only">dettagli messaggio ' . $idMsg . '</span> <span class="fas fa-chevron-down" aria-hidden="true"></span>
                     </button>
                 </td>';
     $messaggi .= '</tr>';
@@ -295,9 +301,9 @@ foreach ($messaggiArchivioArray as $messaggio) {
     $messaggiArchivio .= '<td data-title="Data invio">' . htmlspecialchars($messaggio['data_invio']) . '</td>';
     $messaggiArchivio .= '<td data-title="Messaggio">' . htmlspecialchars($messaggio['messaggio']) . '</td>';
     $messaggiArchivio .= '<td class="td_richiesta_degustazione" data-title="Gestisci">
-                            <a href="?sezione=messaggi#details-row-' . $detailsKey . '" class="btn-secondary btn-fallback">Mostra Dettagli</a>
+                            <a href="?sezione=messaggi#details-row-' . $detailsKey . '" class="btn-secondary btn-fallback">Mostra Dettagli <span class="sr-only">messaggio ' . $idMsg . '</span></a>
                             <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $detailsKey . '" aria-expanded="false" aria-controls="details-row-' . $detailsKey . '">
-                                Mostra <span class="fas fa-chevron-down" aria-hidden="true"></span>
+                                Mostra <span class="sr-only">dettagli messaggio ' . $idMsg . '</span> <span class="fas fa-chevron-down" aria-hidden="true"></span>
                             </button>
                         </td>';
     $messaggiArchivio .= '</tr>';
