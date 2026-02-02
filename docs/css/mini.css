@@ -719,6 +719,14 @@ body.light-mode .table-data td::before {
     z-index: 10; 
 }
 
+input#privacy.contatti-checkbox[type="checkbox"], input#privacy.esperienze-checkbox[type="checkbox"] {
+    transform: scale(1.5);
+}
+
+#conferma_irreversibile {
+    transform: scale(1.5);
+}
+
 .table-data tr.order-details-row {
     border-top-left-radius: 0;
     border-top-right-radius: 0;

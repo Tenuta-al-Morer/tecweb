@@ -1,8 +1,2 @@
 Lista todo per tecweb:
 - caricare nel server e controllare che ci siano tutti i file giusti
-- fare test generali di conferma (anche versioni mobile!!!!). Stampa compresa!
-- checkbox in modalità telefono sono troppo piccoli 
-- manca lo spazio tra il pulsante invia mesaggio e la ceckbox sopra in contatti e esperienze
-- checkbox in area personale in dati personali
-- checkbox in registrazione
-- dimensioni massime di altezza padding o margine in aggiungi nuovo vino in admin

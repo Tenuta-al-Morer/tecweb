@@ -558,7 +558,7 @@ body.light-mode .row-deleted td {
     border-radius: 8px;
     width: 90%;
     max-width: 800px;
-    max-height: 90vh;
+    max-height: 80vh;
     overflow-y: auto;
     z-index: 3001;
     box-shadow: 0 10px 30px #000;
@@ -586,6 +586,11 @@ body.light-mode .modal-box-css {
     color: var(--text-color);
     background: none;
     border: none;
+    transform: scale(1.5);
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .modal-close-x:hover, .modal-close-x:focus {
     color: var(--enhance);
@@ -1958,6 +1963,7 @@ footer a:hover, footer a:focus {
     align-items: center;
     gap: 0.5rem;
     cursor: pointer;
+    margin-bottom: 1em;
 }
 
 .checkbox-container input[type="checkbox"] {
