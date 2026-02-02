@@ -1,8 +1,5 @@
 Lista todo per tecweb:
 - verificare risolti tutti gli errori, se il print funziona correttamente -> contarini
 - formattare in css l'aggiunta della foto in admin
-NVDA
-
 - stampa: in spedizione c'è il link torna al carrello e le IMMAGINI enormi
-
 - rileggere relazione e controllare scritte in tutto il sito
