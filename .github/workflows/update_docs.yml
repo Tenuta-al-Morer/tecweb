@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   build_and_update:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-22.04 
     
     steps:
       - name: Checkout del codice
@@ -29,6 +29,14 @@ jobs:
         uses: wtfjoke/setup-tectonic@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Cache Tectonic packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Tectonic
+          key: ${{ runner.os }}-tectonic-${{ hashFiles('relazione.ltx') }}
+          restore-keys: |
+            ${{ runner.os }}-tectonic-
 
       - name: Compila PDF con Tectonic
         run: tectonic relazione.ltx
