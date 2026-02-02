@@ -50,7 +50,7 @@ Tenuta al Morer si presenta come un sito fruibile da chiunque sia alla ricerca d
 
 Struttura e layout sono semplici per permettere all’utente di familiarizzare facilmente con la navigazione del sito. Ci aspettiamo che la maggior parte degli utenti lo utilizzi con browser piuttosto recenti e che la tendenza agli accessi tramite mobile avvenga soprattutto per attività associate alla gestione delle proprie prenotazioni e alla ricerca veloce di vini.
 
-Il target dell’età degli utenti si stima sia compreso tra i 25 e i 70 anni, dato il tipo di servizio offerto.
+Il target di età degli utenti si stima sia compreso tra i 25 e i 70 anni, dato il tipo di servizio offerto.
 
 ### SEO
 
@@ -72,7 +72,7 @@ Operazioni svolte per migliorare il ranking del sito:
 
 - separazione tra struttura, presentazione e comportamento;
 
-- ponendosi come obiettivo il miglioramento del ranking del sito, si è lavorato sull’ottimizzazione delle prestazioni, rendendo le pagine leggere attraverso la compressione delle immagini e l’utilizzo di formati adeguati, poiché una maggiore velocità di caricamento migliora il rendering e contribuisce indirettamente al posizionamento.
+- si è intervenuti sull’ottimizzazione delle prestazioni del sito, alleggerendo le pagine tramite la compressione delle immagini e l’utilizzo di formati adeguati; una maggiore velocità di caricamento migliora infatti il rendering e contribuisce indirettamente al posizionamento.
 
 ## Progettazione
 
@@ -84,7 +84,7 @@ Abbiamo definito una struttura chiara che consenta di navigare facilmente tra i 
 
 Durante la fase di progettazione sono stati individuati i seguenti tipi di utente:
 
-- **Utente non autenticato**: l’utente ospite ha accesso alle sezioni non private del sito, ossia le pagine "Home", "Tenuta", "Vini", "Esperienze" e "Contatti". Può prenotare degustazioni, inviare richieste di assistenza e ha la possibilità di inserire vini nel carrello. Tuttavia, non può effettuare acquisti né accedere all’area riservata, a meno che non completi la registrazione o effettui l’accesso.
+- **Utente non autenticato**: l’utente ospite ha accesso alle sezioni non private del sito, ossia le pagine "Home", "Tenuta", "Vini", "Esperienze" e "Contatti". Può prenotare degustazioni, inviare richieste di assistenza e ha la possibilità di inserire vini nel carrello. Tuttavia, non può effettuare acquisti né accedere all’area riservata, a meno che non completi la registrazione e/o effettui l’accesso.
 
 - **Cliente**: ha accesso completo alle funzionalità del sito relative agli utenti clienti, come la possibilità di acquistare vini e gestire il proprio account all’interno della propria area riservata.
 
@@ -148,9 +148,9 @@ Le principali tabelle del database sono:
 
 - **vino**: memorizza il catalogo completo dei prodotti vinicoli
 
-- **carrello** e **carrello_elemento**: servono per la gestione del carrello
+- **carrello** e **carrello_elemento**: memorizzano i dati per la gestione del carrello
 
-- **ordine** e **ordine_elemento**: servono per la gestione degli ordini effettuati
+- **ordine** e **ordine_elemento**: memorizzano i dati per la gestione degli ordini effettuati
 
 - **prenotazione**: memorizza le prenotazioni delle esperienze
 
@@ -163,15 +163,15 @@ Le principali tabelle del database sono:
 
 ## Realizzazione
 
-Per la realizzazione del sito abbiamo utilizzato dati relativi a vini realmente esistenti nella tradizione vitivinicola veneta. Le immagini dei prodotti e della tenuta sono state generate tramite strumenti di intelligenza artificiale con l’obbiettivo di ottenere una resa visiva coerente con il layout del sito, mantenendo comunque i riferimenti autentici al territorio e ai nomi originali dei prodotti.
+Per la realizzazione del sito abbiamo utilizzato dati relativi a vini realmente esistenti nella tradizione vitivinicola veneta. Le immagini dei prodotti e della tenuta sono state generate tramite strumenti di intelligenza artificiale con l’obiettivo di ottenere una resa visiva coerente con il layout del sito, mantenendo comunque i riferimenti autentici al territorio e ai nomi originali dei prodotti.
 
 ### Struttura e contenuto
 
 #### HTML
 
-Il sito è stato sviluppato in HTML5. Abbiamo cercato di mantenere più struttura possibile nei file HTML ed eventualmente andare a lavorare e sostituire alcune parti con il PHP. Per sostituire singole parole, abbiamo utilizzato come segnaposto delle parole racchiuse tra parentesi quadre (\[segnaposto\]). Invece per sostituire intere sezioni è stato utilizzato il metodo preg_replace() di PHP, rispettando un certo pattern.
+Il sito è stato sviluppato in HTML5. Abbiamo cercato di mantenere più struttura possibile nei file HTML ed eventualmente andare a lavorare e sostituire alcune parti con il PHP. Per sostituire singole parole, abbiamo utilizzato come segnaposto delle parole racchiuse tra parentesi quadre (\[segnaposto\]). Invece, per sostituire intere sezioni è stato utilizzato il metodo preg_replace() di PHP, rispettando un certo pattern.
 
-Un esempio è l’utilizzo nel file areaPersonale.html:
+Un esempio è presente nel file areaPersonale.html:
 
     <p>
         Sei loggato come: <span class="bold">[email_utente]</span>
@@ -181,15 +181,13 @@ Questo approccio ci permette di impostare una struttura fissa nei file HTML e an
 
 #### Popolamento database
 
-Per il popolamento del database abbiamo adottato un duplice approccio. La tabella dei vini è stata creata manualmente: trattandosi di un numero limitato di prodotti, abbiamo preferito inserire direttamente informazioni precise.
-
-Al contrario, per le sezioni dedicate all’assistenza, agli ordini e alle prenotazioni delle esperienze, abbiamo scelto di generare i dati tramite Intelligenza Artificiale. Questa soluzione ci ha permesso di ottenere rapidamente un insieme completo di dati.
+Il popolamento del database è stato effettuato interamente in modo manuale, così da garantire un controllo diretto e accurato sui dati inseriti. In particolare, è stata posta maggiore attenzione al popolamento della tabella dei vini, considerata il fulcro dell’attività dell’azienda. Per questo motivo, i dati inseriti sono ispirati a prodotti reali già esistenti della cultura vitivinicola veneta, mantenendo coerenza e realismo nei contenuti.
 
 ### Presentazione
 
 #### CSS
 
-Uno degli aspetti più importanti del nostro CSS è l’utilizzo delle variabili, impostate all’inizio del file e riutilizzate più volte in parti differenti. In questo modo siamo riusciti ad uniformare e tenere sotto controllo i contrasti e i colori utilizzati. Particolare attenzione è stata posta anche all’utilizzo di layout di tipo flex e grid. Data la loro pensantezza di renderizzazione per i browser, ne è stato fatto un uso consapevole, cercando di evitare di superare il secondo livello.
+Uno degli aspetti più importanti del nostro CSS è l’utilizzo delle variabili impostate all’inizio del file e riutilizzate più volte in parti differenti. In questo modo siamo riusciti ad uniformare e tenere sotto controllo i contrasti e i colori utilizzati, garantendo quindi una maggiore manutenibilità. Particolare attenzione è stata posta anche all’utilizzo di layout di tipo flex e grid. Considerato il maggiore peso di renderizzazione dei layout grid per i browser, il loro impiego è stato valutato con attenzione, cercando di limitarne la complessità ed evitando di superare il secondo livello di annidamento.
 
 In secondo luogo, si evidenzia l’utilizzo di tre differenti fogli di stile: style.css, mini.css e print.css. Questa suddivisione è stata adottata per organizzare propriamente il codice CSS per gestire al meglio l’aspetto responsive del sito e garantire un adeguato layout di stampa in caso di occorrenza.
 
@@ -205,7 +203,7 @@ Questo meccanismo permette di sfruttare i fogli di stile CSS per gestire due sta
 
 - **Stato con JavaScript**: la rimozione della classe permette l’applicazione degli stili dedicati alle funzionalità interattive avanzate.
 
-Questa strategia assicura che il contenuto rimanga sempre usabile accessibile, delegando a JavaScript solo l’arricchimento dell’esperienza utente e non le funzionalità critiche.
+Questa strategia assicura che il contenuto rimanga sempre usabile e accessibile, delegando a JavaScript solo l’arricchimento dell’esperienza utente e non le funzionalità critiche.
 
 #### CSS-Print
 
@@ -213,7 +211,7 @@ Per la versione di stampa è stata posta particolare attenzione alla leggibilit�
 
 Nello specifico:
 
-- sono stati nascosti tutti gli elementi interattivi e di navigazione (navbar, pulsanti di azione e carrello vuoto);
+- sono stati nascosti tutti gli elementi interattivi e di navigazione (navbar, pulsanti di azione, carrello vuoto, ...);
 
 - sono state rimosse le immagini puramente decorative, mantenendo visibili solo il logo e i contenuti grafici informativi;
 
@@ -225,7 +223,7 @@ Nello specifico:
 
 La gestione delle risorse grafiche è stata diversificata in base alla tipologia di contenuto per bilanciare qualità e performance.
 
-Le immagini relative ai prodotti (vini) e agli elementi grafici dell’interfaccia (come i loghi) sono stati salvati in formato **WebP**. Questa scelta, visibile nella sottocartella `tr`, è dettata sia dalla necessità di supportare lo sfondo trasparente, sia dal mantenere le rimensioni ridotte rispetto a formati come **PNG**. Le immagini della Tenuta e delle esperienze (come *vigneto.jpg* o *vendemmia.jpg*) utilizzano il formato **JPG**. Questa scelta è motivata dall’ottimo rapporto tra qualità e compressione del formato, ideale per gestire fotografie complesse che non richiedono trasparenza.
+Le immagini relative ai prodotti (vini) e agli elementi grafici dell’interfaccia (come i loghi) sono stati salvati in formato **WebP**. Questa scelta, visibile nella sottocartella `tr`, è dettata sia dalla necessità di supportare lo sfondo trasparente, sia dal mantenere le dimensioni ridotte rispetto a formati come **PNG**. Le immagini della Tenuta e delle esperienze (come *vigneto.jpg* o *vendemmia.jpg*) utilizzano il formato **JPG**. Questa scelta è motivata dall’ottimo rapporto tra qualità e compressione del formato, ideale per gestire fotografie complesse che non richiedono trasparenza.
 
 Tutte le immagini sono state ottimizzate mantenendo una dimensione ridotta (sotto 0.3MB) al fine di favorire la velocità di rendering.
 
@@ -233,7 +231,7 @@ Per quanto riguarda l’inserimento di nuovi prodotti tramite l’area riservata
 
 #### Font
 
-Abbiamo usato il font **Atkinson Hyperlegible** per tutto il sito web poichè accessibile e senza grazie. Abbiamo applicato un’interlinea di 1.5 em per facilitare la lettura. Sono presenti inoltre dei font di fallback: Lexend e Roboto.
+Abbiamo usato il font **Atkinson Hyperlegible** per tutto il sito web poiché accessibile e senza grazie. Abbiamo applicato un’interlinea di 1.5 em per facilitare la lettura. Sono presenti inoltre dei font di fallback: Lexend e Roboto.
 
 #### Colori
 
@@ -269,7 +267,7 @@ Palette colori modalità chiara
 
 #### PHP
 
-Nelle sezioni contenenti form abbiamo implementato, nei casi di errore, un algoritmo per il ripopolamento dei vari campi di input presenti tramite l’utilizzo della tecnica "segnaposto" descritta nella sezione 4.1.1. Questa soluzione evita che l’utente debba reinserire tutte le informazioni in caso di invio del form non andato a buon fine.
+Nelle sezioni contenenti form abbiamo implementato, nei casi di errore, un algoritmo per il ripopolamento dei vari campi di input presenti, tramite l’utilizzo della tecnica "segnaposto" descritta nella sezione 4.1.1. Questa soluzione evita che l’utente debba reinserire tutte le informazioni in caso di invio del form non andato a buon fine.
 
 I file principali con cui viene gestita l’infrastruttura PHP sono:
 
@@ -287,7 +285,7 @@ Sono stati implementati script dedicati alla validazione lato client dei moduli,
 
 #### Validazione dell’input
 
-Abbiamo eseguito controlli sull’input sia lato client, utilizzando Javascript, che lato server tramite PHP. La maggior parte dei controlli è stata eseguita tramite funzioni che controllano con delle espressioni regolari il contenuto degli input. Inoltre, ogni messaggio di errore ritornato dai metodi di validazione sopra elencati è stato pensato per fornire all’utente una spiegazione chiara e concisa del problema.
+Abbiamo eseguito controlli sull’input sia lato client, utilizzando JavaScript, che lato server tramite PHP. La maggior parte dei controlli è stata eseguita tramite funzioni che verificano attraverso l’uso di espressioni regolari il contenuto degli input. Inoltre, ogni messaggio di errore ritornato dai metodi di validazione sopra elencati è stato pensato per fornire all’utente una spiegazione chiara e concisa del problema.
 
 #### Sicurezza
 
@@ -309,15 +307,15 @@ Di seguito sono elencate tutte le scelte effettuate per migliorare l’accessibi
 
 - tabelle accessibili;
 
-- form accessibili con label associate correttamente agli input (feedback e feedforward chiari e utili a tutte le categorie di utenti);
+- form accessibili con label associate correttamente agli input;
 
-- per garantire l’orientamento dell’utente abbiamo verificato che nel "above the fold" di ogni pagina fosse semplice e immediato rispondere alle domande: "Dove sono? - Dove posso andare? - Di che cosa si tratta?";
+- per garantire l’orientamento dell’utente abbiamo verificato che nell’ "above the fold" di ogni pagina fosse semplice e immediato rispondere alle domande: "Dove sono? - Dove posso andare? - Di che cosa si tratta?";
 
 - i contrasti tra i colori di testo e relativo sfondo sono accessibili;
 
 - è stata adottata una gerarchia del sito ampia e poco profonda;
 
-- sono stati utilizzati i tag *\<abbr\>* per esplicitare le abbreviazioni;
+- sono stati utilizzati i tag abbr per esplicitare le abbreviazioni;
 
 - i tag di headings (h1, h2, ...) sono stati utilizzati in maniera corretta e semanticamente coerente, rispettando la gerarchia;
 
@@ -363,7 +361,7 @@ In generale, tutte le pagine del sito implementano layout fluidi, cioè struttur
 
 ### Accessibilità e validazione
 
-Per verificare l’accessibilità, la correttezza e l’ottimizzazione del sito sono stati utilizzati sia strumenti automatici che test manuali.
+Per verificare l’accessibilità, la correttezza e l’ottimizzazione del sito sono stati utilizzati sia strumenti automatici che test manuali, entrambi necessari per garantire una valutazione completa ed affidabile.
 
 Strumenti automatici utilizzati:
 
@@ -377,7 +375,7 @@ Strumenti automatici utilizzati:
 
 - Performance DevTools (per il calcolo delle prestazioni del sito).
 
-L’impiego di tali strumenti ha consentito di individuare rapidamente eventuali errori tecnici come problemi di sintassi, di contrasto e la presenza di tag mancanti o non correttamente strutturati. I controlli effettuati hanno confermato che il sito rispetta i requisiti di conformità WCAG 2.1 livello AA in tutti i suoi aspetti. I tool adottati hanno evidenziato esito positivo in tutte le pagine del sito, con un numero minimo di segnalazioni che sono state successivamente analizzate e commentate nella sezione 5.2.
+L’impiego di tali strumenti ha consentito di individuare rapidamente eventuali errori tecnici come problemi di sintassi, di contrasto e la presenza di tag mancanti o non correttamente strutturati. I tool adottati hanno evidenziato esito positivo in tutte le pagine del sito, con un numero minimo di segnalazioni che sono state successivamente analizzate e commentate nella sezione 5.2.
 
 Test manuali effettuati:
 
@@ -405,17 +403,17 @@ Test manuali effettuati:
 
 - compatibilità con diversi sistemi operativi: Microsoft Windows 10, Ubuntu 23.10, Android 9, Android 15 e iOS 18.3.
 
-Questa combinazione di test automatici e manuali ha garantito che il sito sia accessibile, leggibile e navigabile correttamente da tutti gli utenti, comprese le persone che utilizzano screen reader o altre tecnologie assistive.
+Questa combinazione di test automatici e manuali ha garantito che il sito sia accessibile, leggibile e navigabile correttamente da tutti gli utenti, comprese le persone che utilizzano screen reader o altre tecnologie assistive. In particolare, i test manuali hanno consentito una validazione completa dell’accessibilità del sito in conformità alle WCAG 2.1 livello AA. I test automatici, se considerati singolarmente, non permettono una verifica esaustiva di tutti i requisiti, poiché non sono in grado di valutare aspetti qualitativi dell’esperienza utente, come la comprensibilità dei contenuti, la correttezza semantica e l’effettiva usabilità tramite tecnologie assistive.
 
 ### Analisi dei Falsi Positivi
 
-L’analisi dei falsi positivi è stata effettuata dopo la correzione di tutte le problematiche effettivamente riscontrate; di seguito sono riportate le segnalazioni risultate non critiche:
+L’analisi dei falsi positivi è stata effettuata sulla base delle criticità riscontrate in fase di test; di seguito sono riportate le segnalazioni risultate non critiche:
 
 - **WAVE by WebAIM**: WAVE segnala l’alert “Multiple form labels” perché più elementi label sono associati allo stesso input type="checkbox". Questa scelta deriva dall’adozione di un pattern CSS-only basato su checkbox e label per gestire l’apertura e la chiusura delle finestre modali, garantendo il funzionamento anche in assenza di JavaScript.
 
 ### Screen reader
 
-L’accessibilità del sito è stata testata utilizzando lo screen reader NVDA, verificando la corretta lettura e interpretazione di tutti i contenuti e delle principali componenti interattive. I test hanno incluso il controllo dell’ordine di navigazione da tastiera, della corretta associazione tra etichette e campi di input, dell’interpretazione dei ruoli e degli attributi ARIA, nonché della lettura strutturata di tabelle, form e altri elementi complessi. Le verifiche non hanno evidenziato criticità.
+L’accessibilità del sito è stata testata utilizzando lo screen reader NVDA, verificando la corretta lettura e interpretazione di tutti i contenuti e delle componenti interattive. I test hanno incluso il controllo dell’ordine di navigazione da tastiera, della corretta associazione tra etichette e campi di input, dell’interpretazione dei ruoli e degli attributi ARIA, nonché della lettura strutturata di tabelle, form e altri elementi complessi. Le verifiche non hanno evidenziato criticità.
 
 ## Organizzazione del gruppo
 
@@ -470,15 +468,3 @@ Il lavoro è stato organizzato suddividendo le attività in base alle diverse pa
   - Testing e validazione: Total Validator, Silktide, WAVE by WebAIM, W3C Validator e NVDA per le relative pagine
 
   - Relazione tecnica
-
-## Conclusioni
-
-1.  Il sito è stato sviluppato in maniera da essere accessibile e conforme alle linee guida WCAG 2.1 di livello AA.
-
-2.  Il sito è stato testato su diversi browser e dispositivi per garantirne la compatibilità e la corretta visualizzazione.
-
-3.  Sono stati implementati meccanismi di sicurezza per proteggere i dati degli utenti e prevenire attacchi comuni come SQL Injection.
-
-4.  Il sito è stato ottimizzato per le prestazioni, garantendo tempi di caricamento rapidi e un’esperienza utente fluida.
-
-5.  Il database è stato popolato con valori realistici per testare le funzionalità del sito in condizioni simili alla realtà.

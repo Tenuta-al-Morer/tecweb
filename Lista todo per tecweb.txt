@@ -1,3 +1,2 @@
 Lista todo per tecweb:
-- rileggere relazione, pagina policy e controllare scritte in tutto il sito
 - caricare nel server e controllare che ci siano tutti i file giusti
