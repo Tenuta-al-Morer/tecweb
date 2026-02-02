@@ -71,6 +71,7 @@ function costruisciCardVino($vino) {
 
     $anchorId = "vino-" . $id;
     $modalId = "modal-vino-" . $id;
+    $modalId = preg_replace('/[^A-Za-z0-9\-_:.]/', '_', $modalId);
     $dialogId = "dialog-" . $id;
     $titleId = "modal-title-" . $id;
     $priceId = "modal-price-" . $id; 
