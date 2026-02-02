@@ -212,7 +212,6 @@ if (empty($ordini)) {
         $tabellaOrdini .= '<td data-title="Stato">' . getStatusBadge($ordine['stato_ordine']) . '</td>';
         $tabellaOrdini .= '<td data-title="Totale">€ ' . number_format($ordine['totale_finale'], 2, ',', '.') . '</td>';
         
-        // MODIFICA QUI: Bottone con fallback NOSCRIPT
         $tabellaOrdini .= '<td class="td_richiesta_degustazione">
             <noscript>
                 <form method="get" action="#details-row-' . $id_ordine . '">
