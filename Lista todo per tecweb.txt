@@ -30,6 +30,7 @@ Wave (report delle 12:52)
 NVDA
 - tutte, nella navbar principale vengono dette varie volte menu principale, e quello apribile viene letto anche se non sono in mini
 - esperienze se invio con errore non lo legge
+- admin gestione vini via tab in crea nuovo vino impossibile uscire dal modale
 
 
 
