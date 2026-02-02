@@ -395,7 +395,7 @@ Questa combinazione di test automatici e manuali ha garantito che il sito sia ac
 
 ### Analisi dei Falsi Positivi
 
-Da fare una volta corretti tutti i vari errori veri
+link adiaccenti ma è fatto apposta
 
 ### Screen reader
 
