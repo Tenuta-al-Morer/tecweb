@@ -273,7 +273,7 @@ if ($view === 'vini') {
                 <div class='modal-box-css'>
                     <h2 class='modal-title'>Modifica Vino: $nomeSafe</h2>
                     $formHTML
-                    <label for='$modalToggleId' class='modal-close-x' title='Chiudi' tabindex='0' role='button'>&times;</label>
+                    <label for='$modalToggleId' class='modal-close-x' title='Chiudi' tabindex='0'>&times;</label>
                 </div>
             </div>
             <label for='$modalToggleId' class='visually-hidden'>Pannello $nomeSafe</label>";
@@ -316,7 +316,7 @@ if ($view === 'vini') {
         <div class='modal-box-css'>
             <h2 class='modal-title'>Aggiungi Nuovo Vino</h2>
             $formNuovo
-            <label for='toggle-modal-nuovo' class='modal-close-x' title='Chiudi' tabindex='0' role='button'>&times;</label>
+            <label for='toggle-modal-nuovo' class='modal-close-x' title='Chiudi' tabindex='0'>&times;</label>
         </div>
     </div>
     <label for='toggle-modal-nuovo' class='visually-hidden'>Pannello Nuovo Vino</label>";
@@ -424,7 +424,7 @@ if ($view === 'utenti') {
                     <button type='submit' class='btn-primary'>Crea Utente</button>
                 </div>
             </form>
-            <label for='toggle-modal-utente' class='modal-close-x' title='Chiudi' tabindex='0' role='button'>&times;</label>
+            <label for='toggle-modal-utente' class='modal-close-x' title='Chiudi' tabindex='0'>&times;</label>
         </div>
     </div>
     <label for='toggle-modal-utente' class='visually-hidden'>Pannello Nuovo Utente</label>";
@@ -498,7 +498,7 @@ $sezioneUtenti = "
         ";
 
 $btnNuovoVino = ($view === 'vini')
-    ? "<label for='toggle-modal-nuovo' class=\"btn-primary admin-btn-inline\" role=\"button\" tabindex=\"0\">
+    ? "<label for='toggle-modal-nuovo' class=\"btn-primary admin-btn-inline\" tabindex=\"0\">
             <span class=\"fas fa-plus\" aria-hidden=\"true\"></span>&nbsp;Nuovo Vino
        </label>"
     : "";
