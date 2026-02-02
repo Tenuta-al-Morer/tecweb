@@ -377,15 +377,15 @@ Strumenti automatici utilizzati:
 
 - Performance DevTools (per il calcolo delle prestazioni del sito).
 
-L’impiego di tali strumenti ha consentito di individuare rapidamente eventuali errori tecnici come problemi di sintassi, di contrasto e la presenza di tag mancanti o non correttamente strutturati. I controlli effettuati hanno confermato che il sito rispetta i requisiti di conformità WCAG 2.1 livello AA in tutti i suoi aspetti. I tool adottati hanno evidenziato esito positivo in tutte le pagine del sito, con un numero minimo di segnalazioni che sono state successivamente analizzate e commentate nella sezione 5.2
+L’impiego di tali strumenti ha consentito di individuare rapidamente eventuali errori tecnici come problemi di sintassi, di contrasto e la presenza di tag mancanti o non correttamente strutturati. I controlli effettuati hanno confermato che il sito rispetta i requisiti di conformità WCAG 2.1 livello AA in tutti i suoi aspetti. I tool adottati hanno evidenziato esito positivo in tutte le pagine del sito, con un numero minimo di segnalazioni che sono state successivamente analizzate e commentate nella sezione 5.2.
 
 Test manuali effettuati:
 
-- controllo della corretta struttura degli headings;
+- controllo della corretta struttura e gerarchia degli headings;
 
 - verifica dell’uso appropriato dei tag semantici;
 
-- controllo della presenza e correttezza degli attributi `alt` delle immagini;
+- controllo della completa correttezza e corenza degli attributi `alt` alle relative immagini;
 
 - controllo della navigabilità da tastiera di tutte le pagine del sito;
 
@@ -393,13 +393,13 @@ Test manuali effettuati:
 
 - verifica del corretto funzionamento delle funzionalità con JavaScript disabilitato;
 
-- controllo del layout responsive su dispositivi mobili e tablet;
+- controllo del layout responsive su schermi con dimensioni e risuluzioni differenti;
 
 - verifica della leggibilità e del contrasto dei colori utilizzati;
 
-- test di stampa delle pagine per verificarne la formattazione e la leggibilità su carta;
+- test di stampa delle pagine per verificarne la formattazione e la leggibilità su carta (PrintFriendly);
 
-- test di accessibilità con screen reader (NVDA).
+- test di accessibilità con screen reader NVDA.
 
 - compatibilità del sito con diversi browser: Microsoft Edge, Google Chrome, Mozilla Firefox, Apple Safari e Opera;
 
@@ -411,15 +411,7 @@ Questa combinazione di test automatici e manuali ha garantito che il sito sia ac
 
 L’analisi dei falsi positivi è stata effettuata dopo la correzione di tutte le problematiche effettivamente riscontrate; di seguito sono riportate le segnalazioni risultate non critiche:
 
-- **W3C Validator - HTML**: segnalazione di tag non chiusi in alcune pagine. Dopo un’attenta verifica del codice sorgente, si è constatato che si trattava di un falso positivo dovuto a particolari costrutti PHP che generano codice HTML dinamicamente. In tutti i casi, il codice generato è risultato valido e conforme agli standard HTML5.
-
-- **W3C Validator - CSS**: segnalazione di proprietà CSS non riconosciute. Queste segnalazioni sono state analizzate e si è riscontrato che si trattava di proprietà CSS3 ancora non pienamente supportate da tutti i validatori, ma ampiamente accettate nei browser moderni.
-
-- **Lighthouse**: segnalazione di immagini non ottimizzate. Dopo aver esaminato le immagini in questione, si è constatato che erano già state ottimizzate per il web, ma il tool non riconosceva alcune tecniche di compressione avanzate utilizzate.
-
-- **Silktide e WAVE by WebAIM**: segnalazioni riguardanti il contrasto dei colori in alcune sezioni. Dopo un’analisi approfondita, si è verificato che i contrasti rispettavano comunque le linee guida WCAG 2.1 livello AA, e le segnalazioni erano dovute a particolari combinazioni di colori che, pur essendo accessibili, risultavano borderline secondo gli algoritmi dei tool.
-
-Silktide e WAVE by WebAIM hanno segnalato presunti problemi di contrasto cromatico che, a seguito di verifica, sono stati classificati come falsi positivi. In particolare, nella homepage è stato segnalato un falso positivo relativo al contrasto tra il testo e l’immagine hero, mentre nella sezione dedicata ai vini la segnalazione riguarda il contrasto delle informazioni relative alle quantità dei prodotti. Un ulteriore falso positivo è stato rilevato da Silktide nella pagina di amministrazione, all’interno della sezione di gestione utenti, dove il contrasto segnalato risulta comunque conforme ai requisiti WCAG 2.1 livello AA. Tali segnalazioni sono riconducibili alle limitazioni degli strumenti automatici nell’analisi di elementi visivi complessi o dinamici.
+- **WAVE by WebAIM**: WAVE segnala l’alert “Multiple form labels” perché più elementi label sono associati allo stesso input type="checkbox". Questa scelta deriva dall’adozione di un pattern CSS-only basato su checkbox e label per gestire l’apertura e la chiusura delle finestre modali, garantendo il funzionamento anche in assenza di JavaScript.
 
 ### Screen reader
 
