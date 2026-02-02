@@ -6,5 +6,3 @@ NVDA
 - stampa: in spedizione c'è il link torna al carrello e le IMMAGINI enormi
 
 - rileggere relazione e controllare scritte in tutto il sito
-
-- scorrere tutti i file e togliere i commenti di chatgpt ect. Lasciare solo quelli utili

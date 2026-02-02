@@ -130,7 +130,7 @@
 /* NO-JS: sempre visibile e NON overlay */
 .no-js .primary-navigation {
   display: block;
-  position: relative;  /* o static */
+  position: relative;  
   top: auto;
   left: auto;
   z-index: auto;
@@ -155,10 +155,10 @@
 
 .no-js .primary-navigation {
   display: block;
-  position: static;      /* o relative: l'importante è NON absolute */
+  position: static;      
   flex-basis: 100%;
   width: 100%;
-  order: 3;              /* la metti dopo logo e icone */
+  order: 3;              
 }
 
 .no-js .logo-link {
@@ -917,7 +917,7 @@ body.light-mode .btn-icon:focus {
     /* Assicura che il contenitore del form occupi spazio */
 #sicurezza .password-form-container {
     width: 100%;
-    max-width: 500px; /* Impedisce che diventi troppo largo su tablet */
+    max-width: 500px; 
 }
 
 /* Assicura che i campi di input riempiano il contenitore */

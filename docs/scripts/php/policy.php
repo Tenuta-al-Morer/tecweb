@@ -12,7 +12,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'close') {
     $backLink = '#';
     $backText = 'Chiudi finestra';
     $iconClass = 'fa-times';
-    // Aggiungiamo l'onclick per chiudere la scheda
+    
     $extraAttr = 'onclick="window.close(); return false;"';
 } 
 // Rilevamento automatico pagina precedente 

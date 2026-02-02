@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (srText) srText.textContent = 'Apri il menu di navigazione';
             };
 
-            // NUOVO: click sul bottone -> toggle checkbox -> trigger change
+            
             menuButton.addEventListener('click', () => {
             menuCheckbox.checked = !menuCheckbox.checked;
             menuCheckbox.dispatchEvent(new Event('change', { bubbles: true }));
@@ -1535,7 +1535,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     e.preventDefault();
                     last.focus();
                 }
-            } else { // Tab
+            } else { 
                 if (document.activeElement === last) {
                     e.preventDefault();
                     first.focus();

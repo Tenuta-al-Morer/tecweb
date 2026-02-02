@@ -93,7 +93,7 @@ $htmlContent = str_replace("[val_nome]", $valori['nome'], $htmlContent);
 $htmlContent = str_replace("[val_cognome]", $valori['cognome'], $htmlContent);
 $htmlContent = str_replace("[val_email]", $valori['email'], $htmlContent);
 $htmlContent = str_replace("[val_data]", $valori['data'], $htmlContent);
-// Gestione placeholder numerico per persone (se 0 mettiamo vuoto)
+
 $attrValPersone = '';
 if (is_int($valori['persone']) && $valori['persone'] >= 1 && $valori['persone'] <= 50) {
     $attrValPersone = 'value="' . $valori['persone'] . '"';
