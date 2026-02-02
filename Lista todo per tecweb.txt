@@ -30,4 +30,9 @@ Wave (report delle 12:52)
 NVDA
 - tutte, nella navbar principale vengono dette varie volte menu principale, e quello apribile viene letto anche se non sono in mini
 - esperienze se invio con errore non lo legge
-- 
+
+
+
+Risposte a Wave
+- È stato adottato un pattern CSS-only basato su checkbox e label per gestire l’apertura e la chiusura delle finestre modali, garantendo il funzionamento anche in assenza di JavaScript.
+WAVE segnala l’alert “Multiple form labels” perché più elementi <label> sono associati allo stesso input type="checkbox". (VINI OK per questo motivo)
