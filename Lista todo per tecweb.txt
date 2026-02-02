@@ -1,7 +1,9 @@
 Lista todo per tecweb:
 - verificare risolti tutti gli errori, se il print funziona correttamente -> contarini
-- fare in modo di aggiungere l'immagine del vino in admin "aggiunta vino" e non il percorso dell'img
+- formattare in css l'aggiunta della foto in admin
 NVDA
 
-- stampa: in registrazione e accesso è vuoto (immagino sia voluto), in spedizione c'è il link torna al carrello e le IMMAGINI enormi
-- stampa: in mappa del sito va in una nuova pagina, è voluto o comuqnue va bene?
+- stampa: in spedizione c'è il link torna al carrello e le IMMAGINI enormi
+
+
+- rileggere relazione e controllare scritte in tutto il sito
