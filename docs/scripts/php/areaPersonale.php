@@ -66,17 +66,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['azione_pw']) && $_POST
     }
 }
 
-// LOGICA SEZIONE ATTIVA (GET parameter)
 $sezioneAttiva = $_GET['sezione'] ?? 'dashboard';
 
-// Classi CSS per le sezioni
 $dashboardClass = ($sezioneAttiva === 'dashboard') ? 'content-section is-visible' : 'content-section is-hidden';
 $ordiniClass = ($sezioneAttiva === 'ordini') ? 'content-section is-visible' : 'content-section is-hidden';
 $esperienzeClass = ($sezioneAttiva === 'esperienze') ? 'content-section is-visible' : 'content-section is-hidden';
 $datiClass = ($sezioneAttiva === 'dati') ? 'content-section is-visible' : 'content-section is-hidden';
 $sicurezzaClass = ($sezioneAttiva === 'sicurezza') ? 'content-section is-visible' : 'content-section is-hidden';
 
-// Classi CSS per la Navigazione
 $navDashActive = ($sezioneAttiva === 'dashboard') ? 'is-active' : '';
 $navOrdiniActive = ($sezioneAttiva === 'ordini') ? 'is-active' : '';
 $navEsperienzeActive = ($sezioneAttiva === 'esperienze') ? 'is-active' : '';
@@ -216,19 +213,19 @@ if (empty($ordini)) {
             <noscript>
                 <form method="get" action="#details-row-' . $id_ordine . '">
                     <input type="hidden" name="sezione" value="ordini">
-                    <button type="submit" class="btn-secondary">Mostra Dettagli</button>
+                    <button type="submit" class="btn-secondary">Mostra Dettagli<span class="visually-hidden"> Ordine #' . $id_ordine . '</span></button>
                 </form>
             </noscript>
-            <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $id_ordine . '" aria-expanded="false" aria-controls="details-row-' . $id_ordine . '">Mostra <span class="fas fa-chevron-down" aria-hidden="true"></span></button>
+            <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $id_ordine . '" aria-expanded="false" aria-controls="details-row-' . $id_ordine . '">Mostra <span class="visually-hidden">dettagli ordine #' . $id_ordine . '</span> <span class="fas fa-chevron-down" aria-hidden="true"></span></button>
         </td></tr>';
         
         $tabellaOrdini .= '<tr class="order-details-row is-hidden" id="details-row-' . $id_ordine . '"><td colspan="5" class="order-details-cell"><div class="details-content">';
-        $tabellaOrdini .= '<div class="details-section"><h4>Prodotti Ordinati:</h4><ul class="details-products-list">';
+        $tabellaOrdini .= '<div class="details-section"><h3>Prodotti Ordinati:</h3><ul class="details-products-list">';
         foreach ($ordine['elementi'] as $item) {
             $tabellaOrdini .= '<li><span>' . htmlspecialchars($item['quantita']) . 'x ' . htmlspecialchars($item['nome_vino_storico']) . '</span><span>€ ' . number_format($item['prezzo_acquisto'], 2, ',', '.') . ' (cad.)</span></li>';
         }
         $tabellaOrdini .= '</ul></div>'; 
-        $tabellaOrdini .= '<div class="details-section"><h4>Riepilogo e Spedizione:</h4><p><span class="bold">Indirizzo Spedizione:</span> ' . nl2br(htmlspecialchars($ordine['indirizzo_spedizione'])) . '</p><div class="details-summary"><p>Totale Prodotti: € ' . number_format($ordine['totale_prodotti'], 2, ',', '.') . '</p><p>Costo Spedizione: € ' . number_format($ordine['costo_spedizione'], 2, ',', '.') . '</p><p><span class="bold">Totale Finale: € ' . number_format($ordine['totale_finale'], 2, ',', '.') . '</span></p></div></div></div></td></tr>';
+        $tabellaOrdini .= '<div class="details-section"><h3>Riepilogo e Spedizione:</h3><p><span class="bold">Indirizzo Spedizione:</span> ' . nl2br(htmlspecialchars($ordine['indirizzo_spedizione'])) . '</p><div class="details-summary"><p>Totale Prodotti: € ' . number_format($ordine['totale_prodotti'], 2, ',', '.') . '</p><p>Costo Spedizione: € ' . number_format($ordine['costo_spedizione'], 2, ',', '.') . '</p><p><span class="bold">Totale Finale: € ' . number_format($ordine['totale_finale'], 2, ',', '.') . '</span></p></div></div></div></td></tr>';
     }
     $tabellaOrdini .= '</tbody></table>';
 }
@@ -260,18 +257,19 @@ if (empty($prenotazioni)) {
         $tabellaPrenotazioni .= '<td data-title="Data Visita">' . formatDateOnly($prenotazione['data_visita']) . '</td>';
         $tabellaPrenotazioni .= '<td data-title="Persone">' . (int)$prenotazione['n_persone'] . '</td>';
         $tabellaPrenotazioni .= '<td data-title="Stato">' . getRequestStatusBadge($prenotazione['stato']) . '</td>';
+        
         $tabellaPrenotazioni .= '<td class="td_richiesta_degustazione">
             <noscript>
                 <form method="get" action="#details-row-' . $details_key . '">
                     <input type="hidden" name="sezione" value="esperienze">
-                    <button type="submit" class="btn-secondary">Mostra Dettagli</button>
+                    <button type="submit" class="btn-secondary">Mostra Dettagli<span class="visually-hidden"> richiesta #' . $id_prenotazione . '</span></button>
                 </form>
             </noscript>
-            <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $details_key . '" aria-expanded="false" aria-controls="details-row-' . $details_key . '">Mostra <span class="fas fa-chevron-down" aria-hidden="true"></span></button>
+            <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $details_key . '" aria-expanded="false" aria-controls="details-row-' . $details_key . '">Mostra <span class="visually-hidden">dettagli richiesta #' . $id_prenotazione . '</span> <span class="fas fa-chevron-down" aria-hidden="true"></span></button>
         </td></tr>';
 
         $tabellaPrenotazioni .= '<tr class="order-details-row is-hidden" id="details-row-' . $details_key . '"><td colspan="6" class="order-details-cell"><div class="details-content">';
-        $tabellaPrenotazioni .= '<div class="details-section"><h4>Dettagli Richiesta:</h4><ul class="details-products-list">';
+        $tabellaPrenotazioni .= '<div class="details-section"><h3>Dettagli Richiesta:</h3><ul class="details-products-list">';
         $tabellaPrenotazioni .= '<li><span>Tipo esperienza</span><span>' . htmlspecialchars($prenotazione['tipo_degustazione']) . '</span></li>';
         $tabellaPrenotazioni .= '<li><span>Email</span><span>' . htmlspecialchars($prenotazione['email']) . '</span></li>';
         $tabellaPrenotazioni .= '</ul></div></div></td></tr>';
@@ -372,14 +370,12 @@ $htmlContent = caricaPagina('../../html/areaPersonale.html');
 $htmlContent = str_replace("[email_utente]", htmlspecialchars($infoUtente['email']), $htmlContent);
 $htmlContent = str_replace("[riferimento]", $ruoloUtente, $htmlContent);
 
-// Sostituzione Classi Navigazione
 $htmlContent = str_replace("[NAV_ACTIVE_DASHBOARD]", $navDashActive, $htmlContent);
 $htmlContent = str_replace("[NAV_ACTIVE_ORDINI]", $navOrdiniActive, $htmlContent);
 $htmlContent = str_replace("[NAV_ACTIVE_ESPERIENZE]", $navEsperienzeActive, $htmlContent);
 $htmlContent = str_replace("[NAV_ACTIVE_DATI]", $navDatiActive, $htmlContent);
 $htmlContent = str_replace("[NAV_ACTIVE_SICUREZZA]", $navSicurezzaActive, $htmlContent);
 
-// Sostituzione Classi Sezioni (Visibilità)
 $htmlContent = str_replace("[DASHBOARD_CLASS]", $dashboardClass, $htmlContent);
 $htmlContent = str_replace("[ORDINI_CLASS]", $ordiniClass, $htmlContent);
 $htmlContent = str_replace("[ESPERIENZE_CLASS]", $esperienzeClass, $htmlContent);
