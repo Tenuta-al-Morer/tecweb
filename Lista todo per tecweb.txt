@@ -8,3 +8,24 @@ NVDA
 Risposte a Wave
 - È stato adottato un pattern CSS-only basato su checkbox e label per gestire l’apertura e la chiusura delle finestre modali, garantendo il funzionamento anche in assenza di JavaScript.
 WAVE segnala l’alert “Multiple form labels” perché più elementi <label> sono associati allo stesso input type="checkbox". (VINI OK per questo motivo)
+
+Stampa
+- Home pare buona (doppio "Apri il menù di navigazione", ovunque, e anche i tre ||| in fondo ad ogni pagina)
+- tenuta ok
+- vini:
+	- "chiudi finestra modale" leggibile anche se pulsante
+	- si vedono i quadrati tipo per selezionare il vino (che ci può stare), ma alcuni sono centrali altri alti
+- esperienze pare buona
+- contatti anche
+- area personale pare buone tutte
+- carrello buono
+- checkout link "torna al carrello", inoltre sarebbero più belli allineati gli esempi
+- gesionale buono
+- admin sezione vini:
+	- tabella un po' rotta (i bordi)
+	- in fondo leggibili cose tipo "Pannello nuovo vino", "Pannello Rosae Nobile", ecc..
+- admin sezione utenti come sezione vini, ma ridotto.
+- policy note e accessibilità buono
+- mappa anche.
+
+tutte come detto hanno doppio "Apri il menù di navigazione" e anche i tre ||| in fondo ad ogni pagina.
