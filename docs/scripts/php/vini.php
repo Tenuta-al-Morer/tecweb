@@ -20,10 +20,10 @@ if ($isPostUpdate) {
     $id = (int)$_POST['id_vino'];
     $dir = $_POST['direction'];
     $stock = (int)$_POST['stock_max'];
-    
+
     $valoreInserito = isset($_POST['quantita']) ? (int)$_POST['quantita'] : 1;
     if ($valoreInserito < 1) $valoreInserito = 1;
-    
+
     if ($dir === 'minus') {
         $current = $valoreInserito - 1;
     } elseif ($dir === 'plus') {
@@ -34,9 +34,9 @@ if ($isPostUpdate) {
 
     if ($current < 1) $current = 1;
     if ($stock > 0 && $current > $stock) $current = $stock;
-    
+
     $_SESSION['vini_qty'][$id] = $current;
-    
+
     header("Location: vini.php#vino-$id");
     exit();
 }
@@ -62,7 +62,7 @@ function costruisciCardVino($vino) {
     $descBreve = htmlspecialchars($vino['descrizione_breve']);
     $descEstesa = htmlspecialchars($vino['descrizione_estesa']);
     $stock = (int)$vino['quantita_stock'];
-    
+
     $vitigno = htmlspecialchars($vino['vitigno'] ?? '-');
     $annata = htmlspecialchars($vino['annata'] ?? '-');
     $gradazione = htmlspecialchars($vino['gradazione'] ?? '-');
@@ -70,11 +70,13 @@ function costruisciCardVino($vino) {
     $abbinamenti = htmlspecialchars($vino['abbinamenti'] ?? '-');
 
     $anchorId = "vino-" . $id;
+
     $modalId = "modal-vino-" . $id;
     $modalId = preg_replace('/[^A-Za-z0-9\-_:.]/', '_', $modalId);
+
     $dialogId = "dialog-" . $id;
     $titleId = "modal-title-" . $id;
-    $priceId = "modal-price-" . $id; 
+    $priceId = "modal-price-" . $id;
     $descId = "modal-desc-" . $id;
     $descrModaleId = "descr-modale-" . $id;
     $descrTabellaId = "descr-tabella-" . $id;
@@ -86,7 +88,13 @@ function costruisciCardVino($vino) {
     $htmlStock = "";
     $cardActionHTML = "";
     $modalActionHTML = "";
-    
+
+    // ✅ CORREZIONE MINIMA: preparo il toggle checkbox qui,
+    //    così posso stamparlo PRIMA del label trigger.
+    $toggleHTML = '
+        <input type="checkbox" id="' . $modalId . '" class="modal-toggle-checkbox visually-hidden"
+               aria-label="Mostra dettagli e specifiche per ' . $nome . '">';
+
     $triggerHTML = '
     <label for="' . $modalId . '" class="details-button" tabindex="0">
         Info <span class="visually-hidden">: scheda di ' . $nome . '</span>
@@ -105,9 +113,8 @@ function costruisciCardVino($vino) {
              <span class="badge-esaurito card-action">Esaurito</span>
              ' . $triggerHTML . '
         </div>';
-        
-        $modalActionHTML = '<div class="modal-buy-block"><span class="badge-esaurito">Esaurito</span></div>';
 
+        $modalActionHTML = '<div class="modal-buy-block"><span class="badge-esaurito">Esaurito</span></div>';
     } else {
         $testoStock = ($stock <= 20) ? "Ultimi " . $stock . " pezzi!" : "Disponibile";
         $classeStock = ($stock <= 20) ? "stock-warning" : "stock-ok";
@@ -123,6 +130,7 @@ function costruisciCardVino($vino) {
                 + <span class="visually-hidden">Aumenta quantità di ' . $nome . ' (scheda)</span>
             </button>
         </div>';
+
         $selectorModal = '
         <div class="selettore-quantita card-action">
             <button type="submit" name="direction" value="minus" formaction="vini.php" class="btn-minus">
@@ -137,7 +145,7 @@ function costruisciCardVino($vino) {
         $cardActionHTML = '
         <form action="carrello.php" method="POST" class="wine-form">
             <input type="hidden" name="action" value="aggiungi">
-            <input type="hidden" name="return_url" value="vini.php"> 
+            <input type="hidden" name="return_url" value="vini.php">
             <input type="hidden" name="id_vino" value="' . $id . '">
             <input type="hidden" name="stock_max" value="' . $stock . '">
             <input type="hidden" name="update_temp_qty" value="1">
@@ -160,7 +168,7 @@ function costruisciCardVino($vino) {
             <input type="hidden" name="id_vino" value="' . $id . '">
             <input type="hidden" name="stock_max" value="' . $stock . '">
             <input type="hidden" name="update_temp_qty" value="1">
-            
+
             <div class="modal-buy-block">
                 ' . $selectorModal . '
                 <button type="submit" class="buy-button modal-btn-large">
@@ -170,24 +178,26 @@ function costruisciCardVino($vino) {
         </form>';
     }
 
+    // ✅ CORREZIONE MINIMA: stampo il checkbox PRIMA delle azioni (dove c'è il label "Info")
     return '
     <article class="wine-article" id="' . $anchorId . '">
+
+        ' . $toggleHTML . '
+
         <div class="wine-item">
             <img src="' . $img . '" alt="" class="wine-image" loading="lazy">
             <div class="content-wine-article">
                 <h3>' . $nome . '</h3>
-                <p>' . $descBreve . '</p> 
+                <p>' . $descBreve . '</p>
                 ' . $htmlStock . '
             </div>
         </div>
-        
+
         ' . $cardActionHTML . '
 
-        <input type="checkbox" id="' . $modalId . '" class="modal-toggle-checkbox visually-hidden" aria-label="Mostra dettagli e specifiche per ' . $nome . '">
-        
         <div class="modal-overlay">
-            
-            <div id="' . $dialogId . '" 
+
+            <div id="' . $dialogId . '"
                  class="modal-content"
                  role="dialog"
                  aria-modal="true"
@@ -203,7 +213,7 @@ function costruisciCardVino($vino) {
                         <img src="' . $img . '" alt="">
                     </div>
 
-                    <div class="modal-info-col"> 
+                    <div class="modal-info-col">
                         <h2 id="' . $titleId . '">' . $nome . '</h2>
 
                         <p class="modal-price" id="' . $priceId . '"><span class="bold">Prezzo:</span> € ' . $prezzo . '</p>
@@ -215,7 +225,7 @@ function costruisciCardVino($vino) {
                         </p>
 
                         <div class="modal-specs">
-                            <table class="modal-specs-table" aria-describedby="'. $descrTabellaId . '">
+                            <table class="modal-specs-table" aria-describedby="' . $descrTabellaId . '">
                                 <caption class="sr-only" id="' . $specsCaptionId . '">Specifiche tecniche di ' . $nome . '</caption>
                                 <tbody>
                                     <tr><th scope="row">Vitigno</th><td>' . $vitigno . '</td></tr>
@@ -230,9 +240,10 @@ function costruisciCardVino($vino) {
                         ' . $modalActionHTML . '
                     </div>
                 </div>
+
                 ' . $closeButtonsHTML . '
             </div>
-            
+
             <label for="' . $modalId . '" class="modal-backdrop-close">
                 <span class="visually-hidden">Chiudi finestra modale di ' . $nome . '</span>
             </label>
@@ -267,7 +278,7 @@ $htmlContent = str_replace("[vini_selezione]", $htmlSelezione, $htmlContent);
 
 $htmlDatalist = '<datalist id="suggerimenti-vini">';
 foreach ($tuttiIVini as $vino) {
-    $nomeVino = htmlspecialchars($vino['nome']); 
+    $nomeVino = htmlspecialchars($vino['nome']);
     $htmlDatalist .= '<option value="' . $nomeVino . '">';
 }
 $htmlDatalist .= '</datalist>';
