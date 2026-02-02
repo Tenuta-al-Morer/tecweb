@@ -276,7 +276,7 @@ foreach ($messaggiArray as $messaggio) {
     $messaggi .= '<div class="details-section"><p class="details-section-heading">Dettagli Messaggio:</p><ul class="details-products-list">';
     $messaggi .= '<li><span>Email</span><span>' . htmlspecialchars($messaggio['email']) . '</span></li>';
     $messaggi .= '</ul></div>';
-    $messaggi .= '<div class="details-section"><p class="details-section-heading">Risposta:</p>
+    $messaggi .= '<div class="details-section msg"><p class="details-section-heading">Risposta:</p>
                     <form id="form_msg_' . $idMsg . '" method="POST" class="standard-form">
                         <input type="hidden" name="messaggio_id" value="' . $idMsg . '">
                         <input type="hidden" name="azione" value="msg_risposta">
