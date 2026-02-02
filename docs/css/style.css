@@ -4150,6 +4150,10 @@ body.light-mode .buy-button:disabled {
 
 body.no-scroll { overflow: hidden; }
 input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
 
 /* =========================================
    MODALE DETTAGLI VINO
