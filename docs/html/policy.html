@@ -115,7 +115,11 @@
             </ul>
 
             <h3>1.3 Proprietà Intellettuale e <span lang="en">Copyright</span></h3>
-            <p>I contenuti originali (<span lang="en">layout</span>, codice, testi descrittivi) sono proprietà intellettuale del gruppo di studenti. Immagini e risorse di terze parti sono utilizzate in conformità alle normative per finalità didattiche o sotto licenze <span lang="en">Creative Commons</span>, con citazione della fonte ove richiesto. È vietata la riproduzione del codice sorgente per fini di lucro.</p>
+            <p>
+            Il codice sorgente del progetto è di proprietà intellettuale esclusiva del gruppo di studenti sviluppatori autori del progetto. 
+            Le immagini e le risorse di terze parti sono utilizzate esclusivamente per finalità didattiche, in conformità alle normative vigenti o secondo le licenze <span lang="en">Creative Commons</span>, con esplicita citazione della fonte ove richiesto. 
+            È vietata la riproduzione, la distribuzione o l'utilizzo del codice sorgente per fini di lucro senza autorizzazione degli autori.
+            </p>
 
             <h3>1.4 Limitazione di Responsabilità (Manleva)</h3>
             <p>Il servizio è fornito "<span lang="en">as is</span>" (così com'è). L'Università e gli studenti sviluppatori declinano ogni responsabilità per danni diretti o indiretti derivanti dall'uso improprio della piattaforma o da inesattezze nei contenuti informativi.</p>
@@ -130,7 +134,7 @@
             <p>Per la propria tutela, l'utente è tenuto a:</p>
             <ul>
                 <li><span class="bold">Non utilizzare <span lang="en">password</span> reali:</span> Usare <span lang="en">password</span> fittizie o dedicate solo a questo sito.</li>
-                <li><span class="bold">Non inserire dati sensibili:</span> Non utilizzare informazioni anagrafiche, giudiziarie o bancarie reali.</li>
+                <li><span class="bold">Assenza di crittografia avanzata:</span> Il sito è a scopo didattico; evitare l'inserimento di dati sensibili o personali reali.</li>
                 <li><span class="bold">Utilizzare "<span lang="en">Dummy Data</span>":</span> Si consiglia l'uso di nomi e indirizzi di fantasia per testare le funzionalità.</li>
             </ul>
 
@@ -139,7 +143,6 @@
             <ol>
                 <li>Permettere l'accesso all'area riservata (gestione sessione).</li>
                 <li>Simulare il processo di acquisto e gestione ordini.</li>
-                <li>Garantire la sicurezza tecnica del <span lang="en">server</span> tramite <span lang="en">log</span> di errore.</li>
             </ol>
 
             <h3>2.3 Conservazione e Cancellazione (<span lang="en">Data Retention</span>)</h3>
@@ -151,19 +154,19 @@
             <p>Il <span lang="en">team</span> di sviluppo ha posto massima attenzione all'inclusività, adottando pratiche di <span lang="en">design</span> e sviluppo volte a garantire la fruibilità del sito al maggior numero di utenti possibile, indipendentemente dalle loro abilità fisiche o sensoriali.</p>
 
             <h3>3.1 Livello di Conformità e Scelte Implementative</h3>
-            <p>Di seguito sono elencate tutte le scelte effettuate per migliorare l’accessibilità del sito. Ognuna mira almeno al soddisfacimento del livello di conformità <span class="bold">AA</span> delle <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> 2.1 come stabilito dalla normativa vigente:</p>
+            <p>Di seguito sono elencate tutte le scelte effettuate per migliorare l'accessibilità del sito. Ognuna mira almeno al soddisfacimento del livello di conformità <span class="bold">AA</span> delle <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> 2.1 come stabilito dalla normativa vigente:</p>
             
             <ul>
-                <li><span class="bold">Navigazione da tastiera:</span> È garantita una navigazione completa e accessibile, rispettando rigorosamente l’ordine visivo degli elementi nel <abbr title="Document Object Model" lang="en">DOM</abbr>.</li>
-                <li><span class="bold">Tabelle accessibili:</span> Le tabelle sono strutturate semanticamente, utilizzando attributi come <code>scope</code> e <code>aria-describedby</code> per facilitarne la comprensione tramite tecnologie assistive.</li>
-                <li><span class="bold"><span lang="en">Form</span> accessibili:</span> Tutti i moduli (contatti, <span lang="en">login</span>, registrazione) associano correttamente le etichette (<code>label</code>) ai rispettivi campi di <span lang="en">input</span>. È implementato l'attributo <code>autocomplete</code> per velocizzare la compilazione.</li>
+                <li><span class="bold">Navigazione da tastiera:</span> È garantita una navigazione completa e accessibile, rispettando rigorosamente l'ordine visivo degli elementi nel <abbr title="Document Object Model" lang="en">DOM</abbr>.</li>
+                <li><span class="bold">Tabelle accessibili:</span> Le tabelle sono strutturate semanticamente, utilizzando attributi come <span class="bold">scope</span> e <span class="bold">aria-describedby</span> per facilitarne la comprensione tramite tecnologie assistive.</li>
+                <li><span class="bold"><span lang="en">Form</span> accessibili:</span> Tutti i moduli (contatti, <span lang="en">login</span>, registrazione) associano correttamente le etichette (<span class="bold">label</span>) ai rispettivi campi di <span lang="en">input</span>. È implementato l'attributo <span class="bold">autocomplete</span> per velocizzare la compilazione.</li>
                 <li><span class="bold">Stato dei <span lang="en">Link</span>:</span> Sono stati distinti visivamente i <span lang="en">link</span> visitati da quelli non visitati per migliorare l'orientamento dell'utente.</li>
                 <li><span class="bold"><span lang="en">Design "Above the Fold"</span>:</span> Per ogni pagina è stata studiata la sezione "<span lang="en">above the fold</span>" per rispondere immediatamente alle domande cognitive dell'utente: <em>"Dove sono? - Dove posso andare? - Di che cosa si tratta?"</em>.</li>
                 <li><span class="bold">Contrasto Cromatico:</span> I colori di testo e sfondo rispettano i rapporti di contrasto richiesti dalle linee guida <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> AA.</li>
                 <li><span class="bold">Gerarchia di Navigazione:</span> È stata adottata una struttura ampia e poco profonda.</li>
-                <li><span class="bold">Abbreviazioni:</span> Sono stati utilizzati i tag <code>&lt;abbr&gt;</code> per esplicitare abbreviazioni e acronimi.</li>
-                <li><span class="bold"><span lang="en">Headings</span>:</span> I tag di intestazione (<code>h1</code>, <code>h2</code>, ecc.) rispettano la gerarchia semantica del documento.</li>
-                <li><span class="bold">Testo Alternativo (<span lang="en">Alt Text</span>):</span> Tutte le immagini informative possiedono un attributo <code>alt</code> descrittivo. Le immagini puramente decorative hanno attributo <code>alt=""</code> vuoto o sono gestite via <span lang="en">CSS</span>.</li>
+                <li><span class="bold">Abbreviazioni:</span> Sono stati utilizzati i tag <span class="bold">&lt;abbr&gt;</span> per esplicitare abbreviazioni e acronimi.</li>
+                <li><span class="bold"><span lang="en">Headings</span>:</span> I tag di intestazione (<span class="bold">h1</span>, <span class="bold">h2</span>, ecc.) rispettano la gerarchia semantica del documento.</li>
+                <li><span class="bold">Testo Alternativo (<span lang="en">Alt Text</span>):</span> Tutte le immagini informative possiedono un attributo <span class="bold">alt</span> descrittivo. Le immagini puramente decorative hanno attributo <span class="bold">alt=""</span> vuoto o sono gestite via <span lang="en">CSS</span>.</li>
                 <li><span class="bold"><span lang="en">Image Replacement</span>:</span> Sono utilizzate tecniche di <span lang="en">image replacement</span> dove necessario, garantendo la presenza di testo leggibile qualora l'immagine non venga caricata.</li>
                 <li><span class="bold">Gestione Errori <span lang="en">Form</span>:</span> In caso di errore di compilazione, i dati inseriti non vengono persi (ripopolamento dei campi) e gli errori sono chiaramente descritti.</li>
                 <li><span class="bold"><span lang="en">Font</span> Leggibile:</span> È utilizzato il <span lang="en">font</span> <em>Atkinson Hyperlegible</em>, specificamente progettato per la massima leggibilità.</li>
@@ -174,15 +177,15 @@
             <ul>
                 <li><span class="bold"><span lang="en">Skip to content</span>:</span> All'inizio di ogni pagina è presente un collegamento per saltare direttamente al contenuto principale.</li>
                 <li><span class="bold">Attributi <abbr title="Accessible Rich Internet Applications" lang="en">ARIA</abbr>:</span> Utilizzati ove necessario per descrivere stati ed elementi dinamici.</li>
-                <li><span class="bold">Attributi <span lang="en">Lang</span>:</span> Utilizzo corretto dell'attributo <code>lang</code> per segnalare i cambi di lingua nel testo.</li>
+                <li><span class="bold">Attributi <span lang="en">Lang</span>:</span> Utilizzo corretto dell'attributo <span class="bold">lang</span> per segnalare i cambi di lingua nel testo.</li>
             </ul>
 
             <h3>3.3 Compatibilità e Responsività</h3>
             <p>Il sito implementa un <span lang="en">layout</span> fluido e <span lang="en">responsive</span>:</p>
             <ul>
                 <li>Il menù di navigazione si trasforma in un <span class="bold">menù ad <span lang="en">hamburger</span></span> sui dispositivi <span lang="en">mobile</span>.</li>
-                <li>Le tabelle utilizzano attributi <code>data-title</code> per adattarsi agli schermi piccoli senza scorrimento orizzontale.</li>
-                <li>La struttura utilizza <span class="bold"><span lang="en">Flexbox</span></span> e <span class="bold"><span lang="en">CSS Grid</span></span> con unità relative (<code>em</code>, <code>rem</code>, <code>%</code>) per garantire la scalabilità dei contenuti.</li>
+                <li>Le tabelle utilizzano attributi <span class="bold">data-title</span> per adattarsi agli schermi piccoli senza scorrimento orizzontale.</li>
+                <li>La struttura utilizza <span class="bold"><span lang="en">Flexbox</span></span> e <span class="bold"><span lang="en">CSS Grid</span></span> con unità relative (<span class="bold">em</span>, <span class="bold">rem</span>, <span class="bold">%</span>) per garantire la scalabilità dei contenuti.</li>
                 <li>È presente una versione ottimizzata per la stampa (<span lang="en">PrintFriendly</span>) che rimuove elementi non essenziali e utilizza <span lang="en">font</span> con grazie per il risparmio di inchiostro.</li>
             </ul>
 
