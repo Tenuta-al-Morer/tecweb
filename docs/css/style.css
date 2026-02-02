@@ -804,6 +804,7 @@ header {
 
 a.policy-link {
     color: var(--text-color);
+    min-height: 24px;
 }
 
 a.policy-link:hover, a.policy-link:focus, a.policy-link:visited {
@@ -1211,6 +1212,9 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
     font-weight: 700;
     text-decoration: none;
     transition: border-color 0.3s;
+    min-height: 24px;
+    justify-content: center;
+    display: flex;
 }
 
 .table-data th[scope="row"] a:hover, .table-data th[scope="row"] a:focus {
@@ -4501,13 +4505,14 @@ html:not(.no-js) .selettore-nojs {
 }
 
 .selettore-quantita input.display-qty {
-    width: 2em;
+    width: 30px;
     text-align: center;
     font-weight: bold;
     font-size: 1rem;
     color: #000;
     border: 2px solid #595959;
     outline: none; 
+    height: 24px;
 }
 
 .admin-fieldset {
