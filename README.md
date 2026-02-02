@@ -399,7 +399,7 @@ Test manuali effettuati:
 
 - test di stampa delle pagine per verificarne la formattazione e la leggibilità su carta (PrintFriendly);
 
-- test di accessibilità con screen reader NVDA.
+- test di accessibilità con screen reader NVDA;
 
 - compatibilità del sito con diversi browser: Microsoft Edge, Google Chrome, Mozilla Firefox, Apple Safari e Opera;
 
@@ -415,7 +415,7 @@ L’analisi dei falsi positivi è stata effettuata dopo la correzione di tutte l
 
 ### Screen reader
 
-L’accessibilità del sito è stata testata utilizzando lo screen reader NVDA, verificando la corretta lettura e interpretazione di tutti i contenuti e delle principali componenti interattive. I test hanno incluso il controllo dell’ordine di navigazione da tastiera, della corretta associazione tra etichette e campi di input, dell’interpretazione dei ruoli e degli attributi ARIA, nonché della lettura strutturata di tabelle, form e altri elementi complessi. Le verifiche non hanno evidenziato criticità rilevanti.
+L’accessibilità del sito è stata testata utilizzando lo screen reader NVDA, verificando la corretta lettura e interpretazione di tutti i contenuti e delle principali componenti interattive. I test hanno incluso il controllo dell’ordine di navigazione da tastiera, della corretta associazione tra etichette e campi di input, dell’interpretazione dei ruoli e degli attributi ARIA, nonché della lettura strutturata di tabelle, form e altri elementi complessi. Le verifiche non hanno evidenziato criticità.
 
 ## Organizzazione del gruppo
 
@@ -429,52 +429,56 @@ Il lavoro è stato organizzato suddividendo le attività in base alle diverse pa
 
   - PHP/JavaScript: funzionalità inerenti alle pagine sviluppate
 
-  - DB: progettazione e implementazione
+  - DB: progettazione e implementazione delle tabelle
 
-  - Testing e validazione: Total Validator, Lighthouse, Silktide
+  - Testing e validazione: Total Validator, Silktide, WAVE by WebAIM, W3C Validator e NVDA per le relative pagine
 
   - Relazione tecnica
 
 - **Alessandro Contarini**:
 
-  - HTML/CSS: pagine Esperienze, Contatti, Gestionale, Policy
+  - HTML/CSS: pagine Esperienze, Contatti, Gestionale, Admin (vini)
 
   - PHP/JavaScript: funzionalità inerenti alle pagine sviluppate
 
-  - DB: progettazione e implementazione
+  - DB: progettazione e implementazione delle tabelle
 
-  - Testing e validazione: Total Validator, Lighthouse, Silktide
+  - Testing e validazione: Total Validator, Silktide, WAVE by WebAIM, W3C Validator e NVDA per le relative pagine
 
   - Relazione tecnica
 
 - **Luca Marcuzzo**:
 
-  - HTML/CSS: pagine Tenuta, Admin, Mappa, Login
+  - HTML/CSS: pagine Tenuta, Admin (utenti), Mappa, Login
 
   - PHP/JavaScript: funzionalità inerenti alle pagine sviluppate
 
   - DB: popolamento e backup
 
-  - Testing e validazione: W3C Validator, Silktide, WAVE by WebAIM, NVDA
+  - Testing e validazione: Total Validator, Silktide, WAVE by WebAIM, W3C Validator e NVDA per le relative pagine
 
   - Relazione tecnica
 
 - **Giovanni Visentin**:
 
-  - HTML/CSS: pagine Vini, Admin, Registrazione
+  - HTML/CSS: pagine Vini, Policy, Registrazione
 
   - PHP/JavaScript: funzionalità inerenti alle pagine sviluppate
 
   - DB: ottimizzazione query
 
-  - Testing e validazione: W3C Validator, Silktide, WAVE by WebAIM, NVDA
+  - Testing e validazione: Total Validator, Silktide, WAVE by WebAIM, W3C Validator e NVDA per le relative pagine
 
   - Relazione tecnica
 
-## Note
+## Conclusioni
 
-1.  Il sito è stato sviluppato con particolare attenzione alle linee guida per l’accessibilità WCAG 2.1 livello AA.
+1.  Il sito è stato sviluppato in maniera da essere accessibile e conforme alle linee guida WCAG 2.1 di livello AA.
 
-2.  Sono state adottate misure di sicurezza di base per la protezione delle sessioni utente, in particolare la prevenzione di accessi non autorizzati alle aree riservate del sito.
+2.  Il sito è stato testato su diversi browser e dispositivi per garantirne la compatibilità e la corretta visualizzazione.
 
-3.  Il database viene fornito già popolato con dati dimostrativi per facilitare il testing delle funzionalità.
+3.  Sono stati implementati meccanismi di sicurezza per proteggere i dati degli utenti e prevenire attacchi comuni come SQL Injection.
+
+4.  Il sito è stato ottimizzato per le prestazioni, garantendo tempi di caricamento rapidi e un’esperienza utente fluida.
+
+5.  Il database è stato popolato con valori realistici per testare le funzionalità del sito in condizioni simili alla realtà.
