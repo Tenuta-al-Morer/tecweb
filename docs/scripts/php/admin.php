@@ -321,6 +321,8 @@ if ($view === 'vini') {
 }
 
 $rigaUtenti = "";
+$modalNuovoUtenteHTML = ""; 
+
 if ($view === 'utenti') {
     if ($query !== '') {
         $utentiArray = array_filter($utentiArray, function ($u) use ($query) {
@@ -348,6 +350,8 @@ if ($view === 'utenti') {
             $ruoloOptions .= "<option value='{$r}' {$selected}>{$r}</option>";
         }
 
+        // Modifica per errore "Form control labels must be unique":
+        // Aggiungiamo uno span nascosto visivamente dentro il bottone
         $azioni = $isSelf
             ? "<span>Impossibile sei tu;)</span>"
             : "<div class='action-group'>
@@ -358,7 +362,10 @@ if ($view === 'utenti') {
                         <select name='ruolo' class='admin-input' aria-label='Ruolo per {$nome} {$cognome}'>
                             {$ruoloOptions}
                         </select>
-                        <button type='submit' class='btn-secondary'>Aggiorna</button>
+                        <button type='submit' class='btn-secondary'>
+                            Aggiorna
+                            <span class='visually-hidden'> ruolo di {$nome} {$cognome}</span>
+                        </button>
                     </form>
                     <form method='POST' onsubmit=\"return confirm('Eliminare l\\'utente {$nome} {$cognome}? Questa azione non si puo annullare.');\">
                         <input type='hidden' name='azione' value='elimina_utente'>
@@ -380,6 +387,48 @@ if ($view === 'utenti') {
             <td data-title='Azioni' class='Richieste_admin'>{$azioni}</td>
         </tr>";
     }
+
+    // Qui definiamo SOLO l'input checkbox e la modale, NON il bottone di apertura (che sta in $btnNuovoUtente)
+    // L'aria-label inizia con "Nuovo Utente" per soddisfare SC 2.5.3
+    $modalNuovoUtenteHTML = "
+    <input type='checkbox' id='toggle-modal-utente' class='state-toggle' aria-label='Nuovo Utente: Apri finestra creazione'>
+    <div class='modal-wrapper-css'>
+        <label for='toggle-modal-utente' class='modal-overlay-close' title='Chiudi'></label>
+        <div class='modal-box-css'>
+            <label for='toggle-modal-utente' class='modal-close-x' title='Chiudi'>&times;</label>
+            <h2 class='modal-title'>Aggiungi Nuovo Utente</h2>
+            <form method='POST'>
+                <input type='hidden' name='azione' value='salva_utente'>
+                <div class='admin-form-group'>
+                    <label for='new_u_nome'>Nome *</label>
+                    <input type='text' id='new_u_nome' name='utente_nome' class='admin-input' required>
+                </div>
+                <div class='admin-form-group'>
+                    <label for='new_u_cognome'>Cognome *</label>
+                    <input type='text' id='new_u_cognome' name='utente_cognome' class='admin-input' required>
+                </div>
+                <div class='admin-form-group'>
+                    <label for='new_u_email'>Email *</label>
+                    <input type='email' id='new_u_email' name='utente_email' class='admin-input' required>
+                </div>
+                <div class='admin-form-group'>
+                    <label for='new_u_pass'>Password * (min. 8 caratteri)</label>
+                    <input type='password' id='new_u_pass' name='utente_password' class='admin-input' minlength='8' required>
+                </div>
+                <div class='admin-form-group'>
+                    <label for='new_u_ruolo'>Ruolo</label>
+                    <select id='new_u_ruolo' name='utente_ruolo' class='admin-input'>
+                        <option value='user'>User</option>
+                        <option value='staff'>Staff</option>
+                        <option value='admin'>Admin</option>
+                    </select>
+                </div>
+                <div class='admin-form-actions'>
+                    <button type='submit' class='btn-primary'>Crea Utente</button>
+                </div>
+            </form>
+        </div>
+    </div>";
 }
 
 $titoloAdmin = ($view === 'utenti') ? "Gestione Utenti" : "Gestione Catalogo Vini";
@@ -445,7 +494,9 @@ $sezioneUtenti = "
                     {$rigaUtenti}
                 </tbody>
             </table>
-        </div>";
+        </div>
+        $modalNuovoUtenteHTML
+        ";
 
 $btnNuovoVino = ($view === 'vini')
     ? "<label for='toggle-modal-nuovo' class=\"btn-primary admin-btn-inline\">
@@ -453,6 +504,8 @@ $btnNuovoVino = ($view === 'vini')
        </label>"
     : "";
 
+// CORRETTO: Questa variabile ora contiene SOLO la LABEL (il bottone visibile)
+// L'input checkbox con ID 'toggle-modal-utente' è spostato dentro $modalNuovoUtenteHTML
 $btnNuovoUtente = ($view === 'utenti')
     ? "<label for=\"toggle-modal-utente\" class=\"btn-primary\" tabindex=\"0\">
             <span class=\"fas fa-plus\" aria-hidden=\"true\"></span>&nbsp;Nuovo Utente

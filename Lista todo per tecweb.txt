@@ -1,18 +1,9 @@
 Lista todo per tecweb:
 - aggiungere immagini in footer dell'accessibilità del sito. vedi w3c css validator
 - leggere privacy e valutare se è tutto corretto -> contarini
-- leggere relazione
-    sistemare tutta la sezione riguardante i test. perché diciamo che non sono presenti errori però bisogna tornare a 
-    verificare che non ci siano
 - verificare risolti tutti gli errori, se il print funziona correttamente -> contarini
 - decidere cosa fare delle nav annidate nell'header
-- verificare html e css se è valido:
-    Il sito web deve essere realizzato con lo standard HTML5. Le pagine devono degradare in modo elegante e devono rispettare la sintassi XML;
-    il layout deve essere realizzato con CSS puri (CSS2 o CSS3);
-    css da provare a validare con totalvalidator. con w3c è già validato e ok
 - fare in modo di aggiungere l'immagine del vino in admin "aggiunta vino" e non il percorso dell'img
 - rifare test veloci con nvda
 
 percorso immagine admin da fare e eliminare l'aggiunta di conteuto alt (vini alt vuoto)
-
-da controllare sezione 4.2.4 lunedì sera
