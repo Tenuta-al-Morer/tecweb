@@ -1,3 +1,8 @@
 Lista todo per tecweb:
 - caricare nel server e controllare che ci siano tutti i file giusti
 - fare test generali di conferma (anche versioni mobile!!!!). Stampa compresa!
+
+- gemini dice, su relazione:
+    - password cifrate è errato, è meglio dire sottoposte ad hashing
+    - "Upload Immagini: A pagina 8 si dice che l'admin può caricare immagini "senza restrizioni stringenti". Questo è un potenziale rischio di sicurezza (upload di file malevoli/shell PHP) se non vengono fatti controlli rigorosi lato server sul MIME-type reale e sull'estensione."
+    (volevo solo fare notare questa cosa, ne parliamo in caso domani ma non credo sia un problema. me lo ha detto quando gli ho detto di ricercare di nuovo problemi se ce ne fossero)
