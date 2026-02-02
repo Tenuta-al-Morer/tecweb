@@ -280,10 +280,18 @@ foreach ($messaggiArray as $messaggio) {
                     <form id="form_msg_' . $idMsg . '" method="POST" class="standard-form">
                         <input type="hidden" name="messaggio_id" value="' . $idMsg . '">
                         <input type="hidden" name="azione" value="msg_risposta">
-                        <label for="richiesta1_' . $idMsg . '">Rispondi alle necessità del cliente<span aria-hidden="true">*</span></label>
+                        <label for="richiesta1_' . $idMsg . '">
+                            Rispondi alle necessità del cliente
+                            <span class="visually-hidden"> messaggio n ' . $idMsg . '</span>
+                            <span aria-hidden="true">*</span>
+                        </label>
+
                         <textarea id="richiesta1_' . $idMsg . '" name="richiesta1" required rows="6"
                             placeholder="Risposta"></textarea>
-                        <button type="submit" form="form_msg_' . $idMsg . '" class="btn-secondary" aria-label="Invia risposta al messaggio ' . $idMsg . '">Invia</button>
+                        <button type="submit" form="form_msg_' . $idMsg . '" class="btn-secondary">
+                            Invia
+                            <span class="visually-hidden"> risposta al messaggio n ' . $idMsg . '</span>
+                        </button>
                     </form>
                 </div></div></td></tr>';
 }
