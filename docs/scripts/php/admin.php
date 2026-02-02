@@ -115,7 +115,7 @@ function getFormVinoHTML($v = null) {
     $suffix = "_" . $id; 
     
     $nome = $isEdit ? htmlspecialchars($v['nome']) : '';
-    $prezzo = $isEdit ? $v['prezzo'] : '';
+    $prezzo = $isEdit ? $v['prezzo'] : '0.00';
     $stock = $isEdit ? $v['quantita_stock'] : '0';
 
     $img = $isEdit ? str_replace(' ', '%20', htmlspecialchars($v['img'])) : '../../images/tr/placeholder.webp';
@@ -256,7 +256,7 @@ if ($view === 'vini') {
             </form>";
 
             $actions .= "
-            <form method='POST' onsubmit=\"return confirm('Sei sicuro di voler eliminare $nomeSafe?');\">
+            <form method='POST'>
                 <input type='hidden' name='azione' value='elimina_vino'>
                 <input type='hidden' name='view' value='{$view}'>
                 <input type='hidden' name='id' value='{$v['id']}'>
@@ -267,20 +267,20 @@ if ($view === 'vini') {
             
             $formHTML = getFormVinoHTML($v);
             $modaliViniHTML .= "
-            <input type='checkbox' id='$modalToggleId' class='state-toggle' aria-label='Apri finestra modifica per $nomeSafe'>
+            <input type='checkbox' id='$modalToggleId' class='state-toggle' aria-label='Pannello $nomeSafe'>
             <div class='modal-wrapper-css'>
-                <label for='$modalToggleId' class='modal-overlay-close' title='Chiudi'></label>
+                <label for='$modalToggleId' class='modal-overlay-close' title='Chiudi'><span class='visually-hidden'>Chiudi</span></label>
                 <div class='modal-box-css'>
                     <label for='$modalToggleId' class='modal-close-x' title='Chiudi'>&times;</label>
                     <h2 class='modal-title'>Modifica Vino: $nomeSafe</h2>
                     $formHTML
                 </div>
-            </div>";
-
+            </div>
+            <label for='$modalToggleId' class='visually-hidden'>Pannello $nomeSafe</label>";
         
         } else {
             $actions = "
-            <form method='POST' onsubmit=\"return confirm('Vuoi ripristinare $nomeSafe? Tornerà tra i vini nascosti.');\">
+            <form method='POST'>
                 <input type='hidden' name='azione' value='ripristina_vino'>
                 <input type='hidden' name='view' value='{$view}'>
                 <input type='hidden' name='id' value='{$v['id']}'>
@@ -310,15 +310,16 @@ $modalNuovoVinoHTML = "";
 if ($view === 'vini') {
     $formNuovo = getFormVinoHTML(null);
     $modalNuovoVinoHTML = "
-    <input type='checkbox' id='toggle-modal-nuovo' class='state-toggle' aria-label='Apri finestra creazione nuovo vino'>
+    <input type='checkbox' id='toggle-modal-nuovo' class='state-toggle' aria-label='Pannello Nuovo Vino'>
     <div class='modal-wrapper-css'>
-        <label for='toggle-modal-nuovo' class='modal-overlay-close' title='Chiudi'></label>
+        <label for='toggle-modal-nuovo' class='modal-overlay-close' title='Chiudi'><span class='visually-hidden'>Chiudi</span></label>
         <div class='modal-box-css'>
             <label for='toggle-modal-nuovo' class='modal-close-x' title='Chiudi'>&times;</label>
             <h2 class='modal-title'>Aggiungi Nuovo Vino</h2>
             $formNuovo
         </div>
-    </div>";
+    </div>
+    <label for='toggle-modal-nuovo' class='visually-hidden'>Pannello Nuovo Vino</label>";
 }
 
 $rigaUtenti = "";
@@ -366,7 +367,7 @@ if ($view === 'utenti') {
                             <span class='visually-hidden'> ruolo di {$nome} {$cognome}</span>
                         </button>
                     </form>
-                    <form method='POST' onsubmit=\"return confirm('Eliminare l\\'utente {$nome} {$cognome}? Questa azione non si puo annullare.');\">
+                    <form method='POST'>
                         <input type='hidden' name='azione' value='elimina_utente'>
                         <input type='hidden' name='view' value='{$view}'>
                         <input type='hidden' name='id' value='{$idUtente}'>
@@ -389,9 +390,8 @@ if ($view === 'utenti') {
 
     $modalNuovoUtenteHTML = "
     <input type='checkbox' id='toggle-modal-utente' class='state-toggle'>
-    <label for='toggle-modal-utente' class='visually-hidden'>Apre/Chiude modale nuovo utente</label>
     <div class='modal-wrapper-css'>
-        <label for='toggle-modal-utente' class='modal-overlay-close' title='Chiudi'></label>
+        <label for='toggle-modal-utente' class='modal-overlay-close' title='Chiudi'><span class='visually-hidden'>Chiudi</span></label>
         <div class='modal-box-css'>
             <label for='toggle-modal-utente' class='modal-close-x' title='Chiudi'>&times;</label>
             <h2 class='modal-title'>Aggiungi Nuovo Utente</h2>
