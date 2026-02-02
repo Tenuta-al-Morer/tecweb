@@ -209,7 +209,7 @@ function getFormVinoHTML($v = null) {
                 <label for='img_file$suffix'>Immagine (JPG, PNG, WEBP)</label>
                 <div class='image-upload-wrapper'>
                     <img src='$imgSrcPreview' alt='Anteprima attuale' class='admin-img-preview'>
-                    <input type='file' id='img_file$suffix' name='img_file' class='admin-input' accept='.jpg, .jpeg, .png, .webp'>
+                    <input type='file' id='img_file$suffix' name='img_file' class='admin-input' accept='image/*.jpg, image/*.jpeg, image/*.png, image/*.webp'>
                 </div>
                 <span class='input-help little'>Lascia vuoto per mantenere l'immagine attuale.</span>
             </div>
