@@ -37,6 +37,132 @@ div#shipping-message-container, .btn-full, .item-actions-row, .cart-item-price-c
 /*--------------------*/
 
 
+.details-content {
+    display: flex;
+    gap: 3rem;
+    padding: 1rem 0;
+    color: var(--text-color);
+}
+
+
+
+/* Gestione Sitemap */
+.sitemap-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.tree-container {
+    border-radius: 12px;
+    padding: 2.5rem;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    background-color: var(--background);
+    height: fit-content;
+}
+
+.sitemap-tree .tree-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 1.5rem 0;
+}
+
+.sitemap-tree .tree-list.level-0 {
+    padding-left: 0;
+}
+
+.sitemap-tree .tree-list.level-1 {
+    padding-left: 2rem;
+}
+
+.sitemap-tree .tree-list.level-2 {
+    padding-left: 3.5rem;
+}
+
+.sitemap-tree .tree-list.level-3 {
+    padding-left: 5rem;
+}
+
+.sitemap-tree a{
+        text-decoration: none;
+        color: var(--text-color);
+ }
+
+ .sitemap-tree li {
+    margin: 0.8rem 0;
+    position: relative;
+    font-size: 1.1rem;
+}
+
+.sitemap-tree li.child-item:before {
+    content: '↳ ';
+    position: absolute;
+    left: -1.5rem;
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.sitemap-info {
+    background-color: var(--background);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    height: fit-content;
+    position: sticky;
+    top: 2rem;
+}
+
+.sitemap-info h2 {
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    margin-top: 0;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 0.5rem;
+    border-top: none;
+}
+
+.sitemap-info p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.info-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.stat-box {
+    background: rgba(197, 165, 81, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.2rem;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    display: block;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-color);
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
 
 /*Mantengo uguale l'aspetto della sub-header nella stampa (che contiene la breadcrumb)*/
 .sub-header {
