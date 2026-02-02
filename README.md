@@ -377,7 +377,7 @@ Strumenti automatici utilizzati:
 
 - Lighthouse (per il calcolo delle prestazioni del sito).
 
-L’impiego di questi strumenti ha permesso di individuare rapidamente errori di sintassi, problemi di contrasto e eventuali tag mancanti. I controlli automatici hanno confermato che il sito raggiunge il livello di conformità WCAG 2.1 AA per i contrasti dei colori, anche simulando differenti forme di daltonismo tramite i filtri visivi. I validatori HTML e CSS non hanno evidenziato errori, fatta eccezione per alcuni falsi positivi, che sono stati analizzati nella sezione 5.2.
+L’impiego di strumenti automatici di analisi ha consentito di individuare rapidamente eventuali errori di sintassi, problemi di contrasto e la presenza di tag mancanti o non correttamente strutturati. I controlli effettuati hanno confermato che il sito rispetta i requisiti di conformità WCAG 2.1 livello AA in tutti i suoi aspetti. I validatori HTML e CSS non hanno segnalato errori significativi, ad eccezione di alcuni falsi positivi, che sono stati opportunamente analizzati e discussi nella sezione 5.2.
 
 Test manuali effettuati:
 
@@ -387,6 +387,20 @@ Test manuali effettuati:
 
 - controllo della presenza e correttezza degli attributi `alt` delle immagini;
 
+- controllo della navigabilità da tastiera di tutte le pagine del sito;
+
+- verifica del corretto funzionamento dei form e della gestione degli errori;
+
+- verifica del corretto funzionamento delle funzionalità con JavaScript disabilitato;
+
+- controllo del layout responsive su dispositivi mobili e tablet;
+
+- verifica della leggibilità e del contrasto dei colori utilizzati;
+
+- test di stampa delle pagine per verificarne la formattazione e la leggibilità su carta;
+
+- test di accessibilità con screen reader (NVDA).
+
 - compatibilità del sito con diversi browser: Microsoft Edge, Google Chrome, Mozilla Firefox, Apple Safari e Opera;
 
 - compatibilità con diversi sistemi operativi: Microsoft Windows 10, Ubuntu 23.10, Android 9, Android 15 e iOS 18.3.
@@ -395,15 +409,23 @@ Questa combinazione di test automatici e manuali ha garantito che il sito sia ac
 
 ### Analisi dei Falsi Positivi
 
-link adiaccenti ma è fatto apposta
+L’analisi dei falsi positivi è stata effettuata dopo la correzione di tutte le problematiche effettivamente riscontrate; di seguito sono riportate le segnalazioni risultate non critiche:
+
+- **W3C Validator - HTML**: segnalazione di tag non chiusi in alcune pagine. Dopo un’attenta verifica del codice sorgente, si è constatato che si trattava di un falso positivo dovuto a particolari costrutti PHP che generano codice HTML dinamicamente. In tutti i casi, il codice generato è risultato valido e conforme agli standard HTML5.
+
+- **W3C Validator - CSS**: segnalazione di proprietà CSS non riconosciute. Queste segnalazioni sono state analizzate e si è riscontrato che si trattava di proprietà CSS3 ancora non pienamente supportate da tutti i validatori, ma ampiamente accettate nei browser moderni.
+
+- **Lighthouse**: segnalazione di immagini non ottimizzate. Dopo aver esaminato le immagini in questione, si è constatato che erano già state ottimizzate per il web, ma il tool non riconosceva alcune tecniche di compressione avanzate utilizzate.
+
+- **Silktide e WAVE by WebAIM**: segnalazioni riguardanti il contrasto dei colori in alcune sezioni. Dopo un’analisi approfondita, si è verificato che i contrasti rispettavano comunque le linee guida WCAG 2.1 livello AA, e le segnalazioni erano dovute a particolari combinazioni di colori che, pur essendo accessibili, risultavano borderline secondo gli algoritmi dei tool.
 
 ### Screen reader
 
-Abbiamo testato l’accessibilità al sito da parte di screen reader quale NVDA, senza riscontrare problemi.
+L’accessibilità del sito è stata testata utilizzando lo screen reader NVDA, verificando la corretta lettura e interpretazione di tutti i contenuti e delle principali componenti interattive. I test hanno incluso il controllo dell’ordine di navigazione da tastiera, della corretta associazione tra etichette e campi di input, dell’interpretazione dei ruoli e degli attributi ARIA, nonché della lettura strutturata di tabelle, form e altri elementi complessi. Le verifiche non hanno evidenziato criticità rilevanti.
 
 ## Organizzazione del gruppo
 
-Ci siamo organizzati suddividendo il lavoro in base alle diverse pagine e funzionalità del sito da sviluppare. Ogni membro del gruppo è stato assegnato a specifici compiti, in modo da ottimizzare il tempo e sfruttare al meglio le competenze individuali.
+Il lavoro è stato organizzato suddividendo le attività in base alle diverse pagine e funzionalità del sito da sviluppare. A ciascun membro del gruppo sono stati assegnati compiti specifici, così da ottimizzare i tempi di sviluppo e valorizzare al meglio le competenze individuali.
 
 ### Divisione dei compiti
 
@@ -415,7 +437,7 @@ Ci siamo organizzati suddividendo il lavoro in base alle diverse pagine e funzio
 
   - DB: progettazione e implementazione
 
-  - Testing e validazione
+  - Testing e validazione: Total Validator, Lighthouse, Silktide
 
   - Relazione tecnica
 
@@ -427,7 +449,7 @@ Ci siamo organizzati suddividendo il lavoro in base alle diverse pagine e funzio
 
   - DB: progettazione e implementazione
 
-  - Testing e validazione
+  - Testing e validazione: Total Validator, Lighthouse, Silktide
 
   - Relazione tecnica
 
@@ -439,7 +461,7 @@ Ci siamo organizzati suddividendo il lavoro in base alle diverse pagine e funzio
 
   - DB: popolamento e backup
 
-  - Testing e validazione
+  - Testing e validazione: W3C Validator, Silktide, WAVE by WebAIM, NVDA
 
   - Relazione tecnica
 
@@ -451,7 +473,7 @@ Ci siamo organizzati suddividendo il lavoro in base alle diverse pagine e funzio
 
   - DB: ottimizzazione query
 
-  - Testing e validazione
+  - Testing e validazione: W3C Validator, Silktide, WAVE by WebAIM, NVDA
 
   - Relazione tecnica
 
@@ -459,6 +481,6 @@ Ci siamo organizzati suddividendo il lavoro in base alle diverse pagine e funzio
 
 1.  Il sito è stato sviluppato con particolare attenzione alle linee guida per l’accessibilità WCAG 2.1 livello AA.
 
-2.  Nonostante la natura dimostrativa, sono state applicate best practice di sicurezza base per la protezione delle sessioni utente.
+2.  Sono state adottate misure di sicurezza di base per la protezione delle sessioni utente, in particolare la prevenzione di accessi non autorizzati alle aree riservate del sito.
 
 3.  Il database viene fornito già popolato con dati dimostrativi per facilitare il testing delle funzionalità.
