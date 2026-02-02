@@ -5,7 +5,6 @@ require_once 'DBConnection.php';
 
 use DB\DBConnection;
 
-// --- CONTROLLO ACCESSO E INIZIALIZZAZIONE ---
 if (!isset($_SESSION['utente'])) {
     header("Location: login.php?return=checkout.php");
     exit();
@@ -13,7 +12,6 @@ if (!isset($_SESSION['utente'])) {
 
 $ruolo = $_SESSION['ruolo']; 
 
-// Se l'utente è admin o staff, svuota carrello e reindirizza
 if ($ruolo === 'admin' || $ruolo === 'staff') {
     $db = new DBConnection();
     $db->svuotaCarrelloUtente($_SESSION['utente_id']);
@@ -26,7 +24,6 @@ if ($ruolo === 'admin' || $ruolo === 'staff') {
 $db = new DBConnection();
 $id_utente = $_SESSION['utente_id'];
 
-// --- VERIFICA CARRELLO ---
 $carrello = $db->getCarrelloUtente($id_utente);
 $itemsAttivi = array_filter($carrello, function($i) { 
     return ($i['stato'] === 'attivo' || $i['stato'] === 'active') && $i['quantita_stock'] > 0; 
@@ -37,7 +34,6 @@ if (empty($itemsAttivi)) {
     exit();
 }
 
-// --- GESTIONE INVIO ORDINE (POST) ---
 $errorMsg = "";
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'crea_ordine') {
     
@@ -76,12 +72,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         header("Location: areaPersonale.php#ordini"); 
         exit();
     } else {
-        // Messaggio di errore accessibile
         $errorMsg = '<div class="alert error" role="alert"><span class="fas fa-exclamation-triangle"></span> Errore durante l\'ordine: ' . htmlspecialchars($risultato['error']) . '</div>';
     }
 }
 
-// --- PREPARAZIONE DATI TEMPLATE ---
 $userInfo = $db->getUserInfo($id_utente);
 
 $val_nome = $userInfo['nome'] ?? '';
@@ -93,14 +87,13 @@ $val_provincia = $userInfo['provincia'] ?? '';
 $val_prefisso  = $userInfo['prefisso'] ?? '+39'; 
 $val_telefono  = $userInfo['telefono'] ?? '';
 
-// --- GENERAZIONE LISTA PRODOTTI HTML ---
 $totaleProdotti = 0;
 $listaProdottiHTML = "";
 
 foreach ($itemsAttivi as $item) {
     $totaleProdotti += $item['totale_riga'];
     
-    $imgSrc = htmlspecialchars($item['img']); 
+    $imgSrc = htmlspecialchars(str_replace(' ', '%20', $item['img']), ENT_QUOTES, 'UTF-8');
 
     $listaProdottiHTML .= '
     <div class="summary-item-rich">
@@ -119,7 +112,6 @@ $costoSpedizione = ($totaleProdotti >= 49.00) ? 0.00 : 10.00;
 $totaleFinale = $totaleProdotti + $costoSpedizione;
 $strSpedizione = ($costoSpedizione == 0) ? '<span class="text-green">Gratuita</span>' : '€ ' . number_format($costoSpedizione, 2);
 
-// --- CARICAMENTO E RENDER PAGINA ---
 $htmlPage = caricaPagina('../../html/checkout.html');
 
 $htmlPage = str_replace("[alert_msg]", $errorMsg, $htmlPage);
