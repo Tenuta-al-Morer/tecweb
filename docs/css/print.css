@@ -15,10 +15,10 @@ html{
 #help, label.menu-toggle, #main-navigation, .mobile-icons, #theme-toggle, .hero-actions, .hero-bg, span.link-arrow, section.slider-section, footer a,
 #backToTopBtn, .tenuta-card-image img, section.form-container, section.map-section, aside.alert-box, .empty-cart-message i, .btn-shop-empty,
 div#shipping-message-container, .btn-full, .item-actions-row, .cart-item-price-col, .dashboard-sidebar, .danger-zone,
-#sicurezza, .admin-table-head, p.sum, #menu-checkbox, .menu-toggle, .details-content .details-section:not(:first-child), .Richieste_gestionale, .wine-search-bar,
+#sicurezza, .admin-table-head, p.sum, #menu-checkbox, .menu-toggle, .details-content .msg, .Richieste_gestionale, .wine-search-bar,
 .wine-item, .details-button, .selettore-quantita, .modal-buy-block, .modal-close-btn, .buy-button, .badge-esaurito, .admin-switch, 
 .admin-section-actions, .auth-container, .toggle-label-wrapper, #toggle-deleted-visibility, .state-toggle, .action-group,
-.modal-wrapper-css, .modal-box-css, #modalVino, .footer-content p, .visually-hidden{
+.modal-wrapper-css, .modal-box-css, #modalVino, .footer-content p, .visually-hidden, .fas.fa-wine-bottle{
 	display:none;
 }
 
@@ -348,4 +348,6 @@ td.td_richiesta_degustazione{ margin-right: 15px; }
     transition: transform 0.3s ease;
 }
 
- 
+ table div.details-section:has(h3):has(p) {
+  display: block;
+}

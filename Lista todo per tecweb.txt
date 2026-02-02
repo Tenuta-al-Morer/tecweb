@@ -1,3 +1,5 @@
 Lista todo per tecweb:
 - verificare risolti tutti gli errori, se il print funziona correttamente -> contarini
 - fare in modo di aggiungere l'immagine del vino in admin "aggiunta vino" e non il percorso dell'img
+NVDA
+- admin gestione vini (senza JS) si blocca  alla fine su "Pannello Vigna Dorata non attivato", "Pannello Rosae Nobile non attivato" ecc...
