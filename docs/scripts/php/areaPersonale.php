@@ -188,8 +188,9 @@ if (empty($ordini)) {
     $tabellaOrdini = '<div class="alert-box"><p><span class="fas fa-exclamation-triangle" aria-hidden="true"></span> Non hai ancora effettuato ordini. Visita la sezione <a href="vini.php">Vini!</a></p></div>';
 } else {
     $tabellaOrdini .= '
-        <table class="table-data">
+        <table class="table-data" aria-describedby="tabella-ordini-desc">
             <caption>Storico dei tuoi ordini</caption>
+            <p id="tabella-ordini-desc" class="visually-hidden">Tabella contenente lo storico di tutti i tuoi ordini con numero ordine, data, stato e totale. Utilizza i pulsanti nella colonna Dettagli per espandere le informazioni su ciascun ordine.</p>
             <thead>
                 <tr>
                     <th scope="col">N. Ordine</th>
@@ -213,10 +214,10 @@ if (empty($ordini)) {
             <noscript>
                 <form method="get" action="#details-row-' . $id_ordine . '">
                     <input type="hidden" name="sezione" value="ordini">
-                    <button type="submit" class="btn-secondary">Mostra Dettagli<span class="visually-hidden"> Ordine #' . $id_ordine . '</span></button>
+                    <button type="submit" class="btn-secondary">Vedi dettagli<span class="visually-hidden"> statici ordine #' . $id_ordine . '</span></button>
                 </form>
             </noscript>
-            <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $id_ordine . '" aria-expanded="false" aria-controls="details-row-' . $id_ordine . '">Mostra <span class="visually-hidden">dettagli ordine #' . $id_ordine . '</span> <span class="fas fa-chevron-down" aria-hidden="true"></span></button>
+            <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $id_ordine . '" aria-expanded="false" aria-controls="details-row-' . $id_ordine . '">Mostra <span class="visually-hidden">dettagli dinamici ordine #' . $id_ordine . '</span> <span class="fas fa-chevron-down" aria-hidden="true"></span></button>
         </td></tr>';
         
         $tabellaOrdini .= '<tr class="order-details-row is-hidden" id="details-row-' . $id_ordine . '"><td colspan="5" class="order-details-cell"><div class="details-content">';
@@ -234,7 +235,8 @@ $tabellaPrenotazioni = '';
 if (empty($prenotazioni)) {
     $tabellaPrenotazioni = '<div class="alert-box"><p><span class="fas fa-exclamation-triangle" aria-hidden="true"></span> Non hai ancora inviato richieste di prenotazione. Visita la sezione <a href="esperienze.php">Esperienze!</a></p></div>';
 } else {
-    $tabellaPrenotazioni .= '<table class="table-data">
+    $tabellaPrenotazioni .= '<table class="table-data" aria-describedby="tabella-prenotazioni-desc">
+            <p id="tabella-prenotazioni-desc" class="visually-hidden">Tabella contenente lo storico di tutte le tue richieste di esperienze con numero richiesta, data invio, data visita, numero persone e stato. Utilizza i pulsanti nella colonna Dettagli per espandere le informazioni su ciascuna richiesta.</p>
             <caption>Storico delle tue richieste esperienze</caption>
             <thead>
                 <tr>
@@ -262,10 +264,10 @@ if (empty($prenotazioni)) {
             <noscript>
                 <form method="get" action="#details-row-' . $details_key . '">
                     <input type="hidden" name="sezione" value="esperienze">
-                    <button type="submit" class="btn-secondary">Mostra Dettagli<span class="visually-hidden"> richiesta #' . $id_prenotazione . '</span></button>
+                    <button type="submit" class="btn-secondary">Vedi dettagli<span class="visually-hidden"> statici richiesta #' . $id_prenotazione . '</span></button>
                 </form>
             </noscript>
-            <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $details_key . '" aria-expanded="false" aria-controls="details-row-' . $details_key . '">Mostra <span class="visually-hidden">dettagli richiesta #' . $id_prenotazione . '</span> <span class="fas fa-chevron-down" aria-hidden="true"></span></button>
+            <button type="button" class="btn-secondary toggle-details-btn" data-order-id="' . $details_key . '" aria-expanded="false" aria-controls="details-row-' . $details_key . '">Mostra <span class="visually-hidden">dettagli dinamici richiesta #' . $id_prenotazione . '</span> <span class="fas fa-chevron-down" aria-hidden="true"></span></button>
         </td></tr>';
 
         $tabellaPrenotazioni .= '<tr class="order-details-row is-hidden" id="details-row-' . $details_key . '"><td colspan="6" class="order-details-cell"><div class="details-content">';
@@ -334,7 +336,7 @@ $formPasswordHTML = '
                 <input type="password" id="vecchia_password" name="vecchia_password" required placeholder="Inserisci la password attuale" autocomplete="current-password">
                 <button type="button" class="toggle-password" aria-pressed="false">
                     <span class="fas fa-eye" aria-hidden="true"></span>
-                    <span class="visually-hidden">Mostra password</span>
+                    <span class="visually-hidden">Mostra vecchia password</span>
                 </button>
             </div>
         </div>
@@ -345,7 +347,7 @@ $formPasswordHTML = '
                 <input type="password" id="nuova_password" name="nuova_password" required placeholder="Inserisci la nuova password" autocomplete="new-password">
                 <button type="button" class="toggle-password" aria-pressed="false">
                     <span class="fas fa-eye" aria-hidden="true"></span>
-                    <span class="visually-hidden">Mostra password</span>
+                    <span class="visually-hidden">Mostra nuova password</span>
                 </button>
             </div>
         </div>
@@ -356,7 +358,7 @@ $formPasswordHTML = '
                 <input type="password" id="ripeti_password" name="ripeti_password" required placeholder="Ripeti la nuova password" autocomplete="new-password">
                 <button type="button" class="toggle-password" aria-pressed="false">
                     <span class="fas fa-eye" aria-hidden="true"></span>
-                    <span class="visually-hidden">Mostra password</span>
+                    <span class="visually-hidden">Mostra conferma password</span>
                 </button>
             </div>
         </div>
