@@ -4767,3 +4767,33 @@ body .auth-container .auth-form .form-group input:-webkit-autofill:active {
     border-radius: 4px;
     object-fit: cover;
 }
+
+.foto-admin-upload {
+    align-content: center;
+    height: 80px;
+    width: 100%;
+    padding: 10px 25px;
+    font-size: 16px;
+    border: 2px dashed var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.foto-admin-upload::file-selector-button {
+    margin-right: 20px;        
+    padding: 10px 10px;          
+    color: var(--background);           
+    font-weight: bold;          
+    font-size: 16px;           
+    text-transform: uppercase;  
+    letter-spacing: 1px;     
+    background-color: var(--secondary-color);   
+    border: none;            
+    border-radius: 4px;      
+    cursor: pointer; 
+}
+
+.foto-admin-upload::file-selector-button:hover, .foto-admin-upload::file-selector-button:focus {
+    filter: brightness(1.1); 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+}

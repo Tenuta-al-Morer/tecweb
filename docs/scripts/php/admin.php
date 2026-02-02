@@ -204,15 +204,15 @@ function getFormVinoHTML($v = null) {
                 <select id='stato$suffix' name='stato' class='admin-input'>$statoOptions</select>
                 <span class='input-help little'>Esempio: Attivo</span>
             </div>
-            
-            <div class='admin-form-group'>
+        </div>
+
+        <div class='admin-form-group'>
                 <label for='img_file$suffix'>Immagine (JPG, PNG, WEBP)</label>
                 <div class='image-upload-wrapper'>
                     <img src='$imgSrcPreview' alt='Anteprima attuale' class='admin-img-preview'>
-                    <input type='file' id='img_file$suffix' name='img_file' class='admin-input foto-input' accept='image/*.jpg, image/*.jpeg, image/*.png, image/*.webp'>
+                    <input type='file' id='img_file$suffix' name='img_file' class='foto-admin-upload' accept='image/jpeg, image/png, image/webp'>
                 </div>
                 <span class='input-help little'>Lascia vuoto per mantenere l'immagine attuale.</span>
-            </div>
         </div>
 
         <div class='admin-form-group'>
