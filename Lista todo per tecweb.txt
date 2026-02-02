@@ -5,3 +5,4 @@ Lista todo per tecweb:
 
 NVDA
 - admin gestione vini via tab in crea nuovo vino impossibile uscire dal modale
+- admin gestione vini si blocca  alla fine su "Pannello Vigna Dorata non attivato", "Pannello Rosae Nobile non attivato" ecc...
