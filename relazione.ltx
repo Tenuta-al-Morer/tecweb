@@ -188,8 +188,8 @@ Le principali tabelle del database sono:
 \begin{itemize}
 \item \textbf{utente}: memorizza gli account degli utenti con i relativi ruoli
 \item \textbf{vino}: memorizza il catalogo completo dei prodotti vinicoli
-\item \textbf{carrello} e \textbf{carrello\_elemento}: servono per la gestione del carrello
-\item \textbf{ordine} e \textbf{ordine\_elemento}: servono per la gestione degli ordini effettuati
+\item \textbf{carrello} e \textbf{carrello\_elemento}: memorizzano i dati per la gestione del carrello
+\item \textbf{ordine} e \textbf{ordine\_elemento}: memorizzano i dati per la gestione degli ordini effettuati
 \item \textbf{prenotazione}: memorizza le prenotazioni delle esperienze
 \item \textbf{contatto}: memorizza i messaggi di assistenza
 \end{itemize}
@@ -350,7 +350,7 @@ riducendo il carico complessivo ed evitando la formazione di colli di bottiglia.
 rimangono pienamente operative anche in assenza di JavaScript, il quale agisce esclusivamente come livello aggiuntivo di ottimizzazione.
 
 \subsubsection{Validazione dell'input}
-Abbiamo eseguito controlli sull'input sia lato client, utilizzando Javascript, che lato server tramite PHP. 
+Abbiamo eseguito controlli sull'input sia lato client, utilizzando JavaScript, che lato server tramite PHP. 
 La maggior parte dei controlli è stata eseguita tramite funzioni che controllano con delle espressioni regolari il contenuto degli input. 
 Inoltre, ogni messaggio di errore ritornato dai metodi di validazione sopra elencati è stato pensato per fornire all'utente una spiegazione chiara e concisa del problema.
 
