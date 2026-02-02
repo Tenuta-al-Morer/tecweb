@@ -27,3 +27,9 @@ Wave (report delle 12:52)
 - 404 (2 redundant link)
 - 403 (1 redundant)
 - 500 (2 redundant)
+
+
+NVDA
+- tutte, nella navbar principale vengono dette varie volte menu principale, e quello apribile viene letto anche se non sono in mini
+- esperienze se invio con errore non lo legge
+- 
