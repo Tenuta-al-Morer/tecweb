@@ -2400,8 +2400,10 @@ body.light-mode .user-nav-link.is-active {
 }
 
 .details-section textarea {
+    font-family: 'Atkinson Hyperlegible';
     width: 100%;
     box-sizing: border-box;
+    padding: 5px;
 }
 
 .details-section .standard-form {
@@ -3547,9 +3549,9 @@ body.light-mode .admin-search-label {
 }
 
 body.light-mode .admin-search-input {
-    background-color: #fff;
-    color: #222222;
-    border-color: #cfc7b5;
+    background-color: var(--background);
+    color: var(--text-color);
+    border-color: var(--border-color);
 }
 
 body.light-mode .admin-search-input::placeholder {
@@ -3792,6 +3794,7 @@ body.light-mode .badge {
     display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
 }
 .admin-input {
+    font-family: 'Atkinson Hyperlegible';
     width: 100%; padding: 0.8rem;
     background-color: var(--background);
     border: 1px solid var(--border-color);
@@ -3886,7 +3889,8 @@ body.light-mode .admin-switch {
 }
 
 body.light-mode .admin-switch .btn-secondary {
-    color: #5a5a5a;
+    color: var(--text-color);
+    font-weight: 700;
 }
 
 body.light-mode .admin-switch .btn-secondary:hover,
@@ -3905,9 +3909,9 @@ body.light-mode .truncate {
 }
 
 body.light-mode .admin-input {
-    background-color: #fff;
-    border: 1px solid #cccccc;
-    color: #333333;
+    background-color: var(--background);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
 }
 
 body.light-mode .admin-input:focus {
