@@ -25,12 +25,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $db = new DBConnection();
 
     if ($azione === 'salva_vino') {
+        
+        $percorsoImmagine = $_POST['img_old'] ?? '../../images/tr/placeholder.webp';
+
+        if (isset($_FILES['img_file']) && $_FILES['img_file']['error'] === UPLOAD_ERR_OK) {
+            $fileTmp = $_FILES['img_file']['tmp_name'];
+            $fileName = $_FILES['img_file']['name'];
+            
+            $check = getimagesize($fileTmp);
+            if ($check !== false) {
+                $cleanName = preg_replace("/[^a-zA-Z0-9\._-]/", "", basename($fileName));
+                $nuovoNomeFile = time() . "_" . $cleanName;
+                
+                $targetDir = "../../images/tr/";
+                $targetFile = $targetDir . $nuovoNomeFile;
+
+                $dbPath = "images/tr/" . $nuovoNomeFile;
+
+                if (move_uploaded_file($fileTmp, $targetFile)) {
+                    $percorsoImmagine = $dbPath; 
+                }
+            }
+        }
+
         $dati = [
             'nome' => $_POST['nome'],
             'prezzo' => $_POST['prezzo'],
             'quantita_stock' => $_POST['quantita_stock'],
             'stato' => $_POST['stato'],
-            'img' => $_POST['img'],
+            'img' => $percorsoImmagine,
             'categoria' => $_POST['categoria'],
             'descrizione_breve' => $_POST['descrizione_breve'],
             'descrizione_estesa' => $_POST['descrizione_estesa'],
@@ -118,7 +141,8 @@ function getFormVinoHTML($v = null) {
     $prezzo = $isEdit ? $v['prezzo'] : '0.00';
     $stock = $isEdit ? $v['quantita_stock'] : '0';
 
-    $img = $isEdit ? str_replace(' ', '%20', htmlspecialchars($v['img'])) : '../../images/tr/placeholder.webp';
+    $imgPathDB = $isEdit ? htmlspecialchars($v['img']) : '../../images/tr/placeholder.webp';
+    $imgSrcPreview = str_replace(' ', '%20', $imgPathDB);
 
     $descBreve = $isEdit ? htmlspecialchars($v['descrizione_breve']) : '';
     $descEstesa = $isEdit ? htmlspecialchars($v['descrizione_estesa']) : '';
@@ -152,6 +176,7 @@ function getFormVinoHTML($v = null) {
     <form method='POST' enctype='multipart/form-data'>
         <input type='hidden' name='azione' value='salva_vino'>
         <input type='hidden' name='id_vino' value='$idVinoField'>
+        <input type='hidden' name='img_old' value='$imgPathDB'>
         
         <div class='form-grid'>
             <div class='admin-form-group'>
@@ -179,10 +204,14 @@ function getFormVinoHTML($v = null) {
                 <select id='stato$suffix' name='stato' class='admin-input'>$statoOptions</select>
                 <span class='input-help little'>Esempio: Attivo</span>
             </div>
+            
             <div class='admin-form-group'>
-                <label for='img$suffix'>Percorso Immagine</label>
-                <input type='text' id='img$suffix' name='img' class='admin-input' value='$img'>
-                <span class='input-help little'>Esempio: ../../images/tr/placeholder.webp</span>
+                <label for='img_file$suffix'>Immagine (JPG, PNG, WEBP)</label>
+                <div class='image-upload-wrapper'>
+                    <img src='$imgSrcPreview' alt='Anteprima attuale' class='admin-img-preview'>
+                    <input type='file' id='img_file$suffix' name='img_file' class='admin-input' accept='.jpg, .jpeg, .png, .webp'>
+                </div>
+                <span class='input-help little'>Lascia vuoto per mantenere l'immagine attuale.</span>
             </div>
         </div>
 
@@ -229,7 +258,9 @@ if ($view === 'vini') {
         
         $stockClass = ($v['quantita_stock'] < 10 && !$isDeleted) ? 'stock-low' : '';
         $nomeSafe = htmlspecialchars($v['nome'], ENT_QUOTES);
+        
         $imgSrc = str_replace(' ', '%20', htmlspecialchars($v['img']));
+        
         $iconaVisibilita = ($v['stato'] == 'attivo') 
             ? '<span class="fas fa-eye" aria-hidden="true"></span>' 
             : '<span class="fas fa-eye-slash icon-muted" aria-hidden="true"></span>';

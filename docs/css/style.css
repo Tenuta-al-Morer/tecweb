@@ -4752,3 +4752,17 @@ body .auth-container .auth-form .form-group input:-webkit-autofill:active {
     margin: 0 5px;    
     vertical-align: middle;
 }
+
+.image-upload-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-img-preview {
+    height: 80px;
+    width: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    object-fit: cover;
+}
