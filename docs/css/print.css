@@ -283,11 +283,12 @@ td.td_richiesta_degustazione{ margin-right: 15px; }
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     text-align: center;
     scroll-margin-top: 160px;
+    box-sizing: border-box;
 }
 
 .wine-article{
     flex: 0 0 100%;
-    max-width: 100%;
+    max-width: 90%;
     margin: 0 auto;
     break-inside: avoid;
     page-break-inside: avoid;
