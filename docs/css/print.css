@@ -18,7 +18,7 @@ div#shipping-message-container, .btn-full, .item-actions-row, .cart-item-price-c
 #sicurezza, .admin-table-head, p.sum, #menu-checkbox, .menu-toggle, .details-content .msg, .Richieste_gestionale, .wine-search-bar,
 .wine-item, .details-button, .selettore-quantita, .modal-buy-block, .modal-close-btn, .buy-button, .badge-esaurito, .admin-switch, 
 .admin-section-actions, .auth-container, .toggle-label-wrapper, #toggle-deleted-visibility, .state-toggle, .action-group,
-.modal-wrapper-css, .modal-box-css, #modalVino, .footer-content p, .visually-hidden, .fas.fa-wine-bottle{
+.modal-wrapper-css, .modal-box-css, #modalVino, .footer-content p, .visually-hidden, .fas.fa-wine-bottle, .checkout-section, .btn-back-outline{
 	display:none;
 }
 
@@ -161,6 +161,85 @@ div#shipping-message-container, .btn-full, .item-actions-row, .cart-item-price-c
     margin-top: 0.5rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+}
+
+/*Gestione checkout*/
+.summary-box {
+    background-color: var(--background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    position: sticky;
+    top: 2rem;
+    max-width: 350px;
+}
+
+.summary-items-list {
+    max-height: 350px;
+    overflow-y: auto;
+    padding-right: 5px;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    padding: 0.5rem;
+}
+
+.summary-items-list::-webkit-scrollbar { width: 5px; }
+.summary-items-list::-webkit-scrollbar-thumb { background-color: var(--secondary-color); border-radius: 3px; }
+
+.summary-item-rich {
+    display: grid;
+    grid-template-columns: 50px 1fr auto; 
+    gap: 0.8rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    align-items: center;
+}
+
+.summary-item-rich:last-child {
+    border-bottom: none;
+}
+
+.mini-img-wrapper {
+    width: 70px;
+    height: 70px;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+}
+
+.mini-img-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.rich-details {
+    display: flex;
+    margin-left: 50px;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.rich-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    line-height: 1.2;
+    color: var(--text-color);
+}
+
+.rich-qty {
+    font-size: 0.8rem;
+    color: var(--text-color);
+}
+
+.rich-price {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--secondary-color);
 }
 
 /*Gestione policy*/
