@@ -163,6 +163,15 @@ div#shipping-message-container, .btn-full, .item-actions-row, .cart-item-price-c
     letter-spacing: 0.5px;
 }
 
+/*Gestione policy*/
+.table-data th[scope="row"] a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+a.policy-link {
+    color: var(--text-color);
+}
 
 /*Mantengo uguale l'aspetto della sub-header nella stampa (che contiene la breadcrumb)*/
 .sub-header {
