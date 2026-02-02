@@ -226,16 +226,16 @@ Un esempio è presente nel file areaPersonale.html:
 Questo approccio ci permette di impostare una struttura fissa nei file HTML e andare a modificare in maniera dinamica il contenuto tramite PHP.
 
 \subsubsection{Popolamento database}
-Per il popolamento del database abbiamo adottato un duplice approccio. La tabella dei vini è stata creata manualmente: trattandosi di un numero limitato di prodotti, abbiamo preferito inserire direttamente informazioni precise.
-
-Al contrario, per le sezioni dedicate all'assistenza, agli ordini e alle prenotazioni delle esperienze, abbiamo scelto di generare i dati tramite Intelligenza Artificiale. Questa soluzione ci ha permesso di ottenere rapidamente un insieme completo di dati.
-
+Il popolamento del database è stato effettuato interamente in modo manuale, così da garantire un controllo diretto e accurato sui dati inseriti.
+In particolare, è stata posta maggiore attenzione al popolamento della tabella dei vini, considerata il fulcro dell’attività dell’azienda.
+Per questo motivo, i dati inseriti sono ispirati a prodotti reali già esistenti della cultura vitivinicola veneta, mantenendo coerenza e realismo nei contenuti.
 \subsection{Presentazione}
 
 \subsubsection{CSS}
 Uno degli aspetti più importanti del nostro CSS è l'utilizzo delle variabili impostate all'inizio del file e riutilizzate più volte in parti differenti. 
-In questo modo siamo riusciti ad uniformare e tenere sotto controllo i contrasti e i colori utilizzati, garantendo quindi una maggiore manutenibilità. Particolare attenzione è stata posta anche all'utilizzo 
-di layout di tipo flex e grid. Data la loro pensantezza di renderizzazione per i browser, ne è stato fatto un uso consapevole, cercando di evitare di superare il secondo livello.
+In questo modo siamo riusciti ad uniformare e tenere sotto controllo i contrasti e i colori utilizzati, garantendo quindi una maggiore manutenibilità. 
+Particolare attenzione è stata posta anche all’utilizzo di layout di tipo flex e grid. Considerato il maggiore peso di renderizzazione dei layout grid per i browser, 
+il loro impiego è stato valutato con attenzione, cercando di limitarne la complessità ed evitando di superare il secondo livello di annidamento.
 
 In secondo luogo, si evidenzia l'utilizzo di tre differenti fogli di stile: style.css, mini.css e print.css. 
 Questa suddivisione è stata adottata per organizzare propriamente il codice CSS per gestire al meglio l'aspetto responsive del sito e garantire un adeguato layout di stampa in caso di occorrenza.
