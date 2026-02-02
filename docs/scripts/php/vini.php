@@ -70,10 +70,8 @@ function costruisciCardVino($vino) {
     $abbinamenti = htmlspecialchars($vino['abbinamenti'] ?? '-');
 
     $anchorId = "vino-" . $id;
-
     $modalId = "modal-vino-" . $id;
     $modalId = preg_replace('/[^A-Za-z0-9\-_:.]/', '_', $modalId);
-
     $dialogId = "dialog-" . $id;
     $titleId = "modal-title-" . $id;
     $priceId = "modal-price-" . $id;
@@ -88,12 +86,6 @@ function costruisciCardVino($vino) {
     $htmlStock = "";
     $cardActionHTML = "";
     $modalActionHTML = "";
-
-    // ✅ CORREZIONE MINIMA: preparo il toggle checkbox qui,
-    //    così posso stamparlo PRIMA del label trigger.
-    $toggleHTML = '
-        <input type="checkbox" id="' . $modalId . '" class="modal-toggle-checkbox visually-hidden"
-               aria-label="Mostra dettagli e specifiche per ' . $nome . '">';
 
     $triggerHTML = '
     <label for="' . $modalId . '" class="details-button" tabindex="0">
@@ -115,6 +107,7 @@ function costruisciCardVino($vino) {
         </div>';
 
         $modalActionHTML = '<div class="modal-buy-block"><span class="badge-esaurito">Esaurito</span></div>';
+
     } else {
         $testoStock = ($stock <= 20) ? "Ultimi " . $stock . " pezzi!" : "Disponibile";
         $classeStock = ($stock <= 20) ? "stock-warning" : "stock-ok";
@@ -142,24 +135,27 @@ function costruisciCardVino($vino) {
             </button>
         </div>';
 
+        // ✅ FIX MINIMO PER TOTAL VALIDATOR:
+        // il form contiene SOLO acquisto/quantità, la label Info è FUORI dal form.
         $cardActionHTML = '
-        <form action="carrello.php" method="POST" class="wine-form">
-            <input type="hidden" name="action" value="aggiungi">
-            <input type="hidden" name="return_url" value="vini.php">
-            <input type="hidden" name="id_vino" value="' . $id . '">
-            <input type="hidden" name="stock_max" value="' . $stock . '">
-            <input type="hidden" name="update_temp_qty" value="1">
+        <div class="card-actions">
+            <form action="carrello.php" method="POST" class="wine-form">
+                <input type="hidden" name="action" value="aggiungi">
+                <input type="hidden" name="return_url" value="vini.php">
+                <input type="hidden" name="id_vino" value="' . $id . '">
+                <input type="hidden" name="stock_max" value="' . $stock . '">
+                <input type="hidden" name="update_temp_qty" value="1">
 
-            <div class="card-actions">
                 <div class="card-buy-block">
                     ' . $selectorHTML . '
                     <button type="submit" class="buy-button card-action">
                         Acquista <span class="visually-hidden">' . $nome . ' (scheda)</span>
                     </button>
                 </div>
-                ' . $triggerHTML . '
-            </div>
-        </form>';
+            </form>
+
+            ' . $triggerHTML . '
+        </div>';
 
         $modalActionHTML = '
         <form action="carrello.php" method="POST" class="modal-wine-form">
@@ -178,12 +174,8 @@ function costruisciCardVino($vino) {
         </form>';
     }
 
-    // ✅ CORREZIONE MINIMA: stampo il checkbox PRIMA delle azioni (dove c'è il label "Info")
     return '
     <article class="wine-article" id="' . $anchorId . '">
-
-        ' . $toggleHTML . '
-
         <div class="wine-item">
             <img src="' . $img . '" alt="" class="wine-image" loading="lazy">
             <div class="content-wine-article">
@@ -194,6 +186,8 @@ function costruisciCardVino($vino) {
         </div>
 
         ' . $cardActionHTML . '
+
+        <input type="checkbox" id="' . $modalId . '" class="modal-toggle-checkbox visually-hidden" aria-label="Mostra dettagli e specifiche per ' . $nome . '">
 
         <div class="modal-overlay">
 
@@ -240,7 +234,6 @@ function costruisciCardVino($vino) {
                         ' . $modalActionHTML . '
                     </div>
                 </div>
-
                 ' . $closeButtonsHTML . '
             </div>
 
