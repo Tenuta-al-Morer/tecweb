@@ -4460,7 +4460,7 @@ html:not(.no-js) .selettore-nojs {
 .selettore-quantita {
     display: flex;
     align-items: center;
-    border: 1px solid #ccc;
+    border: 1.5px solid #595959;
     border-radius: 4px;
     background: #fff;
 }
@@ -4473,6 +4473,7 @@ html:not(.no-js) .selettore-nojs {
     /*color: color-mix(in srgb, var(--secondary-color) 80%, #000 20%);*/
     color: var(--details-wine);
     background-color: #fff;
+    border-radius: 4px;
     height: 100%;
     display: flex;
     align-items: center;
