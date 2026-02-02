@@ -375,9 +375,9 @@ Strumenti automatici utilizzati:
 
 - W3C Validator (HTML e CSS);
 
-- Lighthouse (per il calcolo delle prestazioni del sito).
+- Performance DevTools (per il calcolo delle prestazioni del sito).
 
-L’impiego di strumenti automatici di analisi ha consentito di individuare rapidamente eventuali errori di sintassi, problemi di contrasto e la presenza di tag mancanti o non correttamente strutturati. I controlli effettuati hanno confermato che il sito rispetta i requisiti di conformità WCAG 2.1 livello AA in tutti i suoi aspetti. I validatori HTML e CSS non hanno segnalato errori significativi, ad eccezione di alcuni falsi positivi, che sono stati opportunamente analizzati e discussi nella sezione 5.2.
+L’impiego di tali strumenti ha consentito di individuare rapidamente eventuali errori tecnici come problemi di sintassi, di contrasto e la presenza di tag mancanti o non correttamente strutturati. I controlli effettuati hanno confermato che il sito rispetta i requisiti di conformità WCAG 2.1 livello AA in tutti i suoi aspetti. I tool adottati hanno evidenziato esito positivo in tutte le pagine del sito, con un numero minimo di segnalazioni che sono state successivamente analizzate e commentate nella sezione 5.2
 
 Test manuali effettuati:
 
