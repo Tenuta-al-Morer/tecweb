@@ -515,9 +515,8 @@ body.light-mode .row-deleted td {
     border-radius: 4px;
 }
 
-/* 4. Logica Modali (Nuovo e Modifica) */
 .modal-wrapper-css {
-    display: none; /* Nascosto di default */
+    display: none; 
     position: fixed;
     top: 0;
     left: 0;
@@ -532,13 +531,15 @@ body.light-mode .row-deleted td {
     transition: opacity 0.3s ease;
 }
 
-/* Quando il checkbox ID specifico è checkato, mostra la modale successiva (sibling) */
+.state-toggle {
+    display: none; 
+}
+
 .state-toggle:checked + .modal-wrapper-css {
     display: flex;
     opacity: 1;
 }
 
-/* Overlay cloccabile per chiudere (label a tutto schermo dietro la box) */
 .modal-overlay-close {
     position: absolute;
     top: 0;
