@@ -271,7 +271,7 @@ if ($view === 'vini') {
             <div class='modal-wrapper-css'>
                 <label for='$modalToggleId' class='modal-overlay-close' title='Chiudi'><span class='visually-hidden'>Chiudi</span></label>
                 <div class='modal-box-css'>
-                    <label for='$modalToggleId' class='modal-close-x' title='Chiudi'>&times;</label>
+                    <label for='$modalToggleId' class='modal-close-x' title='Chiudi' tabindex='0' role='button'>&times;</label>
                     <h2 class='modal-title'>Modifica Vino: $nomeSafe</h2>
                     $formHTML
                 </div>
@@ -314,7 +314,7 @@ if ($view === 'vini') {
     <div class='modal-wrapper-css'>
         <label for='toggle-modal-nuovo' class='modal-overlay-close' title='Chiudi'><span class='visually-hidden'>Chiudi</span></label>
         <div class='modal-box-css'>
-            <label for='toggle-modal-nuovo' class='modal-close-x' title='Chiudi'>&times;</label>
+            <label for='toggle-modal-nuovo' class='modal-close-x' title='Chiudi' tabindex='0' role='button'>&times;</label>
             <h2 class='modal-title'>Aggiungi Nuovo Vino</h2>
             $formNuovo
         </div>
@@ -393,7 +393,7 @@ if ($view === 'utenti') {
     <div class='modal-wrapper-css'>
         <label for='toggle-modal-utente' class='modal-overlay-close' title='Chiudi'><span class='visually-hidden'>Chiudi</span></label>
         <div class='modal-box-css'>
-            <label for='toggle-modal-utente' class='modal-close-x' title='Chiudi'>&times;</label>
+            <label for='toggle-modal-utente' class='modal-close-x' title='Chiudi' tabindex='0' role='button'>&times;</label>
             <h2 class='modal-title'>Aggiungi Nuovo Utente</h2>
             <form method='POST'>
                 <input type='hidden' name='azione' value='salva_utente'>
@@ -498,7 +498,7 @@ $sezioneUtenti = "
         ";
 
 $btnNuovoVino = ($view === 'vini')
-    ? "<label for='toggle-modal-nuovo' class=\"btn-primary admin-btn-inline\">
+    ? "<label for='toggle-modal-nuovo' class=\"btn-primary admin-btn-inline\" role=\"button\" tabindex=\"0\">
             <span class=\"fas fa-plus\" aria-hidden=\"true\"></span>&nbsp;Nuovo Vino
        </label>"
     : "";

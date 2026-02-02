@@ -586,7 +586,7 @@ body.light-mode .modal-box-css {
     background: none;
     border: none;
 }
-.modal-close-x:hover {
+.modal-close-x:hover, .modal-close-x:focus {
     color: var(--enhance);
 }
 
