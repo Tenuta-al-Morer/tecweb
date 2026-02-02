@@ -1,38 +1,9 @@
 Lista todo per tecweb:
-- aggiungere immagini in footer dell'accessibilità del sito. vedi w3c css validator
-- leggere privacy e valutare se è tutto corretto -> contarini
 - verificare risolti tutti gli errori, se il print funziona correttamente -> contarini
-- decidere cosa fare delle nav annidate nell'header
 - fare in modo di aggiungere l'immagine del vino in admin "aggiunta vino" e non il percorso dell'img
-- rifare test veloci con nvda
-
-Wave (report delle 12:52)
-- home
-- tenuta
-- vini (multiple form labels, very small text)
-- esperienze
-- contatti
-- carrello (possible headings)
-- login (contrast low per bordo di mail e pswd)
-- registrazione (1 redundant)
-- gestionale (possible headings)
-- admin vini (multiple form labels e empty form labels e redundant title text)
-- admin user (missing form label, empty form label e multiple form label)
-- areaPersonale (2 redundant link)
-- checkout (1 orphaned form label e 2 redundant link)
-- note legali (justified text)
-- mappa (2 redundant link)
-- 404 (2 redundant link)
-- 403 (1 redundant)
-- 500 (2 redundant)
-
 
 NVDA
-- tutte, nella navbar principale vengono dette varie volte menu principale, e quello apribile viene letto anche se non sono in mini
-- esperienze se invio con errore non lo legge
 - admin gestione vini via tab in crea nuovo vino impossibile uscire dal modale
-
-
 
 Risposte a Wave
 - È stato adottato un pattern CSS-only basato su checkbox e label per gestire l’apertura e la chiusura delle finestre modali, garantendo il funzionamento anche in assenza di JavaScript.
