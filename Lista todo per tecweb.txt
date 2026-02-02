@@ -6,8 +6,6 @@ Lista todo per tecweb:
 - fare in modo di aggiungere l'immagine del vino in admin "aggiunta vino" e non il percorso dell'img
 - rifare test veloci con nvda
 
-percorso immagine admin da fare e eliminare l'aggiunta di conteuto alt (vini alt vuoto)
-
 Wave (report delle 12:52)
 - home
 - tenuta
