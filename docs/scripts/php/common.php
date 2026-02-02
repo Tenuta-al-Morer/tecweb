@@ -198,6 +198,7 @@ function caricaPagina($nomeFileHTML, $extraReplacements = []) {
         </button>';
 
     $menuTogle = '<input type="checkbox" id="menu-checkbox" class="menu-checkbox visually-hidden">
+            <label for="menu-checkbox" class="visually-hidden">Apri il menù di navigazione</label>
 
             <button type="button" class="menu-toggle" aria-controls="main-navigation" aria-expanded="false">
                 <span class="fas fa-bars" aria-hidden="true"></span>
