@@ -3035,7 +3035,7 @@ body.light-mode .free-shipping-text {
     grid-column: 1 / -1; 
 }
 
-.empty-cart-message i { 
+.empty-cart-message span { 
     font-size: 4rem; 
     margin-bottom: 1rem; 
     color: var(--border-color); 
