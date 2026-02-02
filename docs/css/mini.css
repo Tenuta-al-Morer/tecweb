@@ -354,9 +354,7 @@ footer {
 }
 
 .table-data caption {
-    position: absolute;
-    text-indent: -999em;
-    border-bottom: none;
+    display: block;
 }
 
 .table-data thead tr {
