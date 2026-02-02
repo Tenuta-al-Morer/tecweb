@@ -15,10 +15,10 @@ html{
 #help, label.menu-toggle, #main-navigation, .mobile-icons, #theme-toggle, .hero-actions, .hero-bg, span.link-arrow, section.slider-section, footer a,
 #backToTopBtn, .tenuta-card-image img, section.form-container, section.map-section, aside.alert-box, .empty-cart-message i, .btn-shop-empty,
 div#shipping-message-container, .btn-full, .item-actions-row, .cart-item-price-col, .dashboard-sidebar, .danger-zone,
-#sicurezza, .admin-table-head, p.sum, #menu-checkbox, .details-content .details-section:not(:first-child), .Richieste_gestionale, .wine-search-bar,
+#sicurezza, .admin-table-head, p.sum, #menu-checkbox, .menu-toggle, .details-content .details-section:not(:first-child), .Richieste_gestionale, .wine-search-bar,
 .wine-item, .details-button, .selettore-quantita, .modal-buy-block, .modal-close-btn, .buy-button, .badge-esaurito, .admin-switch, 
 .admin-section-actions, .auth-container, .toggle-label-wrapper, #toggle-deleted-visibility, .state-toggle, .action-group,
-.modal-wrapper-css, .modal-box-css, #modalVino, .footer-content p{
+.modal-wrapper-css, .modal-box-css, #modalVino, .footer-content p, .visually-hidden{
 	display:none;
 }
 
