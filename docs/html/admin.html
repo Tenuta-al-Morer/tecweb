@@ -78,7 +78,148 @@
                 <a href="admin.php?view=vini" class="[tab_vini_class]">Gestione Vini</a>
                 <a href="admin.php?view=utenti" class="[tab_utenti_class]">Gestione Utenti</a>
             </div>
-
+            
+            <div id="modalVino" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+                <div class="modal-box">
+                    <button class="close-modal" onclick="chiudiModal()" aria-label="Chiudi">&times;</button>
+                    <h2 id="modalTitle">Gestione Vino</h2>
+                    
+                    <form action="admin.php" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="azione" value="salva_vino">
+                        <input type="hidden" name="id_vino" id="id_vino" value="">
+                        <input type="hidden" name="view" value="vini">
+        
+                        <div class="form-grid">
+                            <div class="admin-form-group">
+                                <label for="nome">Nome Vino *</label>
+                                <input type="text" name="nome" id="nome" class="admin-input" required aria-describedby="nome-hint">
+                                <span class="little input-help" id="nome-hint" >Esempio: Pinot Nero Riserva</span>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="categoria">Categoria *</label>
+                                <select name="categoria" id="categoria" class="admin-input" aria-describedby="categoria-hint">
+                                    <option value="rossi">Rossi</option>
+                                    <option value="bianchi">Bianchi</option>
+                                    <option value="selezione">Selezione</option>
+                                </select>
+                                <span class="little input-help" id="categoria-hint" >Esempio: Rossi</span>
+                            </div>
+                        </div>
+        
+                        <div class="form-grid">
+                            <div class="admin-form-group">
+                                <label for="prezzo">Prezzo (€) *</label>
+                                <input type="number" step="0.01" name="prezzo" id="prezzo" class="admin-input" required aria-describedby="prezzo-hint">
+                                <span class="little input-help" id="prezzo-hint" >Esempio: 12.50</span>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="quantita_stock">Quantità Stock *</label>
+                                <input type="number" name="quantita_stock" id="quantita_stock" class="admin-input" required aria-describedby="quantita_stock-hint">
+                                <span class="little input-help" id="quantita_stock-hint" >Esempio: 120</span>
+                            </div>
+                        </div>
+        
+                        <div class="form-grid">
+                            <div class="admin-form-group">
+                                <label for="stato">Visibilità *</label>
+                                <select name="stato" id="stato" class="admin-input" aria-describedby="stato-hint">
+                                    <option value="attivo">Attivo</option>
+                                    <option value="nascosto">Nascosto</option>
+                                </select>
+                                <span class="little input-help" id="stato-hint" >Esempio: Attivo</span>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="img">Carica Immagine</label>
+                                <input type="file" name="img" id="img" class="admin-input" accept="image/*" aria-describedby="img-hint">
+                                <span class="little input-help" id="img-hint" >Esempio: JPG o PNG</span>
+                            </div>
+                        </div>
+        
+                        <div class="admin-form-group">
+                            <label for="descrizione_breve">Descrizione Breve</label>
+                            <input type="text" name="descrizione_breve" id="descrizione_breve" class="admin-input" aria-describedby="descrizione_breve-hint">
+                            <span class="little input-help" id="descrizione_breve-hint" >Esempio: Rosso elegante con note di frutti rossi</span>
+                        </div>
+        
+                        <div class="admin-form-group">
+                            <label for="descrizione_estesa">Descrizione Estesa</label>
+                            <textarea name="descrizione_estesa" id="descrizione_estesa" rows="3" class="admin-input" aria-describedby="descrizione_estesa-hint"></textarea>
+                            <span class="little input-help" id="descrizione_estesa-hint" >Esempio: Affinato in barrique per 12 mesi, struttura intensa e finale speziato.</span>
+                        </div>
+        
+                        <fieldset class="admin-fieldset">
+                            <legend class="admin-fieldset-legend">Scheda Tecnica</legend>
+                            <div class="form-grid">
+                                <div class="admin-form-group"><label for="vitigno">Vitigno</label><input type="text" name="vitigno" id="vitigno" class="admin-input" aria-describedby="vitigno-hint"><span class="little input-help" id="vitigno-hint" >Esempio: Cabernet Sauvignon</span></div>
+                                <div class="admin-form-group"><label for="annata">Annata</label><input type="text" name="annata" id="annata" class="admin-input" aria-describedby="annata-hint"><span class="little input-help" id="annata-hint" >Esempio: 2021</span></div>
+                                <div class="admin-form-group"><label for="gradazione">Gradazione</label><input type="text" name="gradazione" id="gradazione" class="admin-input" aria-describedby="gradazione-hint"><span class="little input-help" id="gradazione-hint" >Esempio: 13.5<abbr title="percent volume">% vol</abbr></span></div>
+                                <div class="admin-form-group"><label for="temperatura">Temperatura</label><input type="text" name="temperatura" id="temperatura" class="admin-input" aria-describedby="temperatura-hint"><span class="little input-help" id="temperatura-hint" >Esempio: 16-18°C</span></div>
+                            </div>
+                            <div class="admin-form-group"><label for="abbinamenti">Abbinamenti</label><input type="text" name="abbinamenti" id="abbinamenti" class="admin-input" aria-describedby="abbinamenti-hint"><span class="little input-help" id="abbinamenti-hint" >Esempio: Carni rosse, formaggi stagionati</span></div>
+                        </fieldset>
+        
+                        <div class="admin-form-actions">
+                            <button type="button" class="btn-secondary" onclick="chiudiModal()">Annulla</button>
+                            <button type="submit" class="btn-primary">Salva Vino</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        
+            <input type="checkbox" id="toggle-modal-utente" class="state-toggle" aria-label="Apri o chiudi finestra creazione utente">
+            <div class="modal-wrapper-css" role="dialog" aria-modal="true" aria-labelledby="modalUserTitle">
+                <label for="toggle-modal-utente" class="modal-overlay-close" title="Chiudi"></label>
+                <div class="modal-box-css">
+                    <label class="modal-close-x" for="toggle-modal-utente" title="Chiudi">&times;</label>
+                    <h2 id="modalUserTitle">Gestione Utente</h2>
+        
+                    <form action="admin.php" method="POST">
+                        <input type="hidden" name="azione" value="salva_utente">
+                        <input type="hidden" name="view" value="utenti">
+        
+                        <div class="form-grid">
+                            <div class="admin-form-group">
+                                <label for="utente_nome">Nome *</label>
+                                <input type="text" name="utente_nome" id="utente_nome" class="admin-input" required aria-describedby="utente_nome-hint">
+                                <span class="little input-help" id="utente_nome-hint" >Esempio: Mario</span>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="utente_cognome">Cognome *</label>
+                                <input type="text" name="utente_cognome" id="utente_cognome" class="admin-input" required aria-describedby="utente_cognome-hint">
+                                <span class="little input-help" id="utente_cognome-hint" >Esempio: Rossi</span>
+                            </div>
+                        </div>
+        
+                        <div class="form-grid">
+                            <div class="admin-form-group">
+                                <label for="utente_email">Email *</label>
+                                <input type="email" name="utente_email" id="utente_email" class="admin-input" required aria-describedby="utente_email-hint" autocomplete="email">
+                                <span class="little input-help" id="utente_email-hint" >Esempio: mario.rossi@email.com</span>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="utente_password">Password *</label>
+                                <input type="password" name="utente_password" id="utente_password" class="admin-input" required minlength="8" aria-describedby="utente_password-hint" autocomplete="new-password">
+                                <span class="little input-help" id="utente_password-hint" >Minimo 8 caratteri.</span>
+                            </div>
+                        </div>
+        
+                        <div class="admin-form-group">
+                            <label for="utente_ruolo">Ruolo *</label>
+                            <select name="utente_ruolo" id="utente_ruolo" class="admin-input" aria-describedby="utente_ruolo-hint">
+                                <option value="user">user</option>
+                                <option value="staff">staff</option>
+                                <option value="admin">admin</option>
+                            </select>
+                            <span class="little input-help" id="utente_ruolo-hint" >Seleziona il ruolo dell'utente.</span>
+                        </div>
+        
+                        <div class="admin-form-actions">
+                            <label class="btn-secondary" for="toggle-modal-utente">Annulla</label>
+                            <button type="submit" class="btn-primary">Crea Utente</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
             <div class="admin-section-head">
                 <h2>[titolo_admin]</h2>
                 <div class="admin-section-actions">
@@ -92,147 +233,6 @@
             [sezione_utenti]
         </main>
 
-    <div id="modalVino" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-        <div class="modal-box">
-            <button class="close-modal" onclick="chiudiModal()" aria-label="Chiudi">&times;</button>
-            <h2 id="modalTitle">Gestione Vino</h2>
-            
-            <form action="admin.php" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="azione" value="salva_vino">
-                <input type="hidden" name="id_vino" id="id_vino" value="">
-                <input type="hidden" name="view" value="vini">
-
-                <div class="form-grid">
-                    <div class="admin-form-group">
-                        <label for="nome">Nome Vino *</label>
-                        <input type="text" name="nome" id="nome" class="admin-input" required aria-describedby="nome-hint">
-                        <span class="little input-help" id="nome-hint" >Esempio: Pinot Nero Riserva</span>
-                    </div>
-                    <div class="admin-form-group">
-                        <label for="categoria">Categoria *</label>
-                        <select name="categoria" id="categoria" class="admin-input" aria-describedby="categoria-hint">
-                            <option value="rossi">Rossi</option>
-                            <option value="bianchi">Bianchi</option>
-                            <option value="selezione">Selezione</option>
-                        </select>
-                        <span class="little input-help" id="categoria-hint" >Esempio: Rossi</span>
-                    </div>
-                </div>
-
-                <div class="form-grid">
-                    <div class="admin-form-group">
-                        <label for="prezzo">Prezzo (€) *</label>
-                        <input type="number" step="0.01" name="prezzo" id="prezzo" class="admin-input" required aria-describedby="prezzo-hint">
-                        <span class="little input-help" id="prezzo-hint" >Esempio: 12.50</span>
-                    </div>
-                    <div class="admin-form-group">
-                        <label for="quantita_stock">Quantità Stock *</label>
-                        <input type="number" name="quantita_stock" id="quantita_stock" class="admin-input" required aria-describedby="quantita_stock-hint">
-                        <span class="little input-help" id="quantita_stock-hint" >Esempio: 120</span>
-                    </div>
-                </div>
-
-                <div class="form-grid">
-                    <div class="admin-form-group">
-                        <label for="stato">Visibilità *</label>
-                        <select name="stato" id="stato" class="admin-input" aria-describedby="stato-hint">
-                            <option value="attivo">Attivo</option>
-                            <option value="nascosto">Nascosto</option>
-                        </select>
-                        <span class="little input-help" id="stato-hint" >Esempio: Attivo</span>
-                    </div>
-                    <div class="admin-form-group">
-                        <label for="img">Carica Immagine</label>
-                        <input type="file" name="img" id="img" class="admin-input" accept="image/*" aria-describedby="img-hint">
-                        <span class="little input-help" id="img-hint" >Esempio: JPG o PNG</span>
-                    </div>
-                </div>
-
-                <div class="admin-form-group">
-                    <label for="descrizione_breve">Descrizione Breve</label>
-                    <input type="text" name="descrizione_breve" id="descrizione_breve" class="admin-input" aria-describedby="descrizione_breve-hint">
-                    <span class="little input-help" id="descrizione_breve-hint" >Esempio: Rosso elegante con note di frutti rossi</span>
-                </div>
-
-                <div class="admin-form-group">
-                    <label for="descrizione_estesa">Descrizione Estesa</label>
-                    <textarea name="descrizione_estesa" id="descrizione_estesa" rows="3" class="admin-input" aria-describedby="descrizione_estesa-hint"></textarea>
-                    <span class="little input-help" id="descrizione_estesa-hint" >Esempio: Affinato in barrique per 12 mesi, struttura intensa e finale speziato.</span>
-                </div>
-
-                <fieldset class="admin-fieldset">
-                    <legend class="admin-fieldset-legend">Scheda Tecnica</legend>
-                    <div class="form-grid">
-                        <div class="admin-form-group"><label for="vitigno">Vitigno</label><input type="text" name="vitigno" id="vitigno" class="admin-input" aria-describedby="vitigno-hint"><span class="little input-help" id="vitigno-hint" >Esempio: Cabernet Sauvignon</span></div>
-                        <div class="admin-form-group"><label for="annata">Annata</label><input type="text" name="annata" id="annata" class="admin-input" aria-describedby="annata-hint"><span class="little input-help" id="annata-hint" >Esempio: 2021</span></div>
-                        <div class="admin-form-group"><label for="gradazione">Gradazione</label><input type="text" name="gradazione" id="gradazione" class="admin-input" aria-describedby="gradazione-hint"><span class="little input-help" id="gradazione-hint" >Esempio: 13.5<abbr title="percent volume">% vol</abbr></span></div>
-                        <div class="admin-form-group"><label for="temperatura">Temperatura</label><input type="text" name="temperatura" id="temperatura" class="admin-input" aria-describedby="temperatura-hint"><span class="little input-help" id="temperatura-hint" >Esempio: 16-18°C</span></div>
-                    </div>
-                    <div class="admin-form-group"><label for="abbinamenti">Abbinamenti</label><input type="text" name="abbinamenti" id="abbinamenti" class="admin-input" aria-describedby="abbinamenti-hint"><span class="little input-help" id="abbinamenti-hint" >Esempio: Carni rosse, formaggi stagionati</span></div>
-                </fieldset>
-
-                <div class="admin-form-actions">
-                    <button type="button" class="btn-secondary" onclick="chiudiModal()">Annulla</button>
-                    <button type="submit" class="btn-primary">Salva Vino</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <input type="checkbox" id="toggle-modal-utente" class="state-toggle" aria-label="Apri o chiudi finestra creazione utente">
-    <div class="modal-wrapper-css" role="dialog" aria-modal="true" aria-labelledby="modalUserTitle">
-        <label for="toggle-modal-utente" class="modal-overlay-close" title="Chiudi"></label>
-        <div class="modal-box-css">
-            <label class="modal-close-x" for="toggle-modal-utente" title="Chiudi">&times;</label>
-            <h2 id="modalUserTitle">Gestione Utente</h2>
-
-            <form action="admin.php" method="POST">
-                <input type="hidden" name="azione" value="salva_utente">
-                <input type="hidden" name="view" value="utenti">
-
-                <div class="form-grid">
-                    <div class="admin-form-group">
-                        <label for="utente_nome">Nome *</label>
-                        <input type="text" name="utente_nome" id="utente_nome" class="admin-input" required aria-describedby="utente_nome-hint">
-                        <span class="little input-help" id="utente_nome-hint" >Esempio: Mario</span>
-                    </div>
-                    <div class="admin-form-group">
-                        <label for="utente_cognome">Cognome *</label>
-                        <input type="text" name="utente_cognome" id="utente_cognome" class="admin-input" required aria-describedby="utente_cognome-hint">
-                        <span class="little input-help" id="utente_cognome-hint" >Esempio: Rossi</span>
-                    </div>
-                </div>
-
-                <div class="form-grid">
-                    <div class="admin-form-group">
-                        <label for="utente_email">Email *</label>
-                        <input type="email" name="utente_email" id="utente_email" class="admin-input" required aria-describedby="utente_email-hint">
-                        <span class="little input-help" id="utente_email-hint" >Esempio: mario.rossi@email.com</span>
-                    </div>
-                    <div class="admin-form-group">
-                        <label for="utente_password">Password *</label>
-                        <input type="password" name="utente_password" id="utente_password" class="admin-input" required minlength="8" aria-describedby="utente_password-hint">
-                        <span class="little input-help" id="utente_password-hint" >Minimo 8 caratteri.</span>
-                    </div>
-                </div>
-
-                <div class="admin-form-group">
-                    <label for="utente_ruolo">Ruolo *</label>
-                    <select name="utente_ruolo" id="utente_ruolo" class="admin-input" aria-describedby="utente_ruolo-hint">
-                        <option value="user">user</option>
-                        <option value="staff">staff</option>
-                        <option value="admin">admin</option>
-                    </select>
-                    <span class="little input-help" id="utente_ruolo-hint" >Seleziona il ruolo dell'utente.</span>
-                </div>
-
-                <div class="admin-form-actions">
-                    <label class="btn-secondary" for="toggle-modal-utente">Annulla</label>
-                    <button type="submit" class="btn-primary">Crea Utente</button>
-                </div>
-            </form>
-        </div>
-    </div>
     
     [footer]
 
