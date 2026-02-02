@@ -203,7 +203,7 @@ Le principali tabelle del database sono:
 
 \section{Realizzazione}
 Per la realizzazione del sito abbiamo utilizzato dati relativi a vini realmente esistenti nella tradizione vitivinicola veneta. 
-Le immagini dei prodotti e della tenuta sono state generate tramite strumenti di intelligenza artificiale con l'obbiettivo di ottenere 
+Le immagini dei prodotti e della tenuta sono state generate tramite strumenti di intelligenza artificiale con l'obiettivo di ottenere 
 una resa visiva coerente con il layout del sito, mantenendo comunque i riferimenti autentici al territorio e ai nomi originali dei prodotti.
 
 \subsection{Struttura e contenuto}
@@ -280,7 +280,7 @@ Per quanto riguarda l'inserimento di nuovi prodotti tramite l'area riservata (ad
 in diversi formati standard, senza restrizioni stringenti sul tipo di file in ingresso.
 
 \subsubsection{Font}
-Abbiamo usato il font \textbf{Atkinson Hyperlegible} per tutto il sito web poichè accessibile e senza grazie. 
+Abbiamo usato il font \textbf{Atkinson Hyperlegible} per tutto il sito web poiché accessibile e senza grazie. 
 Abbiamo applicato un'interlinea di 1.5 em per facilitare la lettura. Sono presenti inoltre dei font di fallback: Lexend e Roboto.
 
 \subsubsection{Colori}
@@ -467,7 +467,8 @@ aspetti qualitativi dell’esperienza utente, come la comprensibilità dei conte
 assistive.
 \subsection{Analisi dei Falsi Positivi}
 
-L'analisi dei falsi positivi è stata effettuata dopo la correzione di tutte le problematiche effettivamente riscontrate; di seguito sono riportate le segnalazioni risultate non critiche:
+L'analisi dei falsi positivi è stata effettuata sulla base delle criticità riscontrate in fase di test; 
+di seguito sono riportate le segnalazioni risultate non critiche:
 \begin{itemize}
 \item \textbf{WAVE by WebAIM}: WAVE segnala l'alert “Multiple form labels” perché più elementi label sono associati allo stesso input type="checkbox".
 Questa scelta deriva dall'adozione di un pattern CSS-only basato su checkbox e label per gestire l'apertura e la chiusura delle finestre modali, 
@@ -477,7 +478,7 @@ garantendo il funzionamento anche in assenza di JavaScript.
 
 \subsection{Screen reader}
 L'accessibilità del sito è stata testata utilizzando lo screen reader NVDA, 
-verificando la corretta lettura e interpretazione di tutti i contenuti e delle principali componenti interattive. 
+verificando la corretta lettura e interpretazione di tutti i contenuti e delle componenti interattive. 
 I test hanno incluso il controllo dell'ordine di navigazione da tastiera, della corretta associazione tra etichette e campi di input, 
 dell'interpretazione dei ruoli e degli attributi ARIA, nonché della lettura strutturata di tabelle, form e altri elementi complessi. 
 Le verifiche non hanno evidenziato criticità.
@@ -525,12 +526,4 @@ A ciascun membro del gruppo sono stati assegnati compiti specifici, così da ott
 \end{itemize}
 \end{itemize}
 
-\section{Conclusioni}
-\begin{enumerate}
-    \item Il sito è stato sviluppato in maniera da essere accessibile e conforme alle linee guida WCAG 2.1 di livello AA.
-    \item Il sito è stato testato su diversi browser e dispositivi per garantirne la compatibilità e la corretta visualizzazione.
-    \item Sono stati implementati meccanismi di sicurezza per proteggere i dati degli utenti e prevenire attacchi comuni come SQL Injection.
-    \item Il sito è stato ottimizzato per le prestazioni, garantendo tempi di caricamento rapidi e un'esperienza utente fluida.
-    \item Il database è stato popolato con valori realistici per testare le funzionalità del sito in condizioni simili alla realtà.
-\end{enumerate}
 \end{document}
