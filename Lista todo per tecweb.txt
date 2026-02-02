@@ -7,3 +7,23 @@ Lista todo per tecweb:
 - rifare test veloci con nvda
 
 percorso immagine admin da fare e eliminare l'aggiunta di conteuto alt (vini alt vuoto)
+
+Wave (report delle 12:52)
+- home
+- tenuta
+- vini (multiple form labels, very small text)
+- esperienze
+- contatti
+- carrello (possible headings)
+- login (contrast low per bordo di mail e pswd)
+- registrazione (1 redundant)
+- gestionale (possible headings)
+- admin vini (multiple form labels e empty form labels e redundant title text)
+- admin user (missing form label, empty form label e multiple form label)
+- areaPersonale (2 redundant link)
+- checkout (1 orphaned form label e 2 redundant link)
+- note legali (justified text)
+- mappa (2 redundant link)
+- 404 (2 redundant link)
+- 403 (1 redundant)
+- 500 (2 redundant)
