@@ -389,7 +389,7 @@ if ($view === 'utenti') {
     }
 
     $modalNuovoUtenteHTML = "
-    <input type='checkbox' id='toggle-modal-utente' class='state-toggle'>
+    <input type='checkbox' id='toggle-modal-utente' class='state-toggle' aria-label='Pannello Nuovo Utente'>
     <div class='modal-wrapper-css'>
         <label for='toggle-modal-utente' class='modal-overlay-close' title='Chiudi'><span class='visually-hidden'>Chiudi</span></label>
         <div class='modal-box-css'>
@@ -426,7 +426,8 @@ if ($view === 'utenti') {
                 </div>
             </form>
         </div>
-    </div>";
+    </div>
+    <label for='toggle-modal-utente' class='visually-hidden'>Pannello Nuovo Utente</label>";
 }
 
 $titoloAdmin = ($view === 'utenti') ? "Gestione Utenti" : "Gestione Catalogo Vini";
