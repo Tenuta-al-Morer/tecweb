@@ -1,7 +1,7 @@
 Lista todo per tecweb:
 - verificare risolti tutti gli errori, se il print funziona correttamente -> contarini
 - fare in modo di aggiungere l'immagine del vino in admin "aggiunta vino" e non il percorso dell'img
-- rimuovere role="button" in admin sulle label
+- rimuovere role="button" in admin sulle label (michele l'hai aggiunto te quindi ti chiedo se è necessario tenerlo)
 
 NVDA
 - admin gestione vini via tab in crea nuovo vino impossibile uscire dal modale
