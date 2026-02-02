@@ -298,7 +298,7 @@ if ($view === 'vini') {
             
             $formHTML = getFormVinoHTML($v);
             $modaliViniHTML .= "
-            <input type='checkbox' id='$modalToggleId' class='state-toggle' aria-label='Pannello $nomeSafe'>
+            <input type='checkbox' id='$modalToggleId' class='state-toggle' aria-hidden='true'>
             <div class='modal-wrapper-css'>
                 <label for='$modalToggleId' class='modal-overlay-close' title='Chiudi'><span class='visually-hidden'>Chiudi</span></label>
                 <div class='modal-box-css'>
@@ -341,7 +341,7 @@ $modalNuovoVinoHTML = "";
 if ($view === 'vini') {
     $formNuovo = getFormVinoHTML(null);
     $modalNuovoVinoHTML = "
-    <input type='checkbox' id='toggle-modal-nuovo' class='state-toggle' aria-label='Pannello Nuovo Vino'>
+    <input type='checkbox' id='toggle-modal-nuovo' class='state-toggle' aria-hidden='true'>
     <div class='modal-wrapper-css'>
         <label for='toggle-modal-nuovo' class='modal-overlay-close' title='Chiudi'><span class='visually-hidden'>Chiudi</span></label>
         <div class='modal-box-css'>
