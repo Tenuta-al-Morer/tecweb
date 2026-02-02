@@ -269,9 +269,9 @@ if ($view === 'vini') {
             $modaliViniHTML .= "
             <input type='checkbox' id='$modalToggleId' class='state-toggle' aria-label='Apri finestra modifica per $nomeSafe'>
             <div class='modal-wrapper-css'>
-                <label for='$modalToggleId' class='modal-overlay-close' title='Chiudi'></label>
+                <label for='$modalToggleId' class='modal-overlay-close' title='Chiudi' aria-label='Chiudi finestra modifica: $nomeSafe'></label>
                 <div class='modal-box-css'>
-                    <label for='$modalToggleId' class='modal-close-x' title='Chiudi'>&times;</label>
+                    <label for='$modalToggleId' class='modal-close-x' title='Chiudi' aria-label='Chiudi finestra modifica: $nomeSafe'>&times;</label>
                     <h2 class='modal-title'>Modifica Vino: $nomeSafe</h2>
                     $formHTML
                 </div>
