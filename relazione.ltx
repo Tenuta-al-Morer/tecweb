@@ -259,7 +259,7 @@ al fine di garantire un layout più pulito e un risparmio di inchiostro (\textit
 
 Nello specifico:
 \begin{itemize}
-    \item sono stati nascosti tutti gli elementi interattivi e di navigazione (navbar, pulsanti di azione e carrello vuoto);
+    \item sono stati nascosti tutti gli elementi interattivi e di navigazione (navbar, pulsanti di azione, carrello vuoto, ...);
     \item sono state rimosse le immagini puramente decorative, mantenendo visibili solo il logo e i contenuti grafici informativi;
     \item la struttura della pagina è stata semplificata linearizzando i contenuti per adattarli al formato cartaceo verticale;
     \item Per garantire una stampa eco-compatibile (PrintFriendly), l'interfaccia "cartacea" è stata limitata alla sola modalità light-mode. Tale scelta mira a ridurre drasticamente il consumo di inchiostro, evitando la stampa di sfondi scuri.
@@ -270,7 +270,7 @@ La gestione delle risorse grafiche è stata diversificata in base alla tipologia
 
 Le immagini relative ai prodotti (vini) e agli elementi grafici dell'interfaccia (come i loghi) sono stati salvati in formato \textbf{WebP}. 
 Questa scelta, visibile nella sottocartella \texttt{tr}, è dettata sia dalla necessità di supportare lo sfondo trasparente, sia dal mantenere 
-le rimensioni ridotte rispetto a formati come \textbf{PNG}.
+le dimensioni ridotte rispetto a formati come \textbf{PNG}.
 Le immagini della Tenuta e delle esperienze (come \textit{vigneto.jpg} o \textit{vendemmia.jpg}) utilizzano il formato \textbf{JPG}. 
 Questa scelta è motivata dall'ottimo rapporto tra qualità e compressione del formato, ideale per gestire fotografie complesse che non richiedono trasparenza.
 
@@ -329,7 +329,7 @@ Colore bordo & \#4B4B4B \\
 \subsection{Comportamento}
 
 \subsubsection{PHP}
-Nelle sezioni contenenti form abbiamo implementato, nei casi di errore, un algoritmo per il ripopolamento dei vari campi di input presenti tramite 
+Nelle sezioni contenenti form abbiamo implementato, nei casi di errore, un algoritmo per il ripopolamento dei vari campi di input presenti, tramite 
 l'utilizzo della tecnica "segnaposto" descritta nella sezione 4.1.1. Questa soluzione evita che l'utente debba reinserire tutte le 
 informazioni in caso di invio del form non andato a buon fine.
 
@@ -351,7 +351,7 @@ rimangono pienamente operative anche in assenza di JavaScript, il quale agisce e
 
 \subsubsection{Validazione dell'input}
 Abbiamo eseguito controlli sull'input sia lato client, utilizzando JavaScript, che lato server tramite PHP. 
-La maggior parte dei controlli è stata eseguita tramite funzioni che controllano con delle espressioni regolari il contenuto degli input. 
+La maggior parte dei controlli è stata eseguita tramite funzioni che verificano attraverso l'uso di espressioni regolari il contenuto degli input. 
 Inoltre, ogni messaggio di errore ritornato dai metodi di validazione sopra elencati è stato pensato per fornire all'utente una spiegazione chiara e concisa del problema.
 
 \subsubsection{Sicurezza}
@@ -374,8 +374,8 @@ conformità AA delle WCAG 2.1 come stabilito dalla legge italiana (ed europea):
 \begin{itemize}
 \item navigazione da tastiera completa e accessibile che rispetta l'ordine visivo degli elementi;
 \item tabelle accessibili;
-\item form accessibili con label associate correttamente agli input (feedback e feedforward chiari e utili a tutte le categorie di utenti);
-\item per garantire l'orientamento dell'utente abbiamo verificato che nel "above the fold" di ogni pagina fosse semplice e immediato rispondere 
+\item form accessibili con label associate correttamente agli input;
+\item per garantire l'orientamento dell'utente abbiamo verificato che nell' "above the fold" di ogni pagina fosse semplice e immediato rispondere 
 alle domande: "Dove sono? - Dove posso andare? - Di che cosa si tratta?";
 \item i contrasti tra i colori di testo e relativo sfondo sono accessibili;
 \item è stata adottata una gerarchia del sito ampia e poco profonda;
