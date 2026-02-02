@@ -182,13 +182,9 @@ function costruisciCardVino($vino) {
         
         ' . $cardActionHTML . '
 
-        <input type="checkbox" id="' . $modalId . '" class="modal-toggle-checkbox visually-hidden">
+        <input type="checkbox" id="' . $modalId . '" class="modal-toggle-checkbox visually-hidden" aria-label="Mostra dettagli e specifiche per ' . $nome . '">
         
         <div class="modal-overlay">
-
-            <p id="' . $descrModaleId . '" class="sum">
-                Modale con maggiori informazioni per ' . $nome . ', con la tabella delle specifiche tecniche.
-            </p>
             
             <div id="' . $dialogId . '" 
                  class="modal-content"
@@ -197,6 +193,9 @@ function costruisciCardVino($vino) {
                  aria-labelledby="' . $titleId . '"
                  aria-describedby="' . $descrModaleId . '" tabindex="0">
 
+                <p id="' . $descrModaleId . '" class="sum visually-hidden">
+                    Scheda completa di ' . $nome . ', inclusi prezzi, descrizione estesa e tabella tecnica.
+                </p>
 
                 <div class="modal-grid">
                     <div class="modal-img-col">
@@ -211,7 +210,7 @@ function costruisciCardVino($vino) {
                         <p class="modal-desc" id="' . $descId . '">' . $descEstesa . '</p>
 
                         <p id="' . $descrTabellaId . '" class="sum">
-                            La tabella riassume le specifiche tecniche del vino, specificandone vitigno, annata, gradazione alcolica, temperatura di servizio e abbinamenti consigliati.
+                            La tabella riassume le specifiche tecniche del vino: vitigno, annata, gradazione, temperatura, abbinamenti.
                         </p>
 
                         <div class="modal-specs">
