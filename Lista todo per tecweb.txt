@@ -1,2 +1,3 @@
 Lista todo per tecweb:
 - caricare nel server e controllare che ci siano tutti i file giusti
+- fare test generali di conferma (anche versioni mobile!!!!). Stampa compresa!
