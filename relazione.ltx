@@ -121,7 +121,7 @@ Operazioni svolte per migliorare il ranking del sito:
 \begin{itemize}
 \item in ogni pagina sono state definite parole chiave coerenti con il contenuto, utilizzate nei testi e nei meta tag rilevanti (come title e description);
 \item separazione tra struttura, presentazione e comportamento;
-\item ponendosi come obiettivo il miglioramento del ranking del sito, si è lavorato sull'ottimizzazione delle prestazioni, rendendo le pagine leggere attraverso la compressione delle immagini e l'utilizzo di formati adeguati, poiché una maggiore velocità di caricamento migliora il rendering e contribuisce indirettamente al posizionamento.
+\item si è intervenuti sull’ottimizzazione delle prestazioni del sito, alleggerendo le pagine tramite la compressione delle immagini e l’utilizzo di formati adeguati; una maggiore velocità di caricamento migliora infatti il rendering e contribuisce indirettamente al posizionamento.
 \end{itemize}
 
 \section{Progettazione}
@@ -135,7 +135,7 @@ Durante la fase di progettazione sono stati individuati i seguenti tipi di utent
 \begin{itemize}
 \item \textbf{Utente non autenticato}: l'utente ospite ha accesso alle sezioni non private del sito, ossia le pagine "Home", "Tenuta", "Vini", "Esperienze" e "Contatti". 
 Può prenotare degustazioni, inviare richieste di assistenza e ha la possibilità di inserire vini nel carrello. 
-Tuttavia, non può effettuare acquisti né accedere all'area riservata, a meno che non completi la registrazione o effettui l'accesso.
+Tuttavia, non può effettuare acquisti né accedere all'area riservata, a meno che non completi la registrazione e/o effettui l'accesso.
 
 \item \textbf{Cliente}: ha accesso completo alle funzionalità del sito relative agli utenti clienti, 
 come la possibilità di acquistare vini e gestire il proprio account all'interno della propria area riservata.
@@ -211,9 +211,9 @@ una resa visiva coerente con il layout del sito, mantenendo comunque i riferimen
 \subsubsection{HTML}
 Il sito è stato sviluppato in HTML5. Abbiamo cercato di mantenere più struttura possibile nei file HTML ed eventualmente andare a 
 lavorare e sostituire alcune parti con il PHP. Per sostituire singole parole, abbiamo utilizzato come segnaposto delle parole racchiuse tra 
-parentesi quadre ([segnaposto]). Invece per sostituire intere sezioni è stato utilizzato il metodo preg\_replace() di PHP, rispettando un certo pattern.
+parentesi quadre ([segnaposto]). Invece, per sostituire intere sezioni è stato utilizzato il metodo preg\_replace() di PHP, rispettando un certo pattern.
 
-Un esempio è l'utilizzo nel file areaPersonale.html:
+Un esempio è presente nel file areaPersonale.html:
 
 \begin{quote}
 \begin{verbatim}
