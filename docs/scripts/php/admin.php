@@ -350,8 +350,6 @@ if ($view === 'utenti') {
             $ruoloOptions .= "<option value='{$r}' {$selected}>{$r}</option>";
         }
 
-        // Modifica per errore "Form control labels must be unique":
-        // Aggiungiamo uno span nascosto visivamente dentro il bottone
         $azioni = $isSelf
             ? "<span>Impossibile sei tu;)</span>"
             : "<div class='action-group'>
@@ -388,10 +386,9 @@ if ($view === 'utenti') {
         </tr>";
     }
 
-    // Qui definiamo SOLO l'input checkbox e la modale, NON il bottone di apertura (che sta in $btnNuovoUtente)
-    // L'aria-label inizia con "Nuovo Utente" per soddisfare SC 2.5.3
     $modalNuovoUtenteHTML = "
-    <input type='checkbox' id='toggle-modal-utente' class='state-toggle' aria-label='Nuovo Utente: Apri finestra creazione'>
+    <input type='checkbox' id='toggle-modal-utente' class='state-toggle'>
+    <label for='toggle-modal-utente' class='visually-hidden'>Apre/Chiude modale nuovo utente</label>
     <div class='modal-wrapper-css'>
         <label for='toggle-modal-utente' class='modal-overlay-close' title='Chiudi'></label>
         <div class='modal-box-css'>
@@ -504,8 +501,6 @@ $btnNuovoVino = ($view === 'vini')
        </label>"
     : "";
 
-// CORRETTO: Questa variabile ora contiene SOLO la LABEL (il bottone visibile)
-// L'input checkbox con ID 'toggle-modal-utente' è spostato dentro $modalNuovoUtenteHTML
 $btnNuovoUtente = ($view === 'utenti')
     ? "<label for=\"toggle-modal-utente\" class=\"btn-primary\" tabindex=\"0\">
             <span class=\"fas fa-plus\" aria-hidden=\"true\"></span>&nbsp;Nuovo Utente
