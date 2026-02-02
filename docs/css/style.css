@@ -1124,7 +1124,7 @@ main#content { padding: 0; width: 100%; overflow-x: hidden; }
 
 .page-intro h1, .page-intro h2 {
     font-size: 2.5rem; color: var(--secondary-color); 
-    line-height: 1.2; margin-bottom: 0.5em; margin-top: 1em;
+    line-height: 1.2; margin-bottom: 0.5em; margin-top: 0em;
 }
 
 .page-intro p {
