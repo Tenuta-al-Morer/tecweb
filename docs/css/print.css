@@ -18,7 +18,8 @@ div#shipping-message-container, .btn-full, .item-actions-row, .cart-item-price-c
 #sicurezza, .admin-table-head, p.sum, #menu-checkbox, .menu-toggle, .details-content .msg, .Richieste_gestionale, .wine-search-bar,
 .wine-item, .details-button, .selettore-quantita, .modal-buy-block, .modal-close-btn, .buy-button, .badge-esaurito, .admin-switch, 
 .admin-section-actions, .auth-container, .toggle-label-wrapper, #toggle-deleted-visibility, .state-toggle, .action-group,
-.modal-wrapper-css, .modal-box-css, #modalVino, .footer-content p, .visually-hidden, .fas.fa-wine-bottle, .checkout-section, .btn-back-outline{
+.modal-wrapper-css, .modal-box-css, #modalVino, .footer-content p, .visually-hidden, .fas.fa-wine-bottle, .checkout-section, .btn-back-outline,
+.visible-error span, .button-errors{
 	display:none;
 }
 
@@ -555,6 +556,7 @@ td.td_richiesta_degustazione{ margin-right: 15px; }
     display: block;
 }
 
+
 .login-header-logo img {
     height: 5em;
     width: auto;
@@ -564,4 +566,28 @@ td.td_richiesta_degustazione{ margin-right: 15px; }
 
  table div.details-section:has(h3):has(p) {
   display: block;
+}
+
+.visible-error {
+    display: block;
+    max-width: 450px;
+    margin: 2rem auto 2rem auto; 
+    padding: 2.5rem;
+    background-color: var(--background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px #000;
+    text-align: center;
+}
+
+.visible-error h1 {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.visible-error p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
 }
