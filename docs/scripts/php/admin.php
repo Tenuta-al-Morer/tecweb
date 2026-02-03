@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $targetDir = "../../images/tr/";
                 $targetFile = $targetDir . $nuovoNomeFile;
 
-                $dbPath = "images/tr/" . $nuovoNomeFile;
+                $dbPath = "../../images/tr/" . $nuovoNomeFile;
 
                 if (move_uploaded_file($fileTmp, $targetFile)) {
                     $percorsoImmagine = $dbPath; 
