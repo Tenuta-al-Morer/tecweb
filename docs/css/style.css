@@ -8,7 +8,6 @@
 }
 
 :root {
-    /* COLORI PRINCIPALI */
     --secondary-color: #C5A551;
     --always-bright: #A79455;
     --details-wine: #7A5F1A;
@@ -48,6 +47,65 @@ body {
     flex-direction: column;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* STILI NON CSS PURI PER MIGLIORARE ESPERIENZA UTENTE
+body .auth-container .auth-form .form-group input:-webkit-autofill,
+body .auth-container .auth-form .form-group input:-webkit-autofill:hover, 
+body .auth-container .auth-form .form-group input:-webkit-autofill:focus, 
+body .auth-container .auth-form .form-group input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px var(--background) inset;
+    -webkit-text-fill-color: var(--text-color);
+    caret-color: var(--text-color);
+    transition: background-color 5000s ease-in-out 0s;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.standard-form .form-group input:-webkit-autofill,
+.standard-form .form-group input:-webkit-autofill:hover, 
+.standard-form .form-group input:-webkit-autofill:focus, 
+.standard-form .form-group input:-webkit-autofill:active,
+.standard-form .form-group select:-webkit-autofill,
+.standard-form .form-group select:-webkit-autofill:hover, 
+.standard-form .form-group select:-webkit-autofill:focus, 
+.standard-form .form-group select:-webkit-autofill:active {
+
+    -webkit-box-shadow: 0 0 0 1000px var(--background) inset;
+    -webkit-text-fill-color: var(--text-color);
+    caret-color: var(--text-color);
+    transition: background-color 5000s ease-in-out 0s;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+body.light-mode ::-webkit-calendar-picker-indicator {
+    filter: invert(0); 
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+}
+
+*/
 
 /* =========================================
    STILI GLOBALI E UTILITY 
@@ -466,9 +524,11 @@ input#privacy.contatti-checkbox[type="checkbox"], input#privacy.esperienze-check
     color: var(--text-color);
     opacity: 0.8;
 }
-body.light-mode .row-deleted td {
+body.light-mode .row-deleted td, body.light-mode .row-deleted th {
     background-color: rgba(255, 41, 52, 0.05);
 }
+
+
 
 .toggle-label-wrapper {
     display: inline-flex;
@@ -687,14 +747,7 @@ select:focus {
     background-color: var(--background);
 }
 
-::-webkit-calendar-picker-indicator {
-    filter: invert(1);
-    cursor: pointer;
-}
 
-body.light-mode ::-webkit-calendar-picker-indicator {
-    filter: invert(0); 
-}
 
 .checkbox-group {
     display: flex; align-items: flex-start; gap: 0.8rem;
@@ -2931,12 +2984,6 @@ body.light-mode .free-shipping-text {
     appearance: textfield; 
 }
 
-.qty-input::-webkit-outer-spin-button, 
-.qty-input::-webkit-inner-spin-button { 
-    -webkit-appearance: none; 
-    margin: 0; 
-}
-
 .action-btn-text {
     background: none;
     border: none;
@@ -3352,8 +3399,6 @@ body.light-mode .free-shipping-text {
     padding: 0.5rem;
 }
 
-.summary-items-list::-webkit-scrollbar { width: 5px; }
-.summary-items-list::-webkit-scrollbar-thumb { background-color: var(--secondary-color); border-radius: 3px; }
 
 .summary-item-rich {
     display: grid;
@@ -4164,11 +4209,7 @@ body.light-mode .buy-button:disabled {
 }
 
 body.no-scroll { overflow: hidden; }
-input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-input[type="number"] {
-    -moz-appearance: textfield;
-    appearance: textfield;
-}
+
 
 /* =========================================
    MODALE DETTAGLI VINO
@@ -4297,14 +4338,8 @@ html.no-js .modal-toggle-checkbox:checked:focus {
 /* ---------------------------------------------------------
    GESTIONE VISIBILITÀ 
 --------------------------------------------------------- */
-
-html.no-js .modal-close-btn {
-    display: none;
-}
-
 html.no-js .modal-toggle-checkbox:checked {
     appearance: none;
-    -webkit-appearance: none;
     display: block;
     clip: auto;              
     clip-path: none;         
@@ -4699,11 +4734,7 @@ a.action-btn-text:focus {
     display: none;
 }
 
-input[type="search"]::-webkit-search-cancel-button {
-    -webkit-appearance: none;
-    appearance: none;
-    display: none;
-}
+
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateX(10px); }
@@ -4714,35 +4745,7 @@ input[type="search"]::-webkit-search-cancel-button {
    FIX AUTOCOMPLETE  
    ========================================= */
 
-body .auth-container .auth-form .form-group input:-webkit-autofill,
-body .auth-container .auth-form .form-group input:-webkit-autofill:hover, 
-body .auth-container .auth-form .form-group input:-webkit-autofill:focus, 
-body .auth-container .auth-form .form-group input:-webkit-autofill:active {
-    
-    -webkit-box-shadow: 0 0 0 1000px var(--background) inset;
-    -webkit-text-fill-color: var(--text-color);
-    caret-color: var(--text-color);
-    transition: background-color 5000s ease-in-out 0s;
-    font-family: inherit;
-    font-size: inherit;
-}
 
-.standard-form .form-group input:-webkit-autofill,
-.standard-form .form-group input:-webkit-autofill:hover, 
-.standard-form .form-group input:-webkit-autofill:focus, 
-.standard-form .form-group input:-webkit-autofill:active,
-.standard-form .form-group select:-webkit-autofill,
-.standard-form .form-group select:-webkit-autofill:hover, 
-.standard-form .form-group select:-webkit-autofill:focus, 
-.standard-form .form-group select:-webkit-autofill:active {
-
-    -webkit-box-shadow: 0 0 0 1000px var(--background) inset;
-    -webkit-text-fill-color: var(--text-color);
-    caret-color: var(--text-color);
-    transition: background-color 5000s ease-in-out 0s;
-    font-family: inherit;
-    font-size: inherit;
-}
 
 .little {
     font-size: 0.85rem;
