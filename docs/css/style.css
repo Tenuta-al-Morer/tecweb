@@ -3079,12 +3079,21 @@ body.light-mode .free-shipping-text {
 }
 
 .btn-disabled {
-    background-color: #333333 ; 
-    color: #616161 ; 
+    background-color: var(--text-color) ; 
+    color: var(--background); 
     cursor: not-allowed;
-    border-color: #333333 ;
+    border-color: var(--border-color);
     box-shadow: none;
 }
+
+.btn-disabled:hover, .btn-disabled:focus {
+    background-color: var(--border-color) ; 
+    color: var(--background); 
+    cursor: not-allowed;
+    border-color: var(--border-color);
+    box-shadow: none;
+}
+
 
 .empty-cart-message {
     background: var(--background); 
