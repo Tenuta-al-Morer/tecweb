@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Creato il: Feb 01, 2026 alle 08:10
+-- Creato il: Feb 03, 2026 alle 10:41
 -- Versione del server: 11.8.3-MariaDB-0+deb13u1 from Debian
 -- Versione PHP: 8.4.16
 
@@ -65,12 +65,13 @@ CREATE TABLE `carrello_elemento` (
 --
 
 INSERT INTO `carrello_elemento` (`id`, `id_carrello`, `id_vino`, `quantita`, `data_inserimento`, `stato`) VALUES
-(1, 1, 2, 2, '2026-01-31 16:40:38', 'salvato'),
-(3, 1, 10, 3, '2026-01-31 16:40:45', 'attivo'),
+(1, 1, 2, 2, '2026-01-31 16:40:38', 'attivo'),
+(3, 1, 10, 3, '2026-01-31 16:40:45', 'salvato'),
 (5, 2, 6, 1, '2026-01-31 16:44:04', 'attivo'),
 (7, 2, 10, 1, '2026-01-31 16:44:09', 'salvato'),
 (8, 3, 11, 1, '2026-01-31 16:45:06', 'attivo'),
-(10, 5, 4, 1, '2026-01-31 16:48:27', 'attivo');
+(10, 5, 4, 1, '2026-01-31 16:48:27', 'attivo'),
+(13, 1, 5, 1, '2026-02-03 09:40:52', 'attivo');
 
 -- --------------------------------------------------------
 
@@ -182,7 +183,7 @@ CREATE TABLE `prenotazione` (
 --
 
 INSERT INTO `prenotazione` (`id`, `nome`, `cognome`, `email`, `tipo_degustazione`, `data_visita`, `n_persone`, `data_invio`, `stato`) VALUES
-(1, 'Test', 'User', 'user', 'Piave', '2026-03-10', 4, '2025-12-22 22:39:38', 'approvato'),
+(1, 'TestUser', 'User', 'user', 'Piave', '2026-03-10', 4, '2025-12-22 22:39:38', 'approvato'),
 (2, 'Mario', 'Rossi', 'mario.rossi@test.com', 'Linea Oro', '2026-03-15', 2, '2025-12-22 22:39:38', 'approvato'),
 (3, 'Luca', 'Marcuzzo', 'luca.marcuzzo@test.com', 'Linea Oro', '2026-04-14', 2, '2025-12-27 01:23:25', 'in_attesa'),
 (4, 'Guido', 'Bianchi', 'guido.bianchi@test.com', 'Piave', '2026-05-01', 4, '2025-12-27 01:23:25', 'in_attesa'),
@@ -190,7 +191,9 @@ INSERT INTO `prenotazione` (`id`, `nome`, `cognome`, `email`, `tipo_degustazione
 (6, 'Matteo', 'Bartolini', 'matteo.bartolini@test.com', 'Piave', '2026-06-10', 2, '2025-12-27 01:23:25', 'annullato'),
 (7, 'Michele', 'Stevanin', 'michele.stevanin@test.com', 'Linea Oro', '2026-06-28', 6, '2025-11-15 08:00:00', 'annullato'),
 (8, 'Giovanni', 'Visentin', 'giovanni.visentin@test.com', 'Piave', '2026-07-05', 3, '2025-12-27 01:23:25', 'in_attesa'),
-(9, 'Alessandro', 'Contarini', 'alessandro.contarini@test.com', 'Linea Oro', '2026-03-21', 3, '2026-01-31 17:03:34', 'in_attesa');
+(9, 'Alessandro', 'Contarini', 'alessandro.contarini@test.com', 'Linea Oro', '2026-03-21', 3, '2026-01-31 17:03:34', 'in_attesa'),
+(10, 'TestUser', 'User', 'user', 'Linea Oro', '2026-03-16', 3, '2026-01-16 19:39:38', 'annullato'),
+(11, 'TestUser', 'User', 'user', 'Piave', '2026-03-16', 6, '2026-01-22 11:15:22', 'in_attesa');
 
 -- --------------------------------------------------------
 
@@ -265,7 +268,7 @@ INSERT INTO `vino` (`id`, `nome`, `prezzo`, `quantita_stock`, `stato`, `img`, `c
 (8, 'Prosecco', 12.50, 0, 'attivo', '../../images/tr/Prosecco.webp', 'bianchi', 'Le bollicine venete.', 'Le bollicine venete per eccellenza. Fresco, vivace e floreale.', 'Glera 100%', '2024', '11.0% Vol', '6-8°C', 'Brindisi, Aperitivi, Dolci secchi'),
 (9, 'Gran Morer', 25.00, 118, 'attivo', '../../images/tr/Gran Morer.webp', 'selezione', 'Riserva speciale.', 'La nostra riserva speciale. Invecchiato in botte, complesso e speziato.', 'Uvaggio Segreto', '2018', '14.5% Vol', '18-20°C', 'Meditazione, Carni importanti'),
 (10, 'Vigna Dorata', 22.00, 19, 'attivo', '../../images/tr/Vigna Dorata.webp', 'selezione', 'Dolce e avvolgente.', 'Selezione di uve passite, dolce, avvolgente e dai riflessi dorati.', 'Verduzzo', '2020', '14.0% Vol', '10-12°C', 'Pasticceria secca, Formaggi erborinati'),
-(11, 'Incanto', 20.00, 277, 'attivo', '../../images/tr/Incanto.webp', 'selezione', 'Profumi floreali.', 'Un vino che incanta per i suoi profumi floreali intensi e la persistenza.', 'Vitigni aromatici', '2022', '12.5% Vol', '8-10°C', 'Piatti speziati, Formaggi freschi'),
+(11, 'Incanto', 20.00, 277, 'eliminato', '../../images/tr/Incanto.webp', 'selezione', 'Profumi floreali.', 'Un vino che incanta per i suoi profumi floreali intensi e la persistenza.', 'Vitigni aromatici', '2022', '12.5% Vol', '8-10°C', 'Piatti speziati, Formaggi freschi'),
 (12, 'Rosae Nobile', 19.00, 0, 'attivo', '../../images/tr/Rosae Nobile.webp', 'selezione', 'Rosato di alta classe.', 'Rosato di alta classe, note di frutti di bosco e rosa canina.', 'Raboso vinif. in bianco', '2023', '12.0% Vol', '8-10°C', 'Antipasti di pesce, Sushi');
 
 --
@@ -341,7 +344,7 @@ ALTER TABLE `carrello`
 -- AUTO_INCREMENT per la tabella `carrello_elemento`
 --
 ALTER TABLE `carrello_elemento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT per la tabella `contatto`
@@ -365,13 +368,13 @@ ALTER TABLE `ordine_elemento`
 -- AUTO_INCREMENT per la tabella `prenotazione`
 --
 ALTER TABLE `prenotazione`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT per la tabella `utente`
 --
 ALTER TABLE `utente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT per la tabella `vino`
