@@ -227,7 +227,7 @@ Le immagini relative ai prodotti (vini) e agli elementi grafici dell’interfacc
 
 Tutte le immagini sono state ottimizzate mantenendo una dimensione ridotta (sotto 0.3MB) al fine di favorire la velocità di rendering.
 
-Per quanto riguarda l’inserimento di nuovi prodotti tramite l’area riservata (admin), il sistema di upload permette all’amministratore di caricare immagini in diversi formati standard, senza restrizioni stringenti sul tipo di file in ingresso.
+Per quanto riguarda l’inserimento di nuovi prodotti tramite l’area riservata (admin), il sistema di upload permette all’amministratore di caricare immagini in diversi formati standard, permettendo il solo caricamento di immagini.
 
 #### Font
 
@@ -383,7 +383,7 @@ Test manuali effettuati:
 
 - verifica dell’uso appropriato dei tag semantici;
 
-- controllo della completa correttezza e corenza degli attributi `alt` alle relative immagini;
+- controllo della completa correttezza e coerenza degli attributi `alt` alle relative immagini;
 
 - controllo della navigabilità da tastiera di tutte le pagine del sito;
 
@@ -391,7 +391,7 @@ Test manuali effettuati:
 
 - verifica del corretto funzionamento delle funzionalità con JavaScript disabilitato;
 
-- controllo del layout responsive su schermi con dimensioni e risuluzioni differenti;
+- controllo del layout responsive su schermi con dimensioni e risoluzioni differenti;
 
 - verifica della leggibilità e del contrasto dei colori utilizzati;
 
@@ -468,3 +468,7 @@ Il lavoro è stato organizzato suddividendo le attività in base alle diverse pa
   - Testing e validazione: Total Validator, Silktide, WAVE by WebAIM, W3C Validator e NVDA per le relative pagine
 
   - Relazione tecnica
+
+## Note
+
+In assenza delle regole specifiche WebKit, le uniche differenze riscontrate riguardano lo stile dell’autofill, che in modalità dark non si adegua automaticamente al tema grafico dell’interfaccia, e la presenza delle freccette di incremento/decremento negli input numerici. Per garantire la conformità al requisito di utilizzo di CSS puro (CSS2 e CSS3), la sezione contenente tali regole WebKit è stata volutamente commentata nella parte iniziale del foglio di stile. È tuttavia sufficiente rimuovere i commenti da questa sezione per riattivare le relative migliorie grafiche, senza impatti funzionali sul resto dell’interfaccia. Si segnala infine che il controllo di selezione della data (calendario) mantiene un corretto livello di contrasto cromatico in modalità light, mentre in modalità dark conserva l’aspetto scuro nativo del browser e non si adatta automaticamente al tema dell’interfaccia in assenza delle suddette regole.
