@@ -188,9 +188,9 @@ if (empty($ordini)) {
     $tabellaOrdini = '<div class="alert-box"><p><span class="fas fa-exclamation-triangle" aria-hidden="true"></span> Non hai ancora effettuato ordini. Visita la sezione <a href="vini.php">Vini!</a></p></div>';
 } else {
     $tabellaOrdini .= '
+        <p id="tabella-ordini-desc" class="visually-hidden">Tabella contenente lo storico di tutti i tuoi ordini con numero ordine, data, stato e totale. Utilizza i pulsanti nella colonna Dettagli per espandere le informazioni su ciascun ordine.</p>
         <table class="table-data" aria-describedby="tabella-ordini-desc">
             <caption>Storico dei tuoi ordini</caption>
-            <p id="tabella-ordini-desc" class="visually-hidden">Tabella contenente lo storico di tutti i tuoi ordini con numero ordine, data, stato e totale. Utilizza i pulsanti nella colonna Dettagli per espandere le informazioni su ciascun ordine.</p>
             <thead>
                 <tr>
                     <th scope="col">N. Ordine</th>
