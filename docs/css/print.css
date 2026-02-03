@@ -184,8 +184,6 @@ div#shipping-message-container, .btn-full, .item-actions-row, .cart-item-price-c
     padding: 0.5rem;
 }
 
-.summary-items-list::-webkit-scrollbar { width: 5px; }
-.summary-items-list::-webkit-scrollbar-thumb { background-color: var(--secondary-color); border-radius: 3px; }
 
 .summary-item-rich {
     display: grid;

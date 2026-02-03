@@ -526,4 +526,16 @@ A ciascun membro del gruppo sono stati assegnati compiti specifici, così da ott
 \end{itemize}
 \end{itemize}
 
+\section{Note}
+In assenza delle regole specifiche WebKit, le uniche differenze riscontrate riguardano lo stile dell’autofill, che in 
+modalità dark non si adegua automaticamente al tema grafico dell’interfaccia, e la presenza delle freccette di 
+incremento/decremento negli input numerici.
+Per garantire la conformità al requisito di utilizzo di CSS puro (CSS2 e CSS3), la sezione contenente tali regole 
+WebKit è stata volutamente commentata nella parte iniziale del foglio di stile.
+È tuttavia sufficiente rimuovere i commenti da questa sezione per riattivare le relative migliorie grafiche, senza impatti 
+funzionali sul resto dell’interfaccia.
+Si segnala infine che il controllo di selezione della data (calendario) mantiene un corretto livello di contrasto cromatico in 
+modalità light, mentre in modalità dark conserva l’aspetto scuro nativo del browser e non si adatta automaticamente al tema 
+dell’interfaccia in assenza delle suddette regole.
+
 \end{document}
