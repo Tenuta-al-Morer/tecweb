@@ -235,8 +235,9 @@ $tabellaPrenotazioni = '';
 if (empty($prenotazioni)) {
     $tabellaPrenotazioni = '<div class="alert-box"><p><span class="fas fa-exclamation-triangle" aria-hidden="true"></span> Non hai ancora inviato richieste di prenotazione. Visita la sezione <a href="esperienze.php">Esperienze!</a></p></div>';
 } else {
-    $tabellaPrenotazioni .= '<table class="table-data" aria-describedby="tabella-prenotazioni-desc">
-            <p id="tabella-prenotazioni-desc" class="visually-hidden">Tabella contenente lo storico di tutte le tue richieste di esperienze con numero richiesta, data invio, data visita, numero persone e stato. Utilizza i pulsanti nella colonna Dettagli per espandere le informazioni su ciascuna richiesta.</p>
+    $tabellaPrenotazioni .= '
+        <p id="tabella-prenotazioni-desc" class="visually-hidden">Tabella contenente lo storico di tutte le tue richieste di esperienze con numero richiesta, data invio, data visita, numero persone e stato. Utilizza i pulsanti nella colonna Dettagli per espandere le informazioni su ciascuna richiesta.</p>
+        <table class="table-data" aria-describedby="tabella-prenotazioni-desc">
             <caption>Storico delle tue richieste esperienze</caption>
             <thead>
                 <tr>
